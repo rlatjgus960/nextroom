@@ -9,7 +9,7 @@ public class Hello {
 	@RequestMapping("/hello")
 	public String hello() {
 		System.out.println("hello");
-		return "main";
+		return "user/mypage_main";
 	}
 
 }

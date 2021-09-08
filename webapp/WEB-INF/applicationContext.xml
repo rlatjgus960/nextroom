@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
@@ -16,31 +18,42 @@
 
 	<context:annotation-config />
 
-	<context:component-scan base-package="com.nextroom">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
-	</context:component-scan>
-
 	<!-- oracle datasource -->
-	<bean id="oracleDatasource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
-		<property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" />
+	<bean id="oracleDatasource"
+		class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
+		<property name="URL"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<property name="user" value="nextroom" />
 		<property name="password" value="nextroom" />
 		<property name="connectionCachingEnabled" value="true" />
 		<qualifier value="main-db" />
 	</bean>
-
+	
 	<!-- MyBatis SqlSessionFactoryBean 설정 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="oracleDatasource" />
-		<property name="configLocation" value="classpath:mybatis/configuration.xml" />
+		<property name="configLocation"
+			value="classpath:mybatis/configuration.xml" />
 	</bean>
 
+
+
+
 	<!-- MyBatis SqlSessionTemplate 설정 -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 
-
+	<context:component-scan
+		base-package="com.nextroom">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Component" />
+	</context:component-scan>
 </beans>

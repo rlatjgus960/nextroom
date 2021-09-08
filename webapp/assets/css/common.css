@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+/* 여백 초기화 */
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, 
+input, fieldset, legend, p, select, table, th, td, tr,
+textarea, button, form {margin: 0; padding: 0;}
+
+/*폰트 바꾸려면 여기서*/
+body   { font-size:12px; font-family: "맑은 고딕", 돋움, 굴림; text-align:center; color: #333; background-color: #fff;}
+
+ul, ol   {list-style-type: none; }
+a:link {text-decoration: none; color: #000000; }
+a:visited {text-decoration: none; color: #000000; }
+a:active {text-decoration: none; color: #000000; }
+a:hover {text-decoration: none; color: #000000; }
+
+
+
+/* 레이아웃 */
+#wrap {margin: 0px auto; width: 1300px; background-color: #FFFFFF;  overflow: hidden;}
+#header {width: 1300px; height:50px;margin: 0px 0px 30px 0px; padding: 5px 0px 10px 0px; background-color: #FFFFFF; border-bottom:1px solid #b9b9b9; }
+#nav {margin:0px 0px 0px 450px;  background-color: #FFFFFF; text-align:center;}
+#content {min-height: 600px; width: 1300px; background-color: #FFFFFF; border-bottom: 1px solid #b9b9b9; padding-bottom: 20px; }
+#footer {width: 1300px;  background-color: #fff; color: #999; margin: 10px 0px;}
+
+
+/* 해더(header: 로고, 로그인관련 버튼) */
+#bar {float:left;}
+#header{ 
+   border-style: none;
+    box-shadow: 0px 1px 15px 0px rgb(224 224 224);
+}
+
+#header ul>li .btn_s {padding: 4px 6px 4px 6px;  font-size: 10px; text-align:center;}
+
+/* 네비(nav: 메인메뉴) */
+#nav ul>li {left:200px;float: left; margin: 15px 0px 15px 0px; font-size: 18px; font-weight: bold; background-color: #FFFFFF;}
+
+#logo{float: left; width:200px;}
+
+
+
+
+/* clearfix */
+.clearfix{*zoom:1;}
+.clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
+.clearfix:after {clear: both;}
+
+#login_area {
+   float:right;
+    
+}
+
+#bar>li{
+    width: 100px;
+}
+
+.mypageIcon{
+   float:left;
+   width:60px;
+   height: 30px;
+}
+
+.line-right{
+   border-right:1px solid #b9b9b9;
+}
+
+#main_logo {
+   margin: 150px 350px;
+   width: 700px;
+   height: 380px;
+}
+
+.mypageBtn {
+    float:left;
+    width: 70px;
+    height: 30px;
+}
+
+#subheader{
+    text-align: left;
+    border-bottom: 1px solid #b9b9b9;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+
+#subheader>#subheader-title{
+    float: left;
+    margin-left: 18px;
+    margin-bottom: 10px;
+}
+
+#subheader>#subheader-mintitle{
+    float: right;
+    padding-top: 10px;
+}
+
