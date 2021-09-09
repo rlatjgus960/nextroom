@@ -24,6 +24,7 @@ a:hover {text-decoration: none; color: #000000; }
 #footer {width: 1300px;  background-color: #fff; color: #999; margin: 10px 0px;}
 
 #header-item {width: 1300px; margin-left: auto; margin-right: auto;}
+h2 {font-size: 30px;}
 
 /* 해더(header: 로고, 로그인관련 버튼) */
 #bar {float:left;}
