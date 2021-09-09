@@ -11,5 +11,12 @@ public class Hello {
 		System.out.println("hello");
 		return "user/mypage_main";
 	}
+	
+	
+	@RequestMapping("/rank")
+	public String rank() {
+		System.out.println("hello");
+		return "user/userrank";
+	}
 
 }
