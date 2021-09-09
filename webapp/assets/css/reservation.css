@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+#reservation_first, #reservation_second, #reservation_third, #reservation_fourth {
+    float: left;
+    height: 40px;
+}
+
+#reservation_first {background-color: rgb(253, 213, 59); width: 324px;}
+#reservation_second {background-color: rgb(224,224,224); border-left: 2px solid #fff; width: 323px;}
+#reservation_third {background-color: rgb(224,224,224); border-left: 2px solid #fff; width: 323px;}
+#reservation_fourth {background-color: rgb(224,224,224); border-left: 2px solid #fff; width: 324px;}
+
+.reservation_num {
+    float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.reservation_txt {
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 10px;
+    font-weight: bolder;
+}
+
+#reservation_main {
+    background-color: rgb(224,224,224);
+    height: 500px;
+    padding: 3px;
+    border-top: 2px solid #fff;
+}
+
+#reservation_main_title_date, #reservation_main_title_region, #reservation_main_title_cafe, #reservation_main_title_thema {
+    margin-right: 3px;
+}
+
+#reservation_main_title_date, #reservation_main_title_region, #reservation_main_title_cafe, #reservation_main_title_thema, #reservation_main_title_time {
+    background-color: #fff;
+    width: 256px;
+    height: 35px;
+    float: left;
+}
+
+
+.reservation_main_title{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bolder;
+}
+
+#datepicker {
+    height: 300px;
+    width: 300px;
+}
