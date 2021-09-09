@@ -8,7 +8,7 @@
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/cafe.css" rel="stylesheet" type="text/css">
 
-<title>마이페이지</title>
+<title>카페 메인</title>
 </head>
 <body>
 
@@ -43,21 +43,14 @@
 
 	<div id="wrap">
 
-
-		
-
-
-		<div id="subheader" class="clearfix">
-			<div id="subheader-title">
-				<h1>방탈출 카페</h1>
-			</div>
-			
-		</div>
-
-
-
 		<!-- content -->
 		<div id="content">
+			<div id="subheader" class="clearfix">
+				<div id="subheader-title">
+					<h2>방탈출 카페</h2>
+				</div>
+				
+			</div>
 
 			<div id="contentMain" class="clearfix">
 				
@@ -84,12 +77,12 @@
 				<!-- 검색정렬 -->
 				<div id="cafe_range" class="clearfix">
 
-					<select id="cafe_array" class="clearfix">
+					<select id="cafe_array" class="">
 						<option value="" selected="">리뷰많은순</option>
 						<option value="party_ing">관심많은순</option>
 					</select>
 
-					<form id="cafe_search" class="clearfix" action="" method="get">
+					<form id="cafe_search" class="" action="" method="get">
 						<div class="form-group text-right">
 							<input type="text" name="keyword">
 							<button type="submit" id=btn_search>검색</button>
@@ -100,25 +93,40 @@
 
 
 				<!-- 카페리스트 -->
-				<div id="cafe_list" class="clearfix">
+				<div id="cafe_list" class="">
 		
 					<!-- 리스트 반복영역 -->
-					<div class="cafe_list_item">
+					<div class="cafe_list_item clearfix">
 						<img id="" class="clearfix cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
-						<div id="" class="clearfix cafe_info">
-							<div class="cafe_name">
-								<p>방탈출 카페 이름</p>
-								<p>방탈출 카페 한줄 소개</p>
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
 							</div>
 
-							<div class="cafe_tel">
-								<p>전화번호</p>
-								<p>위치</p>
-								<p>운영시간</p>
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
 							</div>
 						</div>
-
 					</div>
+
+
 					<!-- //리스트 반복영역 -->
 
 					

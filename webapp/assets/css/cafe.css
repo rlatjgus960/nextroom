@@ -13,19 +13,17 @@
 #cafe_region {
     text-align: center;
     margin-bottom: 30px;
+    font-size: 15px;
 }
 
 
 .cafe_img {
     float: left;
     margin-right: 15px;
+    height: 200px;
+    width: 300px;
 }
 
-.cafe_info{
-    
-    text-align: left;
-    
-}
 
 #cafe_list{
     margin-left: auto;
@@ -45,4 +43,62 @@
     
 }
 
+#cafe_search {
+    width: 200px;
+    height: 24px;
+    margin-right: 5px;
+}
 
+#cafe_search input {
+    width: 150px;
+    height: 20px;
+    vertical-align: bottom;
+}
+
+#btn_search {
+    width: 39px;
+    height: 24px;
+    vertical-align: bottom;
+}
+
+#cafe_array {
+    width: 100px;
+    height: 24px;
+    vertical-align: bottom;
+}
+
+.cafe_info{
+    width: 945px;
+    text-align: left;
+    float: left;
+    
+}
+
+.cafe_intro {
+    height: 130px;
+    margin-top: 5px;
+}
+
+.cafe_name {
+    font-size: 24px;
+}
+
+.cafe_contact {
+    margin-bottom: 5px;
+}
+
+.cafe_contact img {
+    height: 15px;
+    vertical-align: bottom;
+}
+
+.cafe_contact a {
+    line-height: 15px;
+    vertical-align: bottom;
+    font-size: 12px;
+}
+
+.cafe_contact div {
+    height: 15px;
+    padding-bottom: 5px;
+}
