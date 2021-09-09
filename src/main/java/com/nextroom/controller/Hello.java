@@ -24,4 +24,11 @@ public class Hello {
       System.out.println("hello");
       return "party_list";
    }
+   
+   @RequestMapping("/cafe")
+   public String cafe_main() {
+      System.out.println("cafe");
+      return "cafe/cafe_main";
+   }
+   
 }

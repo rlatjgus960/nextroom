@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
-<link href="C:\javaStudy\workspace_web\nextroom\webapp\assets\css\common.css" rel="stylesheet" type="text/css">
-<link href="C:\javaStudy\workspace_web\nextroom\webapp\assets\css\cafe.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/cafe.css" rel="stylesheet" type="text/css">
 
 <title>마이페이지</title>
 </head>
@@ -13,7 +15,7 @@
 	<!-- 헤더영역 -->
 	<div id="header">
 		<div id="header-item">
-			<a><img id="logo" src="C:\javaStudy\workspace_web\nextroom\webapp\assets\image\logo.jpg"></a>
+			<a><img id="logo" src="${pageContext.request.contextPath }/assets/image/logo.jpg"></a>
 
 			<div id="nav">
 
@@ -27,8 +29,8 @@
 
 
 				<ul id="login_area">
-					<li><a href="" class=""><img id="" src="C:\javaStudy\workspace_web\nextroom\webapp\assets\image\messageicon.jpg"></a></li>
-					<li><a href="" class=""><img id="" src="C:\javaStudy\workspace_web\nextroom\webapp\assets\image\alerticon.jpg"></a></li>
+					<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }/assets/image/messageicon.jpg"></a></li>
+					<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }/assets/image/alerticon.jpg"></a></li>
 					<li class="line-right mypageIcon"><a href="" class="btn_s">로그아웃</a></li>
 					<li class="mypageBtn"><a href="" class="btn_s">마이페이지</a></li>
 				</ul>
@@ -62,7 +64,7 @@
 				<!-- main -->
 				<div id="cafe_region_list" class="clearfix">
 
-					<img id="cafe_map_img" src="C:\javaStudy\workspace_web\nextroom\webapp\assets\image\cafe\map_all.PNG">
+					<img id="cafe_map_img" src="${pageContext.request.contextPath }/assets/image/cafe/map_all.PNG">
 		
 					<div id="cafe_region">
 						<a href="" class="">전국</a> | <a href="" class="">홍대</a> | <a href="" class="">강남</a> | <a href="" class="">건대</a> | 
@@ -102,7 +104,7 @@
 		
 					<!-- 리스트 반복영역 -->
 					<div class="cafe_list_item">
-						<img id="" class="clearfix cafe_img" src="C:\javaStudy\workspace_web\nextroom\webapp\assets\image\cafe\nextedition.png">
+						<img id="" class="clearfix cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
 						<div id="" class="clearfix cafe_info">
 							<div class="cafe_name">
 								<p>방탈출 카페 이름</p>

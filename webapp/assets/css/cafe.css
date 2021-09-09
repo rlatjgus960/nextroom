@@ -18,14 +18,13 @@
 
 .cafe_img {
     float: left;
+    margin-right: 15px;
 }
 
 .cafe_info{
     
     text-align: left;
-    padding-top: auto;
-    padding-bottom: auto;    
-
+    
 }
 
 #cafe_list{
