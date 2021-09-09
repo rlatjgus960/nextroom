@@ -64,7 +64,7 @@
 }
 
 #rank6-{
-    background-color: gray;
+    background-color: #fff;
     min-height: 800px;
 }
 
@@ -84,9 +84,9 @@
 }
 
 #third_pool>li{
-    margin: 5px 0px;
+    margin: 8px 0px;
     border-radius: 30px;
-    background-color: #fff;
+    border: 2px solid #d2d2d2;
     height: 80px    ;
 }
 
@@ -102,6 +102,14 @@
     border-radius: 50%;
 }
 
+.ranklist_profile{
+    margin-top: 5px;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+
 .f-left{
     float: left;
 }
@@ -116,4 +124,46 @@
 .m-left{
     margin-left: 50px;
 }
+
+.m-right{
+    margin-right: 50px;
+}
+
+.f-right{
+    float: right;
+}
+
+.rank_list{
+    padding: 0px 70px;
+    padding-right: 90px;
+}
+
+.rank_list>p{
+	font-size: 20px;
+	font-weight: bold;
+    margin-top: 25px;
+}
+
+.ranklist_detail{
+    margin-top: 3px;
+}
+
+.rank_list>ul>li{
+    float: left;
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
+.first_font{
+	margin-top: 20px;
+	font-size: 25px;
+	font-weight: bolder;
+}
+
+.sec_font{
+	font-size: 20px;
+	font-weight: bolder;
+	margin-bottom: 5px;
+}
+
 
