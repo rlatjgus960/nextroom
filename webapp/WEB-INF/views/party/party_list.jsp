@@ -52,7 +52,7 @@
 
             <div id="subheader" class="clearfix">
                 <div id="subheader-title">
-                    <h1>파티구하기</h1>
+                    <h2>파티구하기</h2>
                 </div>
             </div>
 
@@ -95,15 +95,17 @@
                     <div id="party_list">
                         <table>
                             <colgroup>
-                                <col style="width: 150px;">
                                 <col style="width: 200px;">
-                                <col style="width: 275px">
-                                <col style="width: 275px;">
-                                <col style="width: 150px;">
-                                <col style="width: 150px;">
+                                <col style="width: 100px;">
+                                <col style="width: 170px;">
+                                <col style="width: 240px;">
+                                <col style="width: 230px;">
+                                <col style="width: 90px;">
+                                <col style="width: 140px;">
                             </colgroup>
                             <thead>
                                 <tr>
+                                    <th>포스터</th>
                                     <th>No</th>
                                     <th>지역</th>
                                     <th>카페 / 테마</th>
@@ -115,6 +117,7 @@
 
                             <tbody>
                                 <tr>
+                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px" height="90px"></a></td>
                                     <td>1</td>
                                     <td>서울 신논현</td>
                                     <td>넥스트에디션 / 인터프리터</td>
@@ -123,7 +126,8 @@
                                     <td>모집중</td>
                                 </tr>
                                 <tr>
-                                    <td>1</td>
+                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px" height="90px"></a></td>
+                                    <td>2</td>
                                     <td>서울 신논현</td>
                                     <td>넥스트에디션 / 인터프리터</td>
                                     <td>2021-08-27  14:20</td>
@@ -131,7 +135,8 @@
                                     <td>모집중</td>
                                 </tr>
                                 <tr>
-                                    <td>1</td>
+                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/pepe.jpg" width="80px" height="90px"></a></td>
+                                    <td>3</td>
                                     <td>서울 신논현</td>
                                     <td>넥스트에디션 / 인터프리터</td>
                                     <td>2021-08-27  14:20</td>
@@ -139,38 +144,33 @@
                                     <td>모집중</td>
                                 </tr>
                                 <tr>
-                                    <td>1</td>
+                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/butterfly.jpg" width="80px" height="90px"></a></td>
+                                    <td>4</td>
                                     <td>서울 신논현</td>
                                     <td>넥스트에디션 / 인터프리터</td>
                                     <td>2021-08-27  14:20</td>
                                     <td>2 / 4</td>
                                     <td>모집중</td>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
+                                  <tr>
+                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이연복.jpg" width="80px" height="90px"></a></td>
+                                    <td>5</td>
                                     <td>서울 신논현</td>
                                     <td>넥스트에디션 / 인터프리터</td>
                                     <td>2021-08-27  14:20</td>
                                     <td>2 / 4</td>
                                     <td>모집중</td>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
+								<tr>
+                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/pepe.jpg" width="80px" height="90px"></a></td>
+                                    <td>6</td>
                                     <td>서울 신논현</td>
                                     <td>넥스트에디션 / 인터프리터</td>
                                     <td>2021-08-27  14:20</td>
                                     <td>2 / 4</td>
                                     <td>모집중</td>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>서울 신논현</td>
-                                    <td>넥스트에디션 / 인터프리터</td>
-                                    <td>2021-08-27  14:20</td>
-                                    <td>2 / 4</td>
-                                    <td>모집중</td>
-                                </tr>
-
+								
                             </tbody>
                         </table>
                     </div>
