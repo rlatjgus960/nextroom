@@ -22,7 +22,7 @@ public class Hello {
    @RequestMapping("/party")
    public String party() {
       System.out.println("hello");
-      return "party_list";
+      return "party/party_list";
    }
    
    @RequestMapping("/cafe")
