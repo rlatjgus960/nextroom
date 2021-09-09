@@ -1,47 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/mypage.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 
 
 <title>자유게시판</title>
 </head>
 <body>
 
-			<!-- 헤더영역 -->
-			<div id="header">
-				<div id="header-item">
-					<a><img id="logo" src="${pageContext.request.contextPath }/assets/image/logo.jpg"></a>
-		
-					<div id="nav">
-		
-						<ul id="bar">
-							<li><a href="">카페/테마</a></li>
-							<li><a href="">예약</a></li>
-							<li><a href="">파티구하기</a></li>
-							<li><a href="">랭킹</a></li>
-							<li><a href="">커뮤니티</a></li>
-						</ul>
-		
-		
-						<ul id="login_area">
-							<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }/assets/image/messageicon.jpg"></a></li>
-							<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }/assets/image/alerticon.jpg"></a></li>
-							<li class="line-right mypageIcon"><a href="" class="btn_s">로그아웃</a></li>
-							<li class="mypageBtn"><a href="" class="btn_s">마이페이지</a></li>
-						</ul>
-					</div>
-					
-				</div>
-				
-			</div>
-			<!-- //헤더영역 -->
+	<!-- 헤더영역 -->
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+	<!-- //헤더영역 -->
 	<div id="wrap">
 
 
@@ -50,7 +26,7 @@
 			
 			<div id="subheader" class="clearfix">
 				<div id="subheader-title">
-				   <h1>자유게시판</h1>
+				   <h2>자유게시판</h2>
 				</div>
 				<div id="subheader-mintitle">커뮤니티 > 자유게시판</div>
 	
@@ -63,7 +39,7 @@
 			 <div id="contentMain" class="clearfix">
 				<!-- aside -->
 				<div id="aside">
-						<img id="aside_img" src="${pageContext.request.contextPath }/assets/image/asideImg.png" width="35px" height="35px">
+						<img id="aside_img" src="${pageContext.request.contextPath}/assets/image/asideImg.png" width="35px" height="35px">
 						
 						<div id="aside_cate_coummunity">
 							<!-- <div id="aside_title"> -->
@@ -85,10 +61,11 @@
 				   
 					<!-- 버튼 -->
 					<div id="list_button" >
-						<ul>
-							<button type="submit">전 체</button>
-							<button type="submit">인 기</button>
-							<button type="submit">조 회</button>
+						<ul>							
+							<a href=""><img src="${pageContext.request.contextPath}/assets/image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
+							<a href=""><img src="${pageContext.request.contextPath}/assets/image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href=""><img src="${pageContext.request.contextPath}/assets/image/hit.png" width="14px" height="14px" >조 회</a>
+
 						</ul>
 					</div>
 					<!-- //버튼 -->
@@ -100,7 +77,7 @@
 						<form action="" method="get" class="form_area">
 							
 							<div class="search">
-								<input type="text" name="keyword" value="">
+								<input type="text" name="keyword" value="" placeholder="검색어를 입력해주세요" size="19px">
 								<button type="submit">검색</button>
 							</div>
 
@@ -120,17 +97,17 @@
 					 <div id="board_list">
 						<table>
 							<colgroup>
+								<col style="width: 120px;">
+								<col style="width: 340px;">
 								<col style="width: 150px;">
-								<col style="width: 300px;">
-								<col style="width: 150px;">
-								<col style="width: 150px;">
-								<col style="width: 150px;">
-								<col style="width: 100px;">
+								<col style="width: 140px;">
+								<col style="width: 140px;">
+								<col style="width: 120px;">
 							</colgroup>
 							<thead>
 								<tr>
 									<th>이미지</th>
-									<th>제목</th>
+									<th>제      목</th>
 									<th>작성자</th>
 									<th>조회수</th>
 									<th>추천수</th>
@@ -140,8 +117,8 @@
 
 							<tbody>
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="70px" height="50px"></td>
-									<td>방명록</td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
@@ -149,8 +126,8 @@
 								</tr>
 								
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="70px" height="50px"></td>
-									<td>방명록</td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
@@ -158,8 +135,8 @@
 								</tr>
 								
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="70px" height="50px"></td>
-									<td>방명록</td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
@@ -167,23 +144,26 @@
 								</tr>
 								
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="70px" height="50px"></td>
-									<td>방명록</td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
 								</tr>
+								
 								
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="70px" height="50px"></td>
-									<td>방명록</td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
 								</tr>
-								
+
+
+
 
 
 
@@ -215,6 +195,7 @@
 
 					</div>                            
 					<!-- //페이징 -->
+
 
 
 				</div>
