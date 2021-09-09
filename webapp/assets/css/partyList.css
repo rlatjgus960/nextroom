@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+#content_main #board {
+    width: 1200px;
+    margin: 0px 0px 0px 50px;
+}
+
+/* 써치써치세이마이네임 */
+#board #search_area {
+    margin: 0px 0px 10px 0px;
+}
+
+#party_view {
+    float: left;
+}
+
+#kind {
+    float: right;
+}
+
+/* 파티파티 리스트트트트 */
+#board #party_list {
+    margin: 0px 0px 10px 0px;
+}
+
+#board #party_list table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+
+#board #party_list table>thead>tr>th {
+    background-color: #e0e0e0;
+    padding:5px 0px 5px 0px;
+}
+
+#board #party_list table>tbody>tr>td {
+    padding:5px 0px 5px 0px;
+    border-top: 1px dotted #808080;
+    text-align: center;
+}
+
+/* 페이징 등록하기 */
+#board #pager {
+    text-align: center;          
+}
+
+#board #pager ol {
+width: 190px;                       
+display: inline-block;        /* 마진 오토로 줄것인가 인라인블럭에 얼라인 센터로 줄것인가  */
+/*  margin: 0 auto;  */                    /* 잘 선택해서 사용해야함 */
+}
+
+#board #pager ol>li {
+float: left;
+margin: 0px 5px 0px 0px;
+}
+
+#board #pager ol>li>a.active {
+font-size: 15px;
+font-weight: bold;
+color: #0000ff;
+}
+
+#board #pager #btn_write {
+float: right;
+padding: 5px 10px 5px 10px;
+border: 1px solid #808080;
+background-color: #dddddd;
+border-radius: 2px;
+}

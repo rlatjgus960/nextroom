@@ -19,4 +19,9 @@ public class Hello {
 		return "user/userrank";
 	}
 
+	@RequestMapping("/party")
+	public String party() {
+		System.out.println("hello");
+		return "user/userrank";
+	}
 }
