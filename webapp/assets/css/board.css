@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+
+#aside_cate_coummunity{
+    line-height: 25px;
+    float: left;
+    width: 130px;
+    text-align: left;
+    padding: 30px 40px;
+    box-shadow: 5px 5px 15px 0px rgb(224 224 224);
+    border-top: 5px solid rgb(253, 213, 59);
+    background-color: #fff;
+    font-size: 15px;
+}
+
+
+#aside_cate_coummunity>p{
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 25px;
+    border-bottom: 1px solid black;
+}
+
+
+/* 전체/인기/조회순 글목록으로 가는 버튼 */
+#list_button{
+    width: 1000px;
+    margin-top:33px;      
+}
+
+#list_button>ul{
+    width:400px;
+    text-align: left;
+}
+
+#list_button>ul>button{
+    margin-right: 50px;
+    width: 50px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: right;
+}
+
+
+/* 검색 영역 */
+#search_area{
+    margin-top: 20px;
+}
+
+.search{
+    float:left;
+}
+.content_select{
+    float: right;
+}
+
+/* 게시판 리스트 */
+#board_list{
+    margin-top: 30px;
+    border: 1px solid black;
+}
+
+
+#board_list table {
+    width: 100%;    
+    border-collapse: collapse;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
+
+#board_list table>thead>tr>th {
+    background-color: #dddddd;
+}
+
+#board_list table>tbody>tr {
+    border-top: 1px dotted #808080;
+}
+
+
+/* 페이징 */
+#pager {    
+    margin-top: 70px;
+    text-align: center;     
+}
+
+
+#pager ol {    
+   width: 190px;
+    display: inline-block; /*상황에 따라 써야 하지만 지금 같은 경우에는 text-align 이랑 같이 써야 하기때문에 비추*/ 
+   /*margin: 0 auto; 리스트 목록 가운데 정렬 방법1 */    
+}
+
+#pager ol>li {
+   float: left;
+   margin: 0px 5px 0px 0px;   
+}
+
+#pager ol>li>a.active {
+   font-size: 15px;
+   font-weight: bold;
+   color: #000000;
+}
+
+/* 글쓰기 버튼 */
+#btn-write {
+    margin-top: 30px;
+   float: right;
+   padding: 5px 10px 5px 10px;
+   border: 1px solid #808080;
+   background-color: #dddddd;
+   border-radius: 2px;
+}
