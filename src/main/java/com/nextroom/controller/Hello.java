@@ -22,6 +22,6 @@ public class Hello {
    @RequestMapping("/party")
    public String party() {
       System.out.println("hello");
-      return "user/userrank";
+      return "party_list";
    }
 }
