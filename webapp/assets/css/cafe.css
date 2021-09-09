@@ -35,6 +35,11 @@
     
 }
 
+.cafe_list_item{
+    padding: 0px 20px 20px 20px;
+}
+
+
 #cafe_search, #cafe_array {
     float: right;
     margin: 20px 0px 20px 5px;
