@@ -16,7 +16,7 @@ public class Hello {
    @RequestMapping("/rank")
    public String rank() {
       System.out.println("hello");
-      return "user/rank_user";
+      return "rank/rank_user";
    }
 
    @RequestMapping("/party")
