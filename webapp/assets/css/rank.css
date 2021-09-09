@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+#aside>ul>li{
+    margin-bottom: 5px;
+}
+
+#aside>ul>li>ul>li{
+    margin-left: 10px;
+}
+
+#aside_cate{
+    line-height: 25px;
+    float: left;
+    width: 130px;
+    text-align: left;
+    padding: 30px 40px;
+    box-shadow: 5px 5px 15px 0px rgb(224 224 224);
+    border-top: 5px solid rgb(253, 213, 59);
+    background-color: #fff;
+}
+
+#rankMain {
+    margin-top: 30px;
+    width: 1000px;
+    float: right;
+}
+
+#aside_img {
+    float: right;
+}
+
+#aside {
+    position: fixed;
+    float: left;
+    width: 200px;
+    margin: 0px 5px;
+}
+
+#rank1{
+    padding: 20px 0px;
+    border-radius: 15px;
+    background-color: gold;
+}
+
+
+
+
+#sec_pool>ul>li{
+    text-align: center;
+    float: left;
+    width: 226px;
+    max-height: 500px;
+    background-color: silver;
+    border-radius: 15px;
+    border: 2px solid #fff;
+    padding: 10px;
+}
+
+
+.vertical{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#rank6-{
+    background-color: gray;
+    min-height: 800px;
+}
+
+
+
+#rank1,#rank2-5{
+    margin-bottom: 20px;
+}
+
+#searchbar{
+    float: right;
+    margin-bottom: 15px;
+}
+
+#rank6-{
+    padding-top: 1px;
+}
+
+#third_pool>li{
+    margin: 5px 0px;
+    border-radius: 30px;
+    background-color: #fff;
+    height: 80px    ;
+}
+
+.rank1_area{
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 20px;
+}   
+
+.rank_profile{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.f-left{
+    float: left;
+}
+
+.rank_detail{
+    text-align: left;
+    line-height: 25px;
+    display: inline-block;
+    
+}
+
+.m-left{
+    margin-left: 50px;
+}
+
