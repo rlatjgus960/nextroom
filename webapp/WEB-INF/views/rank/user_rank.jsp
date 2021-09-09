@@ -11,13 +11,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="wrap">
 
 		<!-- 헤더영역 -->
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<!-- //헤더영역 -->
 
 
+	<div id="wrap">
 		<!-- content -->
       <div id="content">
 
@@ -36,18 +36,7 @@
 
          <div id="contentMain" class="clearfix">
             <!-- aside -->
-            <div id="aside">
-                    <img id="aside_img" src="C:/javaStudy/workspace_web/nextroom_p/webapp/assets/image/rrr.png" width="35px" height="35px">
-                    
-                    <div id="aside_cate">
-			
-                        <ul>
-                            <li>유저 랭킹</li>
-                            <li>테마 랭킹</li>
-                        </ul>
-            
-                    </div>
-                </div>
+           <c:import url="/WEB-INF/views/includes/rank_aside.jsp"></c:import>
             <!-- //aside -->
 
             <!-- main -->
@@ -73,7 +62,7 @@
                   
                      <div class="rank1_area clearfix">
                         
-                           <span><img class="f-left rank_profile img-circle" src="../../../upload/레드.jpg"></span>
+                           <span><img class="f-left rank_profile img-circle" src="${pageContext.request.contextPath }/assets/image/profile/red.jpg"></span>
                         
                         
                            <h1 class="m-left f-left">Junzzang</h1>
@@ -97,7 +86,7 @@
                         <li>
                            <div class="">
                         
-                              <span><img class="rank_profile" src="../../../upload/블루.jpg"></span>
+                              <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/blue.jpg"></span>
                            
                            
                               <h2 class="">Junzzang</h2>
@@ -115,7 +104,7 @@
                         <li>
                            <div class="">
                         
-                              <span><img class="rank_profile" src="../../../upload/옐로.jpg"></span>
+                              <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/yellow.jpg"></span>
                            
                            
                               <h2 class="">Junzzang</h2>
@@ -133,7 +122,7 @@
                         <li>
                            <div class="">
                         
-                              <span><img class="rank_profile" src="../../../upload/핑크.jpg"></span>
+                              <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg"></span>
                            
                            
                               <h2 class="">Junzzang</h2>
@@ -151,7 +140,7 @@
                         <li>
                            <div class="">
                         
-                              <span><img class="rank_profile" src="../../../upload/그린.jpg"></span>
+                              <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/green.jpg"></span>
                            
                            
                               <h2 class="">Junzzang</h2>

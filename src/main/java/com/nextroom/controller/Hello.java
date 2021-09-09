@@ -6,22 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Hello {
 
-	@RequestMapping("/hello")
-	public String hello() {
-		System.out.println("hello");
-		return "user/mypage_main";
-	}
-	
-	
-	@RequestMapping("/rank")
-	public String rank() {
-		System.out.println("hello");
-		return "user/userrank";
-	}
+   @RequestMapping("/hello")
+   public String hello() {
+      System.out.println("hello");
+      return "user/mypage_main";
+   }
+   
+   
+   @RequestMapping("/rank")
+   public String rank() {
+      System.out.println("hello");
+      return "user/userrank";
+   }
 
-	@RequestMapping("/party")
-	public String party() {
-		System.out.println("hello");
-		return "user/userrank";
-	}
+   @RequestMapping("/party")
+   public String party() {
+      System.out.println("hello");
+      return "user/userrank";
+   }
 }
