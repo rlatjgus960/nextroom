@@ -6,18 +6,20 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath}/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/mypage.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
+
 
 
 <title>자유게시판</title>
 </head>
 <body>
 
-	<!-- 헤더영역 -->
-	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-	<!-- //헤더영역 -->
+		<!-- 헤더영역 -->
+		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+		<!-- //헤더영역 -->
+
 	<div id="wrap">
 
 
@@ -26,7 +28,7 @@
 			
 			<div id="subheader" class="clearfix">
 				<div id="subheader-title">
-				   <h2>자유게시판</h2>
+				   <h2>커뮤니티</h2>
 				</div>
 				<div id="subheader-mintitle">커뮤니티 > 자유게시판</div>
 	
@@ -39,14 +41,14 @@
 			 <div id="contentMain" class="clearfix">
 				<!-- aside -->
 				<div id="aside">
-						<img id="aside_img" src="${pageContext.request.contextPath}/assets/image/asideImg.png" width="35px" height="35px">
+						<img id="aside_img" src="${pageContext.request.contextPath }/assets/image/asideImg.png" width="35px" height="35px">
 						
 						<div id="aside_cate_coummunity">
 							<!-- <div id="aside_title"> -->
-								<p>커뮤니티</p>
+								<!-- <p>자유게시판</p> -->
 							<!-- </div> -->
 							<ul>
-								<li>자유게시판</li>
+								<li><a class="active" href="">자유게시판</a></li>
 								<li>후기게시판</li>
 								<li>양도/교환</li>
 								<li>공지사항</li>
@@ -62,9 +64,9 @@
 					<!-- 버튼 -->
 					<div id="list_button" >
 						<ul>							
-							<a href=""><img src="${pageContext.request.contextPath}/assets/image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
-							<a href=""><img src="${pageContext.request.contextPath}/assets/image/hot.png" width="14px" height="14px" >인 기</a>
-							<a href=""><img src="${pageContext.request.contextPath}/assets/image/hit.png" width="14px" height="14px" >조 회</a>
+							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
+							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
 
 						</ul>
 					</div>
@@ -72,13 +74,13 @@
 
 
 
-					<!-- 기간 선택 -->
+					<!-- 검색영역(기간 선택) -->
 					<div id="search_area" class="clearfix">
 						<form action="" method="get" class="form_area">
 							
 							<div class="search">
-								<input type="text" name="keyword" value="" placeholder="검색어를 입력해주세요" size="19px">
-								<button type="submit">검색</button>
+								<input type="text" name="keyword" value="" placeholder="검색어를 입력해주세요">
+								<button class="search_button" type="submit">검색</button>
 							</div>
 
 							<div>
@@ -117,34 +119,25 @@
 
 							<tbody>
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
 								</tr>
-								
+
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
 								</tr>
-								
+
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td>자유게시판입니다.</td>
-									<td>최원호</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
@@ -154,7 +147,25 @@
 								
 								
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath}/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td>자유게시판입니다.</td>
+									<td>최원호</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>
+								
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td>자유게시판입니다.</td>
+									<td>최원호</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>								
+
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td>자유게시판입니다.</td>
 									<td>최원호</td>
 									<td>123</td>
@@ -162,10 +173,14 @@
 									<td>2021.09.09</td>
 								</tr>
 
-
-
-
-
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td>자유게시판입니다.</td>
+									<td>최원호</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>
 
 							</tbody>
 						</table>
@@ -173,9 +188,9 @@
 					<!-- //게시판 리스트 -->
 
 					<!-- 글쓰기버튼 -->
-
-					<a id="btn-write" href="../../../html_01/ex10.html">글쓰기</a>
-
+					<div>
+						<button class="submit_button" href="">글쓰기</button>
+					</div>
 					<!-- 페이징 -->
 					<div id="pager">
 						<ol class="clearfix">
@@ -213,10 +228,9 @@
 
 
 		<!-- footer -->
-		<div id="footer" >
-			상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 : moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동
-			서초대로77길 13<br> Copyright © NEXTROOM All rights reserved.
-		</div>
+
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+
 		<!-- //footer -->
 
 

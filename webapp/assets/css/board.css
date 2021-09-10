@@ -72,14 +72,13 @@
     float:left;
 }
 
-.search>button{    
-    width: 50px;
-    height: 34px;
-}
 
-.search>input{    
-    line-height: 26px;
-    padding-top: 4px;
+.search>input{ 
+    line-height: 25px;
+    padding-top: 1px;
+    padding-bottom: 0.2px; 
+    border: 1px solid black;
+    size: 20px;
 }
 
 .content_select{
@@ -90,7 +89,7 @@
 
 /* 게시판 리스트 */
 #board_list{
-    margin-top: 20px;
+    margin-top: 15px;
     border: 1px solid black;
 }
 
@@ -107,8 +106,8 @@
     background-color: #dddddd;
     border-right: 1px solid #808080;
     border-bottom: 1px solid #808080;
-    height: 50px;
-    font-size: 20px;
+    height: 40px;
+    font-size: 17px;
 }
 
 #board_list table>tbody>tr {
@@ -142,18 +141,19 @@
    margin: 0px 5px 0px 0px;   
 }
 
-#pager ol>li>a.active {
-   font-size: 15px;
-   font-weight: bold;
-   color: #000000;
-}
+
 
 /* 글쓰기 버튼 */
-#btn-write {
-    margin-top: 30px;
-    float: right;
-    padding: 5px 10px 5px 10px;
-    border: 1px solid #808080;
-    background-color: #dddddd;
-    border-radius: 2px;
+.submit_button{
+    margin-top: 15px;
 }
+
+
+
+
+/* 현재 클릭한 곳(페이징,aside) */
+a.active {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+ }
