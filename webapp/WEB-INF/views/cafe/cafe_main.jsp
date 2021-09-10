@@ -85,7 +85,7 @@
 					<form id="cafe_search" class="" action="" method="get">
 						<div class="form-group text-right">
 							<input type="text" name="keyword">
-							<button type="submit" id=btn_search>검색</button>
+							<button type="submit" id=btn_search class="search_button">검색</button>
 						</div>
 					</form>
 				</div>
@@ -97,7 +97,277 @@
 		
 					<!-- 리스트 반복영역 -->
 					<div class="cafe_list_item clearfix">
-						<img id="" class="clearfix cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<div id="" class="cafe_info">
+							<div class="cafe_intro">
+								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_content">방탈출 카페 한줄 소개</p>
+							</div>
+
+							<div class="cafe_contact">
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
+									<a href="">전화번호</a>
+								</div>
+								
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
+									<a href="">위치</a>
+								</div>
+
+								<div>
+									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
+									<a href="">운영시간</a>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+					<div class="cafe_list_item clearfix">
+						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
 						<div id="" class="cafe_info">
 							<div class="cafe_intro">
 								<p class="cafe_name">방탈출 카페 이름</p>
@@ -126,10 +396,11 @@
 						</div>
 					</div>
 
-
 					<!-- //리스트 반복영역 -->
 
 					
+					<button id="btn_more" class="lbutton">더보기</button>
+
 
 				</div>
 				<!-- 카페리스트 -->

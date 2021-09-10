@@ -4,18 +4,15 @@
     border-bottom: 1px solid #e0e0e0;
 }
 
-#cafe_map_img {
-    height: 562px;
-    width: 500px;
-    margin-bottom: 25px;
-}
-
 #cafe_region {
     text-align: center;
     margin-bottom: 30px;
     font-size: 15px;
 }
 
+.dg-map{
+    margin: 20px 0px;
+}
 
 .cafe_img {
     float: left;
@@ -95,4 +92,8 @@
 .cafe_contact div {
     height: 15px;
     padding-bottom: 5px;
+}
+
+#btn_more {
+    margin: 30px 0px;
 }
