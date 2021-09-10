@@ -22,26 +22,7 @@ a:hover {text-decoration: none; color: #000000; }
 #nav {margin:0px 0px 0px 450px;  background-color: #FFFFFF; text-align:center;}
 #content {min-height: 600px; width: 1300px; background-color: #FFFFFF; border-bottom: 1px solid #b9b9b9; padding-bottom: 20px; font-size:15px;}
 #footer {width: 1300px;  background-color: #fff; color: #999; margin: 10px 0px;}
-
 #header-item {width: 1300px; margin-left: auto; margin-right: auto;}
-h2 {font-size: 30px;}
-
-/* 해더(header: 로고, 로그인관련 버튼) */
-#bar {float:left;}
-#header{ 
-   border-style: none;
-    box-shadow: 0px 1px 15px 0px rgb(224 224 224);
-    position: fixed;
-}
-
-#header ul>li .btn_s {padding: 4px 6px 4px 6px;  font-size: 11px; text-align:center;}
-
-/* 네비(nav: 메인메뉴) */
-#nav ul>li {left:200px;float: left; margin: 15px 0px 15px 0px; font-size: 18px; font-weight: bold; background-color: #FFFFFF;}
-
-#logo{float: left; width:200px;}
-
-
 
 
 /* clearfix */
@@ -49,36 +30,74 @@ h2 {font-size: 30px;}
 .clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
 .clearfix:after {clear: both;}
 
-#login_area {
-   float:right;
-    
-}
+
+
+/******************* 헤더 header *******************/
+/* 해더공통*/
+#header{ 
+    border-style: none;
+     box-shadow: 0px 1px 15px 0px rgb(224 224 224);
+     position: fixed;
+ }
+
+ #header ul>li .btn_s {padding: 4px 6px 4px 6px;  font-size: 11px; text-align:center;}
+
+
+
+ /* 해더로고*/
+ #logo{float: left; width:200px;}
+
+
+
+/* 해더네비 nav*/
+#bar {float:left;}
+
+#nav ul>li {left:200px;float: left; margin: 15px 0px 15px 0px; font-size: 18px; font-weight: bold; background-color: #FFFFFF;}
 
 #bar>li{
     width: 100px;
 }
 
-.mypageIcon{
-   float:left;
-   width:60px;
-   height: 30px;
-}
 
-.line-right{
-   border-right:1px solid #b9b9b9;
-}
 
-#main_logo {
-   margin: 150px 350px;
-   width: 700px;
-   height: 380px;
-}
+/* 헤더로그인 관련*/
+#login_area {
+    float:right;
+ }
 
-.mypageBtn {
+ .mypageIcon{
+    float:left;
+    width:60px;
+    height: 30px;
+ }
+
+ .line-right{
+    border-right:1px solid #b9b9b9;
+ }
+
+ .mypageBtn {
     float:left;
     width: 70px;
     height: 30px;
 }
+/***********************************************/
+
+
+
+
+/******************* !!!메인페이지 이미지고민 필요!!! *******************/
+#main_logo {
+    margin: 150px 350px;
+    width: 700px;
+    height: 380px;
+ }
+/***********************************************/
+
+
+
+
+/******************* 서브헤더 subheader *******************/
+h2 {font-size: 30px;}
 
 #subheader{
     text-align: left;
@@ -98,63 +117,57 @@ h2 {font-size: 30px;}
     float: right;
     padding-top: 10px;
 }
+/***********************************************/
+
+
+
+
+
+
+/******************* 버튼관련 btn button *******************/
+/*공통부분*/
+.mbutton, .lbutton, .search_button, .submit_button {
+    background-color: rgb(224,224,224);
+    cursor: pointer;
+}
+
+.mbutton:hover, .lbutton:hover, .search_button:hover, .submit_button:hover {
+    background-color: rgb(253, 213, 59);
+    color: #fff;
+}
+
+.mbutton, .lbutton, .search_button, .submit_button {
+    color: #000;
+    border: none;
+}
+/*//공통부분*/
+
+
 
 .mbutton {
     font-size: 15px;
-    color: #000;
-    background-color: rgb(224,224,224);
     padding: 10px 30px;
-    border: none;
     border-radius: 5px;
-}
-
-.mbutton:hover {
-    background-color: rgb(253, 213, 59);
-    color: #fff;
 }
 
 .lbutton {
     font-size: 15px;
-    color: #000;
-    background-color: rgb(224,224,224);
     padding: 10px 100px;
-    border: none;
     border-radius: 5px;
 }
-
-.lbutton:hover {
-    background-color: rgb(253, 213, 59);
-    color: #fff;
-}
-
 
 .search_button {
     padding: 4px 14px 5px 14px;
     font-size: 15px;
-    color: #000;
-    background-color: rgb(224,224,224);
-    border: none;
     border-radius: 5px;
 }
-
-.search_button:hover {
-	background-color: rgb(253, 213, 59);
-    color: #fff;
-} 
 
 .submit_button {
     float: right;
     margin-top: 10px;
     padding: 4px 14px 5px 14px;
-    border: 1px solid #808080;
-    background-color: rgb(224,224,224);
     border-radius: 2px;
     font-size: 15px;
     border-radius: 5px;
-    border: none;
 }
-
-.submit_button:hover {
-    background-color: rgb(253, 213, 59);
-    color: #fff;
-}
+/*************************************************/
