@@ -1,14 +1,18 @@
 @charset "UTF-8";
 
+/**************** 예약절차 순서 바 ****************/
 #reservation_first, #reservation_second, #reservation_third, #reservation_fourth {
     float: left;
     height: 40px;
 }
 
-#reservation_first {background-color: rgb(253, 213, 59); width: 324px;}
-#reservation_second {background-color: rgb(224,224,224); border-left: 2px solid #fff; width: 323px;}
-#reservation_third {background-color: rgb(224,224,224); border-left: 2px solid #fff; width: 323px;}
-#reservation_fourth {background-color: rgb(224,224,224); border-left: 2px solid #fff; width: 324px;}
+#reservation_first {width: 324px;}
+#reservation_second {border-left: 2px solid #fff; width: 323px;}
+#reservation_third {border-left: 2px solid #fff; width: 323px;}
+#reservation_fourth {border-left: 2px solid #fff; width: 324px;}
+
+.reservation_gray {background-color: rgb(224,224,224);}
+.reservation_yellow {background-color: rgb(253, 213, 59);}
 
 .reservation_num {
     float: left;
@@ -28,25 +32,25 @@
     padding-right: 10px;
     font-weight: bolder;
 }
+/*************************************************/
 
+
+
+
+
+/**************** 예약정보 고르기(헤더) ****************/
 #reservation_main {
     background-color: rgb(224,224,224);
-    height: 500px;
+    height: 430px;
     padding: 3px;
     border-top: 2px solid #fff;
-}
-
-#reservation_main_title_date, #reservation_main_title_region, #reservation_main_title_cafe, #reservation_main_title_thema {
-    margin-right: 3px;
+    margin-bottom: 100px;
 }
 
 #reservation_main_title_date, #reservation_main_title_region, #reservation_main_title_cafe, #reservation_main_title_thema, #reservation_main_title_time {
-    background-color: #fff;
-    width: 256px;
     height: 35px;
     float: left;
 }
-
 
 .reservation_main_title{
     position: relative;
@@ -54,8 +58,84 @@
     transform: translateY(-50%);
     font-weight: bolder;
 }
+/*************************************************/
 
-#datepicker {
-    height: 300px;
-    width: 300px;
+
+
+/**************** 예약정보 고르기(메인 - 날짜) ****************/
+#reservation_main_content_calendar {
+    float: left;
+    height: 280px;
+    margin-top: 3px;
 }
+
+#reservation_main_content_calendar .ui-datepicker td span,
+#reservation_main_content_calendar .ui-datepicker td a {
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	font-size: 15px;
+	margin: 10px 1px 0px 1px;
+}
+
+div.ui-datepicker { font-size: 15px; width: 312px; height: 387px;} 
+/*************************************************/
+
+
+
+
+
+/**************** 예약정보 고르기(메인 - 지역, 카페, 테마, 시간) ****************/
+#reservation_main_content_region, #reservation_main_content_cafe,
+#reservation_main_content_thema, #reservation_main_content_time {
+    float: left;
+    margin-top: 3px;
+    line-height: 30px;
+    padding-top: 10px;
+}
+/*************************************************/
+
+
+
+
+
+
+
+
+/**************** 예약정보 고르기(공용) ****************/
+#reservation_main_title_date, #reservation_main_title_region, #reservation_main_title_cafe,
+#reservation_main_title_thema, #reservation_main_title_time, #reservation_main_content_calendar,
+#reservation_main_content_region, #reservation_main_content_cafe, 
+#reservation_main_content_thema, #reservation_main_content_time {
+    background-color: #fff;
+}
+
+#reservation_main_title_date, #reservation_main_content_calendar {
+    width: 320px;
+    margin-right: 3px;
+}
+
+#reservation_main_title_region, #reservation_main_content_region {
+    width: 180px;
+    margin-right: 3px;
+}
+
+#reservation_main_title_cafe, #reservation_main_content_cafe {
+    width: 300px;
+    margin-right: 3px;
+}
+
+#reservation_main_title_thema, #reservation_main_content_thema {
+    width: 300px;
+    margin-right: 3px;
+}
+
+#reservation_main_title_time, #reservation_main_content_time {
+    width: 180px;
+}
+
+#reservation_main_content_region, #reservation_main_content_cafe, 
+#reservation_main_content_thema, #reservation_main_content_time {
+    height: 381px;
+}
+/*************************************************/
+
