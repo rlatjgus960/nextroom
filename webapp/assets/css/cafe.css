@@ -33,38 +33,32 @@
 }
 
 .cafe_list_item{
-    padding: 0px 20px 20px 20px;
+    padding: 30px 20px;
+    border-top: 1px dotted #e0e0e0;
 }
 
+#cafe_range {
+    margin: 20px 0px;
+}
 
 #cafe_search, #cafe_array {
     float: right;
-    margin: 20px 0px 20px 5px;
     
 }
 
-#cafe_search {
-    width: 200px;
-    height: 24px;
-    margin-right: 5px;
-}
 
 #cafe_search input {
-    width: 150px;
-    height: 20px;
-    vertical-align: bottom;
-}
-
-#btn_search {
-    width: 39px;
-    height: 24px;
-    vertical-align: bottom;
+   
+    padding: 4px 0px 4px 0px;
+    margin: 0px 0px 4px 0px;
+    font-size:15px;
 }
 
 #cafe_array {
     width: 100px;
-    height: 24px;
+    height: 29px;
     vertical-align: bottom;
+    margin-left: 10px;
 }
 
 .cafe_info{

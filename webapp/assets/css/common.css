@@ -101,7 +101,6 @@ h2 {font-size: 30px;}
 
 .mbutton {
     font-size: 15px;
-    margin: 20px 0px 100px 0px;
     color: #000;
     background-color: rgb(224,224,224);
     padding: 10px 30px;
@@ -114,6 +113,21 @@ h2 {font-size: 30px;}
     color: #fff;
 }
 
+.lbutton {
+    font-size: 15px;
+    color: #000;
+    background-color: rgb(224,224,224);
+    padding: 10px 100px;
+    border: none;
+    border-radius: 5px;
+}
+
+.lbutton:hover {
+    background-color: rgb(253, 213, 59);
+    color: #fff;
+}
+
+
 .search_button {
     padding: 4px 14px 5px 14px;
     font-size: 15px;
@@ -124,20 +138,20 @@ h2 {font-size: 30px;}
 }
 
 .search_button:hover {
-	    background-color: rgb(253, 213, 59);
+	background-color: rgb(253, 213, 59);
     color: #fff;
 } 
 
 .submit_button {
-float: right;
-margin-top: 10px;
-padding: 4px 14px 5px 14px;
-border: 1px solid #808080;
-background-color: rgb(224,224,224);
-border-radius: 2px;
-font-size: 15px;
-border-radius: 5px;
-border: none;
+    float: right;
+    margin-top: 10px;
+    padding: 4px 14px 5px 14px;
+    border: 1px solid #808080;
+    background-color: rgb(224,224,224);
+    border-radius: 2px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
 }
 
 .submit_button:hover {
