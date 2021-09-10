@@ -8,13 +8,14 @@
 /* 써치써치세이마이네임 */
 #board #search_area {
     margin: 0px 0px 17.5px 0px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 #search_area #party_view {
     padding: 2px 6px 2px 6px;
     margin: 5px 0px 0px 0px;
     float: left;
+    font-size: 15px;
 }
 
 #kind {
@@ -22,22 +23,21 @@
 }
 
 #kind>input[type="text"] {
-	padding: 2px 0px 2px 0px;
-	margin: 0px 0px 2px 0px;
+	padding: 4px 0px 4px 0px;
+	margin: 0px 0px 4px 0px;
+	font-size:15px;
 }
 
 #kind .checkbox {
 	margin: 10px 0px 0px 0px;
 }
 
-#search_area #kind>button {
-    padding: 2px 6px 2px 6px;
-}
+
 
 /* 파티파티 리스트트트트 */
 #board #party_list {
     margin: 0px 0px 10px 0px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 #board #party_list table {
@@ -75,16 +75,8 @@ margin: 0px 5px 0px 0px;
 }
 
 #board #pager ol>li>a.active {
-font-size: 15px;
+
 font-weight: bold;
 color: #0000ff;
 }
 
-#board #pager #btn_write {
-float: right;
-margin-top: 8px;
-padding: 5px 10px 5px 10px;
-border: 1px solid #808080;
-background-color: #dddddd;
-border-radius: 2px;
-}

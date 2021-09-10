@@ -83,7 +83,7 @@
 
                                 <input type="text" name="keyword" value="">
 
-                                <button type="submit">검색</button>
+                                <button class="search_button" type="submit">검색</button>
                                 
                             </div>
 
@@ -193,7 +193,7 @@
                             <li><a href="">▶</a></li>
                         </ol>
                     
-                        <a id="btn_write" href="">등록하기</a>
+                        <a class="submit_button" href="">등록하기</a>
                     </div>
                     <!-- 페이징 끝나는 영역 -->
 

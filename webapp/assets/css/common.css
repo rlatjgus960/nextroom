@@ -113,3 +113,34 @@ h2 {font-size: 30px;}
     background-color: rgb(253, 213, 59);
     color: #fff;
 }
+
+.search_button {
+    padding: 4px 14px 5px 14px;
+    font-size: 15px;
+    color: #000;
+    background-color: rgb(224,224,224);
+    border: none;
+    border-radius: 5px;
+}
+
+.search_button:hover {
+	    background-color: rgb(253, 213, 59);
+    color: #fff;
+} 
+
+.submit_button {
+float: right;
+margin-top: 10px;
+padding: 4px 14px 5px 14px;
+border: 1px solid #808080;
+background-color: rgb(224,224,224);
+border-radius: 2px;
+font-size: 15px;
+border-radius: 5px;
+border: none;
+}
+
+.submit_button:hover {
+    background-color: rgb(253, 213, 59);
+    color: #fff;
+}
