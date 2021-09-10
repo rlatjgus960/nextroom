@@ -25,6 +25,12 @@ public class Hello {
       return "party/party_list";
    }
    
+   @RequestMapping("/partyRead")
+   public String partyRead() {
+      System.out.println("hello");
+      return "party/party_read";
+   }
+   
    @RequestMapping("/cafe")
    public String cafe_main() {
       System.out.println("cafe");

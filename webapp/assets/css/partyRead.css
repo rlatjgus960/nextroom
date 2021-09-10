@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+#content_main #board {
+    width: 1260px;
+    margin: 0px 0px 0px 20px;
+}
+
+/* 카페테마 메인정보 */
+#board #main_informa {
+    height: 392px;
+    border: 1px solid #e0e0e0;
+}
+
+#board #main_informa>.theme_image {
+    margin: 15px 40px 0px 120px;
+    float: left;
+}
+
+#board #main_informa>.title {
+    margin: 15px 0px 25px 0px ;
+    font-size: 22px;
+    text-align: left;
+}
+
+#board #main_informa>.party_content {
+    text-align: left;
+    font-size: 15px;
+    line-height: 26px;
+    
+}
+
+.title_width {
+    width: 90px;
+    margin-right: 5px;
+}
+
+#together {
+    padding-bottom: 50px;
+    position: absolute;
+}
+
+#together_content {
+    padding-bottom: 49px;
+    max-width: 400px;
+    word-break: break-all;
+}
+
+.btn_group {
+    margin:-30px 50px 0px 0px;
+}
+
+.submit_button {
+    margin-left: 10px;
+}
+
+
