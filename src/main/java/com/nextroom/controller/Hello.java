@@ -37,11 +37,6 @@ public class Hello {
       return "party/party_read";
    }
    
-   @RequestMapping("/cafe")
-   public String cafe_main() {
-      System.out.println("cafe");
-      return "cafe/cafe_main";
-   }
    
    @RequestMapping("/reserveBaseForm")
    public String reserveBaseForm() {
