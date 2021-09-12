@@ -61,4 +61,10 @@ public class Hello {
       return "reserve/reservePayForm";
    }
    
+   @RequestMapping("/reserveComplete")
+   public String reserveComplete() {
+      System.out.println("reserveComplete");
+      return "reserve/reserveComplete";
+   }
+   
 }
