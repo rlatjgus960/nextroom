@@ -48,7 +48,7 @@
 								<!-- <p>자유게시판</p> -->
 							<!-- </div> -->
 							<ul>
-								<li><a class="active" href="">자유게시판</a></li>
+								<li><a class="active" href="${pageContext.request.contextPath }/community">자유게시판</a></li>
 								<li>후기게시판</li>
 								<li>양도/교환</li>
 								<li>공지사항</li>
@@ -64,9 +64,9 @@
 					<!-- 버튼 -->
 					<div id="list_button" >
 						<ul>							
-							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
-							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
-							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
+							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
+							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
 
 						</ul>
 					</div>
@@ -120,7 +120,7 @@
 							<tbody>
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td>자유게시판입니다.</td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
@@ -129,7 +129,7 @@
 
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td>자유게시판입니다.</td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
@@ -138,17 +138,7 @@
 
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td>자유게시판입니다.</td>
-									<td>최원호</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								
-								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td>자유게시판입니다.</td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
@@ -157,30 +147,40 @@
 								
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td>자유게시판입니다.</td>
-									<td>최원호</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>								
-
-								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td>자유게시판입니다.</td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
 								</tr>
-
+								
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td>자유게시판입니다.</td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
 									<td>최원호</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
 								</tr>
+								
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td>최원호</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>
+								
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td>최원호</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>																																								
+
 
 							</tbody>
 						</table>
