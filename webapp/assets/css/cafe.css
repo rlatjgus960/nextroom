@@ -97,7 +97,7 @@
     padding-bottom: 5px;
 }
 
-#btn_more {
+#btn_more, #theme_moreBtn{
     margin: 30px 0px;
 }
 
@@ -187,7 +187,7 @@
     height:230px;
 }
 
-#cafe_detail_price, #cafe_detail_theme {
+#cafe_detail_price, #cafe_detail_theme, #theme_list_area {
     border-top: solid 1px #e0e0e0;
     padding-top: 30px;
 }
@@ -231,7 +231,7 @@
     border: 2px solid #e0e0e0;
     width: 350px;
     height: 650px;
-    margin: 40px 38px 40px 38px;
+    margin: 20px 38px 40px 38px;
     border-radius: 5px;
 }
 
@@ -294,4 +294,69 @@
     background:rgba(0, 0, 0, 0.5);
     z-index:-1;
 }   
+
+
+
+
+/* 테마 메인 */
+#theme_recommend_back {
+    margin-top: 100px;
+    background-color: #f5f5f5;
+    height: 470px;
+    width: 1300px;
+}
+
+#theme_select {
+    margin-top: 30px;
+}
+
+#theme_select_title div {
+    display: inline-block;
+    border: none;
+    font-weight: bolder;
+    font-size: 24px;
+    margin: 0px 70px;
+    width: 72px;
+    height: 32px;
+    margin-bottom: 5px;
+}
+
+#theme_region_wrap {
+    border: solid 2px #e0e0e0;
+    width: 1294;
+    height: 300px;
+}
+
+
+.theme_select_condition {
+    float: left;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    font-size: 18px;
+    width: 199px;
+    height: 272px;
+    padding: 15px 0px 15px 15px;
+    
+}
+
+.theme_select_condition label{
+    display: block;
+}
+
+.theme_select_condition input{
+    margin-right: 5px;
+}
+
+#theme_region, #theme_genre{
+    width: 199px;
+    overflow-y:scroll;
+}
+
+
+
+#theme_searchBtn {
+    margin: 10px 0px 30px 0px;
+}
+
+
 
