@@ -10,21 +10,18 @@
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/read.css" rel="stylesheet" type="text/css">
 
 
 
-<link href="./read.css" rel="stylesheet" type="text/css">
 
-
-
-<title>자유게시판</title>
+<title>게시글 읽기</title>
 </head>
 <body>
 
 		<!-- 헤더영역 -->
 		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 		<!-- //헤더영역 -->
-
 	<div id="wrap">
 
 
@@ -54,10 +51,10 @@
 							<!-- </div> -->
 							<ul>
 								<li><a class="active" href="">자유게시판</a></li>
-								<li>후기게시판</li>
-								<li>양도/교환</li>
-								<li>공지사항</li>
-								<li>FAQ</li>		
+								<li><a class="" href="">후기게시판</a></li>
+								<li><a class="" href="">양도/교환</a></li>
+								<li><a class="" href="">공지사항</a></li>
+								<li><a class="" href="">FAQ</a></li>		
 							</ul>
 						</div>
 					</div>
@@ -69,9 +66,9 @@
 					<!-- 버튼 -->
 					<div id="list_button" >
 						<ul>							
-							<a href=""><img src="./image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
-							<a href=""><img src="./image/hot.png" width="14px" height="14px" >인 기</a>
-							<a href=""><img src="./image/hit.png" width="14px" height="14px" >조 회</a>
+							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
+							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
 
 						</ul>
 					</div>
@@ -98,26 +95,102 @@
 							</div>
 
 							<div id="user_information">
-								<span>작성자 : danny</span>
-								<span>작성일 : 2021.09.11</span>
+								<span>작성자 : danny</span>								
 								<span>조회 : 123</span>
 								<span>댓글 : 32</span>
+								<span>작성일 : 2021.09.11</span>
 							</div>
 
-							<div class="clearfix">
-								<div id="img_area">
-									<img src="image/ㅇㅅㄹ.png">
+							<!-- 콘텐츠 -->
+							<div id="board">								
+								<!-- 콘텐츠 메인정보 -->
+								<div id=main_informa>
+									<div id="img_area" class="board_content">
+										<img src="${pageContext.request.contextPath }/assets/image/board_image/water.jpg">	<!-- 이미지 넣을때마다 반복 어케 하냐고 -->
+
+											<div id="text_area">
+												<span>한줄에 15자 이상 60자 제한 </span>
+												<br>
+												<span>한줄에 15자 이상 60자 제한 </span>
+												<br>
+												<span>한줄에 15자 이상 60자 제한 </span>
+											</div>
+
+										<div id="wrap_up_down">
+											<a href="" class="back_button">목 록</a> <!-- href에 js 넣어야할듯-->
+											<a href="" class="up_down">추 천</a>
+											<a href="" class="up_down">반 대</a>
+										</div>
+
+										<!-- 이전/다음 글 -->
+										<div id="wrap_preview">
+											<div class="prv">
+											  <table width="100%">
+												<tr>
+													<td width="60" height="20" class="writing">▲ 다음 글</td>
+													<td width="360" class="next"> 다음 글이 없습니다. </td>
+												</tr>
+												<tr>
+													<td width="60" height="20" class="writing"><a href="">▼ 이전 글</a></td>
+													<td width="360" class="next"><a href="">이전 글이 없습니다.</a></td>												
+												</tr>
+											  </table>
+											</div>
+										</div>
+										<!-- //이전/다음 글 -->
+
+										<!-- 댓글쓰기 -->
+										<div id="comment">
+											<strong>댓글 쓰기</strong>
+											<div>
+												<input type="text" placeholder="로그인 후 이용해 주세요">
+												<a href="">등 록</a>
+											</div>
+										</div>
+										<!-- //댓글쓰기 -->
+
+										<!-- 댓글 리스트 -->
+										<div id="comment_box">
+											<ul id="comment_list">
+												<li id="comment_user">
+													<div id="nick_box">닉네임</div>
+													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
+													<div id="write_date">작성 날짜</div>
+												</li>
+
+												<li id="comment_user">
+													<div id="nick_box">닉네임</div>
+													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
+													<div id="write_date">작성 날짜</div>
+												</li>
+
+												<li id="comment_user">
+													<div id="nick_box">닉네임</div>
+													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
+													<div id="write_date">작성 날짜</div>
+												</li>
+
+												<li id="comment_user">
+													<div id="nick_box">닉네임</div>
+													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
+													<div id="write_date">작성 날짜</div>
+												</li>
+											</ul>
+										</div>
+										<!-- //댓글 리스트 -->
+
+										<!-- 하단 여백 -->
+										<div id="blank" class="clearfix"></div>
+										<!-- //하단 여백 -->
+
+									</div>
+
 								</div>
+								<!-- //콘텐츠 메인정보 -->
+
+
 							</div>
-							
-							<div id="">
-								<p>글쓰기영역</p>
-							</div>
-
-
-
-
-
+							<!-- //콘텐츠-->
 						</form>
 					</div>
 					<!-- //글 읽기폼 -->
@@ -134,15 +207,12 @@
 		<!-- //content -->
 
 
-
-
-
-
 		<!-- footer -->
 
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 		<!-- //footer -->
+
 
 	</div>
 </body>
