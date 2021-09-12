@@ -43,4 +43,16 @@ public class Hello {
       return "cafe/cafe_main";
    }
    
+   @RequestMapping("/reserveBaseForm")
+   public String reserveBaseForm() {
+      System.out.println("reserveBaseForm");
+      return "reserve/reserveBaseForm";
+   }
+   
+   @RequestMapping("/reserveInfoForm")
+   public String reserveInfoForm() {
+      System.out.println("reserveInfoForm");
+      return "reserve/reserveInfoForm";
+   }
+   
 }
