@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+
+#rankMain {
+    margin-top: 30px;
+    width: 1000px;
+    float: right;
+}
+
+.swiper, .mySwiper{
+    min-height: 550px;
+}
+
+.swiper-slide {
+	display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
+	align-items:center; /* 위아래 기준 중앙정렬 */
+	justify-content:center; /* 좌우 기준 중앙정렬 */
+}
+
+.swiper{
+    border-radius: 30px;
+    background-color: #FFFF8F;
+    box-shadow:0 0 20px #ccc inset;
+    margin-bottom: 50px;
+}
+
+.theme_swiper_list{
+    padding-top: 20px;
+    width: 300px;
+}
+
+.theme_img{
+    height: 300px;
+    width: 280px;
+    padding: 0px 10px;
+    box-shadow:0 0 5px #555;
+}
+
+.theme_detail{
+    text-align: left;
+}
+
+.mbutton{
+	font-size: 13px;
+	padding: 5px 20px;
+}
+
+/*************** 랭킹리스트 *************/
+.rank_head{
+	background-color: #e9e9e9;
+	font-weight:bolder;
+	border-radius: 15px;
+	padding: 10px 0px;
+	margin-bottom:25px;
+}
+
+.theme_list_img{
+	width:120px;
+	height: 160px;
+	padding: 20px 0px;
+}
+
+.body_data{
+	display: table-cell;
+    vertical-align: middle;
+}
+
+#rank_list li {
+	float:left;
+	width:142px;
+	
+}
+
+.body_data{
+	padding:90px 0px;
+}

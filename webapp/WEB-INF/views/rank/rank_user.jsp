@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/rank.css" rel="stylesheet" type="text/css">
 
 <title>Insert title here</title>
@@ -45,13 +46,16 @@
 
                <!--검색-->
                <div class="clearfix">
+               	
+               		<form id="searchbar" class="" action="" method="get">
+						<div class="form-group text-right">
+							<span>검색 :&nbsp;</span>
+							<input placeholder="닉네임을 입력하세요." type="text" name="keyword">
+							<button type="submit" id=btn_search class="search_button">검색</button>
+						</div>
+					</form>
 
-                  <form action="" id="searchbar" method="GET">
-                     <span>닉네임 검색 :  </span>
-                     <input type="text" name="keyword">
-                     <button type="submit">검색</button >
-
-                  </form>
+                  
 
                </div>
                <!--//검색-->

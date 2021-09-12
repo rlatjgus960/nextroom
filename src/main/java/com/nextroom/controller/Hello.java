@@ -13,10 +13,16 @@ public class Hello {
    }
    
    
-   @RequestMapping("/rank")
-   public String rank() {
+   @RequestMapping("/rankUser")
+   public String rankUser() {
       System.out.println("hello");
       return "rank/rank_user";
+   }
+   
+   @RequestMapping("/rankTheme")
+   public String rankTheme() {
+      System.out.println("hello");
+      return "rank/rank_theme";
    }
 
    @RequestMapping("/party")

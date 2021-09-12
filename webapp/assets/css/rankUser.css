@@ -1,23 +1,5 @@
 @charset "UTF-8";
 
-#aside>ul>li{
-    margin-bottom: 5px;
-}
-
-#aside>ul>li>ul>li{
-    margin-left: 10px;
-}
-
-#aside_cate{
-    line-height: 25px;
-    float: left;
-    width: 130px;
-    text-align: left;
-    padding: 30px 40px;
-    box-shadow: 5px 5px 15px 0px rgb(224 224 224);
-    border-top: 5px solid rgb(253, 213, 59);
-    background-color: #fff;
-}
 
 #rankMain {
     margin-top: 30px;
@@ -25,16 +7,7 @@
     float: right;
 }
 
-#aside_img {
-    float: right;
-}
 
-#aside {
-    position: fixed;
-    float: left;
-    width: 200px;
-    margin: 0px 5px;
-}
 
 #rank1{
     padding: 20px 0px;
@@ -77,6 +50,12 @@
 #searchbar{
     float: right;
     margin-bottom: 15px;
+}
+
+#searchbar input {
+   
+    padding: 4px 0px;
+    font-size:15px;
 }
 
 #rank6-{
@@ -165,5 +144,6 @@
 	font-weight: bolder;
 	margin-bottom: 5px;
 }
+
 
 
