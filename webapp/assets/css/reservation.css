@@ -255,3 +255,37 @@ label>input {
 label {
     margin-right: 30px;
 }
+
+
+/************************  예약완료테이블 ****************************/
+#reservation_check_table {
+    width: 1300px;
+    font-size: 15px;
+    border-top: 1px solid #b9b9b9;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#reservation_thema_img {
+    width: 400px;
+}
+
+#reservation_check_table td, #reservation_check_table th {
+    border-bottom: 1px solid #b9b9b9;
+    height: 50px;
+}
+
+#reservation_check_table td>img {
+    height: 270px;
+    width: 200px;
+    margin: 20px 70px;
+}
+
+#reservation_btn>.mbutton {
+    margin: 20px 10px;
+}
+
+#reservation_btn {
+    margin-left: auto;
+    margin-right: auto;
+}
