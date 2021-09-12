@@ -38,6 +38,7 @@ a:hover {text-decoration: none; color: #000000; }
     border-style: none;
      box-shadow: 0px 1px 15px 0px rgb(224 224 224);
      position: fixed;
+     z-index: 99999;
  }
 
  #header ul>li .btn_s {padding: 4px 6px 4px 6px;  font-size: 11px; text-align:center;}
