@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/mypage_test.css" rel="stylesheet" type="text/css">
 
 <title>마이페이지</title>
 </head>
