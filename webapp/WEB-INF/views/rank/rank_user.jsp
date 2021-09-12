@@ -7,7 +7,7 @@
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/rank.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/rankUser.css" rel="stylesheet" type="text/css">
 
 <title>Insert title here</title>
 </head>
