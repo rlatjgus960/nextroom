@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -8,17 +7,6 @@
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/reservation.css" rel="stylesheet" type="text/css">
-
-
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.css">
-<script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
-<script src="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-
-<script>
-    $( function() {
-        $( "#datepicker" ).datepicker();
-    } );
-</script>
 
 <title>방탈출 예약</title>
 </head>
@@ -60,7 +48,7 @@
                 <!-- main -->
 
                 <!--table-->
-                <table>
+                <table id="reservation_table">
                     <tr>
                         <th>지점</th>
                         <td>비밀의화원 미드나잇</td>
@@ -136,7 +124,7 @@
                                         </div>
                                     </div>
                                     <div id="reservation_partyMember_img">
-                                        <img src="${pageContext.request.contextPath }/assets/image/asideImg.jpg">
+                                        <img src="${pageContext.request.contextPath }/assets/image/profile/blue.jpg">
                                     </div>
                                 </div>
 

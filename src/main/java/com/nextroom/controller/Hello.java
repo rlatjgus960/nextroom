@@ -55,4 +55,10 @@ public class Hello {
       return "reserve/reserveInfoForm";
    }
    
+   @RequestMapping("/reservePayForm")
+   public String reservePayForm() {
+      System.out.println("reservePayForm");
+      return "reserve/reservePayForm";
+   }
+   
 }
