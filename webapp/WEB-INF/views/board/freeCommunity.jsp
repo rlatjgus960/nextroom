@@ -189,7 +189,7 @@
 
 					<!-- 글쓰기버튼 -->
 					<div>
-						<button class="submit_button" href="">글쓰기</button>
+						<a class="submit_button" href="${pageContext.request.contextPath }/community_write">글쓰기</a>
 					</div>
 					<!-- 페이징 -->
 					<div id="pager">

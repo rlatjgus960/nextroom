@@ -17,5 +17,11 @@ public class Board {
 		System.out.println("read");
 		return "board/read";
 	}
+	
+	@RequestMapping("/community_write")
+	public String write() {
+		System.out.println("read");
+		return "board/write";
+	}
 
 }
