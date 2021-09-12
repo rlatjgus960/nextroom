@@ -51,7 +51,7 @@
                 <!--table-->
                 <table id="reservation_check_table">
                     <tr>
-                        <td id="reservation_thema_img" rowspan="5"><img src="${pageContext.request.contextPath }/assets/image/factoryM.jpg"></td>
+                        <td id="reservation_thema_img" rowspan="5"><img src="${pageContext.request.contextPath }/assets/image/reserveEtc/factoryM.JPG"></td>
                         <th>예약번호</th>
                         <td>2021082701</td>
                         <th>예약자</th>
