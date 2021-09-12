@@ -9,16 +9,13 @@
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/reservation.css" rel="stylesheet" type="text/css">
 
-
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.css">
 <script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <script src="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.css">
 
 <script>
     $( function() {
-        $( "#datepicker" ).datepicker({
-        	currentText: '오늘 날짜'
-        });
+        $( "#datepicker" ).datepicker();
     } );
 </script>
 
@@ -133,4 +130,6 @@
 		<!-- //footer -->
 	</div>
 </body>
+
+
 </html>
