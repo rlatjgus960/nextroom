@@ -320,7 +320,7 @@
 							<div class="rank_head clearfix">
                                <ul>
                                    <li>순위</li>
-                                   <li>포스터</li>
+                                   <li class="body_img">포스터</li>
                                    <li>테마명</li>
                                    <li>평점</li>
                                    <li>난이도</li>

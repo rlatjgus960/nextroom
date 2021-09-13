@@ -89,17 +89,17 @@
 
                            <!-- 마스터 버튼 -->
                            <div class="btn_group">
-                               <button class="submit_button">목록</button>
-                               <button class="submit_button">파티삭제</button>
-                               <button class="submit_button">모집완료</button>
+                               <button id="list_button" class="submit_button">목록</button>
+                               <button id="delete_button" class="submit_button">파티삭제</button>
+                               <button id="complete_button" class="mbutton">모집완료</button>
                            </div>
                            <!-- //마스터 버튼 -->
 
                             <!-- 참가자 버튼 -->
                             <!-- <div class="btn_group">
-                                <button class="submit_button">목록</button>
-                                <button class="submit_button">파티참가</button>
-                                <button class="submit_button">참가취소</button>
+                                <button id="list_button" class="submit_button">목록</button>
+                                <button id="join_button" class="submit_button">파티참가</button>
+                                <button id="cancel_button" class="submit_button">참가취소</button>
                             </div> -->
                             <!-- //참가자 버튼 -->
 

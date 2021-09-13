@@ -71,5 +71,12 @@ public class Hello {
 		System.out.println("reserveComplete");
 		return "reserve/reserveComplete";
 	}
+	
+	////////마이페이지폼 결제내역//////////
+	@RequestMapping("/mypagePayment")
+	public String mypagePayment() {
+		System.out.println("mypagePayment");
+		return "user/mypage_payment";
+	}
 
 }
