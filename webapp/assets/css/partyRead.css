@@ -1,6 +1,4 @@
 @charset "UTF-8";
-
-@charset "UTF-8";
 #content_main #board {
     width: 1260px;
     margin: 0px 0px 0px 20px;
@@ -54,4 +52,67 @@
     margin-left: 10px;
 }
 
+/* 참여현황 */
+#party_list #join_situ {
+    text-align: left;
+    line-height: 40px;
+    margin-bottom: 7px;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-size: 17px;
+}
 
+#party_list table {
+    width: 100%;
+    border-top: 1px solid #b9b9b9;
+    border-bottom: 1px solid #b9b9b9;
+}
+
+#party_list table>thead>tr>th {
+    padding:15px 0px 15px 0px;
+    
+}
+#party_list table>tbody>tr>td {
+    padding:12px 0px 12px 0px;
+    border-top: 1px dotted #808080;
+    text-align: center;
+}
+
+
+/* 대기현황 */
+#hold_list #join_situ {
+    text-align: left;
+    line-height: 40px;
+    margin-bottom: 7px;
+    margin-top: 40px;
+    font-weight: bolder;
+    font-size: 17px;
+}
+
+#hold_list table {
+    width: 100%;
+    margin-bottom:20px ;
+    border-top: 1px solid #b9b9b9;
+    border-bottom: 1px solid #b9b9b9;
+    
+}
+
+#hold_list table>thead>tr>th {
+    padding:15px 0px 15px 0px;
+    
+}
+#hold_list table>tbody>tr>td {
+    padding:12px 0px 12px 0px;
+    border-top: 1px dotted #808080;
+    text-align: center;
+}
+
+#hold_list table>tbody>tr>td>button {
+    background-color: white;
+    border: white;
+}
+
+#hold_list table>tbody>tr>td>button:hover {
+    background-color: rgb(253, 213, 59);
+    color: #fff;
+}
