@@ -19,6 +19,11 @@
     background-color: #fff;
 }
 
+.aside_mini_cate{
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
 #aside_img {
     float: right;
 }
@@ -29,4 +34,9 @@
 
 #aside>ul>li>ul>li{
     margin-left: 10px;
+}
+
+.selected{
+    font-weight: bolder;
+    text-decoration: underline;
 }
