@@ -111,8 +111,13 @@
     width: 1300px;
 }
 
-#cafe_detail_mainImg, #theme_detail_mainImg {
+#cafe_detail_mainImg{
     height: 350px;
+    float: left;
+}
+
+#theme_detail_mainImg {
+    height: 400px;
     float: left;
 }
 
@@ -123,10 +128,17 @@
     
 }
 
-#cafe_detail_wrap, #theme_detail_wrap {
+#cafe_detail_wrap {
     margin: 60px 120px;
     height: 350px;
     width: 1060px;
+    float: left;
+}
+
+#theme_detail_wrap {
+    margin: 35px 250px;
+    height: 400px;
+    width: 800px;
     float: left;
 }
 
@@ -134,12 +146,16 @@
     height: 210px;
 }
 
-#cafe_detail_name {
+#theme_detail_title {
+    /* 여ㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕ기ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ해야됨 */
+}
+
+#cafe_detail_name, #theme_detail_themeTitle {
     font-size: 32px;
     font-weight: bolder;
 }
 
-#cafe_detail_text {
+#cafe_detail_text, #theme_detail_text {
     font-size: 15px;
 }
 
@@ -165,7 +181,12 @@
     border: none;
     background-color: rgb(224,224,224);
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 15px;
+}
+
+#theme_party {
+    width: 400px;
+    margin-bottom: 15px;
 }
 
 .cbutton:hover, #cafe_btn_viewmap:hover{
@@ -188,12 +209,12 @@
     height:230px;
 }
 
-#cafe_detail_price, #cafe_detail_theme, #theme_list_area {
+#cafe_detail_price, #cafe_detail_theme, #theme_list_area, #theme_detail_price, #theme_detail_review {
     border-top: solid 1px #e0e0e0;
     padding-top: 30px;
 }
 
-#cafe_detail_price p, #cafe_detail_theme>p {
+#cafe_detail_price p, #cafe_detail_theme>p, #theme_detail_price p, #theme_detail_review>p {
     text-align: left;
     font-size: 24px;
     font-weight: bolder;
@@ -211,13 +232,13 @@
     margin-bottom: 50px;
 }
 
-#cafe_priceTable th{
+#cafe_priceTable th, #theme_priceTable th{
     background: #f5f5f5;
     border: 1px solid #e0e0e0;
     height: 35px;
 }
 
-#cafe_priceTable td{
+#cafe_priceTable td, #theme_priceTable td{
     border: 1px solid #e0e0e0;
     height: 35px;
 }
@@ -317,6 +338,44 @@
 
 
 /* 테마 상세페이지 */
+#theme_priceTable {
+    margin-top: 20px;
+    width: 60%;
+    height: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: 2px solid #e0e0e0;
+    table-layout: fixed;
+    margin-bottom: 50px;
+}
+
+#theme_detail_content {
+
+    font-size: 18px;
+
+}
+
+#theme_detail_info {
+    font-size: 15px;
+    margin: 20px 20px 20px 0px ;
+}
+
+#theme_detail_info p{
+    margin-bottom: 15px;
+}
+
+#theme_detail_info span{
+    line-height: 15px;
+}
+
+.theme_review {
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    width: 1300px;
+    min-height: 150px;
+    box-sizing: border-box;
+}
 
 
 
