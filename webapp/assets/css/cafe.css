@@ -94,7 +94,7 @@
 
 .cafe_contact div {
     height: 15px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 #btn_more, #theme_moreBtn{
@@ -104,26 +104,26 @@
 
 /* 카페 상세페이지 */
 
-#cafe_detail_back {
+#cafe_detail_back, #theme_detail_back {
     margin-top: 100px;
     background-color: #f5f5f5;
     height: 470px;
     width: 1300px;
 }
 
-#cafe_detail_mainImg {
+#cafe_detail_mainImg, #theme_detail_mainImg {
     height: 350px;
     float: left;
 }
 
-#cafe_detail_text {
+#cafe_detail_text, #theme_detail_text {
     float: left;
     margin-left: 60px;
     text-align: left;
     
 }
 
-#cafe_detail_wrap {
+#cafe_detail_wrap, #theme_detail_wrap {
     margin: 60px 120px;
     height: 350px;
     width: 1060px;
@@ -145,14 +145,14 @@
 
 #cafe_btn_viewmap {
     border:none;
-    font-size: 11px;
+    font-size: 14px;
     background-color: #e0e0e0;
     vertical-align: bottom;
-    margin-left: 5px;
     cursor: pointer;
+    border-radius: 3px;
 }
 
-#cafe_detail_contact {
+#cafe_detail_contact, #theme_detail_contact {
     margin-bottom: 30px;
 }
 
@@ -180,9 +180,10 @@
 }
 
 #cafe_interior{
+    text-align: left;
     margin: 30px 0px;
     white-space:nowrap; 
-    overflow-x:scroll;  
+    overflow-x: auto;  
     width:1300px; 
     height:230px;
 }
@@ -252,11 +253,6 @@
     font-weight: bold;
     font-size: 21px;
 }
-
-
-/* 모달 css */
-
-
 
 
 /* 테마 메인 */

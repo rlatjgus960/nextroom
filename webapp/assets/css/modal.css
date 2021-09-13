@@ -4,9 +4,9 @@
 
     display: none;
 
-    position: absolute;
-    top: calc(0px); 
-    left: calc(0px);
+    position: fixed;
+    top: 0; 
+    left: 0;
     width:100%;
     height:100%;
     z-index:1000;
@@ -24,14 +24,14 @@
   
 #cafe_detail_modal .cafe_detail_modal_content {
     width:500px;
-    margin:100px auto;
+    margin: 100px auto;
     padding:20px 10px;
     background:#fff;
     border:2px solid #666;
 }
   
 #cafe_detail_modal .cafe_detail_modal_layer {
-    position:fixed;
+    position: fixed;
     top:0;
     left:0;
     width:100%;
@@ -39,3 +39,8 @@
     background:rgba(0, 0, 0, 0.5);
     z-index:-1;
 }   
+
+.stop-scroll{
+    height: 100%;
+    overflow: hidden;
+  }
