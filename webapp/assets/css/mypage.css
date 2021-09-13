@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+#mypageMain {
+    width: 1050px;
+    float: right;
+}
+
+
+/********************************* aside **********************************/
 #aside>ul>li{
     margin-bottom: 5px;
 }
@@ -19,11 +26,6 @@
     background-color: #fff;
 }
 
-#mypageMain {
-    width: 1050px;
-    float: right;
-}
-
 #aside_img {
     float: right;
 }
@@ -34,6 +36,11 @@
     width: 200px;
     margin: 0px 5px;
 }
+/*******************************************************************/
+
+
+
+
 
 
 /****************************** 마이페이지 메인부분 **********************************/
@@ -43,6 +50,7 @@
     border-top: 1px solid #b9b9b9;
     border-collapse: collapse;
     text-align: left;
+    margin-bottom: 20px;
 }
 
 #reservation_thema_img {
@@ -112,5 +120,72 @@
     display: inline-block;
 }
 
+
+/********************************************************************************/
+
+
+
+/****************************** 마이페이지 결제완료 **********************************/
+#paymentDetail_table_select>select {
+    height: 25px;
+    width: 100px;
+    float: right;
+    margin: 20px 0px;
+}
+
+#paymentDetail_table>table {
+    border-collapse: collapse;
+    border-top: 1px solid #b9b9b9;
+    width: 1050px;
+}
+
+#paymentDetail_table td, #paymentDetail_table th {
+    border-bottom: 1px solid #b9b9b9;
+    height: 50px;
+}
+
+
+#mypageMain #paging {
+	margin: 20px auto;
+	width: 200px;
+}
+
+#paging ul {margin: 10px 5px 10px 5px;}
+#paging ul>li{
+	float: left;
+	margin: 0px 8px 0px 8px;
+}
+
+#paging ul>li.active{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* 결제완료 모달창 테이블 */
+#paymentDetail_table_item {
+    padding: 20px 0px 20px 25px;
+}
+
+#paymentDetail_table_item #reservation_check_table {
+    width: 1000px;
+}
+
+#myPayment_Info select {
+    height: 25px;
+    width: 100px;
+}
+
+#myPayment_Info input {
+    height: 30px;
+    width: 200px;
+}
+
+#myPayment_Info div {
+    margin-bottom: 20px;
+}
+
+#myPayment_Info_Btn button {
+    margin: 20px 10px 10px 0px;
+}
 
 /********************************************************************************/
