@@ -73,19 +73,19 @@
 											<li>
 												<div>
 													<span>평점 :&nbsp;</span>
-													<a href="">3.3점</a>
+													3.3점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>난이도 :&nbsp;</span>
-													<a href="">9.4점</a>
+													9.4점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>리뷰 :&nbsp;</span>
-													<a href="">1004개</a>
+													1004개
 												</div>
 											</li>
 										
@@ -112,22 +112,22 @@
 		
 									<div class="theme_detail">
 										<ul>
-											<li>
+										<li>
 												<div>
 													<span>평점 :&nbsp;</span>
-													<a href="">3.3점</a>
+													3.3점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>난이도 :&nbsp;</span>
-													<a href="">9.4점</a>
+													9.4점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>리뷰 :&nbsp;</span>
-													<a href="">1004개</a>
+													1004개
 												</div>
 											</li>
 										
@@ -153,22 +153,22 @@
 		
 									<div class="theme_detail">
 										<ul>
-											<li>
+										<li>
 												<div>
 													<span>평점 :&nbsp;</span>
-													<a href="">3.3점</a>
+													3.3점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>난이도 :&nbsp;</span>
-													<a href="">9.4점</a>
+													9.4점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>리뷰 :&nbsp;</span>
-													<a href="">1004개</a>
+													1004개
 												</div>
 											</li>
 										
@@ -198,19 +198,19 @@
 											<li>
 												<div>
 													<span>평점 :&nbsp;</span>
-													<a href="">3.3점</a>
+													3.3점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>난이도 :&nbsp;</span>
-													<a href="">9.4점</a>
+													9.4점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>리뷰 :&nbsp;</span>
-													<a href="">1004개</a>
+													1004개
 												</div>
 											</li>
 										
@@ -240,19 +240,19 @@
 											<li>
 												<div>
 													<span>평점 :&nbsp;</span>
-													<a href="">3.3점</a>
+													3.3점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>난이도 :&nbsp;</span>
-													<a href="">9.4점</a>
+													9.4점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>리뷰 :&nbsp;</span>
-													<a href="">1004개</a>
+													1004개
 												</div>
 											</li>
 										
@@ -282,19 +282,19 @@
 											<li>
 												<div>
 													<span>평점 :&nbsp;</span>
-													<a href="">3.3점</a>
+													3.3점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>난이도 :&nbsp;</span>
-													<a href="">9.4점</a>
+													9.4점
 												</div>
 											</li>
 											<li>
 												<div>
 													<span>리뷰 :&nbsp;</span>
-													<a href="">1004개</a>
+													1004개
 												</div>
 											</li>
 										
@@ -332,7 +332,7 @@
                           	<div class="rank_body clearfix">
                                <ul>
                                    <li class="body_data">1</li>
-                                   <li><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
+                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
                                    <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
                                    <li class="body_data">4.8점</li>
                                    <li class="body_data">9.4점</li>
@@ -344,7 +344,7 @@
                              <div class="rank_body clearfix">
                                <ul>
                                    <li class="body_data">1</li>
-                                   <li><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
+                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
                                    <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
                                    <li class="body_data">4.8점</li>
                                    <li class="body_data">9.4점</li>
@@ -356,7 +356,7 @@
                              <div class="rank_body clearfix">
                                <ul>
                                    <li class="body_data">1</li>
-                                   <li><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
+                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
                                    <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
                                    <li class="body_data">4.8점</li>
                                    <li class="body_data">9.4점</li>
@@ -368,7 +368,7 @@
                              <div class="rank_body clearfix">
                                <ul>
                                    <li class="body_data">1</li>
-                                   <li><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
+                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
                                    <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
                                    <li class="body_data">4.8점</li>
                                    <li class="body_data">9.4점</li>
@@ -380,7 +380,7 @@
                              <div class="rank_body clearfix">
                                <ul>
                                    <li class="body_data">1</li>
-                                   <li><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
+                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
                                    <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
                                    <li class="body_data">4.8점</li>
                                    <li class="body_data">9.4점</li>

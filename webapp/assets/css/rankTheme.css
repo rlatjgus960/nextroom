@@ -7,23 +7,32 @@
     float: right;
 }
 
+
+/*******스와이퍼 높이********/
 .swiper, .mySwiper{
     min-height: 550px;
 }
 
+
+/*******스와이퍼 슬라이드 정렬********/
 .swiper-slide {
 	display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
 	align-items:center; /* 위아래 기준 중앙정렬 */
 	justify-content:center; /* 좌우 기준 중앙정렬 */
 }
 
+
+/*******스와이퍼 꾸미기********/
 .swiper{
     border-radius: 30px;
-    background-color: #FFFF8F;
+    background-color: #0f0f0f;
     box-shadow:0 0 20px #ccc inset;
     margin-bottom: 50px;
+    color: #ffffff;
 }
 
+
+/*******슬라이드 크기,상단 여백********/
 .theme_swiper_list{
     padding-top: 20px;
     width: 300px;
@@ -67,10 +76,14 @@
 
 #rank_list li {
 	float:left;
-	width:142px;
+	width:130px;
 	
 }
 
 .body_data{
 	padding:90px 0px;
+}
+
+.body_img{
+	padding-right: 20px;
 }
