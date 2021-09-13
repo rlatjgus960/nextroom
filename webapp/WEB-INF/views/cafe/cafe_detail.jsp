@@ -8,6 +8,7 @@
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/cafe.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/modal.css" rel="stylesheet" type="text/css">
 <%-- <link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"> --%>
 
 <title>카페 상세</title>
@@ -297,26 +298,19 @@
 
                 var map = new kakao.maps.Map(container, options);
                 
-             	/* // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-                function addMarker(position, idx, title) {
-                   var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-                   imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
-                   imgOptions = {
-                      spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-                      spriteOrigin : new kakao.maps.Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-                      offset : new kakao.maps.Point(13, 37)
-                   // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-                   }, markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize,
-                         imgOptions), marker = new kakao.maps.Marker({
-                      position : position, // 마커의 위치
-                      image : markerImage
-                   });
+                
+             	// 마커가 표시될 위치입니다 
+                var markerPosition  = new kakao.maps.LatLng(37.50282142856503, 127.02300484029507); 
 
-                   marker.setMap(map); // 지도 위에 마커를 표출합니다
-                   markers.push(marker); // 배열에 생성된 마커를 추가합니다
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition
+                });
 
-                   return marker;
-                } */
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
+                
+             	
             </script>
            
             <button type="button" id="modal_close_btn" class="mbutton">닫기</button>
@@ -341,11 +335,24 @@
 
     <!-- 제이쿼리 사용-->
     <script>
-        $("#cafe_btn_viewmap").click(function(){
+        $("#cafe_btn_viewmap").on("click", function(){
             $("#cafe_detail_modal").attr("style", "display:block");
+            
+            var container = document.getElementById('cafe_map'),
+            options = {
+                 center: new kakao.maps.LatLng(37.50282142856503, 127.02300484029507),
+                 level: 3
+            };
+	        var map = new kakao.maps.Map(container, options);
+	
+	        container.style.width = '500px';
+	        container.style.height = '400px';
+	
+	        map.relayout();
+	        
         });
        
-         $("#modal_close_btn").click(function(){
+         $("#modal_close_btn").on("click", function(){
             $("#cafe_detail_modal").attr("style", "display:none");
         });      
     </script>
