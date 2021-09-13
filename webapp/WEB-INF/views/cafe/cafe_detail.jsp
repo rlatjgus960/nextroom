@@ -7,6 +7,7 @@
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/cafe.css" rel="stylesheet" type="text/css">
+<%-- <link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"> --%>
 
 <title>카페 상세</title>
 </head>
@@ -308,19 +309,39 @@
    
         <div class="cafe_detail_modal_content">
                        
-            <div id="map" style="width:500px;height:400px;">
-                <img src="${pageContext.request.contextPath }/assets/image/cafe/cafe_map.jpg" alt="">
-            </div>
-            <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d"></script>
+            <div id="cafe_map" style="width:500px; height:400px;"></div>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d"></script>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d&libraries=LIBRARY"></script>
             <script>
-                var container = document.getElementById('map');
+                var container = document.getElementById('cafe_map');
                 var options = {
-                    center: new kakao.maps.LatLng(33.450701, 126.570667),
+                    center: new kakao.maps.LatLng(37.50282142856503, 127.02300484029507),
                     level: 3
                 };
 
                 var map = new kakao.maps.Map(container, options);
-            </script> -->
+                
+             	/* // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+                function addMarker(position, idx, title) {
+                   var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+                   imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
+                   imgOptions = {
+                      spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+                      spriteOrigin : new kakao.maps.Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+                      offset : new kakao.maps.Point(13, 37)
+                   // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+                   }, markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize,
+                         imgOptions), marker = new kakao.maps.Marker({
+                      position : position, // 마커의 위치
+                      image : markerImage
+                   });
+
+                   marker.setMap(map); // 지도 위에 마커를 표출합니다
+                   markers.push(marker); // 배열에 생성된 마커를 추가합니다
+
+                   return marker;
+                } */
+            </script>
            
             <button type="button" id="modal_close_btn" class="mbutton">닫기</button>
            
@@ -330,7 +351,8 @@
     </div>
 
 
-    <!-- <script>
+    <!-- 자바스크립트 사용
+    <script>
         document.getElementById("cafe_btn_viewmap").onclick = function() {
             document.getElementById("cafe_detail_modal").style.display="block";
         }
@@ -341,6 +363,7 @@
     </script> -->
 
 
+    <!-- 제이쿼리 사용-->
     <script>
         $("#cafe_btn_viewmap").click(function(){
             $("#cafe_detail_modal").attr("style", "display:block");
@@ -350,6 +373,25 @@
             $("#cafe_detail_modal").attr("style", "display:none");
         });      
     </script>
+    
+    
+    <!-- 부트스트랩 사용(못하겠음)
+    
+    <script type="text/javascript">
+    
+    $("#cafe_btn_viewmap").on("click", function() {
+		
+		//모달창 보이기
+		$("#cafe_detail_modal").modal();
+
+	}); -->
+
+    
+    </script>
+    
+    
+    
+    
 
 
 
