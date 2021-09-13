@@ -3,11 +3,11 @@
 
 /* 수정/ 삭제/ 목록 버튼 */
 #update_button{
-    width: 1000px;    
+    width: 100%;    
 }
 
 #update_button>ul{
-    width:998px;
+    width:1048px;
     text-align: right;
 }
 
@@ -122,7 +122,7 @@
 }
 
 
-/* 댓글 창 */
+/* 댓글 쓰기 */
 #comment{
     margin-bottom: 0px;
     padding-bottom: 10px;
@@ -136,7 +136,7 @@
     margin-bottom: 5px;
 }
 #comment>div>input{
-    width: 840px;
+    width: 890px;
     height: 50px;
     outline: none;
 }
@@ -162,7 +162,7 @@
 
 /* 댓글 리스트 */
 #comment_box{
-    width: 998px;
+    width: 1048px;
     height: 50px;
     margin-bottom: 5px;
 }
@@ -170,9 +170,9 @@
 
 #nick_box{
     line-height: 30px;
-    width: 150px;
+    width: 170px;
     margin-top: 10px;
-    padding-left: 20px;
+    padding-left: 22px;
     text-align: left;
     float: left;
     border-bottom: 1px solid #b9b9b9;
@@ -180,7 +180,7 @@
 
 #comment_content{
     line-height: 30px;
-    width: 560px;
+    width: 680px;
     margin-top: 10px;
     float: left;
     border-bottom: 1px solid #b9b9b9;
@@ -189,11 +189,26 @@
 #write_date{
     line-height: 30px;
     margin-top: 10px;
-    width: 258px;
+    width: 128px;
     padding-right: 10px;
     float: left;
     text-align: right;
     border-bottom: 1px solid #b9b9b9;
+}
+
+#delete_comment{
+    line-height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-left: -5px;
+    padding-right: 13px;
+    float: left;
+    border-bottom: 1px solid #b9b9b9;
+}
+
+#delete_comment>img{
+    width: 15px;
+    height: 15px;
 }
 
 /* 하단 여백 */

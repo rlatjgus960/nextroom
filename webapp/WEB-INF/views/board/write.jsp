@@ -11,8 +11,6 @@
 <link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/write.css" rel="stylesheet" type="text/css">
 
-
-<script type="text/javascript" src="${pageContext.request.contextPath }/views/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <title>자유게시판-글쓰기</title>
 </head>
 <body>
@@ -105,18 +103,9 @@
 								<p>작성일 : 2021.09.10</p>
 							</div>
 
-							<!-- <div id="write_tool">
-								<ul>
-									<li><img src="./image/upload_image.png" style="width: 20px; height: 20px;"><br>
-											<span>사진</span>
-									</li>
-									<li>글꼴</li>
-									
-								</ul>
-							</div> -->
 
-							<div id="write_tool">
-								<textarea></textarea>
+							<div id="text_tool">
+								<textarea id="txtContent" rows="50" cols="96" style="width: 1020px;"></textarea>
 							</div>
 						</form>
 

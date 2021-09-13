@@ -152,28 +152,46 @@
 										<div id="comment_box">
 											<ul id="comment_list">
 												<li id="comment_user">
-													<div id="nick_box">닉네임</div>
+													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">작성 날짜</div>
+													<div id="write_date">2021.09.12</div>
+													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>	<!-- ajax사용 해야하나 -->
 												</li>
 
 												<li id="comment_user">
-													<div id="nick_box">닉네임</div>
+													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">작성 날짜</div>
+													<div id="write_date">2021.09.12</div>
+													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
 												</li>
 
 												<li id="comment_user">
-													<div id="nick_box">닉네임</div>
+													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">작성 날짜</div>
+													<div id="write_date">2021.09.12</div>
+													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
 												</li>
-
+												
 												<li id="comment_user">
-													<div id="nick_box">닉네임</div>
+													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">작성 날짜</div>
+													<div id="write_date">2021.09.12</div>
+													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
 												</li>
+												
+												<li id="comment_user">
+													<div id="nick_box">슬퍼하지마 노노노</div>
+													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
+													<div id="write_date">2021.09.12</div>
+													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
+												</li>
+												
+												<li id="comment_user">
+													<div id="nick_box">슬퍼하지마 노노노</div>
+													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
+													<div id="write_date">2021.09.12</div>
+													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
+												</li>																																																											
 											</ul>
 										</div>
 										<!-- //댓글 리스트 -->
