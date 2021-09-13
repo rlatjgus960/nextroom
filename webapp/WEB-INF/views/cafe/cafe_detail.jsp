@@ -18,6 +18,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
+
 <body>
 
 	<!-- 헤더영역 -->
@@ -288,7 +289,7 @@
                        
             <div id="cafe_map" style="width:500px; height:400px;"></div>
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d"></script>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d&libraries=LIBRARY"></script>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d&libraries=services,clusterer,drawing"></script>
             <script>
                 var container = document.getElementById('cafe_map');
                 var options = {
@@ -299,17 +300,7 @@
                 var map = new kakao.maps.Map(container, options);
                 
                 
-             	// 마커가 표시될 위치입니다 
-                var markerPosition  = new kakao.maps.LatLng(37.50282142856503, 127.02300484029507); 
-
-                // 마커를 생성합니다
-                var marker = new kakao.maps.Marker({
-                    position: markerPosition
-                });
-
-                // 마커가 지도 위에 표시되도록 설정합니다
-                marker.setMap(map);
-                
+             	 
              	
             </script>
            
@@ -337,6 +328,8 @@
     <script>
         $("#cafe_btn_viewmap").on("click", function(){
             $("#cafe_detail_modal").attr("style", "display:block");
+            /* $('body').css("overflow", "hidden"); */
+            document.body.classList.add("stop-scroll");
             
             var container = document.getElementById('cafe_map'),
             options = {
@@ -350,10 +343,35 @@
 	
 	        map.relayout();
 	        
+	     // 마커가 표시될 위치입니다 
+            var markerPosition  = new kakao.maps.LatLng(37.50282142856503, 127.02300484029507); 
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
+            
+            var iwContent = '<div style="padding:5px;">넥스트에디션 강남신논현점 <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+
+            // 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                position : iwPosition, 
+                content : iwContent 
+            });
+              
+            // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+            infowindow.open(map, marker);
+	        
         });
        
          $("#modal_close_btn").on("click", function(){
             $("#cafe_detail_modal").attr("style", "display:none");
+            /* $('body').css("overflow", "scroll"); */
+            document.body.classList.remove("stop-scroll");
         });      
     </script>
     
