@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -6,11 +7,15 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/modal.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css"
+	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/mypage.css"
+	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/modal.css"
+	rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
 <title>마이페이지</title>
 </head>
@@ -81,7 +86,7 @@
 								<td>탈출예약</td>
 							</tr>
 
-							<tr>
+							<tr id="modal_escapeComplete_btn">
 								<td>2021.07.08</td>
 								<td>19 : 30</td>
 								<td>2021070822</td>
@@ -221,14 +226,87 @@
 
 			<div class="cafe_detail_modal_layer"></div>
 		</div>
-		
+
+
+
+		<div id="paymentDetail_modal_escapeComplete">
+
+			<div class="paymentDetail_modal_content">
+
+				<a id="modal_escapeComplete_close_btn"><img
+					src="${pageContext.request.contextPath }/assets/image/mypageEtc/closeBtn.JPG"></a>
+
+				<div id="paymentDetail_table_item">
+					<table id="reservation_check_table">
+						<tr>
+							<td id="reservation_thema_img" rowspan="5"><img
+								src="${pageContext.request.contextPath }/assets/image/reserveEtc/factoryM.JPG"></td>
+							<th>예약번호</th>
+							<td>2021082701</td>
+							<th>예약자</th>
+							<td>차예진</td>
+						</tr>
+
+						<tr>
+							<th>지점</th>
+							<td>비밀의화원 미드나잇</td>
+							<th>연락처</th>
+							<td>010-1111-1111</td>
+						</tr>
+
+						<tr>
+							<th>테마</th>
+							<td>팩토리 엠</td>
+							<th>결제금액</th>
+							<td>50,000원</td>
+						</tr>
+
+						<tr>
+							<th>예약일시</th>
+							<td colspan="3">2021년 8월 27일 15시 30분</td>
+						</tr>
+
+						<tr>
+							<th>인원</th>
+							<td colspan="3">2인</td>
+						</tr>
+					</table>
+
+					<div id="myPayment_Info">
+						<div>
+							<span>팀원 1</span> <span>may0505</span> <span
+								class="escape_record">56m 30s(No hint)</span>
+						</div>
+
+						<div>
+							<span>팀원 2</span> <span>yoon1033</span> <span
+								class="escape_record">56m 30s(No hint)</span>
+						</div>
+
+
+					</div>
+
+					<div id="myPayment_Info_Btn">
+						<button class="mbutton">수정완료</button>
+						<button class="mbutton">수정취소</button>
+					</div>
+				</div>
+
+
+
+			</div>
+
+			<div class="cafe_detail_modal_layer"></div>
+		</div>
+
 		<!-- footer -->
 		<div id="footer">
-			상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 : moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동
-			서초대로77길 13<br> Copyright © NEXTROOM All rights reserved.
+			상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 :
+			moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동 서초대로77길 13<br> Copyright
+			© NEXTROOM All rights reserved.
 		</div>
 		<!-- //footer -->
-		
+
 	</div>
 </body>
 <script>
@@ -243,6 +321,16 @@
 		document.body.classList.remove("stop-scroll");
 
 	});
+	
+	$("#modal_escapeComplete_btn").on("click", function(){
+        $("#paymentDetail_modal_escapeComplete").attr("style", "display:block");
+        document.body.classList.add("stop-scroll");
+    });
+   
+     $("#modal_escapeComplete_close_btn").on("click", function(){
+        $("#paymentDetail_modal_escapeComplete").attr("style", "display:none");
+        document.body.classList.remove("stop-scroll");
+    });  
 </script>
 
 
