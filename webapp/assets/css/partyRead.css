@@ -63,7 +63,8 @@
 }
 
 #party_list table {
-    width: 100%;
+   	width: 1260px;
+    margin: 0px 0px 20px 20px;
     border-top: 1px solid #b9b9b9;
     border-bottom: 1px solid #b9b9b9;
 }
@@ -90,7 +91,8 @@
 }
 
 #hold_list table {
-    width: 100%;
+    width: 1260px;
+    margin: 0px 0px 20px 20px;
     margin-bottom:20px ;
     border-top: 1px solid #b9b9b9;
     border-bottom: 1px solid #b9b9b9;
