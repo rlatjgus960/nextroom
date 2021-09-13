@@ -8,8 +8,8 @@
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/write.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/board_css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/board_css/write.css" rel="stylesheet" type="text/css">
 
 <title>자유게시판-글쓰기</title>
 </head>
@@ -105,7 +105,7 @@
 
 
 							<div id="text_tool">
-								<textarea id="txtContent" rows="50" cols="96" style="width: 1020px;"></textarea>
+								<textarea id="txtContent" rows="50" cols="96" style="width: 1020px;"> 스마트 에디터 적용해야하는데 어떻게 하냐 최근글이 아니라 옛날 글밖에 없는데 ㅡㅡ</textarea>
 							</div>
 						</form>
 
