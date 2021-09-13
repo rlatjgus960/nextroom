@@ -25,7 +25,7 @@
 /*******스와이퍼 꾸미기********/
 .swiper{
     border-radius: 30px;
-    background-color: #0f0f0f;
+    background-color: rgb(209, 228, 238);
     box-shadow:0 0 20px #ccc inset;
     margin-bottom: 50px;
     color: #ffffff;
