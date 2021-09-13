@@ -15,8 +15,8 @@
 		<div id="aside_cate">
 		
 			<ul>
-			    <li>유저 랭킹</li>
-			    <li>테마 랭킹</li>
+			    <li><a href="${pageContext.request.contextPath}/rankUser">유저 랭킹</a></li>
+			    <li><a href="${pageContext.request.contextPath}/rankTheme">테마 랭킹</a></li>
 			</ul>
 		
 		</div>
