@@ -15,31 +15,7 @@
 
     <body>
         <!--헤더영역-->
-        <div id="header">
-            <div id="header-item">
-                <a><img id="logo" src="${pageContext.request.contextPath }/assets/image/logo.jpg"></a>
-    
-    
-                <div id="nav" >
-    
-                    <ul id="bar">
-                        <li><a href="">카페/테마</a></li>
-                        <li><a href="">예약</a></li>
-                        <li><a href="">파티구하기</a></li>
-                        <li><a href="">랭킹</a></li>
-                        <li><a href="">커뮤니티</a></li>
-                    </ul>
-    
-    
-                    <ul id="login_area">
-                        <li><a href="" class=""><img id="" src="${pageContext.request.contextPath }/assets/image/messageicon.jpg"></a></li>
-                        <li><a href="" class=""><img id="" src="${pageContext.request.contextPath }/assets/image/alerticon.jpg"></a></li>
-                        <li class="line-right mypageIcon"><a href="" class="btn_s">로그아웃</a></li>
-                        <li class="mypageBtn"><a href="" class="btn_s">마이페이지</a></li>
-                    </ul>
-                </div>  
-            </div>
-        </div>
+       <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
         <!-- //헤더영역 -->
 
 
@@ -134,20 +110,23 @@
                     </div>
                     <!-- //정보 보드-->
 
-                    <!-- 참여현황 -->
+				<!-- 참여현황 -->
                     <div id="party_list">
+                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;참여현황</div>
                         <table>
                             <colgroup>
-                                <col style="width: 100px;">
-                                <col style="width: 170px;">
-                                <col style="width: 240px;">
-                                <col style="width: 230px;">
-                                <col style="width: 90px;">
-                                <col style="width: 140px;">
+                                <col style="width: 120px;">
+                                <col style="width: 210px;">
+                                <col style="width: 225px;">
+                                <col style="width: 185px;">
+                                <col style="width: 185px;">
+                                <col style="width: 185px;">
+                                <col style="width: 185px;">
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>프로필</th>
                                     <th>닉네임</th>
                                     <th>현재 순위</th>
                                     <th>성공률</th>
@@ -159,6 +138,7 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
+                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
                                     <td>이스케이프대니</td>
                                     <td>37위</td>
                                     <td>97%</td>
@@ -167,6 +147,7 @@
                                 </tr>
                                 <tr>
                                     <td>2</td>
+                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
                                     <td>앙기모띠</td>
                                     <td>33위</td>
                                     <td>98%</td>
@@ -175,6 +156,7 @@
                                 </tr>
                                 <tr>
                                     <td>3</td>
+                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
                                     <td>다함께 차차차</td>
                                     <td>40위</td>
                                     <td>93%</td>
@@ -189,7 +171,73 @@
 
                     <!-- //참여현황 -->
                     
-                </div>
+
+                    <!-- 대기현황 -->
+                    <div id="hold_list">
+                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;대기현황</div>
+                        <table>
+                            <colgroup>
+                                <col style="width: 120px;">
+                                <col style="width: 160px;">
+                                <col style="width: 206px;">
+                                <col style="width: 162px;">
+                                <col style="width: 162px;">
+                                <col style="width: 162px;">
+                                <col style="width: 162px;">
+                                <col style="width: 162px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>프로필</th>
+                                    <th>닉네임</th>
+                                    <th>현재 순위</th>
+                                    <th>성공률</th>
+                                    <th>노힌트 성공률</th>
+                                    <th>평균 기록</th>
+                                    <th>동의여부</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+                                    <td>이스케이프대니</td>
+                                    <td>37위</td>
+                                    <td>97%</td>
+                                    <td>100%</td>
+                                    <td>50m 20s</td>
+                                    <td><button>O</button> / <button>X</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+                                    <td>앙기모띠</td>
+                                    <td>33위</td>
+                                    <td>98%</td>
+                                    <td>100%</td>
+                                    <td>38m 27s</td>
+                                    <td><button>O</button> / <button>X</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+                                    <td>다함께 차차차</td>
+                                    <td>40위</td>
+                                    <td>93%</td>
+                                    <td>100%</td>
+                                    <td>50m 20s</td>
+                                    <td><button>O</button> / <button>X</button></td>
+                                </tr>
+                         
+								
+                            </tbody>
+                        </table>
+                    </div>
+				<!-- //대기현황 -->
+
+			</div>
                 <!-- //main -->
                 
     
@@ -199,11 +247,7 @@
     
           <!-- footer -->
     
-          <div id="footer">
-             상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 : moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동
-             서초대로77길 13<br> Copyright © NEXTROOM All rights reserved.
-    
-           </div>
+          <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
     
           <!-- //footer -->
        </div>

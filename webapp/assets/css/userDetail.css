@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+#user_detail{
+    margin: 50px 0px;
+    margin-left: 50px;
+    width: 1200px;
+    background-color:blanchedalmond;
+    border-radius: 20px;
+    height: 200px;
+    text-align: left;
+}
+
+
+.detail_profile_img{
+    vertical-align: middle;
+    margin-top: 30px;
+    margin-left: 240px;
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+}
+
+.nick_box{
+    display: inline-block;
+    width: 300px;
+}
+
+.detail_profile_nickname{
+    font-size: 35px;
+    font-weight: bolder;
+    margin-left: 50px;
+    width: 500px;
+
+}
+
+.detail_profile_stats{
+    line-height: 30px;
+    margin-left: 100px;
+    vertical-align: middle;
+    padding-top: 20px;
+    display: inline-block;
+    text-align: left;
+}
+
+#recentplay_table>table {
+    border-collapse: collapse;
+    border-top: 1px solid #b9b9b9;
+    width: 1050px;
+    margin-left: 110px;
+}
+
+#recentplay_table td, #recentplay_table th {
+    border-bottom: 1px solid #b9b9b9;
+    height: 50px;
+}
+
+#paging {
+    margin: 30px auto;
+    width: 200px;
+ }
+ 
+ #paging ul {margin: 10px 5px 10px 5px;}
+
+ #paging ul>li{
+    float: left;
+    margin: 0px 8px 0px 8px;
+ }
+ 
+ #paging ul>li.active{
+    font-size: 14px;
+    font-weight: bold;
+ }
