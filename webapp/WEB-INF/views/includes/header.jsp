@@ -16,11 +16,11 @@
 			<div id="nav">
 
 				<ul id="bar">
-					<li><a href="">카페/테마</a></li>
-					<li><a href="">예약</a></li>
-					<li><a href="">파티구하기</a></li>
-					<li><a href="">랭킹</a></li>
-					<li><a href="">커뮤니티</a></li>
+					<li><a href="${pageContext.request.contextPath}/cafe">카페/테마</a></li>
+					<li><a href="${pageContext.request.contextPath}/reserveBaseForm">예약</a></li>
+					<li><a href="${pageContext.request.contextPath}/party">파티구하기</a></li>
+					<li><a href="${pageContext.request.contextPath}/rankUser">랭킹</a></li>
+					<li><a href="${pageContext.request.contextPath}/community">커뮤니티</a></li>
 				</ul>
 
 
