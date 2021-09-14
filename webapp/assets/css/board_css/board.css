@@ -1,5 +1,30 @@
 @charset "UTF-8";
+/* aside */
+#aside {
+    position: fixed;
+    float: left;
+    width: 200px;
+    margin: 0px 5px;
+}
 
+#aside_cate{
+    line-height: 25px;
+    float: left;
+    width: 130px;
+    text-align: left;
+    padding: 30px 40px;
+    box-shadow: 5px 5px 15px 0px rgb(224 224 224);
+    border-top: 5px solid rgb(253, 213, 59);
+    background-color: #fff;
+}
+
+#aside_img {
+    float: right;
+}
+
+#aside_cate_coummunity>ul>li{
+    margin-bottom: 5px;
+}
 
 #aside_cate_coummunity{
     line-height: 25px;
@@ -10,7 +35,6 @@
     box-shadow: 5px 5px 15px 0px rgb(224 224 224);
     border-top: 5px solid rgb(253, 213, 59);
     background-color: #fff;
-    font-size: 15px;
 }
 
 
@@ -90,37 +114,41 @@
 /* 게시판 리스트 */
 #board_list{
     margin-top: 15px;
-    border: 1px solid black;
 }
 
 
 #board_list table {
     width: 100%;    
     border-collapse: collapse;
-    border-top: 1px solid #808080;
-    border-bottom: 1px solid #808080;
-    border-right: 1px dotted #808080;
+    border-top: 1px solid black;
+
 }
 
 #board_list table>thead>tr>th {
     background-color: #dddddd;
-    border-right: 1px solid #808080;
-    border-bottom: 1px solid #808080;
+    border-bottom: 1px solid black;
     height: 40px;
     font-size: 17px;
 }
 
 #board_list table>tbody>tr {
-    border-top: 1px dotted #808080;    
+    border-bottom: 1px solid #b9b9b9;    
 }
 
 #board_list table>tbody>tr>td {
-    border-top: 1px dotted #808080;    
-    border-right: 1px solid #808080;
+    padding: 2px 0px 2px 0px;
+    border-bottom: 1px solid #b9b9b9;  
+    border-right: 1px ;  
 }
 
 #board_list table>tbody>tr>td>img {
-    text-align: center;
+    width:100%;
+    height: 60px;
+}
+
+#board_list tbody>tr:hover{
+    background-color: rgb(253, 213, 59);
+    color: #fff;
 }
 
 
