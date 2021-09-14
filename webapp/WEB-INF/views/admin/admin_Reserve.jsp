@@ -9,6 +9,7 @@
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/adminReserve.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/modal.css" rel="stylesheet" type="text/css">
 
 <script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <script src="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
@@ -98,6 +99,7 @@
 						<table>
 							<tr>
 								<th>테마</th>
+								<th>예약번호</th>
 								<th>예약날짜<input type="hidden" id="datepicker"></th>
 								<th>시간</th>
 								<th>인원</th>
@@ -105,8 +107,9 @@
 								<th></th>
 							</tr>
 
-							<tr>
+							<tr class="beforePlay">
 								<td>비밀의화원 미드나잇</td>
+								<td>392002039</td>
 								<td>2021-08-27</td>
 								<td>12:30</td>
 								<td>3인</td>
@@ -116,6 +119,7 @@
 
 							<tr>
 								<td>싸인이스케이프 홍대점</td>
+								<td>392002039</td>
 								<td>2021.07.08</td>
 								<td>2021070822</td>
 								<td>No hint</td>
@@ -125,6 +129,7 @@
 
 							<tr>
 								<td>비밀의화원 미드나잇</td>
+								<td>392002039</td>
 								<td>2021.08.27</td>
 								<td>57m 40s</td>
 								<td>3 hints</td>
@@ -137,12 +142,14 @@
 								<td>2021.07.08</td>
 								<td>2021070822</td>
 								<td>No hint</td>
+								<td></td>
 								<td>1인</td>
 								<td>탈출완료</td>
 							</tr>
 
 							<tr>
 								<td>싸인이스케이프 홍대점</td>
+								<td>392002039</td>
 								<td>2021.07.08</td>
 								<td>2021070822</td>
 								<td>No hint</td>
@@ -177,6 +184,77 @@
 		</div>
 		<!-- //content -->
 
+
+		<div id="paymentDetail_modal_escapeComplete">
+
+			<div class="paymentDetail_modal_content">
+
+				<a id="modal_escapeComplete_close_btn"><img
+					src="${pageContext.request.contextPath }/assets/image/mypageEtc/closeBtn.JPG"></a>
+
+				<div id="paymentDetail_table_item">
+					<table id="reservation_check_table">
+						<tr>
+							<td id="reservation_thema_img" rowspan="5"><img
+								src="${pageContext.request.contextPath }/assets/image/reserveEtc/factoryM.JPG"></td>
+							<th>예약번호</th>
+							<td>2021082701</td>
+							<th>예약자</th>
+							<td>차예진</td>
+						</tr>
+
+						<tr>
+							<th>지점</th>
+							<td>비밀의화원 미드나잇</td>
+							<th>연락처</th>
+							<td>010-1111-1111</td>
+						</tr>
+
+						<tr>
+							<th>테마</th>
+							<td>팩토리 엠</td>
+							<th>결제금액</th>
+							<td>50,000원</td>
+						</tr>
+
+						<tr>
+							<th>예약일시</th>
+							<td colspan="3">2021년 8월 27일 15시 30분</td>
+						</tr>
+
+						<tr>
+							<th>인원</th>
+							<td colspan="3">2인</td>
+						</tr>
+					</table>
+
+					<div id="myPayment_Info">
+						<div>
+							<span>팀원 1</span> <span>may0505</span> <span
+								class="escape_record">56m 30s(No hint)</span>
+						</div>
+
+						<div>
+							<span>팀원 2</span> <span>yoon1033</span> <span
+								class="escape_record">56m 30s(No hint)</span>
+						</div>
+
+
+					</div>
+
+					<div id="myPayment_Info_Btn">
+						<button class="mbutton">수정완료</button>
+						<button class="mbutton">수정취소</button>
+					</div>
+				</div>
+
+
+
+			</div>
+
+			<div class="cafe_detail_modal_layer"></div>
+		</div>
+		
 		<!-- footer -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
@@ -196,5 +274,15 @@
 		}
 
 	});
+	
+	$(".beforePlay").on("click", function(){
+        $("#paymentDetail_modal_escapeComplete").attr("style", "display:block");
+        document.body.classList.add("stop-scroll");
+    });
+   
+     $("#modal_escapeComplete_close_btn").on("click", function(){
+        $("#paymentDetail_modal_escapeComplete").attr("style", "display:none");
+        document.body.classList.remove("stop-scroll");
+    });  
 </script>
 </html>
