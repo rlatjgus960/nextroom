@@ -78,5 +78,13 @@ public class Hello {
 		System.out.println("mypagePayment");
 		return "user/mypage_payment";
 	}
+	
+	
+	////////마이페이지폼 개인정보 변경//////////
+	@RequestMapping("/information")
+	public String user_information() {
+		System.out.println("user_information");
+		return "user/mypage_information";
+	}
 
 }
