@@ -91,7 +91,7 @@ public class Hello {
 	@RequestMapping("/adminReserve")
 	public String adminReserve() {
 		System.out.println("adminReserve");
-		return "user/admin_Reserve";
+		return "admin/admin_Reserve";
 	}
 
 	
