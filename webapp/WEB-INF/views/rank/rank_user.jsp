@@ -35,7 +35,7 @@
 
 
 
-         <div id="contentMain" class="clearfix">
+         <div id="" class="clearfix">
             <!-- aside -->
            <c:import url="/WEB-INF/views/includes/rank_aside.jsp"></c:import>
             <!-- //aside -->
