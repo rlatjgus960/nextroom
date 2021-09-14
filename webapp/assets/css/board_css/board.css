@@ -185,3 +185,10 @@ a.active {
     font-weight: bold;
     color: #000000;
  }
+ 
+ 
+ 
+ /* 닉네입 클릭시 모달 */
+ #nick_modal{
+ 	display : none;
+ }

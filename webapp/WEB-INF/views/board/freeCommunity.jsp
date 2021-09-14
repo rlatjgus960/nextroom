@@ -121,7 +121,7 @@
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td>최원호</td>
+									<td class="btnNick">최원호</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
@@ -235,5 +235,46 @@
 
 
 	</div>
+	
+	
+
+	 <div id="nick_modal">
+		<ul>
+			<li>
+				<a href="">
+					<span>랭킹보기</span>
+				</a>	
+			</li>
+
+			<li>
+				<a href="">
+					<span>게시글보기</span>
+				</a>	
+			</li>
+
+			<li>
+				<a href="">
+					<span>쪽지보내기</span>
+				</a>	
+			</li>			
+		</ul>
+	 </div>
 </body>
+
+
+<script type="text/javascript">
+
+//닉네임 클릭할 때
+$(".btnNick").on("click", function(){
+	event.preventDefault();
+	console.log("이미지 올리기 클릭")
+	
+	//모달창 보이기
+	$("#nick_modal").modal();
+	
+});
+</script>
+
+
+
 </html>
