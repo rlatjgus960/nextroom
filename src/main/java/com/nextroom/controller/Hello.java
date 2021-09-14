@@ -86,5 +86,15 @@ public class Hello {
 		System.out.println("user_information");
 		return "user/mypage_information";
 	}
+	
+	//////// 관리자 예약관리 페이지 //////////
+	@RequestMapping("/adminReserve")
+	public String adminReserve() {
+		System.out.println("adminReserve");
+		return "user/admin_Reserve";
+	}
+
+	
+	
 
 }
