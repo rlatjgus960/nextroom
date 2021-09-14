@@ -188,7 +188,7 @@
 		<!-- 모달 -->
 		<div id="admin_reserveitem_modal">
 
-			<div class="admin_reserveitem_modal_cotent">
+			<div class="admin_reserveitem_modal_content">
 
 				<a id="modal_close_btn"><img
 					src="${pageContext.request.contextPath }/assets/image/mypageEtc/closeBtn.JPG"></a>

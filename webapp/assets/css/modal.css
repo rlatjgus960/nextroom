@@ -73,7 +73,7 @@
   
 #paymentDetail_modal .paymentDetail_modal_content,
 #paymentDetail_modal_escapeComplete .paymentDetail_modal_content,
-#admin_reserveitem_modal .admin_reserveitem_modal_cotent {
+#admin_reserveitem_modal .admin_reserveitem_modal_content {
     width:1050px;
     height: 650px;
     position: absolute;
