@@ -35,7 +35,7 @@
 
 
 			<!-- contentMain -->
-			<div id="contentMain" class="">
+			<div id="" class="">
 			
 			<!--userprofile-->
 

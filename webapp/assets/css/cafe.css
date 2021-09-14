@@ -147,12 +147,16 @@
 }
 
 #theme_detail_title {
-    /* 여ㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕ기ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ해야됨 */
+    height: 185px;
 }
 
 #cafe_detail_name, #theme_detail_themeTitle {
     font-size: 32px;
     font-weight: bolder;
+}
+
+#theme_detail_cafeName {
+    margin: 10px 0px;
 }
 
 #cafe_detail_text, #theme_detail_text {
@@ -373,9 +377,39 @@
     border: 1px solid #e0e0e0;
     border-radius: 5px;
     width: 1300px;
-    min-height: 150px;
+    min-height: 200px;
+    height: fit-content;
     box-sizing: border-box;
+    padding: 10px 20px;
 }
 
+#theme_detail_review>div>p {
+    margin-top: 5px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
 
+.theme_review p {
+    text-align: left;
+    margin: 10px 0px;
+}
 
+.theme_review_wrap, .theme_review_edit{
+    float: left;
+}
+
+.theme_review_wrap {
+    width: 1280px;
+}
+
+.theme_review_item {
+    font-weight: bold;
+    font-size: 16px;
+    float: left;
+    width: 1074.72px;
+}
+
+.theme_review_edit {
+    margin-top: 10px;
+}

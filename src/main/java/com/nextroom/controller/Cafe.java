@@ -11,19 +11,25 @@ public class Cafe {
 	@RequestMapping("/cafe")
 	public String cafe_main() {
 	   System.out.println("cafe");
-	   return "cafe/cafe_main";
+	   return "cafe/cafeMain";
 	}
 	
-	@RequestMapping("/cafe_detail")
+	@RequestMapping("/cafeDetail")
 	public String cafe_detail() {
-	   System.out.println("cafe_detail");
-	   return "cafe/cafe_detail";
+	   System.out.println("cafeDetail");
+	   return "cafe/cafeDetail";
 	}
 	
 	@RequestMapping("/theme")
 	public String theme_main() {
-	   System.out.println("theme_main");
-	   return "theme/theme_main";
+	   System.out.println("themeMain");
+	   return "theme/themeMain";
+	}
+	
+	@RequestMapping("/themeDetail")
+	public String themeDetail() {
+	   System.out.println("themeDetail");
+	   return "theme/themeDetail";
 	}
 
 }

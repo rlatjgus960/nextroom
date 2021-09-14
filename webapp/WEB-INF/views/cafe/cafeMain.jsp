@@ -115,10 +115,12 @@
 		
 					<!-- 리스트 반복영역 -->
 					<div class="cafe_list_item clearfix">
-						<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						<a href="${pageContext.request.contextPath}/cafeDetail">
+							<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+						</a>
 						<div id="" class="cafe_info">
 							<div class="cafe_intro">
-								<p class="cafe_name">방탈출 카페 이름</p>
+								<p class="cafe_name"><a href="${pageContext.request.contextPath}/cafeDetail">방탈출 카페 이름</a></p>
 								<p class="cafe_content">방탈출 카페 한줄 소개</p>
 							</div>
 
@@ -126,17 +128,17 @@
 								
 								<div>
 									<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
-									<a href="">전화번호</a>
+									<p>전화번호</p>
 								</div>
 								
 								<div>
 									<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
-									<a href="">위치</a>
+									<p>위치</p>
 								</div>
 
 								<div>
 									<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
-									<a href="">운영시간</a>
+									<p>운영시간</p>
 								</div>
 
 
@@ -293,12 +295,7 @@
 
 
 		<!-- footer -->
-
-		<div id="footer">
-			상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 : moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동
-			서초대로77길 13<br> Copyright © NEXTROOM All rights reserved.
-		</div>
-
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
 	</div>
 </body>
