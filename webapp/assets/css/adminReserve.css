@@ -64,6 +64,7 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 #admin_reservation_table_select select {
     height: 25px;
     width: 100px;
+    margin-left: 10px;
 }
 /****************************************************************/
 

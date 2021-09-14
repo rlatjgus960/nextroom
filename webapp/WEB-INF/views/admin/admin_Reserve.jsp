@@ -8,7 +8,7 @@
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/adminRecord.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/adminReserve.css" rel="stylesheet" type="text/css">
 
 <script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <script src="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
@@ -82,6 +82,16 @@
 							<option value="not_done">미완료</option>
 						</select>
 					</div>
+					
+					<!-- 예약날짜 -->
+                    <div id="admin_reservation_table_select" class="clearfix ">
+                        <select name="doneSelect">
+                            <option value="all">전체보기</option>
+                            <option value="done">최근 1개월보기</option>
+                            <option value="done">최근 3개월보기</option>
+                            <option value="not_done">최근 6개월 보기</option>
+                        </select>
+                    </div>
 
 					<div id="record_table">
 						<table>
