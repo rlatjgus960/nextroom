@@ -265,13 +265,13 @@
 	});
 	
 	$(".cafe_btn_viewmap").on("click", function() {
-		$("#paymentDetail_modal").attr("style", "display:block");
+		$("#admin_reserveitem_modal").attr("style", "display:block");
 		document.body.classList.add("stop-scroll");
 
 	});
 
 	$("#modal_close_btn").on("click", function() {
-		$("#paymentDetail_modal").attr("style", "display:none");
+		$("#admin_reserveitem_modal").attr("style", "display:none");
 		document.body.classList.remove("stop-scroll");
 
 	});

@@ -100,7 +100,8 @@
 }   
 
 .paymentDetail_modal_content #modal_close_btn,
-.paymentDetail_modal_content #modal_escapeComplete_close_btn{
+.paymentDetail_modal_content #modal_escapeComplete_close_btn,
+.admin_reserveitem_modal_content #modal_close_btn{
     float: right;
     margin-bottom: 20px;
     margin-top: 0px;
