@@ -131,6 +131,10 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 
 
 #admin_reserve_Btns button {
-    margin: 20px 10px 10px 0px;
+    margin: 35px 10px 10px 0px;
 }
 /***********************************************************/
+
+.beforePlay {
+    background-color: rgb(243, 235, 236);
+}

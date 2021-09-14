@@ -72,8 +72,7 @@
 }
   
 #paymentDetail_modal .paymentDetail_modal_content,
-#paymentDetail_modal_escapeComplete .paymentDetail_modal_content,
-#admin_reserveitem_modal .admin_reserveitem_modal_content {
+#paymentDetail_modal_escapeComplete .paymentDetail_modal_content {
     width:1050px;
     height: 650px;
     position: absolute;
@@ -86,6 +85,18 @@
     overflow-y: auto;
 }
   
+#admin_reserveitem_modal .admin_reserveitem_modal_content {
+    width:1050px;
+    height: 550px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding:10px 10px;
+    background:#fff;
+    border:2px solid #666;
+    overflow-y: auto;
+}
 
 #paymentDetail_modal .cafe_detail_modal_layer, 
 #paymentDetail_modal_escapeComplete .cafe_detail_modal_layer,

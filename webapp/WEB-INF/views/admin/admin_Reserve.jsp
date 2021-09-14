@@ -107,7 +107,7 @@
 								<th></th>
 							</tr>
 
-							<tr class="cafe_btn_viewmap">
+							<tr class="cafe_btn_viewmap beforePlay">
 								<td>비밀의화원 미드나잇</td>
 								<td>392002039</td>
 								<td>2021-08-27</td>
