@@ -55,7 +55,7 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
     box-shadow: 1px 1px 3px 1px #dadce0;
 }
 
-.colorOn {
+.yellow_colorOn {
     background-color: rgb(253, 213, 59);
 }
 
@@ -137,4 +137,76 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 
 .beforePlay {
     background-color: rgb(243, 235, 236);
+}
+
+#admin_reservation_thema_time table {
+    font-size: 20px;
+    font-weight: border;
+    float: right;
+    margin-right: 2px;
+    border-collapse: collapse;
+}
+
+#admin_reservation_thema_time td {
+    height: 110px;
+    width: 209px;
+    box-shadow: 1px 1px 3px 1px #dadce0;
+}
+
+#admin_reserve_change_Btns button {
+    margin: 30px auto;
+}
+
+.timeover {
+    color: #b9b9b9;
+}
+
+.reservePos {
+    background-color: rgb(111, 206, 116);
+}
+
+.reserveImpos {
+    background-color: rgb(252, 107, 52);
+}
+
+.reservation_completed {
+    background-color: rgb(253, 213, 59);
+}
+
+#admin_reservation_thema_time_color {
+    margin: 20px 0px 10px 0px;
+    float: right;
+}
+
+#admin_reservation_thema_time_color>div {
+    float: right;
+    margin-left: 20px;
+    height: 18px;
+}
+
+#whitebox, #yellowbox, #greenbox, #redbox {
+    float: left;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+}
+
+#whitebox {
+    background-color: white;
+    border: 1px solid #b9b9b9;
+}
+
+#yellowbox {
+    background-color: rgb(253, 213, 59);
+    border: 1px solid #b9b9b9;
+}
+
+#greenbox {
+    background-color: rgb(111, 206, 116);
+    border: 1px solid #b9b9b9;
+}
+
+#redbox {
+    background-color: rgb(252, 107, 52);
+    border: 1px solid #b9b9b9;
 }
