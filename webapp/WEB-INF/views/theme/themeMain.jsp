@@ -318,12 +318,7 @@
 
 
 		<!-- footer -->
-
-		<div id="footer">
-			상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 : moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동
-			서초대로77길 13<br> Copyright © NEXTROOM All rights reserved.
-		</div>
-
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
 	</div>
 

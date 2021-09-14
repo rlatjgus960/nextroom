@@ -162,12 +162,16 @@
 
                     <!-- 테마 반복영역 -->
                     <div class="cafe_theme">
-                        <img href="" src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
+                        <a href="${pageContext.request.contextPath}/themeDetail">
+	                        <img src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
+                        </a>
 
                         <div class="cafe_theme_info">
                             <p>넥스트에디션 강남신논현점</p>
 
-                            <p href="" class="cafe_theme_info_title">어시스턴트(Assistant)</p>
+							<a href="${pageContext.request.contextPath }/themeDetail">
+                        	    <p class="cafe_theme_info_title">어시스턴트(Assistant)</p>
+                        	</a>
 
                             <span>장르 : </span><span>판타지</span> | <span>추천인원 : </span><span>2~5인</span><br>
                             <span>난이도 : </span><span>★★★★</span> | <span>플레이타임 : </span><span>60분</span><br>
@@ -271,12 +275,7 @@
 
 
 		<!-- footer -->
-
-		<div id="footer">
-			상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 : moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동
-			서초대로77길 13<br> Copyright © NEXTROOM All rights reserved.
-		</div>
-
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<!-- //footer -->
 	</div>
 
