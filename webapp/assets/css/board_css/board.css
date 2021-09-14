@@ -190,5 +190,9 @@ a.active {
  
  /* 닉네입 클릭시 모달 */
  #nick_modal{
- 	display : none;
+ 	position: absolute;
+    left: 50%;
+    top: 26px;
+    margin-left: -50px;
+    border: 1px solid black;
  }
