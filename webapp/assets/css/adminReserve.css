@@ -94,39 +94,43 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 /**********************************************************/
 
 
-#paymentDetail_table_item {
-    padding: 20px 0px 20px 25px;
-}
 
-#paymentDetail_table_item #reservation_check_table {
-    width: 1000px;
-}
 
-#myPayment_Info select {
-    height: 25px;
-    width: 100px;
-}
-
-#myPayment_Info input {
-    height: 30px;
-    width: 200px;
-}
-
-#myPayment_Info div {
+/***************************** 모달 ******************************/
+#admin_reserveitem_check_table {
+    width: 1050px;
+    font-size: 15px;
+    border-top: 1px solid #b9b9b9;
+    border-collapse: collapse;
+    text-align: left;
     margin-bottom: 20px;
 }
 
-#myPayment_Info_Btn button {
-    margin: 20px 10px 10px 0px;
+#reservation_thema_img {
+    width: 350px;
 }
 
-#paymentDetail_table>table {
-    border-collapse: collapse;
-    border-top: 1px solid #b9b9b9;
-    width: 1050px;
-}
-
-#paymentDetail_table td, #paymentDetail_table th {
+#admin_reserveitem_check_table td, #admin_reserveitem_check_table th {
     border-bottom: 1px solid #b9b9b9;
     height: 50px;
 }
+
+#admin_reserveitem_check_table td>img {
+    height: 270px;
+    width: 200px;
+    margin: 30px 70px;
+}
+
+#admin_reserveitem_table_item {
+    padding: 20px 0px 20px 25px;
+}
+
+#admin_reserveitem_table_item #admin_reserveitem_check_table {
+    width: 1000px;
+}
+
+
+#admin_reserve_Btns button {
+    margin: 20px 10px 10px 0px;
+}
+/***********************************************************/

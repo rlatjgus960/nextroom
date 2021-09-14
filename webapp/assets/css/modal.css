@@ -50,7 +50,8 @@
   
 /*************************** 마이페이지 결제내역 모달창 ****************************/
 #paymentDetail_modal,
-#paymentDetail_modal_escapeComplete {
+#paymentDetail_modal_escapeComplete,
+#admin_reserveitem_modal {
 
     display: none;
 
@@ -63,14 +64,16 @@
 }
   
 #paymentDetail_modal #modal_close_btn, 
-#paymentDetail_modal_escapeComplete #modal_escapeComplete_close_btn {
+#paymentDetail_modal_escapeComplete #modal_escapeComplete_close_btn,
+#admin_reserveitem_modal #modal_close_btn {
     display:inline-block;
     margin-top: 15px;
     width:100px;
 }
   
 #paymentDetail_modal .paymentDetail_modal_content,
-#paymentDetail_modal_escapeComplete .paymentDetail_modal_content {
+#paymentDetail_modal_escapeComplete .paymentDetail_modal_content,
+#admin_reserveitem_modal .admin_reserveitem_modal_cotent {
     width:1050px;
     height: 650px;
     position: absolute;
@@ -85,7 +88,8 @@
   
 
 #paymentDetail_modal .cafe_detail_modal_layer, 
-#paymentDetail_modal_escapeComplete .cafe_detail_modal_layer{
+#paymentDetail_modal_escapeComplete .cafe_detail_modal_layer,
+#admin_reserveitem_modal .admin_reserveitem_modal_layer{
     position:fixed;
     top:0;
     left:0;

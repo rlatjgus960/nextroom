@@ -107,7 +107,7 @@
 								<th></th>
 							</tr>
 
-							<tr class="beforePlay">
+							<tr class="cafe_btn_viewmap">
 								<td>비밀의화원 미드나잇</td>
 								<td>392002039</td>
 								<td>2021-08-27</td>
@@ -185,15 +185,16 @@
 		<!-- //content -->
 
 
-		<div id="paymentDetail_modal_escapeComplete">
+		<!-- 모달 -->
+		<div id="admin_reserveitem_modal">
 
-			<div class="paymentDetail_modal_content">
+			<div class="admin_reserveitem_modal_cotent">
 
-				<a id="modal_escapeComplete_close_btn"><img
+				<a id="modal_close_btn"><img
 					src="${pageContext.request.contextPath }/assets/image/mypageEtc/closeBtn.JPG"></a>
 
-				<div id="paymentDetail_table_item">
-					<table id="reservation_check_table">
+				<div id="admin_reserveitem_table_item">
+					<table id="admin_reserveitem_check_table">
 						<tr>
 							<td id="reservation_thema_img" rowspan="5"><img
 								src="${pageContext.request.contextPath }/assets/image/reserveEtc/factoryM.JPG"></td>
@@ -228,23 +229,11 @@
 						</tr>
 					</table>
 
-					<div id="myPayment_Info">
-						<div>
-							<span>팀원 1</span> <span>may0505</span> <span
-								class="escape_record">56m 30s(No hint)</span>
-						</div>
+					
 
-						<div>
-							<span>팀원 2</span> <span>yoon1033</span> <span
-								class="escape_record">56m 30s(No hint)</span>
-						</div>
-
-
-					</div>
-
-					<div id="myPayment_Info_Btn">
-						<button class="mbutton">수정완료</button>
-						<button class="mbutton">수정취소</button>
+					<div id="admin_reserve_Btns">
+						<button class="mbutton">입실확인</button>
+						<button class="mbutton">예약취소</button>
 					</div>
 				</div>
 
@@ -252,7 +241,7 @@
 
 			</div>
 
-			<div class="cafe_detail_modal_layer"></div>
+			<div class="admin_reserveitem_modal_layer"></div>
 		</div>
 		
 		<!-- footer -->
@@ -275,14 +264,16 @@
 
 	});
 	
-	$(".beforePlay").on("click", function(){
-        $("#paymentDetail_modal_escapeComplete").attr("style", "display:block");
-        document.body.classList.add("stop-scroll");
-    });
-   
-     $("#modal_escapeComplete_close_btn").on("click", function(){
-        $("#paymentDetail_modal_escapeComplete").attr("style", "display:none");
-        document.body.classList.remove("stop-scroll");
-    });  
+	$(".cafe_btn_viewmap").on("click", function() {
+		$("#paymentDetail_modal").attr("style", "display:block");
+		document.body.classList.add("stop-scroll");
+
+	});
+
+	$("#modal_close_btn").on("click", function() {
+		$("#paymentDetail_modal").attr("style", "display:none");
+		document.body.classList.remove("stop-scroll");
+
+	});
 </script>
 </html>
