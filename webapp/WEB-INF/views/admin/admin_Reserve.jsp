@@ -85,11 +85,12 @@
 					
 					<!-- 예약날짜 -->
                     <div id="admin_reservation_table_select" class="clearfix ">
-                        <select name="doneSelect">
+                        <select name="termSelect">
                             <option value="all">전체보기</option>
-                            <option value="done">최근 1개월보기</option>
-                            <option value="done">최근 3개월보기</option>
-                            <option value="not_done">최근 6개월 보기</option>
+                            <option value="oneWeek">최근 1주일보기</option>
+                            <option value="oneMonth">최근 1개월보기</option>
+                            <option value="threeMonth">최근 3개월보기</option>
+                            <option value="sixMonth">최근 6개월 보기</option>
                         </select>
                     </div>
 
