@@ -1,0 +1,12 @@
+
+
+#record_table>table {
+    border-collapse: collapse;
+    border-top: 1px solid #b9b9b9;
+    width: 1000px;
+}
+
+#record_table td, #record_table th {
+    border-bottom: 1px solid #b9b9b9;
+    height: 50px;
+}
