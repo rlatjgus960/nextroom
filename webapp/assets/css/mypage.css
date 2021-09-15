@@ -189,3 +189,52 @@
 }
 
 /********************************************************************************/
+
+
+/****************************** 마이페이지 파티관리 **********************************/
+li.active {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: underline;
+ }
+ 
+ #party_table_select>select {
+    height: 25px;
+    width: 135px;
+    float: right;
+    margin: 20px 0px;
+}
+
+#partyJoin_detail_table>table {
+    border-collapse: collapse;
+    border-top: 1px solid #b9b9b9;
+    width: 1050px;
+}
+
+#partyJoin_detail_table th {
+    border-bottom: 1px solid #b9b9b9;
+    height: 50px;
+}
+
+#partyJoin_detail_table td {
+	height: 110px;
+	border-bottom: 1px solid #b9b9b9;
+} 
+
+
+#mypageMain #paging {
+	margin: 20px auto;
+	width: 200px;
+}
+
+#paging ul {margin: 10px 5px 10px 5px;}
+#paging ul>li{
+	float: left;
+	margin: 0px 8px 0px 8px;
+}
+
+#paging ul>li.active{
+	font-size: 14px;
+	font-weight: bold;
+}
