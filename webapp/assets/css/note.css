@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/* 삭제버튼 aside랑 줄맞추기 */
+#all_select{
+    margin-top: 35px;
+}
+
+/* 삭제버튼 */
+.delete_button{
+    float: left;
+    padding: 4px 14px 5px 14px;
+    font-size: 15px;
+    color: #000;
+    background-color: rgb(224,224,224);
+    border: none;
+    border-radius: 5px;
+}
+
+.delete_button:hover{
+    background-color: rgb(253, 213, 59);
+    color: #fff;
+}
+
+/* 쪽지함 높이 */
+#noteMain {
+    width: 1050px;
+    height: 500px;
+    float: right;
+}
+
+/* 쪽지함 페이징 */
+#note_pager {    
+    text-align: center;     
+}
+
+
+#note_pager ol {    
+    width: 190px;
+    display: inline-block;   
+}
+
+#note_pager ol>li {
+   float: left;
+   margin: 0px 5px 0px 0px;
+}
+
+/* 삭제 아이콘 */
+.delete_icon{
+    width: 20px;
+    height: 20px;
+}

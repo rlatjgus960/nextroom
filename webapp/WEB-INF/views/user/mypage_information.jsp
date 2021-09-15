@@ -45,7 +45,7 @@
                     <div id="aside_cate">
                        <!-- <p>마이페이지</p> -->
                        <ul>
-                          <li><a class="active" href="">개인정보 변경</a></li>
+                          <li><a class="active" href="${pageContext.request.contextPath }/information">개인정보 변경</a></li>
                           <li>결제내역</li>
                           <li>파티관리</li>
                           <li>나의 문의내역</li>

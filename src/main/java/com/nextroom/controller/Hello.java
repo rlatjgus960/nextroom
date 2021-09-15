@@ -109,6 +109,19 @@ public class Hello {
 	}
 
 	
+	////////받은 쪽지함 //////////
+	@RequestMapping("/getNote")
+	public String getNote() {
+		System.out.println("getNote");
+		return "user/mypage_getNote";
+	}
+	
+	////////보낸 쪽지함 //////////
+	@RequestMapping("/sendNote")
+	public String sendNote() {
+		System.out.println("sendNote");
+		return "user/mypage_sendNote";
+	}
 	
 
 }
