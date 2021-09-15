@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+/* 게시글 테이블 */
+
+#contentWrap {
+    float: right;
+    width: 1050px;
+}
+
+
+#themeModify_table {
+    float: left;
+    margin-bottom: 10px;
+}
+
+#themeModify_table>table {
+    border-collapse: collapse;
+    border-top: 1px solid #b9b9b9;
+    width: 1050px;
+}
+
+#themeModify_table td, #themeModify_table th {
+    border-bottom: 1px solid #b9b9b9;
+    height: 50px;
+}
+
+.theme_no {
+    width: 150px;
+}
+
+.theme_name {
+    width: 750px;
+}
+
+.themeNo {
+    zoom: 1.2;
+}
+/* *************** */
+
+
+
+#admin_subHeader {
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+#themeModify_button {
+    float: right;
+}
+
+
+
+/* 카페 수정 */
+#cafe_mainImg, #add_cafeInterior img{
+    width: 300px;
+}
+
+#cafe_mainImg_wrap {
+    float: left;
+}
+
+
+.scroll-image img {
+    display: inline-block;
+    height: 200px;
+}
+
+.scroll-image{
+    width: 320px;
+    height: 200px;
+    text-align: left;
+    overflow-y: auto;
+}
+
+#themeModify_button {
+    width: 1050px;
+}
+
+.cafe_upIcon {
+    width: 25px;
+    vertical-align: bottom;
+    margin-right: 5px;
+}
+
+.cafeModi_button {
+    border: none;
+    background-color: #fff;
+}
+
+.cafeModi_button:hover {
+    cursor: pointer;
+}
+
+#cafe_interior_wrap {
+    float: right;
+}
+
+.cafe_up_wrap {
+    margin-top: 10px;
+}
+
+
+.cafModi_subTitle {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#cafeModi_img {
+    margin-top: 50px;
+    padding: 0px 150px;
+}
+
+#cafe_explain_wrap {
+    margin-top: 50px;
+    text-align: left;
+}
+
+.cafe_explain_item {
+    margin-bottom: 30px;
+}
+
+.cafe_explain_item textarea, .cafe_explain_item p{
+    float: left;
+}
+
+.cafe_explain_item p{
+    width: 155px;
+}
+
+.cafe_explain_item textarea{
+    box-sizing: border-box;
+    width: 750px;
+    height: 120px;
+}
+
+/* 주소검색 영역 */
+
+.address_search input {
+    width: 180px;
+    height: 30px;
+    margin-right: 3px;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+#phoneNumber, #workTime input {
+	width: 180px;
+    height: 30px;
+    box-sizing: border-box;
+}
+
+#searchBtn, #postcode {
+	width: 90px; 
+
+}
+
+#cafeURL {
+	width: 400px;
+	height: 30px;
+	box-sizing: border-box;
+}
+
+
+#searchBtn {
+    background-color: rgb(224,224,224);
+    cursor: pointer;
+    color: #000;
+    border: none;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+#searchBtn:hover {
+    background-color: rgb(253, 213, 59);
+    color: #fff;
+}
+
+#themeModify_button {
+    margin-bottom: 10px;
+}
+
+
