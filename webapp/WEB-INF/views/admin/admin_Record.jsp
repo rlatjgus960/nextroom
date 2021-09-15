@@ -9,6 +9,7 @@
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/adminRecord.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/modal.css" rel="stylesheet" type="text/css">
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -38,7 +39,7 @@
 			<div id="subheader-title">
 			<h2>랭킹</h2>
 			</div>
-			<div id="subheader-mintitle">관리자페이지 > 예약확인</div>
+			<div id="subheader-mintitle">관리자페이지 > 기록입력</div>
 
 
 
@@ -48,7 +49,9 @@
             <div class="clearfix">
                 <div id="aside">
         
-                    <img id="aside_img" src="../../../assets/image/asideImg.png" width="35px" height="35px">
+                    <img id="aside_img"
+			src="${pageContext.request.contextPath }/assets/image/asideImg.png"
+			width="35px" height="35px">
                 
                     <div id="aside_cate">
                     
@@ -95,13 +98,31 @@
                             <th></th>
                         </tr>
 
+                         <tr>
+                            <td>비밀의화원 미드나잇</td>
+                            <td>2021-08-27</td>
+                            <td>12:30</td>
+                            <td>3인</td>
+                            <td>세일러문</td>
+                            <td><a id="" class="record_modal_open mbutton recordBtn">기록입력</a></td>
+                        </tr>
+                        
                         <tr>
                             <td>비밀의화원 미드나잇</td>
                             <td>2021-08-27</td>
                             <td>12:30</td>
                             <td>3인</td>
                             <td>세일러문</td>
-                            <td><a id="record_modal_open" class="mbutton recordBtn">기록입력</a></td>
+                            <td><a id="" class="record_modal_open mbutton recordBtn">기록입력</a></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>비밀의화원 미드나잇</td>
+                            <td>2021-08-27</td>
+                            <td>12:30</td>
+                            <td>3인</td>
+                            <td>세일러문</td>
+                            <td><a id="" class="record_modal_open mbutton recordBtn">기록입력</a></td>
                         </tr>
 
                        
@@ -143,6 +164,7 @@
 	                            </tr>
 	                            <tr class="time_data">
 	                                <td><input type="text" name="record_hour" value=""> m <input type="text" name="record_hour" value=""> s</td>
+	                                <td><label><input class="escapeFailed" type="checkbox" name="failed" value="failed"> 탈출실패</label></td>
 	                            </tr>
 	
 	                            <tr class="label_hints">
@@ -189,7 +211,7 @@
 	    ,buttonImageOnly: true
 	});
 	
-	$("#record_modal_open").on("click", function(){
+	$(".record_modal_open").on("click", function(){
 	    $("#admin_record_modal").attr("style", "display:block");
 	    document.body.classList.add("stop-scroll");
 	});  

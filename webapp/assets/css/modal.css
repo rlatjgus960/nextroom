@@ -151,7 +151,7 @@
 	height: 30px;
 }
 
-.time_data input, .hints_data input{
+.time_data input[type="text"], .hints_data input[type="text"]{
 	width: 70px;
 	text-align: right;
 }
