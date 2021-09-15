@@ -20,4 +20,12 @@ public class Admin {
 	   return "admin/admin_RecordModify";
 	}
 	
+	
+	@RequestMapping("/adminCafe")
+	public String adminCafe() {
+	   System.out.println("adminCafe");
+	   return "admin/admin_cafeModi";
+	}
+	
+	
 }
