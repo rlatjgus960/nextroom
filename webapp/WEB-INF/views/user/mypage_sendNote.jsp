@@ -11,6 +11,8 @@
 <link href="${pageContext.request.contextPath }/assets/css/board_css/board.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/note.css" rel="stylesheet" type="text/css">
 
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script> 
 <title>보낸 쪽지함</title>
 </head>
 <body>
@@ -97,7 +99,7 @@
 							</colgroup>
 							<thead>
 								<tr>
-									<th><input type="checkbox"></th>
+									<th><input type="checkbox" name=checkAll></th>
 									<th>받는 사람</th>
 									<th>쪽지 내용</th>
 									<th>보낸 날짜</th>
@@ -108,7 +110,7 @@
 
 							<tbody>
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -119,7 +121,7 @@
 								</tr>
 
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -130,7 +132,7 @@
 								</tr>
 
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -141,7 +143,7 @@
 								</tr>
 
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -152,7 +154,7 @@
 								</tr>
 
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -163,7 +165,7 @@
 								</tr>
 
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -174,7 +176,7 @@
 								</tr>
 								
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -185,7 +187,7 @@
 								</tr>
 
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -196,7 +198,7 @@
 								</tr>
 
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -207,7 +209,7 @@
 								</tr>
 
 								<tr>
-									<td><input type="checkbox"></td>
+									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
 										<span>보낸 쪽지함인디유</span>
@@ -272,4 +274,43 @@
 
 	</div>
 </body>
+
+<script type="text/javascript"> 
+
+	function allCheckFunc( obj ) {
+		$("[name=checkOne]").prop("checked", $(obj).prop("checked") );
+	}
+
+	/* 체크박스 체크시 전체선택 체크 여부 */
+	function oneCheckFunc( obj ){
+		var allObj = $("[name=checkAll]");
+		var objName = $(obj).attr("name");
+	
+		if( $(obj).prop("checked") ){
+			checkBoxLength = $("[name="+ objName +"]").length;
+			checkedLength = $("[name="+ objName +"]:checked").length;
+	
+			if( checkBoxLength == checkedLength ) {
+				allObj.prop("checked", true);
+			} else {
+				allObj.prop("checked", false);
+			}
+			
+		}else{
+			allObj.prop("checked", false);
+		}
+	}
+	
+	
+	$(function(){
+		$("[name=checkAll]").click(function(){
+			allCheckFunc( this );
+		});
+		$("[name=checkOne]").each(function(){
+			$(this).click(function(){
+				oneCheckFunc( $(this) );
+			});
+		});
+	});
+</script>
 </html>
