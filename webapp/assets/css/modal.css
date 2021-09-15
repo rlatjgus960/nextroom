@@ -128,3 +128,83 @@
     margin: 50px;
 }
 /*******************************************************/
+
+
+
+/**********************기록모달*************************/
+
+#record_table_wrap{
+	height: 500px;
+}
+
+#record_modal_table {
+	width: 440px;
+	font-size: 15px;
+	border-top: 1px solid #b9b9b9;
+	border-collapse: collapse;
+	text-align: left;
+	margin-left: 30px;
+}
+
+
+#record_modal_table tr{
+	height: 30px;
+}
+
+.time_data input, .hints_data input{
+	width: 70px;
+	text-align: right;
+}
+
+.hints_data{
+	height: 120px;
+}
+
+.red_x{
+	color: red;
+}
+
+
+#admin_record_modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	
+}
+
+#admin_record_closemodal {
+	display: inline-block;
+	margin-top: 15px;
+}
+
+#admin_record_modal_layer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: -1;
+}
+
+#admin_record_closemodal{
+    float:right;
+}
+
+#record_modal_cotent{
+    width: 500px;
+	height: 650px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px 10px;
+	background: #fff;
+	border: 2px solid #666;
+	overflow-y: auto;
+}
+
