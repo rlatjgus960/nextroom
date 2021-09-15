@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/**************************** 관리자 예약확인 테이블 ******************************/
+#record_table {
+    float: left;
+    margin-bottom: 10px;
+}
+
+#record_table>table {
+    border-collapse: collapse;
+    border-top: 1px solid #b9b9b9;
+    width: 1050px;
+}
+
+#record_table td, #record_table th {
+    border-bottom: 1px solid #b9b9b9;
+    height: 50px;
+}
+/**********************************************************/
+
+#adminMain{
+    float: right;
+}
+
+.recordBtn{
+    padding: 3px 10px;
+}
+
+#div_close{
+    margin-bottom: 30px;
+}
+
+
