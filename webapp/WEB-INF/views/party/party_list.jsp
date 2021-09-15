@@ -10,10 +10,12 @@
 <link href="${pageContext.request.contextPath }/assets/css/partyList.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/partyWriteModal.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+	
 <title>파티구하기</title>
 </head>
 <body>
@@ -192,71 +194,90 @@
 				<div class="party_bar">파티 등록</div>
 				
 				<form id="partyWrite_form" action="" method="">
+					<div>
+					
+						<table class="form_table">
+							<!-- 아이디 -->
+							<tbody>
+								<tr class="space">
+									<td id="text_bold">아이디</td> 
+									<td class="party_uid">ctct25</td>
+								</tr>
+						
+							<!-- 날짜 -->
+								<tr>
+									<td id="text_bold">날짜&nbsp;&nbsp;&nbsp;</td> 
+									<td>
+										<input type="text" id="party_date" name="partyDate" value="" placeholder="날짜를 선택해 주세요">
+									</td>
+								</tr>
+							
+							<!-- 지역 -->
+								<tr>
+									<td id="text_bold">지역&nbsp;&nbsp;&nbsp;</td> 
+									<td>
+										<select id="party_region" name="partyRegion">
+	                                		<option value="" selected="">지역을 선택해 주세요</option>
+	                            		</select>
+									</td>
+								</tr>
+							
+							<!-- 카페 -->
+								<tr>
+									<td id="text_bold">카페&nbsp;&nbsp;&nbsp;</td> 
+									<td>
+										<select id="party_cafe" name="partyCafe">
+	                                		<option value="" selected="">카페를 선택해 주세요</option>
+	                            		</select>
+									</td>
+								</tr>
+							
+							<!-- 테마 -->
+								<tr>
+									<td id="text_bold">테마&nbsp;&nbsp;&nbsp;</td> 
+									<td>
+										<select id="party_theme" name="partyTheme">
+	                                		<option value="" selected="">테마를 선택해 주세요</option>
+	                            		</select>
+									</td>
+								</tr>
+							
+							<!-- 시간 -->
+								<tr>
+									<td id="text_bold">시간&nbsp;&nbsp;&nbsp;</td> 
+									<td>
+										<select id="party_time" name="partyTime">
+	                                		<option value="" selected="">시간을 선택해 주세요</option>
+	                            		</select>
+									</td>
+								</tr>
+							
+							</tbody>
+						
+						</table>
+						
+						<!-- 인원체크 -->
+						<div id="people_box">
+							<span id="pSpan_box">  인원</span>
+							<input type="radio" id="rdo_two" name="partyPeople" value="2">2인
+							<input type="radio" id="rdo_three" name="partyPeople" value="3">3인
+							<input type="radio" id="rdo_four" name="partyPeople" value="4">4인
+							<input type="radio" id="rdo_five" name="partyPeople" value="5">5인
+							<input type="radio" id="rdo_six" name="partyPeople" value="6">6인
+						</div>
+									
+								
+						<!-- 모임글작성 -->
+						<div id="textarea_box">
+							<span id="tSpan_box">모임글작성</span>
+	                        <textarea id="area_content" name="content"></textarea>
+						</div>
 				
-					<!-- 아이디 -->
-					<div class="form_group"> 
-						<label id="party_uid" class="form_text" for="party_uid">아이디</label> <span class="party_uid">ctct25</span>
 					</div>
-				
-					<!-- 날짜 -->
-					<div class="form_group">
-						<label class="form_text" for="party_date">날짜</label>
-						<input type="text" id="party_date" name="partyDate" value="" placeholder="날짜를 선택해 주세요">
-					</div>
-					
-					<!-- 지역 -->
-					<div class="form_group">
-						<label class="form_text" for="party_region">지역</label>
-						<input type="text" id="party_region" name="partyRegion" value="" placeholder="지역을 선택해 주세요">
-					</div>
-					
-					<!-- 카페 -->
-					<div class="form_group">
-						<label class="form_text" for="party_cafe">카페</label>
-						<input type="text" id="party_cafe" name="partyCafe" value="" placeholder="카페를 선택해 주세요">
-					</div>
-					
-					<!-- 테마 -->
-					<div class="form_group">
-						<label class="form_text" for="party_theme">테마</label>
-						<input type="text" id="party_theme" name="partyTheme" value="" placeholder="테마를 선택해 주세요">
-					</div>
-					
-					<!-- 시간 -->
-					<div class="form_group">
-						<label class="form_text" for="party_time">시간</label>
-						<input type="text" id="party_time" name="partyTime" value="" placeholder="시간을 선택해 주세요">
-					</div>
-					
-					<!-- 인원체크 -->
-					<div class="form_group">
-						<span class="form_text">인원</span> 
-						
-						<input type="radio" id="rdo_two" name="partyPeople" value="2" checked = "checked">
-						<label for="rdo_two">2인</label> 
-						
-						<input type="radio" id="rdo_three" name="partyPeople" value="3">
-						<label for="rdo_three">3인</label> 
-						
-						<input type="radio" id="rdo_four" name="partyPeople" value="4">
-						<label for="rdo_four">4인</label> 
-						
-						<input type="radio" id="rdo_five" name="partyPeople" value="5">
-						<label for="rdo_five">5인</label> 
-					</div>
-					
-					<!-- 모임글작성 -->
-					<div id="introduce_box" class="form_group">
-						<label id="introduce" class="form_text" for="area_content">모임글작성</label>
-                        <textarea id="area_content" name="content"></textarea>
-					</div>
-					
-					
-					
 					
 					<div id="pWrite_button">
-						<button type="submit" class="">등록하기</button>
-						<button id="modal_close_btn">취소하기</button>
+						<button type="submit" class="search_button">등록하기</button>
+						<button id="modal_close_btn" class="search_button">취소하기</button>
 					</div>
 				</form>
 				
@@ -291,6 +312,15 @@
 		document.body.classList.add("stop-scroll");
 	});
 
+	
+	
+	 $("#party_date").datepicker({
+	     showOn:"button"
+	     , buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
+	     ,buttonImageOnly: true
+	 });
+	
+	
 </script>
 
 </html>

@@ -11,8 +11,8 @@
 }
 
 #partyWrite_modal .partyWrite_modal_content {
- 	width:700px;
-    height: 600px;
+ 	width:550px;
+    height: 570px;
     position: absolute;
     margin:100px auto;
     top: 37%;
@@ -22,19 +22,18 @@
     background:#fff;
     border:2px solid #666;
     overflow-y: auto;
+    font-size: 15px;
 }
 
 .partyWrite_modal_content .party_bar {
   margin-bottom :8px;
-  font-size:17px;
+  font-size:20px;
   font-weight: bold;
+  border-bottom: 1px solid #b9b9b9;
+  border-collapse: collapse;
+  padding-bottom: 15px;
 }
 
-#partyWrite_modal button {
-  display:inline-block;
-  width:100px;
-  margin-left:calc(100% - 100px - 10px);
-}
 
 #partyWrite_modal .modal_layer {
   position:fixed;
@@ -46,35 +45,76 @@
   z-index:-1;
 } 
 
-.form_group {
-	border-top: 1px solid #b9b9b9;
-	font-size: 15px;
-	margin-left: -20px;
-	margin-bottom: 14px;
-	padding-top: 14px;
+.form_table {
+  border-collapse: separate;
+  border-spacing: 20px 20px;
 }
 
-.form_group>.form_text {
+table.form_table>tbody>tr>td {
+	margin-left: 30px;
+	text-align: center;
+}
+
+#textarea_box, #people_box {
+	text-align: left;
+	margin: 0px 0px 20px 0px;
+}
+
+#pSpan_box {
+	padding: 0px 65px 0px 140px;
+	font-weight: bold;
+}
+
+#tSpan_box {
+	float:left;
+	padding: 0px 25px 0px 140px;
+	font-weight: bold;
+}
+
+#textarea_box>span {
 	display: inline-block;
-	width: 80px;
+	text-align: top;
+	
 }
 
-#introduce {
-    float: left;
-    margin: 0px 0px 0px 120px;
+#party_date {
+	width:150px;
+}
+
+table.form_table>tbody>tr>td>input[type="text"],
+table.form_table>tbody>tr>td>select {
+	padding: 3px 0px 3px 0px;
+}
+
+table.form_table>tbody>tr>td>select {
+	margin-right: 16px;
+}
+
+
+#text_bold {
+	font-weight: bold;
+	padding:0px 35px 0px 120px;
+	
 }
 
 #area_content {
-    width: 387px;
-    height: 130px;
-    resize: none;
-    outline: none;
+	width: 209px;
+	height: 103px;
+	resize: none;
+	outline: none;
 }
 
-#introduce_box {
-	border-bottom: 1px solid #b9b9b9;
-	padding-bottom: 14px;
-	padding-top: 14px;
+#pWrite_button {
+	border-top: 1px solid #b9b9b9;
+  	border-collapse: collapse;
+  	padding-top: 30px;
+  	text-align: center;
 }
+
+.party_uid {
+	padding-right: 128px;
+}
+
+
 
 
