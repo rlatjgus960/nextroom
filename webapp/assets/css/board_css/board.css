@@ -215,11 +215,11 @@ a.active {
 .nick_modal1 {
     display: none;
     position: absolute; 
-    z-index:2px;
+    left: 56%;
 }
 
-
-.nick_modal1 .nick_modal_list {
+/*
+.nick_modal1 {
 	width: 90px;
 	height: 60px;
     top: 40px;
@@ -228,9 +228,21 @@ a.active {
     background:#fff;
     border:2px solid #666;
     text-align: center;
+}*/
+
+.nick_modal_list {
+	width: 90px;
+	height: 70px;
+    background:#fff;
+    border:1px solid #b9b9b9;
+    border-top:none;
+   	text-align: left;
 }
 
 
-.nick_modal1 .nick_modal_list>ul>li{
-	height:23px;
+
+.nick_modal1>ul>li{
+	line-height: 20px;
+	margin-top: 1px;
+	border-top: 1px solid #b9b9b9;
 }

@@ -130,23 +130,24 @@
 											
 										<div class="nick_modal1">
 											<ul class="nick_modal_list">
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
+												
+													<li>
+														<a href="">
+															<span>랭킹 보기</span>
+														</a>	
+													</li>
+												
+													<li>
+														<a href="">
+															<span>게시글보기</span>
+														</a>	
+													</li>
+											
+													<li>
+														<a href="#none" target="_blank" onclick="openPop">
+															<span>쪽지보내기</span>
+														</a>	
+													</li>			
 											</ul>
 										</div>																	 
 									</td>
@@ -486,9 +487,16 @@ $(document).mouseup(function (e){
 });
 
 
-
-
+//쪽지보내기 팝업
+function openPop(){
+    var popup = window.open('http://www.naver.com', '네이버팝업', 'width=700px,height=800px');
+}
 </script>
+
+
+
+
+
 
 
 
