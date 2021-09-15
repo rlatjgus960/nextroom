@@ -87,6 +87,13 @@ public class Hello {
 		return "user/mypage_information";
 	}
 	
+	////////마이페이지폼 파티관리//////////
+	@RequestMapping("/mypageParty")
+	public String mypageParty() {
+		System.out.println("mypageParty");
+		return "user/mypage_party";
+	}
+	
 	//////// 관리자 예약확인 페이지 //////////
 	@RequestMapping("/adminReserve")
 	public String adminReserve() {
