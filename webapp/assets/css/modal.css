@@ -133,7 +133,7 @@
 
 /**********************기록모달*************************/
 
-#record_table_wrap{
+#record_table_wrap {
 	height: 500px;
 }
 
@@ -145,6 +145,10 @@
 	border-collapse: collapse;
 	text-align: left;
 	margin-left: 30px;
+}
+
+#record_modal_table input{
+	padding: 3px 0px;
 }
 
 #record_modal_cotent h3{

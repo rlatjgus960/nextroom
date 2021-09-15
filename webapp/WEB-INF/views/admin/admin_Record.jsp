@@ -15,11 +15,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
 
-<script>
-	$(function() {
-		$("#datepicker").datepicker();
-	});
-</script>
 
 <title>Insert title here</title>
 </head>
@@ -164,7 +159,7 @@
 	                                
 	                            </tr>
 	                            <tr class="time_data">
-	                                <td><input type="text" name="record_hour" value=""> m <input type="text" name="record_hour" value=""> s</td>
+	                                <td><input type="text" name="record_hour" value="">뷴 <input type="text" name="record_hour" value="">분</td>
 	                                <td><label><input class="escapeFailed" type="checkbox" name="failed" value="failed"> 탈출실패</label></td>
 	                            </tr>
 	
