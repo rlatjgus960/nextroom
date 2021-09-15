@@ -129,25 +129,25 @@
 										</span>		
 											
 										<div class="nick_modal1">
-											<ul class="nick_modal_list">
+											<ul class="nick_modal_list1">
 												
-													<li>
-														<a href="">
-															<span>랭킹 보기</span>
-														</a>	
-													</li>
-												
-													<li>
-														<a href="">
-															<span>게시글보기</span>
-														</a>	
-													</li>
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
 											
-													<li>
-														<a href="#none" target="_blank" onclick="openPop">
-															<span>쪽지보내기</span>
-														</a>	
-													</li>			
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="#none" target="_blank" onclick="openPop">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
 											</ul>
 										</div>																	 
 									</td>
