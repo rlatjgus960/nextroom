@@ -46,7 +46,7 @@
 						<ul>
 							<li>개인정보 변경</li>
 							<li>결제내역</li>
-							<li class="active" href="">파티관리</li>
+							<li class="active"> <a href="${pageContext.request.contextPath}/mypageParty">파티관리</a></li>
 							<li>나의 문의내역</li>
 							<li>관심 카페/테마</li>
 							<li>포인트 적립/사용내역</li>
