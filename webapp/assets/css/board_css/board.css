@@ -188,7 +188,7 @@ a.active {
  
  
  
-/* 닉네입 클릭시 모달 */
+/* 닉네입 클릭시 모달(나중에 개별로 no값 받아서 열리게 해야할듯 시부레베렘ㄴ어머ㅣㅇㄴ허ㅏㄴ */
 .nick_modal {
     display: none;
     position: absolute; 
