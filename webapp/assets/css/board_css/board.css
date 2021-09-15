@@ -188,11 +188,49 @@ a.active {
  
  
  
- /* 닉네입 클릭시 모달 */
- #nick_modal{
- 	position: absolute;
+/* 닉네입 클릭시 모달 */
+.nick_modal {
+    display: none;
+    position: absolute; 
+    z-index:2px;
+}
+
+
+.nick_modal .nick_modal_list {
+	width: 90px;
+	height: 60px;
+    top: 40px;
     left: 50%;
-    top: 26px;
-    margin-left: -50px;
-    border: 1px solid black;
- }
+    padding:20px 10px;
+    background:#fff;
+    border:2px solid #666;
+    text-align: center;
+}
+
+
+.nick_modal .nick_modal_list>ul>li{
+	height:23px;
+}
+/*******************************************샘플 나중에 데이터 넣어서 해야할듯*/
+.nick_modal1 {
+    display: none;
+    position: absolute; 
+    z-index:2px;
+}
+
+
+.nick_modal1 .nick_modal_list {
+	width: 90px;
+	height: 60px;
+    top: 40px;
+    left: 50%;
+    padding:20px 10px;
+    background:#fff;
+    border:2px solid #666;
+    text-align: center;
+}
+
+
+.nick_modal1 .nick_modal_list>ul>li{
+	height:23px;
+}

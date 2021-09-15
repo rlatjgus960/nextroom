@@ -10,6 +10,8 @@
 <link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/board_css/board.css" rel="stylesheet" type="text/css">
 
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
 
 <title>자유게시판</title>
@@ -117,47 +119,37 @@
 								</tr>
 							</thead>
 
-							<tbody>
+							<tbody>							
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td class="btnNick">최원호</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-
-								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td>최원호</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-
-								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td>최원호</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td>최원호</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td>최원호</td>
+									<td class="btnNick">
+										<span class="nickName1">
+											최원호
+										</span>		
+											
+										<div class="nick_modal1">
+											<ul class="nick_modal_list">
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
@@ -166,7 +158,33 @@
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td>최원호</td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
@@ -175,13 +193,214 @@
 								<tr>
 									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td>최원호</td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
-								</tr>																																								
-
-
+								</tr>
+								
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>
+								
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>
+								
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>
+								
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>
+								
+								<tr>
+									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>																																																								
+								
+																	
 							</tbody>
 						</table>
 					</div>
@@ -231,45 +450,44 @@
 		<!-- //footer -->
 
 
+										
+
+
+
 	</div>
-	
-	
 
-	 <div id="nick_modal">
-		<ul>
-			<li>
-				<a href="">
-					<span>랭킹보기</span>
-				</a>	
-			</li>
 
-			<li>
-				<a href="">
-					<span>게시글보기</span>
-				</a>	
-			</li>
 
-			<li>
-				<a href="">
-					<span>쪽지보내기</span>
-				</a>	
-			</li>			
-		</ul>
-	 </div>
+
+	 
 </body>
 
 
 <script type="text/javascript">
 
-//닉네임 클릭할 때
-$(".btnNick").on("click", function(){
-	event.preventDefault();
-	console.log("이미지 올리기 클릭")
-	
-	//모달창 보이기
-	$("#nick_modal").modal();
-	
+//모달창 열기(개별로 userNo값 받아서 열리게 해야할듯함)
+$(".nickName1").on("click", function() {
+	$(".nick_modal1").attr("style", "display:block");
+	document.body.classList.add("stop-scroll");
+
 });
+
+//모달창 외부 클릭시 닫힘
+$(document).mouseup(function (e){
+
+	var container = $('.nick_modal1');
+
+	if( container.has(e.target).length === 0){
+
+	container.css('display','none');
+
+	}
+
+});
+
+
+
+
 </script>
 
 
