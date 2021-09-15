@@ -66,7 +66,7 @@
                              <ul>
                                 <li><a class="active" href="${pageContext.request.contextPath }/getNote">- 받은 쪽지함</a></li>
                                 <li><a class="" href="${pageContext.request.contextPath }/sendNote">- 보낸 쪽지함</a></li>
-                                <li>- 쪽지 보내기</li>
+                                <li><a href="" onclick="showPopup">- 쪽지 보내기</a></li>
                              </ul>
                           </li>
                           <li>회원 탈퇴</li>
@@ -319,6 +319,29 @@ function allCheckFunc( obj ) {
 
 
 
+
+	function showPopup() {
+		// 함수 동작 테스트 
+		//alert("팝업 테스트");
+		
+		//window.open("[팝업을 띄울 파일명 path]", "[별칭]", "[팝업 옵션]")
+		 window.open("note.jsp", "mypopup", "width=450, height=250, top=150, left=200");
+	};
+	
+    function showPopup(){
+        var popup = window.open('WEB-INF/views/board/note.jsp', '팝업', 
+                   'toolbar=no, menubar=no, location=no, directories=no, status=no, 
+                   scrollbars=no, copyhistory=no, esizable=yes, 
+                   width=600px, height=600px, top=300px left=680px');
+    };
+
+
+출처: https://hyoni-k.tistory.com/150 [Record *]
+	
+</script>
+
+	 
+	 
 
 
 </script>
