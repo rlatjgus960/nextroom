@@ -141,7 +141,7 @@
     border-right: 1px ;  
 }
 
-#board_list table>tbody>tr>td>img {
+.img {
     width:100%;
     height: 60px;
 }

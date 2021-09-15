@@ -121,7 +121,7 @@
 
 							<tbody>							
 								<tr>
-									<td><img id="aside_img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
+									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg" width="120px" height="50px"></td>
 									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
 									<td class="btnNick">
 										<span class="nickName1">
