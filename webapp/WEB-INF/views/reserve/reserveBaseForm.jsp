@@ -55,63 +55,68 @@
                 </div>
                 <!-- //reservationBar -->
 
+
                 <!-- main -->
                 <div id="reservation_main">
-                    <div id="reservation_main_title" class="clearfix">
-                        <div id="reservation_main_title_date" class="clearfix"><div class="reservation_main_title">날짜</div></div>
-                        <div id="reservation_main_title_region" class="clearfix"><div class="reservation_main_title">지역</div></div>
-                        <div id="reservation_main_title_cafe" class="clearfix"><div class="reservation_main_title">카페</div></div>
-                        <div id="reservation_main_title_thema" class="clearfix"><div class="reservation_main_title">테마</div></div>
-                        <div id="reservation_main_title_time" class="clearfix"><div class="reservation_main_title">시간</div></div>
-                    </div>
-                    <div id="reservation_main_content" class="clearfix">
-                        <div id="reservation_main_content_calendar">
-                            <div id="datepicker"></div>
-                        </div>
-                        <div id="reservation_main_content_region">
-                            <p>전국</p>
-                            <p>서울</p>
-                            <p>홍대</p>
-                            <p>강남</p>
-                            <p>건대</p>
-                            <p>경기</p>
-                            <p>인천</p>
-                            <p>수원</p>
-                            <p>안산</p>
-                            <p>부산</p>
-                            <p>대구</p>
-                        </div>
-                        <div id="reservation_main_content_cafe">
-                            <p>비트포비아 던전101</p>
-                            <p>비밀의화원 미드나잇</p>
-                            <p>큐브이스케이프 홍대점</p>
-                            <p>비트포비아 홍대던전</p>
-                            <p>브레이크아웃 이스케이프</p>
-                            <p>키이스케이프 홍대점</p>
-                        </div>
-                        <div id="reservation_main_content_thema">
-                            <p>비밀의 가족</p>
-                            <p>파리82</p>
-                            <p>팩토리 엠</p>
-                            <p>기다려, 금방 갈게</p>
-                            <p>종갓집 민씨</p>
-                        </div>
-                        <div id="reservation_main_content_time">
-                            <p>11 : 00</p>
-                            <p>12 : 00</p>
-                            <p>14 : 00</p>
-                            <p>15 : 30</p>
-                            <p>17 : 00</p>
-                            <p>18 : 30</p>
-                            <p>20 : 00</p>
-                            <p>21 : 30</p>
-                            <p>23 : 00</p>
-                        </div>
-                    </div>
-
-                    <div id="reservation_button">
-                        <button type="submit" class="mbutton">예약하기</button>
-                    </div>
+                	<form action="${pageContext.request.contextPath}/reserve/reserveInfoForm" method="">
+	                    <div id="reservation_main_title" class="clearfix">
+	                        <div id="reservation_main_title_date" class="clearfix"><div class="reservation_main_title">날짜</div></div>
+	                        <div id="reservation_main_title_region" class="clearfix"><div class="reservation_main_title">지역</div></div>
+	                        <div id="reservation_main_title_cafe" class="clearfix"><div class="reservation_main_title">카페</div></div>
+	                        <div id="reservation_main_title_thema" class="clearfix"><div class="reservation_main_title">테마</div></div>
+	                        <div id="reservation_main_title_time" class="clearfix"><div class="reservation_main_title">시간</div></div>
+	                    </div>
+	                    <div id="reservation_main_content" class="clearfix">
+	                        <div id="reservation_main_content_calendar">
+	                            <div id="datepicker"></div>
+	                        </div>
+	                        <div id="reservation_main_content_region">
+	                            <p class="region" data-region-no=1>전국</p>
+	                            <p class="region" data-region-no=2>서울</p>
+	                            <p class="region" data-region-no=3>홍대</p>
+	                            <p>강남</p>
+	                            <p>건대</p>
+	                            <p>경기</p>
+	                            <p>인천</p>
+	                            <p>수원</p>
+	                            <p>안산</p>
+	                            <p>부산</p>
+	                            <p>대구</p>
+	                        </div>
+	                        <div id="reservation_main_content_cafe">
+	                            <p>비트포비아 던전101</p>
+	                            <p>비밀의화원 미드나잇</p>
+	                            <p>큐브이스케이프 홍대점</p>
+	                            <p>비트포비아 홍대던전</p>
+	                            <p>브레이크아웃 이스케이프</p>
+	                            <p>키이스케이프 홍대점</p>
+	                        </div>
+	                        <div id="reservation_main_content_thema">
+	                            <p>비밀의 가족</p>
+	                            <p>파리82</p>
+	                            <p>팩토리 엠</p>
+	                            <p>기다려, 금방 갈게</p>
+	                            <p>종갓집 민씨</p>
+	                        </div>
+	                        <div id="reservation_main_content_time">
+	                            <p>11 : 00</p>
+	                            <p>12 : 00</p>
+	                            <p>14 : 00</p>
+	                            <p>15 : 30</p>
+	                            <p>17 : 00</p>
+	                            <p>18 : 30</p>
+	                            <p>20 : 00</p>
+	                            <p>21 : 30</p>
+	                            <p>23 : 00</p>
+	                        </div>
+	                    </div>
+	
+	                    <div id="reservation_button">
+	                        <button type="submit" class="mbutton">예약하기</button>
+	                    </div>
+	                    
+	                    <input type="text" name="region" value=""> <!-- 처음 test는 type="text"로 하고 나중에 "hidden"으로 고치기 -->
+                    </form>
                     
                 </div>
                 <!-- //main -->
