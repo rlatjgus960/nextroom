@@ -154,6 +154,7 @@
             <div id="div_close" class="clearfix">
             <a id="admin_record_closemodal">[닫기]</a>
             </div>
+            <h3>기록 입력</h3>
                 
 				<form action="" method="GET">
 	                <div id="record_table_wrap">
