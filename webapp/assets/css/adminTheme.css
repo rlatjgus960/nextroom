@@ -46,6 +46,20 @@
     margin-bottom: 15px;
 }
 
+#adminTheme_subHeader {
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: left;
+    margin-bottom: 15px;
+    width: 850px;
+    display: inline-block;
+}
+
+#themeSelect {
+	float: right;
+	box-sizing: border-box;
+}
+
 #themeModify_button {
     float: right;
 }
@@ -74,9 +88,6 @@
     overflow-y: auto;
 }
 
-#themeModify_button {
-    width: 1050px;
-}
 
 .cafe_upIcon {
     width: 25px;
@@ -102,10 +113,11 @@
 }
 
 
-.cafModi_subTitle {
+.cafModi_subTitle{
     font-weight: bold;
     font-size: 20px;
 }
+
 
 #cafeModi_img {
     margin-top: 50px;
@@ -177,8 +189,135 @@
     color: #fff;
 }
 
+#cafeModi_img p{
+	margin-bottom: 5px;
+}
+
+#cafeModify_button, #addTheme_button {
+	width: 1050px;
+	margin-bottom: 10px;
+}
+
+/* 카페 테마관리 */
+
 #themeModify_button {
     margin-bottom: 10px;
 }
 
+#themeModify_button button, #themeTime button{
+	width: 90px;
+	padding : 10px 0px;
+}
 
+
+/* 테마 추가 */
+
+#theme_explain_wrap {
+	margin-top: 10px;
+}
+
+#previewArea {
+	width: 510px;
+	height: 740px;
+	border : 3px solid #e0e0e0;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding: 25px 40px;
+	float: left;
+	margin-right: 50px;
+}
+
+#non-previewArea {
+	float: left;
+}
+
+
+#previewArea img {
+	width: 250px;
+}
+
+#theme_poster_wrap {
+	width: 250px;
+	margin: 0px 87px;
+}
+
+.addTheme_subTitle {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 5px;
+	
+}
+
+.theme_explain_item {
+    margin-bottom: 20px;
+}
+
+#themeTitle {
+	width: 424px;
+	height: 30px;
+	box-sizing: border-box;
+}
+
+#previewArea_left {
+	float:left;
+	width: 200px;
+}
+
+#previewArea_right {
+	float: right;
+	width: 200px;
+}
+
+
+.cafe_explain_selectBox{
+	width: 200px;
+	height: 30px;
+}
+
+#themeExplain textarea{
+	width: 240px;
+	height: 120px;
+	box-sizing: border-box;
+}
+	
+
+#recommandMaxNum, #recommandMinNum{
+	width: 80px;
+	height: 30px;
+}
+
+#peopleMinNum, #peopleMaxNum {
+	width: 100px;
+	height: 30px;
+}
+
+#themePrice label, #themeTime label{
+	display: block;
+	margin: 5px 0px;
+}
+
+.themePrice {
+	margin-left: 5px;
+	width: 190px;
+	height: 30px;
+}
+
+.non-previewArea_item {
+	width: 240px;
+	margin-bottom: 20px;
+}
+
+.themeTimeSelect {
+	width: 90px;
+	height: 30px;
+}
+
+#themeTimeWrap {
+	margin-bottom: 15px;
+}
+
+
+#addThwme_formDiv {
+	margin-bottom: 20px;
+}

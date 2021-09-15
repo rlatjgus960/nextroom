@@ -59,8 +59,8 @@
 								<li>&nbsp;-기록 관리</li>
 							</ul>
 						</li>
-						<li class="selected">카페 소개관리</li>
-						<li>카페 테마관리</li>
+						<li class="selected"><a href="${pageContext.request.contextPath }/adminCafe">카페 소개 관리</a></li>
+						<li><a href="${pageContext.request.contextPath }/adminTheme">카페 테마 관리</a></li>
 					</ul>
 
 				</div>
@@ -76,12 +76,12 @@
 					<p id="admin_subHeader">| 카페 소개 관리</p>
 
 					<div id="cafeModify" class="">
-						<form>
+						<form action="" method="post">
 
 							<div id="cafeModi_img" class="clearfix">
 
 								<div id="cafe_mainImg_wrap" class="clearfix">
-									<p>카페 메인이미지</p>
+									<p class="cafModi_subTitle">카페 메인이미지</p>
 									<img id="cafe_mainImg"
 										src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
 
@@ -92,7 +92,7 @@
 
 								<div id="cafe_interior_wrap">
 
-									<p>카페 내부이미지</p>
+									<p class="cafModi_subTitle">카페 내부이미지</p>
 
 									<div id="add_cafeInterior" class="scroll-image">
 										<!-- 카페내부사진 반복영역 -->
@@ -114,12 +114,12 @@
 
 							<div id="cafe_explain_wrap">
 								<div id="cafeIntroduce_wrap" class="cafe_explain_item clearfix">
-									<p class="cafModi_subTitle">- 소개글</p>
+									<p class="cafModi_subTitle">소개글</p>
 									<textarea name="cafeIntroduce" placeholder="소개글을 입력하세요."></textarea>
 								</div>
 
 								<div id="address_wrap" class="cafe_explain_item clearfix">
-									<p class="cafModi_subTitle">- 주소</p>
+									<p class="cafModi_subTitle">주소</p>
 
 									<div class="address_search">
 										<input name="postcode" type="text" id="postcode" placeholder="우편번호"> <input
@@ -218,13 +218,13 @@
 
 
 								<div id="phoneNumber_wrap" class="cafe_explain_item clearfix">
-									<p class="cafModi_subTitle">- 전화번호</p>
+									<p class="cafModi_subTitle">전화번호</p>
 									<input type="tel" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력하세요.">
 								</div>
 
 
 								<div id="workTime_wrap" class="cafe_explain_item clearfix">
-									<p class="cafModi_subTitle">- 영업시간</p>
+									<p class="cafModi_subTitle">영업시간</p>
 									<div id="workTime">
 										<input id="openTime" name="openTime" type="time"> <span>&nbsp;~&nbsp;</span> <input
 											id="closeTime" name="closeTime" type="time">
@@ -233,14 +233,14 @@
 
 
 								<div id="cafeURL_wrap" class="cafe_explain_item clearfix">
-									<p class="cafModi_subTitle">- 카페 URL</p>
+									<p class="cafModi_subTitle">카페 URL</p>
 									<input type="text" id="cafeURL" name="cafeURL" placeholder="카페 사이트 주소를 입력해주세요.">
 								</div>
 
 							</div>
 
 
-							<div id="themeModify_button">
+							<div id="cafeModify_button">
 								<button type="submit" class="mbutton">수정</button>
 							</div>
 						</form>

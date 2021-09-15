@@ -28,4 +28,28 @@ public class Admin {
 	}
 	
 	
+	@RequestMapping("/adminTheme")
+	public String adminTheme() {
+	   System.out.println("adminTheme");
+	   return "admin/admin_themeModi";
+	}
+	
+	@RequestMapping("/adminThemeDeleteForm")
+	public String adminThemeDeleteForm() {
+	   System.out.println("adminThemeDeleteForm");
+	   return "admin/admin_themeDeleteForm";
+	}
+	
+	@RequestMapping("/adminThemeModifyForm")
+	public String adminThemeModify() {
+	   System.out.println("adminThemeModifyForm");
+	   return "admin/admin_themeModifyForm";
+	}
+	
+	@RequestMapping("/adminAddTheme")
+	public String adminAddTheme() {
+	   System.out.println("adminAddTheme");
+	   return "admin/admin_addTheme";
+	}
+	
 }
