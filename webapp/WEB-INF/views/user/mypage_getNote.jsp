@@ -336,7 +336,7 @@ function allCheckFunc( obj ) {
     };
 
 
-출처: https://hyoni-k.tistory.com/150 [Record *]
+
 	
 </script>
 
