@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/* 쪽지 보내기 */
+#note_wrap{
+    width: 450px;
+    height: 480px;
+    text-align: center;
+}
+
+#note_title{
+    height: 50px;
+    font-size: 30px;
+}
+
+#note_wrap table{
+    width: 450px;
+    height: 480px;
+    border-collapse: collapse;
+}
+
+textarea{
+    margin:10px auto;
+    width: 450px;
+    height: 300px;
+    outline: none;
+    resize: none;
+}
+
+.input_nickname{
+    text-align: left;
+}
+
+td{
+    height: 30px;
+    border-top: 1px solid #b9b9b9;
+}
+
+span{
+    margin-left: 25px;
+}
+
+/* 버튼 */
+.submit-button {
+    margin: 10px 30px 10px 0px;
+    padding: 4px 14px 5px 14px;
+    border: 1px solid #808080;
+    background-color: rgb(224,224,224);
+    border-radius: 2px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    }
+    
+    .submit-button:hover {
+        background-color: rgb(253, 213, 59);
+        color: #fff;
+    }
