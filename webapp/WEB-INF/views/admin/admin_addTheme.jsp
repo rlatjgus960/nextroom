@@ -96,7 +96,27 @@
 											<p class="addTheme_subTitle">장르</p>
 											<select id="themeGenre" name="themeGenre" class="cafe_explain_selectBox">
 												<option value="" selected="selected">장르를 선택해주세요.</option>
-												<option value=""></option>
+												<option value="inference">추리</option>
+												<option value="thriller">스릴러</option>
+												<option value="sensitivity">감성</option>
+												<option value="romance">로맨스</option>
+												<option value="crime">범죄</option>
+												<option value="comedy">코미디</option>
+												<option value="adventure">모험</option>
+												<option value="fantasy">판타지</option>
+												<option value="adult">19금</option>
+												<option value="horror">공포</option>
+												<option value="drama">드라마</option>
+												<option value="mystery">미스터리</option>
+												<option value="acade">아케이드</option>
+												<option value="action">액션</option>
+												<option value="outside">야외</option>
+												<option value="music">음악</option>
+												<option value="sneak">잠입</option>
+												<option value="history">역사</option>
+												<option value="sf">공상과학</option>
+												<option value="qmark">?</option>
+												
 											</select>
 										</div>
 	
@@ -105,7 +125,11 @@
 											<p class="addTheme_subTitle">난이도</p>
 											<select id="themeLevel" name="themeLevel" class="cafe_explain_selectBox">
 												<option value="" selected="selected">난이도를 선택해주세요.</option>
-												<option value=""></option>
+												<option value="star1">★</option>
+												<option value="star2">★★</option>
+												<option value="star3">★★★</option>
+												<option value="star4">★★★★</option>
+												<option value="star5">★★★★★</option>
 											</select>
 										</div>
 	
@@ -113,7 +137,9 @@
 											<p class="addTheme_subTitle">유형</p>
 											<select id="themeType" name="themeType" class="cafe_explain_selectBox">
 												<option value="" selected="selected">유형을 선택해주세요.</option>
-												<option value=""></option>
+												<option value="lock">자물쇠 위주</option>
+												<option value="machine">장치 위주</option>
+												<option value="half">자물쇠/장치 반반</option>
 											</select>
 										</div>
 	
@@ -136,7 +162,31 @@
 											<p class="addTheme_subTitle">플레이타임</p>
 											<select id="themeLevel" name="themeLevel" class="cafe_explain_selectBox">
 												<option value="" selected="selected">플레이타임을 선택해주세요.</option>
-												<option value=""></option>
+												<option value="60min">60분</option>
+												<option value="65min">65분</option>
+												<option value="70min">70분</option>
+												<option value="75min">75분</option>
+												<option value="80min">80분</option>
+												<option value="85min">85분</option>
+												<option value="90min">90분</option>
+												<option value="95min">95분</option>
+												<option value="100min">100분</option>
+												<option value="105min">105분</option>
+												<option value="110min">110분</option>
+												<option value="115min">115분</option>
+												<option value="120min">120분</option>
+												<option value="125min">125분</option>
+												<option value="130min">130분</option>
+												<option value="135min">135분</option>
+												<option value="140min">140분</option>
+												<option value="145min">145분</option>
+												<option value="150min">150분</option>
+												<option value="155min">155분</option>
+												<option value="160min">160분</option>
+												<option value="165min">165분</option>
+												<option value="170min">170분</option>
+												<option value="175min">175분</option>
+												<option value="180min">180분</option>
 											</select>
 										</div>
 	
@@ -144,7 +194,9 @@
 											<p class="addTheme_subTitle">활동성</p>
 											<select id="themeType" name="themeType" class="cafe_explain_selectBox">
 												<option value="" selected="selected">활동성을 선택해주세요.</option>
-												<option value=""></option>
+												<option value="lowActivity">적음</option>
+												<option value="regularActivity">보통</option>
+												<option value="highActivity">많음</option>
 											</select>
 										</div>
 	
@@ -195,22 +247,16 @@
 									
 									<div id="themeTimeWrap">
 										<!-- 시간표 반복영역 -->
-										<label for="themeTime1">1
+										<label for="themeStartTime1">1
 											<input class="themeTimeSelect" name="themeStartTime1" type="time">
-											<span>&nbsp;~&nbsp;</span>
-											<input class="themeTimeSelect" name="themeEndTime1" type="time">
 										</label>
 										
-										<label for="themeTime2">2
+										<label for="themeStartTime2">2
 											<input class="themeTimeSelect" name="themeStartTime2" type="time">
-											<span>&nbsp;~&nbsp;</span>
-											<input class="themeTimeSelect" name="themeEndTime2" type="time">
 										</label>
 										
-										<label for="themeTime1">3
+										<label for="themeStartTime3">3
 											<input class="themeTimeSelect" name="themeStartTime3" type="time">
-											<span>&nbsp;~&nbsp;</span>
-											<input class="themeTimeSelect" name="themeEndTime3" type="time">
 										</label>
 										<!-- //시간표 반복영역 -->
 									</div>
