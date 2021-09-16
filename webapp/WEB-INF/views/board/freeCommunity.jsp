@@ -144,7 +144,7 @@
 												</li>
 										
 												<li>
-													<a href="#none" target="_blank" onclick="openPop">
+													<a href = "javascript:popup()">
 														<span>쪽지보내기</span>
 													</a>	
 												</li>			
@@ -288,7 +288,7 @@
 												</li>
 										
 												<li>
-													<a href="#none" target="_blank" onclick="openPop">
+													<a target="_blank" onclick="openPop">
 														<span>쪽지보내기</span>
 													</a>	
 												</li>			
@@ -496,9 +496,14 @@ $(document).mouseup(function (e){
 
 
 //쪽지보내기 팝업
-function openPop(){
-    var popup = window.open('http://www.naver.com', '네이버팝업', 'width=700px,height=800px');
-}
+   function popup(){
+       var url = "${pageContext.request.contextPath }/note";
+       var name = "popup test";
+       var option = "width = 500, height = 500, top = 250, left = 700, location = no"
+       window.open(url, name, option);
+   }
+   
+   
 </script>
 
 
