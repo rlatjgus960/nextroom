@@ -45,9 +45,9 @@
                 <div id="aside">
         
                     <img id="aside_img"
-			src="${pageContext.request.contextPath }/assets/image/asideImg.png"
-			width="35px" height="35px">
-                
+						src="${pageContext.request.contextPath }/assets/image/asideImg.png"
+						width="35px" height="35px">
+                    
                     <div id="aside_cate">
                     
                         <ul>
@@ -135,11 +135,11 @@
         </div>
         <!-- //content -->
 
-		<!-- footer -->
-		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-		<!-- //footer -->
+			<!-- footer -->
+			<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+			<!-- //footer -->
 
-	</div>
+		</div>
 
 
 	<!-- wrap -->
@@ -218,4 +218,5 @@
 	
 	});
 </script>
+
 </html>
