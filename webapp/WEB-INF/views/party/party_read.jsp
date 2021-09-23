@@ -11,6 +11,9 @@
         <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath }/assets/css/partyRead.css" rel="stylesheet" type="text/css">
 
+		<script type="text/javascript"
+		src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+		
     </head>
 
     <body>
@@ -256,6 +259,47 @@
 
 
     </body>
+    
+    <script>
+    /* 상태가 0이면 버튼클릭 or 1이라면 버튼클릭안되게하기 */
+    $(document).ready(function() {
+    	$("#complete_button").on("click", function() {
+			$(this).html('예약하기') 
+			
+	    	$("#complete_button").click(function() {
+				const result = confirm("예약하러 가시겠습니까?");
+					if(result) {
+						
+						$("#complete_button").hide();
+						
+					} else {
+						$("#complete_button").show();
+					}
+			});
+				
+		});
+    	
+    });
+    	
+    	
+		/* window.onload = function() {
+			
+			var completeButton = document.getElementById("complete_button");
+			
+			completeButton.onclick = function() {
+				completeButton.innerHTML = "예약하기"; 
+					
+					completeButton.onclick = function() {
+						 confirm("예약하러 가시겠습니까?");
+				}
+					
+				}
+			};
+			
+		}; */
+    
+    
+	</script>
 
 
 </html>
