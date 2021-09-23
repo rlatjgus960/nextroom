@@ -3,38 +3,39 @@ package com.nextroom.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/board")
 @Controller
 public class Board {
 	
 	//자유게시판
-	@RequestMapping("/community")
-	public String hello() {
-		System.out.println("board");
+	@RequestMapping("/freeCommunity")
+	public String freeCommunity() {
+		System.out.println("freeCommunity");
 		return "board/freeCommunity";
 	}
 	
 	
 	//글 읽기
-	@RequestMapping("/community_read")
-	public String read() {
-		System.out.println("read");
-		return "board/read";
+	@RequestMapping("/readForm")
+	public String readForm() {
+		System.out.println("readForm");
+		return "board/readForm";
 	}
 	
 	
 	
 	//글쓰기
-	@RequestMapping("/community_write")
-	public String write() {
-		System.out.println("read");
-		return "board/write";
+	@RequestMapping("/writeForm")
+	public String writeForm() {
+		System.out.println("writeForm");
+		return "board/writeForm";
 	}
-
+	
 	
 	//쪽지 보내기
-	@RequestMapping("/note")
-	public String send() {
-		System.out.println("note");
-		return "board/note";
+	@RequestMapping("/massageForm")
+	public String massageForm() {
+		System.out.println("massageForm");
+		return "board/massageForm";
 	}
 }

@@ -3,53 +3,72 @@ package com.nextroom.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
+@RequestMapping("/admin")
 public class Admin {
 	
+	//관리자페이지 예약확인
+	@RequestMapping("/reserve")
+	public String adminReserve() {
+		System.out.println("reserve");
+		return "admin/reserve";
+	}
 	
-	@RequestMapping("/adminRecord")
+	//관리자페이지 예약관리
+	@RequestMapping("/reserveTime")
+	public String reserveTime() {
+		System.out.println("reserveTime");
+		return "admin/reserveTime";
+	}
+	
+	//관리자페이지 기록관리
+	@RequestMapping("/record")
 	public String record() {
 	   System.out.println("record");
-	   return "admin/admin_Record";
+	   return "admin/record";
 	}
 	
-	
-	@RequestMapping("/adminRecordModify")
+	//관리자페이지 기록수정
+	@RequestMapping("/recordModify")
 	public String recordModify() {
 	   System.out.println("recordModify");
-	   return "admin/admin_RecordModify";
+	   return "admin/recordModify";
 	}
 	
-	
-	@RequestMapping("/adminCafe")
-	public String adminCafe() {
-	   System.out.println("adminCafe");
-	   return "admin/admin_cafeModi";
+	//관리자페이지 카페수정폼
+	@RequestMapping("/cafeModifyForm")
+	public String cafeModifyForm() {
+	   System.out.println("cafeModifyForm");
+	   return "admin/cafeModifyForm";
 	}
 	
-	
-	@RequestMapping("/adminTheme")
-	public String adminTheme() {
-	   System.out.println("adminTheme");
-	   return "admin/admin_themeModi";
+	//관리자페이지 테마리스트
+	@RequestMapping("/themeList")
+	public String themeList() {
+	   System.out.println("themeList");
+	   return "admin/themeList";
 	}
 	
-	@RequestMapping("/adminThemeDeleteForm")
-	public String adminThemeDeleteForm() {
-	   System.out.println("adminThemeDeleteForm");
-	   return "admin/admin_themeDeleteForm";
+	//관리자페이지 테마삭제폼
+	@RequestMapping("/themeDeleteForm")
+	public String themeDeleteForm() {
+	   System.out.println("themeDeleteForm");
+	   return "admin/themeDeleteForm";
 	}
 	
-	@RequestMapping("/adminThemeModifyForm")
-	public String adminThemeModify() {
-	   System.out.println("adminThemeModifyForm");
-	   return "admin/admin_themeModifyForm";
+	//관리자페이지 테마수정폼
+	@RequestMapping("/themeModifyForm")
+	public String themeModifyForm() {
+	   System.out.println("themeModifyForm");
+	   return "admin/themeModifyForm";
 	}
 	
-	@RequestMapping("/adminAddTheme")
-	public String adminAddTheme() {
-	   System.out.println("adminAddTheme");
-	   return "admin/admin_addTheme";
+	//관리자페이지 테마추가
+	@RequestMapping("/addTheme")
+	public String addTheme() {
+	   System.out.println("addTheme");
+	   return "admin/addTheme";
 	}
 	
 }

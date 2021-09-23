@@ -3,25 +3,25 @@ package com.nextroom.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+@RequestMapping("/cafe")
 @Controller
 public class Cafe {
 	
 
-	@RequestMapping("/cafe")
-	public String cafe_main() {
+	@RequestMapping("/")
+	public String cafeMain() {
 	   System.out.println("cafe");
 	   return "cafe/cafeMain";
 	}
 	
 	@RequestMapping("/cafeDetail")
-	public String cafe_detail() {
+	public String cafeDetail() {
 	   System.out.println("cafeDetail");
 	   return "cafe/cafeDetail";
 	}
 	
 	@RequestMapping("/theme")
-	public String theme_main() {
+	public String themeMain() {
 	   System.out.println("themeMain");
 	   return "theme/themeMain";
 	}

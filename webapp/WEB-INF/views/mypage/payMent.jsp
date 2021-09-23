@@ -50,28 +50,27 @@
 						width="35px" height="35px">
 
 					<div id="aside_cate">
-						<p>마이페이지</p>
-						<ul>
-							<li>개인정보 변경</li>
-							<li>결제내역</li>
-							<li>파티관리</li>
-							<li>나의 문의내역</li>
-							<li>관심 카페/테마</li>
-							<li>포인트 적립/사용내역</li>
-							<li>내가 쓴 글 보기
+						 <ul>
+							<li><a href="${pageContext.request.contextPath}/mypage/infoModifyForm">개인정보 변경</a></li>
+							<li><a href="${pageContext.request.contextPath}/mypage/main">내기록 보기</a></li>
+							<li class="selected"><a href="${pageContext.request.contextPath}/mypage/payMent">결제내역</a></li>
+							<li><a href="${pageContext.request.contextPath}/mypage/partyManage">파티관리</a></li>
+							<!-- <li>관심 카페/테마</li>-->
+							<!-- <li>내가 쓴 글 보기
 								<ul>
 									<li>- 커뮤니티 글</li>
 									<li>- 커뮤니티 댓글</li>
 								</ul>
-							</li>
-							<li>내 쪽지
+							</li> -->
+							
+							<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">내 쪽지</a>
 								<ul>
-									<li>- 받은 쪽지함</li>
-									<li>- 보낸 쪽지함</li>
-									<li>- 쪽지 보내기</li>
+									<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">- 받은 쪽지함</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">- 보낸 쪽지함</a></li>
+									<li><a href="${pageContext.request.contextPath}/board/massageForm">- 쪽지 보내기</a></li>
 								</ul>
 							</li>
-							<li>회원 탈퇴</li>
+							<!-- <li>회원 탈퇴</li> -->
 						</ul>
 
 					</div>

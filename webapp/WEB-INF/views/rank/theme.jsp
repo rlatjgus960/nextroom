@@ -48,7 +48,20 @@
 			<div id="contentMain" class="clearfix">
 			
 			<!-- aside -->
-			<c:import url="/WEB-INF/views/includes/rank_aside.jsp"></c:import>
+			<div id="aside">
+	
+				<img id="aside_img" src="${pageContext.request.contextPath }/assets/image/asideImg.png" width="35px" height="35px">
+			
+				<div id="aside_cate">
+				
+					<ul>
+					    <li><a href="${pageContext.request.contextPath}/rank/user">유저 랭킹</a></li>
+					    <li class="selected"><a href="${pageContext.request.contextPath}/rank/theme">테마 랭킹</a></li>
+					</ul>
+				
+				</div>
+				
+			</div>
 			<!-- //aside -->
 			
 				<!-- main -->

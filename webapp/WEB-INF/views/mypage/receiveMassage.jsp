@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +17,7 @@
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script> 
-<title>보낸 쪽지함</title>
+<title>받은 쪽지함</title>
 </head>
 <body>
 
@@ -30,7 +34,7 @@
 				<div id="subheader-title">
 				   <h2>마이페이지</h2>
 				</div>
-				<div id="subheader-mintitle">마이페이지 > 보낸 쪽지함</div>
+				<div id="subheader-mintitle">마이페이지 > 받은 쪽지함</div>
 	
 	
 	
@@ -44,29 +48,28 @@
                     <img id="aside_img" src="${pageContext.request.contextPath }/assets/image/asideImg.png" width="35px" height="35px">
                     
                     <div id="aside_cate">
-                       <!-- <p>마이페이지</p> -->
                        <ul>
-                          <li><a class="" href="${pageContext.request.contextPath }/information">개인정보 변경</a></li>
-                          <li>결제내역</li>
-                          <li>파티관리</li>
-                          <li>나의 문의내역</li>
-                          <li>관심 카페/테마</li>
-                          <li>포인트 적립/사용내역</li>
-                          <li>내가 쓴 글 보기
-                             <ul>
-                                <li>- 커뮤니티 글</li>
-                                <li>- 커뮤니티 댓글</li>
-                             </ul>
-                          </li>
-                          <li ><a class="active" href="">내 쪽지</a>
-                             <ul>
-                                <li><a class="" href="${pageContext.request.contextPath }/getNote">- 받은 쪽지함</a></li>
-                                <li><a class="active" href="${pageContext.request.contextPath }/sendNote">- 보낸 쪽지함</a></li>
-                                <li>- 쪽지 보내기</li>
-                             </ul>
-                          </li>
-                          <li>회원 탈퇴</li>
-                       </ul>
+							<li><a href="${pageContext.request.contextPath}/mypage/infoModifyForm">개인정보 변경</a></li>
+							<li><a href="${pageContext.request.contextPath}/mypage/main">내기록 보기</a></li>
+							<li><a href="${pageContext.request.contextPath}/mypage/payMent">결제내역</a></li>
+							<li><a href="${pageContext.request.contextPath}/mypage/partyManage">파티관리</a></li>
+							<!-- <li>관심 카페/테마</li>-->
+							<!-- <li>내가 쓴 글 보기
+								<ul>
+									<li>- 커뮤니티 글</li>
+									<li>- 커뮤니티 댓글</li>
+								</ul>
+							</li> -->
+							
+							<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">내 쪽지</a>
+								<ul>
+									<li><p class="selected"><a href="${pageContext.request.contextPath}/mypage/receiveMassage">- 받은 쪽지함</a></p></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">- 보낸 쪽지함</a></li>
+									<li><a href="${pageContext.request.contextPath}/board/massageForm">- 쪽지 보내기</a></li>
+								</ul>
+							</li>
+							<!-- <li>회원 탈퇴</li> -->
+						</ul>
               
                     </div>
                  </div>
@@ -100,9 +103,9 @@
 							<thead>
 								<tr>
 									<th><input type="checkbox" name=checkAll></th>
-									<th>받는 사람</th>
+									<th>보낸 사람</th>
 									<th>쪽지 내용</th>
-									<th>보낸 날짜</th>
+									<th>받은 날짜</th>
 									<th>수신 확인</th>
 									<th>삭 제</th>
 								</tr>
@@ -113,7 +116,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -124,7 +127,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -135,7 +138,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -146,7 +149,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -157,7 +160,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -168,7 +171,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -179,7 +182,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -190,7 +193,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -201,7 +204,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -212,7 +215,7 @@
 									<td><input type="checkbox" name=checkOne></td>
 									<td>최원호</td>
 									<td>
-										<span>보낸 쪽지함인디유</span>
+										<span>받은 쪽지함인디유</span>
 									</td>
 									<td>2021.09.15</td>
 									<td>읽음</td>
@@ -277,11 +280,11 @@
 
 <script type="text/javascript"> 
 
-	function allCheckFunc( obj ) {
-		$("[name=checkOne]").prop("checked", $(obj).prop("checked") );
-	}
+function allCheckFunc( obj ) {
+	$("[name=checkOne]").prop("checked", $(obj).prop("checked") );
+}
 
-	/* 체크박스 체크시 전체선택 체크 여부 */
+/* 체크박스 체크시 전체선택 체크 여부 */
 	function oneCheckFunc( obj ){
 		var allObj = $("[name=checkAll]");
 		var objName = $(obj).attr("name");
@@ -312,5 +315,33 @@
 			});
 		});
 	});
+
+
+
+
+	function showPopup() {
+		// 함수 동작 테스트 
+		//alert("팝업 테스트");
+		
+		//window.open("[팝업을 띄울 파일명 path]", "[별칭]", "[팝업 옵션]")
+		 window.open("note.jsp", "mypopup", "width=450, height=250, top=150, left=200");
+	};
+	
+    function showPopup(){
+        var popup = window.open('WEB-INF/views/board/note.jsp', '팝업', 
+                   'toolbar=no, menubar=no, location=no, directories=no, status=no, 
+                   scrollbars=no, copyhistory=no, esizable=yes, 
+                   width=600px, height=600px, top=300px left=680px');
+    };
+
+
+
+	
+</script>
+
+	 
+	 
+
+
 </script>
 </html>

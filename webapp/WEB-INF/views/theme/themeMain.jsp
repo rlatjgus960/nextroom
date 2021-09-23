@@ -30,7 +30,7 @@
 			<!-- main -->
             <div id="theme_recommend_back" class="clearfix">
 
-                도와줘요 준짱
+                도와줘요 준짱 채워 놓곘읍니다.
 
             </div>
 

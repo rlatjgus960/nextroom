@@ -9,7 +9,7 @@ public class Hello {
 	@RequestMapping("/hello")
 	public String hello() {
 		System.out.println("hello");
-		return "user/mypage_main";
+		return "mypage/mypage_main";
 	}
 
 	///////// 유저랭킹///////////
@@ -84,7 +84,7 @@ public class Hello {
 	@RequestMapping("/information")
 	public String user_information() {
 		System.out.println("user_information");
-		return "user/mypage_information";
+		return "mypage/mypage_information";
 	}
 	
 	////////마이페이지폼 파티관리//////////

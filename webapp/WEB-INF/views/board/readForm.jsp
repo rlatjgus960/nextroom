@@ -49,7 +49,7 @@
 								<!-- <p>자유게시판</p> -->
 							<!-- </div> -->
 							<ul>
-								<li><a class="active" href="${pageContext.request.contextPath }/community">자유게시판</a></li>
+								<li><a class="active" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
 								<li><a class="" href="">후기게시판</a></li>
 								<li><a class="" href="">양도/교환</a></li>
 								<li><a class="" href="">공지사항</a></li>

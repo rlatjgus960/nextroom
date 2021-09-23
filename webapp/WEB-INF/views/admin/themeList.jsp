@@ -46,21 +46,25 @@
 				<div id="aside_cate">
 
 					<ul>
+					
 						<li>예약
 							<ul class="aside_mini_cate">
-								<li>&nbsp;-예약 확인</li>
-								<!-- 선택된 항목에 class="selected" 주면 underline,bolder -->
-								<li>&nbsp;-예약 관리</li>
+								<li><a href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약 확인</a></li>
+								<li><a href="${pageContext.request.contextPath }/admin/reserveTime">&nbsp;-예약 관리</a></li>
 							</ul>
 						</li>
+						
 						<li>기록
 							<ul class="aside_mini_cate">
-								<li>&nbsp;-기록 입력</li>
-								<li>&nbsp;-기록 관리</li>
+								<li><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a></p></li>
+								<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
 							</ul>
 						</li>
-						<li><a href="${pageContext.request.contextPath }/adminCafe">카페 소개 관리</a></li>
-						<li class="selected"><a href="${pageContext.request.contextPath }/adminTheme">카페 테마 관리</a></li>
+						
+						<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>
+						<li class="selected"><a href="${pageContext.request.contextPath }/admin/themeList">카페 테마
+									관리</a></li>
+									
 					</ul>
 
 				</div>

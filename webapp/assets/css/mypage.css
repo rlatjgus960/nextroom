@@ -120,6 +120,11 @@
     display: inline-block;
 }
 
+.selected{
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
 
 /********************************************************************************/
 

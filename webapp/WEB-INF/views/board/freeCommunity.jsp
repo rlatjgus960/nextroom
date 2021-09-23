@@ -50,7 +50,7 @@
 								<!-- <p>자유게시판</p> -->
 							<!-- </div> -->
 							<ul>
-								<li><a class="active" href="${pageContext.request.contextPath }/community">자유게시판</a></li>
+								<li><a class="active" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
 								<li>후기게시판</li>
 								<li>양도/교환</li>
 								<li>공지사항</li>

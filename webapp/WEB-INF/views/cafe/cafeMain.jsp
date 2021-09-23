@@ -115,12 +115,12 @@
 		
 					<!-- 리스트 반복영역 -->
 					<div class="cafe_list_item clearfix">
-						<a href="${pageContext.request.contextPath}/cafeDetail">
+						<a href="${pageContext.request.contextPath}/cafe/cafeDetail">
 							<img id="" class="cafe_img" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
 						</a>
 						<div id="" class="cafe_info">
 							<div class="cafe_intro">
-								<p class="cafe_name"><a href="${pageContext.request.contextPath}/cafeDetail">방탈출 카페 이름</a></p>
+								<p class="cafe_name"><a href="${pageContext.request.contextPath}/cafe/cafeDetail">방탈출 카페 이름</a></p>
 								<p class="cafe_content">방탈출 카페 한줄 소개</p>
 							</div>
 
