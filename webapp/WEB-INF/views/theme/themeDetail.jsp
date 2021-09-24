@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/cafe.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet"
+	type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/cafe.css" rel="stylesheet"
+	type="text/css">
 
 
 <title>테마 상세</title>
@@ -61,6 +63,76 @@
 
 
 
+			<div id="theme_detail_timeTable">
+
+				<p>| 시간표</p>
+
+				<table id="theme_timeTable">
+					<tbody>
+
+						<!-- 테마 시간표 반복영역 -->
+
+						<tr>
+							<td>1</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>2</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>3</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>4</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>5</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>6</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>7</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>8</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>9</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<tr>
+							<td>10</td>
+							<td>11시 20분</td>
+						</tr>
+
+						<!-- //테마 시간표 반복영역 -->
+
+
+					</tbody>
+
+				</table>
+
+
+
+			</div>
+
 
 
 			<div id="theme_detail_price">
@@ -100,6 +172,9 @@
 
 
 			</div>
+
+
+
 
 
 			<div id="theme_detail_review">

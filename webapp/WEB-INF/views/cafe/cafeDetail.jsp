@@ -162,14 +162,14 @@
 
                     <!-- 테마 반복영역 -->
                     <div class="cafe_theme">
-                        <a href="${pageContext.request.contextPath}/themeDetail">
+                        <a href="${pageContext.request.contextPath}/cafe/themeDetail">
 	                        <img src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
                         </a>
 
                         <div class="cafe_theme_info">
                             <p>넥스트에디션 강남신논현점</p>
 
-							<a href="${pageContext.request.contextPath }/themeDetail">
+							<a href="${pageContext.request.contextPath }/cafe/themeDetail">
                         	    <p class="cafe_theme_info_title">어시스턴트(Assistant)</p>
                         	</a>
 
