@@ -36,8 +36,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <button class="submit-button">보내기</button>
-                            <button class="submit-button">취소</button>
+                            <button class="submit-button"><a href="">보내기</a></button>
+                            <button class="submit-button"><a href="">취소</a></button>
                         </td>
                     </tr>
                 </tbody>
