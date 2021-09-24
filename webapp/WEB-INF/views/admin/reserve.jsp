@@ -77,9 +77,9 @@
 									<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
 								</ul>
 							</li>
-							<li><a href="${pageContext.request.contextPath }/admin/adminCafe">카페 소개 관리</a></li>
-							<li><a href="${pageContext.request.contextPath }/admin/adminTheme">카페 테마
-									관리</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>
+							<li class="selected"><a href="${pageContext.request.contextPath }/admin/themeList">카페 테마
+								관리</a></li>
 						</ul>
 
 					</div>
