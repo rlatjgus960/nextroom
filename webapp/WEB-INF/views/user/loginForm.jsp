@@ -28,7 +28,7 @@
 
 
 			<div id="loginForm">
-				<form method="post" action="${pageContext.request.contextPath}/user/login">
+				<form method="get" action="${pageContext.request.contextPath}/user/login">
 		      		<table>
 				      	<colgroup>
 							<col style="width: 100px;">
