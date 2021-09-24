@@ -105,7 +105,7 @@
 
 							<tr>
 								<td>1</td>
-                                <td><a href="${pageContext.request.contextPath }/partyRead"><img src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px" height="90px"></a></td>
+                                <td><a href="${pageContext.request.contextPath }/party/partyRead"><img src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px" height="90px"></a></td>
                                 <td>서울 신논현</td>
                                 <td>넥스트에디션 / 인터프리터</td>
                                 <td>2021-08-27  14:20</td>

@@ -91,19 +91,19 @@
                            </div>
 
                            <!-- 마스터 버튼 -->
-                           <div class="btn_group">
-                               <button id="list_button" class="submit_button"><a href="${pageContext.request.contextPath }/party">목록</a></button>
+               				<div class="btn_group">
+                            	<button id="list_button" class="submit_button"><a href="${pageContext.request.contextPath }/party/partyList">목록</a></button>
                                <button id="delete_button" class="submit_button">파티삭제</button>
                                <button id="complete_button" class="mbutton">모집완료</button>
-                           </div>
+                           </div>	
                            <!-- //마스터 버튼 -->
 
                             <!-- 참가자 버튼 -->
-                            <!-- <div class="btn_group">
-                                <button id="list_button" class="submit_button">목록</button>
-                                <button id="join_button" class="submit_button">파티참가</button>
-                                <button id="cancel_button" class="submit_button">참가취소</button>
-                            </div> -->
+<!-- 		                         <div class="btn_group"> -->
+<!--                                 <button id="list_button" class="submit_button">목록</button> -->
+<!--                                 <button id="join_button" class="submit_button">파티참가</button> -->
+<!--                                 <button id="cancel_button" class="submit_button">참가취소</button> -->
+                            </div>
                             <!-- //참가자 버튼 -->
 
                         </div>
@@ -281,23 +281,6 @@
     	
     });
     	
-    	
-		/* window.onload = function() {
-			
-			var completeButton = document.getElementById("complete_button");
-			
-			completeButton.onclick = function() {
-				completeButton.innerHTML = "예약하기"; 
-					
-					completeButton.onclick = function() {
-						 confirm("예약하러 가시겠습니까?");
-				}
-					
-				}
-			};
-			
-		}; */
-    
     
 	</script>
 
