@@ -65,7 +65,7 @@
 								<ul>
 									<li><p class="selected"><a href="${pageContext.request.contextPath}/mypage/receiveMassage">- 받은 쪽지함</a></p></li>
 									<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">- 보낸 쪽지함</a></li>
-									<li><a href="${pageContext.request.contextPath}/board/massageForm">- 쪽지 보내기</a></li>
+									<li><a href="javascript:popup()">- 쪽지 보내기</a></li>
 								</ul>
 							</li>
 							<!-- <li>회원 탈퇴</li> -->
@@ -280,68 +280,50 @@
 
 <script type="text/javascript"> 
 
+
 function allCheckFunc( obj ) {
 	$("[name=checkOne]").prop("checked", $(obj).prop("checked") );
 }
 
 /* 체크박스 체크시 전체선택 체크 여부 */
-	function oneCheckFunc( obj ){
-		var allObj = $("[name=checkAll]");
-		var objName = $(obj).attr("name");
-	
-		if( $(obj).prop("checked") ){
-			checkBoxLength = $("[name="+ objName +"]").length;
-			checkedLength = $("[name="+ objName +"]:checked").length;
-	
-			if( checkBoxLength == checkedLength ) {
-				allObj.prop("checked", true);
-			} else {
-				allObj.prop("checked", false);
-			}
-			
-		}else{
+function oneCheckFunc( obj ){
+	var allObj = $("[name=checkAll]");
+	var objName = $(obj).attr("name");
+
+	if( $(obj).prop("checked") ){
+		checkBoxLength = $("[name="+ objName +"]").length;
+		checkedLength = $("[name="+ objName +"]:checked").length;
+
+		if( checkBoxLength == checkedLength ) {
+			allObj.prop("checked", true);
+		} else {
 			allObj.prop("checked", false);
 		}
+		
+	}else{
+		allObj.prop("checked", false);
 	}
-	
-	
-	$(function(){
-		$("[name=checkAll]").click(function(){
-			allCheckFunc( this );
-		});
-		$("[name=checkOne]").each(function(){
-			$(this).click(function(){
-				oneCheckFunc( $(this) );
-			});
+}
+
+
+$(function(){
+	$("[name=checkAll]").click(function(){
+		allCheckFunc( this );
+	});
+	$("[name=checkOne]").each(function(){
+		$(this).click(function(){
+			oneCheckFunc( $(this) );
 		});
 	});
+});
 
 
-
-
-	function showPopup() {
-		// 함수 동작 테스트 
-		//alert("팝업 테스트");
-		
-		//window.open("[팝업을 띄울 파일명 path]", "[별칭]", "[팝업 옵션]")
-		 window.open("note.jsp", "mypopup", "width=450, height=250, top=150, left=200");
-	};
-	
-    function showPopup(){
-        var popup = window.open('WEB-INF/views/board/note.jsp', '팝업', 
-                   'toolbar=no, menubar=no, location=no, directories=no, status=no, 
-                   scrollbars=no, copyhistory=no, esizable=yes, 
-                   width=600px, height=600px, top=300px left=680px');
-    };
-
-
-
-	
-</script>
-
-	 
-	 
-
-
+//쪽지보내기 팝업
+function popup(){
+    var url = "${pageContext.request.contextPath }/board/massageForm";
+    var name = "popup test";
+    var option = "width = 500, height = 500, top = 250, left = 700, location = no"
+    window.open(url, name, option);
+}
 </script>
 </html>

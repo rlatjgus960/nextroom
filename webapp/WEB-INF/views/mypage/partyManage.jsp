@@ -59,7 +59,7 @@
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">- 받은 쪽지함</a></li>
 									<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">- 보낸 쪽지함</a></li>
-									<li><a href="${pageContext.request.contextPath}/board/massageForm">- 쪽지 보내기</a></li>
+									<li><a href="javascript:popup()">- 쪽지 보내기</a></li>
 								</ul>
 							</li>
 							<!-- <li>회원 탈퇴</li> -->
@@ -183,4 +183,15 @@
 	</div>
 
 </body>
+
+<script type="text/javascript">
+//쪽지보내기 팝업
+function popup(){
+    var url = "${pageContext.request.contextPath }/board/massageForm";
+    var name = "popup test";
+    var option = "width = 500, height = 500, top = 250, left = 700, location = no"
+    window.open(url, name, option);
+}
+
+</script>
 </html>
