@@ -218,6 +218,32 @@
 									<td>
 										<select id="party_region" name="partyRegion">
 	                                		<option value="" selected="">지역을 선택해 주세요</option>
+	                                		<option value="전국">전국</option>
+	                                		<option value="홍대&신촌">홍대&신촌</option>
+	                                		<option value="강남">강남</option>
+	                                		<option value="건대">건대</option>
+	                                		<option value="대학로">대학로</option>
+	                                		<option value="강북">강북</option>
+	                                		<option value="신림">신림</option>
+	                                		<option value="서울(기타)">서울(기타)</option>
+	                                		<option value="부천">부천</option>
+	                                		<option value="일산">일산</option>
+	                                		<option value="수원">수원</option>
+	                                		<option value="안양">안양</option>
+	                                		<option value="경기(기타)">경기(기타)</option>
+	                                		<option value="인천">인천</option>
+	                                		<option value="강원">강원</option>
+	                                		<option value="대전">대전</option>
+	                                		<option value="천안">천안</option>
+	                                		<option value="청주">청주</option>
+	                                		<option value="충청(기타)">충청(기타)</option>
+	                                		<option value="대구">대구</option>
+	                                		<option value="부산">부산</option>
+	                                		<option value="경상(기타)">경상(기타)</option>
+	                                		<option value="전주">전주</option>
+	                                		<option value="광주">광주</option>
+	                                		<option value="전라(기타)">전라(기타)</option>
+	                                		<option value="제주">제주</option>
 	                            		</select>
 									</td>
 								</tr>
