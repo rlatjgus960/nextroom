@@ -2,7 +2,7 @@
 
 /* 쪽지 보내기 */
 #note_wrap{
-    width: 450px;
+    width: 490px;
     height: 480px;
     text-align: center;
 }
@@ -13,14 +13,14 @@
 }
 
 #note_wrap table{
-    width: 450px;
+    width: 480px;
     height: 480px;
     border-collapse: collapse;
 }
 
 textarea{
     margin:10px auto;
-    width: 450px;
+    width: 480px;
     height: 300px;
     outline: none;
     resize: none;
@@ -36,7 +36,7 @@ td{
 }
 
 span{
-    margin-left: 25px;
+   /*  margin-left: 25px; */
 }
 
 /* 버튼 */

@@ -66,9 +66,9 @@
 					<!-- 버튼 -->
 					<div id="list_button" >
 						<ul>							
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
+							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
+							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
 
 						</ul>
 					</div>
@@ -122,7 +122,7 @@
 							<tbody>							
 								<tr>
 									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
 									<td class="btnNick">
 										<span class="nickName1">
 											최원호
@@ -158,7 +158,7 @@
 								
 								<tr>
 									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
 									<td class="btnNick">
 										<span class="nickName">
 											최원호
@@ -194,7 +194,7 @@
 									
 								<tr>
 									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
 									<td class="btnNick">
 										<span class="nickName">
 											최원호
@@ -226,11 +226,11 @@
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
-								</tr>		
+								</tr>	
 								
 								<tr>
 									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
 									<td class="btnNick">
 										<span class="nickName">
 											최원호
@@ -262,47 +262,11 @@
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
-								</tr>		
+								</tr>	
 								
 								<tr>
 									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>		
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
 									<td class="btnNick">
 										<span class="nickName">
 											최원호
@@ -334,11 +298,11 @@
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
-								</tr>		
+								</tr>	
 								
 								<tr>
 									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
 									<td class="btnNick">
 										<span class="nickName">
 											최원호
@@ -370,11 +334,11 @@
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
-								</tr>		
+								</tr>	
 								
 								<tr>
 									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/community_read">자유게시판입니다.</a></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
 									<td class="btnNick">
 										<span class="nickName">
 											최원호
@@ -406,7 +370,151 @@
 									<td>123</td>
 									<td>321</td>
 									<td>2021.09.09</td>
-								</tr>																																																																																				
+								</tr>	
+								
+								<tr>
+									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+											
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="#none" target="_blank" onclick="openPop">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>	
+								
+								<tr>
+									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+											
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="#none" target="_blank" onclick="openPop">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>	
+								
+								<tr>
+									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+											
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="#none" target="_blank" onclick="openPop">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>	
+								
+								<tr>
+									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
+									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
+									<td class="btnNick">
+										<span class="nickName">
+											최원호
+										</span>		
+											
+										<div class="nick_modal">
+											<ul class="nick_modal_list">
+												
+												<li>
+													<a href="">
+														<span>랭킹 보기</span>
+													</a>	
+												</li>
+											
+												<li>
+													<a href="">
+														<span>게시글보기</span>
+													</a>	
+												</li>
+										
+												<li>
+													<a href="#none" target="_blank" onclick="openPop">
+														<span>쪽지보내기</span>
+													</a>	
+												</li>			
+											</ul>
+										</div>																	 
+									</td>
+									<td>123</td>
+									<td>321</td>
+									<td>2021.09.09</td>
+								</tr>	
 																																																				
 								
 																	
@@ -417,7 +525,7 @@
 
 					<!-- 글쓰기버튼 -->
 					<div>
-						<a class="submit_button" href="${pageContext.request.contextPath }/community_write">글쓰기</a>
+						<a class="submit_button" href="${pageContext.request.contextPath }/board/writeForm">글쓰기</a>
 					</div>
 					<!-- 페이징 -->
 					<div id="pager">
@@ -497,7 +605,7 @@ $(document).mouseup(function (e){
 
 //쪽지보내기 팝업
    function popup(){
-       var url = "${pageContext.request.contextPath }/note";
+       var url = "${pageContext.request.contextPath }/board/massageForm";
        var name = "popup test";
        var option = "width = 500, height = 500, top = 250, left = 700, location = no"
        window.open(url, name, option);

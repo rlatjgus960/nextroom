@@ -206,7 +206,7 @@
     border-bottom: 1px solid #b9b9b9;
 }
 
-#delete_comment>img{
+#delete_comment>a>img{
     width: 15px;
     height: 15px;
 }

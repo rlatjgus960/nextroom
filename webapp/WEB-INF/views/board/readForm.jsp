@@ -65,9 +65,9 @@
 					<!-- 버튼 -->
 					<div id="list_button" >
 						<ul>							
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
+							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
+							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
 
 						</ul>
 					</div>
@@ -77,7 +77,7 @@
 					<div>
 						<div id="update_button" class="clearfix" >
 							<ul>							
-								<a href="${pageContext.request.contextPath }/community" class="submit_button">목 록</a>	<!-- 최신 목록으로 이동-->	
+								<a href="${pageContext.request.contextPath }/board/freeCommunity" class="submit_button">목 록</a>	<!-- 최신 목록으로 이동-->	
 								<a href="" class="submit_button">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
 								<a href="" class="submit_button">수 정</a>	<!-- 수정폼으로 이동(작성자만 보임) -->
 							</ul>
@@ -116,7 +116,7 @@
 											</div>
 
 										<div id="wrap_up_down">
-											<a href="${pageContext.request.contextPath }/community" class="back_button">목 록</a> <!-- href에 js 넣어야할듯-->
+											<a href="${pageContext.request.contextPath }/board/freeCommunity" class="back_button">목 록</a> <!-- href에 js 넣어야할듯-->
 											<a href="" class="up_down">추 천</a>
 											<a href="" class="up_down">반 대</a>
 										</div>
@@ -126,8 +126,8 @@
 											<div class="prv">
 											  <table width="100%">
 												<tr>
-													<td width="60" height="20" class="writing">▲ 다음 글</td>
-													<td width="360" class="next"> 다음 글이 없습니다. </td>
+													<td width="60" height="20" class="writing"><a href="">▲ 다음 글</a></td>
+													<td width="360" class="next"><a href="">다음 글이 없습니다. </a></td>
 												</tr>
 												<tr>
 													<td width="60" height="20" class="writing"><a href="">▼ 이전 글</a></td>
@@ -151,47 +151,47 @@
 										<!-- 댓글 리스트 -->
 										<div id="comment_box">
 											<ul id="comment_list">
-												<li id="comment_user">
+												<li id="">
 													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
 													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>	<!-- ajax사용 해야하나 -->
+													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
 												</li>
 
-												<li id="comment_user">
+												<li id="">
 													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
 													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
-												</li>
-
-												<li id="comment_user">
-													<div id="nick_box">슬퍼하지마 노노노</div>
-													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
+													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
 												</li>
 												
-												<li id="comment_user">
+												<li id="">
 													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
 													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
+													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
 												</li>
 												
-												<li id="comment_user">
+												<li id="">
 													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
 													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
+													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
 												</li>
 												
-												<li id="comment_user">
+												<li id="">
 													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
 													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></div>
-												</li>																																																											
+													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
+												</li>
+												
+												<li id="">
+													<div id="nick_box">슬퍼하지마 노노노</div>
+													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
+													<div id="write_date">2021.09.12</div>
+													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
+												</li>																																																										
 											</ul>
 										</div>
 										<!-- //댓글 리스트 -->
