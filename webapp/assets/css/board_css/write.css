@@ -15,7 +15,6 @@
 
 
 
-
 /* 글등록 공간 */
 #writecontent_area{
     margin-top: 20px;
@@ -41,7 +40,7 @@
 }
 
 #nick_date>h6{
-    margin-left: -780px;
+    margin-left: -730px;
     padding-left: 20px;
     font-size: 18px;
     text-align: left;
@@ -85,40 +84,78 @@
 
 /* 지역/카페/테마/채감난이도 선택 */
 .select_area{
-    margin: 20px 0px 10px 0px;
+    margin: 0px 0px 10px 0px;
+    padding: 30px 0px 10px 0px;
     width: 100%;
     height: 50px;
+    border-top: 1px solid #b9b9b9;
+    border-bottom: 1px solid #b9b9b9;
+    text-align: center;
 }
 
 .select_area>select{
     line-height: 30px;
+    font-size: 17px;
+    margin-right: 40px;
 }
 
 .region{
-    margin-right: 20px;
+    /* margin-right: 40px; */
     width: 110px;
-    font-size: 17px;
 }
 
 .select_cafe{
-    margin-right: 20px;
+    /* margin-right: 40px; */
     width:200px;
-    font-size: 17px;
 }
 
 .select_thema{
-    margin-right: 20px;
+    /* margin-right: 40px; */
     width:200px;
-    font-size: 17px;
 }
 
 
 .select_level{
     width:120px;
-    font-size: 17px;
 }
+
+.SorF{
+    width: 110px;
+}
+
+.hint{
+    width: 200px;
+}
+
+.totalNumber{
+    width: 100px;
+}
+
+.leadTime{
+    font-size: 17px;
+
+}
+
+
+.select_area>label{
+    /* margin-left: 25px; */
+    margin-right: 20px;
+}
+
+.select_area>input{
+    width: 115px;
+    margin-right: 40px;
+}
+
 /* 별점 */
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .star-rating {
+    margin-left: 400px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row-reverse;
     font-size: 2.25rem;

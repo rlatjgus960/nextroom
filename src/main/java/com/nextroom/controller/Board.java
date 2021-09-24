@@ -32,6 +32,14 @@ public class Board {
 	}
 	
 	
+	//후기글쓰기
+	@RequestMapping("/reviewWriteForm")
+	public String reviewWriteForm() {
+		System.out.println("reviewWriteForm");
+		return "board/reviewWriteForm";
+	}
+	
+	
 	//쪽지 보내기
 	@RequestMapping("/massageForm")
 	public String massageForm() {

@@ -78,7 +78,7 @@
 							<div>
 								<select class="board_select">
 									<option>자유게시판</option>
-									<option>후기게시판</option>
+									<option value="https://www.naver.com/">후기게시판</option>
 									<option>양도/교환</option>
 								</select>
 							</div>
