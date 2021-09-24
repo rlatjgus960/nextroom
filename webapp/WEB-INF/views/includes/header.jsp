@@ -19,22 +19,22 @@
 
 
 				<ul id="login_area">
-					<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }\assets\image\messageicon.jpg"></a></li>
-					<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }\assets\image\alerticon.jpg"></a></li>
 					
 					<c:choose>
 						<c:when test="${empty sessionScope.authUser }">
 							<li class="mypageBtn"><a href="${pageContext.request.contextPath}/user/loginForm" class="btn_s">로그인</a></li>
-							<li class="mypageBtn"><a href="${pageContext.request.contextPath}/mypage/main" class="btn_s">마이페이지</a></li>
+							<li class="mypageBtn"><a href="" class="btn_s">회원가입</a></li>
 						</c:when>
 						
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${'1' eq sessionScope.authUser.userType}">
+									<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }\assets\image\alerticon.jpg"></a></li>
 									<li class="mypageBtn"><a href="${pageContext.request.contextPath}/user/logout" class="btn_s">로그아웃</a></li>
 									<li class="mypageBtn"><a href="${pageContext.request.contextPath}/mypage/main" class="btn_s">마이페이지</a></li>
 								</c:when>
 								<c:otherwise>
+									<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }\assets\image\alerticon.jpg"></a></li>
 									<li class="mypageBtn"><a href="${pageContext.request.contextPath}/user/logout" class="btn_s">로그아웃</a></li>
 									<li class="mypageBtn"><a href="${pageContext.request.contextPath}/mypage/main" class="btn_s">마이페이지</a></li>
 									<li class="mypageBtn"><a href="${pageContext.request.contextPath}/admin/reserve" class="btn_s">관리자페이지</a></li>
