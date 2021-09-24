@@ -37,43 +37,45 @@
 
 			</div>
 
-			<!--Aside-->
+			<!-- aside -->
 			<div id="aside">
-
 				<img id="aside_img" src="${pageContext.request.contextPath }/assets/image/asideImg.png"
 					width="35px" height="35px">
 
 				<div id="aside_cate">
-
 					<ul>
-						<li>예약
-							<ul class="aside_mini_cate">
-								<li><a href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약 확인</a></li>
-								<li><a href="${pageContext.request.contextPath }/admin/reserveTime">&nbsp;-예약 관리</a></li>
-							</ul>
-						</li>
-						<li>기록
-							<ul class="aside_mini_cate">
-								<li><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a></li>
-								<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
-							</ul>
-						</li>
-						<li class="selected"><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페
-								소개 관리</a></li>
-						<li><a href="${pageContext.request.contextPath }/admin/themeList">카페 테마 관리</a></li>
+						<li class="selected"><a href="${pageContext.request.contextPath}/mypage/infoModifyForm">개인정보
+								변경</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage/main">내기록 보기</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage/payMent">결제내역</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage/partyManage">파티관리</a></li>
+						<!-- <li>관심 카페/테마</li>-->
+						<!-- <li>내가 쓴 글 보기
+								<ul>
+									<li>- 커뮤니티 글</li>
+									<li>- 커뮤니티 댓글</li>
+								</ul>
+							</li> -->
+
+						<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">내 쪽지</a>
+							<ul>
+								<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">&nbsp;-받은
+										쪽지함</a></li>
+								<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">&nbsp;-보낸 쪽지함</a></li>
+								<li><a href="javascript:popup()">&nbsp;-쪽지 보내기</a></li>
+							</ul></li>
+						<!-- <li>회원 탈퇴</li> -->
 					</ul>
 
 				</div>
-
 			</div>
-			<!--//Aside-->
-
+			<!-- //aside -->
 
 			<!-- contentMain -->
 			<div id="contentMain" class="clearfix">
 
 				<div id="contentWrap">
-					<p id="admin_subHeader">| 카페 소개 관리</p>
+					<p id="admin_subHeader">| 카페 관리자 신청</p>
 
 					<div id="cafeModify" class="">
 						<form action="" method="post">
@@ -115,7 +117,8 @@
 							<div id="cafe_explain_wrap">
 								<div id="cafeIntroduce_wrap" class="cafeNameWrap clearfix">
 									<p class="cafModi_subTitle">카페이름</p>
-									<input type="text" id="cafeName" name="cafeName" placeholder="카페이름을 입력하세요."></textarea>
+									<input type="text" id="cafeName" name="cafeName" placeholder="카페이름을 입력하세요.">
+									</textarea>
 								</div>
 
 
