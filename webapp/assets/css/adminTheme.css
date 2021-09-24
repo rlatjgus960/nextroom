@@ -147,6 +147,24 @@
     height: 120px;
 }
 
+
+.cafeNameWrap {
+    margin-bottom: 30px;
+}
+
+.cafeNameWrap p{
+    float: left;
+    width: 155px;
+}
+
+#cafeName {
+    box-sizing: border-box;
+    width: 750px;
+    float: left;
+    height: 30px;
+}
+
+
 /* 주소검색 영역 */
 
 .address_search input {
