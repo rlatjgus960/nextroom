@@ -74,7 +74,7 @@ a:hover {text-decoration: none; color: #000000; }
 
  .mypageBtn {
     float:left;
-    width: 70px;
+    width: auto;
     height: 30px;
 }
 

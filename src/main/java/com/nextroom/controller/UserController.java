@@ -44,4 +44,15 @@ public class UserController {
 			return "redirect:/user/loginForm";
 		}
 	}
+	
+	//로그아웃
+	@RequestMapping(value="logout")
+	public String logout(HttpSession session) {
+		System.out.println("[UserController.logout()]");
+		
+		session.removeAttribute("authUser");
+		session.invalidate();
+		
+		return "redirect:/user/loginForm";
+	}
 }
