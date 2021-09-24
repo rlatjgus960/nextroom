@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+
+#loginForm .btn {
+	width: 100%;
+	border: 1px solid #808080; 
+	background-color: rgb(253, 213, 59); 
+	border-radius: 5px;
+	padding: 12px 15px 12px 15px;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+#btnArea {margin:30px 0px 0px 0px; padding: 10px;  }
+
+/* 로그인 */
+#loginForm { 
+	width:300px; 
+	margin: 20px auto; 
+	padding-top: 220px; 
+}
+
+#loginForm #textId {width: 160px; height: 30px; }
+#loginForm #textPassword {width: 160px; height: 30px; }
+#loginForm #tdMsg {padding-top: 20px; text-align: center; }
+

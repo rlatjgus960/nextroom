@@ -9,6 +9,6 @@ public class Login {
 	@RequestMapping("/login")
 	public String login() {
 		System.out.println("login");
-		return "user/login";
+		return "user/loginForm";
 	}
 }

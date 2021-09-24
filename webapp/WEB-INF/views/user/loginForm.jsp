@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
 
 <title>마이페이지</title>
 </head>
@@ -24,11 +25,37 @@
 		<div id="content">
 
 
-			<div id="login_box">
-				<a href="javascript:kakaoLogin();"><img src="${pageContext.request.contextPath }/assets/image/kakao_login_medium_narrow.png"></a>
-				<a href="javascript:kakaoLogout();"> <span>카카오 로그아웃</span> </a>
-				
-
+			<div id="loginForm">
+				<form method="post" action="">
+		      		<table>
+				      	<colgroup>
+							<col style="width: 100px;">
+							<col style="">
+						</colgroup>
+			      		<tr>
+			      			<td><label for="textId">아이디</label></td>
+			      			<td><input id="textId" type="text" name="id"></td>
+			      		</tr>
+			      		<tr>
+			      			<td><label for="textPassword">패스워드</label> </td>
+			      			<td><input id="textPassword" type="password" name="password"></td>   
+			      			   			
+			      		</tr> 
+			      		<tr>
+							<c:if test="${param.result eq 'fail'}">
+								<td colspan="2" id="tdMsg" colspan="2">
+			      					<span>아이디 또는 비번을 확인해 주세요.</span>
+			      				</td>
+							</c:if>
+			      			
+			      		</tr> 
+			      	</table>
+		      		<div id="btnArea">
+						<button class="btn" type="submit" >로그인</button>
+					</div>
+		      		
+				</form>
+		
 			</div>
 
 
@@ -47,7 +74,7 @@
 		<!-- //footer -->
 	</div>
 </body>
-<!-- 카카오 스크립트 -->
+<!-- 카카오 스크립트 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 	Kakao.init('2db73f407a18feab17891483cb1ec32d'); 
@@ -87,4 +114,5 @@
 		}
 	}
 </script>
+ -->
 </html>
