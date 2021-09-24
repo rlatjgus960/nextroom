@@ -45,10 +45,7 @@
 				<div id="aside">
 						<img id="aside_img" src="${pageContext.request.contextPath }/assets/image/asideImg.png" width="35px" height="35px">
 						
-						<div id="aside_cate_coummunity">
-							<!-- <div id="aside_title"> -->
-								<!-- <p>자유게시판</p> -->
-							<!-- </div> -->
+						<div id="aside_cate">
 							<ul>
 								<li><a class="active" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
 								<li>후기게시판</li>
@@ -569,12 +566,12 @@ $(document).mouseup(function (e){
 
 
 //쪽지보내기 팝업
-   function popup(){
-       var url = "${pageContext.request.contextPath }/board/massageForm";
-       var name = "popup test";
-       var option = "width = 500, height = 500, top = 250, left = 700, location = no"
-       window.open(url, name, option);
-   }
+function popup(){
+    var url = "${pageContext.request.contextPath }/board/massageForm";
+    var name = "popup test";
+    var option = "width = 500, height = 500, top = 250, left = 700, location = no"
+    window.open(url, name, option);
+}
    
    
 </script>

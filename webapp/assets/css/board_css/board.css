@@ -7,16 +7,19 @@
     margin: 0px 5px;
 }
 
+
+
 #aside_cate{
-    line-height: 25px;
+    line-height: 30px;
     float: left;
-    width: 130px;
+    width: 150px;
     text-align: left;
-    padding: 30px 40px;
+    padding: 30px 30px;
     box-shadow: 5px 5px 15px 0px rgb(224 224 224);
     border-top: 5px solid rgb(253, 213, 59);
     background-color: #fff;
 }
+
 
 #aside_img {
     float: right;
@@ -26,25 +29,10 @@
     margin-bottom: 5px;
 }
 
-#aside_cate_coummunity{
-    line-height: 25px;
-    float: left;
-    width: 130px;
-    text-align: left;
-    padding: 30px 40px;
-    box-shadow: 5px 5px 15px 0px rgb(224 224 224);
-    border-top: 5px solid rgb(253, 213, 59);
-    background-color: #fff;
-}
 
 
-#aside_cate_coummunity>p{
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    text-align: center;
-    font-size: 25px;
-    border-bottom: 1px solid black;
-}
+
+
 
 
 /* 전체/인기/조회순 글목록으로 가는 버튼 */

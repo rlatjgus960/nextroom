@@ -44,10 +44,7 @@
 				<div id="aside">
 						<img id="aside_img" src="${pageContext.request.contextPath }/assets/image/asideImg.png" width="35px" height="35px">
 						
-						<div id="aside_cate_coummunity">
-							<!-- <div id="aside_title"> -->
-								<!-- <p>자유게시판</p> -->
-							<!-- </div> -->
+						<div id="aside_cate">
 							<ul>
 								<li><a class="active" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
 								<li><a class="" href="">후기게시판</a></li>
