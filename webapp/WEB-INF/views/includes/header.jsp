@@ -1,12 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 	<!-- 헤더영역 -->
 	<div id="header">
@@ -27,8 +21,19 @@
 				<ul id="login_area">
 					<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }\assets\image\messageicon.jpg"></a></li>
 					<li><a href="" class=""><img id="" src="${pageContext.request.contextPath }\assets\image\alerticon.jpg"></a></li>
-					<li class="mypageBtn"><a href="" class="btn_s">로그아웃</a></li>
-					<li class="mypageBtn"><a href="" class="btn_s">마이페이지</a></li>
+					
+					<c:choose>
+						<c:when test="${empty sessionScope.authUser }">
+							<li class="mypageBtn"><a href="${pageContext.request.contextPath}/user/loginForm" class="btn_s">로그인</a></li>
+							<li class="mypageBtn"><a href="${pageContext.request.contextPath}/mypage/main" class="btn_s">마이페이지</a></li>
+						</c:when>
+						
+						<c:otherwise>
+							<li class="mypageBtn"><a href="" class="btn_s">로그아웃</a></li>
+							<li class="mypageBtn"><a href="" class="btn_s">마이페이지</a></li>
+						</c:otherwise>
+					</c:choose>
+					
 				</ul>
 			</div>
 			
@@ -36,7 +41,4 @@
 		
 	</div>
 	<!-- //헤더영역 -->
-      
-      
-</body>
-</html>
+     
