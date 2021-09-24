@@ -134,18 +134,7 @@
                                     <td><input type="text"></td>
                                 </tr>
 
-                                <tr>
-                                    <th>비밀번호 확인 질문</th>
-                                    <td>
-                                        <select>
-                                            <option>2031.07.03은 무슨날이게?</option>
-                                            <option>나의 보물 1호는?</option>
-                                            <option>가장 친한 친구 이름은?</option>
-                                            <option>쇄국정책의 뜻은?</option>
-                                        </select>
-                                    </td>
-                                    <td><input type="text"></td>
-                                </tr>
+
 
                         </table>
                         <!-- //정보변경 테이블 -->
