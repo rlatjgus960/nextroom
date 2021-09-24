@@ -214,10 +214,14 @@ a.active {
 	height:23px;
 }
 /*******************************************샘플 나중에 데이터 넣어서 해야할듯*/
+.btnNick{
+	position: relative;
+}
+
 .nick_modal1 {
     display: none;
     position: absolute; 
-    left: 56%;
+    left: 25%;
     z-index: 1000;
     background-color: #fff;
     border: 1px solid #b9b9b9;

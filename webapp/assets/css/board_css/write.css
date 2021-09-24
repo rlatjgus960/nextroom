@@ -15,46 +15,6 @@
 
 
 
-/* 글등록 공간
-#content_title{
-    margin-top: 20px;
-    height: 100px;
-    border: 1px solid black;
-    border-bottom: none;
-}
-
-#content_title>input{
-    height: 60px;
-    width: 996px;
-    max-width: 1000px;
-    border-bottom: 1px solid black;
-    font-size: 30px;
-    display: block;
-}
-
-#content_title>div{
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
-#content_title>div>h6{
-    margin-left: -700px;
-    font-size: 18px;
-    text-align: left;
-    display: inline-block;
-}
-
-#content_title>div>p{
-    float: right;
-}
-
-
-#write_area{
-    height: 900px;
-    border: 1px solid black;
-} */
-
-
-
 
 /* 글등록 공간 */
 #writecontent_area{
