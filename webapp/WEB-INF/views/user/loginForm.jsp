@@ -9,6 +9,8 @@
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
 
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+
 <title>마이페이지</title>
 </head>
 <body>
@@ -26,7 +28,7 @@
 
 
 			<div id="loginForm">
-				<form method="post" action="">
+				<form method="post" action="${pageContext.request.contextPath}/user/login">
 		      		<table>
 				      	<colgroup>
 							<col style="width: 100px;">
