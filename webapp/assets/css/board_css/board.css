@@ -8,7 +8,6 @@
 }
 
 
-
 #aside_cate{
     line-height: 30px;
     float: left;
@@ -28,11 +27,6 @@
 #aside_cate_coummunity>ul>li{
     margin-bottom: 5px;
 }
-
-
-
-
-
 
 
 /* 전체/인기/조회순 글목록으로 가는 버튼 */
@@ -216,17 +210,7 @@ a.active {
     border-bottom: none;
 }
 
-/*
-.nick_modal1 {
-	width: 90px;
-	height: 60px;
-    top: 40px;
-    left: 50%;
-    padding:20px 10px;
-    background:#fff;
-    border:2px solid #666;
-    text-align: center;
-}*/
+
 
 .nick_modal_list {
 	width: 90px;
