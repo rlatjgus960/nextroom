@@ -171,8 +171,10 @@
                             <li><a href="">10</a></li>
                             <li><a href="">▶</a></li>
                         </ol>
-                    
-                        <button type="button" id="submit_button" class="submit_button">등록하기</button>
+                    	
+                    	<c:if test="${not empty sessionScope.authUser }">
+	                        <button type="button" id="submit_button" class="submit_button">등록하기</button>
+                    	</c:if>
                     </div>
                     <!-- 페이징 끝나는 영역 -->
 
@@ -201,7 +203,7 @@
 							<tbody>
 								<tr class="space">
 									<td id="text_bold">아이디</td> 
-									<td class="party_uid">ctct25</td>
+									<td class="party_uid">${sessionScope.authUser.id } </td>
 								</tr>
 						
 							<!-- 날짜 -->
@@ -327,25 +329,57 @@
 </body>
 
 <script>
+
+	//파티등록 모달창 열기
 	$("#submit_button").on("click", function() {
 		$("#partyWrite_modal").attr("style", "display:block");
 		document.body.classList.add("stop-scroll");
 	
 	});
 	
+	
+	//파티등록 모달창 닫기
 	$("#modal_close_btn").on("click", function() {
 		$("#partyWrite_modal").attr("style", "display:none");
 		document.body.classList.add("stop-scroll");
 	});
 
 	
-	
+	//날짜 데이터
 	 $("#party_date").datepicker({
 	     showOn:"button"
 	     , buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
 	     ,buttonImageOnly: true
 	 });
 	
+	 
+	//파티등록 모달창에서 지역선택시!
+	 $("#party_region").on("change", function() {
+		 
+		var sido = $(this).val();
+		
+		console.log(sido);
+		
+		//ajax서버에 요청 (sido 전달)
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/party/sido",		
+			type : "post",
+// 			contentType : "application/json",
+			data : {sido: sido},
+
+// 			dataType : "json",
+			success : function(cafeList){
+				/*성공시 처리해야될 코드 작성*/
+				console.log(cafeList);
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+			
+		});
+		
+	});
 	
 </script>
 
