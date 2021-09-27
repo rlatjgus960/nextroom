@@ -8,6 +8,7 @@
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/party.xml" />
+		<mapper resource="mybatis/mappers/record.xml" />
 
 	</mappers>
 </configuration>

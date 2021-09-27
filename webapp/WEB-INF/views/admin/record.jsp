@@ -150,7 +150,7 @@
             </div>
             <h3>기록 입력</h3>
                 
-				<form action="" method="GET">
+				<form action="${pageContext.request.contextPath }/admin/record/addRecord" method="GET">
 	                <div id="record_table_wrap">
 	                        <table id="record_modal_table">
 	                            <tr class="label_time">
@@ -158,15 +158,15 @@
 	                                
 	                            </tr>
 	                            <tr class="time_data">
-	                                <td><input type="text" name="record_hour" value="">뷴 <input type="text" name="record_hour" value="">분</td>
-	                                <td><label><input class="escapeFailed" type="checkbox" name="failed" value="failed"> 탈출실패</label></td>
+	                                <td><input type="text" name="recordMin" value="">분 <input type="text" name="recordSec" value="">초</td>
+	                                <td><label><input class="escapeFailed" type="checkbox" name="recordClear" value="fail"> 탈출실패</label></td>
 	                            </tr>
 	
 	                            <tr class="label_hints">
 	                                <th>힌트 수</th>
 	                            </tr>
 	                            <tr class="hints_data">
-	                                <td><input type="text" name="record_time"> 개</td>
+	                                <td><input type="text" name="recordHints"> 개</td>
 	                            </tr>
 	                            <tr>
 	                                <td></td>
@@ -174,15 +174,15 @@
 	                            </tr>
 	                            <tr>
 	                                <th>플레이어 1&nbsp;</th>
-	                                <td><input type="text" name="record_time"><a class="red_x"> X</a></td>
+	                                <td><input type="text" name="member" value="junzzang1"><a class="red_x"> X</a></td>
 	                            </tr>
 	                            <tr>
 	                                <th>플레이어 2&nbsp;</th>
-	                                <td><input type="text" name="record_time"><a class="red_x"> X</a></td>
+	                                <td><input type="text" name="member" value="junzzang2"><a class="red_x"> X</a></td>
 	                            </tr>
 	                            <tr>
 	                                <th>플레이어 3&nbsp;</th>
-	                                <td><input type="text" name="record_time"><a class="red_x"> X</a></td>
+	                                <td><input type="text" name="member" value="junzzang3"><a class="red_x"> X</a></td>
 	                            </tr>
 	
 	                            
@@ -191,7 +191,7 @@
 
                         <div id="record_Info_Btn">
                             <button type="submit" class="mbutton">입력</button>
-                            <button class="mbutton">취소</button>
+                            <a class="mbutton chuiso">취소</a>
                         </div>
                 	</form>
         </div>
@@ -215,6 +215,18 @@
 		$("#admin_record_modal").attr("style", "display:none");
 		document.body.classList.remove("stop-scroll");
 	
+	});
+	
+	$(".chuiso").on("click", function() {
+		$("#admin_record_modal").attr("style", "display:none");
+		document.body.classList.remove("stop-scroll");
+	
+	});
+	
+	
+	//멤버 추가,삭제
+	$(".red_x").on("click",function(){
+		console.log("x clicked");
 	});
 </script>
 
