@@ -25,4 +25,20 @@ public class PartyDao {
 		
 		return cafeList;
 	}
+	
+	
+	//21-09-27 by 대니
+	//cafe로 테마가져오기
+	public List<PartyVo> getThemeList(String cafe) {
+		System.out.println("다오구간카페: " + cafe);
+		
+//		List<PartyVo> themeList = sqlSession.selectList("party.themeListSelect", cafe);
+		
+//		System.out.println("다오구간 테마리스트: " + themeList);
+		
+		return null;
+	}
+	
+	
+	
 }

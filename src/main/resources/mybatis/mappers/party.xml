@@ -6,7 +6,8 @@
 	<!-- sido로 카페리스트가져오기 -->
 	<select id="cafeListSelect" parameterType="String" resultType="com.nextroom.vo.PartyVo">
 		<![CDATA[
-			select cafeName
+			select cafeNo,
+				   cafeName
 			from cafe
 			where sidodetail like '%' || #{sido} || '%'
 		]]>

@@ -24,4 +24,15 @@ public class PartyService {
 		return cafeList;
 	}
 	
+	
+	//21-09-27 by 대니
+	//cafe로 테마가져오기
+	public List<PartyVo> getThemeList(String cafe) {
+		System.out.println("서비스구간 카페: " + cafe);
+		
+		List<PartyVo> themeList = partyDao.getThemeList(cafe);
+		
+		
+		return null;
+	}
 }

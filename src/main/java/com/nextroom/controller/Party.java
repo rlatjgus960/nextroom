@@ -46,4 +46,17 @@ public class Party {
 		return cafeList;
 	}
 	
+	//21-09-27 by 대니
+	//cafe로 테마가져오기
+	@ResponseBody
+	@RequestMapping(value = "/cafe", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<PartyVo> themeList(@RequestParam("cafe") String cafe) {
+		
+		System.out.println("파티 카페넘어오기: " + cafe);
+		
+		List<PartyVo> themeList = partyService.getThemeList(cafe);
+		
+		return null;
+	}
+	
 }

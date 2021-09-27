@@ -3,7 +3,8 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head profile="http://www.w3.org/2005/10/profile">
+
 <meta charset="UTF-8">
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
@@ -11,8 +12,7 @@
 <link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/partyWriteModal.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="http://example.com/myicon.png">
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
@@ -174,9 +174,9 @@
                             <li><a href="">▶</a></li>
                         </ol>
                     	
-                    	<c:if test="${not empty sessionScope.authUser }">
+<%--                     	<c:if test="${not empty sessionScope.authUser }"> --%>
 	                        <button type="button" id="submit_button" class="submit_button">등록하기</button>
-                    	</c:if>
+<%--                     	</c:if> --%>
                     </div>
                     <!-- 페이징 끝나는 영역 -->
 
@@ -354,7 +354,8 @@
 	     ,buttonImageOnly: true
 	 });
 	
-	 
+	
+/********************************************************************************************/	 
 	//파티등록 모달창에서 지역선택시!
 	 $("#party_region").on("change", function() {
 		 
@@ -397,12 +398,70 @@
 	//카페이름 1개씩 렌더링
 	function render(cafeList, type) {
 		var str = "";
-		str += '<option id="themeName" value="' + cafeList.cafeName + '">' + cafeList.cafeName + '</option>';
+		str += '<option id="themeName" value="' + cafeList.cafeName + '" data-cafeno="' + cafeList.cafeNo +'">' + cafeList.cafeName + '</option>';
 		
 		if(type === 'down') {
 			$("#party_cafe").append(str);
 		}
 	};
+	
+	/********************************************************************************************/	
+	
+	/********************************************************************************************/
+	//파티등록 모달창에서 카페선택시!
+	$("#party_cafe").on("change", function() {
+		
+		var cafe = $(this).val();
+		var cafeNo = $("#themeName").data("cafeno");
+		console.log(cafe);
+		console.log(cafeNo);
+		
+// 	  	$('#party_cafe').empty();
+		
+		
+// 		//ajax서버에 요청 (sido 전달)
+// 		$.ajax({
+			
+// 			url : "${pageContext.request.contextPath }/party/cafe",		
+// 			type : "post",
+// // 			contentType : "application/json",
+// 			data : {cafe: cafe},
+
+// // 			dataType : "json",
+// 			success : function(themeList){
+// 				/*성공시 처리해야될 코드 작성*/
+// 				console.log(themeList);
+				
+// 				$("#party_cafe").append('<option value="" selected="">카페를 선택해 주세요</option>');
+				
+// 				for(var i=0; i<cafeList.length; i++) {
+// 					render(cafeList[i], "down");
+// 				}
+				
+				
+// 			},
+// 			error : function(XHR, status, error) {
+// 				console.error(status + " : " + error);
+// 			}
+			
+// 		}); 
+		
+	});
+
+	
+// 	//카페이름 1개씩 렌더링
+// 	function render(cafeList, type) {
+// 		var str = "";
+// 		str += '<option id="themeName" value="' + cafeList.cafeName + '">' + cafeList.cafeName + '</option>';
+		
+// 		if(type === 'down') {
+// 			$("#party_cafe").append(str);
+// 		}
+// 	};
+	
+	/********************************************************************************************/
+	
+	
 	
 	
 </script>

@@ -6,7 +6,9 @@ public class PartyVo {
 	private int partyNo;
 	private String reserveDate;
 	private String sido;
+	private int cafeNo;
 	private String cafeName;
+	private int themeNo;
 	private String themeName;
 	private String themeImg;
 	private String reserveTime;
@@ -19,14 +21,17 @@ public class PartyVo {
 	public PartyVo() {
 		super();
 	}
-
-	public PartyVo(int partyNo, String reserveDate, String sido, String cafeName, String themeName, String themeImg,
-			String reserveTime, int reservePerson, String content, String partyState) {
+	
+	public PartyVo(int partyNo, String reserveDate, String sido, int cafeNo, String cafeName, int themeNo,
+			String themeName, String themeImg, String reserveTime, int reservePerson, String content,
+			String partyState) {
 		super();
 		this.partyNo = partyNo;
 		this.reserveDate = reserveDate;
 		this.sido = sido;
+		this.cafeNo = cafeNo;
 		this.cafeName = cafeName;
+		this.themeNo = themeNo;
 		this.themeName = themeName;
 		this.themeImg = themeImg;
 		this.reserveTime = reserveTime;
@@ -35,11 +40,15 @@ public class PartyVo {
 		this.partyState = partyState;
 	}
 
-	
+
+
 	//메소드(게터세터)
+	
+	
 	public int getPartyNo() {
 		return partyNo;
 	}
+
 
 	public void setPartyNo(int partyNo) {
 		this.partyNo = partyNo;
@@ -61,6 +70,22 @@ public class PartyVo {
 		this.sido = sido;
 	}
 
+	public int getCafeNo() {
+		return cafeNo;
+	}
+	
+	public void setCafeNo(int cafeNo) {
+		this.cafeNo = cafeNo;
+	}
+	
+	public int getThemeNo() {
+		return themeNo;
+	}
+	
+	public void setThemeNo(int themeNo) {
+		this.themeNo = themeNo;
+	}
+	
 	public String getCafeName() {
 		return cafeName;
 	}
@@ -121,9 +146,10 @@ public class PartyVo {
 	//메소드(일반)
 	@Override
 	public String toString() {
-		return "PartyVo [partyNo=" + partyNo + ", reserveDate=" + reserveDate + ", sido=" + sido + ", cafeName="
-				+ cafeName + ", themeName=" + themeName + ", themeImg=" + themeImg + ", reserveTime=" + reserveTime
-				+ ", reservePerson=" + reservePerson + ", content=" + content + ", partyState=" + partyState + "]";
+		return "PartyVo [partyNo=" + partyNo + ", reserveDate=" + reserveDate + ", sido=" + sido + ", cafeNo=" + cafeNo
+				+ ", cafeName=" + cafeName + ", themeNo=" + themeNo + ", themeName=" + themeName + ", themeImg="
+				+ themeImg + ", reserveTime=" + reserveTime + ", reservePerson=" + reservePerson + ", content="
+				+ content + ", partyState=" + partyState + "]";
 	}
 	
 	
