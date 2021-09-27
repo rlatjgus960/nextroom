@@ -1,12 +1,16 @@
 package com.nextroom.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nextroom.service.ReviewBoardService;
 import com.nextroom.vo.ReviewBoardVo;
@@ -19,10 +23,18 @@ public class Board {
 	@Autowired
 	private ReviewBoardService reviewBoardService;
 	
-	//자유게시판
-	@RequestMapping("/freeCommunity")
-	public String freeCommunity() {
+	//자유게시판 리스트
+	@RequestMapping(value = "/freeCommunity", method = {RequestMethod.GET, RequestMethod.POST})
+	public String freeCommunity(Model model, @RequestParam(value="keyword", required = false, defaultValue = "") String keyword) {
 		System.out.println("freeCommunity");
+		
+		//사용자가 list요청
+		List<ReviewBoardVo> reviewBoardVo = reviewBoardService.list(keyword);
+		
+		//jsp로 보냄
+		model.addAttribute("reviewBoardVo", reviewBoardVo);
+		
+		
 		return "board/freeCommunity";
 	}
 	
