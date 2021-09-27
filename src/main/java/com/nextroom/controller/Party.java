@@ -43,7 +43,7 @@ public class Party {
 		
 		List<PartyVo> cafeList = partyService.getCafeList(sido);
 		
-		return null;
+		return cafeList;
 	}
 	
 }

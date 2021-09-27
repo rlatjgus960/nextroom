@@ -19,6 +19,10 @@ public class PartyDao {
 	public List<PartyVo> getCafeList(String sido) {
 		System.out.println("다오구간시도: " + sido);
 		
-		return null;
+		List<PartyVo> cafeList = sqlSession.selectList("party.cafeListSelect", sido);
+		
+		System.out.println("다오구간 카페리스트: " + cafeList);
+		
+		return cafeList;
 	}
 }

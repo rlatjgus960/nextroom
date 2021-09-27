@@ -21,7 +21,7 @@ public class PartyService {
 		List<PartyVo> cafeList = partyDao.getCafeList(sido);
 		
 		
-		return null;
+		return cafeList;
 	}
 	
 }
