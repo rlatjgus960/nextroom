@@ -80,7 +80,7 @@
 					<p id="admin_subHeader">| 관리자 전환 신청</p>
 
 					<div id="cafeModify" class="">
-						<form action="" method="post">
+						<form action="${pageContext.request.contextPath}/mypage/addCafe" method="post">
 
 							<div id="cafeModi_img" class="clearfix">
 
@@ -90,7 +90,7 @@
 										src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
 
 									<div class="cafe_up_wrap">
-										<input type="file" name="mainImg">
+										<input type="file" name="cafeImg">
 									</div>
 								</div>
 
@@ -114,7 +114,7 @@
 
 								</div>
 							</div>
-
+							<input type="hidden" name="userNo" value="${authUser.userNo }">
 
 							<div id="cafe_explain_wrap">
 								<div id="cafeIntroduce_wrap" class="cafeNameWrap clearfix">
@@ -125,7 +125,7 @@
 
 								<div id="cafeIntroduce_wrap" class="cafe_explain_item clearfix">
 									<p class="cafModi_subTitle">소개글</p>
-									<textarea name="cafeIntroduce" placeholder="소개글을 입력하세요."></textarea>
+									<textarea name="cafeIntro" placeholder="소개글을 입력하세요."></textarea>
 								</div>
 
 								<div id="address_wrap" class="cafe_explain_item clearfix">
@@ -139,7 +139,7 @@
 											style="color: #999; display: none"></span> <input name="detailAddress" type="text"
 											id="detailAddress" placeholder="상세주소"> <input type="hidden" id="extraAddress"
 											placeholder="참고항목"> <input name="sido" type="hidden" id="sido" placeholder="시도">
-										<input name="sigungu" type="hidden" id="sigungu" placeholder="시군구">
+										<input name="sidoDetail" type="hidden" id="sigungu" placeholder="시군구">
 
 										<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 										<script>
@@ -229,7 +229,7 @@
 
 								<div id="phoneNumber_wrap" class="cafe_explain_item clearfix">
 									<p class="cafModi_subTitle">전화번호</p>
-									<input type="tel" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력하세요.">
+									<input type="tel" id="phoneNumber" name="cafeHp" placeholder="전화번호를 입력하세요.">
 								</div>
 
 
@@ -244,7 +244,7 @@
 
 								<div id="cafeURL_wrap" class="cafe_explain_item clearfix">
 									<p class="cafModi_subTitle">카페 URL</p>
-									<input type="text" id="cafeURL" name="cafeURL" placeholder="카페 사이트 주소를 입력해주세요.">
+									<input type="text" id="cafeURL" name="url" placeholder="카페 사이트 주소를 입력해주세요.">
 								</div>
 
 							</div>

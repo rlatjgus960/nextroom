@@ -1,11 +1,19 @@
 package com.nextroom.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nextroom.service.CafeService;
+import com.nextroom.vo.CafeVo;
 
 @Controller
 @RequestMapping("/mypage")
 public class Mypage {
+	
+	@Autowired
+	private CafeService cafeService;
 
 	// 마이페이지 메인
 	@RequestMapping("/main")
@@ -49,11 +57,24 @@ public class Mypage {
 		return "mypage/sendMassage";
 	}
 
-	// 마이페이지 카페관리자 전환
+	// 마이페이지 카페관리자 전환폼 by 서현
 	@RequestMapping("/addCafeForm")
 	public String addCafeForm() {
 		System.out.println("mypage/addCafeForm");
 		return "mypage/addCafeForm";
 	}
-
+	
+	//마이페이지 카페관리자 추가 by 서현
+	@RequestMapping("/addCafe")
+	public String addCafe(@ModelAttribute CafeVo cafeVo) {
+		
+		System.out.println("mypage/addCafe");
+		System.out.println(cafeVo);
+		
+		int count = cafeService.addCafe(cafeVo);
+		
+		return "mypage/addCafeOk";
+	}
+	
+	
 }
