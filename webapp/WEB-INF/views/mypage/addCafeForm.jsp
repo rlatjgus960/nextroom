@@ -29,9 +29,9 @@
 
 			<div id="subheader" class="clearfix">
 				<div id="subheader-title">
-					<h2>넥스트에디션 강남신논현점</h2>
+					<h2>카페 관리자 전환 신청</h2>
 				</div>
-				<div id="subheader-mintitle">관리자페이지 > 카페소개관리</div>
+				<div id="subheader-mintitle">마이페이지 > 카페관리자전환</div>
 
 
 
@@ -44,8 +44,7 @@
 
 				<div id="aside_cate">
 					<ul>
-						<li class="selected"><a href="${pageContext.request.contextPath}/mypage/infoModifyForm">개인정보
-								변경</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage/infoModifyForm">개인정보 변경</a></li>
 						<li><a href="${pageContext.request.contextPath}/mypage/main">내기록 보기</a></li>
 						<li><a href="${pageContext.request.contextPath}/mypage/payMent">결제내역</a></li>
 						<li><a href="${pageContext.request.contextPath}/mypage/partyManage">파티관리</a></li>
@@ -64,6 +63,9 @@
 								<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">&nbsp;-보낸 쪽지함</a></li>
 								<li><a href="javascript:popup()">&nbsp;-쪽지 보내기</a></li>
 							</ul></li>
+
+
+						<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페 관리자 전환</a></li>
 						<!-- <li>회원 탈퇴</li> -->
 					</ul>
 
@@ -75,7 +77,7 @@
 			<div id="contentMain" class="clearfix">
 
 				<div id="contentWrap">
-					<p id="admin_subHeader">| 카페 관리자 신청</p>
+					<p id="admin_subHeader">| 관리자 전환 신청</p>
 
 					<div id="cafeModify" class="">
 						<form action="" method="post">
@@ -118,7 +120,6 @@
 								<div id="cafeIntroduce_wrap" class="cafeNameWrap clearfix">
 									<p class="cafModi_subTitle">카페이름</p>
 									<input type="text" id="cafeName" name="cafeName" placeholder="카페이름을 입력하세요.">
-									</textarea>
 								</div>
 
 
@@ -250,7 +251,7 @@
 
 
 							<div id="cafeModify_button">
-								<button type="submit" class="mbutton">수정</button>
+								<button type="submit" class="mbutton">신청하기</button>
 							</div>
 						</form>
 

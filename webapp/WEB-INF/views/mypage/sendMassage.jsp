@@ -63,6 +63,8 @@
 									<li><a href="javascript:popup()">- 쪽지 보내기</a></li>
 								</ul>
 							</li>
+							
+							<li><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페 관리자 전환</a></li>
 							<!-- <li>회원 탈퇴</li> -->
 						</ul>
               
