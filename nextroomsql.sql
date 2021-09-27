@@ -239,51 +239,91 @@ ALTER TABLE theme
 /************************************************/
 /************************************************/
 
-DROP INDEX PK_thmePrice;
+      DROP INDEX PK_thmePrice; /**************************************** 한번 실행 후 삭제 ****************************************/
+       DROP INDEX PK_tehmePrice; /**************************************** 한번 실행 후 삭제 ****************************************/
+       /********************** 내꺼는 오타가 있는데 다른 사람들은 어떨지 몰라서 일단 두개 다 준비했어요 **********************************/
+
+      
+/* 테마별가격 */
+DROP TABLE themePrice 
+	CASCADE CONSTRAINTS;
 
 /* 테마별가격 */
-DROP TABLE thmePrice 
-   CASCADE CONSTRAINTS;
-
-/* 테마별가격 */
-CREATE TABLE thmePrice (
-   themeNo NUMBER NOT NULL, /* 테마번호 */
-   headCount NUMBER, /* 인원 */
-   price NUMBER /* 가격 */
+CREATE TABLE themePrice (
+	themeNo NUMBER NOT NULL, /* 테마번호 */
+	headCount NUMBER, /* 인원 */
+	price NUMBER /* 가격 */
 );
 
-COMMENT ON TABLE thmePrice IS '테마별가격';
+COMMENT ON TABLE themePrice IS '테마별가격';
 
-COMMENT ON COLUMN thmePrice.themeNo IS '테마번호';
+COMMENT ON COLUMN themePrice.themeNo IS '테마번호';
 
-COMMENT ON COLUMN thmePrice.headCount IS '인원';
+COMMENT ON COLUMN themePrice.headCount IS '인원';
 
-COMMENT ON COLUMN thmePrice.price IS '가격';
+COMMENT ON COLUMN themePrice.price IS '가격';
 
-CREATE UNIQUE INDEX PK_thmePrice
-   ON thmePrice (
-      themeNo ASC
-   );
+ALTER TABLE themePrice
+	ADD
+		CONSTRAINT FK_theme_TO_themePrice
+		FOREIGN KEY (
+			themeNo
+		)
+		REFERENCES theme (
+			themeNo
+		);
+		
 
-ALTER TABLE thmePrice
-   ADD
-      CONSTRAINT PK_thmePrice
-      PRIMARY KEY (
-         themeNo
-      );
-
-ALTER TABLE thmePrice
-   ADD
-      CONSTRAINT FK_theme_TO_thmePrice
-      FOREIGN KEY (
-         themeNo
-      )
-      REFERENCES theme (
-         themeNo
-      );
 
 /************************************************/
 /************************************************/
+      
+DROP INDEX PK_themeTime;
+
+/* 새 테이블5 */
+DROP TABLE themeTime 
+	CASCADE CONSTRAINTS;
+
+/* 새 테이블5 */
+CREATE TABLE themeTime (
+	themeTimeNo NUMBER NOT NULL, /* 시간번호 */
+	themeNo NUMBER NOT NULL, /* 테마번호 */
+	themeTime VARCHAR2(30) /* 가능시간 */
+);
+
+COMMENT ON TABLE themeTime IS '새 테이블5';
+
+COMMENT ON COLUMN themeTime.themeTimeNo IS '시간번호';
+
+COMMENT ON COLUMN themeTime.themeNo IS '테마번호';
+
+COMMENT ON COLUMN themeTime.themeTime IS '가능시간';
+
+CREATE UNIQUE INDEX PK_themeTime
+	ON themeTime (
+		themeTimeNo ASC
+	);
+
+ALTER TABLE themeTime
+	ADD
+		CONSTRAINT PK_themeTime
+		PRIMARY KEY (
+			themeTimeNo
+		);
+
+ALTER TABLE themeTime
+	ADD
+		CONSTRAINT FK_theme_TO_themeTime
+		FOREIGN KEY (
+			themeNo
+		)
+		REFERENCES theme (
+			themeNo
+		);
+		
+/************************************************/
+/************************************************/
+      
 
 DROP INDEX PK_review;
 
