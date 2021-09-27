@@ -230,7 +230,7 @@
 					<!-- //글등록 공간 -->
 
 					<!-- 글등록 버튼 -->
-					<a id="btn_save" href="">글등록</a>
+					<a id="btn_save" href="${pageContext.request.contextPath}/board/reviewWrite">글등록</a>
 
 
 
