@@ -23,6 +23,16 @@ public class Board {
 	@Autowired
 	private ReviewBoardService reviewBoardService;
 	
+	
+	//자유게시판 리스트
+	@RequestMapping("/freeCommunity")
+	public String freeCommunity() {
+		System.out.println("freeCommunity");
+		
+		return"board/freeCommunity";
+	}
+	
+	/*
 	//자유게시판 리스트
 	@RequestMapping(value = "/freeCommunity", method = {RequestMethod.GET, RequestMethod.POST})
 	public String freeCommunity(Model model, @RequestParam(value="keyword", required = false, defaultValue = "") String keyword) {
@@ -36,7 +46,7 @@ public class Board {
 		
 		
 		return "board/freeCommunity";
-	}
+	}*/
 	
 	
 	//글 읽기
