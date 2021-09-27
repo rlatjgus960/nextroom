@@ -11,6 +11,8 @@
 <link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/partyWriteModal.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
@@ -358,6 +360,8 @@
 		 
 		var sido = $(this).val();
 		
+	  	$('#party_cafe').empty();
+		
 		console.log(sido);
 		
 		//ajax서버에 요청 (sido 전달)
@@ -372,6 +376,14 @@
 			success : function(cafeList){
 				/*성공시 처리해야될 코드 작성*/
 				console.log(cafeList);
+				
+				$("#party_cafe").append('<option value="" selected="">카페를 선택해 주세요</option>');
+				
+				for(var i=0; i<cafeList.length; i++) {
+					render(cafeList[i], "down");
+				}
+				
+				
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -380,6 +392,18 @@
 		});
 		
 	});
+
+	
+	//카페이름 1개씩 렌더링
+	function render(cafeList, type) {
+		var str = "";
+		str += '<option id="themeName" value="' + cafeList.cafeName + '">' + cafeList.cafeName + '</option>';
+		
+		if(type === 'down') {
+			$("#party_cafe").append(str);
+		}
+	};
+	
 	
 </script>
 
