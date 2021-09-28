@@ -14,11 +14,29 @@
 					#{closeTime}, 
 					#{cafeIntro}, 
 					#{url}, 
-					#{cafeImg}, 
+					#{cafeImgPath}, 
 					#{address}, 
 					#{sido}, 
 					#{sidoDetail})
 		]]>
 	</insert>
+	
+<!-- 	<insert id="addInteriorImg" parameterType="com.nextroom.vo.CafeVo">
+		<![CDATA[
+			insert into interiorImg
+			values (cafeNo.nextval, 
+					#{userNo}, 
+					#{cafeName}, 
+					#{cafeHp}, 
+					#{openTime}, 
+					#{closeTime}, 
+					#{cafeIntro}, 
+					#{url}, 
+					#{cafeImg}, 
+					#{address}, 
+					#{sido}, 
+					#{sidoDetail})
+		]]>
+	</insert> -->
 
 </mapper>

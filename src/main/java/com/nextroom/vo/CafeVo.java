@@ -1,5 +1,7 @@
 package com.nextroom.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class CafeVo {
 
 	private int cafeNo;
@@ -10,21 +12,22 @@ public class CafeVo {
 	private String closeTime;
 	private String cafeIntro;
 	private String url;
-	private String cafeImg;
-	private String interiorImg;
+	private MultipartFile cafeImg;
+	private MultipartFile interiorImg;
+	private String cafeImgPath;
+	private String interiorImgPath;
 	private String address;
 	private String addressDetail;
 	private String sido;
 	private String sidoDetail;
-
 
 	public CafeVo() {
 		super();
 	}
 
 	public CafeVo(int cafeNo, int userNo, String cafeName, String cafeHp, String openTime, String closeTime,
-			String cafeIntro, String url, String cafeImg, String interiorImg, String address, String addressDetail,
-			String sido, String sidoDetail) {
+			String cafeIntro, String url, MultipartFile cafeImg, MultipartFile interiorImg, String cafeImgPath,
+			String interiorImgPath, String address, String addressDetail, String sido, String sidoDetail) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -36,6 +39,8 @@ public class CafeVo {
 		this.url = url;
 		this.cafeImg = cafeImg;
 		this.interiorImg = interiorImg;
+		this.cafeImgPath = cafeImgPath;
+		this.interiorImgPath = interiorImgPath;
 		this.address = address;
 		this.addressDetail = addressDetail;
 		this.sido = sido;
@@ -106,20 +111,36 @@ public class CafeVo {
 		this.url = url;
 	}
 
-	public String getCafeImg() {
+	public MultipartFile getCafeImg() {
 		return cafeImg;
 	}
 
-	public void setCafeImg(String cafeImg) {
+	public void setCafeImg(MultipartFile cafeImg) {
 		this.cafeImg = cafeImg;
 	}
 
-	public String getInteriorImg() {
+	public MultipartFile getInteriorImg() {
 		return interiorImg;
 	}
 
-	public void setInteriorImg(String interiorImg) {
+	public void setInteriorImg(MultipartFile interiorImg) {
 		this.interiorImg = interiorImg;
+	}
+
+	public String getCafeImgPath() {
+		return cafeImgPath;
+	}
+
+	public void setCafeImgPath(String cafeImgPath) {
+		this.cafeImgPath = cafeImgPath;
+	}
+
+	public String getInteriorImgPath() {
+		return interiorImgPath;
+	}
+
+	public void setInteriorImgPath(String interiorImgPath) {
+		this.interiorImgPath = interiorImgPath;
 	}
 
 	public String getAddress() {
@@ -158,8 +179,9 @@ public class CafeVo {
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
 				+ ", openTime=" + openTime + ", closeTime=" + closeTime + ", cafeIntro=" + cafeIntro + ", url=" + url
-				+ ", cafeImg=" + cafeImg + ", interiorImg=" + interiorImg + ", address=" + address + ", addressDetail="
-				+ addressDetail + ", sido=" + sido + ", sidoDetail=" + sidoDetail + "]";
+				+ ", cafeImg=" + cafeImg + ", interiorImg=" + interiorImg + ", cafeImgPath=" + cafeImgPath
+				+ ", interiorImgPath=" + interiorImgPath + ", address=" + address + ", addressDetail=" + addressDetail
+				+ ", sido=" + sido + ", sidoDetail=" + sidoDetail + "]";
 	}
 
 }

@@ -58,10 +58,10 @@
 
 						<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">내 쪽지</a>
 							<ul>
-								<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">&nbsp;-받은
+								<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">-&nbsp;받은
 										쪽지함</a></li>
-								<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">&nbsp;-보낸 쪽지함</a></li>
-								<li><a href="javascript:popup()">&nbsp;-쪽지 보내기</a></li>
+								<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">-&nbsp;보낸 쪽지함</a></li>
+								<li><a href="javascript:popup()">-&nbsp;쪽지 보내기</a></li>
 							</ul></li>
 
 
@@ -80,7 +80,7 @@
 					<p id="admin_subHeader">| 관리자 전환 신청</p>
 
 					<div id="cafeModify" class="">
-						<form action="${pageContext.request.contextPath}/mypage/addCafe" method="get">
+						<form action="${pageContext.request.contextPath}/mypage/addCafe" method="post" enctype="multipart/form-data">
 
 							<div id="cafeModi_img" class="clearfix">
 
@@ -108,7 +108,7 @@
 									</div>
 									<div class="cafe_up_wrap">
 
-										<input type="file" name="interiorImg">
+										<input type="file" name="interiorImg" multiple="multiple">
 
 									</div>
 
