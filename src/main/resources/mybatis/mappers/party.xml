@@ -3,13 +3,34 @@
 
 <mapper namespace="party">
 	
-	<!-- sido로 카페리스트가져오기 -->
+	<!-- //sido로 카페No, 카페이름가져오기 -->
 	<select id="cafeListSelect" parameterType="String" resultType="com.nextroom.vo.PartyVo">
 		<![CDATA[
 			select cafeNo,
 				   cafeName
 			from cafe
 			where sidodetail like '%' || #{sido} || '%'
+		]]>
+	</select>
+	
+	
+	<!-- cafeNo로 테마NO, 테마이름가져오기 -->
+	<select id="themeListSelect" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select themeNo,
+       			   themename
+			from theme
+			where cafeNo = #{cafeNo}
+		]]>
+	</select>
+	
+	
+	<!-- themeNo로 시간표 가져오기 -->
+	<select id="themeTimeListSelect" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select themeTime
+			from themeTime
+			where themeNo = #{themeNo}
 		]]>
 	</select>
 	

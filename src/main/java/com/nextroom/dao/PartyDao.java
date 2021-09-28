@@ -15,7 +15,7 @@ public class PartyDao {
 	private SqlSession sqlSession;
 	
 	//21-09-26 by 대니
-	//sido로 카페리스트가져오기
+	//sido로 카페No, 카페이름가져오기
 	public List<PartyVo> getCafeList(String sido) {
 		System.out.println("다오구간시도: " + sido);
 		
@@ -28,15 +28,28 @@ public class PartyDao {
 	
 	
 	//21-09-27 by 대니
-	//cafe로 테마가져오기
-	public List<PartyVo> getThemeList(String cafe) {
-		System.out.println("다오구간카페: " + cafe);
+	//cafeNo로 테마NO, 테마이름가져오기
+	public List<PartyVo> getThemeList(int cafeNo) {
+		System.out.println("다오구간카페: " + cafeNo);
 		
-//		List<PartyVo> themeList = sqlSession.selectList("party.themeListSelect", cafe);
+		List<PartyVo> themeList = sqlSession.selectList("party.themeListSelect", cafeNo);
 		
-//		System.out.println("다오구간 테마리스트: " + themeList);
+		System.out.println("다오구간 테마리스트: " + themeList);
 		
-		return null;
+		return themeList;
+	}
+	
+	
+	//21-09-28 by 대니
+	//themeNo로 시간표 가져오기
+	public List<PartyVo> getThemeTimeList(int themeNo) {
+		System.out.println("다오구간테마NO: " + themeNo);
+		
+		List<PartyVo> themeTimeList = sqlSession.selectList("party.themeTimeListSelect", themeNo);
+		
+		System.out.println("다오구간 테마타임리스트: " + themeTimeList);
+		
+		return themeTimeList;
 	}
 	
 	

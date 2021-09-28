@@ -199,6 +199,7 @@
 				
 				<form id="partyWrite_form" action="" method="">
 					<div>
+						<input type="text" name="userNo" value="${sessionScope.authUser.userNo }">
 					
 						<table class="form_table">
 							<!-- 아이디 -->
@@ -356,7 +357,7 @@
 	
 	
 /********************************************************************************************/	 
-	//파티등록 모달창에서 지역선택시!
+	//파티등록 모달창에서 @지역@선택시!
 	 $("#party_region").on("change", function() {
 		 
 		var sido = $(this).val();
@@ -381,7 +382,7 @@
 				$("#party_cafe").append('<option value="" selected="">카페를 선택해 주세요</option>');
 				
 				for(var i=0; i<cafeList.length; i++) {
-					render(cafeList[i], "down");
+					cafeRender(cafeList[i], "down");
 				}
 				
 				
@@ -396,9 +397,9 @@
 
 	
 	//카페이름 1개씩 렌더링
-	function render(cafeList, type) {
+	function cafeRender(cafeList, type) {
 		var str = "";
-		str += '<option id="themeName" value="' + cafeList.cafeName + '" data-cafeno="' + cafeList.cafeNo +'">' + cafeList.cafeName + '</option>';
+		str += '<option id="cafeName" value="' + cafeList.cafeName + '" data-cafeno="' + cafeList.cafeNo +'">' + cafeList.cafeName + '</option>';
 		
 		if(type === 'down') {
 			$("#party_cafe").append(str);
@@ -408,56 +409,114 @@
 	/********************************************************************************************/	
 	
 	/********************************************************************************************/
-	//파티등록 모달창에서 카페선택시!
+	//파티등록 모달창에서 @카페@선택시!
 	$("#party_cafe").on("change", function() {
 		
 		var cafe = $(this).val();
-		var cafeNo = $("#themeName").data("cafeno");
+		var cafeNo = $("#party_cafe option:selected").data("cafeno");
 		console.log(cafe);
 		console.log(cafeNo);
 		
-// 	  	$('#party_cafe').empty();
 		
 		
-// 		//ajax서버에 요청 (sido 전달)
-// 		$.ajax({
+	  	$('#party_theme').empty ();
+		
+		
+		//ajax서버에 요청 (cafeNo 전달)
+		$.ajax({
 			
-// 			url : "${pageContext.request.contextPath }/party/cafe",		
-// 			type : "post",
-// // 			contentType : "application/json",
-// 			data : {cafe: cafe},
+			url : "${pageContext.request.contextPath }/party/cafe",		
+			type : "post",
+// 			contentType : "application/json",
+			data : {cafeNo: cafeNo},
 
-// // 			dataType : "json",
-// 			success : function(themeList){
-// 				/*성공시 처리해야될 코드 작성*/
-// 				console.log(themeList);
+// 			dataType : "json",
+			success : function(themeList){
+				/*성공시 처리해야될 코드 작성*/
+				console.log(themeList);
 				
-// 				$("#party_cafe").append('<option value="" selected="">카페를 선택해 주세요</option>');
+				$("#party_theme").append('<option value="" selected="">테마를 선택해 주세요</option>');
 				
-// 				for(var i=0; i<cafeList.length; i++) {
-// 					render(cafeList[i], "down");
-// 				}
+				for(var i=0; i<themeList.length; i++) {
+					themeRender(themeList[i], "down");
+				}
 				
 				
-// 			},
-// 			error : function(XHR, status, error) {
-// 				console.error(status + " : " + error);
-// 			}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
 			
-// 		}); 
+		}); 
 		
 	});
 
 	
-// 	//카페이름 1개씩 렌더링
-// 	function render(cafeList, type) {
-// 		var str = "";
-// 		str += '<option id="themeName" value="' + cafeList.cafeName + '">' + cafeList.cafeName + '</option>';
+	//테마이름 1개씩 렌더링
+	function themeRender(themeList, type) {
+		var str = "";
+		str += '<option id="themeName" value="' + themeList.themeName + '" data-themeno="' + themeList.themeNo +'">' + themeList.themeName + '</option>';
 		
-// 		if(type === 'down') {
-// 			$("#party_cafe").append(str);
-// 		}
-// 	};
+		if(type === 'down') {
+			$("#party_theme").append(str);
+		}
+	};
+	
+	/********************************************************************************************/
+	
+	/********************************************************************************************/
+	//파티등록 모달창에서 @테마@선택시!
+	$("#party_theme").on("change", function() {
+		
+		var theme = $(this).val();
+		var themeNo = $("#party_theme option:selected").data("themeno");
+		console.log(theme);
+		console.log(themeNo);
+		
+		
+		
+	  	$('#party_time').empty ();
+		
+		
+		//ajax서버에 요청 (themeNo 전달)
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/party/theme",		
+			type : "post",
+// 			contentType : "application/json",
+			data : {themeNo: themeNo},
+
+// 			dataType : "json",
+			success : function(themeTimeList){
+				/*성공시 처리해야될 코드 작성*/
+				console.log(themeTimeList);
+				
+				$("#party_time").append('<option value="" selected="">시간을 선택해 주세요</option>');
+				
+				for(var i=0; i<themeTimeList.length; i++) {
+					themeTimeRender(themeTimeList[i], "down");
+				}
+				
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+			
+		}); 
+		
+	});
+
+	
+// 	시간표 1개씩 렌더링
+	function themeTimeRender(themeTimeList, type) {
+		var str = "";
+		str += '<option id="themeTime" value="' + themeTimeList.themeTime + '">' + themeTimeList.themeTime + '</option>';
+		
+		if(type === 'down') {
+			$("#party_time").append(str);
+		}
+	};
 	
 	/********************************************************************************************/
 	

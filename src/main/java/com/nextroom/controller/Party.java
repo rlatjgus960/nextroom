@@ -34,7 +34,7 @@ public class Party {
 	}
 	
 	//21-09-26 by 대니
-	//sido로 카페가져오기
+	//sido로 카페No, 카페이름가져오기
 	@ResponseBody
 	@RequestMapping(value = "/sido", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<PartyVo> cafeList(@RequestParam("sido") String sido) {
@@ -46,17 +46,32 @@ public class Party {
 		return cafeList;
 	}
 	
+	
 	//21-09-27 by 대니
-	//cafe로 테마가져오기
+	//cafeNo로 테마NO, 테마이름가져오기
 	@ResponseBody
 	@RequestMapping(value = "/cafe", method = {RequestMethod.GET, RequestMethod.POST})
-	public List<PartyVo> themeList(@RequestParam("cafe") String cafe) {
+	public List<PartyVo> themeList(@RequestParam("cafeNo") int cafeNo) {
 		
-		System.out.println("파티 카페넘어오기: " + cafe);
+		System.out.println("컨트롤러 파티 카페넘버 넘어오기: " + cafeNo);
 		
-		List<PartyVo> themeList = partyService.getThemeList(cafe);
+		List<PartyVo> themeList = partyService.getThemeList(cafeNo);
 		
-		return null;
+		return themeList;
+	}
+	
+	
+	//21-09-28 by 대니
+	//themeNo로 시간표 가져오기
+	@ResponseBody
+	@RequestMapping(value = "/theme", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<PartyVo> themeTimeList(@RequestParam("themeNo") int themeNo) {
+		
+		System.out.println("컨트롤러 파티 테마넘버 넘어오기: " + themeNo);
+		
+		List<PartyVo> themeTimeList = partyService.getThemeTimeList(themeNo);
+		
+		return themeTimeList;
 	}
 	
 }

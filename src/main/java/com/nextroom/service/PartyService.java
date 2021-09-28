@@ -14,7 +14,7 @@ public class PartyService {
 	@Autowired PartyDao partyDao;
 	
 	//21-09-26 by 대니
-	//sido로 카페리스트가져오기
+	//sido로 카페No, 카페이름가져오기
 	public List<PartyVo> getCafeList(String sido) {
 		System.out.println("서비스구간 시도: " + sido);
 		
@@ -26,13 +26,26 @@ public class PartyService {
 	
 	
 	//21-09-27 by 대니
-	//cafe로 테마가져오기
-	public List<PartyVo> getThemeList(String cafe) {
-		System.out.println("서비스구간 카페: " + cafe);
+	//cafeNo로 테마NO, 테마이름가져오기
+	public List<PartyVo> getThemeList(int cafeNo) {
+		System.out.println("서비스구간 카페: " + cafeNo);
 		
-		List<PartyVo> themeList = partyDao.getThemeList(cafe);
+		List<PartyVo> themeList = partyDao.getThemeList(cafeNo);
 		
 		
-		return null;
+		return themeList;
 	}
+	
+	
+	//21-09-28 by 대니
+	//themeNo로 시간표 가져오기
+	public List<PartyVo> getThemeTimeList(int themeNo) {
+		System.out.println("서비스구간 테마No: " + themeNo);
+		
+		List<PartyVo> themeTimeList = partyDao.getThemeTimeList(themeNo);
+		
+		
+		return themeTimeList;
+	}
+	
 }

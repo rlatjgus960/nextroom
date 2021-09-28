@@ -10,6 +10,7 @@ public class PartyVo {
 	private String cafeName;
 	private int themeNo;
 	private String themeName;
+	private String themeTime;
 	private String themeImg;
 	private String reserveTime;
 	private int reservePerson;
@@ -23,7 +24,7 @@ public class PartyVo {
 	}
 	
 	public PartyVo(int partyNo, String reserveDate, String sido, int cafeNo, String cafeName, int themeNo,
-			String themeName, String themeImg, String reserveTime, int reservePerson, String content,
+			String themeName, String themeTime, String themeImg, String reserveTime, int reservePerson, String content,
 			String partyState) {
 		super();
 		this.partyNo = partyNo;
@@ -33,18 +34,16 @@ public class PartyVo {
 		this.cafeName = cafeName;
 		this.themeNo = themeNo;
 		this.themeName = themeName;
+		this.themeTime = themeTime;
 		this.themeImg = themeImg;
 		this.reserveTime = reserveTime;
 		this.reservePerson = reservePerson;
 		this.content = content;
 		this.partyState = partyState;
 	}
-
-
+	
 
 	//메소드(게터세터)
-	
-	
 	public int getPartyNo() {
 		return partyNo;
 	}
@@ -101,6 +100,14 @@ public class PartyVo {
 	public void setThemeName(String themeName) {
 		this.themeName = themeName;
 	}
+	
+	public String getThemeTime() {
+		return themeTime;
+	}
+
+	public void setThemeTime(String themeTime) {
+		this.themeTime = themeTime;
+	}
 
 	public String getThemeImg() {
 		return themeImg;
@@ -142,15 +149,17 @@ public class PartyVo {
 		this.partyState = partyState;
 	}
 
-		
+	
 	//메소드(일반)
 	@Override
 	public String toString() {
 		return "PartyVo [partyNo=" + partyNo + ", reserveDate=" + reserveDate + ", sido=" + sido + ", cafeNo=" + cafeNo
-				+ ", cafeName=" + cafeName + ", themeNo=" + themeNo + ", themeName=" + themeName + ", themeImg="
-				+ themeImg + ", reserveTime=" + reserveTime + ", reservePerson=" + reservePerson + ", content="
-				+ content + ", partyState=" + partyState + "]";
+				+ ", cafeName=" + cafeName + ", themeNo=" + themeNo + ", themeName=" + themeName + ", themeTime="
+				+ themeTime + ", themeImg=" + themeImg + ", reserveTime=" + reserveTime + ", reservePerson="
+				+ reservePerson + ", content=" + content + ", partyState=" + partyState + "]";
 	}
+	
+	
 	
 	
 	
