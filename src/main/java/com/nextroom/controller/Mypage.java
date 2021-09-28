@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nextroom.service.CafeService;
 import com.nextroom.vo.CafeVo;
@@ -66,10 +67,18 @@ public class Mypage {
 	
 	//마이페이지 카페관리자 추가 by 서현
 	@RequestMapping("/addCafe")
-	public String addCafe(@ModelAttribute CafeVo cafeVo) {
+	public String addCafe(@ModelAttribute CafeVo cafeVo,
+						  @RequestParam(value="address", required = false, defaultValue = "") String address,
+						  @RequestParam(value="addressDetail", required = false, defaultValue = "") String addressDetail) {
 		
 		System.out.println("mypage/addCafe");
 		System.out.println(cafeVo);
+		
+		String printAddress = address+" "+addressDetail;
+		
+		cafeVo.setAddress(printAddress);
+		
+		System.out.println("주소붙인 후 : "+cafeVo);
 		
 		int count = cafeService.addCafe(cafeVo);
 		

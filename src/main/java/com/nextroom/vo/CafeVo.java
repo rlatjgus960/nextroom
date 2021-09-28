@@ -11,16 +11,20 @@ public class CafeVo {
 	private String cafeIntro;
 	private String url;
 	private String cafeImg;
+	private String interiorImg;
 	private String address;
+	private String addressDetail;
 	private String sido;
 	private String sidoDetail;
+
 
 	public CafeVo() {
 		super();
 	}
 
 	public CafeVo(int cafeNo, int userNo, String cafeName, String cafeHp, String openTime, String closeTime,
-			String cafeIntro, String url, String cafeImg, String address, String sido, String sidoDetail) {
+			String cafeIntro, String url, String cafeImg, String interiorImg, String address, String addressDetail,
+			String sido, String sidoDetail) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -31,7 +35,9 @@ public class CafeVo {
 		this.cafeIntro = cafeIntro;
 		this.url = url;
 		this.cafeImg = cafeImg;
+		this.interiorImg = interiorImg;
 		this.address = address;
+		this.addressDetail = addressDetail;
 		this.sido = sido;
 		this.sidoDetail = sidoDetail;
 	}
@@ -108,12 +114,28 @@ public class CafeVo {
 		this.cafeImg = cafeImg;
 	}
 
+	public String getInteriorImg() {
+		return interiorImg;
+	}
+
+	public void setInteriorImg(String interiorImg) {
+		this.interiorImg = interiorImg;
+	}
+
 	public String getAddress() {
 		return address;
 	}
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 
 	public String getSido() {
@@ -136,8 +158,8 @@ public class CafeVo {
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
 				+ ", openTime=" + openTime + ", closeTime=" + closeTime + ", cafeIntro=" + cafeIntro + ", url=" + url
-				+ ", cafeImg=" + cafeImg + ", address=" + address + ", sido=" + sido + ", sidoDetail=" + sidoDetail
-				+ "]";
+				+ ", cafeImg=" + cafeImg + ", interiorImg=" + interiorImg + ", address=" + address + ", addressDetail="
+				+ addressDetail + ", sido=" + sido + ", sidoDetail=" + sidoDetail + "]";
 	}
 
 }

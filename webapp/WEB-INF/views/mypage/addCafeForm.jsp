@@ -80,7 +80,7 @@
 					<p id="admin_subHeader">| 관리자 전환 신청</p>
 
 					<div id="cafeModify" class="">
-						<form action="${pageContext.request.contextPath}/mypage/addCafe" method="post">
+						<form action="${pageContext.request.contextPath}/mypage/addCafe" method="get">
 
 							<div id="cafeModi_img" class="clearfix">
 
@@ -132,13 +132,23 @@
 									<p class="cafModi_subTitle">주소</p>
 
 									<div class="address_search">
-										<input name="postcode" type="text" id="postcode" placeholder="우편번호"> <input
-											id="searchBtn" type="button" onclick="execDaumPostcode()" value="우편번호 찾기"> <input
-											name="address" type="text" id="roadAddress" placeholder="도로명주소"> <input
+										<input type="text" id="postcode" placeholder="우편번호"> 
+										<input
+											id="searchBtn" type="button" onclick="execDaumPostcode()" value="우편번호 찾기"> 
+											
+											<input
+											name="address" type="text" id="roadAddress" placeholder="도로명주소"> 
+											
+											<input
 											type="hidden" id="jibunAddress" placeholder="지번주소"> <span id="guide"
-											style="color: #999; display: none"></span> <input name="detailAddress" type="text"
+											style="color: #999; display: none"></span> 
+											
+											<input name="addressDetail" type="text"
 											id="detailAddress" placeholder="상세주소"> <input type="hidden" id="extraAddress"
-											placeholder="참고항목"> <input name="sido" type="hidden" id="sido" placeholder="시도">
+											placeholder="참고항목"> 
+											
+											<input name="sido" type="hidden" id="sido" placeholder="시도">
+										
 										<input name="sidoDetail" type="hidden" id="sigungu" placeholder="시군구">
 
 										<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
