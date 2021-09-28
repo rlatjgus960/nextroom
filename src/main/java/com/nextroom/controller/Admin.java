@@ -22,19 +22,6 @@ public class Admin {
 		return "admin/reserveTime";
 	}
 	
-	//관리자페이지 기록관리
-	@RequestMapping("/record")
-	public String record() {
-	   System.out.println("record");
-	   return "admin/record";
-	}
-	
-	//관리자페이지 기록수정
-	@RequestMapping("/recordModify")
-	public String recordModify() {
-	   System.out.println("recordModify");
-	   return "admin/recordModify";
-	}
 	
 	//관리자페이지 카페수정폼
 	@RequestMapping("/cafeModifyForm")
