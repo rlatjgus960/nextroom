@@ -82,7 +82,9 @@ public class Mypage {
 		
 		System.out.println("주소붙인 후 : "+cafeVo);
 		
-		int count = cafeService.addCafe(cafeVo);
+		int count = cafeService.addCafe(cafeVo, inteList);
+		
+		System.out.println(count+"건 저장되었습니다.");
 		
 		return "mypage/addCafeOk";
 	}

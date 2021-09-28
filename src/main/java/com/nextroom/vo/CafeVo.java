@@ -13,7 +13,6 @@ public class CafeVo {
 	private String cafeIntro;
 	private String url;
 	private MultipartFile cafeImg;
-	private MultipartFile interiorImg;
 	private String cafeImgPath;
 	private String interiorImgPath;
 	private String address;
@@ -26,8 +25,8 @@ public class CafeVo {
 	}
 
 	public CafeVo(int cafeNo, int userNo, String cafeName, String cafeHp, String openTime, String closeTime,
-			String cafeIntro, String url, MultipartFile cafeImg, MultipartFile interiorImg, String cafeImgPath,
-			String interiorImgPath, String address, String addressDetail, String sido, String sidoDetail) {
+			String cafeIntro, String url, MultipartFile cafeImg, String cafeImgPath, String interiorImgPath,
+			String address, String addressDetail, String sido, String sidoDetail) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -38,7 +37,6 @@ public class CafeVo {
 		this.cafeIntro = cafeIntro;
 		this.url = url;
 		this.cafeImg = cafeImg;
-		this.interiorImg = interiorImg;
 		this.cafeImgPath = cafeImgPath;
 		this.interiorImgPath = interiorImgPath;
 		this.address = address;
@@ -119,14 +117,6 @@ public class CafeVo {
 		this.cafeImg = cafeImg;
 	}
 
-	public MultipartFile getInteriorImg() {
-		return interiorImg;
-	}
-
-	public void setInteriorImg(MultipartFile interiorImg) {
-		this.interiorImg = interiorImg;
-	}
-
 	public String getCafeImgPath() {
 		return cafeImgPath;
 	}
@@ -179,9 +169,9 @@ public class CafeVo {
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
 				+ ", openTime=" + openTime + ", closeTime=" + closeTime + ", cafeIntro=" + cafeIntro + ", url=" + url
-				+ ", cafeImg=" + cafeImg + ", interiorImg=" + interiorImg + ", cafeImgPath=" + cafeImgPath
-				+ ", interiorImgPath=" + interiorImgPath + ", address=" + address + ", addressDetail=" + addressDetail
-				+ ", sido=" + sido + ", sidoDetail=" + sidoDetail + "]";
+				+ ", cafeImg=" + cafeImg + ", cafeImgPath=" + cafeImgPath + ", interiorImgPath=" + interiorImgPath
+				+ ", address=" + address + ", addressDetail=" + addressDetail + ", sido=" + sido + ", sidoDetail="
+				+ sidoDetail + "]";
 	}
 
 }

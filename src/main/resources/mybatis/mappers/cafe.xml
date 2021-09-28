@@ -20,10 +20,28 @@
 					#{sidoDetail})
 		]]>
 	</insert>
+
+
+
+
+	<update id="updateCafe" parameterType="com.nextroom.vo.CafeVo">
 	
-<!-- 	<insert id="addInteriorImg" parameterType="com.nextroom.vo.CafeVo">
-		<![CDATA[
-			insert into interiorImg
+	<![CDATA[
+			update cafe
+			set cafeImg = #{cafeImg},
+				
+			where cafeNo = #{no}
+		]]>
+
+	</update>
+
+
+	<insert id="addCafeKey" parameterType="com.javaex.vo.CategoryVo">
+		<selectKey keyProperty="cafeNo" resultType="int" order="BEFORE">
+			select cafeNo.nextval from dual
+		</selectKey>
+	<![CDATA[	
+		insert into cafe
 			values (cafeNo.nextval, 
 					#{userNo}, 
 					#{cafeName}, 
@@ -32,11 +50,14 @@
 					#{closeTime}, 
 					#{cafeIntro}, 
 					#{url}, 
-					#{cafeImg}, 
+					#{cafeImgPath}, 
 					#{address}, 
 					#{sido}, 
 					#{sidoDetail})
-		]]>
-	</insert> -->
+    	]]>
+	</insert>
+
+	<!-- <insert id="addInteriorImg" parameterType="com.nextroom.vo.CafeVo"> <![CDATA[ insert into interiorImg values (cafeNo.nextval, #{userNo}, #{cafeName}, 
+		#{cafeHp}, #{openTime}, #{closeTime}, #{cafeIntro}, #{url}, #{cafeImg}, #{address}, #{sido}, #{sidoDetail}) ]]> </insert> -->
 
 </mapper>
