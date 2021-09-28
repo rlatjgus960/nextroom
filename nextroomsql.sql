@@ -9,6 +9,7 @@ DROP SEQUENCE reserveMemberNo;
 DROP SEQUENCE reviewNo;
 DROP SEQUENCE recordNo;
 DROP SEQUENCE gameNo;
+DROP SEQUENCE themeTimeNo;
 
 
 ALTER TABLE users
