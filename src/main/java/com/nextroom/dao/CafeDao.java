@@ -18,5 +18,11 @@ public class CafeDao {
 		
 		return sqlSession.insert("cafe.addCafe", cafeVo);
 	}
+	
+	public int addInteriorImg(String interiorImg) {
+		System.out.println("[CafeDao.addInteriorImg()]");
+		
+		return sqlSession.insert("cafe.addInteriorImg", interiorImg);
+	}
 
 }
