@@ -5,7 +5,7 @@ public class PartyVo {
 	//필드
 	private int partyNo;
 	private String reserveDate;
-	private String sido;
+	private String sidoDetail;
 	private int cafeNo;
 	private String cafeName;
 	private int themeNo;
@@ -23,13 +23,13 @@ public class PartyVo {
 		super();
 	}
 	
-	public PartyVo(int partyNo, String reserveDate, String sido, int cafeNo, String cafeName, int themeNo,
+	public PartyVo(int partyNo, String reserveDate, String sidoDetail, int cafeNo, String cafeName, int themeNo,
 			String themeName, String themeTime, String themeImg, String reserveTime, int reservePerson, String content,
 			String partyState) {
 		super();
 		this.partyNo = partyNo;
 		this.reserveDate = reserveDate;
-		this.sido = sido;
+		this.sidoDetail = sidoDetail;
 		this.cafeNo = cafeNo;
 		this.cafeName = cafeName;
 		this.themeNo = themeNo;
@@ -61,12 +61,12 @@ public class PartyVo {
 		this.reserveDate = reserveDate;
 	}
 
-	public String getSido() {
-		return sido;
+	public String getSidoDetail() {
+		return sidoDetail;
 	}
 
-	public void setSido(String sido) {
-		this.sido = sido;
+	public void setSidoDetail(String sidoDetail) {
+		this.sidoDetail = sidoDetail;
 	}
 
 	public int getCafeNo() {
@@ -153,7 +153,7 @@ public class PartyVo {
 	//메소드(일반)
 	@Override
 	public String toString() {
-		return "PartyVo [partyNo=" + partyNo + ", reserveDate=" + reserveDate + ", sido=" + sido + ", cafeNo=" + cafeNo
+		return "PartyVo [partyNo=" + partyNo + ", reserveDate=" + reserveDate + ", sidoDetail=" + sidoDetail + ", cafeNo=" + cafeNo
 				+ ", cafeName=" + cafeName + ", themeNo=" + themeNo + ", themeName=" + themeName + ", themeTime="
 				+ themeTime + ", themeImg=" + themeImg + ", reserveTime=" + reserveTime + ", reservePerson="
 				+ reservePerson + ", content=" + content + ", partyState=" + partyState + "]";

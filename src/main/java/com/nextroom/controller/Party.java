@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,6 +73,17 @@ public class Party {
 		List<PartyVo> themeTimeList = partyService.getThemeTimeList(themeNo);
 		
 		return themeTimeList;
+	}
+	
+	
+	//21-09-28 by 대니
+	//파티등록폼에서 넘어온 정보로 파티리스트 인서트!
+	@RequestMapping(value= "/partyWrite", method = {RequestMethod.GET, RequestMethod.POST})
+	public String partyWrite(@ModelAttribute PartyVo partyVo) {
+		System.out.println("파티등록INSERT: " + partyVo);
+		
+		
+		return null;
 	}
 	
 }

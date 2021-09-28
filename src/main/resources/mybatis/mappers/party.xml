@@ -9,7 +9,8 @@
 			select cafeNo,
 				   cafeName
 			from cafe
-			where sidodetail like '%' || #{sido} || '%'
+			where (sidodetail like '%' || #{sido} || '%'
+			OR sido like '%' || #{sido} || '%')
 		]]>
 	</select>
 	

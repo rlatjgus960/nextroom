@@ -197,9 +197,9 @@
 				
 				<div class="party_bar">파티 등록</div>
 				
-				<form id="partyWrite_form" action="" method="">
+				<form id="partyWrite_form" action="${pageContext.request.contextPath}/party/partyWrite" method="get">
 					<div>
-						<input type="text" name="userNo" value="${sessionScope.authUser.userNo }">
+						<input type="hidden" name="userNo" value="${sessionScope.authUser.userNo }">
 					
 						<table class="form_table">
 							<!-- 아이디 -->
@@ -213,7 +213,7 @@
 								<tr>
 									<td id="text_bold">날짜&nbsp;&nbsp;&nbsp;</td> 
 									<td>
-										<input type="text" id="party_date" name="partyDate" value="" placeholder="날짜를 선택해 주세요">
+										<input type="text" id="party_date" name="reserveDate" value="" placeholder="날짜를 선택해 주세요">
 									</td>
 								</tr>
 							
@@ -221,9 +221,10 @@
 								<tr>
 									<td id="text_bold">지역&nbsp;&nbsp;&nbsp;</td> 
 									<td>
-										<select id="party_region" name="partyRegion">
+										<select id="party_region" name="sidoDetail">
 	                                		<option value="" selected="">지역을 선택해 주세요</option>
 	                                		<option value="전국">전국</option>
+	                                		<option value="서울">서울</option>
 	                                		<option value="홍대&신촌">홍대&신촌</option>
 	                                		<option value="강남">강남</option>
 	                                		<option value="건대">건대</option>
@@ -257,9 +258,10 @@
 								<tr>
 									<td id="text_bold">카페&nbsp;&nbsp;&nbsp;</td> 
 									<td>
-										<select id="party_cafe" name="partyCafe">
+										<select id="party_cafe" name="cafeName">
 	                                		<option value="" selected="">카페를 선택해 주세요</option>
 	                            		</select>
+	                                		<input type="hidden" name="cafeNo" value="">
 									</td>
 								</tr>
 							
@@ -267,9 +269,10 @@
 								<tr>
 									<td id="text_bold">테마&nbsp;&nbsp;&nbsp;</td> 
 									<td>
-										<select id="party_theme" name="partyTheme">
+										<select id="party_theme" name="themeName">
 	                                		<option value="" selected="">테마를 선택해 주세요</option>
 	                            		</select>
+	                            			<input type="hidden" name="themeNo" value="">
 									</td>
 								</tr>
 							
@@ -277,7 +280,7 @@
 								<tr>
 									<td id="text_bold">시간&nbsp;&nbsp;&nbsp;</td> 
 									<td>
-										<select id="party_time" name="partyTime">
+										<select id="party_time" name="themeTime">
 	                                		<option value="" selected="">시간을 선택해 주세요</option>
 	                            		</select>
 									</td>
@@ -290,11 +293,11 @@
 						<!-- 인원체크 -->
 						<div id="people_box">
 							<span id="pSpan_box">  인원</span>
-							<input type="radio" id="rdo_two" name="partyPeople" value="2">2인
-							<input type="radio" id="rdo_three" name="partyPeople" value="3">3인
-							<input type="radio" id="rdo_four" name="partyPeople" value="4">4인
-							<input type="radio" id="rdo_five" name="partyPeople" value="5">5인
-							<input type="radio" id="rdo_six" name="partyPeople" value="6">6인
+							<input type="radio" id="rdo_two" name="reservePerson" value="2">2인
+							<input type="radio" id="rdo_three" name="reservePerson" value="3">3인
+							<input type="radio" id="rdo_four" name="reservePerson" value="4">4인
+							<input type="radio" id="rdo_five" name="reservePerson" value="5">5인
+							<input type="radio" id="rdo_six" name="reservePerson" value="6">6인
 						</div>
 									
 								
@@ -414,6 +417,7 @@
 		
 		var cafe = $(this).val();
 		var cafeNo = $("#party_cafe option:selected").data("cafeno");
+		$("[name=cafeNo]").val(cafeNo);
 		console.log(cafe);
 		console.log(cafeNo);
 		
@@ -470,6 +474,7 @@
 		
 		var theme = $(this).val();
 		var themeNo = $("#party_theme option:selected").data("themeno");
+		$("[name=themeNo]").val(themeNo);
 		console.log(theme);
 		console.log(themeNo);
 		
