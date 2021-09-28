@@ -857,3 +857,5 @@ create sequence reviewNo increment by 1 start with 1 nocache;
 create sequence recordNo increment by 1 start with 1 nocache;
 
 create sequence gameNo increment by 1 start with 1 nocache;
+
+create sequence themetimeNo increment by 1 start with 1 nocache;
