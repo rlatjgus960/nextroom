@@ -2,13 +2,15 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<typeAliases>
-	</typeAliases>
+    <typeAliases>
+    	<typeAlias alias="ReviewBoardVo" type="com.nextroom.vo.ReviewBoardVo" />
+    </typeAliases>
 
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/party.xml" />
 		<mapper resource="mybatis/mappers/record.xml" />
 		<mapper resource="mybatis/mappers/cafe.xml" />
+		<mapper resource="mybatis/mappers/reviewBoard.xml" />
 	</mappers>
 </configuration>
