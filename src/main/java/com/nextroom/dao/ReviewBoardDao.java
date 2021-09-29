@@ -27,13 +27,30 @@ public class ReviewBoardDao {
 	}
 	
 	
-	
+	//2021.09.28 by 원호
 	//리뷰게시판 글 등록
 	public int ReviewInsert(ReviewBoardVo reviewBoardVo) {
 		System.out.println("[Dao.ReviewInsert]");
 		System.out.println("dao보" + reviewBoardVo);
 		
+		// sqlSession.insert("reviewBoard.reviewBoardInsert", reviewBoardVo);
+		
 		return 1;
 		
+	}
+	
+	
+	
+	//2021.09.29 by 원호
+	//sido사용 cafeNo, cafeName 가져오기
+	public List<ReviewBoardVo> getCafeList(String sido){
+		System.out.println("[Dao.getCafeList]");
+		System.out.println("[Dao에서 시도 내놔]" + sido);
+		
+		List<ReviewBoardVo> cafeList = sqlSession.selectList("reviewBoard.cafeListSelect",sido);
+		
+		System.out.println("[Dao 카페 리스트]" + cafeList);
+		
+		return cafeList;
 	}
 }
