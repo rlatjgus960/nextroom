@@ -36,7 +36,7 @@
 	</update>
 
 
-	<insert id="addCafeKey" parameterType="com.javaex.vo.CategoryVo">
+	<insert id="addCafeKey" parameterType="com.nextroom.vo.CafeVo">
 		<selectKey keyProperty="cafeNo" resultType="int" order="BEFORE">
 			select cafeNo.nextval from dual
 		</selectKey>
