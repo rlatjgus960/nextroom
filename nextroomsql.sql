@@ -239,6 +239,98 @@ ALTER TABLE theme
 
 /************************************************/
 /************************************************/
+/* 파티구하기 */
+DROP TABLE party 
+    CASCADE CONSTRAINTS;
+
+/* 파티구하기 */
+CREATE TABLE party (
+    partyNo NUMBER NOT NULL, /* 파티리스트번호 */
+    reserveDateNo NUMBER, /* 예약날짜번호 */
+    reserveDate DATE, /* 희망날짜 */
+    cafeNo NUMBER NOT NULL, /* 카페번호 */
+    themeNo NUMBER NOT NULL, /* 테마번호 */
+    reserveTimeNo NUMBER, /* 예약시간번호 */
+    reservePerson NUMBER, /* 인원 */
+    content VARCHAR2(2000), /* 내용 */
+    partyState VARCHAR(20) /* 모집상태 */
+);
+
+COMMENT ON TABLE party IS '파티구하기';
+
+COMMENT ON COLUMN party.partyNo IS '파티리스트번호';
+
+COMMENT ON COLUMN party.reserveDateNo IS '예약날짜번호';
+
+COMMENT ON COLUMN party.reserveDate IS '희망날짜';
+
+COMMENT ON COLUMN party.cafeNo IS '카페번호';
+
+COMMENT ON COLUMN party.themeNo IS '테마번호';
+
+COMMENT ON COLUMN party.reserveTimeNo IS '예약시간번호';
+
+COMMENT ON COLUMN party.reservePerson IS '인원';
+
+COMMENT ON COLUMN party.content IS '내용';
+
+COMMENT ON COLUMN party.partyState IS '모집상태';
+
+CREATE UNIQUE INDEX PK_party
+    ON party (
+        partyNo ASC
+    );
+
+ALTER TABLE party
+    ADD
+        CONSTRAINT PK_party
+        PRIMARY KEY (
+            partyNo
+        );
+
+ALTER TABLE party
+    ADD
+        CONSTRAINT FK_theme_TO_party
+        FOREIGN KEY (
+            themeNo
+        )
+        REFERENCES theme (
+            themeNo
+        );
+
+ALTER TABLE party
+    ADD
+        CONSTRAINT FK_reserveDate_TO_party
+        FOREIGN KEY (
+            reserveDateNo
+        )
+        REFERENCES reserveDate (
+            reserveDateNo
+        );
+
+ALTER TABLE party
+    ADD
+        CONSTRAINT FK_reserveTime_TO_party
+        FOREIGN KEY (
+            reserveTimeNo
+        )
+        REFERENCES reserveTime (
+            reserveTimeNo
+        );
+
+ALTER TABLE party
+    ADD
+        CONSTRAINT FK_cafe_TO_party
+        FOREIGN KEY (
+            cafeNo
+        )
+        REFERENCES cafe (
+            cafeNo
+        );
+  
+
+/************************************************/
+/************************************************/
 
       DROP INDEX PK_thmePrice; /**************************************** 한번 실행 후 삭제 ****************************************/
        DROP INDEX PK_tehmePrice; /**************************************** 한번 실행 후 삭제 ****************************************/
