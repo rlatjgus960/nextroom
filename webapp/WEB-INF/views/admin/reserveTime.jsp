@@ -25,8 +25,30 @@
 	href="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.css">
 
 <script>
+	/* $(function() {
+		$("#datepicker").datepicker({ minDate: 0});
+	}); */
 	$(function() {
-		$("#datepicker").datepicker();
+		
+
+		$('#datepicker').datepicker( {
+
+			minDate: 0,
+			onSelect : function(dateText)
+			{
+				$('#datepicker2').datepicker("setDate", $(this).datepicker("getDate"));
+			}
+		});
+		
+
+	});
+
+	$(function() {
+
+		$("#datepicker2").datepicker();
+		$("#datepicker2").datepicker("option", "dateFormat", "yy-mm-dd");
+		$('#datepicker2').datepicker('setDate', 'today');
+
 	});
 </script>
 
@@ -67,21 +89,34 @@
 						<ul>
 							<li>예약
 								<ul class="aside_mini_cate">
-									<li><a href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약 확인</a></li>
-									<li><p class="selected"><a href="${pageContext.request.contextPath }/admin/reserveTime">&nbsp;-예약 관리</a></p></li>
+									<li><a
+										href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약
+											확인</a></li>
+									<li><p class="selected">
+											<a
+												href="${pageContext.request.contextPath }/admin/reserveTime">&nbsp;-예약
+												관리</a>
+										</p></li>
 								</ul>
 							</li>
-							
+
 							<li>기록
 								<ul class="aside_mini_cate">
-									<li><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a></li>
-									<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록
+											입력</a></li>
+									<li><a
+										href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록
+											관리</a></li>
 								</ul>
 							</li>
-							
-							<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>
-							<li><a href="${pageContext.request.contextPath }/admin/themeList">카페 테마
-								관리</a></li>
+
+							<li><a
+								href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페
+									소개 관리</a></li>
+							<li class="selected"><a
+								href="${pageContext.request.contextPath }/admin/themeList">카페
+									테마 관리</a></li>
 						</ul>
 
 					</div>
@@ -90,33 +125,57 @@
 				<!-- //aside -->
 
 				<div id="adminMain" class="clearfix">
-					<form action="" method="">
+					<form action="${pageContext.request.contextPath}/admin/reserve/timeModify" method="get">
 						<!--컨텐츠 여기에 작성하세요 !!!!!!!!!-->
 						<div id="admin_reservation_date">
 							<div id="datepicker"></div>
+							<input type="hidden" id="datepicker2" name="reserveDate">
+
+
 						</div>
-	
+
 						<div id="admin_reservation_themas">
 							<table>
-								<tr>
-									<td class="thema colorOn"><a>아뜰리에</a></td>
-									<td class="thema"><a>비밀의 화원</a></td>
-									<td class="thema"><a>연애학개론</a></td>
-								</tr>
-								<tr>
-									<td class="thema"><a>컬러즈</a></td>
-									<td class="thema"><a>블라인드</a></td>
-									<td class="thema"><a>베이비 레이스</a></td>
-								</tr>
-								<tr>
-									<td class="thema"><a>슈퍼엔지니어</a></td>
-									<td></td>
-									<td></td>
-								</tr>
+								<c:set var="i" value="0" />
+								<c:set var="j" value="3" />
+
+								<c:forEach items="${themeList}" var="thList" varStatus="status">
+									<c:if test="${i%j==0}">
+										<tr>
+									</c:if>
+
+									<c:choose>
+										<c:when test="${themeNo eq thList.themeNo}">
+											<td class="thema yellow_colorOn"
+												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+										</c:when>
+										<c:otherwise>
+											<td class="thema"
+												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+										</c:otherwise>
+									</c:choose>
+
+									<c:if test="${status.last}">
+										<c:if test="${3-(thList.themeNo%3) eq 1}">
+											<td></td>
+										</c:if>
+
+										<c:if test="${3-(thList.themeNo%3) eq 2}">
+											<td></td>
+											<td></td>
+										</c:if>
+									</c:if>
+
+									<c:if test="${i%j==j-1}">
+										</tr>
+									</c:if>
+
+									<c:set var="i" value="${i+1 }" />
+								</c:forEach>
 							</table>
 						</div>
-	
-	
+
+
 						<!-- 예약날짜 -->
 						<div id="admin_reservation_thema_time_color" class="clearfix ">
 							<div>
@@ -136,31 +195,62 @@
 								<span>예약불가능</span>
 							</div>
 						</div>
-	
-	
+
+
 						<div id="admin_reservation_thema_time">
 							<table>
-								<tr>
-									<td class="thema_time timeover"><a>11 : 00</a></td>
-									<td class="thema_time timeover"><a>12 : 00</a></td>
-									<td class="thema_time timeover"><a>14 : 00</a></td>
-									<td class="thema_time reservePos"><a>15 : 30</a></td>
-									<td class="thema_time reservation_completed"><a>17 : 00</a></td>
-								</tr>
-								<tr>
-									<td class="thema_time reservePos"><a>18 : 30</a></td>
-									<td class="thema_time reserveImpos"><a>20 : 00</a></td>
-									<td class="thema_time reservePos"><a>21 : 30</a></td>
-									<td class="thema_time reserveImpos"><a>23 : 00</a></td>
-									<td class=""><a></a></td>
-								</tr>
+								<c:set var="i" value="0" />
+								<c:set var="j" value="5" />
+
+								<c:forEach items="${timeList}" var="tiList" varStatus="status">
+									<c:if test="${i%j==0 }">
+										<tr>
+									</c:if>
+
+									<td class="thema_time" data-themetimeno = "${tiList.themeTimeNo}" data-themetime = "${tiList.themeTime }">${tiList.themeTime }</td>
+
+									<c:if test="${status.last}">
+										<c:if test="${5-(tiList.themeTimeNo%5) eq 1}">
+											<td></td>
+										</c:if>
+
+										<c:if test="${5-(tiList.themeTimeNo%5) eq 2}">
+											<td></td>
+											<td></td>
+										</c:if>
+
+										<c:if test="${5-(tiList.themeTimeNo%5) eq 3}">
+											<td></td>
+											<td></td>
+											<td></td>
+										</c:if>
+
+										<c:if test="${5-(tiList.themeTimeNo%5) eq 4}">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</c:if>
+									</c:if>
+
+									<c:if test="${i%j==j-1}">
+										</tr>
+									</c:if>
+
+									<c:set var="i" value="${i+1 }" />
+								</c:forEach>
+
+
 							</table>
-	
+
 						</div>
-	
+
 						<div id="admin_reserve_change_Btns">
 							<button class="lbutton">저장</button>
 						</div>
+						
+						<input type='hidden' name="themeNo" value="${param.themeNo}">
+						<input type='hidden' name="cafeNo" value="${cafeNo}">
 					</form>
 
 				</div>
@@ -184,34 +274,116 @@
 	<!-- wrap -->
 </body>
 
-<script>
-	$(".thema").on("click", function() {
-		if ($(this).hasClass("yellow_colorOn")) {
-			$(this).removeClass("yellow_colorOn");
-		} else {
-			$(this).addClass("yellow_colorOn");
-		}
-
-	});
-
+<script  type="text/javascript">
+/*
 	$(".thema_time").on("click", function() {
-		if ($(this).hasClass("timeover")) {
+		if ($(this).hasClass("timeover")) { // 시간이 지났을 때
 			$(this).removeClass("thema_time");
 		} else {
-			if ($(this).hasClass("reservation_completed")) {
+			if ($(this).hasClass("reservation_completed")) { //예약 완료일 때
 			} else {
-				if ($(this).hasClass("reservePos")) {
-					$(this).removeClass("reservePos");
-					$(this).addClass("reserveImpos");
+				if ($(this).hasClass("reservePos")) { // 예약가능 -> 예약불가능
+					
+					if(!confirm("예약불가능으로 변경하시겠습니까?")) {
+						//아니오
+					} else {
+						//예
+						console.log("예약불가능으로 변경");
+						
+						var adminReserveVo = {
+								cafeNo : $("[name='cafeNo']").val(),
+								themeNo : $("[name='themeNo']").val(),
+								themeTimeNo : $(this).data("themetimeno"),
+								reserveDate : $("[name='reserveDate']").val(),
+								reserveTime : $(this).data("themetime")
+						};
+						
+						console.log(adminReserveVo);
+						
+						$.ajax({
+							url : "${pageContext.request.contextPath}/admin/reserve/timeModify",
+							type : "get",
+							data : adminReserveVo,
+							
+							dataType : "json",
+							success : function(count) {
+								console.log(count);
+								if(count === 1) {
+									$(".thema_time").removeClass("reservePos");
+									$(".thema_time").addClass("reserveImpos");
+								} else {
+									alert("예약불가능으로 변경 불가능합니다.");
+								}
+							},
+							error : function(XHR, status, error) {
+								console.error(status + " : " + error);
+							}
+						});
+					}
+					
+					
+					
+					
 				} else {
-					$(this).removeClass("reserveImpos");
+					$(this).removeClass("reserveImpos"); // 예약불가능 -> 예약가능
 					$(this).addClass("reservePos");
 				}
 			}
 
 		}
 
+	});*/
+	
+	$(".thema_time").on("click", function() {
+		$(this).addClass("timeClick");
+		
+		if(!confirm("예약상태를 변경하시겠습니까?")) {
+			//아니오
+		} else {
+			//예
+			console.log("예약불가능으로 변경");
+			
+			var adminReserveVo = {
+					cafeNo : $("[name='cafeNo']").val(),
+					themeNo : $("[name='themeNo']").val(),
+					themeTimeNo : $(this).data("themetimeno"),
+					reserveDate : $("[name='reserveDate']").val(),
+					reserveTime : $(this).data("themetime")
+			};
+			
+			console.log(adminReserveVo);
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/reserve/timeModify",
+				type : "get",
+				data : adminReserveVo,
+				
+				dataType : "json",
+				success : function(count) {
+					console.log(count);
+					if(count === 3) {
+						$(".timeClick").removeClass("reservePos");
+						$(".timeClick").addClass("reserveImpos");
+						$(".reserveImpos").removeClass("timeClick");
+						alert("예약불가능으로 변경 완료했습니다.");
+					} else if(count === 1){
+						$(".timeClick").removeClass("reserveImpos");
+						$(".timeClick").addClass("reservePos");
+						$(".reserveImpos").removeClass("timeClick");
+						alert("예약가능으로 변경 완료했습니다.");
+					} else if(count === 2) {
+						alert("이미 예약완료된 시간입니다.");
+					}
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+		}
 	});
+	
+	
 </script>
 
 

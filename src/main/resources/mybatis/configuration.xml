@@ -12,5 +12,6 @@
 		<mapper resource="mybatis/mappers/record.xml" />
 		<mapper resource="mybatis/mappers/cafe.xml" />
 		<mapper resource="mybatis/mappers/reviewBoard.xml" />
+		<mapper resource="mybatis/mappers/adminReserve.xml" />
 	</mappers>
 </configuration>

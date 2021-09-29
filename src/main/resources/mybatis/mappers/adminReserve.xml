@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminReserve">
+
+	<!-- admin회원 테마 정보 가져오기 -->
+	<select id="selectThemeList" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			select  cafeNo,
+					themeNo,
+			        themeName
+			from theme
+			where cafeNo = #{cafeNo}
+			order by themeNo asc
+		]]>
+	</select>
+	
+	<!-- 테마별 시간 정보 가져오기 -->
+	<select id="selectTimeList" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			select  themeNo,
+			        themeTimeNo,
+			        themeTime
+			from themeTime
+			where themeNo = #{themeNo}
+			order by themeTimeNo asc
+		]]>
+	</select>
+	
+	<!-- 예약날짜 정보 가져오기 -->
+	<select id="selectReserveDate" parameterType="com.nextroom.vo.AdminReserveVo" resultType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			select	reserveDateNo,
+					themeNo,
+					reserveDate
+		    from reserveDate
+		    where themeNo = #{themeNo}
+		    and reserveDate = #{reserveDate}
+		]]>
+	</select>
+	
+	<!-- 예약날짜 데이터 추가 -->
+	<insert id="insertReserveDateData" parameterType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			insert into reserveDate 
+			values(
+				reserveDateNo.nextval,
+				#{themeNo},
+				#{reserveDate})
+		]]>
+	</insert>
+	
+	<!-- 예약시간 데이터 생성 -->
+	<insert id="insertReserveTimeData" parameterType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			insert into reserveTime 
+			values(
+				reserveTimeNo.nextval,
+				#{reserveDateNo},
+				#{reserveTime},
+				#{reserveState})
+		]]>
+	</insert>
+
+	<!-- 테마별 시간 정보 가져오기 -->
+	<select id="selectReserveTime" parameterType="com.nextroom.vo.AdminReserveVo" resultType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			select  reserveTimeNo,
+			        reserveDateNo,
+			        reserveTime,
+			        reserveState
+			from reserveTime
+			where reserveDateNo = #{reserveDateNo}
+			and reserveTime = #{reserveTime}
+		]]>
+	</select>
+	
+	<!-- 업체예약상태 변경 -->
+	<update id="updateReserveState" parameterType="map">
+		<![CDATA[
+			update reserveTime
+			set reserveState = #{reserveState}
+			where reserveTimeNo = #{reserveTimeNo}
+		]]>
+	</update>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
