@@ -27,13 +27,25 @@ public class ReviewBoardService {
 		return reviewBoardList;
 	}
 	
-	
+	//2021.09.28 by 원호
 	//후기게시판 글 등록
 	public int reviewWrite(ReviewBoardVo reviewBoardVo) {
 		System.out.println("Service.reviewWrite");
 		System.out.println("서비스보" + reviewBoardVo);
 		
 		return reviewBoardDao.ReviewInsert(reviewBoardVo);
+	}
+	
+	
+	//2021.09.28 by 원호
+	//sido사용 cafeNo, cafeName 가져오기
+	public List<ReviewBoardVo> getCafeList(String sido){
+		System.out.println("Servie.getCafeList");
+		System.out.println("Servie에서 sido 내놔" + sido);
+		
+		List<ReviewBoardVo> cafeList = reviewBoardDao.getCafeList(sido);
+		
+		return cafeList;
 	}
 
 }
