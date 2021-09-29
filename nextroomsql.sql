@@ -447,14 +447,14 @@ DROP INDEX PK_reserveTime;
 
 /* 예약시간 */
 DROP TABLE reserveTime 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 예약시간 */
 CREATE TABLE reserveTime (
-   reserveTimeNo NUMBER NOT NULL, /* 예약시간번호 */
-   reserveDateNo NUMBER NOT NULL, /* 예약날짜번호 */
-   reserveTime VARCHAR(20), /* 예약시간 */
-   reserveState VARCHAR2(20) /* 업체예약상태표시용 */
+	reserveTimeNo NUMBER NOT NULL, /* 예약시간번호 */
+	reserveDateNo NUMBER NOT NULL, /* 예약날짜번호 */
+	reserveTime VARCHAR(20), /* 예약시간 */
+	reserveState NUMBER /* 업체예약상태표시용 */
 );
 
 COMMENT ON TABLE reserveTime IS '예약시간';
@@ -468,42 +468,42 @@ COMMENT ON COLUMN reserveTime.reserveTime IS '예약시간';
 COMMENT ON COLUMN reserveTime.reserveState IS '업체예약상태표시용';
 
 CREATE UNIQUE INDEX PK_reserveTime
-   ON reserveTime (
-      reserveTimeNo ASC
-   );
+	ON reserveTime (
+		reserveTimeNo ASC
+	);
 
 ALTER TABLE reserveTime
-   ADD
-      CONSTRAINT PK_reserveTime
-      PRIMARY KEY (
-         reserveTimeNo
-      );
+	ADD
+		CONSTRAINT PK_reserveTime
+		PRIMARY KEY (
+			reserveTimeNo
+		);
 
 ALTER TABLE reserveTime
-   ADD
-      CONSTRAINT FK_reserveDate_TO_reserveTime
-      FOREIGN KEY (
-         reserveDateNo
-      )
-      REFERENCES reserveDate (
-         reserveDateNo
-      );
+	ADD
+		CONSTRAINT FK_reserveDate_TO_reserveTime
+		FOREIGN KEY (
+			reserveDateNo
+		)
+		REFERENCES reserveDate (
+			reserveDateNo
+		);
         
 DROP INDEX PK_reserve;
 
 /* 예약정보 */
 DROP TABLE reserve 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 예약정보 */
 CREATE TABLE reserve (
-   reserveNo NUMBER NOT NULL, /* 예약번호 */
-   reserveTimeNo NUMBER NOT NULL, /* 예약시간번호 */
-   reserveName VARCHAR2(20), /* 예약자이름 */
-   reserveHp VARCHAR2(20), /* 핸드폰번호 */
-   payment VARCHAR2(20), /* 결제금액 */
-   reservePerson NUMBER, /* 예약인원 */
-   paymentState VARCHAR2(20) /* 결제상태 */
+	reserveNo NUMBER NOT NULL, /* 예약번호 */
+	reserveTimeNo NUMBER NOT NULL, /* 예약시간번호 */
+	reserveName VARCHAR2(20), /* 예약자이름 */
+	reserveHp VARCHAR2(20), /* 핸드폰번호 */
+	payment VARCHAR2(20), /* 결제금액 */
+	reservePerson NUMBER, /* 예약인원 */
+	paymentState NUMBER /* 결제상태 */
 );
 
 COMMENT ON TABLE reserve IS '예약정보';
@@ -523,26 +523,26 @@ COMMENT ON COLUMN reserve.reservePerson IS '예약인원';
 COMMENT ON COLUMN reserve.paymentState IS '결제상태';
 
 CREATE UNIQUE INDEX PK_reserve
-   ON reserve (
-      reserveNo ASC
-   );
+	ON reserve (
+		reserveNo ASC
+	);
 
 ALTER TABLE reserve
-   ADD
-      CONSTRAINT PK_reserve
-      PRIMARY KEY (
-         reserveNo
-      );
+	ADD
+		CONSTRAINT PK_reserve
+		PRIMARY KEY (
+			reserveNo
+		);
 
 ALTER TABLE reserve
-   ADD
-      CONSTRAINT FK_reserveTime_TO_reserve
-      FOREIGN KEY (
-         reserveTimeNo
-      )
-      REFERENCES reserveTime (
-         reserveTimeNo
-      );
+	ADD
+		CONSTRAINT FK_reserveTime_TO_reserve
+		FOREIGN KEY (
+			reserveTimeNo
+		)
+		REFERENCES reserveTime (
+			reserveTimeNo
+		);
 
 DROP INDEX PK_reservePeople;
 
