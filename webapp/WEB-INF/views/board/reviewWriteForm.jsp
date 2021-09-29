@@ -157,7 +157,7 @@
                                 <select class="select_cafe" name="cafeName">
                                 	<option value="" selected="">카페를 선택해 주세요</option>                                	
                                 </select>
-                                	<input type="text" name="cafeNo" value="">
+                                	<input type="hidden" name="cafeNo" value="">
 
 
                                 <select class="select_thema" name="themeName">
@@ -321,7 +321,7 @@ function cafeRender(cafeList, type) {
 };
 
 
-//후기게시판 카페선택시
+//후기게시판 카페선택시 cafeNo 넘기기
 $(".select_cafe").on("change", function() {
 	
 	var cafe = $(this).val();
@@ -332,18 +332,18 @@ $(".select_cafe").on("change", function() {
 	
 	
 	
-  	$('#party_theme').empty ();
+  	$('.select_thema').empty ();
 	
 	
 	//ajax서버에 요청 (cafeNo 전달)
 	$.ajax({
 		
-		url : "${pageContext.request.contextPath }/party/cafe",		
+		url : "${pageContext.request.contextPath }/board/cafe",		
 		type : "post",
-//			contentType : "application/json",
+	  //contentType : "application/json",
 		data : {cafeNo: cafeNo},
 
-//			dataType : "json",
+	  //dataType : "json",
 		success : function(themeList){
 			/*성공시 처리해야될 코드 작성*/
 			console.log(themeList);
@@ -371,9 +371,48 @@ function themeRender(themeList, type) {
 	str += '<option id="themeName" value="' + themeList.themeName + '" data-themeno="' + themeList.themeNo +'">' + themeList.themeName + '</option>';
 	
 	if(type === 'down') {
-		$("#party_theme").append(str);
+		$(".select_thema").append(str);
 	}
 };
+
+//후기게시판 테마선택시 themeNo 넘기기
+$(".select_thema").on("change", function() {
+	
+	var theme = $(this).val();
+	var themeNo = $(".select_thema option:selected").data("themeno");
+	$("[name=themeNo]").val(themeNo);
+	console.log(theme);
+	console.log(themeNo);
+
+	/*
+	//ajax서버에 요청 (themeNo 전달)
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/board/theme",		
+		type : "post",
+	  //contentType : "application/json",
+		data : {themeNo: themeNo},
+
+	  //dataType : "json",
+		success : function(themeTimeList){
+			/*성공시 처리해야될 코드 작성*/
+			/*console.log(themeTimeList);
+			
+			$(".select_thema").append('<option value="" selected="">시간을 선택해 주세요</option>');
+			
+			for(var i=0; i<themeTimeList.length; i++) {
+				themeTimeRender(themeTimeList[i], "down");
+			}
+			
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+		
+	});*/ 
+	
+});
 
 //2021.09.28 by 원호
 //미입력 체크

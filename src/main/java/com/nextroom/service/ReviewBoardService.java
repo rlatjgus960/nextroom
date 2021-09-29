@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nextroom.dao.ReviewBoardDao;
+import com.nextroom.vo.PartyVo;
 import com.nextroom.vo.ReviewBoardVo;
 
 @Service
@@ -31,13 +32,13 @@ public class ReviewBoardService {
 	//후기게시판 글 등록
 	public int reviewWrite(ReviewBoardVo reviewBoardVo) {
 		System.out.println("Service.reviewWrite");
-		System.out.println("서비스보" + reviewBoardVo);
+		System.out.println("[Service Vo정보]" + reviewBoardVo);
 		
 		return reviewBoardDao.ReviewInsert(reviewBoardVo);
 	}
 	
 	
-	//2021.09.28 by 원호
+	//2021.09.29 by 원호
 	//sido사용 cafeNo, cafeName 가져오기
 	public List<ReviewBoardVo> getCafeList(String sido){
 		System.out.println("Servie.getCafeList");
@@ -46,6 +47,18 @@ public class ReviewBoardService {
 		List<ReviewBoardVo> cafeList = reviewBoardDao.getCafeList(sido);
 		
 		return cafeList;
+	}
+	
+	//2021.09.29 by 원호
+	//cafeNo로 테마NO, 테마이름가져오기
+	public List<ReviewBoardVo> getThemeList(int cafeNo) {
+		System.out.println("Servie.getCafeList");
+		System.out.println("Servie.getCafeList: " + cafeNo);
+		
+		List<ReviewBoardVo> themeList = reviewBoardDao.getThemeList(cafeNo);
+		
+		
+		return themeList;
 	}
 
 }

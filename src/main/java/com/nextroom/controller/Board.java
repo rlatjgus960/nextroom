@@ -109,19 +109,32 @@ public class Board {
 		return "redirect:/board/reviewBoard";
 	}
 	
-	//2021.09.09 by 원호
+	//2021.09.29 by 원호
 	//sido로 cafeNo, cafeName가져오기
 	@ResponseBody
 	@RequestMapping(value = "/sido", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<ReviewBoardVo> cafeList(@RequestParam("sido") String sido){
 		System.out.println("Controller.sido");
-		System.out.println("Controller.sido" + sido);
+		System.out.println("Controller.sido:" + sido);
 		
 		List<ReviewBoardVo> cafeList = reviewBoardService.getCafeList(sido);
 		
 		return cafeList;
 	}
 	
+	
+	//2021.09.29 by 원호
+	//cafeNo로 themeNo, themeName가져오기
+	@ResponseBody
+	@RequestMapping(value = "/cafe", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<ReviewBoardVo> themeList(@RequestParam("cafeNo") int cafeNo) {
+		System.out.println("Controller.cafeNo");
+		System.out.println("Controller.cafeNo: " + cafeNo);
+		
+		List<ReviewBoardVo> themeList = reviewBoardService.getThemeList(cafeNo);
+		
+		return themeList;
+	}
 	
 	
 	//쪽지 보내기

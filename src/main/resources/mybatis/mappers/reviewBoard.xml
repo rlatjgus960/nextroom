@@ -5,13 +5,10 @@
 
 
 	<!-- 후기게시판 글등록 -->
-	<!-- <insert id="reviewBoardInsert" parameterType = "ReviewBoardVo">
-		<![CDATA[
+	<!-- <insert id="reviewBoardInsert" parameterType = "ReviewBoardVo"> <![CDATA[ 
+		]]> </insert> -->
 
-	   ]]>
-	</insert> -->
-
-
+	<!-- 2021.09.29 by 원호 -->
 	<!-- sido사용 cafeNo, cafeName 가져오기 -->
 	<select id="cafeListSelect" parameterType="String" resultType="ReviewBoardVo">
 		<![CDATA[
@@ -20,6 +17,17 @@
 			from cafe
 			where (sidodetail like '%' || #{sido} || '%'
 			OR sido like '%' || #{sido} || '%')
+		]]>
+	</select>
+
+	<!-- 2021.09.29 by 원호 -->
+	<!-- cafeNo로 테마NO, 테마이름가져오기 -->
+	<select id="themeListSelect" parameterType="int" resultType="ReviewBoardVo">
+		<![CDATA[
+			select themeNo,
+       			   themename
+			from theme
+			where cafeNo = #{cafeNo}
 		]]>
 	</select>
 

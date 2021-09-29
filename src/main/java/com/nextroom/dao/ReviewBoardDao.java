@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.nextroom.vo.PartyVo;
 import com.nextroom.vo.ReviewBoardVo;
 
 @Repository
@@ -31,7 +32,7 @@ public class ReviewBoardDao {
 	//리뷰게시판 글 등록
 	public int ReviewInsert(ReviewBoardVo reviewBoardVo) {
 		System.out.println("[Dao.ReviewInsert]");
-		System.out.println("dao보" + reviewBoardVo);
+		System.out.println("[Dao Vo정보]" + reviewBoardVo);
 		
 		// sqlSession.insert("reviewBoard.reviewBoardInsert", reviewBoardVo);
 		
@@ -52,5 +53,19 @@ public class ReviewBoardDao {
 		System.out.println("[Dao 카페 리스트]" + cafeList);
 		
 		return cafeList;
+	}
+	
+	
+	//2021.09.29 by 원호
+	//cafeNo로 themeNo, themeName 가져오기
+	public List<ReviewBoardVo> getThemeList(int cafeNo) {
+		System.out.println("[Dao.getThemeList]");
+		System.out.println("[Dao에서 카페번호 내놔봐]: " + cafeNo);
+		
+		List<ReviewBoardVo> themeList = sqlSession.selectList("reviewBoard.themeListSelect", cafeNo);
+		
+		System.out.println("Dao 테마리스트: " + themeList);
+		
+		return themeList;
 	}
 }
