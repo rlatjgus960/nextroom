@@ -41,7 +41,7 @@
 
 #nick_date>h6{
 	width: 250px;
-    margin-left: -600px;
+    margin-left: -580px;
     margin-bottom:10px;
     padding-left: 20px;
     font-size: 18px;
@@ -50,9 +50,11 @@
 }
 
 #nick_date>p{
+	width:200px;
     margin-bottom:10px;
     padding-right: 10px;
     float: right;
+    text-align:left;
 }
 
 #text_tool{
@@ -136,7 +138,7 @@
 
 .leadTime{
     font-size: 17px;
-
+	text-align: center;
 }
 
 
@@ -146,8 +148,7 @@
 }
 
 .select_area>input{
-    width: 115px;
-    margin-right: 40px;
+    width: 40px;
 }
 
 /* 별점 */
