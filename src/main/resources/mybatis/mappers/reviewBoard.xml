@@ -4,4 +4,23 @@
 <mapper namespace="reviewBoard">
 
 
+	<!-- 후기게시판 글등록 -->
+	<!-- <insert id="reviewBoardInsert" parameterType = "ReviewBoardVo">
+		<![CDATA[
+
+	   ]]>
+	</insert> -->
+
+
+	<!-- sido사용 cafeNo, cafeName 가져오기 -->
+	<select id="cafeListSelect" parameterType="String" resultType="ReviewBoardVo">
+		<![CDATA[
+			select cafeNo,
+				   cafeName
+			from cafe
+			where (sidodetail like '%' || #{sido} || '%'
+			OR sido like '%' || #{sido} || '%')
+		]]>
+	</select>
+
 </mapper>
