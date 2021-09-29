@@ -311,7 +311,7 @@
 					
 					<div id="pWrite_button">
 						<button type="submit" class="search_button">등록하기</button>
-						<button id="modal_close_btn" class="search_button">취소하기</button>
+						<button type="button" id="modal_close_btn" class="search_button">취소하기</button>
 					</div>
 				</form>
 				
@@ -525,8 +525,65 @@
 	
 	/********************************************************************************************/
 	
+	/********************************************************************************************/
+	//submit null 예외처리
+	$("#partyWrite_form").on("submit", function(){
+   		console.log("form 전송 클릭!")
+   		
+   		//날짜 NULL체크
+   		var reserveDate = $("#party_date").val();
+   		if(reserveDate == "") {
+   			alert("날짜를 선택해주세요.")
+   			return false;
+   		}
+   		
+   		//지역 NULL체크
+   		var sidoDetail = $("#party_region").val();
+   		if(sidoDetail == "") {
+   			alert("지역을 선택해주세요.")
+   			return false;
+   		}
+   		
+   		//카페 NULL체크
+   		var cafeName = $("#party_cafe").val();
+   		if(cafeName == "") {
+   			alert("카페를 선택해주세요.")
+   			return false;
+   		}
+   		
+   		//테마 NULL체크
+   		var themeName = $("#party_theme").val();
+   		if(themeName == "") {
+   			alert("테마를 선택해주세요.")
+   			return false;
+   		}
+   		
+   		//시간 NULL체크
+   		var themeTime = $("#party_time").val();
+   		if(themeTime == "") {
+   			alert("시간을 선택해주세요.")
+   			return false;
+   		}
+   		
+   		//인원 NULL체크
+   		var reservePerson = $("input:radio[name='reservePerson']").is(":checked");
+   		if(reservePerson == "" || null || undefined || 0 || NaN) {
+   			alert("인원을 선택해주세요.")
+   			return false;
+   		}
+   		
+   		//모임글 NULL 체크
+   		var content = $("#area_content").val();
+   		if(content === "") {
+   			alert("모임글을 작성해주세요.")
+   			return false;
+   		}
+   		
+   		return true;
+   		
+   });
 	
-	
+		
 	
 </script>
 
