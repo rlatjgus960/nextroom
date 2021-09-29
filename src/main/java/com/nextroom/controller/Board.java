@@ -1,5 +1,7 @@
 package com.nextroom.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.ReviewBoardService;
 import com.nextroom.vo.ReviewBoardVo;
@@ -77,11 +81,17 @@ public class Board {
 		return "board/reviewWriteForm";
 	}
 	
-	
+	//2021.09.28 by 원호
 	//후기글등록
 	@RequestMapping(value = "/reviewWrite", method = {RequestMethod.GET, RequestMethod.POST})
-	public String reviewWrite(@ModelAttribute ReviewBoardVo reviewBoardVo, HttpSession session) {
+	public String reviewWrite(@ModelAttribute ReviewBoardVo reviewBoardVo, HttpSession session,
+							  @RequestParam (value="recMin", required = false, defaultValue = "0") int minutes,
+							  @RequestParam (value="recSec", required = false, defaultValue = "0") int secconds) {
 		System.out.println("Controller.reviewWrite");
+		
+		
+		reviewBoardVo.setRecTime((minutes*60)+secconds); 
+		System.out.println("소요시간 제발" + reviewBoardVo.getRecTime());
 		
 		//세션에서 정보가져옴
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
@@ -94,9 +104,23 @@ public class Board {
 		System.out.println(reviewBoardVo);
 		reviewBoardService.reviewWrite(reviewBoardVo);
 		
+		
+		
 		return "redirect:/board/reviewBoard";
 	}
 	
+	//2021.09.09 by 원호
+	//sido로 cafeNo, cafeName가져오기
+	@ResponseBody
+	@RequestMapping(value = "/sido", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<ReviewBoardVo> cafeList(@RequestParam("sido") String sido){
+		System.out.println("Controller.sido");
+		System.out.println("Controller.sido" + sido);
+		
+		List<ReviewBoardVo> cafeList = reviewBoardService.getCafeList(sido);
+		
+		return cafeList;
+	}
 	
 	
 	
