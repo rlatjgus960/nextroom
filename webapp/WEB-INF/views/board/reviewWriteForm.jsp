@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
+<!-- 작성일때문에 필요함 -->
+<%@ page import = "java.util.Calendar" %>
+
+<%
+  String Date = new java.text.SimpleDateFormat("yyyy. MM. dd").format(new java.util.Date());
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +21,8 @@
 <link href="${pageContext.request.contextPath }/assets/css/board_css/write.css" rel="stylesheet" type="text/css">
 
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
-<title>자유게시판-글쓰기</title>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+<title>후기게시판-글쓰기</title>
 </head>
 <body>
 
@@ -94,14 +101,16 @@
                     <!-- 글등록 공간 -->
                     <div id="writecontent_area">
 
-						<form action="${pageContext.request.contextPath }/board/reviewWrite" method="get"> 
+						<form id="reviewForm" action="${pageContext.request.contextPath }/board/reviewWrite" method="get"> 
 							<div id="content_title">
-								<input type="text" name="reviewTitle" placeholder="제목을 입력해 주세요">
+								<input type="text" id="reviewTitle" name="reviewTitle" placeholder="제목을 입력해 주세요">
 							</div>
-
+								 
 							<div id="nick_date">
-								<h6>작성자 : ${authUser.nickname }</h6>
-								<p>작성일 : 2021.09.10</p>
+								<h6>작성자: ${authUser.nickname }</h6>
+									<c:set value="<%=Date%>" var="today" />
+								<p>작성일: ${today }</p>
+								
 							</div>
 
 
@@ -113,7 +122,7 @@
                             <!-- 후기게시판 글쓰기에만 보이게 -->
                             <!-- 지역/카페/테마/체감난이도 선택 -->
                             <div class="select_area">
-                                <select class="region" name="sido">
+                                <select class="region" name="">
 										<option value="" selected="">지역 선택</option>
                                         <option value="전국">전국</option>
                                         <option value="홍대&신촌">홍대&신촌</option>
@@ -144,27 +153,21 @@
 
                                 </select>
 
-                                <select class="select_cafe">
-                                    <option>카페를 선택해주세요</option>
-                                    <option>비트포비아 던전101</option>
-                                    <option>비밀의화원 미드나잇</option>
-                                    <option>큐브이스케이프 홍대점</option>
-                                    <option>비트포비아 홍대던전</option>
-                                    <option>브레이크아웃 이스케이프</option>
-                                    <option>키이스케이프 홍대점</option>
-                                </select>
 
-                                <select class="select_thema" name="themeNo">
-                                    <option>테마 선택</option>
-                                    <option>비밀의 가족</option>
-                                    <option>파리82</option>
-                                    <option>팩토리 엠</option>
-                                    <option>기다려, 금방 갈게</option>
-                                    <option>종갓집 민씨</option>
+                                <select class="select_cafe" name="cafeName">
+                                	<option value="" selected="">카페를 선택해 주세요</option>                                	
                                 </select>
+                                	<input type="text" name="cafeNo" value="">
+
+
+                                <select class="select_thema" name="themeName">
+                               		<option value="" selected="">테마를 선택해 주세요</option>
+                                </select>
+                                	<input type="hidden" name="themeNo" value="">
+
 
                                 <select class="select_level" name="feelLevel">
-                                    <option >체감 난이도</option>
+                                    <option value="0">체감 난이도</option>
                                     <option value="1">☆</option>
                                     <option value="2">☆☆</option>
                                     <option value="3">☆☆☆</option>
@@ -178,13 +181,14 @@
 							<!-- 성공여부/인원수/힌트갯수/소요시간 -->
 							<div class="select_area">
 								<select class="SorF" name="reviewClear">
-                                    <option>성공 여부</option>
+                                    <option value="none">성공 여부</option>
                                     <option value="clear">성 공</option>
                                     <option value="false">실 패</option>
                                 </select>
 
 								<select class="hint" name="reviewHints">
-                                    <option>힌트 사용 갯수</option>
+                                    <option value="none">힌트 사용 갯수</option>
+                                    <option value="0">0개</option>
                                     <option value="1">1개</option>
 									<option value="2">2개</option>
 									<option value="3">3개</option>
@@ -193,7 +197,7 @@
                                 </select>
 
 								<select class="totalNumber" name="memberNum">
-                                    <option>인원수</option>
+                                    <option value="0">인원수</option>
                                     <option value="1">1인</option>
 									<option value="2">2인</option>
 									<option value="3">3인</option>
@@ -203,11 +207,12 @@
                                 </select>
 
 								<label class="leadTime">소요 시간</label>
-								<input class="leadTime" type="text" name="recTime" placeholder="00 분 00 초">분
-								<input class="leadTime" type="text" name="recTime" placeholder="00 분 00 초">초
+								<input class="leadTime" type="text" value="0" name="recMin" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">분
+								<input class="leadTime" type="text" value="0" name="recSec" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">초
+								
 							</div>
 
-							<p>별 점</p>  
+							<p>평 점</p>  
                             <!-- 별점 -->
                             <div class="star-rating space-x-4 mx-auto">                           
                                 <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
@@ -238,12 +243,6 @@
                     </div>
 					<!-- //글등록 공간 -->
 
-<%-- 					<!-- 글등록 버튼 -->
-					<a id="btn_save" href="${pageContext.request.contextPath}/board/reviewWrite">글등록</a> --%>
-
-
-
-
 				</div>
 				<!-- //main -->
 			 </div>
@@ -270,15 +269,177 @@
 
 <script type="text/javascript">
 
-//날짜 데이터
-$("#party_date").datepicker({
-    showOn:"button"
-    , buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
-    ,buttonImageOnly: true
+//2021.09.29 by 원호
+//후기게시판 지역 선택
+$(".region").on("change", function() {
+	 
+	var sido = $(this).val();
+	
+ 	$('.select_cafe').empty();
+	
+	console.log("시도선택");
+	
+	//ajax서버에 요청 (sido 전달)
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/board/sido",		
+		type : "post",
+	  //contentType : "application/json",
+		data : {sido: sido},
+
+	  //dataType : "json",
+		success : function(cafeList){
+			/*성공시 처리해야될 코드 작성*/
+			console.log(cafeList);
+			
+			$(".select_cafe").append('<option value="" selected="">카페를 선택해 주세요</option>');
+			
+			for(var i=0; i<cafeList.length; i++) {
+				cafeRender(cafeList[i], "down");
+			}
+			
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+		
+	});
+	
 });
 
 
-</script>
+//카페이름 1개씩 렌더링
+function cafeRender(cafeList, type) {
+	var str = "";
+	str += '<option id="cafeName" value="' + cafeList.cafeName + '" data-cafeno="' + cafeList.cafeNo +'">' + cafeList.cafeName + '</option>';
 
+	if(type === 'down') {
+		$(".select_cafe").append(str);
+	}
+	console.log(cafeList.cafeNo)
+};
+
+
+//후기게시판 카페선택시
+$(".select_cafe").on("change", function() {
+	
+	var cafe = $(this).val();
+	var cafeNo = $(".select_cafe option:selected").data("cafeno");
+	$("[name=cafeNo]").val(cafeNo);
+	console.log(cafe);
+	console.log(cafeNo);
+	
+	
+	
+  	$('#party_theme').empty ();
+	
+	
+	//ajax서버에 요청 (cafeNo 전달)
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/party/cafe",		
+		type : "post",
+//			contentType : "application/json",
+		data : {cafeNo: cafeNo},
+
+//			dataType : "json",
+		success : function(themeList){
+			/*성공시 처리해야될 코드 작성*/
+			console.log(themeList);
+			
+			$("#party_theme").append('<option value="" selected="">테마를 선택해 주세요</option>');
+			
+			for(var i=0; i<themeList.length; i++) {
+				themeRender(themeList[i], "down");
+			}
+			
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+		
+	}); 
+	
+});
+
+
+//테마이름 1개씩 렌더링
+function themeRender(themeList, type) {
+	var str = "";
+	str += '<option id="themeName" value="' + themeList.themeName + '" data-themeno="' + themeList.themeNo +'">' + themeList.themeName + '</option>';
+	
+	if(type === 'down') {
+		$("#party_theme").append(str);
+	}
+};
+
+//2021.09.28 by 원호
+//미입력 체크
+$("#reviewForm").on("submit", function(){
+	console.log("미입력 체크")
+	//제목 미입력 체크
+	var title = $("#reviewTitle").val();
+	if(title.length < 1){
+		alert("제목을 입력해주세요.")
+		return false;
+	}
+	
+	//내용 미입력 체크
+	var txtContent = $("#txtContent").val();
+	if(txtContent.length < 3){
+		alert("내용은 3글자 이상 작성해 주세요.")
+		return false;
+	}
+	
+	//지역 미선택 체크
+	
+	//카페 미선택 체크
+	
+	//테마 미선택 체크
+	
+	//체감난이도 미선택 체크
+	var select_level = $(".select_level").val();
+	if(select_level == "0"){
+		alert("체감 난이도를 선택해 주세요.")
+		return false;
+	}
+	
+	//성공여부 미선택 체크
+	var SorF = $(".SorF").val();
+	if(SorF == "none"){
+		alert("성공 여부를 선택해 주세요.")
+		return false;
+	}
+	
+	//힌트 갯수 미선택 체크
+	var hint = $(".hint").val();
+	if(hint == "none"){
+		alert("힌트 사용 갯수를 선택해 주세요.")
+		return false;
+	}
+	
+	//인원수 미선택 체크
+	var totalNumber = $(".totalNumber").val();
+	if(totalNumber == "0"){
+		alert("인원수를 선택해 주세요.")
+		return false;
+	}
+	
+	//소요시간 체크
+	var recMin = $("[name=recMin]").val();
+	if(recMin == "0") {
+		alert("소요시간을 입력해 주세요.")
+		return false;
+	}
+	
+	return true;
+	
+});
+
+
+
+</script>
 
 </html>
