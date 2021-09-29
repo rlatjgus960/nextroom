@@ -1,16 +1,12 @@
 package com.nextroom.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nextroom.service.ReviewBoardService;
 import com.nextroom.vo.ReviewBoardVo;
@@ -66,6 +62,14 @@ public class Board {
 	}
 	
 	
+	//후기게시판
+	@RequestMapping("/reviewBoard")
+	public String reviewBoard() {
+		System.out.println("reviewBoard");
+		
+		return "board/reviewBoard";
+	}
+	
 	//후기글쓰기폼
 	@RequestMapping("/reviewWriteForm")
 	public String reviewWriteForm() {
@@ -74,22 +78,26 @@ public class Board {
 	}
 	
 	
-	//후기글쓰기
+	//후기글등록
 	@RequestMapping(value = "/reviewWrite", method = {RequestMethod.GET, RequestMethod.POST})
-	public String reviewWriteForm(@ModelAttribute ReviewBoardVo reviewBoardVo, HttpSession session) {
+	public String reviewWrite(@ModelAttribute ReviewBoardVo reviewBoardVo, HttpSession session) {
 		System.out.println("Controller.reviewWrite");
 		
 		//세션에서 정보가져옴
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		System.out.println(authUser);
 		
 		//vo에 세션에서 가져온 no담기
 		int no = authUser.getUserNo();
 		reviewBoardVo.setUserNo(no);
 		
-		//reviewBoardService.write(reviewBoardVo);
+		System.out.println(reviewBoardVo);
+		reviewBoardService.reviewWrite(reviewBoardVo);
 		
-		return "redirect:/board/reviewWriteForm";
+		return "redirect:/board/reviewBoard";
 	}
+	
+	
 	
 	
 	//쪽지 보내기

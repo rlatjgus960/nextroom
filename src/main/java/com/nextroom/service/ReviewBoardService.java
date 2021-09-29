@@ -31,8 +31,9 @@ public class ReviewBoardService {
 	//후기게시판 글 등록
 	public int reviewWrite(ReviewBoardVo reviewBoardVo) {
 		System.out.println("Service.reviewWrite");
+		System.out.println("서비스보" + reviewBoardVo);
 		
-		return 1;
+		return reviewBoardDao.ReviewInsert(reviewBoardVo);
 	}
 
 }

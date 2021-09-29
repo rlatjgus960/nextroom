@@ -11,6 +11,10 @@
 <link href="${pageContext.request.contextPath }/assets/css/board_css/board.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/board_css/write.css" rel="stylesheet" type="text/css">
 
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
 <title>자유게시판-글쓰기</title>
 </head>
 <body>
@@ -43,8 +47,8 @@
 						
 						<div id="aside_cate">
 							<ul>
-								<li><a class="active" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
-								<li><a class="" href="">후기게시판</a></li>
+								<li><a class="" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
+								<li><a class="active" href="${pageContext.request.contextPath }/board/reviewBoard">후기게시판</a></li>
 								<li><a class="" href="">양도/교환</a></li>
 								<li><a class="" href="">공지사항</a></li>
 								<li><a class="" href="">FAQ</a></li>		
@@ -76,9 +80,9 @@
 							</div>
 
 							<div>
-								<select class="board_select">
-									<option>자유게시판</option>
-									<option>후기게시판</option>
+								<select class="board_select" onchange="if(this.value) location.href=(this.value);">
+									<option value="${pageContext.request.contextPath }/board/reviewWriteForm">후기게시판</option>								
+									<option value="${pageContext.request.contextPath }/board/writeForm">자유게시판</option>
 									<option>양도/교환</option>
 								</select>
 							</div>
@@ -90,26 +94,26 @@
                     <!-- 글등록 공간 -->
                     <div id="writecontent_area">
 
-						<form action="${pageCOntext.request.contextPath }/board/reviewWrite"> 
+						<form action="${pageContext.request.contextPath }/board/reviewWrite" method="get"> 
 							<div id="content_title">
-								<input type="text" placeholder="제목을 입력해 주세요">
+								<input type="text" name="reviewTitle" placeholder="제목을 입력해 주세요">
 							</div>
 
 							<div id="nick_date">
-								<h6>작성자 : </h6>
+								<h6>작성자 : ${authUser.nickname }</h6>
 								<p>작성일 : 2021.09.10</p>
 							</div>
 
 
 							<div id="text_tool">
-								<textarea id="txtContent" name="txtContent" rows="50" cols="96" style="width: 1020px;"></textarea>
+								<textarea id="txtContent" name="reviewContent" rows="50" cols="96" style="width: 1020px;"></textarea>
 							</div>
 							
 							
                             <!-- 후기게시판 글쓰기에만 보이게 -->
                             <!-- 지역/카페/테마/체감난이도 선택 -->
                             <div class="select_area">
-                                <select class="region">
+                                <select class="region" name="sido">
 										<option value="" selected="">지역 선택</option>
                                         <option value="전국">전국</option>
                                         <option value="홍대&신촌">홍대&신촌</option>
@@ -150,7 +154,7 @@
                                     <option>키이스케이프 홍대점</option>
                                 </select>
 
-                                <select class="select_thema">
+                                <select class="select_thema" name="themeNo">
                                     <option>테마 선택</option>
                                     <option>비밀의 가족</option>
                                     <option>파리82</option>
@@ -159,13 +163,13 @@
                                     <option>종갓집 민씨</option>
                                 </select>
 
-                                <select class="select_level">
-                                    <option>체감 난이도</option>
-                                    <option>☆</option>
-                                    <option>☆☆</option>
-                                    <option>☆☆☆</option>
-                                    <option>☆☆☆☆</option>
-                                    <option>☆☆☆☆☆</option>
+                                <select class="select_level" name="feelLevel">
+                                    <option >체감 난이도</option>
+                                    <option value="1">☆</option>
+                                    <option value="2">☆☆</option>
+                                    <option value="3">☆☆☆</option>
+                                    <option value="4">☆☆☆☆</option>
+                                    <option value="5">☆☆☆☆☆</option>
                                 </select>
                             </div>
                             <!-- //지역/카페/테마/체감난이도 선택 -->
@@ -173,33 +177,34 @@
 
 							<!-- 성공여부/인원수/힌트갯수/소요시간 -->
 							<div class="select_area">
-								<select class="SorF">
+								<select class="SorF" name="reviewClear">
                                     <option>성공 여부</option>
-                                    <option>성 공</option>
-                                    <option>실 패</option>
+                                    <option value="clear">성 공</option>
+                                    <option value="false">실 패</option>
                                 </select>
 
-								<select class="hint">
+								<select class="hint" name="reviewHints">
                                     <option>힌트 사용 갯수</option>
-                                    <option>1개</option>
-									<option>2개</option>
-									<option>3개</option>
-									<option>4개</option>
-                                    <option>5개 이상</option>
+                                    <option value="1">1개</option>
+									<option value="2">2개</option>
+									<option value="3">3개</option>
+									<option value="4">4개</option>
+                                    <option value="5">5개 이상</option>
                                 </select>
 
-								<select class="totalNumber">
+								<select class="totalNumber" name="memberNum">
                                     <option>인원수</option>
-                                    <option>1인</option>
-									<option>2인</option>
-									<option>3인</option>
-									<option>4인</option>
-                                    <option>5인</option>
-									<option>6인</option>
+                                    <option value="1">1인</option>
+									<option value="2">2인</option>
+									<option value="3">3인</option>
+									<option value="4">4인</option>
+                                    <option value="5">5인</option>
+									<option value="6">6인</option>
                                 </select>
 
 								<label class="leadTime">소요 시간</label>
-								<input class="leadTime" type="text" placeholder="00 분 00 초">
+								<input class="leadTime" type="text" name="recTime" placeholder="00 분 00 초">분
+								<input class="leadTime" type="text" name="recTime" placeholder="00 분 00 초">초
 							</div>
 
 							<p>별 점</p>  
@@ -220,8 +225,8 @@
                             <!-- //후기게시판 글쓰기에만 보이게 -->
                             
                             
-                        <!-- 글등록 버튼 -->
-						<button id="btn_save" type="submit">글등록</button>
+	                        <!-- 글등록 버튼 -->
+							<button id="btn_save" type="submit">글등록</button>
 						</form>
 
 
@@ -263,6 +268,17 @@
 	</div>
 </body>
 
+<script type="text/javascript">
+
+//날짜 데이터
+$("#party_date").datepicker({
+    showOn:"button"
+    , buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
+    ,buttonImageOnly: true
+});
+
+
+</script>
 
 
 </html>

@@ -25,4 +25,15 @@ public class ReviewBoardDao {
 		
 		return null;
 	}
+	
+	
+	
+	//리뷰게시판 글 등록
+	public int ReviewInsert(ReviewBoardVo reviewBoardVo) {
+		System.out.println("[Dao.ReviewInsert]");
+		System.out.println("dao보" + reviewBoardVo);
+		
+		return 1;
+		
+	}
 }

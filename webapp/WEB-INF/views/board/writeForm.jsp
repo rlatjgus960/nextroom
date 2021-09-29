@@ -77,8 +77,8 @@
 
 							<div>
 								<select class="board_select" onchange="if(this.value) location.href=(this.value);">
-									<option value="${pageContext.request.contextPath }/board/reviewWriteForm">후기게시판</option>								
-									<option>자유게시판</option>
+									<option value="${pageContext.request.contextPath }/board/writeForm">자유게시판</option>								
+									<option value="${pageContext.request.contextPath }/board/reviewWriteForm">후기게시판</option>
 									<option>양도/교환</option>
 								</select>
 							</div>
@@ -92,18 +92,20 @@
 
 						<form> 
 							<div id="content_title">
-								<input type="text" placeholder="제목을 입력해 주세요">
+								<input type="text" name="title" placeholder="제목을 입력해 주세요">
 							</div>
 
 							<div id="nick_date">
-								<h6>작성자 : 호옹이</h6>
+								<h6">작성자 : 호옹이</h6>
 								<p>작성일 : 2021.09.10</p>
 							</div>
 
 
 							<div id="text_tool">
-								<textarea id="txtContent" rows="50" cols="96" style="width: 1020px;"> 스마트 에디터 적용해야하는데 어떻게 하냐 최근글이 아니라 옛날 글밖에 없는데 ㅡㅡ</textarea>
+								<textarea id="txtContent" name="content" rows="50" cols="96" style="width: 1020px;"> 스마트 에디터 적용해야하는데 어떻게 하냐 최근글이 아니라 옛날 글밖에 없는데 ㅡㅡ</textarea>
 							</div>
+							<!-- 글등록 버튼 -->
+							<button id="btn_save" type="submit">글등록</button>
 						</form>
 
 
@@ -115,8 +117,7 @@
                     </div>
 					<!-- //글등록 공간 -->
 
-					<!-- 글등록 버튼 -->
-					<a id="btn_save" href="">글등록</a>
+
 
 
 
