@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,6 +75,25 @@ public class Board {
 		return "board/reviewBoard";
 	}
 	
+	//2021.09.30 by 원호
+	//후기게시판 리스트
+	@RequestMapping(value = "/reviewBoard", method = {RequestMethod.GET, RequestMethod.POST})
+	public String reviewBoard(Model model, @RequestParam(value="keyword", required = false, defaultValue = "") String keyword) {
+		System.out.println("reviewBoard");
+		
+		//사용자가 list요청
+		List<ReviewBoardVo> reviewBoardList = reviewBoardService.reviewList(keyword);
+		
+		//jsp로 보냄
+		model.addAttribute("reviewBoardList", reviewBoardList);
+		System.out.println("xml갔다온거:" + reviewBoardList);
+		
+		return "board/reviewBoard";
+	}
+	
+	
+
+	
 	//후기글쓰기폼
 	@RequestMapping("/reviewWriteForm")
 	public String reviewWriteForm() {
@@ -93,9 +113,11 @@ public class Board {
 		reviewBoardVo.setRecTime((minutes*60)+secconds); 
 		System.out.println("소요시간 제발" + reviewBoardVo.getRecTime());
 		
+		
+		
 		//세션에서 정보가져옴
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		System.out.println(authUser);
+		System.out.println("authUser:" + authUser);
 		
 		//vo에 세션에서 가져온 no담기
 		int no = authUser.getUserNo();
