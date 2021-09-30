@@ -70,9 +70,12 @@
 					<!-- 버튼 -->
 					<div id="list_button" >
 						<ul>							
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
-							<a href="${pageContext.request.contextPath }/community"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
+							<a href="${pageContext.request.contextPath }/community">
+								<img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
+							<a href="${pageContext.request.contextPath }/community">
+								<img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href="${pageContext.request.contextPath }/community">
+								<img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
 
 						</ul>
 					</div>
@@ -179,7 +182,7 @@
 
 
 							<!-- 성공여부/인원수/힌트갯수/소요시간 -->
-							<div class="select_area">
+							<div class="select_area2">
 								<select class="SorF" name="reviewClear">
                                     <option value="none">성공 여부</option>
                                     <option value="clear">성 공</option>
@@ -205,11 +208,11 @@
                                     <option value="5">5인</option>
 									<option value="6">6인</option>
                                 </select>
-
+			
 								<label class="leadTime">소요 시간</label>
 								<input class="leadTime" type="text" value="0" name="recMin" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">분
 								<input class="leadTime" type="text" value="0" name="recSec" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">초
-								
+
 							</div>
 
 							<p>평 점</p>  
@@ -348,7 +351,7 @@ $(".select_cafe").on("change", function() {
 			/*성공시 처리해야될 코드 작성*/
 			console.log(themeList);
 			
-			$("#party_theme").append('<option value="" selected="">테마를 선택해 주세요</option>');
+			$(".select_thema").append('<option value="" selected="">테마를 선택해 주세요</option>');
 			
 			for(var i=0; i<themeList.length; i++) {
 				themeRender(themeList[i], "down");
@@ -383,6 +386,8 @@ $(".select_thema").on("change", function() {
 	$("[name=themeNo]").val(themeNo);
 	console.log(theme);
 	console.log(themeNo);
+	
+	
 
 	/*
 	//ajax서버에 요청 (themeNo 전달)
@@ -414,6 +419,7 @@ $(".select_thema").on("change", function() {
 	
 });
 
+
 //2021.09.28 by 원호
 //미입력 체크
 $("#reviewForm").on("submit", function(){
@@ -433,11 +439,23 @@ $("#reviewForm").on("submit", function(){
 	}
 	
 	//지역 미선택 체크
-	
+	var region = $(".region").val();
+	if(region < "1"){
+		alert("지역을 선택해 주세요")
+		return false;
+	}
 	//카페 미선택 체크
-	
+	var select_cafe = $(".select_cafe").val();
+	if(select_cafe < "1"){
+		alert("카페를 선택해 주세요")
+		return false;
+	}
 	//테마 미선택 체크
-	
+	var select_thema = $(".select_thema").val();
+	if(select_thema < "1"){
+		alert("테마를 선택해 주세요")
+		return false;
+	}
 	//체감난이도 미선택 체크
 	var select_level = $(".select_level").val();
 	if(select_level == "0"){
@@ -470,6 +488,13 @@ $("#reviewForm").on("submit", function(){
 	var recMin = $("[name=recMin]").val();
 	if(recMin == "0") {
 		alert("소요시간을 입력해 주세요.")
+		return false;
+	}
+	
+	//평점 체크
+	var rating = $("[name=rating]").val();
+	if(rating < "1") {
+		alert("평점을 선택해 주세요.")
 		return false;
 	}
 	
