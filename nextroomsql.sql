@@ -826,15 +826,16 @@ DROP INDEX PK_preRecord;
 
 /* 게임정보 */
 DROP TABLE preRecord 
-   CASCADE CONSTRAINTS;
+	CASCADE CONSTRAINTS;
 
 /* 게임정보 */
 CREATE TABLE preRecord (
-   gameNo NUMBER NOT NULL, /* 게임번호 */
-   themeNo NUMBER NOT NULL, /* 테마번호 */
-   regDate DATE, /* 입실한 날짜 */
-   totalPerson NUMBER, /* 총인원 */
-   gameState VARCHAR2(20) /* 게임상태 */
+	gameNo NUMBER NOT NULL, /* 게임번호 */
+	themeNo NUMBER NOT NULL, /* 테마번호 */
+	reserveNo NUMBER, /* 예약번호 */
+	regDate DATE, /* 입실한 날짜 */
+	totalPerson NUMBER, /* 총인원 */
+	gameState VARCHAR2(20) /* 게임상태 */
 );
 
 COMMENT ON TABLE preRecord IS '게임정보';
@@ -843,6 +844,8 @@ COMMENT ON COLUMN preRecord.gameNo IS '게임번호';
 
 COMMENT ON COLUMN preRecord.themeNo IS '테마번호';
 
+COMMENT ON COLUMN preRecord.reserveNo IS '예약번호';
+
 COMMENT ON COLUMN preRecord.regDate IS '입실한 날짜';
 
 COMMENT ON COLUMN preRecord.totalPerson IS '총인원';
@@ -850,26 +853,36 @@ COMMENT ON COLUMN preRecord.totalPerson IS '총인원';
 COMMENT ON COLUMN preRecord.gameState IS '게임상태';
 
 CREATE UNIQUE INDEX PK_preRecord
-   ON preRecord (
-      gameNo ASC
-   );
+	ON preRecord (
+		gameNo ASC
+	);
 
 ALTER TABLE preRecord
-   ADD
-      CONSTRAINT PK_preRecord
-      PRIMARY KEY (
-         gameNo
-      );
+	ADD
+		CONSTRAINT PK_preRecord
+		PRIMARY KEY (
+			gameNo
+		);
 
 ALTER TABLE preRecord
-   ADD
-      CONSTRAINT FK_theme_TO_preRecord
-      FOREIGN KEY (
-         themeNo
-      )
-      REFERENCES theme (
-         themeNo
-      );
+	ADD
+		CONSTRAINT FK_theme_TO_preRecord
+		FOREIGN KEY (
+			themeNo
+		)
+		REFERENCES theme (
+			themeNo
+		);
+
+ALTER TABLE preRecord
+	ADD
+		CONSTRAINT FK_reserve_TO_preRecord
+		FOREIGN KEY (
+			reserveNo
+		)
+		REFERENCES reserve (
+			reserveNo
+		);
         
 DROP INDEX PK_record;
 
