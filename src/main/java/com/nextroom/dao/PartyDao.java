@@ -53,5 +53,21 @@ public class PartyDao {
 	}
 	
 	
+	//21-09-29 by 대니
+	//파티등록폼에서 넘어온 정보로 파티리스트 인서트!
+	public int addPartyList(PartyVo partyVo) {
+		System.out.println("partyDao.addPartyList()");
+		System.out.println(partyVo);
+		
+		
+		
+		//xml 전송
+		int count = sqlSession.insert("party.addPartyList", partyVo);
+		
+		
+		return count;
+	}
+	
+	
 	
 }

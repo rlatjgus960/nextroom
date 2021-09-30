@@ -2,6 +2,8 @@ package com.nextroom.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -76,12 +78,15 @@ public class Party {
 	}
 	
 	
-	//21-09-28 by 대니
+	//21-09-29 by 대니
 	//파티등록폼에서 넘어온 정보로 파티리스트 인서트!
-	@RequestMapping(value= "/partyWrite", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "partyWrite", method = {RequestMethod.GET, RequestMethod.POST})
 	public String partyWrite(@ModelAttribute PartyVo partyVo) {
 		System.out.println("파티등록INSERT: " + partyVo);
 		
+		int count = partyService.addPartyList(partyVo);
+		
+		System.out.println("컨트롤러자바인서트: " + count);
 		
 		return null;
 	}

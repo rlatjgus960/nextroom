@@ -35,4 +35,32 @@
 		]]>
 	</select>
 	
+	
+	<!-- 파티등록폼에서 넘어온 정보로 파티리스트 인서트! -->
+	<insert id="addPartyList" parameterType="com.nextroom.vo.PartyVo">
+		<selectKey keyProperty="partyNo" resultType="int" order="BEFORE">
+			<![CDATA[
+				select partyNo.nextval from dual
+			]]>
+		</selectKey>
+		
+		<![CDATA[
+			INSERT INTO party
+			VALUES (#{partyNo},
+	       			'',
+	       			#{reserveDate},
+	       			#{cafeNo},
+	       			#{themeNo},
+	       			'',
+	       			#{reservePerson},
+	       			#{content},
+	       			'모집중')	
+		]]>
+	</insert>
+	
+	
+	
+	
+	
+	
 </mapper>

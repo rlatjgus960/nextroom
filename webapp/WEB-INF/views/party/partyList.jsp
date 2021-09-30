@@ -346,8 +346,19 @@
 	
 	//파티등록 모달창 닫기
 	$("#modal_close_btn").on("click", function() {
+		
+		//등록폼 초기화
+		$("#party_date").val("");
+		$("#party_region").val("");
+		$("#party_cafe").val("");
+		$("#party_theme").val("");
+		$("#party_time").val("");
+		$("input:radio[name='reservePerson']").removeAttr('checked');
+		$("#area_content").val("");
+		
 		$("#partyWrite_modal").attr("style", "display:none");
 		document.body.classList.add("stop-scroll");
+		
 	});
 
 	
@@ -358,6 +369,7 @@
 	     ,buttonImageOnly: true
 	 });
 	
+	$("#party_date").datepicker("option", "dateFormat", "yy-mm-dd");
 	
 /********************************************************************************************/	 
 	//파티등록 모달창에서 @지역@선택시!

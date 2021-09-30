@@ -48,4 +48,19 @@ public class PartyService {
 		return themeTimeList;
 	}
 	
+	
+	//21-09-29 by 대니
+	//파티등록폼에서 넘어온 정보로 파티리스트 인서트!
+	public int addPartyList(PartyVo partyVo) {
+		System.out.println("PartyService.addPartyList()");
+		System.out.println(partyVo);
+		
+		int count = partyDao.addPartyList(partyVo);
+		System.out.println("인서트후: " + partyVo);
+		
+		
+		return count;
+	}
+	
+	
 }
