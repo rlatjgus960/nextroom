@@ -75,7 +75,7 @@
 
 					<!-- 검색영역(기간 선택) -->
 					<div id="search_area" class="clearfix">
-						<form action="" method="get" class="form_area">
+						<form action="${pageContext.request.contextPath }/board/reviewBoard" method="get" class="form_area">
 							
 							<div class="search">
 								<input type="text" name="keyword" value="" placeholder="검색어를 입력해주세요">
@@ -116,371 +116,45 @@
 								</tr>
 							</thead>
 
-							<tbody>							
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName1">
-											최원호
-										</span>		
-											
-										<div class="nick_modal1">
-											<ul class="nick_modal_list1">
+							<c:forEach items = "${reviewBoardList }" var = "reviewBoardList">
+								<tbody>							
+									<tr>
+										<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
+										<td><a href="${pageContext.request.contextPath }/board/readForm">${reviewBoardList.reviewTitle }</a></td>
+										<td class="btnNick">
+											<span class="nickName1">
+												${reviewBoardList.nickname}
+											</span>		
 												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href = "javascript:popup()">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
+											<div class="nick_modal1">
+												<ul class="nick_modal_list1">
+													
+													<li>
+														<a href="">
+															<span>랭킹 보기</span>
+														</a>	
+													</li>
 												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
+													<li>
+														<a href="">
+															<span>게시글보기</span>
+														</a>	
+													</li>
 											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>								
-									
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>	
-
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>		
-
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>		
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>		
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>		
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>		
-		
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>		
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">후기게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>		
-											
-										<div class="nick_modal">
-											<ul class="nick_modal_list">
-												
-												<li>
-													<a href="">
-														<span>랭킹 보기</span>
-													</a>	
-												</li>
-											
-												<li>
-													<a href="">
-														<span>게시글보기</span>
-													</a>	
-												</li>
-										
-												<li>
-													<a href="#none" target="_blank" onclick="openPop">
-														<span>쪽지보내기</span>
-													</a>	
-												</li>			
-											</ul>
-										</div>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>		
-							
-																																																				
-								
-																	
-							</tbody>
+													<li>
+														<a href = "javascript:popup()">
+															<span>쪽지보내기</span>
+														</a>	
+													</li>			
+												</ul>
+											</div>																	 
+										</td>
+										<td>${reviewBoardList.reviewHit }</td>
+										<td>${reviewBoardList.reviewLike }</td>
+										<td>${reviewBoardList.reviewRegDate}</td>
+									</tr>									
+								</tbody>
+							</c:forEach>
 						</table>
 					</div>
 					<!-- //게시판 리스트 -->
