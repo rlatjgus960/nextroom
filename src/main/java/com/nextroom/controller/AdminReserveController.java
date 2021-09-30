@@ -25,19 +25,25 @@ public class AdminReserveController {
 	//관리자페이지 예약관리
 	@RequestMapping("/timeManage/{cafeNo}")
 	public String timeManage(Model model, @PathVariable("cafeNo") int cafeNo,
-							@RequestParam(value="themeNo", required = false, defaultValue="-1") int themeNo) {
+							@RequestParam(value="themeNo", required = false, defaultValue="-1") int themeNo,
+							@RequestParam(value="reserveDate", required = false, defaultValue="-1") String reserveDate) {
 		System.out.println("timeManage");
 		
 		//테마 정보
 		List<AdminReserveVo> adminThemeList = adminService.getTheme(cafeNo);
 		//System.out.println(adminThemeList);
 		
-		//테마별 시간정보
-		List<AdminReserveVo> themeTimeList = adminService.getTime(themeNo);
-		//System.out.println(themeTimeList);
+		//System.out.println(reserveDate.equals("-1"));
+		if(!reserveDate.equals("-1")) {
+			//테마별 시간정보
+			//System.out.println(reserveDate);
+			List<AdminReserveVo> themeTimeList = adminService.getTime(themeNo);
+			//System.out.println(themeTimeList);
+			model.addAttribute("timeList", themeTimeList);
+		}
+		
 		
 		model.addAttribute("themeList", adminThemeList);
-		model.addAttribute("timeList", themeTimeList);
 		model.addAttribute("cafeNo", cafeNo);
 		model.addAttribute("themeNo", themeNo);
 		

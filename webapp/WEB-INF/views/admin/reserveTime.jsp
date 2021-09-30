@@ -94,7 +94,7 @@
 											확인</a></li>
 									<li><p class="selected">
 											<a
-												href="${pageContext.request.contextPath }/admin/reserveTime">&nbsp;-예약
+												href="${pageContext.request.contextPath }/admin/reserve/timeManage/${cafeNo}">&nbsp;-예약
 												관리</a>
 										</p></li>
 								</ul>
@@ -114,7 +114,7 @@
 							<li><a
 								href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페
 									소개 관리</a></li>
-							<li class="selected"><a
+							<li><a
 								href="${pageContext.request.contextPath }/admin/themeList">카페
 									테마 관리</a></li>
 						</ul>
@@ -125,15 +125,9 @@
 				<!-- //aside -->
 
 				<div id="adminMain" class="clearfix">
-					<form action="${pageContext.request.contextPath}/admin/reserve/timeModify" method="get">
 						<!--컨텐츠 여기에 작성하세요 !!!!!!!!!-->
-						<div id="admin_reservation_date">
-							<div id="datepicker"></div>
-							<input type="hidden" id="datepicker2" name="reserveDate">
 
-
-						</div>
-
+					<form action="${pageContext.request.contextPath}/admin/reserve/timeManage/${cafeNo}">
 						<div id="admin_reservation_themas">
 							<table>
 								<c:set var="i" value="0" />
@@ -148,6 +142,7 @@
 										<c:when test="${themeNo eq thList.themeNo}">
 											<td class="thema yellow_colorOn"
 												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+												<input type='hidden' name="themeNo" value="${thList.themeNo}">
 										</c:when>
 										<c:otherwise>
 											<td class="thema"
@@ -174,6 +169,19 @@
 								</c:forEach>
 							</table>
 						</div>
+						
+						<div id="admin_reservation_date">
+							<div id="datepicker"></div>
+							<input type="hidden" id="datepicker2" name="reserveDate">
+
+
+						</div>
+						
+						<div id="admin_reserve_change_Btns">
+							<button class="lbutton">확인</button>
+						</div>
+						
+					</form>
 
 
 						<!-- 예약날짜 -->
@@ -245,13 +253,9 @@
 
 						</div>
 
-						<div id="admin_reserve_change_Btns">
-							<button class="lbutton">저장</button>
-						</div>
 						
-						<input type='hidden' name="themeNo" value="${param.themeNo}">
+						
 						<input type='hidden' name="cafeNo" value="${cafeNo}">
-					</form>
 
 				</div>
 			</div>

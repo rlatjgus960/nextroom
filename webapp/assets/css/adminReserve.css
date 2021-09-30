@@ -154,7 +154,8 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 }
 
 #admin_reserve_change_Btns button {
-    margin: 30px auto;
+    margin-top: 30px;
+    margin-left: 380px;
 }
 
 .timeover {
