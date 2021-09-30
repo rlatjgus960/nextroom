@@ -12,4 +12,15 @@
 		]]>
 	</select>
 
+	<!-- 기업회원 정보 가져오기 -->
+	<select id="selectCafe" parameterType="com.nextroom.vo.UserVo" resultType="int">
+		<![CDATA[
+			select  c.cafeNo
+			from users u, cafe c
+			where u.userNo = c.userNo
+			and u.userType = 2
+			and u.id= #{id}
+			and u.password= #{password}
+		]]>
+	</select>
 </mapper>
