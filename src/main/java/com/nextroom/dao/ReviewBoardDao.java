@@ -15,7 +15,8 @@ public class ReviewBoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//게시판 리스트
+	//2021.09.30 by 원호
+	//후기게시판 리스트
 	public List<ReviewBoardVo> reviewBoardList(String keyword){
 		System.out.println("[Dao.reviewBoardList]");
 		
@@ -24,7 +25,7 @@ public class ReviewBoardDao {
 		System.out.println(reviewBoardList);
 		
 		
-		return null;
+		return reviewBoardList;
 	}
 	
 	
@@ -34,9 +35,8 @@ public class ReviewBoardDao {
 		System.out.println("[Dao.ReviewInsert]");
 		System.out.println("[Dao Vo정보]" + reviewBoardVo);
 		
-		// sqlSession.insert("reviewBoard.reviewBoardInsert", reviewBoardVo);
-		
-		return 1;
+
+		return sqlSession.insert("reviewBoard.reviewBoardInsert", reviewBoardVo);
 		
 	}
 	
