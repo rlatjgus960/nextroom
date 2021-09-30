@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet"
+	type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet"
+	type="text/css">
 
 <title>마이페이지-파티관리</title>
 </head>
@@ -39,10 +41,11 @@
 			<div id="contentMain" class="clearfix">
 				<!-- aside -->
 				<div id="aside">
-					<img id="aside_img" src="${pageContext.request.contextPath}/assets/image/asideImg.png" width="35px" height="35px">
+					<img id="aside_img" src="${pageContext.request.contextPath}/assets/image/asideImg.png"
+						width="35px" height="35px">
 
 					<div id="aside_cate">
-						 <ul>
+						<ul>
 							<li><a href="${pageContext.request.contextPath}/mypage/infoModifyForm">개인정보 변경</a></li>
 							<li><a href="${pageContext.request.contextPath}/mypage/main">내기록 보기</a></li>
 							<li><a href="${pageContext.request.contextPath}/mypage/payMent">결제내역</a></li>
@@ -54,16 +57,18 @@
 									<li>- 커뮤니티 댓글</li>
 								</ul>
 							</li> -->
-							
+
 							<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">내 쪽지</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">- 받은 쪽지함</a></li>
 									<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">- 보낸 쪽지함</a></li>
 									<li><a href="javascript:popup()">- 쪽지 보내기</a></li>
-								</ul>
-							</li>
-							
-							<li><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페 관리자 전환</a></li>
+								</ul></li>
+
+							<c:if test="${authUser.userType == '1'}">
+								<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페
+										관리자 전환</a></li>
+							</c:if>
 							<!-- <li>회원 탈퇴</li> -->
 						</ul>
 
@@ -89,62 +94,72 @@
 					<div id="partyJoin_detail_table">
 						<table>
 							<colgroup>
-                                <col style="width: 110px;">
-                                <col style="width: 145px;">
-                                <col style="width: 190px;">
-                                <col style="width: 265px;">
-                                <col style="width: 190px;">
-                                <col style="width: 150px;">
-                            </colgroup>
+								<col style="width: 110px;">
+								<col style="width: 145px;">
+								<col style="width: 190px;">
+								<col style="width: 265px;">
+								<col style="width: 190px;">
+								<col style="width: 150px;">
+							</colgroup>
 							<tr>
-								 <th>No</th>
-                                 <th>포스터</th>
-                                 <th>지역</th>
-                                 <th>카페 / 테마</th>
-                                 <th>날짜</th>
-                                 <th>인원</th>
+								<th>No</th>
+								<th>포스터</th>
+								<th>지역</th>
+								<th>카페 / 테마</th>
+								<th>날짜</th>
+								<th>인원</th>
 							</tr>
 
 							<tr>
 								<td>1</td>
-                                <td><a href="${pageContext.request.contextPath }/party/partyRead"><img src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px" height="90px"></a></td>
-                                <td>서울 신논현</td>
-                                <td>넥스트에디션 / 인터프리터</td>
-                                <td>2021-08-27  14:20</td>
-                                <td>2 / 4</td>
+								<td><a href="${pageContext.request.contextPath }/party/partyRead"><img
+										src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px"
+										height="90px"></a></td>
+								<td>서울 신논현</td>
+								<td>넥스트에디션 / 인터프리터</td>
+								<td>2021-08-27 14:20</td>
+								<td>2 / 4</td>
 							</tr>
 							<tr>
-                                <td>2</td>
-                                <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px" height="90px"></a></td>
-                                <td>서울 신논현</td>
-                                <td>넥스트에디션 / 인터프리터</td>
-                                <td>2021-08-27  14:20</td>
-                                <td>2 / 4</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/pepe.jpg" width="80px" height="90px"></a></td>
-                                <td>서울 신논현</td>
-                                <td>넥스트에디션 / 인터프리터</td>
-                                <td>2021-08-27  14:20</td>
-                                <td>2 / 4</td>
-                             </tr>
-                             <tr>
-                                <td>4</td>
-                                <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/butterfly.jpg" width="80px" height="90px"></a></td>
-                                <td>서울 신논현</td>
-                                <td>넥스트에디션 / 인터프리터</td>
-                                <td>2021-08-27  14:20</td>
-                                <td>2 / 4</td>
-                             </tr>
-                             <tr>
-                                <td>5</td>
-                                <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이연복.jpg" width="80px" height="90px"></a></td>
-                                <td>서울 신논현</td>
-                                <td>넥스트에디션 / 인터프리터</td>
-                                <td>2021-08-27  14:20</td>
-                                <td>2 / 4</td>
-                            </tr>
+								<td>2</td>
+								<td><a href=""><img
+										src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px"
+										height="90px"></a></td>
+								<td>서울 신논현</td>
+								<td>넥스트에디션 / 인터프리터</td>
+								<td>2021-08-27 14:20</td>
+								<td>2 / 4</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td><a href=""><img
+										src="${pageContext.request.contextPath }/assets/image/party/pepe.jpg" width="80px"
+										height="90px"></a></td>
+								<td>서울 신논현</td>
+								<td>넥스트에디션 / 인터프리터</td>
+								<td>2021-08-27 14:20</td>
+								<td>2 / 4</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td><a href=""><img
+										src="${pageContext.request.contextPath }/assets/image/party/butterfly.jpg" width="80px"
+										height="90px"></a></td>
+								<td>서울 신논현</td>
+								<td>넥스트에디션 / 인터프리터</td>
+								<td>2021-08-27 14:20</td>
+								<td>2 / 4</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td><a href=""><img
+										src="${pageContext.request.contextPath }/assets/image/party/이연복.jpg" width="80px"
+										height="90px"></a></td>
+								<td>서울 신논현</td>
+								<td>넥스트에디션 / 인터프리터</td>
+								<td>2021-08-27 14:20</td>
+								<td>2 / 4</td>
+							</tr>
 
 						</table>
 					</div>
@@ -187,13 +202,12 @@
 </body>
 
 <script type="text/javascript">
-//쪽지보내기 팝업
-function popup(){
-    var url = "${pageContext.request.contextPath }/board/massageForm";
-    var name = "popup test";
-    var option = "width = 500, height = 500, top = 250, left = 700, location = no"
-    window.open(url, name, option);
-}
-
+	//쪽지보내기 팝업
+	function popup() {
+		var url = "${pageContext.request.contextPath }/board/massageForm";
+		var name = "popup test";
+		var option = "width = 500, height = 500, top = 250, left = 700, location = no"
+		window.open(url, name, option);
+	}
 </script>
 </html>

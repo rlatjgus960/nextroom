@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -7,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath }/assets/css/common.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/mypage.css"
-	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet"
+	type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet"
+	type="text/css">
 
 <title>마이페이지</title>
 </head>
@@ -42,14 +41,14 @@
 
 			<div id="contentMain" class="clearfix">
 				<div id="aside">
-					<img id="aside_img"
-						src="${pageContext.request.contextPath}/assets/image/asideImg.png"
+					<img id="aside_img" src="${pageContext.request.contextPath}/assets/image/asideImg.png"
 						width="35px" height="35px">
 
 					<div id="aside_cate">
-						 <ul>
+						<ul>
 							<li><a href="${pageContext.request.contextPath}/mypage/infoModifyForm">개인정보 변경</a></li>
-							<li class="selected"><a href="${pageContext.request.contextPath}/mypage/main">내기록 보기</a></li>
+							<li class="selected"><a href="${pageContext.request.contextPath}/mypage/main">내기록
+									보기</a></li>
 							<li><a href="${pageContext.request.contextPath}/mypage/payMent">결제내역</a></li>
 							<li><a href="${pageContext.request.contextPath}/mypage/partyManage">파티관리</a></li>
 							<!-- <li>관심 카페/테마</li>-->
@@ -59,16 +58,18 @@
 									<li>- 커뮤니티 댓글</li>
 								</ul>
 							</li> -->
-							
+
 							<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">내 쪽지</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">- 받은 쪽지함</a></li>
 									<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">- 보낸 쪽지함</a></li>
 									<li><a href="javascript:popup()">- 쪽지 보내기</a></li>
-								</ul>
-							</li>
-							
-							<li><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페 관리자 전환</a></li>
+								</ul></li>
+
+							<c:if test="${authUser.userType == '1'}">
+								<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페
+										관리자 전환</a></li>
+							</c:if>
 							<!-- <li>회원 탈퇴</li> -->
 						</ul>
 
@@ -153,12 +154,12 @@
 </body>
 
 <script type="text/javascript">
-//쪽지보내기 팝업
-function popup(){
-    var url = "${pageContext.request.contextPath }/board/massageForm";
-    var name = "popup test";
-    var option = "width = 500, height = 500, top = 250, left = 700, location = no"
-    window.open(url, name, option);
-}
+	//쪽지보내기 팝업
+	function popup() {
+		var url = "${pageContext.request.contextPath }/board/massageForm";
+		var name = "popup test";
+		var option = "width = 500, height = 500, top = 250, left = 700, location = no"
+		window.open(url, name, option);
+	}
 </script>
 </html>

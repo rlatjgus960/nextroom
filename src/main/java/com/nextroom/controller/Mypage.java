@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,10 +69,37 @@ public class Mypage {
 	
 	//마이페이지 카페관리자 추가 by 서현
 	@RequestMapping("/addCafe")
-	public String addCafe(@ModelAttribute CafeVo cafeVo,
+	public String addCafe(@RequestParam(value="userNo") int userNo,
+						  @RequestParam(value="cafeName") String cafeName,
+						  @RequestParam(value="cafeHp") String cafeHp,
+						  @RequestParam(value="openTime") String openTime,
+						  @RequestParam(value="closeTime") String closeTime,
+						  @RequestParam(value="cafeIntro") String cafeIntro,
+						  @RequestParam(value="url") String url,
+						  @RequestParam(value="cafeImg") MultipartFile cafeImg,
+						  @RequestParam(value="address") String address,
+						  @RequestParam(value="addressDetail") String addressDetail,
+						  @RequestParam(value="sido") String sido,
+						  @RequestParam(value="sidoDetail") String sidoDetail,
 						  @RequestParam(value="interiorImg") List<MultipartFile> inteList) {
 		
 		System.out.println("mypage/addCafe");
+		
+		CafeVo cafeVo = new CafeVo();
+		
+		cafeVo.setUserNo(userNo);
+		cafeVo.setCafeName(cafeName);
+		cafeVo.setCafeHp(cafeHp);
+		cafeVo.setOpenTime(openTime);
+		cafeVo.setCloseTime(closeTime);
+		cafeVo.setCafeIntro(cafeIntro);
+		cafeVo.setUrl(url);
+		cafeVo.setCafeImg(cafeImg);
+		cafeVo.setAddress(address);
+		cafeVo.setAddressDetail(addressDetail);
+		cafeVo.setSido(sido);
+		cafeVo.setSidoDetail(sidoDetail);
+		
 		System.out.println(cafeVo);
 		
 		String printAddress = cafeVo.getAddress()+" "+cafeVo.getAddressDetail();

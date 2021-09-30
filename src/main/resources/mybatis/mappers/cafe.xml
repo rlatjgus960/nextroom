@@ -22,42 +22,68 @@
 	</insert>
 
 
-
-
-	<update id="updateCafe" parameterType="com.nextroom.vo.CafeVo">
-	
-	<![CDATA[
-			update cafe
-			set cafeImg = #{cafeImg},
-				
-			where cafeNo = #{no}
-		]]>
-
-	</update>
-
-
 	<insert id="addCafeKey" parameterType="com.nextroom.vo.CafeVo">
 		<selectKey keyProperty="cafeNo" resultType="int" order="BEFORE">
 			select cafeNo.nextval from dual
 		</selectKey>
-	<![CDATA[	
-		insert into cafe
-			values (cafeNo.nextval, 
-					#{userNo}, 
-					#{cafeName}, 
-					#{cafeHp}, 
-					#{openTime}, 
-					#{closeTime}, 
-					#{cafeIntro}, 
-					#{url}, 
-					#{cafeImgPath}, 
-					#{address}, 
-					#{sido}, 
-					#{sidoDetail})
-    	]]>
+		<![CDATA[	
+			insert into cafe
+				values (#{cafeNo}, 
+						#{userNo}, 
+						#{cafeName}, 
+						#{cafeHp}, 
+						#{openTime}, 
+						#{closeTime}, 
+						#{cafeIntro}, 
+						#{url}, 
+						#{cafeImgPath}, 
+						#{address}, 
+						#{sido}, 
+						#{sidoDetail})
+	    	]]>
 	</insert>
 
-	<!-- <insert id="addInteriorImg" parameterType="com.nextroom.vo.CafeVo"> <![CDATA[ insert into interiorImg values (cafeNo.nextval, #{userNo}, #{cafeName}, 
-		#{cafeHp}, #{openTime}, #{closeTime}, #{cafeIntro}, #{url}, #{cafeImg}, #{address}, #{sido}, #{sidoDetail}) ]]> </insert> -->
+
+
+
+	<update id="updateCafe" parameterType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+				update cafe
+				set cafeImg = #{cafeImg}
+					
+				where cafeNo = #{no}
+			]]>
+
+	</update>
+
+	<update id="updateCafeKey" parameterType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+				update cafe
+				set cafeImg = #{cafeImg}
+					
+				where cafeNo = #{no}
+			]]>
+
+	</update>
+
+	<update id="updateUser" parameterType="int">
+		<![CDATA[
+				update users
+				set userType = 2
+				where userNo = #{userNo}
+			]]>
+	</update>
+
+
+	<insert id="addInteriorImg" parameterType="Map"> 
+		<![CDATA[ 
+				insert into interiorImg 
+				values (
+						#{cafeNo},
+						#{intePath}
+				) ]]>
+	</insert>
 
 </mapper>

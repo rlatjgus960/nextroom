@@ -65,7 +65,10 @@
 							</ul></li>
 
 
-						<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페 관리자 전환</a></li>
+						<c:if test="${authUser.userType == '1'}">
+							<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페
+									관리자 전환</a></li>
+						</c:if>
 						<!-- <li>회원 탈퇴</li> -->
 					</ul>
 
@@ -79,11 +82,7 @@
 				<div id="contentWrap">
 					<p id="admin_subHeader">| 관리자 전환 신청</p>
 
-					<div id="cafeModify" class="">
-						
-						관리자 전환 신청이 완료되었습니다.
-
-					</div>
+					<div id="cafeModify" class="">관리자 전환 신청이 완료되었습니다.</div>
 
 				</div>
 			</div>

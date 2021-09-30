@@ -14,7 +14,7 @@
 	type="text/css">
 
 
-<title>카페 정보 수정</title>
+<title>카페 관리자 신청</title>
 </head>
 <body>
 	<!-- 헤더영역 -->
@@ -65,7 +65,10 @@
 							</ul></li>
 
 
-						<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페 관리자 전환</a></li>
+						<c:if test="${authUser.userType == '1'}">
+							<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페
+									관리자 전환</a></li>
+						</c:if>
 						<!-- <li>회원 탈퇴</li> -->
 					</ul>
 
@@ -80,7 +83,8 @@
 					<p id="admin_subHeader">| 관리자 전환 신청</p>
 
 					<div id="cafeModify" class="">
-						<form action="${pageContext.request.contextPath}/mypage/addCafe" method="post" enctype="multipart/form-data">
+						<form action="${pageContext.request.contextPath}/mypage/addCafe" method="post"
+							enctype="multipart/form-data">
 
 							<div id="cafeModi_img" class="clearfix">
 
@@ -100,8 +104,6 @@
 
 									<div id="add_cafeInterior" class="scroll-image">
 										<!-- 카페내부사진 반복영역 -->
-										<img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
-										<img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
 										<img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
 
 										<!-- //카페내부사진 반복영역 -->
@@ -132,23 +134,14 @@
 									<p class="cafModi_subTitle">주소</p>
 
 									<div class="address_search">
-										<input type="text" id="postcode" placeholder="우편번호"> 
-										<input
-											id="searchBtn" type="button" onclick="execDaumPostcode()" value="우편번호 찾기"> 
-											
-											<input
-											name="address" type="text" id="roadAddress" placeholder="도로명주소"> 
-											
-											<input
+										<input type="text" id="postcode" placeholder="우편번호"> <input id="searchBtn"
+											type="button" onclick="execDaumPostcode()" value="우편번호 찾기"> <input
+											name="address" type="text" id="roadAddress" placeholder="도로명주소"> <input
 											type="hidden" id="jibunAddress" placeholder="지번주소"> <span id="guide"
-											style="color: #999; display: none"></span> 
-											
-											<input name="addressDetail" type="text"
+											style="color: #999; display: none"></span> <input name="addressDetail" type="text"
 											id="detailAddress" placeholder="상세주소"> <input type="hidden" id="extraAddress"
-											placeholder="참고항목"> 
-											
-											<input name="sido" type="hidden" id="sido" placeholder="시도">
-										
+											placeholder="참고항목"> <input name="sido" type="hidden" id="sido" placeholder="시도">
+
 										<input name="sidoDetail" type="hidden" id="sigungu" placeholder="시군구">
 
 										<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

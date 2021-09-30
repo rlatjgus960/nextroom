@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -7,12 +6,12 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath }/assets/css/common.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/mypage.css"
-	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/modal.css"
-	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet"
+	type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet"
+	type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/modal.css" rel="stylesheet"
+	type="text/css">
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
@@ -45,12 +44,11 @@
 
 			<div id="contentMain" class="clearfix">
 				<div id="aside">
-					<img id="aside_img"
-						src="${pageContext.request.contextPath}/assets/image/asideImg.png"
+					<img id="aside_img" src="${pageContext.request.contextPath}/assets/image/asideImg.png"
 						width="35px" height="35px">
 
 					<div id="aside_cate">
-						 <ul>
+						<ul>
 							<li><a href="${pageContext.request.contextPath}/mypage/infoModifyForm">개인정보 변경</a></li>
 							<li><a href="${pageContext.request.contextPath}/mypage/main">내기록 보기</a></li>
 							<li class="selected"><a href="${pageContext.request.contextPath}/mypage/payMent">결제내역</a></li>
@@ -62,16 +60,18 @@
 									<li>- 커뮤니티 댓글</li>
 								</ul>
 							</li> -->
-							
+
 							<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">내 쪽지</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/mypage/receiveMassage">- 받은 쪽지함</a></li>
 									<li><a href="${pageContext.request.contextPath}/mypage/sendMassage">- 보낸 쪽지함</a></li>
 									<li><a href="javascript:popup()">- 쪽지 보내기</a></li>
-								</ul>
-							</li>
-							
-							<li><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페 관리자 전환</a></li>
+								</ul></li>
+
+							<c:if test="${authUser.userType == '1'}">
+								<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페
+										관리자 전환</a></li>
+							</c:if>
 							<!-- <li>회원 탈퇴</li> -->
 						</ul>
 
@@ -304,13 +304,11 @@
 
 					<div id="myPayment_Info">
 						<div>
-							<span>팀원 1</span> <span>may0505</span> <span
-								class="escape_record">56m 30s(No hint)</span>
+							<span>팀원 1</span> <span>may0505</span> <span class="escape_record">56m 30s(No hint)</span>
 						</div>
 
 						<div>
-							<span>팀원 2</span> <span>yoon1033</span> <span
-								class="escape_record">56m 30s(No hint)</span>
+							<span>팀원 2</span> <span>yoon1033</span> <span class="escape_record">56m 30s(No hint)</span>
 						</div>
 
 
@@ -331,9 +329,8 @@
 
 		<!-- footer -->
 		<div id="footer">
-			상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 :
-			moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동 서초대로77길 13<br> Copyright
-			© NEXTROOM All rights reserved.
+			상호 : 넥스트룸 | 대표자 : 1조 | 고객센터 : 02-3478-0008<br> 메일 : moon124@gmail.com | 주소 : 서울특별시 서초구 서초4동
+			서초대로77길 13<br> Copyright © NEXTROOM All rights reserved.
 		</div>
 		<!-- //footer -->
 
@@ -364,16 +361,14 @@
 		$("#paymentDetail_modal_escapeComplete").attr("style", "display:none");
 		document.body.classList.remove("stop-scroll");
 	});
-	
-	
-	
-//쪽지보내기 팝업
-function popup(){
-    var url = "${pageContext.request.contextPath }/board/massageForm";
-    var name = "popup test";
-    var option = "width = 500, height = 500, top = 250, left = 700, location = no"
-    window.open(url, name, option);
-}
+
+	//쪽지보내기 팝업
+	function popup() {
+		var url = "${pageContext.request.contextPath }/board/massageForm";
+		var name = "popup test";
+		var option = "width = 500, height = 500, top = 250, left = 700, location = no"
+		window.open(url, name, option);
+	}
 </script>
 
 

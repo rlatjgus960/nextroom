@@ -14,7 +14,6 @@ public class CafeVo {
 	private String url;
 	private MultipartFile cafeImg;
 	private String cafeImgPath;
-	private String interiorImgPath;
 	private String address;
 	private String addressDetail;
 	private String sido;
@@ -25,8 +24,8 @@ public class CafeVo {
 	}
 
 	public CafeVo(int cafeNo, int userNo, String cafeName, String cafeHp, String openTime, String closeTime,
-			String cafeIntro, String url, MultipartFile cafeImg, String cafeImgPath, String interiorImgPath,
-			String address, String addressDetail, String sido, String sidoDetail) {
+			String cafeIntro, String url, MultipartFile cafeImg, String cafeImgPath, String address,
+			String addressDetail, String sido, String sidoDetail) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -38,7 +37,6 @@ public class CafeVo {
 		this.url = url;
 		this.cafeImg = cafeImg;
 		this.cafeImgPath = cafeImgPath;
-		this.interiorImgPath = interiorImgPath;
 		this.address = address;
 		this.addressDetail = addressDetail;
 		this.sido = sido;
@@ -125,14 +123,6 @@ public class CafeVo {
 		this.cafeImgPath = cafeImgPath;
 	}
 
-	public String getInteriorImgPath() {
-		return interiorImgPath;
-	}
-
-	public void setInteriorImgPath(String interiorImgPath) {
-		this.interiorImgPath = interiorImgPath;
-	}
-
 	public String getAddress() {
 		return address;
 	}
@@ -169,9 +159,8 @@ public class CafeVo {
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
 				+ ", openTime=" + openTime + ", closeTime=" + closeTime + ", cafeIntro=" + cafeIntro + ", url=" + url
-				+ ", cafeImg=" + cafeImg + ", cafeImgPath=" + cafeImgPath + ", interiorImgPath=" + interiorImgPath
-				+ ", address=" + address + ", addressDetail=" + addressDetail + ", sido=" + sido + ", sidoDetail="
-				+ sidoDetail + "]";
+				+ ", cafeImg=" + cafeImg + ", cafeImgPath=" + cafeImgPath + ", address=" + address + ", addressDetail="
+				+ addressDetail + ", sido=" + sido + ", sidoDetail=" + sidoDetail + "]";
 	}
 
 }
