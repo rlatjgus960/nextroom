@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.AdminReserveService;
 import com.nextroom.vo.AdminReserveVo;
+import com.nextroom.vo.UserVo;
 
 @Controller
 @RequestMapping(value="/admin/reserve")
@@ -28,33 +31,41 @@ public class AdminReserveController {
 	@RequestMapping("/timeManage/{cafeNo}")
 	public String timeManage(Model model, @PathVariable("cafeNo") int cafeNo,
 							@RequestParam(value="themeNo", required = false, defaultValue="-1") int themeNo,
-							@RequestParam(value="reserveDate", required = false, defaultValue="-1") String reserveDate) {
+							@RequestParam(value="reserveDate", required = false, defaultValue="-1") String reserveDate,
+							HttpSession session) {
 		System.out.println("timeManage");
 		
 		//테마 정보
 		List<AdminReserveVo> adminThemeList = adminService.getTheme(cafeNo);
 		//System.out.println(adminThemeList);
 		
-		//System.out.println(reserveDate.equals("-1"));
-		if(!reserveDate.equals("-1")) {
-			
-			Map<String, Object> rMap = new HashMap<String, Object>();
-			rMap.put("reserveDate", reserveDate);
-			rMap.put("themeNo", themeNo);
-			
-			//테마별 시간정보
-			//System.out.println(reserveDate);
-			List<AdminReserveVo> themeTimeList = adminService.getTime(rMap);
-			//System.out.println(themeTimeList);
-			model.addAttribute("timeList", themeTimeList);
+		UserVo userVo = (UserVo)session.getAttribute("authUser");
+		
+		if(userVo != null) {
+			if(userVo.getCafeNo() == cafeNo) {
+				//System.out.println(reserveDate.equals("-1"));
+				if(!reserveDate.equals("-1")) {
+					Map<String, Object> rMap = new HashMap<String, Object>();
+					rMap.put("reserveDate", reserveDate);
+					rMap.put("themeNo", themeNo);
+					
+					//테마별 시간정보
+					//System.out.println(reserveDate);
+					List<AdminReserveVo> themeTimeList = adminService.getTime(rMap);
+					//System.out.println(themeTimeList);
+					model.addAttribute("timeList", themeTimeList);
+				}
+				
+				
+				model.addAttribute("themeList", adminThemeList);
+				model.addAttribute("cafeNo", cafeNo);
+				model.addAttribute("themeNo", themeNo);
+				
+				return "admin/reserveTime";
+			}
 		}
+		return "mypage/main";
 		
-		
-		model.addAttribute("themeList", adminThemeList);
-		model.addAttribute("cafeNo", cafeNo);
-		model.addAttribute("themeNo", themeNo);
-		
-		return "admin/reserveTime";
 	}
 	
 	
