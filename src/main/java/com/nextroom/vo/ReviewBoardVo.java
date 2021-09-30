@@ -19,11 +19,15 @@ public class ReviewBoardVo {
 	private String reviewContent;
 	private int reviewHit;
 	
+	//2021.09.29추가
 	private String sido;
 	private String sidoDetail;
 	private String themeName;
 	private int cafeNo;
 	private String cafeName;
+	
+	//2021.09.30추가
+	private String nickname;
 	
 	//생성자
 	public ReviewBoardVo() {
@@ -33,7 +37,7 @@ public class ReviewBoardVo {
 	public ReviewBoardVo(int reviewNo, int themeNo, int userNo, int feelLevel, int rating, int recTime, int reviewHints,
 			String reviewClear, int memberNum, String playDate, String reviewRegDate, int reviewLike,
 			String reviewTitle, String reviewContent, int reviewHit, String sido, String sidoDetail, String themeName,
-			int cafeNo, String cafeName) {
+			int cafeNo, String cafeName, String nickname) {
 		super();
 		this.reviewNo = reviewNo;
 		this.themeNo = themeNo;
@@ -55,6 +59,7 @@ public class ReviewBoardVo {
 		this.themeName = themeName;
 		this.cafeNo = cafeNo;
 		this.cafeName = cafeName;
+		this.nickname = nickname;
 	}
 
 	public int getReviewNo() {
@@ -217,6 +222,14 @@ public class ReviewBoardVo {
 		this.cafeName = cafeName;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	@Override
 	public String toString() {
 		return "ReviewBoardVo [reviewNo=" + reviewNo + ", themeNo=" + themeNo + ", userNo=" + userNo + ", feelLevel="
@@ -224,8 +237,11 @@ public class ReviewBoardVo {
 				+ ", reviewClear=" + reviewClear + ", memberNum=" + memberNum + ", playDate=" + playDate
 				+ ", reviewRegDate=" + reviewRegDate + ", reviewLike=" + reviewLike + ", reviewTitle=" + reviewTitle
 				+ ", reviewContent=" + reviewContent + ", reviewHit=" + reviewHit + ", sido=" + sido + ", sidoDetail="
-				+ sidoDetail + ", themeName=" + themeName + ", cafeNo=" + cafeNo + ", cafeName=" + cafeName + "]";
+				+ sidoDetail + ", themeName=" + themeName + ", cafeNo=" + cafeNo + ", cafeName=" + cafeName
+				+ ", nickname=" + nickname + "]";
 	}
+
+	
 
 	
 	
