@@ -2,6 +2,8 @@ package com.nextroom.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.nextroom.service.CafeService;
 import com.nextroom.vo.CafeVo;
+import com.nextroom.vo.UserVo;
 
 @Controller
 @RequestMapping("/mypage")
@@ -81,7 +84,8 @@ public class Mypage {
 						  @RequestParam(value="addressDetail") String addressDetail,
 						  @RequestParam(value="sido") String sido,
 						  @RequestParam(value="sidoDetail") String sidoDetail,
-						  @RequestParam(value="interiorImg") List<MultipartFile> inteList) {
+						  @RequestParam(value="interiorImg") List<MultipartFile> inteList,
+						  HttpSession session) {
 		
 		System.out.println("mypage/addCafe");
 		
@@ -111,6 +115,8 @@ public class Mypage {
 		int count = cafeService.addCafe(cafeVo, inteList);
 		
 		System.out.println(count+"건 저장되었습니다.");
+		
+		((UserVo)session.getAttribute("authUser")).setUserType("2");
 		
 		return "mypage/addCafeOk";
 	}

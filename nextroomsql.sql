@@ -426,25 +426,20 @@ DROP INDEX PK_review;
 
 /* 후기게시판 */
 DROP TABLE review 
-	CASCADE CONSTRAINTS;
+   CASCADE CONSTRAINTS;
 
 /* 후기게시판 */
 CREATE TABLE review (
-	reviewNo NUMBER, /* 후기게시판번호 */
-	themeNo NUMBER, /* 테마번호 */
-	userNo NUMBER, /* 회원번호 */
-	feelLevel NUMBER, /* 체감난이도 */
-	rating NUMBER, /* 별점 */
-	recTime NUMBER, /* 기록시간 */
-	reviewHints NUMBER, /* 힌트수 */
-	reviewClear VARCHAR2(20), /* 성공여부 */
-	memberNum NUMBER, /* 인원수 */
-	playDate DATE, /* 게임날짜 */
-	reviewRegDate DATE, /* 작성일 */
-	reviewlike NUMBER, /* 추천수 */
-	reviewTitle VARCHAR2(200), /* 제목 */
-	reviewContent VARCHAR2(2000), /* 컨텐츠 */
-	reviewHit NUMBER /* 조회수 */
+   reviewNo NUMBER NOT NULL, /* 후기게시판번호 */
+   themeNo NUMBER NOT NULL, /* 테마번호 */
+   userNo NUMBER NOT NULL, /* 회원번호 */
+   feelLevel NUMBER, /* 체감난이도 */
+   rating NUMBER, /* 별점 */
+   recTime NUMBER, /* 기록시간 */
+   reviewHints NUMBER, /* 힌트수 */
+   reviewClear VARCHAR2(20), /* 성공여부 */
+   memberNum NUMBER, /* 인원수 */
+   playDate DATE /* 게임날짜 */
 );
 
 COMMENT ON TABLE review IS '후기게시판';
@@ -469,47 +464,37 @@ COMMENT ON COLUMN review.memberNum IS '인원수';
 
 COMMENT ON COLUMN review.playDate IS '게임날짜';
 
-COMMENT ON COLUMN review.reviewRegDate IS '작성일';
-
-COMMENT ON COLUMN review.reviewlike IS '추천수';
-
-COMMENT ON COLUMN review.reviewTitle IS '제목';
-
-COMMENT ON COLUMN review.reviewContent IS '컨텐츠';
-
-COMMENT ON COLUMN review.reviewHit IS '조회수';
-
 CREATE UNIQUE INDEX PK_review
-	ON review (
-		reviewNo ASC
-	);
+   ON review (
+      reviewNo ASC
+   );
 
 ALTER TABLE review
-	ADD
-		CONSTRAINT PK_review
-		PRIMARY KEY (
-			reviewNo
-		);
+   ADD
+      CONSTRAINT PK_review
+      PRIMARY KEY (
+         reviewNo
+      );
 
 ALTER TABLE review
-	ADD
-		CONSTRAINT FK_theme_TO_review
-		FOREIGN KEY (
-			themeNo
-		)
-		REFERENCES theme (
-			themeNo
-		);
+   ADD
+      CONSTRAINT FK_theme_TO_review
+      FOREIGN KEY (
+         themeNo
+      )
+      REFERENCES theme (
+         themeNo
+      );
 
 ALTER TABLE review
-	ADD
-		CONSTRAINT FK_users_TO_review
-		FOREIGN KEY (
-			userNo
-		)
-		REFERENCES users (
-			userNo
-		);
+   ADD
+      CONSTRAINT FK_users_TO_review
+      FOREIGN KEY (
+         userNo
+      )
+      REFERENCES users (
+         userNo
+      );
 
 DROP INDEX PK_reserveDate;
 

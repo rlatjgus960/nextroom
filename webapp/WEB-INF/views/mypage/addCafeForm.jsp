@@ -65,7 +65,7 @@
 							</ul></li>
 
 
-						<c:if test="${authUser.userType == '1'}">
+						<c:if test="${'1' eq sessionScope.authUser.userType}">
 							<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페
 									관리자 전환</a></li>
 						</c:if>
