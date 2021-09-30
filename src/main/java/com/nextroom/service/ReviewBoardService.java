@@ -28,6 +28,18 @@ public class ReviewBoardService {
 		return reviewBoardList;
 	}
 	
+	//2021.09.30 by 원호
+	//후기게시판 리스트
+	public List<ReviewBoardVo> reviewList(String keyword){
+		System.out.println("Service.reviewList");
+		
+		//컨트롤러에서 넘어온 키워드 -> Dao로 보냄
+		List<ReviewBoardVo> reviewList = reviewBoardDao.reviewBoardList(keyword);
+		System.out.println("[Service Vo 정보]:" + reviewList);
+		
+		return reviewList;
+	}
+	
 	//2021.09.28 by 원호
 	//후기게시판 글 등록
 	public int reviewWrite(ReviewBoardVo reviewBoardVo) {
