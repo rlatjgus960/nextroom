@@ -113,6 +113,10 @@ CREATE TABLE cafe (
    sidoDetail VARCHAR2(50) /* ---관리용주소2 서울시/경기도만 사용 */
 );
 
+/*INSERT할때 & 포함하는 코드*/
+SET DEFINE OFF;
+
+
 COMMENT ON TABLE cafe IS '카페';
 
 COMMENT ON COLUMN cafe.cafeNo IS '카페번호';
