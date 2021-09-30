@@ -1,6 +1,8 @@
 package com.nextroom.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,9 +37,14 @@ public class AdminReserveController {
 		
 		//System.out.println(reserveDate.equals("-1"));
 		if(!reserveDate.equals("-1")) {
+			
+			Map<String, Object> rMap = new HashMap<String, Object>();
+			rMap.put("reserveDate", reserveDate);
+			rMap.put("themeNo", themeNo);
+			
 			//테마별 시간정보
 			//System.out.println(reserveDate);
-			List<AdminReserveVo> themeTimeList = adminService.getTime(themeNo);
+			List<AdminReserveVo> themeTimeList = adminService.getTime(rMap);
 			//System.out.println(themeTimeList);
 			model.addAttribute("timeList", themeTimeList);
 		}

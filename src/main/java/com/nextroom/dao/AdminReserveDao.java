@@ -25,9 +25,9 @@ public class AdminReserveDao {
 	}
 
 	//시간 리스트 불러오기
-	public List<AdminReserveVo> getTime(int themeNo) {
+	public List<AdminReserveVo> getTime(Map<String, Object> rMap) {
 		System.out.println("[AdminReserveDao.getTime()]");
-		List<AdminReserveVo> themeTimeList = sqlSession.selectList("adminReserve.selectTimeList", themeNo);
+		List<AdminReserveVo> themeTimeList = sqlSession.selectList("adminReserve.selectTimeList", rMap);
 		
 		return themeTimeList;
 	}

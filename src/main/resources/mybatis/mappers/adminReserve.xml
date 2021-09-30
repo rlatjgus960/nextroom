@@ -16,13 +16,29 @@
 	</select>
 	
 	<!-- 테마별 시간 정보 가져오기 -->
-	<select id="selectTimeList" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
+	<select id="selectTimeList" parameterType="map" resultType="com.nextroom.vo.AdminReserveVo">
 		<![CDATA[
-			select  themeNo,
-			        themeTimeNo,
-			        themeTime
-			from themeTime
-			where themeNo = #{themeNo}
+			select  ttbl.themeNo,
+			        ttbl.themename, 
+			        ttbl.themetimeno, 
+			        ttbl.themetime,
+			        rtbl.reserveDate,
+			        rtbl.reserveTimeNo, 
+			        rtbl.reserveDateNo, 
+			        rtbl.reserveTime, 
+			        nvl(rtbl.reserveState, 1) reserveState
+			from (  select  t.themeNo, t.themename, tt.themetimeno, tt.themetime     
+			        from theme t, themetime tt
+			        where t.themeNo = tt.themeNo
+			        and t.themeNo = #{themeNo}) ttbl,
+			      ( select t.themeNo, rd.reserveDateNo, rd.themeNo, rd.reserveDate,
+			               rt.reserveTimeNo, rt.reserveTime, rt.reserveState
+			        from theme t, reservedate rd, reservetime rt
+			        where t.themeNo = rd.themeNo
+			        and rd.reserveDateNo = rt.reserveDateNo
+			        and rd.themeNo = #{themeNo}
+			        and rd.reserveDate = #{reserveDate}) rtbl
+			where ttbl.themetime   = rtbl.reserveTime(+)
 			order by themeTimeNo asc
 		]]>
 	</select>

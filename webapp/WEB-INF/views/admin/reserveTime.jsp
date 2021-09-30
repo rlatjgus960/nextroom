@@ -184,25 +184,24 @@
 					</form>
 
 
-						<!-- 예약날짜 -->
-						<div id="admin_reservation_thema_time_color" class="clearfix ">
-							<div>
-								<div id="whitebox"></div>
-								<span>시간 마감</span>
+						<c:if test="${!empty timeList}">
+						
+							<!-- 예약날짜 -->
+							<div id="admin_reservation_thema_time_color" class="clearfix ">
+								<div>
+									<div id="yellowbox"></div>
+									<span>예약완료</span>
+								</div>
+								<div>
+									<div id="greenbox"></div>
+									<span>예약가능</span>
+								</div>
+								<div>
+									<div id="redbox"></div>
+									<span>예약불가능</span>
+								</div>
 							</div>
-							<div>
-								<div id="yellowbox"></div>
-								<span>예약완료</span>
-							</div>
-							<div>
-								<div id="greenbox"></div>
-								<span>예약가능</span>
-							</div>
-							<div>
-								<div id="redbox"></div>
-								<span>예약불가능</span>
-							</div>
-						</div>
+						</c:if>
 
 
 						<div id="admin_reservation_thema_time">
@@ -215,8 +214,18 @@
 										<tr>
 									</c:if>
 
-									<td class="thema_time" data-themetimeno = "${tiList.themeTimeNo}" data-themetime = "${tiList.themeTime }">${tiList.themeTime }</td>
-
+									<c:if test="${tiList.reserveState eq 1}">
+										<td class="thema_time reservePos" data-themetimeno = "${tiList.themeTimeNo}" data-themetime = "${tiList.themeTime }">${tiList.themeTime }</td>
+									</c:if>
+									
+									<c:if test="${tiList.reserveState eq 2}">
+										<td class="thema_time reservation_completed" data-themetimeno = "${tiList.themeTimeNo}" data-themetime = "${tiList.themeTime }">${tiList.themeTime }</td>
+									</c:if>
+									
+									<c:if test="${tiList.reserveState eq 3}">
+										<td class="thema_time reserveImpos" data-themetimeno = "${tiList.themeTimeNo}" data-themetime = "${tiList.themeTime }">${tiList.themeTime }</td>
+									</c:if>
+									
 									<c:if test="${status.last}">
 										<c:if test="${5-(tiList.themeTimeNo%5) eq 1}">
 											<td></td>
@@ -368,12 +377,12 @@
 					if(count === 3) {
 						$(".timeClick").removeClass("reservePos");
 						$(".timeClick").addClass("reserveImpos");
-						$(".reserveImpos").removeClass("timeClick");
+						$(".timeClick").removeClass("timeClick");
 						alert("예약불가능으로 변경 완료했습니다.");
 					} else if(count === 1){
 						$(".timeClick").removeClass("reserveImpos");
 						$(".timeClick").addClass("reservePos");
-						$(".reserveImpos").removeClass("timeClick");
+						$(".timeClick").removeClass("timeClick");
 						alert("예약가능으로 변경 완료했습니다.");
 					} else if(count === 2) {
 						alert("이미 예약완료된 시간입니다.");

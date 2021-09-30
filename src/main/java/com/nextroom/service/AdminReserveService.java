@@ -26,10 +26,10 @@ public class AdminReserveService {
 	}
 	
 	//테마별 시간 정보 불러오기
-	public List<AdminReserveVo> getTime(int themeNo) {
+	public List<AdminReserveVo> getTime(Map<String, Object> rMap) {
 		System.out.println("[AdminReserveService.getTime()]");
 		
-		List<AdminReserveVo> themeTimeList = adminDao.getTime(themeNo);
+		List<AdminReserveVo> themeTimeList = adminDao.getTime(rMap);
 		
 		return themeTimeList;
 	}
@@ -103,6 +103,7 @@ public class AdminReserveService {
 		
 		return result;
 	}
+	
 	
 	
 }
