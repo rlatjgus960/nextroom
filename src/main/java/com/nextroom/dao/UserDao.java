@@ -18,4 +18,11 @@ public class UserDao {
 		
 		return sqlSession.selectOne("user.selectUser", userVo);
 	}
+
+	//cafeNo 정보 가져오기
+	public int selectCafe(UserVo userVo) {
+		System.out.println("[UserDao.selectCafe()]");
+		
+		return sqlSession.selectOne("user.selectCafe", userVo);
+	}
 }

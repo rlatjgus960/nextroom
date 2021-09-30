@@ -94,7 +94,7 @@
 											확인</a></li>
 									<li><p class="selected">
 											<a
-												href="${pageContext.request.contextPath }/admin/reserve/timeManage/${cafeNo}">&nbsp;-예약
+												href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약
 												관리</a>
 										</p></li>
 								</ul>
@@ -127,7 +127,7 @@
 				<div id="adminMain" class="clearfix">
 						<!--컨텐츠 여기에 작성하세요 !!!!!!!!!-->
 
-					<form action="${pageContext.request.contextPath}/admin/reserve/timeManage/${cafeNo}">
+					<form action="${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">
 						<div id="admin_reservation_themas">
 							<table>
 								<c:set var="i" value="0" />
@@ -141,12 +141,12 @@
 									<c:choose>
 										<c:when test="${themeNo eq thList.themeNo}">
 											<td class="thema yellow_colorOn"
-												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
 												<input type='hidden' name="themeNo" value="${thList.themeNo}">
 										</c:when>
 										<c:otherwise>
 											<td class="thema"
-												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
 										</c:otherwise>
 									</c:choose>
 

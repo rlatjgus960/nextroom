@@ -20,4 +20,13 @@ public class UserService {
 		
 		return authUser;
 	}
+	
+	//기업사용자 정보 가져오기
+	public int getCafeNo(UserVo userVo) {
+		System.out.println("[UserService.getCafeNo()]");
+		
+		int cafeNo = userDao.selectCafe(userVo);
+		
+		return cafeNo;
+	}
 }

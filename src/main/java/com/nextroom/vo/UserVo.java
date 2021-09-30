@@ -10,15 +10,18 @@ public class UserVo {
 	private String email;
 	private String nickname;
 	private String userType;
+	private int cafeNo;
 	
 	
 	
 	public UserVo() {
 		super();
 	}
+	
+	
 
-	public UserVo(int userNo, String id, String password, String userName, 
-			String userHp, String email, String nickname, String userType) {
+	public UserVo(int userNo, String id, String password, String userName, String userHp, String email, String nickname,
+			String userType, int cafeNo) {
 		super();
 		this.userNo = userNo;
 		this.id = id;
@@ -28,9 +31,9 @@ public class UserVo {
 		this.email = email;
 		this.nickname = nickname;
 		this.userType = userType;
+		this.cafeNo = cafeNo;
 	}
 
-	
 	
 	
 	public int getUserNo() {
@@ -96,14 +99,27 @@ public class UserVo {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+	
+	public int getCafeNo() {
+		return cafeNo;
+	}
 
-	
-	
+
+
+	public void setCafeNo(int cafeNo) {
+		this.cafeNo = cafeNo;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "UserVo [userNo=" + userNo + ", id=" + id + ", password=" + password + ", userName=" + userName
-				+ ", userHp=" + userHp + ", email=" + email + ", nickname=" + nickname + ", userType=" + userType + "]";
+				+ ", userHp=" + userHp + ", email=" + email + ", nickname=" + nickname + ", userType=" + userType
+				+ ", cafeNo=" + cafeNo + "]";
 	}
+
+
 	
 	
 	

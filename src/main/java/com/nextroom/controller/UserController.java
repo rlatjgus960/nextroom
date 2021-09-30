@@ -37,6 +37,13 @@ public class UserController {
 		
 		if(authUser != null) { //로그인 성공하면
 			System.out.println("[로그인성공]");
+			
+			if(authUser.getUserType().equals("2")) { // userType 2 -> 업체관리자
+				int cafeNo = userService.getCafeNo(userVo);
+				System.out.println(cafeNo);
+				authUser.setCafeNo(cafeNo);
+			}
+			
 			session.setAttribute("authUser", authUser);
 			return "redirect:/mypage/main"; 
 		} else { //로그인 실패하면
