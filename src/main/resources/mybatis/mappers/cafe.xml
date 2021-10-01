@@ -37,7 +37,9 @@
 						#{closeTime}, 
 						#{cafeIntro}, 
 						#{url}, 
-						#{cafeImg}, 
+						#{cafeImg},
+						#{address}, 
+						#{addressDetail},  
 						#{printAddress}, 
 						#{sido}, 
 						#{sidoDetail})
@@ -85,8 +87,6 @@
 				   cafeIntro, url, cafeImg, address, addressDetail, sido, sidoDetail
 			from cafe
 			where #{cafeNo}
-			
-		
 		]]>
 	
 	</select>
