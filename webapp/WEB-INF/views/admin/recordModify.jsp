@@ -33,7 +33,7 @@
 			<div id="subheader-title">
 			<h2>랭킹</h2>
 			</div>
-			<div id="subheader-mintitle">관리자페이지 > 예약확인</div>
+			<div id="subheader-mintitle">관리자페이지 > 기록관리</div>
 
 
 
@@ -53,7 +53,7 @@
 						<li>예약
 							<ul class="aside_mini_cate">
 								<li><a href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약 확인</a></li>
-								<li><a href="${pageContext.request.contextPath }/admin/reserveTime">&nbsp;-예약 관리</a></li>
+								<li><a href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약 관리</a></li>
 							</ul>
 						</li>
 						<li>기록
@@ -193,6 +193,38 @@
 $(".record_modal_open").on("click", function(){
     $("#admin_record_modal").attr("style", "display:block");
     document.body.classList.add("stop-scroll");
+    
+  //화면 로딩되기 직전!
+    $(document).ready(function() {
+    	console.log("화면 로딩 직전");
+
+    	//ajax 요청하기
+    	$.ajax({
+
+    		url : "${pageContext.request.contextPath }/admin/record/recordModifyForm",
+    		type : "post",
+    		//contentType : "application/json",
+    		//data : {name: ”홍길동"},
+
+    		//dataType : "json",
+    		success : function(guestList) {
+    			/*성공시 처리해야될 코드 작성*/
+    			console.log(guestList);
+
+    			//화면에 그리기
+    			for (var i = 0; i < guestList.length; i++) {
+
+    				render(guestList[i], "down"); //list draw
+
+    			}
+
+    		},
+    		error : function(XHR, status, error) {
+    			console.error(status + " : " + error);
+    		}
+    	});
+
+    });
 });  
 
 $("#admin_record_closemodal").on("click", function() {
@@ -200,5 +232,9 @@ $("#admin_record_closemodal").on("click", function() {
 	document.body.classList.remove("stop-scroll");
 
 });
+
+
+
+
 </script>
 </html>

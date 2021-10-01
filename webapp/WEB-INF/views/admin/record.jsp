@@ -54,13 +54,13 @@
 						<li>예약
 							<ul class="aside_mini_cate">
 								<li><a href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약 확인</a></li>
-								<li><a href="${pageContext.request.contextPath }/admin/reserveTime">&nbsp;-예약 관리</a></li>
+								<li><a href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약 관리</a></li>
 							</ul>
 						</li>
 						<li>기록
 							<ul class="aside_mini_cate">
 								<li><p class="selected"><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a></p></li>
-								<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
+								<li><a href="${pageContext.request.contextPath }/admin/record/modify">&nbsp;-기록 관리</a></li>
 							</ul>
 						</li>
 						<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>
@@ -85,40 +85,48 @@
                     <table>
                         <tr>
                             <th>테마</th>
-                            <th>예약날짜 <input type="hidden"  id="datepicker"></th>
+                            <th>입실날짜</th>
                             <th>시간</th>
                             <th>인원</th>
                             <th>예약자이름</th>
                             <th></th>
                         </tr>
 
-                         <tr>
-                            <td>비밀의화원 미드나잇</td>
-                            <td>2021-08-27</td>
-                            <td>12:30</td>
-                            <td>3인</td>
-                            <td>세일러문</td>
-                            <td><a id="" class="record_modal_open mbutton recordBtn">기록입력</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>비밀의화원 미드나잇</td>
-                            <td>2021-08-27</td>
-                            <td>12:30</td>
-                            <td>3인</td>
-                            <td>세일러문</td>
-                            <td><a id="" class="record_modal_open mbutton recordBtn">기록입력</a></td>
-                        </tr>
-                        
-                        <tr>
-                            <td>비밀의화원 미드나잇</td>
-                            <td>2021-08-27</td>
-                            <td>12:30</td>
-                            <td>3인</td>
-                            <td>세일러문</td>
-                            <td><a id="" class="record_modal_open mbutton recordBtn">기록입력</a></td>
-                        </tr>
+                        	
 
+                       	<c:choose>
+
+
+						    <c:when test="${empty gameList}">
+						       <tr id="list-table">
+						           <td></td>
+						           <td></td>
+		                           <td>진행중인 게임이 없습니다.</td>
+		                           <td></td>
+		                           <td></td>
+		                           <td></td>
+		                        </tr>
+						    </c:when>
+						
+						    <c:otherwise>
+						    
+                       			<c:forEach items="${gameList}" var="prerecordVo">
+							        <tr id="list-table">
+			                           <td>${ prerecordVo.themeName}</td>
+			                           <td>${ prerecordVo.regDate}</td>
+			                           <td>${ prerecordVo.reserveTime}</td>
+			                           <td>${ prerecordVo.totalPerson}</td>
+			                           <td>${ prerecordVo.reserveName}</td>
+			                           <td><button type="button" id="" class="record_modal_open mbutton recordBtn" data-gameno="${prerecordVo.gameNo}">기록입력</button></td>
+			                        </tr>
+								</c:forEach>
+								
+						    </c:otherwise>
+						
+						
+						</c:choose>
+
+                        
                        
 
 
@@ -152,6 +160,7 @@
                 
 				<form action="${pageContext.request.contextPath }/admin/record/addRecord" method="GET">
 	                <div id="record_table_wrap">
+	                		<input type="hidden" name="gameNo" value="">
 	                        <table id="record_modal_table">
 	                            <tr class="label_time">
 	                                <th><label for="record_hour">탈출 시간</label></th>
@@ -172,10 +181,13 @@
 	                                <td></td>
 	                                <td></td>
 	                            </tr>
+	                            
+	                            <c:forEach items="${gameList}" var="prerecordVo">
 	                            <tr>
 	                                <th>플레이어 1&nbsp;</th>
 	                                <td><input type="text" name="member" value="junzzang1"><a class="red_x"> X</a></td>
 	                            </tr>
+	                            </c:forEach>
 	                            <tr>
 	                                <th>플레이어 2&nbsp;</th>
 	                                <td><input type="text" name="member" value="junzzang2"><a class="red_x"> X</a></td>
@@ -200,15 +212,19 @@
 </body>
 
 <script>
-	$("#datepicker").datepicker({
-	    showOn:"button"
-	    , buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
-	    ,buttonImageOnly: true
-	});
+	
+	
 	
 	$(".record_modal_open").on("click", function(){
 	    $("#admin_record_modal").attr("style", "display:block");
 	    document.body.classList.add("stop-scroll");
+	    
+	    var gameno = $(this).data("gameno")
+	    console.log($(this).data("gameno"));
+	    
+	    console.log($("[name='gameNo']"));
+	    $("[name='gameNo']").val(gameno);
+	    
 	});  
 	
 	$("#admin_record_closemodal").on("click", function() {

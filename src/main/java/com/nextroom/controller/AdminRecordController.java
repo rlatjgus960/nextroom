@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.RecordService;
+import com.nextroom.vo.PrerecordVo;
 import com.nextroom.vo.RecordVo;
 
 
@@ -18,7 +21,20 @@ public class AdminRecordController {
 	
 	@Autowired RecordService recordService;
 	
-		//관리자페이지 기록수정
+		@RequestMapping("")
+		public String record(Model model) {
+			
+			List<PrerecordVo> gameList = recordService.getGameList();
+			
+			System.out.println(gameList);
+			
+			model.addAttribute("gameList",gameList);
+			
+			return "admin/record";
+		}
+	
+	
+		//관리자페이지 기록
 		@RequestMapping("/addRecord")
 		public String addRecord(@ModelAttribute RecordVo recordVo,
 								@RequestParam(value="recordClear", required = false, defaultValue = "success") String clearState,
@@ -36,6 +52,31 @@ public class AdminRecordController {
 		   
 		   return "redirect:/admin/record";
 		}
+		
+		//관리자페이지 기록수정
+		@RequestMapping("/modify")
+		public String recordModify(Model model) {
+		   System.out.println("recordModify");
+		   
+		   List<PrerecordVo> completeList = recordService.getCompleteList();
+		   
+		   model.addAttribute("completeList",completeList);
+		   
+		   return "admin/recordModify";
+		}
+		
+		@RequestMapping("/recordModifyForm")
+		@ResponseBody
+		public String recordModifyForm() {
+			
+			System.out.println("ajax");
+			
+			//recordService.getRecordList();
+			
+			
+			return null;
+		}
+		
 }
 	
 	
