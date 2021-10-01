@@ -1052,10 +1052,26 @@ Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,US
 --  Ref Constraints for Table PARTYAPPLICANT
 --------------------------------------------------------
 
-  ALTER TABLE "NEXTROOM"."PARTYAPPLICANT" ADD CONSTRAINT "FK_PARTY_TO_PARTYAPPLICANT" FOREIGN KEY ("PARTYNO")
-     REFERENCES "NEXTROOM"."PARTY" ("PARTYNO") ENABLE;
-  ALTER TABLE "NEXTROOM"."PARTYAPPLICANT" ADD CONSTRAINT "FK_USERS_TO_PARTYAPPLICANT" FOREIGN KEY ("USERNO")
-     REFERENCES "NEXTROOM"."USERS" ("USERNO") ENABLE;
+
+  ALTER TABLE partyApplicant
+	ADD
+		CONSTRAINT FK_party_TO_partyApplicant
+		FOREIGN KEY (
+			partyNo
+		)
+		REFERENCES party (
+			partyNo
+		);
+
+  ALTER TABLE partyApplicant
+	ADD
+		CONSTRAINT FK_users_TO_partyApplicant
+		FOREIGN KEY (
+			userNo
+		)
+		REFERENCES users (
+			userNo
+		);
 --------------------------------------------------------
 --  Ref Constraints for Table PARTYDETAIL
 --------------------------------------------------------
