@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.nextroom.vo.PreRecordVo;
-import com.nextroom.vo.ReadRecordVo;
 import com.nextroom.vo.RecordVo;
 
 @Repository

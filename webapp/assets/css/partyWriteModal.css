@@ -78,7 +78,7 @@ table.form_table>tbody>tr>td {
 }
 
 #party_date {
-	width:150px;
+	width:202px;
 }
 
 table.form_table>tbody>tr>td>input[type="text"],
@@ -88,6 +88,8 @@ table.form_table>tbody>tr>td>select {
 
 table.form_table>tbody>tr>td>select {
 	margin-right: 16px;
+	width: 205px;
+	
 }
 
 
@@ -113,7 +115,9 @@ table.form_table>tbody>tr>td>select {
 }
 
 .party_uid {
-	padding-right: 106px;
+	width: 100px;
+	padding-right: 122px;
+	text-align: left;
 }
 
 

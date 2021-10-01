@@ -69,5 +69,41 @@ public class PartyDao {
 	}
 	
 	
+	//셀렉트키로 가져온 PARTYNO와 USERNO로 파티참여리스트 INSERT
+	public void addPartyDetail(PartyVo partyDetailList) {
+		System.out.println("파티다오에 참여인원 Vo다: " + partyDetailList);
+		
+		sqlSession.insert("party.addPartyDetail", partyDetailList);
+	}
+	
+	
+	// 21-10-01 by 대니
+	// 파티등록 리스트 목록 출력하기
+	public List<PartyVo> getPartyList() {
+		System.out.println("파티다오의 PartyList 출력구간");
+		List<PartyVo> partyList = sqlSession.selectList("party.partyListSelect");
+		
+		
+		return partyList;
+	}
+	
+//	// 21-10-01 by 대니
+//	// 파티리스트에서 뽑아낸 cafeNo로 가져오는 정보리스트
+//	public List<PartyVo> getCafeNoList(int cafeNo) {
+//		
+//		List<PartyVo> getCafeNoList = sqlSession.selectList("party.getCafeNoList", cafeNo);
+//		
+//		
+//		
+//		return getCafeNoList;
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
