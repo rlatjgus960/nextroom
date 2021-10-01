@@ -182,20 +182,9 @@
 	                                <td></td>
 	                            </tr>
 	                            
-	                            <c:forEach items="${gameList}" var="prerecordVo">
-	                            <tr>
-	                                <th>플레이어 1&nbsp;</th>
-	                                <td><input type="text" name="member" value="junzzang1"><a class="red_x"> X</a></td>
-	                            </tr>
-	                            </c:forEach>
-	                            <tr>
-	                                <th>플레이어 2&nbsp;</th>
-	                                <td><input type="text" name="member" value="junzzang2"><a class="red_x"> X</a></td>
-	                            </tr>
-	                            <tr>
-	                                <th>플레이어 3&nbsp;</th>
-	                                <td><input type="text" name="member" value="junzzang3"><a class="red_x"> X</a></td>
-	                            </tr>
+	                            <tbody class="memberNameArea">
+	                            
+	                            </tbody>
 	
 	                            
 	                        </table>
@@ -203,7 +192,7 @@
 
                         <div id="record_Info_Btn">
                             <button type="submit" class="mbutton">입력</button>
-                            <a class="mbutton chuiso">취소</a>
+                            <button type="reset" class="mbutton chuiso">취소</button>
                         </div>
                 	</form>
         </div>
@@ -221,21 +210,51 @@
 	    
 	    var gameno = $(this).data("gameno")
 	    console.log($(this).data("gameno"));
-	    
-	    console.log($("[name='gameNo']"));
+
 	    $("[name='gameNo']").val(gameno);
+	    
+	    $.ajax({
+			
+			//request
+			url : "${pageContext.request.contextPath }/admin/record/getMemberList",
+			type : "post",
+			//contentType : "application/json",
+			data : {
+				gameno : gameno
+			},
+			
+			
+			//response
+			//dataType : "json",
+			success : function(memberList) {
+				
+				console.log(memberList);
+				
+				for(var i =0 ; i< memberList.length; i++){
+					render(memberList[i],i+1);
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
 	    
 	});  
 	
 	$("#admin_record_closemodal").on("click", function() {
 		$("#admin_record_modal").attr("style", "display:none");
 		document.body.classList.remove("stop-scroll");
+		
+		$(".memberBox").remove();
 	
 	});
 	
 	$(".chuiso").on("click", function() {
 		$("#admin_record_modal").attr("style", "display:none");
 		document.body.classList.remove("stop-scroll");
+		
+		$(".memberBox").remove();
 	
 	});
 	
@@ -244,6 +263,19 @@
 	$(".red_x").on("click",function(){
 		console.log("x clicked");
 	});
+	
+	function render(membername,num){
+		str = "";
+		str += "<tr class='memberBox'>"
+		str += "<th>플레이어 "+num+"</th>";
+		str += "<td><input type='text' name='member' value='"+membername+"'><a class='red_x'>&nbsp;X</a></td>";
+		str += "</tr>"
+		
+		$(".memberNameArea").append(str);
+		
+		str = "";
+	};
+	
 </script>
 
 </html>

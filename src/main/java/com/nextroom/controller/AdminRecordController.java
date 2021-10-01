@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.RecordService;
-import com.nextroom.vo.PrerecordVo;
+import com.nextroom.vo.PreRecordVo;
+import com.nextroom.vo.ReadRecordVo;
 import com.nextroom.vo.RecordVo;
 
 
@@ -24,13 +25,24 @@ public class AdminRecordController {
 		@RequestMapping("")
 		public String record(Model model) {
 			
-			List<PrerecordVo> gameList = recordService.getGameList();
+			List<PreRecordVo> gameList = recordService.getGameList();
 			
 			System.out.println(gameList);
 			
 			model.addAttribute("gameList",gameList);
 			
 			return "admin/record";
+		}
+		
+		@ResponseBody
+		@RequestMapping("getMemberList")
+		public List<String> getMemberList(@RequestParam(value="gameno") int gameNo,Model model) {
+			
+			List<String> memberList = recordService.getMemberList(gameNo);
+			
+			
+			
+			return memberList;
 		}
 	
 	
@@ -58,10 +70,10 @@ public class AdminRecordController {
 		public String recordModify(Model model) {
 		   System.out.println("recordModify");
 		   
-		   List<PrerecordVo> completeList = recordService.getCompleteList();
+		   List<PreRecordVo> completeList = recordService.getCompleteList();
 		   
 		   model.addAttribute("completeList",completeList);
-		   
+		   System.out.println(completeList);
 		   return "admin/recordModify";
 		}
 		

@@ -11,6 +11,8 @@
 		]]>
 	</select>
 	
+
+	
 	<insert id="insertRecord"
 		parameterType="com.nextroom.vo.RecordVo">
 		
@@ -36,7 +38,7 @@
 
 	</update>
 	
-	<select id="selectGameList" resultType="com.nextroom.vo.PrerecordVo">
+	<select id="selectGameList" resultType="com.nextroom.vo.PreRecordVo">
 		<![CDATA[
 			select pr.gameNo,rn.themeName,pr.gameState,to_char(pr.regdate,'yy-mm-dd') regdate,pr.themeNo,pr.totalPerson,rn.reserveName,rn.reserveTime
 			from prerecord pr ,  	(select p.gameno,t.themename,r.reservename,r.reserveno,rt.reservetime
@@ -51,9 +53,19 @@
 		]]>
 	</select>
 	
-	<select id="selectCompleteList" resultType="com.nextroom.vo.PrerecordVo">
+	<select id="selectIdList" parameterType="int" resultType="String">
 		<![CDATA[
-			select pr.gameNo,rn.themeName,pr.gameState,pr.regDate,pr.themeNo,pr.totalPerson,rn.reserveName,rn.reserveTime
+			select u.id
+			from prerecord p , reservepeople rp , users u
+			where p.reserveno=rp.reserveno
+			and rp.userno = u.userno
+			and p.gameno = #{gameNo}
+		]]>
+	</select>
+	
+	<select id="selectCompleteList" resultType="com.nextroom.vo.PreRecordVo">
+		<![CDATA[
+			select pr.gameNo,rn.themeName,pr.gameState,to_char(pr.regdate,'yy-mm-dd') regdate,pr.themeNo,pr.totalPerson,rn.reserveName,rn.reserveTime
 			from prerecord pr ,  	(select p.gameno,t.themename,r.reservename,r.reserveno,rt.reservetime
 				                    from prerecord p , theme t , reservedate rd , reservetime rt , reserve r
 				                    where   p.themeno = t.themeno
@@ -65,5 +77,15 @@
 			and pr.gamestate = '완료'
 		]]>
 	</select>
+	
+	<select id="selectReadRecordList" parameterType = "int" resultType="com.nextroom.vo.PreRecordVo">
+		<![CDATA[
+			select recordtime,recordhints,recordno
+			from record
+			where gameno = #{gameNo}
+			and rownum = 1
+		]]>
+	</select>
+	
 
 </mapper>

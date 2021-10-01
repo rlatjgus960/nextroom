@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nextroom.dao.RecordDao;
-import com.nextroom.vo.PrerecordVo;
+import com.nextroom.vo.PreRecordVo;
 import com.nextroom.vo.RecordVo;
 
 @Service
@@ -15,14 +15,52 @@ public class RecordService {
 	@Autowired RecordDao recordDao;
 	
 	//게임 리스트 가져오기
-	public List<PrerecordVo> getGameList() {
+	public List<PreRecordVo> getGameList() {
 		
 		return recordDao.getGameList();
 	}
 	
-public List<PrerecordVo> getCompleteList() {
+	public List<String> getMemberList(int gameNo){
 		
-		return recordDao.getCompleteList();
+		List<String> userIdList = recordDao.selectMemberId(gameNo);
+		
+		System.out.println(userIdList);
+		
+		return userIdList;
+	}
+	
+	public List<PreRecordVo> getCompleteList() {
+		
+		List<PreRecordVo> preList = recordDao.getCompleteList();
+		
+		for(int i =0;i<preList.size();i++) {
+			
+			int no = preList.get(i).getGameNo();
+			System.out.println(no);
+			
+			PreRecordVo prerecordVo = new PreRecordVo();
+			
+			prerecordVo = (PreRecordVo) recordDao.getReadRecordList(no);
+			
+			System.out.println("갔다온 브이오"+prerecordVo);
+			
+			int cleartime = prerecordVo.getRecordTime();
+			
+			int min = (int)cleartime/60;
+			int sec = cleartime%60;
+			System.out.println(min+""+sec);
+			String clearTime = min+"분"+" "+sec+"초";
+			
+			preList.get(i).setClearTime(clearTime);
+			preList.get(i).setRecordHints(prerecordVo.getRecordHints());
+			preList.get(i).setRecordTime(prerecordVo.getRecordTime());
+			preList.get(i).setRecordNo(prerecordVo.getRecordNo());
+			
+			System.out.println("완성된 브이오"+preList.get(i));
+			
+		}
+		
+		return null;
 	}
 	
 	

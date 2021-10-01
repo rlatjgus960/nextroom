@@ -6,7 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.nextroom.vo.PrerecordVo;
+import com.nextroom.vo.PreRecordVo;
+import com.nextroom.vo.ReadRecordVo;
 import com.nextroom.vo.RecordVo;
 
 @Repository
@@ -15,17 +16,28 @@ public class RecordDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<PrerecordVo> getGameList() {
+	public List<PreRecordVo> getGameList() {
 		
 		return sqlSession.selectList("record.selectGameList");
 		
 	}
+	public List<String> selectMemberId(int gameNo){
+		
+		return sqlSession.selectList("record.selectIdList",gameNo);
+	}
 	
-	public List<PrerecordVo> getCompleteList() {
+	public List<PreRecordVo> getCompleteList() {
 		
 		return sqlSession.selectList("record.selectCompleteList");
 		
 	}
+	
+	public PreRecordVo getReadRecordList(int gameNo) {
+		
+		return sqlSession.selectOne("record.selectReadRecordList", gameNo);
+		
+	}
+	
 	
 	public int updateState(RecordVo recordVo) {
 		
