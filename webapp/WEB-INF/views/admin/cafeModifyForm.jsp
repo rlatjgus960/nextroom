@@ -49,7 +49,9 @@
 						<li>예약
 							<ul class="aside_mini_cate">
 								<li><a href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약 확인</a></li>
-								<li><a href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약 관리</a></li>
+								<li><a
+									href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약
+										관리</a></li>
 							</ul>
 						</li>
 						<li>기록
@@ -83,7 +85,7 @@
 								<div id="cafe_mainImg_wrap" class="clearfix">
 									<p class="cafModi_subTitle">카페 메인이미지</p>
 									<img id="cafe_mainImg"
-										src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
+										src="${pageContext.request.contextPath }/upload/${cafeVo.cafeImg}" alt="">
 
 									<div class="cafe_up_wrap">
 										<input type="file" name="mainImg">
@@ -115,7 +117,8 @@
 							<div id="cafe_explain_wrap">
 								<div id="cafeIntroduce_wrap" class="cafeNameWrap clearfix">
 									<p class="cafModi_subTitle">카페이름</p>
-									<input type="text" id="cafeName" name="cafeName" placeholder="카페이름을 입력하세요."></textarea>
+									<input type="text" id="cafeName" name="cafeName" placeholder="카페이름을 입력하세요.">
+									</textarea>
 								</div>
 
 

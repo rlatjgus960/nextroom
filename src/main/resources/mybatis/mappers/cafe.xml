@@ -3,6 +3,7 @@
 
 <mapper namespace="cafe">
 
+	<!-- 카페 추가 -->
 	<insert id="addCafe" parameterType="com.nextroom.vo.CafeVo">
 		<![CDATA[
 			insert into cafe
@@ -14,14 +15,14 @@
 					#{closeTime}, 
 					#{cafeIntro}, 
 					#{url}, 
-					#{cafeImgPath}, 
+					#{cafeImg}, 
 					#{address}, 
 					#{sido}, 
 					#{sidoDetail})
 		]]>
 	</insert>
 
-
+	<!-- 카페 추가 및 카페번호 가져오기 -->
 	<insert id="addCafeKey" parameterType="com.nextroom.vo.CafeVo">
 		<selectKey keyProperty="cafeNo" resultType="int" order="BEFORE">
 			select cafeNo.nextval from dual
@@ -36,8 +37,8 @@
 						#{closeTime}, 
 						#{cafeIntro}, 
 						#{url}, 
-						#{cafeImgPath}, 
-						#{address}, 
+						#{cafeImg}, 
+						#{printAddress}, 
 						#{sido}, 
 						#{sidoDetail})
 	    	]]>
@@ -45,7 +46,7 @@
 
 
 
-
+	<!-- 카페 수정 -->
 	<update id="updateCafe" parameterType="com.nextroom.vo.CafeVo">
 	
 		<![CDATA[
@@ -56,18 +57,9 @@
 			]]>
 
 	</update>
-
-	<update id="updateCafeKey" parameterType="com.nextroom.vo.CafeVo">
 	
-		<![CDATA[
-				update cafe
-				set cafeImg = #{cafeImg}
-					
-				where cafeNo = #{no}
-			]]>
-
-	</update>
-
+	
+	<!-- 유저 타입 수정 -->
 	<update id="updateUser" parameterType="int">
 		<![CDATA[
 				update users
@@ -76,7 +68,7 @@
 			]]>
 	</update>
 
-
+	<!-- 카페 내부이미지 추가 -->
 	<insert id="addInteriorImg" parameterType="Map"> 
 		<![CDATA[ 
 				insert into interiorImg 
@@ -85,5 +77,18 @@
 						#{intePath}
 				) ]]>
 	</insert>
+	
+	<!-- 카페 한개 정보 가져오기 -->
+	<select id="getCafe" parameterType="int" resultType="com.nextroom.vo.CafeVo">
+		<![CDATA[
+			select cafeName, cafeHp, openTime, closeTime, 
+				   cafeIntro, url, cafeImg, address, addressDetail, sido, sidoDetail
+			from cafe
+			where #{cafeNo}
+			
+		
+		]]>
+	
+	</select>
 
 </mapper>

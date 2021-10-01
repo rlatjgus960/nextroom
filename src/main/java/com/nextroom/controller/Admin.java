@@ -1,12 +1,23 @@
 package com.nextroom.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nextroom.service.CafeService;
+import com.nextroom.vo.CafeVo;
+import com.nextroom.vo.UserVo;
 
 
 @Controller
 @RequestMapping("/admin")
 public class Admin {
+	
+	@Autowired
+	private CafeService cafeService;
 	
 	//관리자페이지 예약확인
 	@RequestMapping("/reserve")
@@ -18,15 +29,21 @@ public class Admin {
 	//관리자페이지 예약관리
 	@RequestMapping("/reserveTime")
 	public String reserveTime() {
-		System.out.println("reserveTime");
+		System.out.println("reserveTime");		
 		return "admin/reserveTime";
 	}
 	
 	
 	//관리자페이지 카페수정폼
 	@RequestMapping("/cafeModifyForm")
-	public String cafeModifyForm() {
+	public String cafeModifyForm(HttpSession session, Model model) {
 	   System.out.println("cafeModifyForm");
+	   
+	   int cafeNo = ((UserVo)session.getAttribute("authUser")).getCafeNo();
+	   
+	   CafeVo cafeVo = cafeService.getCafe(cafeNo);
+	   model.addAttribute(cafeVo);
+	   
 	   return "admin/cafeModifyForm";
 	}
 	
@@ -57,5 +74,6 @@ public class Admin {
 	   System.out.println("addTheme");
 	   return "admin/addTheme";
 	}
+	
 	
 }

@@ -21,6 +21,7 @@ public class CafeService {
 	@Autowired
 	private CafeDao cafeDao;
 
+	//카페 추가(mypage)
 	public int addCafe(CafeVo cafeVo, List<MultipartFile> inteList) {
 		System.out.println("[CafeService.addCafe()]");
 
@@ -101,7 +102,7 @@ public class CafeService {
 		// ******************** //주소 처리 ********************//
 
 		// ******************** 카페 메인 이미지 처리 ********************//
-		MultipartFile file = cafeVo.getCafeImg();
+		MultipartFile file = cafeVo.getCafeImgFile();
 		long fileSize = file.getSize();
 		System.out.println("fileSize " + fileSize);
 		
@@ -144,7 +145,7 @@ public class CafeService {
 				e.printStackTrace();
 			}
 
-			cafeVo.setCafeImgPath(saveName);
+			cafeVo.setCafeImg(saveName);
 
 			cafeCount = cafeDao.addCafekey(cafeVo);
 
@@ -221,4 +222,13 @@ public class CafeService {
 		return count;
 	}
 
+	
+	//카페 수정(admin)
+	public CafeVo getCafe(int cafeNo) {
+		
+		System.out.println("[CafeService.getCafe()]");
+		
+		return cafeDao.getCafe(cafeNo);
+	}
+	
 }
