@@ -275,6 +275,44 @@ DROP TABLE record
 --  DDL for Table PARTY
 --------------------------------------------------------
 
+   /* 파티구하기 */
+CREATE TABLE party (
+	partyNo NUMBER NOT NULL, /* 파티리스트번호 */
+	userNo NUMBER, /* 회원번호 */
+	reserveDateNo NUMBER, /* 예약날짜번호 */
+	reserveDate DATE, /* 희망날짜 */
+	cafeNo NUMBER NOT NULL, /* 카페번호 */
+	themeNo NUMBER NOT NULL, /* 테마번호 */
+	reserveTimeNo NUMBER, /* 예약시간번호 */
+	reservePerson NUMBER, /* 인원 */
+	content VARCHAR2(2000), /* 내용 */
+	partyState VARCHAR(20) /* 모집상태 */
+);
+
+COMMENT ON TABLE party IS '파티구하기';
+
+COMMENT ON COLUMN party.partyNo IS '파티리스트번호';
+
+COMMENT ON COLUMN party.userNo IS '회원번호';
+
+COMMENT ON COLUMN party.reserveDateNo IS '예약날짜번호';
+
+COMMENT ON COLUMN party.reserveDate IS '희망날짜';
+
+COMMENT ON COLUMN party.cafeNo IS '카페번호';
+
+COMMENT ON COLUMN party.themeNo IS '테마번호';
+
+COMMENT ON COLUMN party.reserveTimeNo IS '예약시간번호';
+
+COMMENT ON COLUMN party.reservePerson IS '인원';
+
+COMMENT ON COLUMN party.content IS '내용';
+
+COMMENT ON COLUMN party.partyState IS '모집상태';
+
+   
+   /*
   CREATE TABLE "NEXTROOM"."PARTY" 
    (   "PARTYNO" NUMBER, 
    "RESERVEDATENO" NUMBER, 
@@ -301,6 +339,7 @@ DROP TABLE record
    COMMENT ON COLUMN "NEXTROOM"."PARTY"."CONTENT" IS '내용';
    COMMENT ON COLUMN "NEXTROOM"."PARTY"."PARTYSTATE" IS '모집상태';
    COMMENT ON TABLE "NEXTROOM"."PARTY"  IS '파티구하기';
+   */
 --------------------------------------------------------
 --  DDL for Table PARTYAPPLICANT
 --------------------------------------------------------
@@ -946,6 +985,69 @@ Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,US
 --  Constraints for Table PARTY
 --------------------------------------------------------
 
+  CREATE UNIQUE INDEX PK_party
+	ON party (
+		partyNo ASC
+	);
+
+ALTER TABLE party
+	ADD
+		CONSTRAINT PK_party
+		PRIMARY KEY (
+			partyNo
+		);
+
+ALTER TABLE party
+	ADD
+		CONSTRAINT FK_theme_TO_party
+		FOREIGN KEY (
+			themeNo
+		)
+		REFERENCES theme (
+			themeNo
+		);
+
+ALTER TABLE party
+	ADD
+		CONSTRAINT FK_reserveDate_TO_party
+		FOREIGN KEY (
+			reserveDateNo
+		)
+		REFERENCES reserveDate (
+			reserveDateNo
+		);
+
+ALTER TABLE party
+	ADD
+		CONSTRAINT FK_reserveTime_TO_party
+		FOREIGN KEY (
+			reserveTimeNo
+		)
+		REFERENCES reserveTime (
+			reserveTimeNo
+		);
+
+ALTER TABLE party
+	ADD
+		CONSTRAINT FK_cafe_TO_party
+		FOREIGN KEY (
+			cafeNo
+		)
+		REFERENCES cafe (
+			cafeNo
+		);
+
+ALTER TABLE party
+	ADD
+		CONSTRAINT FK_users_TO_party
+		FOREIGN KEY (
+			userNo
+		)
+		REFERENCES users (
+			userNo
+		);
+ 
+/*
   ALTER TABLE "NEXTROOM"."PARTY" ADD CONSTRAINT "PK_PARTY" PRIMARY KEY ("PARTYNO")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -954,6 +1056,7 @@ Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,US
   ALTER TABLE "NEXTROOM"."PARTY" MODIFY ("THEMENO" NOT NULL ENABLE);
   ALTER TABLE "NEXTROOM"."PARTY" MODIFY ("CAFENO" NOT NULL ENABLE);
   ALTER TABLE "NEXTROOM"."PARTY" MODIFY ("PARTYNO" NOT NULL ENABLE);
+  */
 --------------------------------------------------------
 --  Constraints for Table THEMETIME
 --------------------------------------------------------
