@@ -1,6 +1,8 @@
 package com.nextroom.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +17,33 @@ public class ReviewBoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
+	//2021.10.01 by 원호
+	//전체 게시물 갯수 구하기
+	public int selectTotalCnt(String ketword) {
+		System.out.println("[Dao.selectTotalCnt]");
+		
+		return 1;
+	}
+	
 	//2021.09.30 by 원호
 	//후기게시판 리스트
-	public List<ReviewBoardVo> reviewBoardList(String keyword){
+	public List<ReviewBoardVo> reviewBoardList(String keyword,int startRnum, int endRnum){
 		System.out.println("[Dao.reviewBoardList]");
 		
 		//서비스에서 넘어온 리스트 -> sqlSession으로 토스
-		List<ReviewBoardVo> reviewBoardList = sqlSession.selectList("reviewBoard.reviewBoardList",keyword);
-		System.out.println(reviewBoardList);
+		//List<ReviewBoardVo> reviewBoardList = sqlSession.selectList("reviewBoard.reviewBoardList",keyword);
+		//System.out.println(reviewBoardList);
 		
 		
-		return reviewBoardList;
+		Map<String, Object> pMap = new HashMap<String, Object>();
+		
+		pMap.put("startRnum", startRnum);
+		pMap.put("endRnum", endRnum);
+		pMap.put("keyword", keyword);
+		System.out.println(pMap);
+		
+		return sqlSession.selectList("reviewBoard.reviewBoardList",pMap);
 	}
 	
 	
