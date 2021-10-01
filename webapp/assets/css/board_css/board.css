@@ -172,35 +172,15 @@ a.active {
  
  
  
-/* 닉네입 클릭시 모달(나중에 개별로 no값 받아서 열리게 해야할듯 시부레베렘ㄴ어머ㅣㅇㄴ허ㅏㄴ */
-.nick_modal {
-    display: none;
-    position: absolute; 
-    z-index:2px;
-}
 
 
-.nick_modal .nick_modal_list {
-	width: 90px;
-	height: 60px;
-    top: 40px;
-    left: 50%;
-    padding:20px 10px;
-    background:#fff;
-    border:2px solid #666;
-    text-align: center;
-}
-
-
-.nick_modal .nick_modal_list>ul>li{
-	height:23px;
-}
 /*******************************************샘플 나중에 데이터 넣어서 해야할듯*/
-.btnNick{
+#btnNick{
 	position: relative;
+/* 	position: absolute;  */
 }
 
-.nick_modal1 {
+#nick_modal {
     display: none;
     position: absolute; 
     left: 25%;
@@ -211,8 +191,7 @@ a.active {
 }
 
 
-
-.nick_modal_list {
+#nick_modal_list {
 	width: 90px;
 	height: 70px;
     background:#fff;
@@ -223,7 +202,43 @@ a.active {
 
 
 
-.nick_modal1>ul>li{
+#nick_modal>ul>li{
+	line-height: 20px;
+	margin-top: 1px;
+	border-bottom: 1px solid #b9b9b9;
+}
+
+.nickName{
+	cursor: pointer;
+}
+
+
+
+
+.nick_modal {
+/*     display: none; */
+    position: absolute; 
+    left: 25%;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #b9b9b9;
+    border-bottom: none;
+} 
+
+
+.nick_modal_list {
+	position: absolute; 
+	width: 90px;
+	height: 70px;
+    background:#fff;
+    border:1px solid #b9b9b9;
+    border-top:none;
+   	text-align: left;
+}
+
+
+
+.nick_modal>ul>li{
 	line-height: 20px;
 	margin-top: 1px;
 	border-bottom: 1px solid #b9b9b9;
