@@ -1,6 +1,7 @@
 package com.nextroom.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -75,14 +76,16 @@ public class Board {
 		return "board/reviewBoard";
 	}
 	
-	//2021.09.30 by 원호
-	//후기게시판 리스트
+	//2021.09.30~10.01 by 원호
+	//후기게시판 리스트,페이징
 	@RequestMapping(value = "/reviewBoard", method = {RequestMethod.GET, RequestMethod.POST})
-	public String reviewBoard(Model model, @RequestParam(value="keyword", required = false, defaultValue = "") String keyword) {
+	public String reviewBoard(Model model, 
+							  @RequestParam(value="keyword", required = false, defaultValue = "") String keyword,
+							  @RequestParam(value="crtPage", required = false, defaultValue = "1")int crtPage) {
 		System.out.println("reviewBoard");
 		
 		//사용자가 list요청
-		List<ReviewBoardVo> reviewBoardList = reviewBoardService.reviewList(keyword);
+		Map<String, Object> reviewBoardList = reviewBoardService.reviewList(keyword, crtPage);
 		
 		//jsp로 보냄
 		model.addAttribute("reviewBoardList", reviewBoardList);
@@ -92,7 +95,6 @@ public class Board {
 	}
 	
 	
-
 	
 	//후기글쓰기폼
 	@RequestMapping("/reviewWriteForm")
