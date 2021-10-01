@@ -116,53 +116,38 @@
 								</tr>
 							</thead>
 
-							<c:forEach items = "${reviewBoardList }" var = "reviewBoardList">
-								<tbody>							
+							
+								<tbody>	
+								<c:forEach items = "${reviewBoardList }" var = "reviewBoardList">						
 									<tr>
 										<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
 										<td><a href="${pageContext.request.contextPath }/board/readForm">${reviewBoardList.reviewTitle }</a></td>
-										<td class="btnNick">
-											<span class="nickName1">
+										<td id="btnNick">
+											<a class="nickName" href="#nick_modal">
 												${reviewBoardList.nickname}
-											</span>		
+											</a>		
 												
-											<div class="nick_modal1">
-												<ul class="nick_modal_list1">
-													
-													<li>
-														<a href="">
-															<span>랭킹 보기</span>
-														</a>	
-													</li>
-												
-													<li>
-														<a href="">
-															<span>게시글보기</span>
-														</a>	
-													</li>
-											
-													<li>
-														<a href = "javascript:popup()">
-															<span>쪽지보내기</span>
-														</a>	
-													</li>			
-												</ul>
-											</div>																	 
+
+																												 
 										</td>
 										<td>${reviewBoardList.reviewHit }</td>
 										<td>${reviewBoardList.reviewLike }</td>
 										<td>${reviewBoardList.reviewRegDate}</td>
-									</tr>									
+									</tr>
+									</c:forEach>									
 								</tbody>
-							</c:forEach>
+							
 						</table>
 					</div>
 					<!-- //게시판 리스트 -->
 
 					<!-- 글쓰기버튼 -->
-					<div>
-						<a class="submit_button" href="${pageContext.request.contextPath }/board/reviewWriteForm">글쓰기</a>
-					</div>
+					<c:if test = "${!empty authUser }">
+						<div>
+							<a class="submit_button" href="${pageContext.request.contextPath }/board/reviewWriteForm">글쓰기</a>
+						</div>
+					</c:if>
+					
 					<!-- 페이징 -->
 					<div id="pager">
 						<ol class="clearfix">
@@ -201,14 +186,31 @@
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 		<!-- //footer -->
-
-
-										
-
-
-
 	</div>
 
+
+	<div id="nick_modal">
+		<ul class="nick_modal_list">
+			
+			<li>
+				<a href="${pageContext.request.contextPath }/rank/detail">
+					<span>랭킹 보기</span>
+				</a>	
+			</li>
+		
+			<li>
+				<a href="">
+					<span>게시글보기</span>
+				</a>	
+			</li>
+	
+			<li>
+				<a href = "javascript:popup()">
+					<span>쪽지보내기</span>
+				</a>	
+			</li>			
+		</ul>
+	</div>	
 
 
 
@@ -218,9 +220,9 @@
 
 <script type="text/javascript">
 
-//모달창 열기(개별로 userNo값 받아서 열리게 해야할듯함)
-$(".nickName1").on("click", function() {
-	$(".nick_modal1").attr("style", "display:block");
+/* //모달창 열기(개별로 userNo값 받아서 열리게 해야할듯함)
+$(".nickName").on("click", function() {
+	$("#nick_modal").attr("style", "display:block");
 	document.body.classList.add("stop-scroll");
 
 });
@@ -228,7 +230,28 @@ $(".nickName1").on("click", function() {
 //모달창 외부 클릭시 닫힘
 $(document).mouseup(function (e){
 
-	var container = $('.nick_modal1');
+	var container = $('#nick_modal');
+
+	if( container.has(e.target).length === 0){
+
+	container.css('display','none');
+
+	}
+
+}); */
+
+
+//모달창 열기(개별로 userNo값 받아서 열리게 해야할듯함)
+$(".nickName").on("click", function() {
+	$("#nick_modal").attr("style", "display:block");
+	document.body.classList.add("stop-scroll");
+
+});
+
+//모달창 외부 클릭시 닫힘
+$(document).mouseup(function (e){
+
+	var container = $('#nick_modal');
 
 	if( container.has(e.target).length === 0){
 

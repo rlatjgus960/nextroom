@@ -67,7 +67,7 @@
 								</ul></li>
 
 							<c:if test="${authUser.userType == '1'}">
-								<li class="selected"><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페
+								<li><a href="${pageContext.request.contextPath}/mypage/addCafeForm">카페
 										관리자 전환</a></li>
 							</c:if>
 							<!-- <li>회원 탈퇴</li> -->

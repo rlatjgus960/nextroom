@@ -94,7 +94,7 @@
 										src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
 
 									<div class="cafe_up_wrap">
-										<input type="file" name="cafeImg">
+										<input type="file" name="cafeImgFile">
 									</div>
 								</div>
 

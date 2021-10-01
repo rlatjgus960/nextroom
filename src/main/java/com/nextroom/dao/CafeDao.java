@@ -16,6 +16,7 @@ public class CafeDao {
 	@Autowired
 	private SqlSession sqlSession;
 
+	//카페 추가
 	public int addCafe(CafeVo cafeVo) {
 
 		System.out.println("[CafeDao.addCafe()]");
@@ -65,6 +66,13 @@ public class CafeDao {
 	}
 	
 
+	//한개 카페 정보 가져오기
+	public CafeVo getCafe(int cafeNo) {
+		System.out.println("[CafeDao.getCafe()]");
+		return sqlSession.selectOne("cafe.getCafe", cafeNo);
+	}
+	
+	//카페 수정
 	public int updateCafe(CafeVo cafeVo) {
 
 		System.out.println("[CafeDao.updateCafe()]");

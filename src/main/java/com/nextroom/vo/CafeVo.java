@@ -12,10 +12,11 @@ public class CafeVo {
 	private String closeTime;
 	private String cafeIntro;
 	private String url;
-	private MultipartFile cafeImg;
-	private String cafeImgPath;
+	private MultipartFile cafeImgFile;
+	private String cafeImg;
 	private String address;
 	private String addressDetail;
+	private String printAddress;
 	private String sido;
 	private String sidoDetail;
 
@@ -24,8 +25,8 @@ public class CafeVo {
 	}
 
 	public CafeVo(int cafeNo, int userNo, String cafeName, String cafeHp, String openTime, String closeTime,
-			String cafeIntro, String url, MultipartFile cafeImg, String cafeImgPath, String address,
-			String addressDetail, String sido, String sidoDetail) {
+			String cafeIntro, String url, MultipartFile cafeImgFile, String cafeImg, String address,
+			String addressDetail, String printAddress, String sido, String sidoDetail) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -35,10 +36,11 @@ public class CafeVo {
 		this.closeTime = closeTime;
 		this.cafeIntro = cafeIntro;
 		this.url = url;
+		this.cafeImgFile = cafeImgFile;
 		this.cafeImg = cafeImg;
-		this.cafeImgPath = cafeImgPath;
 		this.address = address;
 		this.addressDetail = addressDetail;
+		this.printAddress = printAddress;
 		this.sido = sido;
 		this.sidoDetail = sidoDetail;
 	}
@@ -107,20 +109,20 @@ public class CafeVo {
 		this.url = url;
 	}
 
-	public MultipartFile getCafeImg() {
+	public MultipartFile getCafeImgFile() {
+		return cafeImgFile;
+	}
+
+	public void setCafeImgFile(MultipartFile cafeImgFile) {
+		this.cafeImgFile = cafeImgFile;
+	}
+
+	public String getCafeImg() {
 		return cafeImg;
 	}
 
-	public void setCafeImg(MultipartFile cafeImg) {
+	public void setCafeImg(String cafeImg) {
 		this.cafeImg = cafeImg;
-	}
-
-	public String getCafeImgPath() {
-		return cafeImgPath;
-	}
-
-	public void setCafeImgPath(String cafeImgPath) {
-		this.cafeImgPath = cafeImgPath;
 	}
 
 	public String getAddress() {
@@ -137,6 +139,14 @@ public class CafeVo {
 
 	public void setAddressDetail(String addressDetail) {
 		this.addressDetail = addressDetail;
+	}
+
+	public String getPrintAddress() {
+		return printAddress;
+	}
+
+	public void setPrintAddress(String printAddress) {
+		this.printAddress = printAddress;
 	}
 
 	public String getSido() {
@@ -159,8 +169,9 @@ public class CafeVo {
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
 				+ ", openTime=" + openTime + ", closeTime=" + closeTime + ", cafeIntro=" + cafeIntro + ", url=" + url
-				+ ", cafeImg=" + cafeImg + ", cafeImgPath=" + cafeImgPath + ", address=" + address + ", addressDetail="
-				+ addressDetail + ", sido=" + sido + ", sidoDetail=" + sidoDetail + "]";
+				+ ", cafeImgFile=" + cafeImgFile + ", cafeImg=" + cafeImg + ", address=" + address + ", addressDetail="
+				+ addressDetail + ", printAddress=" + printAddress + ", sido=" + sido + ", sidoDetail=" + sidoDetail
+				+ "]";
 	}
 
 }

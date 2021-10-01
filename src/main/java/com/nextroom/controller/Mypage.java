@@ -79,7 +79,7 @@ public class Mypage {
 						  @RequestParam(value="closeTime") String closeTime,
 						  @RequestParam(value="cafeIntro") String cafeIntro,
 						  @RequestParam(value="url") String url,
-						  @RequestParam(value="cafeImg") MultipartFile cafeImg,
+						  @RequestParam(value="cafeImgFile") MultipartFile cafeImgFile,
 						  @RequestParam(value="address") String address,
 						  @RequestParam(value="addressDetail") String addressDetail,
 						  @RequestParam(value="sido") String sido,
@@ -98,7 +98,7 @@ public class Mypage {
 		cafeVo.setCloseTime(closeTime);
 		cafeVo.setCafeIntro(cafeIntro);
 		cafeVo.setUrl(url);
-		cafeVo.setCafeImg(cafeImg);
+		cafeVo.setCafeImgFile(cafeImgFile);
 		cafeVo.setAddress(address);
 		cafeVo.setAddressDetail(addressDetail);
 		cafeVo.setSido(sido);
@@ -108,7 +108,7 @@ public class Mypage {
 		
 		String printAddress = cafeVo.getAddress()+" "+cafeVo.getAddressDetail();
 		
-		cafeVo.setAddress(printAddress);
+		cafeVo.setPrintAddress(printAddress);
 		
 		System.out.println("주소붙인 후 : "+cafeVo);
 		
