@@ -69,7 +69,7 @@
 }
 
 .cafe_intro {
-    height: 130px;
+    height: 120px;
     margin-top: 5px;
 }
 
@@ -86,10 +86,11 @@
     vertical-align: bottom;
 }
 
-.cafe_contact a {
+.cafe_contact p {
     line-height: 15px;
     vertical-align: bottom;
-    font-size: 14px;
+    font-size: 15px;
+    display: inline-block;
 }
 
 .cafe_contact div {

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -236,6 +237,18 @@ public class CafeService {
 		System.out.println(inteList);
 
 		return cafeVo;
+	}
+	
+	public List<CafeVo> getCafeList() {
+		
+		System.out.println("[CafeService.getCafeList()]");
+		return cafeDao.getCafeList();
+	}
+	
+	//카페 상세페이지 출력용 가져오기
+	public CafeVo getCafeDetail(int cafeNo) {
+		System.out.println("[CafeService.getCafeDetail()]");
+		return cafeDao.getCafeDetail(cafeNo);
 	}
 
 }

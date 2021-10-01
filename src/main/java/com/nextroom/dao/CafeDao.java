@@ -97,5 +97,20 @@ public class CafeDao {
 		return sqlSession.update("cafe.updateCafe", cafeVo);
 	}
 	
+	//카페 리스트 출력
+	public List<CafeVo> getCafeList() {
+		
+		System.out.println("[CafeDao.getCafeList()]");
+		
+		return sqlSession.selectList("cafe.getCafeList");
+	}
+	
+	//카페 상세페이지 출력용 데이터 가져오기
+	public CafeVo getCafeDetail(int cafeNo) {
+		System.out.println("[CafeDao.getCafeDetail()]");
+		
+		return sqlSession.selectOne("cafe.getOneCafe", cafeNo);
+	}
+	
 
 }

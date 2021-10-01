@@ -84,5 +84,17 @@
 		]]>
 	
 	</select>
+	
+	
+	<!-- 카페 전체 리스트 가져오기 -->
+	<select id="getCafeList" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select cafeNo, cafeName, cafeHp, openTime, closeTime, 
+				   cafeIntro, cafeImg, printAddress, sidoDetail
+			from cafe
+		]]>
+	
+	</select>
 
 </mapper>
