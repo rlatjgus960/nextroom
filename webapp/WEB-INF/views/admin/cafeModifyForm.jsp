@@ -29,7 +29,7 @@
 
 			<div id="subheader" class="clearfix">
 				<div id="subheader-title">
-					<h2>넥스트에디션 강남신논현점</h2>
+					<h2>${cafeVo.cafeName}</h2>
 				</div>
 				<div id="subheader-mintitle">관리자페이지 > 카페소개관리</div>
 
@@ -84,8 +84,8 @@
 
 								<div id="cafe_mainImg_wrap" class="clearfix">
 									<p class="cafModi_subTitle">카페 메인이미지</p>
-									<img id="cafe_mainImg"
-										src="${pageContext.request.contextPath }/upload/${cafeVo.cafeImg}" alt="">
+									<img id="cafe_mainImg" src="${pageContext.request.contextPath }/upload/${cafeVo.cafeImg}"
+										alt="">
 
 									<div class="cafe_up_wrap">
 										<input type="file" name="mainImg">
@@ -98,10 +98,9 @@
 
 									<div id="add_cafeInterior" class="scroll-image">
 										<!-- 카페내부사진 반복영역 -->
-										<img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
-										<img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
-										<img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
-
+										<c:forEach items="${cafeVo.inteList}" var="inteList">
+											<img src="${pageContext.request.contextPath }/upload/${inteList.img}" alt="">
+										</c:forEach>
 										<!-- //카페내부사진 반복영역 -->
 									</div>
 									<div class="cafe_up_wrap">
@@ -117,28 +116,27 @@
 							<div id="cafe_explain_wrap">
 								<div id="cafeIntroduce_wrap" class="cafeNameWrap clearfix">
 									<p class="cafModi_subTitle">카페이름</p>
-									<input type="text" id="cafeName" name="cafeName" placeholder="카페이름을 입력하세요.">
-									</textarea>
+									<input type="text" id="cafeName" name="cafeName" placeholder="카페이름을 입력하세요." value="${cafeVo.cafeName}">
 								</div>
 
 
 								<div id="cafeIntroduce_wrap" class="cafe_explain_item clearfix">
 									<p class="cafModi_subTitle">소개글</p>
-									<textarea name="cafeIntroduce" placeholder="소개글을 입력하세요."></textarea>
+									<textarea name="cafeIntroduce" placeholder="소개글을 입력하세요." >${cafeVo.cafeIntro}</textarea>
 								</div>
 
 								<div id="address_wrap" class="cafe_explain_item clearfix">
 									<p class="cafModi_subTitle">주소</p>
 
 									<div class="address_search">
-										<input name="postcode" type="text" id="postcode" placeholder="우편번호"> <input
+										<input name="postcode" type="text" id="postCode" placeholder="우편번호" value="${cafeVo.postCode}"> <input
 											id="searchBtn" type="button" onclick="execDaumPostcode()" value="우편번호 찾기"> <input
-											name="address" type="text" id="roadAddress" placeholder="도로명주소"> <input
+											name="address" type="text" id="roadAddress" placeholder="도로명주소" value="${cafeVo.address}"> <input
 											type="hidden" id="jibunAddress" placeholder="지번주소"> <span id="guide"
 											style="color: #999; display: none"></span> <input name="detailAddress" type="text"
-											id="detailAddress" placeholder="상세주소"> <input type="hidden" id="extraAddress"
-											placeholder="참고항목"> <input name="sido" type="hidden" id="sido" placeholder="시도">
-										<input name="sigungu" type="hidden" id="sigungu" placeholder="시군구">
+											id="detailAddress" placeholder="상세주소" value="${cafeVo.addressDetail}"> <input type="hidden" id="extraAddress"
+											placeholder="참고항목"> <input name="sido" type="hidden" id="sido" placeholder="시도" value="${cafeVo.sido}">
+										<input name="sigungu" type="hidden" id="sigungu" placeholder="시군구" value="${cafeVo.sigungu}">
 
 										<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 										<script>
@@ -228,22 +226,22 @@
 
 								<div id="phoneNumber_wrap" class="cafe_explain_item clearfix">
 									<p class="cafModi_subTitle">전화번호</p>
-									<input type="tel" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력하세요.">
+									<input type="tel" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력하세요." value="${cafeVo.cafeHp}">
 								</div>
 
 
 								<div id="workTime_wrap" class="cafe_explain_item clearfix">
 									<p class="cafModi_subTitle">영업시간</p>
 									<div id="workTime">
-										<input id="openTime" name="openTime" type="time"> <span>&nbsp;~&nbsp;</span> <input
-											id="closeTime" name="closeTime" type="time">
+										<input id="openTime" name="openTime" type="time" value="${cafeVo.openTime}"> <span>&nbsp;~&nbsp;</span> <input
+											id="closeTime" name="closeTime" type="time" value="${cafeVo.closeTime}">
 									</div>
 								</div>
 
 
 								<div id="cafeURL_wrap" class="cafe_explain_item clearfix">
 									<p class="cafModi_subTitle">카페 URL</p>
-									<input type="text" id="cafeURL" name="cafeURL" placeholder="카페 사이트 주소를 입력해주세요.">
+									<input type="text" id="cafeURL" name="cafeURL" placeholder="카페 사이트 주소를 입력해주세요." value="${cafeVo.url}">
 								</div>
 
 							</div>
