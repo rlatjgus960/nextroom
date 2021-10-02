@@ -23,8 +23,30 @@ public class CafeVo {
 	private String sido;
 	private String sigungu;
 	private String sidoDetail;
+	private String latitude;
+	private String longitude;
+
+	// 인테리어 테이블
 	private List<MultipartFile> interiorImg;
 	private List<String> inteList;
+
+	// 테마 테이블
+	private int themeNo;
+	private String themeName;
+	private String themeImg;
+	private String jenre;
+	private int levels;
+	private String themeType;
+	private int playTime;
+	private String activity;
+	private String themeIntro;
+	private String pRecommend;
+	private int pMin;
+	private int pMax;
+
+	// 테마가격 테이블
+	private int headCount;
+	private int price;
 
 	public CafeVo() {
 		super();
@@ -32,8 +54,10 @@ public class CafeVo {
 
 	public CafeVo(int cafeNo, int userNo, String cafeName, String cafeHp, String openTime, String closeTime,
 			String cafeIntro, String url, MultipartFile cafeImgFile, String cafeImg, String postCode, String address,
-			String addressDetail, String printAddress, String sido, String sigungu, String sidoDetail,
-			List<MultipartFile> interiorImg, List<String> inteList) {
+			String addressDetail, String printAddress, String sido, String sigungu, String sidoDetail, String latitude,
+			String longitude, List<MultipartFile> interiorImg, List<String> inteList, int themeNo, String themeName,
+			String themeImg, String jenre, int levels, String themeType, int playTime, String activity,
+			String themeIntro, String pRecommend, int pMin, int pMax, int headCount, int price) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -52,8 +76,24 @@ public class CafeVo {
 		this.sido = sido;
 		this.sigungu = sigungu;
 		this.sidoDetail = sidoDetail;
+		this.latitude = latitude;
+		this.longitude = longitude;
 		this.interiorImg = interiorImg;
 		this.inteList = inteList;
+		this.themeNo = themeNo;
+		this.themeName = themeName;
+		this.themeImg = themeImg;
+		this.jenre = jenre;
+		this.levels = levels;
+		this.themeType = themeType;
+		this.playTime = playTime;
+		this.activity = activity;
+		this.themeIntro = themeIntro;
+		this.pRecommend = pRecommend;
+		this.pMin = pMin;
+		this.pMax = pMax;
+		this.headCount = headCount;
+		this.price = price;
 	}
 
 	public int getCafeNo() {
@@ -192,6 +232,22 @@ public class CafeVo {
 		this.sidoDetail = sidoDetail;
 	}
 
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
 	public List<MultipartFile> getInteriorImg() {
 		return interiorImg;
 	}
@@ -208,14 +264,130 @@ public class CafeVo {
 		this.inteList = inteList;
 	}
 
+	public int getThemeNo() {
+		return themeNo;
+	}
+
+	public void setThemeNo(int themeNo) {
+		this.themeNo = themeNo;
+	}
+
+	public String getThemeName() {
+		return themeName;
+	}
+
+	public void setThemeName(String themeName) {
+		this.themeName = themeName;
+	}
+
+	public String getThemeImg() {
+		return themeImg;
+	}
+
+	public void setThemeImg(String themeImg) {
+		this.themeImg = themeImg;
+	}
+
+	public String getJenre() {
+		return jenre;
+	}
+
+	public void setJenre(String jenre) {
+		this.jenre = jenre;
+	}
+
+	public int getLevels() {
+		return levels;
+	}
+
+	public void setLevels(int levels) {
+		this.levels = levels;
+	}
+
+	public String getThemeType() {
+		return themeType;
+	}
+
+	public void setThemeType(String themeType) {
+		this.themeType = themeType;
+	}
+
+	public int getPlayTime() {
+		return playTime;
+	}
+
+	public void setPlayTime(int playTime) {
+		this.playTime = playTime;
+	}
+
+	public String getActivity() {
+		return activity;
+	}
+
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
+
+	public String getThemeIntro() {
+		return themeIntro;
+	}
+
+	public void setThemeIntro(String themeIntro) {
+		this.themeIntro = themeIntro;
+	}
+
+	public String getpRecommend() {
+		return pRecommend;
+	}
+
+	public void setpRecommend(String pRecommend) {
+		this.pRecommend = pRecommend;
+	}
+
+	public int getpMin() {
+		return pMin;
+	}
+
+	public void setpMin(int pMin) {
+		this.pMin = pMin;
+	}
+
+	public int getpMax() {
+		return pMax;
+	}
+
+	public void setpMax(int pMax) {
+		this.pMax = pMax;
+	}
+
+	public int getHeadCount() {
+		return headCount;
+	}
+
+	public void setHeadCount(int headCount) {
+		this.headCount = headCount;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
 				+ ", openTime=" + openTime + ", closeTime=" + closeTime + ", cafeIntro=" + cafeIntro + ", url=" + url
 				+ ", cafeImgFile=" + cafeImgFile + ", cafeImg=" + cafeImg + ", postCode=" + postCode + ", address="
 				+ address + ", addressDetail=" + addressDetail + ", printAddress=" + printAddress + ", sido=" + sido
-				+ ", sigungu=" + sigungu + ", sidoDetail=" + sidoDetail + ", interiorImg=" + interiorImg + ", inteList="
-				+ inteList + "]";
+				+ ", sigungu=" + sigungu + ", sidoDetail=" + sidoDetail + ", latitude=" + latitude + ", longitude="
+				+ longitude + ", interiorImg=" + interiorImg + ", inteList=" + inteList + ", themeNo=" + themeNo
+				+ ", themeName=" + themeName + ", themeImg=" + themeImg + ", jenre=" + jenre + ", levels=" + levels
+				+ ", themeType=" + themeType + ", playTime=" + playTime + ", activity=" + activity + ", themeIntro="
+				+ themeIntro + ", pRecommend=" + pRecommend + ", pMin=" + pMin + ", pMax=" + pMax + ", headCount="
+				+ headCount + ", price=" + price + "]";
 	}
 
 }

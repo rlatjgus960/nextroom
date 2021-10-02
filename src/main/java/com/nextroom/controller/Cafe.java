@@ -34,15 +34,13 @@ public class Cafe {
 	}
 	
 	@RequestMapping(value="/{cafeNo}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String cafeDetail(@PathVariable("cafeNo") int cafeNo ) {
+	public String cafeDetail(@PathVariable("cafeNo") int cafeNo, Model model) {
 	   System.out.println("cafeDetail");
 	   
 	   
-	   cafeService.getCafe(cafeNo);
-	   //카페 상세페이지에 출력할 정보들 가져와야하는데 말입니다? 
-	   //카페vo에 다 담아서 가져올지
-	   //테마vo에 싹 담고 두개로 가져올지 근데 이거 두번 어트리뷰트가 되던가?
-	   //아니면 테마도 가격이랑 시간표 따로 vo만들어서 조각조각 가져올지..... 역시 조인시켜서 테마vo하나로 싹 담아야되려나? 흠
+	   CafeVo cafeVo = cafeService.getCafeDetail(cafeNo);
+	   
+	   model.addAttribute("cafeVo", cafeVo);
 	   
 	   return "cafe/cafeDetail";
 	}

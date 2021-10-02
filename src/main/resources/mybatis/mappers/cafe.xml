@@ -26,7 +26,10 @@
 						#{printAddress}, 
 						#{sido}, 
 						#{sigungu},
-						#{sidoDetail})
+						#{sidoDetail},
+						#{latitude},
+						#{longitude}
+						)
 	    	]]>
 	</insert>
 
@@ -68,7 +71,7 @@
 	<select id="getCafe" parameterType="int" resultType="com.nextroom.vo.CafeVo">
 		<![CDATA[
 			select cafeName, cafeHp, openTime, closeTime, 
-				   cafeIntro, url, cafeImg, postCode, address, addressDetail, sido, sigungu, sidoDetail
+				   cafeIntro, url, cafeImg, postCode, address, addressDetail, sido, sigungu, sidoDetail, latitude, longitude
 			from cafe
 			where cafeNo = #{cafeNo}
 		]]>

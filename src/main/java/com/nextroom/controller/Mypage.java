@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -72,7 +73,7 @@ public class Mypage {
 	}
 
 	// 마이페이지 카페관리자 추가 by 서현
-	@RequestMapping("/addCafe")
+	@RequestMapping(value="/addCafe", method = { RequestMethod.GET, RequestMethod.POST })
 	public String addCafe(@ModelAttribute CafeVo cafeVo, HttpSession session) {
 
 		System.out.println("mypage/addCafe");
