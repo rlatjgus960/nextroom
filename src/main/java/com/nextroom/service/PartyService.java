@@ -1,8 +1,6 @@
 package com.nextroom.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,28 +75,56 @@ public class PartyService {
 	
 	//21-10-01 by 대니
 	//파티등록 리스트 목록 출력하기
-	public Map<String, Object> getPartyList() {
+	public List<PartyVo> getPartyList() {
 		
 		//파티리스트 전체 출력
 		List<PartyVo> partyList = partyDao.getPartyList();
 		
 		System.out.println("파티서비스-파티리스트: " + partyList);
 		
-//		//cafeNo 뽑아서 필요한 정보가져오기
-//		List<PartyVo> getCafeNoList = new ArrayList<PartyVo>();
-//		
-//		for(int i=0; i<partyList.size(); i++) {
-//			int cafeNo = partyList.get(i).getCafeNo();
-//			
-//			getCafeNoList = partyDao.getCafeNoList(cafeNo);
-//			
-//			
-//			
-//		}
-//		System.out.println("cafeNo로 가져온 정보리스트: " + getCafeNoList);
+		//cafeNo 뽑아서 필요한 정보가져오기
+		for(int i=0; i<partyList.size(); i++) {
+			int cafeNo = partyList.get(i).getCafeNo();
+			
+			PartyVo partyVo = new PartyVo();
+			
+			partyVo = (PartyVo) partyDao.getCafeNoList(cafeNo);
+			
+			String sidoDetail = partyVo.getSidoDetail();
+			String cafeName = partyVo.getCafeName();
+			
+			partyList.get(i).setSidoDetail(sidoDetail);
+			partyList.get(i).setCafeName(cafeName);
 		
+			
+		//cafeNo와 themeNo 뽑아서 필요한 정보가져오기
+			int themeNo = partyList.get(i).getThemeNo();
+			
+			PartyVo cafeThemeVo = new PartyVo(cafeNo, themeNo);
+			
+			partyVo = (PartyVo) partyDao.getCafeThemeNoList(cafeThemeVo);
+			System.out.println("테마카페노로 가져온 정보들: " + partyVo);
+			
+			String themeName = partyVo.getThemeName();
+			String themeImg = partyVo.getThemeImg();
+			
+			partyList.get(i).setThemeName(themeName);
+			partyList.get(i).setThemeImg(themeImg);
+			
+		//partyNo로 유저카운트 가져오기
+			int partyNo = partyList.get(i).getPartyNo();
+			
+			partyVo = (PartyVo) partyDao.getPartyNoList(partyNo);
+			
+			int userCount = partyVo.getUserCount();
+			
+			partyList.get(i).setUserCount(userCount);
+			
+		}
 		
-		return null;
+		System.out.println("서비스구간 파티총리스트: " + partyList);
+		
+		return partyList;
 		
 		
 	}

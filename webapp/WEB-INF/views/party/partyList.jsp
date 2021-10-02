@@ -90,69 +90,35 @@
                                     <th>포스터</th>
                                     <th>지역</th>
                                     <th>카페 / 테마</th>
-                                    <th>날짜</th>
+                                    <th>날짜 / 시간</th>
                                     <th>인원</th>
                                     <th>지원현황</th>
                                 </tr>
                             </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="${pageContext.request.contextPath }/party/partyRead"><img src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px" height="90px"></a></td>
-                                    <td>서울 신논현</td>
-                                    <td>넥스트에디션 / 인터프리터</td>
-                                    <td>2021-08-27  14:20</td>
-                                    <td>2 / 4</td>
-                                    <td>모집중</td>
-                               </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px" height="90px"></a></td>
-                                    <td>서울 신논현</td>
-                                    <td>넥스트에디션 / 인터프리터</td>
-                                    <td>2021-08-27  14:20</td>
-                                    <td>2 / 4</td>
-                                    <td>모집중</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/pepe.jpg" width="80px" height="90px"></a></td>
-                                    <td>서울 신논현</td>
-                                    <td>넥스트에디션 / 인터프리터</td>
-                                    <td>2021-08-27  14:20</td>
-                                    <td>2 / 4</td>
-                                    <td>모집중</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/butterfly.jpg" width="80px" height="90px"></a></td>
-                                    <td>서울 신논현</td>
-                                    <td>넥스트에디션 / 인터프리터</td>
-                                    <td>2021-08-27  14:20</td>
-                                    <td>2 / 4</td>
-                                    <td>모집중</td>
-                                </tr>
-                                  <tr>
-                                    <td>5</td>
-                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이연복.jpg" width="80px" height="90px"></a></td>
-                                    <td>서울 신논현</td>
-                                    <td>넥스트에디션 / 인터프리터</td>
-                                    <td>2021-08-27  14:20</td>
-                                    <td>2 / 4</td>
-                                    <td>모집중</td>
-                                </tr>
-								<tr>
-                                    <td>6</td>
-                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/pepe.jpg" width="80px" height="90px"></a></td>
-                                    <td>서울 신논현</td>
-                                    <td>넥스트에디션 / 인터프리터</td>
-                                    <td>2021-08-27  14:20</td>
-                                    <td>2 / 4</td>
-                                    <td>모집중</td>
-                                </tr>
-								
-                            </tbody>
+	                            <tbody>
+							<c:forEach items="${partyList }" var="partyVo">
+	                                <tr>
+	                                    <td>${partyVo.partyNo }</td>
+	                                    <td width="80px" height="90px">${partyVo.themeImg }<!-- <a href="${pageContext.request.contextPath }/party/partyRead"><img src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px" height="90px"></a>--></td>
+	                                    <td>${partyVo.sidoDetail }</td>
+	                                    <td>${partyVo.cafeName } / ${partyVo.themeName }</td>
+	                                    <td>${partyVo.reserveDate } / ${partyVo.themeTime }</td>
+	                                    <td>${partyVo.userCount } / ${partyVo.reservePerson }</td>
+	                                    <td>${partyVo.partyState }</td>
+	                               </tr>
+	                              <!--  <tr>
+	                                    <td>2</td>
+	                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px" height="90px"></a></td>
+	                                    <td>서울 신논현</td>
+	                                    <td>넥스트에디션 / 인터프리터</td>
+	                                    <td>2021-08-27  14:20</td>
+	                                    <td>2 / 4</td>
+	                                    <td>모집중</td>
+	                                </tr> -->
+	                                
+							</c:forEach>
+	                            </tbody>
+                            
                         </table>
                     </div>
                     <!-- //파티리스트 영역 -->
@@ -174,9 +140,9 @@
                             <li><a href="">▶</a></li>
                         </ol>
                     	
-<%--                     	<c:if test="${not empty sessionScope.authUser }"> --%>
+                     	<c:if test="${not empty sessionScope.authUser }"> 
 	                        <button type="button" id="submit_button" class="submit_button">등록하기</button>
-<%--                     	</c:if> --%>
+                   		</c:if> 
                     </div>
                     <!-- 페이징 끝나는 영역 -->
 

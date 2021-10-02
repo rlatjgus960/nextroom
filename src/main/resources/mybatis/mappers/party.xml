@@ -20,8 +20,10 @@
 		<![CDATA[
 			select themeNo,
        			   themename
-			from theme
-			where cafeNo = #{cafeNo}
+			from cafe c,
+     			 theme t
+			where c.cafeno = t.cafeno
+			and c.cafeno = #{cafeNo}
 		]]>
 	</select>
 	
@@ -53,6 +55,7 @@
 	       			#{cafeNo},
 	       			#{themeNo},
 	       			'',
+	       			#{themeTime},
 	       			#{reservePerson},
 	       			#{content},
 	       			'모집중')	
@@ -77,14 +80,49 @@
 			select partyNo,
 				   userNo,
        			   reservedateno,
-       			   reservedate,
+       			   to_char(reserveDate, 'YY-MM-DD') reserveDate,
        			   cafeNo,
        			   themeno,
        			   reservedateno,
+       			   themeTime,
        			   reserveperson,
        			   content,
        		   	   partystate
 			from party
 		]]>
 	</select>
+	
+	<!-- 파티리스트에서 뽑아낸 cafeNo로 가져오는 정보리스트 -->
+	<select id="getCafeNoList" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select sidodetail,
+       			   cafename
+			from cafe
+			where cafeno = #{cafeNo}
+		]]>
+	</select>
+	
+	<!-- cafeNo와 themeNo 뽑아서 필요한 정보가져오기 -->
+	<select id="getCafeThemeNoList" parameterType="com.nextroom.vo.PartyVo" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select t.themename,
+       			   t.themeimg
+			from cafe c,
+     			 theme t
+			where c.cafeno = t.cafeno
+			and c.cafeno = #{cafeNo}
+			and t.themeno = #{themeNo}
+		]]>
+	</select>
+	
+	<!-- partyNo로 유저카운트 가져오기 -->
+	<select id="getPartyNoList" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select count(userNo) userCount
+			from partydetail
+			where partyNo = #{partyNo}
+		]]>
+	</select>
+	
+	
 </mapper>

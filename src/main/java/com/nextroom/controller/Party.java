@@ -1,10 +1,10 @@
 package com.nextroom.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,7 +64,7 @@ public class Party {
 	
 	
 	//21-09-28 by 대니
-	//themeNo로 시간표 가져오기
+	//themeNo로 시간표 가져오기  --->>***수정해야함
 	@ResponseBody
 	@RequestMapping(value = "/theme", method = {RequestMethod.GET, RequestMethod.POST})
 	public List<PartyVo> themeTimeList(@RequestParam("themeNo") int themeNo) {
@@ -87,20 +87,21 @@ public class Party {
 		
 		System.out.println("컨트롤러자바인서트: " + count);
 		
-		return null;
+		return "redirect:/party/partyList";
 	}
 	
 	
 	//21-10-01 by 대니
 	//파티등록 리스트 목록 출력하기
 	@RequestMapping(value = "/partyList", method = {RequestMethod.GET, RequestMethod.POST})
-	public String partyList() {
+	public String partyList(Model model) {
 		System.out.println("파티컨트롤러: partyList");
 		
-		Map<String,Object> pListMap = partyService.getPartyList();
+		List<PartyVo> partyList = partyService.getPartyList();
 		
+		model.addAttribute("partyList", partyList);
 		
-		return null;
+		return "party/partyList";
 	}
 	
 }

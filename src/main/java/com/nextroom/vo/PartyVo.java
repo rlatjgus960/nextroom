@@ -18,6 +18,7 @@ public class PartyVo {
 	private String content;
 	private String partyState;
 	private String userState;
+	private int userCount;
 	
 	
 	//생성자
@@ -25,9 +26,15 @@ public class PartyVo {
 		super();
 	}
 	
+	public PartyVo(int cafeNo, int themeNo) {
+		super();
+		this.cafeNo = cafeNo;
+		this.themeNo = themeNo;
+	}
+
 	public PartyVo(int partyNo, int userNo, String reserveDate, String sidoDetail, int cafeNo, String cafeName,
 			int themeNo, String themeName, String themeTime, String themeImg, String reserveTime, int reservePerson,
-			String content, String partyState, String userState) {
+			String content, String partyState, String userState, int userCount) {
 		super();
 		this.partyNo = partyNo;
 		this.userNo = userNo;
@@ -44,7 +51,9 @@ public class PartyVo {
 		this.content = content;
 		this.partyState = partyState;
 		this.userState = userState;
+		this.userCount = userCount;
 	}
+
 
 
 	//메소드(게터세터)
@@ -169,6 +178,14 @@ public class PartyVo {
 		this.userState = userState;
 	}
 
+	public int getUserCount() {
+		return userCount;
+	}
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
+	}
+
 	
 	//메소드(일반)
 	@Override
@@ -177,8 +194,10 @@ public class PartyVo {
 				+ sidoDetail + ", cafeNo=" + cafeNo + ", cafeName=" + cafeName + ", themeNo=" + themeNo + ", themeName="
 				+ themeName + ", themeTime=" + themeTime + ", themeImg=" + themeImg + ", reserveTime=" + reserveTime
 				+ ", reservePerson=" + reservePerson + ", content=" + content + ", partyState=" + partyState
-				+ ", userState=" + userState + "]";
+				+ ", userState=" + userState + ", userCount=" + userCount + "]";
 	}
+	
+	
 	
 	
 	

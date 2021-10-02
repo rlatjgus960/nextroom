@@ -87,19 +87,27 @@ public class PartyDao {
 		return partyList;
 	}
 	
-//	// 21-10-01 by 대니
-//	// 파티리스트에서 뽑아낸 cafeNo로 가져오는 정보리스트
-//	public List<PartyVo> getCafeNoList(int cafeNo) {
-//		
-//		List<PartyVo> getCafeNoList = sqlSession.selectList("party.getCafeNoList", cafeNo);
-//		
-//		
-//		
-//		return getCafeNoList;
-//	}
+	// 21-10-01 by 대니
+	// 파티리스트에서 뽑아낸 cafeNo로 가져오는 정보리스트
+	public PartyVo getCafeNoList(int cafeNo) {
+		
+		return sqlSession.selectOne("party.getCafeNoList", cafeNo);
+		 
+	}
 	
+	//21-10-02 by 대니
+	//cafeNo와 themeNo 뽑아서 필요한 정보가져오기
+	public PartyVo getCafeThemeNoList(PartyVo cafeThemeVo) {
+		
+		return sqlSession.selectOne("party.getCafeThemeNoList", cafeThemeVo);
+	}
 	
-	
+	//21-10-02 by 대니
+	//partyNo로 유저카운트 가져오기
+	public PartyVo getPartyNoList(int partyNo) {
+		
+		return sqlSession.selectOne("party.getPartyNoList", partyNo);
+	}
 	
 	
 	
