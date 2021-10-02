@@ -117,10 +117,10 @@
 
 							
 							<tbody>	
-								<c:forEach items = "${requestScope.reviewBoardList.reviewList }" var = "reviewBoardList">					
+								<c:forEach items = "${reviewBoardList.reviewList }" var = "reviewBoardList">					
 									<tr>
 										<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-										<td><a href="${pageContext.request.contextPath }/board/readForm?reviewNo=${reviewBoardList.reviewNo}">${reviewBoardList.reviewTitle }</a></td>
+										<td><a href="${pageContext.request.contextPath }/board/readForm?reviewNo=${reviewBoardList.reviewNo }">${reviewBoardList.reviewTitle }</a></td>
 										<td id="btnNick">
 											<a class="nickName">
 												${reviewBoardList.nickname} 

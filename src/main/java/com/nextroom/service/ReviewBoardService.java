@@ -128,8 +128,8 @@ public class ReviewBoardService {
 	//2021.09.29 by 원호
 	//cafeNo로 테마NO, 테마이름가져오기
 	public List<ReviewBoardVo> getThemeList(int cafeNo) {
-		System.out.println("Servie.getCafeList");
-		System.out.println("Servie.getCafeList: " + cafeNo);
+		System.out.println("Servie.getThemeList");
+		System.out.println("Servie.getThemeList: " + cafeNo);
 		
 		List<ReviewBoardVo> themeList = reviewBoardDao.getThemeList(cafeNo);
 		
@@ -149,6 +149,7 @@ public class ReviewBoardService {
 		//게시판정보 가져오기
 		ReviewBoardVo reviewBoardVo = reviewBoardDao.selectBoard(reviewNo);
 		System.out.println(reviewBoardVo);
+		
 		return reviewBoardVo;
 	}
 

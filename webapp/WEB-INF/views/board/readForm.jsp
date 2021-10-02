@@ -87,13 +87,13 @@
 						<form action="" method="get" class="form_area">
 
 							<div>
-								<h3>${requestScope.reviewBoardVo.reviewtitle}</h3>
+								<h3>${reviewBoardVo.reviewTitle}</h3>
 							</div>
 
 							<div id="user_information">
-								<span>작성자 : ${requestScope.reviewBoardVo.nickname}</span>								
-								<span>조회 : ${requestScope.reviewBoardVo.reviewhit}</span>
-								<span>작성일 : ${requestScope.reviewBoardVo.reviewregdate}</span>
+								<span>작성자 : ${reviewBoardVo.nickname}</span>								
+								<span>조회 : ${reviewBoardVo.reviewHit}</span>
+								<span>작성일 : ${reviewBoardVo.reviewRegDate}</span>
 							</div>
 
 							<!-- 콘텐츠 -->

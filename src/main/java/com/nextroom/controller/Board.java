@@ -50,6 +50,7 @@ public class Board {
 		return "board/freeCommunity";
 	}*/
 	
+	
 	//2021.10.02 by 원호
 	//글 읽기
 	@RequestMapping(value = "/readForm", method = {RequestMethod.GET, RequestMethod.POST})
@@ -61,9 +62,20 @@ public class Board {
 		System.out.println(reviewBoardVo);
 		
 		model.addAttribute("reviewBoardVo",reviewBoardVo);
+		
+		
 		return "board/readForm";
 	}
 	
+	/*
+	//글 읽기
+	@RequestMapping(value = "/readForm")
+	public String readForm() {
+		System.out.println("[reviewController.readForm]");
+		
+		return "board/readForm";
+	}
+	*/
 	
 	
 	//글쓰기
