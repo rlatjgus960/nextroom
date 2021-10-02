@@ -105,4 +105,30 @@
 		]]>
 	</select>
 
+	<!-- 2021.10.02 by 원호 -->
+	<!-- 조회수올리기 -->
+	<update id="hit" parameterType="int">
+		<![CDATA[
+			update review
+			set reviewhit = reviewhit+1
+			where reviewno = #{reviewno}
+		]]>
+	</update>
+	
+	
+	<!-- 2021.10.02 by 원호 -->
+	<!-- 글 1개 정보 가져오기 -->
+	<select id="selectBoard" parameterType="int" resultType = "ReviewBoardVo">
+		<![CDATA[
+			select  r.reviewno,
+       				r.reviewtitle,
+			        u.nickname,
+			        r.reviewhit,
+			        r.reviewregdate,	
+			        r.reviewcontent	
+			from review r, users u
+			where r.userNo = u.userNo
+			and r.reviewno = #{reviewno}
+		]]>
+	</select>
 </mapper>

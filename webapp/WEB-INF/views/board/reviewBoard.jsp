@@ -116,22 +116,22 @@
 							</thead>
 
 							
-								<tbody>	
-								<c:forEach items = "${requestScope.reviewBoardList.reviewList }" var = "reviewBoardList">						
+							<tbody>	
+								<c:forEach items = "${requestScope.reviewBoardList.reviewList }" var = "reviewBoardList">					
 									<tr>
 										<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-										<td><a href="${pageContext.request.contextPath }/board/readForm">${reviewBoardList.reviewTitle }</a></td>
+										<td><a href="${pageContext.request.contextPath }/board/readForm?reviewNo=${reviewBoardList.reviewNo}">${reviewBoardList.reviewTitle }</a></td>
 										<td id="btnNick">
-											<a class="nickName" href="#nick_modal">
-												${reviewBoardList.nickname}
+											<a class="nickName">
+												${reviewBoardList.nickname} 
 											</a>		
 										</td>
 										<td>${reviewBoardList.reviewHit }</td>
 										<td>${reviewBoardList.reviewLike }</td>
 										<td>${reviewBoardList.reviewRegDate}</td>
 									</tr>
-									</c:forEach>									
-								</tbody>
+								</c:forEach>									
+							</tbody>
 							
 						</table>
 					</div>
@@ -243,6 +243,7 @@ $(document).mouseup(function (e){
 }); */
 
 
+
 //모달창 열기(개별로 userNo값 받아서 열리게 해야할듯함)
 $(".nickName").on("click", function() {
 	$("#nick_modal").attr("style", "display:block");
@@ -250,6 +251,7 @@ $(".nickName").on("click", function() {
 
 });
 
+		
 //모달창 외부 클릭시 닫힘
 $(document).mouseup(function (e){
 
@@ -271,7 +273,15 @@ function popup(){
     var option = "width = 500, height = 500, top = 250, left = 700, location = no"
     window.open(url, name, option);
 }
-   
+
+
+
+
+
+
+
+
+
    
 </script>
 
