@@ -95,29 +95,29 @@
                                     <th>지원현황</th>
                                 </tr>
                             </thead>
-	                            <tbody>
-							<c:forEach items="${partyList }" var="partyVo">
-	                                <tr>
-	                                    <td>${partyVo.partyNo }</td>
-	                                    <td width="80px" height="90px">${partyVo.themeImg }<!-- <a href="${pageContext.request.contextPath }/party/partyRead"><img src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px" height="90px"></a>--></td>
-	                                    <td>${partyVo.sidoDetail }</td>
-	                                    <td>${partyVo.cafeName } / ${partyVo.themeName }</td>
-	                                    <td>${partyVo.reserveDate } / ${partyVo.themeTime }</td>
-	                                    <td>${partyVo.userCount } / ${partyVo.reservePerson }</td>
-	                                    <td>${partyVo.partyState }</td>
+                            <tbody>
+								<c:forEach items="${partyList }" var="partyVo">
+	                                <tr onclick="location.href='${pageContext.request.contextPath }/party/partyRead?partyNo=${partyVo.partyNo}'">
+		                                    <td>${partyVo.partyNo }</td>
+		                                    <td><img src="" ${partyVo.themeImg } width="80px" height="90px"></td>
+		                                    <td>${partyVo.sidoDetail }</td>
+		                                    <td>${partyVo.cafeName } / ${partyVo.themeName }</td>
+		                                    <td>${partyVo.reserveDate } / ${partyVo.themeTime }</td>
+		                                    <td>${partyVo.userCount } / ${partyVo.reservePerson }</td>
+		                                    <td>${partyVo.partyState }</td>
 	                               </tr>
-	                              <!--  <tr>
-	                                    <td>2</td>
-	                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px" height="90px"></a></td>
-	                                    <td>서울 신논현</td>
-	                                    <td>넥스트에디션 / 인터프리터</td>
-	                                    <td>2021-08-27  14:20</td>
-	                                    <td>2 / 4</td>
-	                                    <td>모집중</td>
-	                                </tr> -->
-	                                
-							</c:forEach>
-	                            </tbody>
+		                              <!--  <tr>
+		                                    <td>2</td>
+		                                    <td><a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px" height="90px"></a></td>
+		                                    <td>서울 신논현</td>
+		                                    <td>넥스트에디션 / 인터프리터</td>
+		                                    <td>2021-08-27  14:20</td>
+		                                    <td>2 / 4</td>
+		                                    <td>모집중</td>
+		                                </tr> -->
+		                                
+								</c:forEach>
+                            </tbody>
                             
                         </table>
                     </div>

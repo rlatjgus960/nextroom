@@ -91,11 +91,13 @@
                            </div>
 
                            <!-- 마스터 버튼 -->
+                           <c:if test="${sessionScope.authUser.userNo eq partyVo.userNo }">
                				<div class="btn_group">
                             	<button id="list_button" class="submit_button"><a href="${pageContext.request.contextPath }/party/partyList">목록</a></button>
                                <button id="delete_button" class="submit_button">파티삭제</button>
                                <button id="complete_button" class="mbutton">모집완료</button>
                            </div>	
+                           </c:if>
                            <!-- //마스터 버튼 -->
 
                             <!-- 참가자 버튼 -->
