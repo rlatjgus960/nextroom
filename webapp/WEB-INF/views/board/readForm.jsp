@@ -87,14 +87,13 @@
 						<form action="" method="get" class="form_area">
 
 							<div>
-								<h3>제목입니다.</h3>
+								<h3>${requestScope.reviewBoardVo.reviewtitle}</h3>
 							</div>
 
 							<div id="user_information">
-								<span>작성자 : danny</span>								
-								<span>조회 : 123</span>
-								<span>댓글 : 32</span>
-								<span>작성일 : 2021.09.11</span>
+								<span>작성자 : ${requestScope.reviewBoardVo.nickname}</span>								
+								<span>조회 : ${requestScope.reviewBoardVo.reviewhit}</span>
+								<span>작성일 : ${requestScope.reviewBoardVo.reviewregdate}</span>
 							</div>
 
 							<!-- 콘텐츠 -->
@@ -105,11 +104,7 @@
 										<img src="${pageContext.request.contextPath }/assets/image/board_image/water.jpg">	<!-- 이미지 넣을때마다 반복 어케 하냐고 -->
 
 											<div id="text_area">
-												<span>한줄에 15자 이상 60자 제한 </span>
-												<br>
-												<span>한줄에 15자 이상 60자 제한 </span>
-												<br>
-												<span>한줄에 15자 이상 60자 제한 </span>
+												<span>${requestScope.reviewBoardVo.reviewcontent}</span>
 											</div>
 
 										<div id="wrap_up_down">
@@ -153,42 +148,7 @@
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
 													<div id="write_date">2021.09.12</div>
 													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
-												</li>
-
-												<li id="">
-													<div id="nick_box">슬퍼하지마 노노노</div>
-													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
-												</li>
-												
-												<li id="">
-													<div id="nick_box">슬퍼하지마 노노노</div>
-													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
-												</li>
-												
-												<li id="">
-													<div id="nick_box">슬퍼하지마 노노노</div>
-													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
-												</li>
-												
-												<li id="">
-													<div id="nick_box">슬퍼하지마 노노노</div>
-													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
-												</li>
-												
-												<li id="">
-													<div id="nick_box">슬퍼하지마 노노노</div>
-													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
-													<div id="write_date">2021.09.12</div>
-													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
-												</li>																																																										
+												</li>																																																								
 											</ul>
 										</div>
 										<!-- //댓글 리스트 -->

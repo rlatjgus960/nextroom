@@ -50,11 +50,17 @@ public class Board {
 		return "board/freeCommunity";
 	}*/
 	
-	
+	//2021.10.02 by 원호
 	//글 읽기
-	@RequestMapping("/readForm")
-	public String readForm() {
-		System.out.println("readForm");
+	@RequestMapping(value = "/readForm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String readForm(Model model, @RequestParam("reviewNo") int reviewNo) {
+		System.out.println("[reviewController.readForm]");
+		System.out.println(reviewNo);
+		
+		ReviewBoardVo reviewBoardVo = reviewBoardService.getBoard(reviewNo);
+		System.out.println(reviewBoardVo);
+		
+		model.addAttribute("reviewBoardVo",reviewBoardVo);
 		return "board/readForm";
 	}
 	
@@ -67,14 +73,6 @@ public class Board {
 		return "board/writeForm";
 	}
 	
-	
-	//후기게시판
-	@RequestMapping("/reviewBoard")
-	public String reviewBoard() {
-		System.out.println("reviewBoard");
-		
-		return "board/reviewBoard";
-	}
 	
 	//2021.09.30~10.01 by 원호
 	//후기게시판 리스트,페이징
