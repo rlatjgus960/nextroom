@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.nextroom.vo.ReviewBoardVo;
 
 @Repository
@@ -86,5 +85,24 @@ public class ReviewBoardDao {
 		System.out.println("Dao 테마리스트: " + themeList);
 		
 		return themeList;
+	}
+	
+	
+	//2021.10.02 by 원호
+	//조회수 올리기
+	public int hit(int reviewNo) {
+		System.out.println("Dao.hit");
+
+		int count = sqlSession.update("reviewBoard.hit", reviewNo);
+		System.out.println(count);
+		return count;
+	}
+	
+	//2021.10.02 by 원호
+	//글 정보 가져오기
+	public ReviewBoardVo selectBoard(int reviewNo) {
+		System.out.println("Dao.selectBoard");
+		
+		return sqlSession.selectOne("reviewBoard.selectBoard", reviewNo);
 	}
 }

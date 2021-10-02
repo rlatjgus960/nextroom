@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.nextroom.dao.ReviewBoardDao;
 import com.nextroom.vo.ReviewBoardVo;
 
@@ -136,6 +135,21 @@ public class ReviewBoardService {
 		
 		
 		return themeList;
+	}
+	
+	
+	//2021.10.02 by 원호
+	//게시판 글 읽기
+	public ReviewBoardVo getBoard(int reviewNo) {
+		System.out.println("[Servie.getBoard]");		
+		
+		//조회수 올리기
+		int count = reviewBoardDao.hit(reviewNo);
+		
+		//게시판정보 가져오기
+		ReviewBoardVo reviewBoardVo = reviewBoardDao.selectBoard(reviewNo);
+		System.out.println(reviewBoardVo);
+		return reviewBoardVo;
 	}
 
 }
