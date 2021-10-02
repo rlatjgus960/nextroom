@@ -47,6 +47,7 @@
 		<![CDATA[
 			INSERT INTO party
 			VALUES (#{partyNo},
+					#{userNo},
 	       			'',
 	       			#{reserveDate},
 	       			#{cafeNo},
@@ -59,8 +60,31 @@
 	</insert>
 	
 	
+	<!-- 셀렉트키로 가져온 PARTYNO와 USERNO로 파티참여리스트 INSERT -->
+	<insert id="addPartyDetail" parameterType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			INSERT INTO PARTYDETAIL
+			VALUES(#{partyNo},
+				   #{userNo},
+				   '1')
+		]]>
+	</insert>
 	
 	
-	
-	
+	<!-- 파티등록 리스트 목록 출력하기 -->
+	<select id="partyListSelect" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select partyNo,
+				   userNo,
+       			   reservedateno,
+       			   reservedate,
+       			   cafeNo,
+       			   themeno,
+       			   reservedateno,
+       			   reserveperson,
+       			   content,
+       		   	   partystate
+			from party
+		]]>
+	</select>
 </mapper>

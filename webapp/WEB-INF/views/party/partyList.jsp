@@ -206,7 +206,7 @@
 							<tbody>
 								<tr class="space">
 									<td id="text_bold">아이디</td> 
-									<td class="party_uid">${sessionScope.authUser.id } </td>
+									<td class="party_uid" align="left">${sessionScope.authUser.id } </td>
 								</tr>
 						
 							<!-- 날짜 -->

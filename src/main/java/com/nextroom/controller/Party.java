@@ -1,8 +1,7 @@
 package com.nextroom.controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +22,11 @@ public class Party {
 	private PartyService partyService;
 	
 	//파티 리스트
-	@RequestMapping("/partyList")
-	public String partyList() {
-		System.out.println("partyList");
-		return "party/partyList";
-	}
+//	@RequestMapping("/partyList")
+//	public String partyList() {
+//		System.out.println("partyList");
+//		return "party/partyList";
+//	}
 	
 	//파티 읽기폼
 	@RequestMapping("/partyRead")
@@ -87,6 +86,19 @@ public class Party {
 		int count = partyService.addPartyList(partyVo);
 		
 		System.out.println("컨트롤러자바인서트: " + count);
+		
+		return null;
+	}
+	
+	
+	//21-10-01 by 대니
+	//파티등록 리스트 목록 출력하기
+	@RequestMapping(value = "/partyList", method = {RequestMethod.GET, RequestMethod.POST})
+	public String partyList() {
+		System.out.println("파티컨트롤러: partyList");
+		
+		Map<String,Object> pListMap = partyService.getPartyList();
+		
 		
 		return null;
 	}

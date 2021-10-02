@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,42 +22,42 @@ public class CafeService {
 	@Autowired
 	private CafeDao cafeDao;
 
-	//카페 추가(mypage)
-	public int addCafe(CafeVo cafeVo, List<MultipartFile> inteList) {
+	// 카페 추가(mypage)
+	/* public int addCafe(CafeVo cafeVo, List<MultipartFile> inteList) */
+	public int addCafe(CafeVo cafeVo) {
 		System.out.println("[CafeService.addCafe()]");
 
-		int cafeNo = 0;
 		int count = 0;
 
 		// ******************** 주소 처리 ********************//
 
 		String sido = cafeVo.getSido();
-		String sidoDetail = cafeVo.getSidoDetail();
+		String sigungu = cafeVo.getSigungu();
 
 		if (sido.contains("서울")) {
-			if (sidoDetail.contains("서대문구") || sidoDetail.contains("마포구")) {
+			if (sigungu.contains("서대문구") || sigungu.contains("마포구")) {
 				cafeVo.setSidoDetail("홍대&신촌");
-			} else if (sidoDetail.contains("강남구") || sidoDetail.contains("서초구")) {
+			} else if (sigungu.contains("강남구") || sigungu.contains("서초구")) {
 				cafeVo.setSidoDetail("강남");
-			} else if (sidoDetail.contains("성동구") || sidoDetail.contains("광진구")) {
+			} else if (sigungu.contains("성동구") || sigungu.contains("광진구")) {
 				cafeVo.setSidoDetail("건대");
-			} else if (sidoDetail.contains("종로구")) {
+			} else if (sigungu.contains("종로구")) {
 				cafeVo.setSidoDetail("대학로");
-			} else if (sidoDetail.contains("강북구") || sidoDetail.contains("도봉구") || sidoDetail.contains("노원구")) {
+			} else if (sigungu.contains("강북구") || sigungu.contains("도봉구") || sigungu.contains("노원구")) {
 				cafeVo.setSidoDetail("강북");
-			} else if (sidoDetail.contains("관악구")) {
+			} else if (sigungu.contains("관악구")) {
 				cafeVo.setSidoDetail("신림");
 			} else {
 				cafeVo.setSidoDetail("서울(기타)");
 			}
 		} else if (sido.contains("경기")) {
-			if (sidoDetail.contains("수원")) {
+			if (sigungu.contains("수원")) {
 				cafeVo.setSidoDetail("수원");
-			} else if (sidoDetail.contains("안양")) {
+			} else if (sigungu.contains("안양")) {
 				cafeVo.setSidoDetail("안양");
-			} else if (sidoDetail.contains("고양")) {
+			} else if (sigungu.contains("고양")) {
 				cafeVo.setSidoDetail("고양");
-			} else if (sidoDetail.contains("부천")) {
+			} else if (sigungu.contains("부천")) {
 				cafeVo.setSidoDetail("부천");
 			} else {
 				cafeVo.setSidoDetail("경기(기타)");
@@ -64,15 +65,15 @@ public class CafeService {
 		} else if (sido.contains("강원")) {
 			cafeVo.setSidoDetail("강원");
 		} else if (sido.contains("충청")) {
-			if (sidoDetail.contains("천안")) {
+			if (sigungu.contains("천안")) {
 				cafeVo.setSidoDetail("천안");
-			} else if (sidoDetail.contains("청주")) {
+			} else if (sigungu.contains("청주")) {
 				cafeVo.setSidoDetail("청주");
 			} else {
 				cafeVo.setSidoDetail("충청(기타)");
 			}
 		} else if (sido.contains("전라")) {
-			if (sidoDetail.contains("전주")) {
+			if (sigungu.contains("전주")) {
 				cafeVo.setSidoDetail("전주");
 			} else {
 				cafeVo.setSidoDetail("전라(기타)");
@@ -105,7 +106,7 @@ public class CafeService {
 		MultipartFile file = cafeVo.getCafeImgFile();
 		long fileSize = file.getSize();
 		System.out.println("fileSize " + fileSize);
-		
+
 		int cafeCount = 0;
 
 		if (fileSize > 0) {
@@ -151,19 +152,17 @@ public class CafeService {
 
 			System.out.println("addCafekey 후 Vo : " + cafeVo);
 
-			cafeNo = cafeVo.getCafeNo();
-
-		} 
-		
-		
+		}
 		// ******************** //카페 메인 이미지 처리 ********************//
 
 		// ******************** 카페 내부이미지 처리 ********************//
-		List<String> intePathList = new ArrayList<>();
+		List<String> inteList = new ArrayList<>();
 
-		for (int i = 0; i < inteList.size(); i++) {
+		List<MultipartFile> interiorImg = cafeVo.getInteriorImg();
 
-			long intefileSize = inteList.get(i).getSize();
+		for (int i = 0; i < interiorImg.size(); i++) {
+
+			long intefileSize = interiorImg.get(i).getSize();
 			System.out.println("fileSize " + intefileSize);
 
 			// 이미지가 첨부되었을때
@@ -171,16 +170,16 @@ public class CafeService {
 
 				String inteSaveDir = "C:\\javaStudy\\upload\\";
 
-				System.out.println(inteList.get(i).getOriginalFilename());
-				System.out.println(inteList.get(i).getSize());
+				System.out.println(interiorImg.get(i).getOriginalFilename());
+				System.out.println(interiorImg.get(i).getSize());
 
 				// 원파일이름
-				String inteOrgName = inteList.get(i).getOriginalFilename();
+				String inteOrgName = interiorImg.get(i).getOriginalFilename();
 				System.out.println(inteOrgName);
 
 				// 확장자
-				String inteExName = inteList.get(i).getOriginalFilename()
-						.substring(inteList.get(i).getOriginalFilename().lastIndexOf("."));
+				String inteExName = interiorImg.get(i).getOriginalFilename()
+						.substring(interiorImg.get(i).getOriginalFilename().lastIndexOf("."));
 				System.out.println(inteExName);
 
 				// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
@@ -193,7 +192,7 @@ public class CafeService {
 
 				// 파일 서버하드디스크에 저장
 				try {
-					byte[] fileData = inteList.get(i).getBytes();
+					byte[] fileData = interiorImg.get(i).getBytes();
 					OutputStream out = new FileOutputStream(inteFilePath);
 					BufferedOutputStream bout = new BufferedOutputStream(out);
 
@@ -205,12 +204,14 @@ public class CafeService {
 					e.printStackTrace();
 				}
 
-				intePathList.add(inteSaveName);
+				inteList.add(inteSaveName);
 			}
+
+			cafeVo.setInteList(inteList);
 
 		}
 
-		int inteCount = cafeDao.addInteriorImg(cafeNo, intePathList);
+		int inteCount = cafeDao.addInteriorImg(cafeVo);
 		// ******************** //카페 내부이미지 처리 ********************//
 
 		// ******************** 회원 타입 변경(1-->2) ********************//
@@ -219,16 +220,35 @@ public class CafeService {
 		count = cafeCount + inteCount + userCount;
 
 		System.out.println(cafeCount + "개 카페 추가, " + inteCount + "개 내부이미지 저장, " + userCount + "명 유저 타입변경 완료");
+
 		return count;
 	}
 
-	
-	//카페 수정(admin)
+	// 카페 수정폼 카페정보 한개 가져오기(admin)
 	public CafeVo getCafe(int cafeNo) {
-		
+
 		System.out.println("[CafeService.getCafe()]");
-		
-		return cafeDao.getCafe(cafeNo);
+
+		CafeVo cafeVo = cafeDao.getCafe(cafeNo);
+
+		List<String> inteList = cafeDao.getInteList(cafeNo);
+		cafeVo.setInteList(inteList);
+
+		System.out.println(inteList);
+
+		return cafeVo;
 	}
 	
+	public List<CafeVo> getCafeList() {
+		
+		System.out.println("[CafeService.getCafeList()]");
+		return cafeDao.getCafeList();
+	}
+	
+	//카페 상세페이지 출력용 가져오기
+	public CafeVo getCafeDetail(int cafeNo) {
+		System.out.println("[CafeService.getCafeDetail()]");
+		return cafeDao.getCafeDetail(cafeNo);
+	}
+
 }

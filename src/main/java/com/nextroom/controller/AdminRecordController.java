@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.RecordService;
 import com.nextroom.vo.PreRecordVo;
-import com.nextroom.vo.ReadRecordVo;
 import com.nextroom.vo.RecordVo;
 
 

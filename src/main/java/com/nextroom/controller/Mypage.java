@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +18,7 @@ import com.nextroom.vo.UserVo;
 @Controller
 @RequestMapping("/mypage")
 public class Mypage {
-	
+
 	@Autowired
 	private CafeService cafeService;
 
@@ -69,57 +70,26 @@ public class Mypage {
 		System.out.println("mypage/addCafeForm");
 		return "mypage/addCafeForm";
 	}
-	
-	//마이페이지 카페관리자 추가 by 서현
+
+	// 마이페이지 카페관리자 추가 by 서현
 	@RequestMapping("/addCafe")
-	public String addCafe(@RequestParam(value="userNo") int userNo,
-						  @RequestParam(value="cafeName") String cafeName,
-						  @RequestParam(value="cafeHp") String cafeHp,
-						  @RequestParam(value="openTime") String openTime,
-						  @RequestParam(value="closeTime") String closeTime,
-						  @RequestParam(value="cafeIntro") String cafeIntro,
-						  @RequestParam(value="url") String url,
-						  @RequestParam(value="cafeImgFile") MultipartFile cafeImgFile,
-						  @RequestParam(value="address") String address,
-						  @RequestParam(value="addressDetail") String addressDetail,
-						  @RequestParam(value="sido") String sido,
-						  @RequestParam(value="sidoDetail") String sidoDetail,
-						  @RequestParam(value="interiorImg") List<MultipartFile> inteList,
-						  HttpSession session) {
-		
+	public String addCafe(@ModelAttribute CafeVo cafeVo, HttpSession session) {
+
 		System.out.println("mypage/addCafe");
 		
-		CafeVo cafeVo = new CafeVo();
-		
-		cafeVo.setUserNo(userNo);
-		cafeVo.setCafeName(cafeName);
-		cafeVo.setCafeHp(cafeHp);
-		cafeVo.setOpenTime(openTime);
-		cafeVo.setCloseTime(closeTime);
-		cafeVo.setCafeIntro(cafeIntro);
-		cafeVo.setUrl(url);
-		cafeVo.setCafeImgFile(cafeImgFile);
-		cafeVo.setAddress(address);
-		cafeVo.setAddressDetail(addressDetail);
-		cafeVo.setSido(sido);
-		cafeVo.setSidoDetail(sidoDetail);
-		
-		System.out.println(cafeVo);
-		
-		String printAddress = cafeVo.getAddress()+" "+cafeVo.getAddressDetail();
-		
+		String printAddress = cafeVo.getAddress() + " " + cafeVo.getAddressDetail();
 		cafeVo.setPrintAddress(printAddress);
 		
-		System.out.println("주소붙인 후 : "+cafeVo);
+		int count = cafeService.addCafe(cafeVo);
+
+		System.out.println(count + "건 저장되었습니다.");
 		
-		int count = cafeService.addCafe(cafeVo, inteList);
-		
-		System.out.println(count+"건 저장되었습니다.");
-		
-		((UserVo)session.getAttribute("authUser")).setUserType("2");
+		((UserVo) session.getAttribute("authUser")).setUserType("2");
+
+		int cafeNo = cafeVo.getCafeNo();
+		((UserVo) session.getAttribute("authUser")).setCafeNo(cafeNo);
 		
 		return "mypage/addCafeOk";
 	}
-	
-	
+
 }

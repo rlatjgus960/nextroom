@@ -34,19 +34,23 @@ public class CafeDao {
 
 	
 	//카페 내부이미지 추가
-	public int addInteriorImg(int cafeNo, List<String> intePathList) {
+	public int addInteriorImg(CafeVo cafeVo) {
 		System.out.println("[CafeDao.addInteriorImg()]");
 
+		
+		int cafeNo = cafeVo.getCafeNo();
+		List<String> inteList = cafeVo.getInteList();
+		
 		System.out.println("Dao cafeNo : "+cafeNo);
 		
 		int count = 0;
 		
 
-		for (int i = 0; i < intePathList.size(); i++) {
+		for (int i = 0; i < inteList.size(); i++) {
 			
 			Map<Object, Object> inteMap = new HashMap<Object, Object>();
 			inteMap.put("cafeNo", cafeNo);
-			inteMap.put("intePath", intePathList.get(i));
+			inteMap.put("intePath", inteList.get(i));
 			
 			sqlSession.insert("cafe.addInteriorImg", inteMap);
 			System.out.println(inteMap);
@@ -72,6 +76,19 @@ public class CafeDao {
 		return sqlSession.selectOne("cafe.getCafe", cafeNo);
 	}
 	
+	//카페 인테리어 리스트 가져오기
+	public List<String> getInteList(int cafeNo) {
+		System.out.println("[CafeDao.getInteList()]");
+		
+		System.out.println("dao cafeNo : "+cafeNo);
+
+		List<String> inteList = sqlSession.selectList("cafe.getInteList", cafeNo);
+		
+		System.out.println("dao inteList : "+inteList);
+		
+		return inteList;
+	}
+	
 	//카페 수정
 	public int updateCafe(CafeVo cafeVo) {
 
@@ -79,5 +96,21 @@ public class CafeDao {
 
 		return sqlSession.update("cafe.updateCafe", cafeVo);
 	}
+	
+	//카페 리스트 출력
+	public List<CafeVo> getCafeList() {
+		
+		System.out.println("[CafeDao.getCafeList()]");
+		
+		return sqlSession.selectList("cafe.getCafeList");
+	}
+	
+	//카페 상세페이지 출력용 데이터 가져오기
+	public CafeVo getCafeDetail(int cafeNo) {
+		System.out.println("[CafeDao.getCafeDetail()]");
+		
+		return sqlSession.selectOne("cafe.getOneCafe", cafeNo);
+	}
+	
 
 }

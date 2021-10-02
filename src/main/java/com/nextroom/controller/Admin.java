@@ -1,5 +1,7 @@
 package com.nextroom.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +42,11 @@ public class Admin {
 	   System.out.println("cafeModifyForm");
 	   
 	   int cafeNo = ((UserVo)session.getAttribute("authUser")).getCafeNo();
+	   System.out.println(cafeNo);
 	   
 	   CafeVo cafeVo = cafeService.getCafe(cafeNo);
-	   model.addAttribute(cafeVo);
+
+	   model.addAttribute("cafeVo", cafeVo);
 	   
 	   return "admin/cafeModifyForm";
 	}
