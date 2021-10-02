@@ -22,6 +22,7 @@ public class Cafe {
 	private CafeService cafeService;
 	
 
+	//카페 메인
 	@RequestMapping(value="/", method = { RequestMethod.GET, RequestMethod.POST })
 	public String cafeMain(HttpSession session, Model model) {
 	   System.out.println("cafe/main");
@@ -33,10 +34,10 @@ public class Cafe {
 	   return "cafe/cafeMain";
 	}
 	
+	//카페 상세페이지 -- 수정중, 어떤식으로 정보 불러올건지 고민고민
 	@RequestMapping(value="/{cafeNo}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String cafeDetail(@PathVariable("cafeNo") int cafeNo, Model model) {
 	   System.out.println("cafeDetail");
-	   
 	   
 	   CafeVo cafeVo = cafeService.getCafeDetail(cafeNo);
 	   

@@ -48,6 +48,10 @@ public class CafeVo {
 	private int headCount;
 	private int price;
 
+	// 테마 시간 테이블
+	private int themeTimeNo;
+	private String themeTime;
+
 	public CafeVo() {
 		super();
 	}
@@ -57,7 +61,8 @@ public class CafeVo {
 			String addressDetail, String printAddress, String sido, String sigungu, String sidoDetail, String latitude,
 			String longitude, List<MultipartFile> interiorImg, List<String> inteList, int themeNo, String themeName,
 			String themeImg, String jenre, int levels, String themeType, int playTime, String activity,
-			String themeIntro, String pRecommend, int pMin, int pMax, int headCount, int price) {
+			String themeIntro, String pRecommend, int pMin, int pMax, int headCount, int price, int themeTimeNo,
+			String themeTime) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -94,6 +99,8 @@ public class CafeVo {
 		this.pMax = pMax;
 		this.headCount = headCount;
 		this.price = price;
+		this.themeTimeNo = themeTimeNo;
+		this.themeTime = themeTime;
 	}
 
 	public int getCafeNo() {
@@ -376,6 +383,22 @@ public class CafeVo {
 		this.price = price;
 	}
 
+	public int getThemeTimeNo() {
+		return themeTimeNo;
+	}
+
+	public void setThemeTimeNo(int themeTimeNo) {
+		this.themeTimeNo = themeTimeNo;
+	}
+
+	public String getThemeTime() {
+		return themeTime;
+	}
+
+	public void setThemeTime(String themeTime) {
+		this.themeTime = themeTime;
+	}
+
 	@Override
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
@@ -387,7 +410,7 @@ public class CafeVo {
 				+ ", themeName=" + themeName + ", themeImg=" + themeImg + ", jenre=" + jenre + ", levels=" + levels
 				+ ", themeType=" + themeType + ", playTime=" + playTime + ", activity=" + activity + ", themeIntro="
 				+ themeIntro + ", pRecommend=" + pRecommend + ", pMin=" + pMin + ", pMax=" + pMax + ", headCount="
-				+ headCount + ", price=" + price + "]";
+				+ headCount + ", price=" + price + ", themeTimeNo=" + themeTimeNo + ", themeTime=" + themeTime + "]";
 	}
 
 }

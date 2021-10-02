@@ -99,5 +99,19 @@
 		]]>
 	
 	</select>
+	
+	
+	
+	<!-- 카페 상세 정보 가져오기 -->
+	<select id="getOneCafe" parameterType="int" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select cafeNo, cafeName, cafeHp, openTime, closeTime, 
+				   cafeIntro, cafeImg, printAddress, sidoDetail
+			from cafe
+			where cafeNo = #{cafeNo}
+		]]>
+	
+	</select>
 
 </mapper>

@@ -248,6 +248,9 @@ public class CafeService {
 	//카페 상세페이지 출력용 가져오기
 	public CafeVo getCafeDetail(int cafeNo) {
 		System.out.println("[CafeService.getCafeDetail()]");
+		
+		
+		
 		return cafeDao.getCafeDetail(cafeNo);
 	}
 
