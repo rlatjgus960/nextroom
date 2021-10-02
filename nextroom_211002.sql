@@ -1,3 +1,139 @@
+DROP SEQUENCE userNO;
+DROP SEQUENCE cafeNo;
+DROP SEQUENCE themeNo;
+DROP SEQUENCE partyNo;
+DROP SEQUENCE reserveDateNo;
+DROP SEQUENCE reserveTimeNo;
+DROP SEQUENCE reserveNo;
+DROP SEQUENCE reserveMemberNo;
+DROP SEQUENCE reviewNo;
+DROP SEQUENCE recordNo;
+DROP SEQUENCE gameNo;
+DROP SEQUENCE themeTimeNo;
+
+ALTER TABLE users
+   DROP
+      UNIQUE (
+         id,
+         nickname,
+         email
+      )
+      CASCADE
+      KEEP INDEX;
+
+DROP INDEX UIX_users;
+
+DROP INDEX PK_users;
+
+DROP TABLE users 
+   CASCADE CONSTRAINTS;
+   
+   DROP INDEX PK_cafe;
+
+/* 카페 */
+DROP TABLE cafe 
+   CASCADE CONSTRAINTS;
+   
+   
+   DROP INDEX PK_theme;
+
+/* 테마 */
+DROP TABLE theme 
+   CASCADE CONSTRAINTS;
+   
+   
+   DROP TABLE party 
+    CASCADE CONSTRAINTS;
+    
+    DROP TABLE themePrice 
+   CASCADE CONSTRAINTS;
+    
+    
+    DROP INDEX PK_themeTime;
+
+/* 새 테이블5 */
+DROP TABLE themeTime 
+   CASCADE CONSTRAINTS;
+    
+
+    DROP INDEX PK_review;
+
+/* 후기게시판 */
+DROP TABLE review 
+   CASCADE CONSTRAINTS;
+   
+   DROP INDEX PK_reserveDate;
+
+/* 예약날짜 */
+DROP TABLE reserveDate 
+   CASCADE CONSTRAINTS;
+   
+
+   DROP INDEX PK_reserveTime;
+
+/* 예약시간 */
+DROP TABLE reserveTime 
+   CASCADE CONSTRAINTS;
+    
+
+    DROP INDEX PK_reserve;
+
+/* 예약정보 */
+DROP TABLE reserve 
+   CASCADE CONSTRAINTS;
+    
+
+    DROP INDEX PK_reservePeople;
+
+/* 예약회원 */
+DROP TABLE reservePeople 
+   CASCADE CONSTRAINTS;
+   
+
+   DROP INDEX PK_partyApplicant;
+
+/* 파티지원맴버 */
+DROP TABLE partyApplicant 
+   CASCADE CONSTRAINTS;
+   
+
+   DROP INDEX PK_partyDetail;
+
+/* 파티승인맴버 */
+DROP TABLE partyDetail 
+   CASCADE CONSTRAINTS;
+   
+
+   /* 카페이미지 */
+DROP TABLE interiorImg 
+   CASCADE CONSTRAINTS;
+   
+
+   DROP INDEX PK_preRecord;
+
+/* 게임정보 */
+DROP TABLE preRecord 
+   CASCADE CONSTRAINTS;
+    
+
+    
+    DROP INDEX PK_record;
+
+/* 개인별경기기록 */
+DROP TABLE record 
+   CASCADE CONSTRAINTS;
+
+
+
+   
+   
+   
+
+
+
+
+
+
 --------------------------------------------------------
 --  파일이 생성됨 - 토요일-10월-02-2021   
 --------------------------------------------------------
@@ -81,7 +217,9 @@
 	"PRINTADDRESS" VARCHAR2(500 BYTE), 
 	"SIDO" VARCHAR2(50 BYTE), 
 	"SIGUNGU" VARCHAR2(50 BYTE), 
-	"SIDODETAIL" VARCHAR2(50 BYTE)
+	"SIDODETAIL" VARCHAR2(50 BYTE),
+	"LATITUDE" VARCHAR2(200 BYTE), 
+	"LONGITUDE" VARCHAR2(200 BYTE)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -104,6 +242,8 @@
    COMMENT ON COLUMN "NEXTROOM"."CAFE"."SIDO" IS '---관리용주소1 시/도';
    COMMENT ON COLUMN "NEXTROOM"."CAFE"."SIGUNGU" IS '---관리용주소2 시/군/구';
    COMMENT ON COLUMN "NEXTROOM"."CAFE"."SIDODETAIL" IS '---관리용주소3 서울시/경기도만 사용';
+   COMMENT ON COLUMN "NEXTROOM"."CAFE"."LATITUDE" IS '위도';
+   COMMENT ON COLUMN "NEXTROOM"."CAFE"."LONGITUDE" IS '경도';
    COMMENT ON TABLE "NEXTROOM"."CAFE"  IS '카페';
 --------------------------------------------------------
 --  DDL for Table INTERIORIMG
@@ -483,9 +623,9 @@
    COMMENT ON TABLE "NEXTROOM"."USERS"  IS 'user';
 REM INSERTING into NEXTROOM.CAFE
 SET DEFINE OFF;
-Insert into NEXTROOM.CAFE (CAFENO,USERNO,CAFENAME,CAFEHP,OPENTIME,CLOSETIME,CAFEINTRO,URL,CAFEIMG,POSTCODE,ADDRESS,ADDRESSDETAIL,PRINTADDRESS,SIDO,SIGUNGU,SIDODETAIL) values (3,4,'카페4','02-0000-0000','09:00','24:00','소개글4','www.cafe.com','img04','12345','카페기본주소4','카페상세주소4','카페출력주소4','서울','광진구','건대');
-Insert into NEXTROOM.CAFE (CAFENO,USERNO,CAFENAME,CAFEHP,OPENTIME,CLOSETIME,CAFEINTRO,URL,CAFEIMG,POSTCODE,ADDRESS,ADDRESSDETAIL,PRINTADDRESS,SIDO,SIGUNGU,SIDODETAIL) values (1,1,'카페1','02-0000-0000','09:00','24:00','소개글1','www.cafe.com','img01','12345','카페기본주소1','카페상세주소1','카페출력주소1','서울','강남구','강남');
-Insert into NEXTROOM.CAFE (CAFENO,USERNO,CAFENAME,CAFEHP,OPENTIME,CLOSETIME,CAFEINTRO,URL,CAFEIMG,POSTCODE,ADDRESS,ADDRESSDETAIL,PRINTADDRESS,SIDO,SIGUNGU,SIDODETAIL) values (2,2,'카페2','02-0000-0000','09:00','24:00','소개글2','www.cafe.com','img02','12345','카페기본주소2','카페상세주소2','카페출력주소2','서울','구로구','서울(기타)');
+Insert into NEXTROOM.CAFE (CAFENO,USERNO,CAFENAME,CAFEHP,OPENTIME,CLOSETIME,CAFEINTRO,URL,CAFEIMG,POSTCODE,ADDRESS,ADDRESSDETAIL,PRINTADDRESS,SIDO,SIGUNGU,SIDODETAIL,LATITUDE,LONGITUDE) values (3,4,'카페4','02-0000-0000','09:00','24:00','소개글4','www.cafe.com','img04','12345','카페기본주소4','카페상세주소4','카페출력주소4','서울','광진구','건대','12.34','56.78');
+Insert into NEXTROOM.CAFE (CAFENO,USERNO,CAFENAME,CAFEHP,OPENTIME,CLOSETIME,CAFEINTRO,URL,CAFEIMG,POSTCODE,ADDRESS,ADDRESSDETAIL,PRINTADDRESS,SIDO,SIGUNGU,SIDODETAIL,LATITUDE,LONGITUDE) values (1,1,'카페1','02-0000-0000','09:00','24:00','소개글1','www.cafe.com','img01','12345','카페기본주소1','카페상세주소1','카페출력주소1','서울','강남구','강남','12.34','56.78');
+Insert into NEXTROOM.CAFE (CAFENO,USERNO,CAFENAME,CAFEHP,OPENTIME,CLOSETIME,CAFEINTRO,URL,CAFEIMG,POSTCODE,ADDRESS,ADDRESSDETAIL,PRINTADDRESS,SIDO,SIGUNGU,SIDODETAIL,LATITUDE,LONGITUDE) values (2,2,'카페2','02-0000-0000','09:00','24:00','소개글2','www.cafe.com','img02','12345','카페기본주소2','카페상세주소2','카페출력주소2','서울','구로구','서울(기타)','12.34','56.78');
 REM INSERTING into NEXTROOM.INTERIORIMG
 SET DEFINE OFF;
 REM INSERTING into NEXTROOM.PARTY
