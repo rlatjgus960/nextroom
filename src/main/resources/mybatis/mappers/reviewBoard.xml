@@ -8,18 +8,21 @@
 	<select id = "reviewBoardList" parameterType = "Map" resultType = "ReviewBoardVo">
 		<![CDATA[
 			select  rt.rn,
+					rt.reviewNo,
 			        rt.reviewTitle,
 			        rt.nickname,
 			        rt.reviewhit,
 			        rt.reviewLike,
 			        rt.reviewregdate
 			from (select  rownum rn,
+						  ot.reviewNo,
 			              ot.reviewTitle,
 			              ot.nickname,
 			              ot.reviewhit,
 			              ot.reviewLike,
 			              ot.reviewregdate
-			      from (select  r.reviewTitle,
+			      from (select  r.reviewNo,
+			      				r.reviewTitle,
 			                    u.nickname,
 			                    r.reviewhit,
 			                    r.reviewLike,
@@ -28,17 +31,32 @@
 			            where r.userNo = u.userNo
 		]]>
 		
-		 <if test=" value != null and value !='' ">
+		 <if test=" keyword != null and keyword !='' ">
 			and r.reviewTitle || u.nickname like '%' || #{keyword} ||'%'
 		</if>
 		
 		<![CDATA[
-			order by r.reviewNo desc)ot )rt
-			where rn>1
-			and rn<10
+						order by r.reviewNo desc)ot)rt
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
 		]]>
 	</select>
 
+	<!-- 2021.10.01 by 원호 -->
+	<!-- 전체 게시물 갯수 구하기 -->
+		<select id = "selectTotalCnt" parameterType = "String" resultType = "int">
+		<![CDATA[
+			select count(*)
+			from review r, users u
+			where r.userNo = u.userNo
+		]]>
+		<if test = "_parameter != null and _parameter != '' ">
+			and r.reviewTitle || u.nickname like '%' || #{keyword} ||'%'
+		</if>
+	</select>
+	
+	
+	
 	<!-- 2021.09.30 by 원호 -->
 	<!-- 후기게시판 글등록 -->
 		<insert id="reviewBoardInsert" parameterType = "ReviewBoardVo"> 

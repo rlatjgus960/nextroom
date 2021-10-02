@@ -76,9 +76,8 @@
 					<!-- 검색영역(기간 선택) -->
 					<div id="search_area" class="clearfix">
 						<form action="${pageContext.request.contextPath }/board/reviewBoard" method="get" class="form_area">
-							
 							<div class="search">
-								<input type="text" name="keyword" value="" placeholder="검색어를 입력해주세요">
+								<input type="text" name="keyword" placeholder="검색어를 입력해주세요">
 								<button class="search_button" type="submit">검색</button>
 							</div>
 
@@ -118,7 +117,7 @@
 
 							
 								<tbody>	
-								<c:forEach items = "${reviewBoardList }" var = "reviewBoardList">						
+								<c:forEach items = "${requestScope.reviewBoardList.reviewList }" var = "reviewBoardList">						
 									<tr>
 										<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
 										<td><a href="${pageContext.request.contextPath }/board/readForm">${reviewBoardList.reviewTitle }</a></td>
@@ -126,9 +125,6 @@
 											<a class="nickName" href="#nick_modal">
 												${reviewBoardList.nickname}
 											</a>		
-												
-
-																												 
 										</td>
 										<td>${reviewBoardList.reviewHit }</td>
 										<td>${reviewBoardList.reviewLike }</td>
@@ -150,20 +146,26 @@
 					
 					<!-- 페이징 -->
 					<div id="pager">
-						<ol class="clearfix">
-							<li><a href="">◀</a></li>
-							<li><a class="active" href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">4</a></li>
-							<li><a href="">5</a></li>
-							<li><a href="">6</a></li>
-							<li><a href="">7</a></li>
-							<li><a href="">8</a></li>
-							<li><a href="">9</a></li>
-							<li><a href="">10</a></li>
-							<li><a href="">▶</a></li>
-						</ol>					
+						<ul>
+							<c:if test="${reviewBoardList.prev == true }">
+								<li><a href="${pageContext.request.contextPath}/board/reviewBoard?crtPage=${reviewBoardList.startPageBtnNo-1}&keyword=${param.keyword}">◀</a></li>
+							</c:if>
+							
+							<c:forEach begin = "${reviewBoardList.startPageBtnNo}" end = "${reviewBoardList.endPageBtnNo}" step = "1" var = "page">
+								<c:choose>
+									<c:when test = "${param.crtPage eq page}">
+										<li class = "active"><a href="${pageContext.request.contextPath}/board/reviewBoard?crtPage=${page}&keyword=${param.keyword}">${page }</a></li>
+									</c:when>
+									<c:otherwise>
+									<li><a href="${pageContext.request.contextPath}/board/reviewBoard?crtPage=${page}&keyword=${param.keyword}">${page }</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:if test = "${reviewBoardList.next == true}">
+								<li><a href="${pageContext.request.contextPath}/board/reviewBoard?crtPage=${reviewBoardList.endPageBtnNo+1}&keyword=${param.keyword}">▶</a></li>
+							</c:if>
+						</ul>			
 
 					</div>                            
 					<!-- //페이징 -->

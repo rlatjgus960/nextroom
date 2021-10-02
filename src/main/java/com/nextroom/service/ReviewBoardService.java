@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nextroom.dao.ReviewBoardDao;
-import com.nextroom.vo.PartyVo;
 import com.nextroom.vo.ReviewBoardVo;
 
 @Service
@@ -56,7 +55,7 @@ public class ReviewBoardService {
 		int totalCount = reviewBoardDao.selectTotalCnt(keyword);
 		
 		//페이지당 버튼 갯수
-		int pageBtnCount = 10;
+		int pageBtnCount = 1;
 		
 		int endPageBtnNo = (int)Math.ceil((crtPage/(double)pageBtnCount)) * pageBtnCount;
 		

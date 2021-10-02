@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.nextroom.vo.PartyVo;
 import com.nextroom.vo.ReviewBoardVo;
 
 @Repository
@@ -20,10 +19,12 @@ public class ReviewBoardDao {
 	
 	//2021.10.01 by 원호
 	//전체 게시물 갯수 구하기
-	public int selectTotalCnt(String ketword) {
+	public int selectTotalCnt(String keyword) {
 		System.out.println("[Dao.selectTotalCnt]");
 		
-		return 1;
+		
+		
+		return sqlSession.selectOne("reviewBoard.selectTotalCnt",keyword);
 	}
 	
 	//2021.09.30 by 원호

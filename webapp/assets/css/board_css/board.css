@@ -142,12 +142,12 @@
 }
 
 
-#pager ol {    
+#pager ul {    
    width: 190px;
-    display: inline-block;   
+   display: inline-block;   
 }
 
-#pager ol>li {
+#pager ul>li {
    float: left;
    margin: 0px 5px 0px 0px;   
 }

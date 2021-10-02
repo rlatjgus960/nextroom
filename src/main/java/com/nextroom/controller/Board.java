@@ -86,6 +86,7 @@ public class Board {
 		
 		//사용자가 list요청
 		Map<String, Object> reviewBoardList = reviewBoardService.reviewList(keyword, crtPage);
+		System.out.println("[reviewController.reviewBoard]:" + reviewBoardList);
 		
 		//jsp로 보냄
 		model.addAttribute("reviewBoardList", reviewBoardList);
