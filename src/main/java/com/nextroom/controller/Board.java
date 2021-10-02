@@ -66,17 +66,7 @@ public class Board {
 		
 		return "board/readForm";
 	}
-	
-	/*
-	//글 읽기
-	@RequestMapping(value = "/readForm")
-	public String readForm() {
-		System.out.println("[reviewController.readForm]");
 		
-		return "board/readForm";
-	}
-	*/
-	
 	
 	//글쓰기
 	@RequestMapping("/writeForm")

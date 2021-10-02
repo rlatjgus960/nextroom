@@ -124,7 +124,7 @@
        				r.reviewtitle,
 			        u.nickname,
 			        r.reviewhit,
-			        r.reviewregdate,	
+			         to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,	
 			        r.reviewcontent	
 			from review r, users u
 			where r.userNo = u.userNo

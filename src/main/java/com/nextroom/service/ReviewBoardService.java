@@ -44,8 +44,6 @@ public class ReviewBoardService {
 		int endRnum = (startRnum+listCnt)-1;
 		
 		
-		
-		//컨트롤러에서 넘어온 키워드 -> Dao로 보냄
 		List<ReviewBoardVo> reviewList = reviewBoardDao.reviewBoardList(keyword, startRnum, endRnum);
 		System.out.println("[Service Vo 정보]:" + reviewList);
 		

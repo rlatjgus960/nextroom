@@ -74,9 +74,13 @@
 					<div>
 						<div id="update_button" class="clearfix" >
 							<ul>							
-								<a href="${pageContext.request.contextPath }/board/freeCommunity" class="submit_button">목 록</a>	<!-- 최신 목록으로 이동-->	
-								<a href="" class="submit_button">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
-								<a href="" class="submit_button">수 정</a>	<!-- 수정폼으로 이동(작성자만 보임) -->
+								<a href="${pageContext.request.contextPath }/board/freeCommunity" class="submit_button">목 록</a>	
+								
+								<c:if test="${authUser.userNo ==  reviewBoardVo.userNo}">
+									<a href="" class="submit_button">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
+									<a href="" class="submit_button">수 정</a>	<!-- 수정폼으로 이동(작성자만 보임) -->
+								</c:if>
+								
 							</ul>
 						</div>
 					</div>
@@ -104,7 +108,7 @@
 										<img src="${pageContext.request.contextPath }/assets/image/board_image/water.jpg">	<!-- 이미지 넣을때마다 반복 어케 하냐고 -->
 
 											<div id="text_area">
-												<span>${requestScope.reviewBoardVo.reviewcontent}</span>
+												<span>${reviewBoardVo.reviewContent}</span>
 											</div>
 
 										<div id="wrap_up_down">
