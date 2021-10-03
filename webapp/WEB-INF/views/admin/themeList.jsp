@@ -137,8 +137,8 @@
 					</div>
 	
 					<div id="themeModify_button">
-						<button onclick="location.href='${pageContext.request.contextPath }/adminAddTheme'" class="mbutton">테마 추가</button>
-						<button onclick="location.href='${pageContext.request.contextPath }/adminThemeDeleteForm'" class="mbutton">테마 삭제</button>
+						<button onclick="location.href='${pageContext.request.contextPath }/admin/addThemeForm'" class="mbutton">테마 추가</button>
+						<button onclick="location.href='${pageContext.request.contextPath }/admin/themeDeleteForm'" class="mbutton">테마 삭제</button>
 					</div>
 	
 				</div>

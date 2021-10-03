@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.nextroom.dao.CafeDao;
 import com.nextroom.vo.CafeVo;
+import com.nextroom.vo.PriceVo;
+import com.nextroom.vo.TimeVo;
 
 @Service
 public class CafeService {
@@ -238,20 +239,123 @@ public class CafeService {
 
 		return cafeVo;
 	}
-	
+
 	public List<CafeVo> getCafeList() {
-		
+
 		System.out.println("[CafeService.getCafeList()]");
 		return cafeDao.getCafeList();
 	}
-	
-	//카페 상세페이지 출력용 가져오기
+
+	// 카페 상세페이지 출력용 가져오기
 	public CafeVo getCafeDetail(int cafeNo) {
 		System.out.println("[CafeService.getCafeDetail()]");
-		
-		
-		
+
 		return cafeDao.getCafeDetail(cafeNo);
+	}
+
+	// 테마 추가
+	public int addTheme(CafeVo cafeVo) {
+		
+		int count = 0;
+		
+		System.out.println("insert theme 전 cafeVo : "+cafeVo);
+		
+		// 테마 이미지 처리
+		MultipartFile file = cafeVo.getThemeImgFile();
+		long fileSize = file.getSize();
+		System.out.println("fileSize " + fileSize);
+
+		if (fileSize > 0) {
+
+			String saveDir = "C:\\javaStudy\\upload\\";
+
+			System.out.println(file.getOriginalFilename());
+			System.out.println(file.getSize());
+
+			// 원파일이름
+			String orgName = file.getOriginalFilename();
+			System.out.println(orgName);
+
+			// 확장자
+			String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+			System.out.println(exName);
+
+			// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			System.out.println(saveName);
+
+			// 파일패스
+			String filePath = saveDir + "\\" + saveName;
+			System.out.println(filePath);
+
+			// 파일 서버하드디스크에 저장
+			try {
+				byte[] fileData = file.getBytes();
+				OutputStream out = new FileOutputStream(filePath);
+				BufferedOutputStream bout = new BufferedOutputStream(out);
+
+				bout.write(fileData);
+				bout.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			cafeVo.setThemeImg(saveName);
+
+			
+		}
+		
+		count += cafeDao.addTheme(cafeVo);
+		
+		System.out.println("insert theme 후 cafeVo : "+cafeVo);
+		System.out.println(cafeVo.getThemeNo());
+		
+		//테마 시간표 추가
+		List<String> timeTable = cafeVo.getThemeStartTime();
+		List<TimeVo> timeList = new ArrayList<TimeVo>();
+		
+		
+		System.out.println("timeTable : "+timeTable);
+		
+		int themeNo = cafeVo.getThemeNo();
+		
+		for(int i=0; i<timeTable.size(); i++) {
+			
+			TimeVo timeVo = new TimeVo();
+			
+			timeVo.setThemeNo(themeNo);
+			timeVo.setThemeTime(timeTable.get(i));
+			
+			timeList.add(timeVo);
+		}
+		System.out.println(timeList);
+		
+		//themeNo 값 들어있는데 왜 not found인지?
+		
+		count += cafeDao.addThemeTime(timeList);
+		
+		//테마 가격 추가
+		List<Integer> price = cafeVo.getPrice();
+		List<Integer> headCount = cafeVo.getHeadCount();
+		List<PriceVo> priceList = new ArrayList<PriceVo>();
+		
+		
+		for(int i=0; i<price.size(); i++) {
+			
+			PriceVo priceVo = new PriceVo();
+			
+			priceVo.setThemeNo(themeNo);
+			priceVo.setHeadCount(headCount.get(i));
+			priceVo.setPrice(price.get(i));
+			
+			priceList.add(priceVo);
+		}
+		
+		count += cafeDao.addThemePrice(priceList);
+
+		return count;
 	}
 
 }

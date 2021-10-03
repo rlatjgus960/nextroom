@@ -7,26 +7,39 @@
 <head>
 <meta charset="UTF-8">
 
-<link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/adminReserve.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/modal.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/common.css"
+	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/aside.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath }/assets/css/adminReserve.css"
+	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/modal.css"
+	rel="stylesheet" type="text/css">
 
-<script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
-<script src="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.css">
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.js"></script>
+<script
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+<script
+	src="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/assets/js/jquery-ui-1.12.1.custom/jquery-ui.css">
 
 <script>
+	/* $(function() {
+		$("#datepicker").datepicker({ minDate: 0});
+	}); */
 	$(function() {
+		
 
-		$('#datepicker').datepicker(
-				{
+		$('#datepicker').datepicker( {
 
-					onSelect : function(dateText) {
-						$('#datepicker2').datepicker("setDate", $(this).datepicker("getDate"));
-					}
-				});
+			minDate: 0,
+			onSelect : function(dateText)
+			{
+				$('#datepicker2').datepicker("setDate", $(this).datepicker("getDate"));
+			}
+		});
+		
 
 	});
 
@@ -57,7 +70,7 @@
 				<div id="subheader-title">
 					<h2>랭킹</h2>
 				</div>
-				<div id="subheader-mintitle">관리자페이지 > 예약확인</div>
+				<div id="subheader-mintitle">관리자페이지 > 예약관리</div>
 			</div>
 
 
@@ -76,16 +89,17 @@
 						<ul>
 							<li>예약
 								<ul class="aside_mini_cate">
+									<li><a
+										href="${pageContext.request.contextPath }/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}">&nbsp;-예약
+											확인</a></li>
 									<li><p class="selected">
 											<a
-												href="${pageContext.request.contextPath }/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}">&nbsp;-예약
-												확인</a>
+												href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약
+												관리</a>
 										</p></li>
-									<li><a
-										href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약
-											관리</a></li>
 								</ul>
 							</li>
+
 							<li>기록
 								<ul class="aside_mini_cate">
 									<li><a
@@ -96,6 +110,7 @@
 											관리</a></li>
 								</ul>
 							</li>
+
 							<li><a
 								href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페
 									소개 관리</a></li>
@@ -109,10 +124,10 @@
 				</div>
 				<!-- //aside -->
 
-
 				<div id="adminMain" class="clearfix">
-					<!--컨텐츠 여기에 작성하세요 !!!!!!!!!-->
-					<form action="${pageContext.request.contextPath}/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}" method="get">
+						<!--컨텐츠 여기에 작성하세요 !!!!!!!!!-->
+
+					<form action="${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}" method="get">
 						<div id="admin_reservation_themas">
 							<table>
 								<c:set var="i" value="0" />
@@ -126,12 +141,12 @@
 									<c:choose>
 										<c:when test="${themeNo eq thList.themeNo}">
 											<td class="thema yellow_colorOn"
-												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
-											<input type='hidden' name="themeNo" value="${thList.themeNo}">
+												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+												<input type='hidden' name="themeNo" value="${thList.themeNo}">
 										</c:when>
 										<c:otherwise>
 											<td class="thema"
-												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
 										</c:otherwise>
 									</c:choose>
 
@@ -154,88 +169,103 @@
 								</c:forEach>
 							</table>
 						</div>
-
+						
 						<div id="admin_reservation_date">
 							<div id="datepicker"></div>
-							<input type="text" id="datepicker2" name="reserveDate">
-						</div>
+							<input type="hidden" id="datepicker2" name="reserveDate">
 
+
+						</div>
+						
 						<div id="admin_reserve_change_Btns">
 							<button class="lbutton">확인</button>
 						</div>
+						
 					</form>
 
-					<div id="admin_reservation_table_select">
-						<select name="doneSelect">
-							<option value="all" selected="selected">전체보기</option>
-							<option value="done">완료</option>
-							<option value="not_done">미완료</option>
-						</select> 
-					</div>
+
+						<c:if test="${!empty timeList}">
+						
+							<!-- 예약날짜 -->
+							<div id="admin_reservation_thema_time_color" class="clearfix ">
+								<div>
+									<div id="yellowbox"></div>
+									<span>예약완료</span>
+								</div>
+								<div>
+									<div id="greenbox"></div>
+									<span>예약가능</span>
+								</div>
+								<div>
+									<div id="redbox"></div>
+									<span>예약불가능</span>
+								</div>
+							</div>
+						</c:if>
 
 
-					<div id="record_table">
-						<table>
-							<tr>
-								<th>테마</th>
-								<th>예약번호</th>
-								<th>예약날짜</th>
-								<th>시간</th>
-								<th>인원</th>
-								<th>예약자이름</th>
-								<th>결제상태</th>
-							</tr>
+						<div id="admin_reservation_thema_time">
+							<table>
+								<c:set var="i" value="0" />
+								<c:set var="j" value="5" />
 
-							<c:forEach items="${themeReserveList}" var="trList" varStatus="status">
-								<tr class="theme_reserve_modal" data-reserveno="${trList.reserveNo}" data-paymentstate="${trList.paymentState}">
-									<td>${trList.themeName}</td>
-									<td>${trList.reserveNo}</td>
-									<td>${trList.reserveDate}</td>
-									<td>${trList.reserveTime}</td>
-									<td>${trList.reservePerson}</td>
-									<td>${trList.reserveName}</td>
-									<td>
-										<c:if test="${trList.paymentState eq 1}">
-											결제완료
+								<c:forEach items="${timeList}" var="tiList" varStatus="status">
+									<c:if test="${i%j==0 }">
+										<tr>
+									</c:if>
+
+									<c:if test="${tiList.reserveState eq 1}">
+										<td class="thema_time reservePos" data-themetimeno = "${tiList.themeTimeNo}" data-themetime = "${tiList.themeTime }">${tiList.themeTime }</td>
+									</c:if>
+									
+									<c:if test="${tiList.reserveState eq 2}">
+										<td class="thema_time reservation_completed" data-themetimeno = "${tiList.themeTimeNo}" data-themetime = "${tiList.themeTime }">${tiList.themeTime }</td>
+									</c:if>
+									
+									<c:if test="${tiList.reserveState eq 3}">
+										<td class="thema_time reserveImpos" data-themetimeno = "${tiList.themeTimeNo}" data-themetime = "${tiList.themeTime }">${tiList.themeTime }</td>
+									</c:if>
+									
+									<c:if test="${status.last}">
+										<c:if test="${5-(tiList.themeTimeNo%5) eq 1}">
+											<td></td>
 										</c:if>
-										<c:if test="${trList.paymentState eq 2}">
-											결제취소
+
+										<c:if test="${5-(tiList.themeTimeNo%5) eq 2}">
+											<td></td>
+											<td></td>
 										</c:if>
-									</td>
-								</tr>
-							</c:forEach>
-							
-							<tr class="theme_reserve_modal beforePlay">
-								<td>비밀의화원 미드나잇</td>
-								<td>392002039</td>
-								<td>2021-08-27</td>
-								<td>12:30</td>
-								<td>3인</td>
-								<td>세일러문</td>
-								<td>입력</td>
-							</tr>
+
+										<c:if test="${5-(tiList.themeTimeNo%5) eq 3}">
+											<td></td>
+											<td></td>
+											<td></td>
+										</c:if>
+
+										<c:if test="${5-(tiList.themeTimeNo%5) eq 4}">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</c:if>
+									</c:if>
+
+									<c:if test="${i%j==j-1}">
+										</tr>
+									</c:if>
+
+									<c:set var="i" value="${i+1 }" />
+								</c:forEach>
 
 
+							</table>
 
+						</div>
 
-						</table>
-					</div>
-
-					<div id="paging" class="clearfix">
-						<ul>
-							<li><a href="">◀</a></li>
-							<li><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li class="active"><a href="">3</a></li>
-							<li><a href="">4</a></li>
-							<li><a href="">5</a></li>
-							<li><a href="">▶</a></li>
-						</ul>
-
-
-						<div class="clear"></div>
-					</div>
-
+						
+						
+						<input type='hidden' name="cafeNo" value="${cafeNo}">
+						<input type='hidden' name="rDate" value="${reserveDate}">
 
 				</div>
 			</div>
@@ -246,65 +276,7 @@
 		<!-- //content -->
 
 
-		<!-- 모달 -->
-		<div id="admin_reserveitem_modal">
 
-			<div class="admin_reserveitem_modal_content">
-
-				<a id="modal_close_btn"><img
-					src="${pageContext.request.contextPath }/assets/image/mypageEtc/closeBtn.JPG"></a>
-
-				<div id="admin_reserveitem_table_item">
-					<table id="admin_reserveitem_check_table">
-						<tr>
-							<td id="reservation_thema_img" rowspan="5"><img id="modal_themeImg" src=""></td>
-							<th>예약번호</th>
-							<td id="modal_reserveNo"></td>
-							<th>예약자</th>
-							<td id="modal_reserveName"></td>
-						</tr>
-
-						<tr>
-							<th>지점</th>
-							<td id="modal_cafeName"></td>
-							<th>연락처</th>
-							<td id="modal_reserveHp"></td>
-						</tr>
-
-						<tr>
-							<th>테마</th>
-							<td id="modal_themeName"></td>
-							<th>결제금액</th>
-							<td id="modal_payment"></td>
-						</tr>
-
-						<tr>
-							<th>예약일시</th>
-							<td id="modal_reserveDateTime" colspan="3"></td>
-						</tr>
-
-						<tr>
-							<th>인원</th>
-							<td id="modal_reservePerson" colspan="3"></td>
-						</tr>
-					</table>
-
-
-
-					<div id="admin_reserve_Btns">
-						<button id="checkIn" class="mbutton">입실확인</button>
-						<button id="delReserve" class="mbutton">예약취소</button>
-					</div>
-				</div>
-				
-				<input type='hidden' name="rDate" value="${param.reserveDate}">
-
-
-
-			</div>
-
-			<div class="admin_reserveitem_modal_layer"></div>
-		</div>
 
 		<!-- footer -->
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
@@ -316,134 +288,115 @@
 	<!-- wrap -->
 </body>
 
-<script>
-	$(".thema").on("click", function() {
-		if ($(this).hasClass("yellow_colorOn")) {
-			$(this).removeClass("yellow_colorOn");
+<script  type="text/javascript">
+/*
+	$(".thema_time").on("click", function() {
+		if ($(this).hasClass("timeover")) { // 시간이 지났을 때
+			$(this).removeClass("thema_time");
 		} else {
-			$(this).addClass("yellow_colorOn");
-		}
-
-	});
-
-	$(".theme_reserve_modal").on("click", function() {
-		$("#admin_reserveitem_modal").attr("style", "display:block");
-		document.body.classList.add("stop-scroll");
-		
-		var paymentState = $(this).data("paymentstate");
-		console.log(paymentState);
-		
-		if(paymentState === 2) {
-			$("#admin_reserve_Btns").hide();
-		} else if(paymentState === 1) {
-			$("#admin_reserve_Btns").show();
-		}
-		
-		var reserveNo = $(this).data("reserveno");
-		console.log(reserveNo); 
-		
-		
-		$.ajax({
-			url: "${pageContext.request.contextPath}/admin/reserve/reserveModal",
-			type: "post",
-			data : { reserveNo : reserveNo },
-			
-			//dataType: "json",
-			success : function(reserveModalVo) {
-				console.log(reserveModalVo);
-				
-				var path = "${pageContext.request.contextPath }/assets/image/" + reserveModalVo.themeImg;
-				var time = reserveModalVo.reserveTime.split(":");
-				
-				$('#modal_themeImg').attr('src',path);
-				
-				$("#modal_reserveNo").text(reserveModalVo.reserveNo);
-				$("#modal_reserveName").text(reserveModalVo.reserveName);
-				$("#modal_cafeName").text(reserveModalVo.cafeName);
-				$("#modal_reserveHp").text(reserveModalVo.reserveHp);
-				$("#modal_themeName").text(reserveModalVo.themeName);
-				$("#modal_payment").text(reserveModalVo.payment+"원");
-				$("#modal_reserveDateTime").text(reserveModalVo.reserveDate+" "+time[0]+"시 "+time[1]+"분");
-				$("#modal_reservePerson").text(reserveModalVo.reservePerson+"인");
-				
-				//예약취소
-				$("#delReserve").on("click", function() {
+			if ($(this).hasClass("reservation_completed")) { //예약 완료일 때
+			} else {
+				if ($(this).hasClass("reservePos")) { // 예약가능 -> 예약불가능
 					
-					console.log("예약 취소 클릭");
-					
-					$.ajax({
-						url: "${pageContext.request.contextPath}/admin/reserve/delReserve",
-						type: "post",
-						data : { reserveNo : reserveNo },
+					if(!confirm("예약불가능으로 변경하시겠습니까?")) {
+						//아니오
+					} else {
+						//예
+						console.log("예약불가능으로 변경");
 						
-						//dataType: "json",
-						success : function(count) {
-							if(count === 1) {
-								$("#admin_reserveitem_modal").attr("style", "display:none");
-								document.body.classList.remove("stop-scroll");
-								window.location.reload();
-							}
-							
-								
-						},
-						error : function(XHR, status, error) {
-							console.error(status + " : " + error);
-						}
-					});
-				});
-				
-				
-				//입실확인
-				$("#checkIn").on("click", function() {
-					
-					console.log("입실확인 클릭");
-					var reserveP = $("#modal_reservePerson").text();
-					var person = reserveP.slice(0, -1);
-					//console.log(person);
-					
-					var adminReserveVo = {
-						themeNo : $("[name='themeNo']").val(),
-						reserveNo : reserveNo,
-						totalPerson : person,
-						reserveDate : $("[name='rDate']").val()
-					};
-					
-					console.log(adminReserveVo);
-					
-					$.ajax({
-						url: "${pageContext.request.contextPath}/admin/reserve/checkIn",
-						type: "post",
-						data : adminReserveVo,
+						var adminReserveVo = {
+								cafeNo : $("[name='cafeNo']").val(),
+								themeNo : $("[name='themeNo']").val(),
+								themeTimeNo : $(this).data("themetimeno"),
+								reserveDate : $("[name='reserveDate']").val(),
+								reserveTime : $(this).data("themetime")
+						};
 						
-						//dataType: "json",
-						success : function(count) {
-							if(count === 1) {
-								console.log("데이터 생성 완료")
-								$("#admin_reserveitem_modal").attr("style", "display:none");
-								document.body.classList.remove("stop-scroll");
-								window.location.reload();
-							}
+						console.log(adminReserveVo);
+						
+						$.ajax({
+							url : "${pageContext.request.contextPath}/admin/reserve/timeModify",
+							type : "get",
+							data : adminReserveVo,
 							
-								
-						},
-						error : function(XHR, status, error) {
-							console.error(status + " : " + error);
-						}
-					});
-				});
-				
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
+							dataType : "json",
+							success : function(count) {
+								console.log(count);
+								if(count === 1) {
+									$(".thema_time").removeClass("reservePos");
+									$(".thema_time").addClass("reserveImpos");
+								} else {
+									alert("예약불가능으로 변경 불가능합니다.");
+								}
+							},
+							error : function(XHR, status, error) {
+								console.error(status + " : " + error);
+							}
+						});
+					}
+					
+					
+					
+					
+				} else {
+					$(this).removeClass("reserveImpos"); // 예약불가능 -> 예약가능
+					$(this).addClass("reservePos");
+				}
 			}
-		});
-	});
 
-	$("#modal_close_btn").on("click", function() {
-		$("#admin_reserveitem_modal").attr("style", "display:none");
-		document.body.classList.remove("stop-scroll");
+		}
 
+	});*/
+	
+	$(".thema_time").on("click", function() {
+		$(this).addClass("timeClick");
+		
+		if(!confirm("예약상태를 변경하시겠습니까?")) {
+			//아니오
+		} else {
+			//예
+			console.log("예약불가능으로 변경");
+			
+			var adminReserveVo = {
+					cafeNo : $("[name='cafeNo']").val(),
+					themeNo : $("[name='themeNo']").val(),
+					themeTimeNo : $(this).data("themetimeno"),
+					reserveDate : $("[name='rDate']").val(),
+					reserveTime : $(this).data("themetime")
+			};
+			
+			console.log(adminReserveVo);
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/reserve/timeModify",
+				type : "get",
+				data : adminReserveVo,
+				
+				dataType : "json",
+				success : function(count) {
+					console.log(count);
+					if(count === 3) {
+						$(".timeClick").removeClass("reservePos");
+						$(".timeClick").addClass("reserveImpos");
+						$(".timeClick").removeClass("timeClick");
+					} else if(count === 1){
+						$(".timeClick").removeClass("reserveImpos");
+						$(".timeClick").addClass("reservePos");
+						$(".timeClick").removeClass("timeClick");
+					} else if(count === 2) {
+						$(".timeClick").removeClass("timeClick");
+						alert("이미 예약완료된 시간입니다.");
+					}
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+		}
 	});
+	
+	
 </script>
 
 
