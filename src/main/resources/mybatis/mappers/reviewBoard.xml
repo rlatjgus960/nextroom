@@ -13,20 +13,23 @@
 			        rt.nickname,
 			        rt.reviewhit,
 			        rt.reviewLike,
-			        rt.reviewregdate
+			        rt.reviewregdate,
+			        rt.userno
 			from (select  rownum rn,
 						  ot.reviewNo,
 			              ot.reviewTitle,
 			              ot.nickname,
 			              ot.reviewhit,
 			              ot.reviewLike,
-			              ot.reviewregdate
+			              ot.reviewregdate,
+			              ot.userno
 			      from (select  r.reviewNo,
 			      				r.reviewTitle,
 			                    u.nickname,
 			                    r.reviewhit,
 			                    r.reviewLike,
-			                    to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate
+			                    to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,
+			                    r.userno
 			            from review r, users u
 			            where r.userNo = u.userNo
 		]]>
@@ -121,10 +124,11 @@
 	<select id="selectBoard" parameterType="int" resultType = "ReviewBoardVo">
 		<![CDATA[
 			select  r.reviewno,
+					r.userNo,
        				r.reviewtitle,
 			        u.nickname,
 			        r.reviewhit,
-			         to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,	
+			        to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,	
 			        r.reviewcontent	
 			from review r, users u
 			where r.userNo = u.userNo

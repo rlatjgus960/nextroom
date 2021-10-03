@@ -256,3 +256,14 @@ p{
     background-color: rgb(253, 213, 59);
     color: #fff;
 }
+
+/*파일 첨부*/
+.fileUp{
+	margin: 10px auto;
+	padding-top:10px;
+	border-top : 1px solid #b9b9b9;
+}
+
+.fileUp>p{
+	font-size:15px;
+}
