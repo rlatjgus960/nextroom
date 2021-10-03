@@ -10,6 +10,7 @@
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/party.xml" />
 		<mapper resource="mybatis/mappers/record.xml" />
+		<mapper resource="mybatis/mappers/rank.xml" />
 		<mapper resource="mybatis/mappers/cafe.xml" />
 		<mapper resource="mybatis/mappers/reviewBoard.xml" />
 		<mapper resource="mybatis/mappers/adminReserve.xml" />

@@ -33,6 +33,7 @@ public class CafeVo {
 	// 테마 테이블
 	private int themeNo;
 	private String themeName;
+	private MultipartFile themeImgFile;
 	private String themeImg;
 	private String jenre;
 	private int levels;
@@ -40,17 +41,19 @@ public class CafeVo {
 	private int playTime;
 	private String activity;
 	private String themeIntro;
-	private String pRecommend;
+	private String pRecommendMin;
+	private String pRecommendMax;
 	private int pMin;
 	private int pMax;
 
 	// 테마가격 테이블
-	private int headCount;
-	private int price;
+	private List<Integer> headCount;
+	private List<Integer> price;
 
 	// 테마 시간 테이블
-	private int themeTimeNo;
-	private String themeTime;
+	// private int themeTimeNo;
+	// private String themeTime;
+	private List<String> themeStartTime;
 
 	public CafeVo() {
 		super();
@@ -60,9 +63,9 @@ public class CafeVo {
 			String cafeIntro, String url, MultipartFile cafeImgFile, String cafeImg, String postCode, String address,
 			String addressDetail, String printAddress, String sido, String sigungu, String sidoDetail, String latitude,
 			String longitude, List<MultipartFile> interiorImg, List<String> inteList, int themeNo, String themeName,
-			String themeImg, String jenre, int levels, String themeType, int playTime, String activity,
-			String themeIntro, String pRecommend, int pMin, int pMax, int headCount, int price, int themeTimeNo,
-			String themeTime) {
+			MultipartFile themeImgFile, String themeImg, String jenre, int levels, String themeType, int playTime,
+			String activity, String themeIntro, String pRecommendMin, String pRecommendMax, int pMin, int pMax,
+			List<Integer> headCount, List<Integer> price, List<String> themeStartTime) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -87,6 +90,7 @@ public class CafeVo {
 		this.inteList = inteList;
 		this.themeNo = themeNo;
 		this.themeName = themeName;
+		this.themeImgFile = themeImgFile;
 		this.themeImg = themeImg;
 		this.jenre = jenre;
 		this.levels = levels;
@@ -94,13 +98,13 @@ public class CafeVo {
 		this.playTime = playTime;
 		this.activity = activity;
 		this.themeIntro = themeIntro;
-		this.pRecommend = pRecommend;
+		this.pRecommendMin = pRecommendMin;
+		this.pRecommendMax = pRecommendMax;
 		this.pMin = pMin;
 		this.pMax = pMax;
 		this.headCount = headCount;
 		this.price = price;
-		this.themeTimeNo = themeTimeNo;
-		this.themeTime = themeTime;
+		this.themeStartTime = themeStartTime;
 	}
 
 	public int getCafeNo() {
@@ -287,6 +291,14 @@ public class CafeVo {
 		this.themeName = themeName;
 	}
 
+	public MultipartFile getThemeImgFile() {
+		return themeImgFile;
+	}
+
+	public void setThemeImgFile(MultipartFile themeImgFile) {
+		this.themeImgFile = themeImgFile;
+	}
+
 	public String getThemeImg() {
 		return themeImg;
 	}
@@ -343,12 +355,20 @@ public class CafeVo {
 		this.themeIntro = themeIntro;
 	}
 
-	public String getpRecommend() {
-		return pRecommend;
+	public String getpRecommendMin() {
+		return pRecommendMin;
 	}
 
-	public void setpRecommend(String pRecommend) {
-		this.pRecommend = pRecommend;
+	public void setpRecommendMin(String pRecommendMin) {
+		this.pRecommendMin = pRecommendMin;
+	}
+
+	public String getpRecommendMax() {
+		return pRecommendMax;
+	}
+
+	public void setpRecommendMax(String pRecommendMax) {
+		this.pRecommendMax = pRecommendMax;
 	}
 
 	public int getpMin() {
@@ -367,36 +387,28 @@ public class CafeVo {
 		this.pMax = pMax;
 	}
 
-	public int getHeadCount() {
+	public List<Integer> getHeadCount() {
 		return headCount;
 	}
 
-	public void setHeadCount(int headCount) {
+	public void setHeadCount(List<Integer> headCount) {
 		this.headCount = headCount;
 	}
 
-	public int getPrice() {
+	public List<Integer> getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(List<Integer> price) {
 		this.price = price;
 	}
 
-	public int getThemeTimeNo() {
-		return themeTimeNo;
+	public List<String> getThemeStartTime() {
+		return themeStartTime;
 	}
 
-	public void setThemeTimeNo(int themeTimeNo) {
-		this.themeTimeNo = themeTimeNo;
-	}
-
-	public String getThemeTime() {
-		return themeTime;
-	}
-
-	public void setThemeTime(String themeTime) {
-		this.themeTime = themeTime;
+	public void setThemeStartTime(List<String> themeStartTime) {
+		this.themeStartTime = themeStartTime;
 	}
 
 	@Override
@@ -407,10 +419,11 @@ public class CafeVo {
 				+ address + ", addressDetail=" + addressDetail + ", printAddress=" + printAddress + ", sido=" + sido
 				+ ", sigungu=" + sigungu + ", sidoDetail=" + sidoDetail + ", latitude=" + latitude + ", longitude="
 				+ longitude + ", interiorImg=" + interiorImg + ", inteList=" + inteList + ", themeNo=" + themeNo
-				+ ", themeName=" + themeName + ", themeImg=" + themeImg + ", jenre=" + jenre + ", levels=" + levels
-				+ ", themeType=" + themeType + ", playTime=" + playTime + ", activity=" + activity + ", themeIntro="
-				+ themeIntro + ", pRecommend=" + pRecommend + ", pMin=" + pMin + ", pMax=" + pMax + ", headCount="
-				+ headCount + ", price=" + price + ", themeTimeNo=" + themeTimeNo + ", themeTime=" + themeTime + "]";
+				+ ", themeName=" + themeName + ", themeImgFile=" + themeImgFile + ", themeImg=" + themeImg + ", jenre="
+				+ jenre + ", levels=" + levels + ", themeType=" + themeType + ", playTime=" + playTime + ", activity="
+				+ activity + ", themeIntro=" + themeIntro + ", pRecommendMin=" + pRecommendMin + ", pRecommendMax="
+				+ pRecommendMax + ", pMin=" + pMin + ", pMax=" + pMax + ", headCount=" + headCount + ", price=" + price
+				+ ", themeStartTime=" + themeStartTime + "]";
 	}
 
 }

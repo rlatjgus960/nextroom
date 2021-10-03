@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rank">
+	
+	<select id="selectRating" parameterType ="com.nextroom.vo.RatingVo" resultType="com.nextroom.vo.RatingVo">
+		
+		<![CDATA[
+			select  userno
+	        ,avg(recordhints)avgHints
+	        ,avg(recordtime) avgClearTime
+	        ,count(*) totalGame
+	        ,(SELECT count(*)
+	          FROM record
+	          where recordhints=0
+	          and userno = #{userNo}) nohintgame
+	        ,(SELECT count(*)
+	          FROM record
+	          where recordclear='success'
+	          and userno = #{userNo}) wongame
+			from record
+			where userno = #{userNo}
+			group by userno
+			
+		]]>
+		
+	</select>
+	
+
+</mapper>

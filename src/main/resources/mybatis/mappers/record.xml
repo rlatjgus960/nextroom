@@ -34,7 +34,7 @@
 		recordTime = #{recordTime},
 		recordHints = #{recordHints},
 		recordClear = #{recordClear}
-		where userNo = #{userNo}
+		where gameNo = #{gameNo}
 		
 		]]>
 	

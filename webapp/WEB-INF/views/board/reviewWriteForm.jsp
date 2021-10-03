@@ -436,13 +436,13 @@ $("#reviewForm").on("submit", function(){
 		return false;
 	}
 	
-	/*
+	
 	//내용 미입력 체크
 	var reviewContent = $("#reviewContent").val();
 	if(reviewContent.length < 3){
 		alert("내용은 3글자 이상 작성해 주세요.")
 		return false;
-	}*/
+	}
 	
 	//지역 미선택 체크
 	var region = $(".region").val();
@@ -538,12 +538,6 @@ $(function(){
         $("#reviewForm").submit();
     })
 }) 
-
-
-
-
-
-
 
 </script>
 
