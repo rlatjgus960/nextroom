@@ -76,16 +76,22 @@ public class AdminRecordController {
 		   return "admin/recordModify";
 		}
 		
-		@RequestMapping("/recordModifyForm")
-		@ResponseBody
-		public String recordModifyForm() {
+		@RequestMapping("/modifyRecord")
+		public String modifyRecord(@ModelAttribute RecordVo recordVo,
+								   @RequestParam(value="recordClear", required = false, defaultValue = "success") String clearState,
+								   @RequestParam(value="recordMin", required = false, defaultValue = "0") int minutes,
+								   @RequestParam(value="recordSec", required = false, defaultValue = "0") int secconds,
+								   @RequestParam(value="member") List<String> members) {
 			
-			System.out.println("ajax");
+			recordVo.setRecordTime((minutes*60)+secconds);
+			recordVo.setRecordClear(clearState);
 			
-			//recordService.getRecordList();
+			System.out.println("modifyRecord"+recordVo+"\n"+members);
+			
+			recordService.modifyRecord(recordVo,members);
 			
 			
-			return null;
+			return "redirect:/admin/record/modify";
 		}
 		
 }

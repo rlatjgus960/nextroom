@@ -27,6 +27,19 @@
 		]]>
 	</insert>
 	
+	<update id="updateRecord" parameterType="com.nextroom.vo.RecordVo">
+		<![CDATA[
+		
+		update record set
+		recordTime = #{recordTime},
+		recordHints = #{recordHints},
+		recordClear = #{recordClear}
+		where userNo = #{userNo}
+		
+		]]>
+	
+	</update>
+	
 	<update id="updateState" parameterType="int">
 		
 		<![CDATA[

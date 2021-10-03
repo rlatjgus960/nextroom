@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
-
 
 <title>Insert title here</title>
 </head>
@@ -59,7 +60,7 @@
 						<li>기록
 							<ul class="aside_mini_cate">
 								<li><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a></li>
-								<li><p class="selected"><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></p></li>
+								<li><p class="selected"><a href="${pageContext.request.contextPath }/admin/record/modify">&nbsp;-기록 관리</a></p></li>
 							</ul>
 						</li>
 						<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>
@@ -95,15 +96,45 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>비밀의화원 미드나잇</td>
-                                <td>2021-08-27</td>
-                                <td>40m 24s</td>
-                                <td>3</td>
-                                <td>4인</td>
-                                <td>배두나</td>
-                                <td><a id="" class="record_modal_open mbutton recordBtn">수정</a></td>
-                            </tr>
+                            
+                            <c:choose>
+
+
+						    <c:when test="${empty completeList}">
+						       <tr id="list-table">
+						           <td></td>
+						           <td></td>
+		                           <td>수정 할 게임이 없습니다.</td>
+		                           <td></td>
+		                           <td></td>
+		                           <td></td>
+		                           <td></td>
+		                        </tr>
+						    </c:when>
+						
+						    <c:otherwise>
+                       			<c:forEach items="${completeList}" var="prerecordVo">
+						    	<fmt:parseNumber var= "recordMin" integerOnly= "true" value= "${prerecordVo.recordTime/60}"/>
+							        <tr id="list-table">
+			                           <td>${ prerecordVo.themeName}</td>
+			                           <td>${ prerecordVo.regDate}</td>
+			                           <td>${ prerecordVo.clearTime}</td>
+			                           <td>${ prerecordVo.recordHints}개</td>
+			                           <td>${ prerecordVo.totalPerson}인</td>
+			                           <td>${ prerecordVo.reserveName}</td>
+			                           <td><button type="button" id="" class="record_modal_open mbutton recordBtn" 
+			                           data-gameno="${prerecordVo.gameNo}"
+			                           data-recordmin="${recordMin}"
+			                           data-recordsec="${prerecordVo.recordTime%60}"
+			                           data-recordhints="${ prerecordVo.recordHints}"
+			                           >수정</button></td>
+			                        </tr>
+								</c:forEach>
+								
+						    </c:otherwise>
+						
+						
+						</c:choose>
                         </tbody>
 
 
@@ -141,39 +172,35 @@
             </div>
             <h3>기록 수정</h3>
                 
-            	<form action="" method="GET">
+            	<form action="${pageContext.request.contextPath }/admin/record/modifyRecord" method="GET">
                 	<div id="record_table_wrap">
+                		<input type="hidden" name="gameNo" value="">
                         <table id="record_modal_table">
-                            <tr class="label_time">
-                                <th><label for="record_hour">탈출 시간</label></th>
-                                
-                            </tr>
-                            <tr class="time_data">
-                                <td><input type="text" name="record_hour" value="40"> m <input type="text" name="record_hour" value="59"> s</td>
-                            </tr>
-
-                            <tr class="label_hints">
-                                <th>힌트 수</th>
-                            </tr>
-                            <tr class="hints_data">
-                                <td><input type="text" name="record_time" value="30"> 개</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>플레이어 1&nbsp;</th>
-                                <td><input type="text" name="record_time" value="Junzzang1"><a class="red_x"> X</a></td>
-                            </tr>
-                            <tr>
-                                <th>플레이어 2&nbsp;</th>
-                                <td><input type="text" name="record_time" value="Junzzang12"><a class="red_x"> X</a></td>
-                            </tr>
-                            <tr>
-                                <th>플레이어 3&nbsp;</th>
-                                <td><input type="text" name="record_time" value="Junzzang123"><a class="red_x"> X</a></td>
-                            </tr>
+                        	<thead>
+	                            <tr class="label_time">
+	                                <th><label for="record_hour">탈출 시간</label></th>
+	                                
+	                            </tr>
+	                            <tr class="time_data">
+	                                <td><input type="text" name="recordMin" value="">분  <input type="text" name="recordSec" value="">초 </td>
+	                            </tr>
+	
+	                            <tr class="label_hints">
+	                                <th>힌트 수</th>
+	                            </tr>
+	                            <tr class="hints_data">
+	                                <td><input type="text" name="recordHints" value=""> 개</td>
+	                            </tr>
+	                            <tr>
+	                                <td></td>
+	                                <td></td>
+	                            </tr>
+                            </thead>
+                            
+                            
+                            <tbody class="memberNameArea">
+	                            
+	                        </tbody>
 
                             
                         </table>
@@ -181,7 +208,7 @@
 
                     <div id="record_Info_Btn">
                         <button type="submit" class="mbutton">수정</button>
-                        <button class="mbutton">취소</button>
+                        <button type="reset" class="mbutton chuiso">취소</button>
                     </div>
                 </form>
                     </div>
@@ -190,50 +217,77 @@
 </body>
 
 <script>
-$(".record_modal_open").on("click", function(){
-    $("#admin_record_modal").attr("style", "display:block");
-    document.body.classList.add("stop-scroll");
-    
-  //화면 로딩되기 직전!
-    $(document).ready(function() {
-    	console.log("화면 로딩 직전");
 
-    	//ajax 요청하기
-    	$.ajax({
-
-    		url : "${pageContext.request.contextPath }/admin/record/recordModifyForm",
-    		type : "post",
-    		//contentType : "application/json",
-    		//data : {name: ”홍길동"},
-
-    		//dataType : "json",
-    		success : function(guestList) {
-    			/*성공시 처리해야될 코드 작성*/
-    			console.log(guestList);
-
-    			//화면에 그리기
-    			for (var i = 0; i < guestList.length; i++) {
-
-    				render(guestList[i], "down"); //list draw
-
-    			}
-
-    		},
-    		error : function(XHR, status, error) {
-    			console.error(status + " : " + error);
-    		}
-    	});
-
-    });
-});  
-
-$("#admin_record_closemodal").on("click", function() {
-	$("#admin_record_modal").attr("style", "display:none");
-	document.body.classList.remove("stop-scroll");
-
-});
-
-
+	$(".record_modal_open").on("click", function(){
+	    $("#admin_record_modal").attr("style", "display:block");
+	    document.body.classList.add("stop-scroll");
+	    
+	    var gameno = $(this).data("gameno")
+	    var recordmin = $(this).data("recordmin")
+	    var recordsec = $(this).data("recordsec")
+	    var recordhints = $(this).data("recordhints")
+	    
+	    console.log(recordmin)
+	    $("[name='gameNo']").val(gameno);
+	    $("[name='recordMin']").val(recordmin);
+	    $("[name='recordSec']").val(recordsec);
+	    $("[name='recordHints']").val(recordhints);
+	
+	    $.ajax({
+			
+			//request
+			url : "${pageContext.request.contextPath }/admin/record/getMemberList",
+			type : "post",
+			//contentType : "application/json",
+			data : {
+				gameno : gameno
+			},
+			
+			
+			//response
+			//dataType : "json",
+			success : function(memberList) {
+				
+				console.log(memberList);
+				
+				for(var i =0 ; i< memberList.length; i++){
+					rendername(memberList[i],i+1);
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});  
+	
+	$("#admin_record_closemodal").on("click", function() {
+		$("#admin_record_modal").attr("style", "display:none");
+		document.body.classList.remove("stop-scroll");
+		
+		$(".memberBox").remove();
+	
+	});
+	
+	$(".chuiso").on("click", function() {
+		$("#admin_record_modal").attr("style", "display:none");
+		document.body.classList.remove("stop-scroll");
+		
+		$(".memberBox").remove();
+	
+	});
+	
+	function rendername(membername,num){
+		str = "";
+		str += "<tr class='memberBox'>"
+		str += "<th>플레이어 "+num+"</th>";
+		str += "<td><input type='text' name='member' value='"+membername+"'><a class='red_x'>&nbsp;X</a></td>";
+		str += "</tr>"
+		
+		$(".memberNameArea").append(str);
+		
+		str = "";
+	};
 
 
 </script>

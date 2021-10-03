@@ -162,25 +162,27 @@
 	                <div id="record_table_wrap">
 	                		<input type="hidden" name="gameNo" value="">
 	                        <table id="record_modal_table">
-	                            <tr class="label_time">
-	                                <th><label for="record_hour">탈출 시간</label></th>
-	                                
-	                            </tr>
-	                            <tr class="time_data">
-	                                <td><input type="text" name="recordMin" value="">분 <input type="text" name="recordSec" value="">초</td>
-	                                <td><label><input class="escapeFailed" type="checkbox" name="recordClear" value="fail"> 탈출실패</label></td>
-	                            </tr>
-	
-	                            <tr class="label_hints">
-	                                <th>힌트 수</th>
-	                            </tr>
-	                            <tr class="hints_data">
-	                                <td><input type="text" name="recordHints"> 개</td>
-	                            </tr>
-	                            <tr>
-	                                <td></td>
-	                                <td></td>
-	                            </tr>
+	                            <thead>
+		                            <tr class="label_time">
+		                                <th><label for="record_hour">탈출 시간</label></th>
+		                                
+		                            </tr>
+		                            <tr class="time_data">
+		                                <td><input type="text" name="recordMin" value="">분 <input type="text" name="recordSec" value="">초</td>
+		                                <td><label><input class="escapeFailed" type="checkbox" name="recordClear" value="fail"> 탈출실패</label></td>
+		                            </tr>
+		
+		                            <tr class="label_hints">
+		                                <th>힌트 수</th>
+		                            </tr>
+		                            <tr class="hints_data">
+		                                <td><input type="text" name="recordHints"> 개</td>
+		                            </tr>
+		                            <tr>
+		                                <td></td>
+		                                <td></td>
+		                            </tr>
+	                            </thead>
 	                            
 	                            <tbody class="memberNameArea">
 	                            
