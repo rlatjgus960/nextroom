@@ -77,18 +77,20 @@
               <div id="rank1">
                   
                      <div class="rank1_area clearfix">
-                        
-                           <span><img class="f-left rank_profile img-circle" src="${pageContext.request.contextPath }/assets/image/profile/red.jpg"></span>
-                        
-                        
-                           <p class="first_font m-left f-left">Junzzang</p>
+                        	
+                           	
+                           	<span><img class="f-left rank_profile img-circle" src="${pageContext.request.contextPath }/assets/image/profile/red.jpg"></span>
                         
                         
-                           <ul class="rank_detail">
+                           	<p class="first_font m-left f-left">Junzzang</p>
+                        
+                        
+                            <ul class="rank_detail">
                               <li>성공률 : 33.33%</li>
                               <li>노힌트 성공률 : 0%</li>
+                              <li>평균 기록 : 00분 00초</li>
                               <li>전적 300전 100승 200패</li>
-                           </ul>
+                            </ul>
                         
                         
                      </div>
@@ -111,6 +113,7 @@
                               <ul class="rank_detail">
                                  <li>성공률 : 33.33%</li>
                                  <li>노힌트 성공률 : 0%</li>
+                                 <li>평균 기록 : 00분 00초</li>
                                  <li>전적 300전 100승 200패</li>
                               </ul>
                            
@@ -129,6 +132,7 @@
                               <ul class="rank_detail">
                                  <li>성공률 : 33.33%</li>
                                  <li>노힌트 성공률 : 0%</li>
+                                 <li>평균 기록 : 00분 00초</li>
                                  <li>전적 300전 100승 200패</li>
                               </ul>
                            
@@ -147,6 +151,7 @@
                               <ul class="rank_detail">
                                  <li>성공률 : 33.33%</li>
                                  <li>노힌트 성공률 : 0%</li>
+                                 <li>평균 기록 : 00분 00초</li>
                                  <li>전적 300전 100승 200패</li>
                               </ul>
                            
@@ -165,6 +170,7 @@
                               <ul class="rank_detail">
                                  <li>성공률 : 33.33%</li>
                                  <li>노힌트 성공률 : 0%</li>
+                                 <li>평균 기록 : 00분 00초</li>
                                  <li>전적 300전 100승 200패</li>
                               </ul>
                            

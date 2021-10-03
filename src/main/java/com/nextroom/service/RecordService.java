@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nextroom.dao.RankDao;
 import com.nextroom.dao.RecordDao;
 import com.nextroom.vo.PreRecordVo;
+import com.nextroom.vo.RatingVo;
 import com.nextroom.vo.RecordVo;
 
 @Service
@@ -14,13 +16,16 @@ public class RecordService {
 
 	@Autowired
 	RecordDao recordDao;
+	RankDao rankDao;
 
 	// 게임 리스트 가져오기
 	public List<PreRecordVo> getGameList() {
 
 		return recordDao.getGameList();
 	}
-
+	
+	
+	//gameNo로 멤버 아이디 가져오기
 	public List<String> getMemberList(int gameNo) {
 
 		List<String> userIdList = recordDao.selectMemberId(gameNo);
@@ -29,7 +34,8 @@ public class RecordService {
 
 		return userIdList;
 	}
-
+	
+	//'완료'된 게임리스트 가져오기
 	public List<PreRecordVo> getCompleteList() {
 
 		List<PreRecordVo> preList = recordDao.getCompleteList();
@@ -64,7 +70,7 @@ public class RecordService {
 		return preList;
 	}
 
-	// 기록 입력하기
+	// 기록 입력하기 , rankVo에 기록 담기
 	public int RecordAdd(RecordVo recordVo, List<String> members) {
 
 		System.out.println("서비스" + recordVo + " 멤버 " + members);
@@ -73,17 +79,25 @@ public class RecordService {
 		// 유저넘버 갖고오기
 		for (int i = 0; i < members.size(); i++) {
 
-			// id로 userno 알아내기
+			// id로 userNo 알아내기
 			int n = recordDao.selectUserNo(members.get(i));
 
-			// vo에 id 넣기
+			// VO에 id 넣기
 			recordVo.setUserNo(n);
 
-			// recordvo insert시키기
+			// recordVo insert시키기
 			recordDao.insertRecord(recordVo);
 
-			// gamestate '완료'로 바꾸기
+			// gameState '완료'로 바꾸기
 			recordDao.updateState(recordVo);
+			
+			// rating테이블에 기록 입력하기.
+			
+			RatingVo ratingVo = new RatingVo(n);  //userNo 담기
+			
+			
+			//담은 userNo로 정보 알아내기
+			rankDao.selectRating(ratingVo);
 
 			count++;
 		}
