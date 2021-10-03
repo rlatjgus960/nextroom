@@ -80,3 +80,8 @@ font-weight: bold;
 color: #0000ff;
 }
 
+.list_hover>tr:hover {
+	background-color: rgb(253, 213, 59);
+    color: #fff;
+}
+

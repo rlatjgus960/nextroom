@@ -1,6 +1,8 @@
 package com.nextroom.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,7 +75,7 @@ public class PartyService {
 	}
 	
 	
-	//21-10-01 by 대니
+	//21-10-01~21-10-02 by 대니
 	//파티등록 리스트 목록 출력하기
 	public List<PartyVo> getPartyList() {
 		
@@ -127,6 +129,63 @@ public class PartyService {
 		return partyList;
 		
 		
+	}
+	
+	
+	//21-10-03 by 대니
+	//리스트에서 넘어온 파티No로 partyRead에 정보 뿌려주기
+	public Map<String, Object> getPartyReadList(int partyNo) {
+		System.out.println("파티서비스pNo: " + partyNo);
+		
+		//partyNo로 PATRYREAD 정보 가져오기
+		PartyVo partyReadList = partyDao.getPartyReadList(partyNo);
+		
+		System.out.println("파티서비스리드리스트: " + partyReadList);
+		
+		int cafeNo = partyReadList.getCafeNo();
+		System.out.println(cafeNo);
+		
+		//각종 No로 받아줄 생성자 새로 열기
+		PartyVo getNoList = new PartyVo();
+		
+		//cafeNo로 정보가져와서 List에 추가
+		getNoList = partyDao.getCafeNoList(cafeNo);
+		
+		partyReadList.setCafeName(getNoList.getCafeName());
+		
+		
+		//cafeNo와 themeNo로 정보가져와서 List에 추가
+		int themeNo = partyReadList.getThemeNo();
+		PartyVo cafeThemeVo = new PartyVo(cafeNo, themeNo);
+		
+		cafeThemeVo = partyDao.getCafeThemeNoList(cafeThemeVo);
+		
+		partyReadList.setThemeName(cafeThemeVo.getThemeName());
+		partyReadList.setThemeImg(cafeThemeVo.getThemeImg());
+		partyReadList.setJenre(cafeThemeVo.getJenre());
+		partyReadList.setLevels(cafeThemeVo.getLevels());
+		partyReadList.setPlayTime(cafeThemeVo.getPlayTime());
+		partyReadList.setThemeType(cafeThemeVo.getThemeType());
+		
+		System.out.println("카페노 테마노추가: " + partyReadList);
+		
+		//partyNo로 파티승인멤버 리스트 가져오기
+		List<PartyVo> partyDetailList = partyDao.partyDetailList(partyNo); 
+		
+		//partyNo로 파티대기멤버 리스트 가져오기
+		List<PartyVo> partyApplicantList = partyDao.partyApplicantList(partyNo);
+		
+		
+		//Map 열어서 각종 Vo와 List 담아주기
+		Map<String, Object> pReadMap = new HashMap<String, Object>();
+		
+		pReadMap.put("partyReadList", partyReadList);
+		pReadMap.put("partyDetailList", partyDetailList);
+		pReadMap.put("partyApplicantList", partyApplicantList);
+		
+		System.out.println("서비스구간 맵 다오너라 :" + pReadMap);
+		
+		return pReadMap;
 	}
 	
 	

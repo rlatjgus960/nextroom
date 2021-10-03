@@ -77,7 +77,7 @@ public class PartyDao {
 	}
 	
 	
-	// 21-10-01 by 대니
+	// 21-10-01~21-10-02 by 대니
 	// 파티등록 리스트 목록 출력하기
 	public List<PartyVo> getPartyList() {
 		System.out.println("파티다오의 PartyList 출력구간");
@@ -87,7 +87,7 @@ public class PartyDao {
 		return partyList;
 	}
 	
-	// 21-10-01 by 대니
+	// 21-10-01~21-10-02 by 대니
 	// 파티리스트에서 뽑아낸 cafeNo로 가져오는 정보리스트
 	public PartyVo getCafeNoList(int cafeNo) {
 		
@@ -109,6 +109,27 @@ public class PartyDao {
 		return sqlSession.selectOne("party.getPartyNoList", partyNo);
 	}
 	
+	
+	//21-10-03 by 대니
+	//리스트에서 넘어온 파티No로 partyRead에 정보 뿌려주기
+	public PartyVo getPartyReadList(int partyNo) {
+		
+		return sqlSession.selectOne("party.getPartyReadList", partyNo);
+	}
+	
+	//21-10-03 by 대니
+	//partyNo로 파티승인멤버 리스트 가져오기
+	public List<PartyVo> partyDetailList(int partyNo) {
+		
+		return sqlSession.selectList("party.partyDetailList", partyNo);
+	}
+	
+	//21-10-03 by 대니
+	//partyNo로 파티대기멤버 리스트 가져오기
+	public List<PartyVo> partyApplicantList(int partyNo) {
+		
+		return sqlSession.selectList("party.partyApplicantList", partyNo);
+	}
 	
 	
 	

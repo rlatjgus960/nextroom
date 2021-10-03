@@ -89,6 +89,7 @@
        			   content,
        		   	   partystate
 			from party
+			order by partyNo desc
 		]]>
 	</select>
 	
@@ -106,7 +107,11 @@
 	<select id="getCafeThemeNoList" parameterType="com.nextroom.vo.PartyVo" resultType="com.nextroom.vo.PartyVo">
 		<![CDATA[
 			select t.themename,
-       			   t.themeimg
+       			   t.themeimg,
+     			   t.jenre,
+       			   t.levels,
+       			   t.playtime,
+       			   t.themetype
 			from cafe c,
      			 theme t
 			where c.cafeno = t.cafeno
@@ -124,5 +129,45 @@
 		]]>
 	</select>
 	
+	
+	<!-- 리스트에서 넘어온 파티No로 partyRead에 정보 뿌려주기 -->
+	<select id="getPartyReadList" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select partyNo,
+       			   userno,
+		       	   reservedateno,
+		       	   to_char(reservedate, 'YY-MM-DD') reserveDate,
+		       	   cafeNo,
+		       	   themeno,
+		       	   reservedateno,
+		      	   themetime,
+		       	   reserveperson,
+		       	   content,
+		       	   partystate
+			from party
+			where partyNo = #{partyNo}
+		]]>
+	</select>
+	
+	<!-- partyNo로 파티승인멤버 리스트 가져오기 -->
+	<select id="partyDetailList" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select partyNo,
+       			   userNo,
+       			   userState
+			from partydetail
+			where partyNo = #{partyNo}
+		]]>
+	</select>
+	
+	<!-- partyNo로 파티대기멤버 리스트 가져오기 -->
+	<select id="partyApplicantList" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select partyNo,
+       			   userNo
+			from partyapplicant
+			where partyNo = #{partyNo}
+		]]>
+	</select>
 	
 </mapper>

@@ -19,13 +19,24 @@ public class PartyVo {
 	private String partyState;
 	private String userState;
 	private int userCount;
-	
+	private String jenre;
+	private int playTime;
+	private String themeType;
+	private int levels;
 	
 	//생성자
 	public PartyVo() {
 		super();
 	}
 	
+	//파티승인리스트멤버용
+	public PartyVo(int partyNo, int userNo, String userState) {
+		super();
+		this.partyNo = partyNo;
+		this.userNo = userNo;
+		this.userState = userState;
+	}
+
 	public PartyVo(int cafeNo, int themeNo) {
 		super();
 		this.cafeNo = cafeNo;
@@ -54,8 +65,34 @@ public class PartyVo {
 		this.userCount = userCount;
 	}
 
-
-
+	public PartyVo(int partyNo, int userNo, String reserveDate, String sidoDetail, int cafeNo, String cafeName,
+			int themeNo, String themeName, String themeTime, String themeImg, String reserveTime, int reservePerson,
+			String content, String partyState, String userState, int userCount, String jenre, int playTime,
+			String themeType, int levels) {
+		super();
+		this.partyNo = partyNo;
+		this.userNo = userNo;
+		this.reserveDate = reserveDate;
+		this.sidoDetail = sidoDetail;
+		this.cafeNo = cafeNo;
+		this.cafeName = cafeName;
+		this.themeNo = themeNo;
+		this.themeName = themeName;
+		this.themeTime = themeTime;
+		this.themeImg = themeImg;
+		this.reserveTime = reserveTime;
+		this.reservePerson = reservePerson;
+		this.content = content;
+		this.partyState = partyState;
+		this.userState = userState;
+		this.userCount = userCount;
+		this.jenre = jenre;
+		this.playTime = playTime;
+		this.themeType = themeType;
+		this.levels = levels;
+	}
+	
+	
 	//메소드(게터세터)
 	public int getPartyNo() {
 		return partyNo;
@@ -187,6 +224,39 @@ public class PartyVo {
 	}
 
 	
+	public String getJenre() {
+		return jenre;
+	}
+
+	public void setJenre(String jenre) {
+		this.jenre = jenre;
+	}
+
+	public int getPlayTime() {
+		return playTime;
+	}
+
+	public void setPlayTime(int playTime) {
+		this.playTime = playTime;
+	}
+
+	public String getThemeType() {
+		return themeType;
+	}
+
+	public void setThemeType(String themeType) {
+		this.themeType = themeType;
+	}
+
+	public int getLevels() {
+		return levels;
+	}
+
+	public void setLevels(int levels) {
+		this.levels = levels;
+	}
+
+
 	//메소드(일반)
 	@Override
 	public String toString() {
@@ -194,17 +264,9 @@ public class PartyVo {
 				+ sidoDetail + ", cafeNo=" + cafeNo + ", cafeName=" + cafeName + ", themeNo=" + themeNo + ", themeName="
 				+ themeName + ", themeTime=" + themeTime + ", themeImg=" + themeImg + ", reserveTime=" + reserveTime
 				+ ", reservePerson=" + reservePerson + ", content=" + content + ", partyState=" + partyState
-				+ ", userState=" + userState + ", userCount=" + userCount + "]";
+				+ ", userState=" + userState + ", userCount=" + userCount + ", jenre=" + jenre + ", playTime="
+				+ playTime + ", themeType=" + themeType + ", levels=" + levels + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

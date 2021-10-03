@@ -1,6 +1,7 @@
 package com.nextroom.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -91,7 +92,7 @@ public class Party {
 	}
 	
 	
-	//21-10-01 by 대니
+	//21-10-01~21-10-02 by 대니
 	//파티등록 리스트 목록 출력하기
 	@RequestMapping(value = "/partyList", method = {RequestMethod.GET, RequestMethod.POST})
 	public String partyList(Model model) {
@@ -102,6 +103,22 @@ public class Party {
 		model.addAttribute("partyList", partyList);
 		
 		return "party/partyList";
+	}
+	
+	
+	//21-10-03 by 대니
+	//리스트에서 넘어온 파티No로 partyRead에 정보 뿌려주기
+	@RequestMapping(value= "/partyRead", method = {RequestMethod.GET, RequestMethod.POST})
+	public String partyRead(@RequestParam("partyNo") int partyNo, Model model) {
+		System.out.println("파티리드 컨트롤러 pNo: " + partyNo);
+		
+		Map<String, Object> pReadMap = partyService.getPartyReadList(partyNo);
+		
+		System.out.println("파티컨트롤러구간 맵이다: " + pReadMap);
+		
+		model.addAttribute("pReadMap", pReadMap);
+		
+		return "party/partyRead";
 	}
 	
 }

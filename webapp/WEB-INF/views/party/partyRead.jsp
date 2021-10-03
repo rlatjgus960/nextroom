@@ -91,13 +91,13 @@
                            </div>
 
                            <!-- 마스터 버튼 -->
-                           <c:if test="${sessionScope.authUser.userNo eq partyVo.userNo }">
                				<div class="btn_group">
-                            	<button id="list_button" class="submit_button"><a href="${pageContext.request.contextPath }/party/partyList">목록</a></button>
+                            	<a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
+                           <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
                                <button id="delete_button" class="submit_button">파티삭제</button>
                                <button id="complete_button" class="mbutton">모집완료</button>
-                           </div>	
                            </c:if>
+                           </div>	
                            <!-- //마스터 버튼 -->
 
                             <!-- 참가자 버튼 -->
@@ -178,6 +178,7 @@
                     
 
                     <!-- 대기현황 -->
+                    <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
                     <div id="hold_list">
                         <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;대기현황</div>
                         <table>
@@ -225,21 +226,10 @@
                                     <td>38m 27s</td>
                                     <td><button>O</button> / <button>X</button></td>
                                 </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-                                    <td>다함께 차차차</td>
-                                    <td>40위</td>
-                                    <td>93%</td>
-                                    <td>100%</td>
-                                    <td>50m 20s</td>
-                                    <td><button>O</button> / <button>X</button></td>
-                                </tr>
-                         
-								
                             </tbody>
                         </table>
                     </div>
+                    </c:if>
 				<!-- //대기현황 -->
 
 			</div>
