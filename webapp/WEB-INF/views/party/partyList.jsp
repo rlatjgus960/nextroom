@@ -95,7 +95,7 @@
                                     <th>지원현황</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="list_hover">
 								<c:forEach items="${partyList }" var="partyVo">
 	                                <tr onclick="location.href='${pageContext.request.contextPath }/party/partyRead?partyNo=${partyVo.partyNo}'">
 		                                    <td>${partyVo.partyNo }</td>
