@@ -12,10 +12,11 @@ public class RankDao {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public RatingVo selectRating(RatingVo ratingVo) {
+	public RatingVo selectRating(int userNo) {
 		
+		System.out.println("[랭크다오]-정보읽기");
 		
-		ratingVo = sqlSession.selectOne("rank.selectRating",ratingVo);
+		RatingVo ratingVo = sqlSession.selectOne("rank.selectRating",userNo);
 		
 		return ratingVo;
 	}

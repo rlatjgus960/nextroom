@@ -1,5 +1,6 @@
 package com.nextroom.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class RecordService {
 
 	@Autowired
 	RecordDao recordDao;
+	@Autowired
 	RankDao rankDao;
 
 	// 게임 리스트 가져오기
@@ -23,9 +25,8 @@ public class RecordService {
 
 		return recordDao.getGameList();
 	}
-	
-	
-	//gameNo로 멤버 아이디 가져오기
+
+	// gameNo로 멤버 아이디 가져오기
 	public List<String> getMemberList(int gameNo) {
 
 		List<String> userIdList = recordDao.selectMemberId(gameNo);
@@ -34,8 +35,8 @@ public class RecordService {
 
 		return userIdList;
 	}
-	
-	//'완료'된 게임리스트 가져오기
+
+	// '완료'된 게임리스트 가져오기
 	public List<PreRecordVo> getCompleteList() {
 
 		List<PreRecordVo> preList = recordDao.getCompleteList();
@@ -90,14 +91,15 @@ public class RecordService {
 
 			// gameState '완료'로 바꾸기
 			recordDao.updateState(recordVo);
-			
+
 			// rating테이블에 기록 입력하기.
-			
-			RatingVo ratingVo = new RatingVo(n);  //userNo 담기
-			
-			
-			//담은 userNo로 정보 알아내기
-			rankDao.selectRating(ratingVo);
+
+			RatingVo ratingVo = new RatingVo(n); // userNo 담기
+
+			// 담은 userNo로 정보 알아내기
+			// rankDao.selectRating(ratingVo);
+
+			System.out.println(ratingVo);
 
 			count++;
 		}
@@ -113,6 +115,8 @@ public class RecordService {
 
 		int count = 0;
 
+		List<RatingVo> raingList = new ArrayList<RatingVo>();
+
 		for (int i = 0; i < members.size(); i++) {
 
 			// id로 userno 알아내기
@@ -123,6 +127,15 @@ public class RecordService {
 
 			// recordvo update시키기
 			recordDao.updateRecord(recordVo);
+
+			// userNo 담기
+
+			System.out.println(n);
+
+			// 담은 userNo로 정보 알아내기
+			RatingVo ratingVo = rankDao.selectRating(n);
+
+			System.out.println(ratingVo);
 
 			count++;
 		}

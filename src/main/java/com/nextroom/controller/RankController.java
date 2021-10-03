@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RankController {
 
+	
 	@RequestMapping("/user")
 	public String user() {
 		System.out.println("[유저랭크 컨트롤러]");
+		
+		
 		return "rank/user";
 	}
 
