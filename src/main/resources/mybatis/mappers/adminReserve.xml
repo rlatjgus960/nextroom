@@ -103,19 +103,70 @@
 	<!-- 테마별 예약정보 가져오기 -->
 	<select id="getResevInfo" parameterType="map" resultType="com.nextroom.vo.AdminReserveVo">
 		<![CDATA[
-			select  t.themename, 
-			        r.reserveno,
-			        to_char(rd.reservedate, 'yyyy-mm-dd') reserveDate,
+			select  rt.rn,
+			        rt.themename,
+			        rt.reserveno,
+			        rt.reserveDate,
 			        rt.reservetime,
-			        r.reserveperson,
-			        r.reservename,
-			        r.paymentstate
+			        rt.reserveperson,
+			        rt.reservename,
+			        rt.paymentstate
+			from (  select  rownum rn,
+			                ot.themename,
+			                ot.reserveno,
+			                ot.reserveDate,
+			                ot.reservetime,
+			                ot.reserveperson,
+			                ot.reservename,
+			                ot.paymentstate
+			        from (  select  t.themename, 
+							        r.reserveno,
+							        to_char(rd.reservedate, 'yyyy-mm-dd') reserveDate,
+							        rt.reservetime,
+							        r.reserveperson,
+							        r.reservename,
+							        r.paymentstate
+							from theme t, reserveDate rd, reserveTime rt, reserve r
+							where t.themeNo = rd.themeNo
+							and rd.reserveDateNo = rt.reservedateno
+							and rt.reservetimeNo = r.reservetimeno
+		]]>
+		
+						<if test="themeNo != -1 and themeNo != ''">
+							and t.themeNo = #{themeNo}
+						</if>
+						
+						<if test="reserveDate != '-1' and reserveDate != ''">
+							and rd.reserveDate = #{reserveDate}
+						</if>
+		
+		<![CDATA[
+							order by rd.reserveDate desc, rt.reserveTime desc ) ot ) rt
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
+		]]>
+						
+	</select>
+	
+	<!-- 전체 게시물 갯수 구하기 -->
+	<select id="selectTotalCnt" parameterType="map" resultType="int">
+		<![CDATA[
+			select count(*)
 			from theme t, reserveDate rd, reserveTime rt, reserve r
 			where t.themeNo = rd.themeNo
 			and rd.reserveDateNo = rt.reservedateno
 			and rt.reservetimeNo = r.reservetimeno
+		]]>
+		
+		<if test="themeNo != -1 and themeNo != ''">
 			and t.themeNo = #{themeNo}
+		</if>
+		
+		<if test="reserveDate != '-1' and reserveDate != ''">
 			and rd.reserveDate = #{reserveDate}
+		</if>
+		
+		<![CDATA[
 		]]>
 	</select>
 
@@ -178,26 +229,33 @@
 		]]>
 	</insert>
 	
-	<!-- 테마별 예약정보 가져오기 -->
-	<select id="getAllResevInfo" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
-		<![CDATA[
-			select  t.themename, 
+</mapper>
+
+<!-- 
+select  t.themename, 
 			        r.reserveno,
 			        to_char(rd.reservedate, 'yyyy-mm-dd') reserveDate,
 			        rt.reservetime,
 			        r.reserveperson,
 			        r.reservename,
 			        r.paymentstate
-			from cafe c, theme t, reserveDate rd, reserveTime rt, reserve r
-			where c.cafeNo = t.cafeNo
-			and t.themeNo = rd.themeNo
-			and rd.reserveDateNo = rt.reserveDateNo
-			and rt.reserveTimeNo = r.reservetimeno
-			and c.cafeNo = #{cafeNo}
-			order by rd.reserveDate desc, rt.reserveTime desc
+			from theme t, reserveDate rd, reserveTime rt, reserve r
+			where t.themeNo = rd.themeNo
+			and rd.reserveDateNo = rt.reservedateno
+			and rt.reservetimeNo = r.reservetimeno
 		]]>
-	</select>
-</mapper>
+		
+		<if test="themeNo != -1 and themeNo != ''">
+			and t.themeNo = #{themeNo}
+		</if>
+		
+		<if test="reserveDate != '-1' and reserveDate != ''">
+			and rd.reserveDate = #{reserveDate}
+		</if>
+		
+		<![CDATA[
+		]]>
+ -->
 
 
 

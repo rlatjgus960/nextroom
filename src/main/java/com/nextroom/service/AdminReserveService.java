@@ -106,22 +106,64 @@ public class AdminReserveService {
 	
 	
 	//테마별 예약정보 가져오기
-	public List<AdminReserveVo> getResevInfo(Map<String, Object> rMap) {
+	public Map<String, Object> getResevInfo(Map<String, Object> rMap, int crtPage) {
 		System.out.println("[AdminReserveService.getResevInfo()]");
 		
-		List<AdminReserveVo> themeReserveList = adminDao.getResevInfo(rMap);
+		int listCnt = 3; 
 		
-		return themeReserveList;
+		
+		//crtPage 계산(- 값일 때 --> 1page 처리)
+		crtPage = (crtPage > 0) ? crtPage : (crtPage=1);
+		
+		
+		//시작번호 계산하기
+		int startRnum = (crtPage - 1)*listCnt + 1; 
+				
+		//끝번호 계산하기
+		int endRnum = (startRnum + listCnt) - 1;
+		
+		List<AdminReserveVo> themeReserveList = adminDao.getResevInfo(startRnum, endRnum, rMap);
+		
+		//전체글 갯수
+		int totalCount = adminDao.selectTotalCnt(rMap);
+		System.out.println("totalCount"+totalCount);
+		
+		//페이지당 버틍 갯수
+		int pageBtnCount = 5;
+		
+		//마지막 버튼 번호
+		int endPageBtnNo = (int)Math.ceil((crtPage/(double)pageBtnCount))*pageBtnCount;
+		
+		//시작 버튼 번호
+		int startPageBtnNo = endPageBtnNo - (pageBtnCount-1);
+		
+		//다음 화살표 표현 유무
+		boolean next = false;
+		if((endPageBtnNo * listCnt) < totalCount) {
+			next = true;
+		} else {
+			endPageBtnNo = (int)Math.ceil(totalCount/(double)listCnt);
+		}
+		
+		//이전 화살표 표현 유무
+		boolean prev = false;
+		if(startPageBtnNo != 1) {
+			prev = true;
+		}
+		
+		//리턴하기
+		Map<String, Object> listMap = new HashMap<String, Object>();
+		
+		listMap.put("themeReserveList", themeReserveList);
+		listMap.put("prev", prev);
+		listMap.put("startPageBtnNo", startPageBtnNo);
+		listMap.put("endPageBtnNo", endPageBtnNo);
+		listMap.put("next", next);
+		
+		
+		return listMap;
 	}
 	
-	//카페별 예약정보 가져오기
-	public List<AdminReserveVo> getResevInfo(int cafeNo) {
-		System.out.println("[AdminReserveService.getResevInfo()]");
-		
-		List<AdminReserveVo> themeReserveList = adminDao.getResevInfo(cafeNo);
-		
-		return themeReserveList;
-	}
 	
 	
 	//예약 상세 정보 가져오기

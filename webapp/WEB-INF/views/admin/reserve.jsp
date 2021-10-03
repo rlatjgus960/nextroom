@@ -186,7 +186,7 @@
 								<th>결제상태</th>
 							</tr>
 
-							<c:forEach items="${themeReserveList}" var="trList" varStatus="status">
+							<c:forEach items="${listMap.themeReserveList}" var="trList" varStatus="status">
 								<tr class="theme_reserve_modal" data-reserveno="${trList.reserveNo}" data-paymentstate="${trList.paymentState}">
 									<td>${trList.themeName}</td>
 									<td>${trList.reserveNo}</td>
@@ -205,7 +205,7 @@
 								</tr>
 							</c:forEach>
 							
-							<tr class="theme_reserve_modal beforePlay">
+							<!-- <tr class="theme_reserve_modal beforePlay">
 								<td>비밀의화원 미드나잇</td>
 								<td>392002039</td>
 								<td>2021-08-27</td>
@@ -213,7 +213,7 @@
 								<td>3인</td>
 								<td>세일러문</td>
 								<td>입력</td>
-							</tr>
+							</tr> -->
 
 
 
@@ -223,13 +223,23 @@
 
 					<div id="paging" class="clearfix">
 						<ul>
-							<li><a href="">◀</a></li>
-							<li><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li class="active"><a href="">3</a></li>
-							<li><a href="">4</a></li>
-							<li><a href="">5</a></li>
-							<li><a href="">▶</a></li>
+							<c:if test="${listMap.prev == true}">
+								<li><a href="${pageContext.request.contextPath}/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}?crtPage=${listMap.startPageBtnNo-1}&themeNo=${param.themeNo}&reserveDate=${param.reserveDate}">◀</a></li>
+							</c:if>
+							<c:forEach begin="${listMap.startPageBtnNo }" end="${listMap.endPageBtnNo }" step="1" var="page">
+								<c:choose>
+									<c:when test="${param.crtPage eq page}">
+										<li class="active"><a href="${pageContext.request.contextPath}/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}?crtPage=${page}&themeNo=${param.themeNo}&reserveDate=${param.reserveDate}">${page}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${pageContext.request.contextPath}/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}?crtPage=${page}&themeNo=${param.themeNo}&reserveDate=${param.reserveDate}">${page }</a></li>
+									</c:otherwise>
+								</c:choose>
+								
+							</c:forEach>
+							<c:if test="${listMap.next == true}">
+								<li><a href="${pageContext.request.contextPath}/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}?crtPage=${listMap.endPageBtnNo+1}&themeNo=${param.themeNo}&reserveDate=${param.reserveDate}">▶</a></li>
+							</c:if>
 						</ul>
 
 

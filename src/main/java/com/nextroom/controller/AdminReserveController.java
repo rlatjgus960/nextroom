@@ -88,10 +88,15 @@ public class AdminReserveController {
 	//예약확인 페이지
 	@RequestMapping("/reserveConfirm/{cafeNo}")
 	public String reserveConfirm(Model model, @PathVariable("cafeNo") int cafeNo,
+								@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
 								@RequestParam(value="themeNo", required = false, defaultValue="-1") int themeNo,
 								@RequestParam(value="reserveDate", required = false, defaultValue="-1") String reserveDate,
 								HttpSession session) {
 		System.out.println("reserveConfirm");
+		
+		Map<String, Object> rMap = new HashMap<String, Object>();
+		rMap.put("reserveDate", reserveDate);
+		rMap.put("themeNo", themeNo);
 		
 		System.out.println(reserveDate);
 		//테마 정보
@@ -103,27 +108,9 @@ public class AdminReserveController {
 		if(userVo != null) {
 			
 			if(userVo.getCafeNo() == cafeNo) {
-				if(themeNo == -1 || "-1".equals(reserveDate) ) {
-					//모든 예약정보 뿌리기
-					List<AdminReserveVo> themeReserveList = adminService.getResevInfo(cafeNo);
-					model.addAttribute("themeReserveList", themeReserveList);
-				}
+				Map<String, Object> listMap = adminService.getResevInfo(rMap, crtPage);
 				
-				//System.out.println(reserveDate.equals("-1"));
-				if(!reserveDate.equals("-1")) {
-					Map<String, Object> rMap = new HashMap<String, Object>();
-					rMap.put("reserveDate", reserveDate);
-					rMap.put("themeNo", themeNo);
-					
-					//테마별 예약정보
-					List<AdminReserveVo> themeReserveList = adminService.getResevInfo(rMap);
-					model.addAttribute("themeReserveList", themeReserveList);
-					System.out.println("themeReserveList : " + themeReserveList);
-					
-					
-				}
-				
-				
+				model.addAttribute("listMap", listMap);
 				model.addAttribute("themeList", adminThemeList);
 				model.addAttribute("cafeNo", cafeNo);
 				model.addAttribute("themeNo", themeNo);

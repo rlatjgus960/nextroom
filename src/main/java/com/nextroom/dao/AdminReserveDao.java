@@ -72,21 +72,22 @@ public class AdminReserveDao {
 	
 	
 	//테마별 예약정보 확인
-	public List<AdminReserveVo> getResevInfo(Map<String, Object> rMap) {
+	public List<AdminReserveVo> getResevInfo(int startRnum, int endRnum, Map<String, Object> rMap) {
 		System.out.println("[AdminReserveDao.getResevInfo()]");
+		
+		rMap.put("startRnum", startRnum);
+		rMap.put("endRnum", endRnum);
 		
 		List<AdminReserveVo> themeReserveList = sqlSession.selectList("adminReserve.getResevInfo", rMap);
 		
 		return themeReserveList;
 	}
 	
-	//테마별 예약정보 확인
-	public List<AdminReserveVo> getResevInfo(int cafeNo) {
-		System.out.println("[AdminReserveDao.getResevInfo()]");
+	//전체 예약 갯수 구하기
+	public int selectTotalCnt(Map<String, Object> rMap) {
+		System.out.println("[AdminReserveDao.selectTotalCnt()]");
 		
-		List<AdminReserveVo> themeReserveList = sqlSession.selectList("adminReserve.getAllResevInfo", cafeNo);
-		
-		return themeReserveList;
+		return sqlSession.selectOne("adminReserve.selectTotalCnt", rMap);
 	}
 	
 	
