@@ -13,14 +13,28 @@ public class AdminReserveVo {
 	private int reserveTimeNo;
 	private String reserveTime;
 	private int reserveState;
-	
+	private int paymentState;
+	private int reservePerson;
+	private String reserveName;
+	private int reserveNo;
+	private String themeImg;
+	private String cafeName;
+	private String reserveHp;
+	private String payment;
+	private int totalPerson;
+	private String regDate;
+	private String gameState;
 	
 	public AdminReserveVo() {
 		super();
 	}
 
+
+
 	public AdminReserveVo(int userNo, int cafeNo, int themeNo, String themeName, int themeTimeNo, String themeTime,
-			int reserveDateNo, String reserveDate, int reserveTimeNo, String reserveTime, int reserveState) {
+			int reserveDateNo, String reserveDate, int reserveTimeNo, String reserveTime, int reserveState,
+			int paymentState, int reservePerson, String reserveName, int reserveNo, String themeImg, String cafeName,
+			String reserveHp, String payment, int totalPerson, String regDate, String gameState) {
 		super();
 		this.userNo = userNo;
 		this.cafeNo = cafeNo;
@@ -33,7 +47,25 @@ public class AdminReserveVo {
 		this.reserveTimeNo = reserveTimeNo;
 		this.reserveTime = reserveTime;
 		this.reserveState = reserveState;
+		this.paymentState = paymentState;
+		this.reservePerson = reservePerson;
+		this.reserveName = reserveName;
+		this.reserveNo = reserveNo;
+		this.themeImg = themeImg;
+		this.cafeName = cafeName;
+		this.reserveHp = reserveHp;
+		this.payment = payment;
+		this.totalPerson = totalPerson;
+		this.regDate = regDate;
+		this.gameState = gameState;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -124,16 +156,127 @@ public class AdminReserveVo {
 	public void setReserveState(int reserveState) {
 		this.reserveState = reserveState;
 	}
+	
+	public int getPaymentState() {
+		return paymentState;
+	}
+
+	public void setPaymentState(int paymentState) {
+		this.paymentState = paymentState;
+	}
+
+	public int getReservePerson() {
+		return reservePerson;
+	}
+
+	public void setReservePerson(int reservePerson) {
+		this.reservePerson = reservePerson;
+	}
+
+	public String getReserveName() {
+		return reserveName;
+	}
+
+	public void setReserveName(String reserveName) {
+		this.reserveName = reserveName;
+	}
+
+	public int getReserveNo() {
+		return reserveNo;
+	}
+
+	public void setReserveNo(int reserveNo) {
+		this.reserveNo = reserveNo;
+	}
+	
+	public String getThemeImg() {
+		return themeImg;
+	}
+
+	public void setThemeImg(String themeImg) {
+		this.themeImg = themeImg;
+	}
+	
+	
+
+	public String getCafeName() {
+		return cafeName;
+	}
+
+
+	public void setCafeName(String cafeName) {
+		this.cafeName = cafeName;
+	}
+
+
+	public String getReserveHp() {
+		return reserveHp;
+	}
+
+
+	public void setReserveHp(String reserveHp) {
+		this.reserveHp = reserveHp;
+	}
+
+
+	public String getPayment() {
+		return payment;
+	}
+
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+	
+	public int getTotalPerson() {
+		return totalPerson;
+	}
+
+
+
+	public void setTotalPerson(int totalPerson) {
+		this.totalPerson = totalPerson;
+	}
+
+
+
+	public String getRegDate() {
+		return regDate;
+	}
+
+
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
+
+
+	public String getGameState() {
+		return gameState;
+	}
+
+
+
+	public void setGameState(String gameState) {
+		this.gameState = gameState;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "AdminReserveVo [userNo=" + userNo + ", cafeNo=" + cafeNo + ", themeNo=" + themeNo + ", themeName="
 				+ themeName + ", themeTimeNo=" + themeTimeNo + ", themeTime=" + themeTime + ", reserveDateNo="
 				+ reserveDateNo + ", reserveDate=" + reserveDate + ", reserveTimeNo=" + reserveTimeNo + ", reserveTime="
-				+ reserveTime + ", reserveState=" + reserveState + "]";
+				+ reserveTime + ", reserveState=" + reserveState + ", paymentState=" + paymentState + ", reservePerson="
+				+ reservePerson + ", reserveName=" + reserveName + ", reserveNo=" + reserveNo + ", themeImg=" + themeImg
+				+ ", cafeName=" + cafeName + ", reserveHp=" + reserveHp + ", payment=" + payment + ", totalPerson="
+				+ totalPerson + ", regDate=" + regDate + ", gameState=" + gameState + "]";
 	}
 
-	
+
+
 	
 	
 	

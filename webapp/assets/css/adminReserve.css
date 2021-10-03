@@ -28,7 +28,7 @@
 /*************************** 관리자 날짜, 테마 선택 *******************************/
 #admin_reservation_date {
     float: right;
-    margin: 0px 10px 20px 0px;
+    margin: 0px 0px 0px 10px;
 }
 
 #admin_reservation_date .ui-datepicker td span,
@@ -60,7 +60,7 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 }
 
 #admin_reservation_table_select {
-    margin: 20px 0px 10px 0px;
+    margin: 0px 0px 10px 0px;
     float: right;
 }
 
@@ -175,7 +175,7 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 }
 
 #admin_reservation_thema_time_color {
-    margin: 20px 0px 10px 0px;
+    margin: 10px 0px 10px 0px;
     float: right;
 }
 

@@ -99,8 +99,104 @@
 			where reserveTimeNo = #{reserveTimeNo}
 		]]>
 	</update>
+	
+	<!-- 테마별 예약정보 가져오기 -->
+	<select id="getResevInfo" parameterType="map" resultType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			select  t.themename, 
+			        r.reserveno,
+			        to_char(rd.reservedate, 'yyyy-mm-dd') reserveDate,
+			        rt.reservetime,
+			        r.reserveperson,
+			        r.reservename,
+			        r.paymentstate
+			from theme t, reserveDate rd, reserveTime rt, reserve r
+			where t.themeNo = rd.themeNo
+			and rd.reserveDateNo = rt.reservedateno
+			and rt.reservetimeNo = r.reservetimeno
+			and t.themeNo = #{themeNo}
+			and rd.reserveDate = #{reserveDate}
+		]]>
+	</select>
+
+	<!-- 예약 상세 정보 가져오기 -->
+	<select id="getReserveDetailInfo" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			select  c.cafeName,
+			        t.themeImg,
+			        t.themeName,
+			        to_char(rd.reservedate, '""yyyy"년 "mm"월 "dd"일"') reserveDate,
+			        r.reserveNo,
+			        r.reservePerson,
+			        r.reserveName,
+			        r.reserveHp,
+			        to_char(r.payment,'999,999') payment,
+			        rt.reserveTime
+			from cafe c, theme t, reserveDate rd, reserveTime rt, reserve r
+			where c.cafeNo = t.cafeno
+			and t.themeNo = rd.themeno
+			and rd.reservedateno = rt.reservedateno
+			and rt.reservetimeno = r.reservetimeno
+			and reserveNo = #{reserveNo}
+		]]>
+	</select>
+	
+	<!-- 예약 결제 상태 변경 -->
+	<update id="updatePaymentState" parameterType="int">
+		<![CDATA[
+			update reserve
+			set paymentState = 2
+			where reserveNo = #{reserveNo}
+		]]>
+	</update>
+	
+	<!-- 업체예약상태표시용 상태 변경 -->
+	<update id="updateAdminReserveState" parameterType="int">
+		<![CDATA[
+			update (select  rt.reserveState,
+			                r.paymentState
+			        from reserveTime rt, reserve r
+			        where rt.reserveTimeNo = r.reserveTimeNo
+			        and r.reserveNo = #{reserveNo})
+			set reserveState = 1
+		]]>
+	</update>
 
 
+	<!-- 예약시간 데이터 생성 -->
+	<insert id="insertPreRecord" parameterType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			insert into prerecord
+			values (
+			    GAMENO.nextval,
+			    #{themeNo},
+			    #{reserveNo},
+			    #{reserveDate},
+			    #{totalPerson},
+			    '진행중'
+		    )
+		]]>
+	</insert>
+	
+	<!-- 테마별 예약정보 가져오기 -->
+	<select id="getAllResevInfo" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
+		<![CDATA[
+			select  t.themename, 
+			        r.reserveno,
+			        to_char(rd.reservedate, 'yyyy-mm-dd') reserveDate,
+			        rt.reservetime,
+			        r.reserveperson,
+			        r.reservename,
+			        r.paymentstate
+			from cafe c, theme t, reserveDate rd, reserveTime rt, reserve r
+			where c.cafeNo = t.cafeNo
+			and t.themeNo = rd.themeNo
+			and rd.reserveDateNo = rt.reserveDateNo
+			and rt.reserveTimeNo = r.reservetimeno
+			and c.cafeNo = #{cafeNo}
+			order by rd.reserveDate desc, rt.reserveTime desc
+		]]>
+	</select>
 </mapper>
 
 

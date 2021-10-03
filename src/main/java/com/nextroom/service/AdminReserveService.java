@@ -42,7 +42,7 @@ public class AdminReserveService {
 		
 		//예약날짜 테이블 존재유무 확인
 		AdminReserveVo date = adminDao.selectReserveDate(adminVo);
-		System.out.println(date);
+		System.out.println("date = " + date);
 		if(date == null) {
 			//없을때 만들기
 			System.out.println("해당 날짜의 데이터가 존재하지 않아 새롭게 생성합니다.");
@@ -104,6 +104,55 @@ public class AdminReserveService {
 		return result;
 	}
 	
+	
+	//테마별 예약정보 가져오기
+	public List<AdminReserveVo> getResevInfo(Map<String, Object> rMap) {
+		System.out.println("[AdminReserveService.getResevInfo()]");
+		
+		List<AdminReserveVo> themeReserveList = adminDao.getResevInfo(rMap);
+		
+		return themeReserveList;
+	}
+	
+	//카페별 예약정보 가져오기
+	public List<AdminReserveVo> getResevInfo(int cafeNo) {
+		System.out.println("[AdminReserveService.getResevInfo()]");
+		
+		List<AdminReserveVo> themeReserveList = adminDao.getResevInfo(cafeNo);
+		
+		return themeReserveList;
+	}
+	
+	
+	//예약 상세 정보 가져오기
+	public AdminReserveVo getReserveDetailInfo(int reserveNo) {
+		System.out.println("[AdminReserveService.getReserveDetailInfo()]");
+		
+		AdminReserveVo reserveModalVo = adminDao.getReserveDetailInfo(reserveNo);
+		
+		return reserveModalVo;
+	}
+	
+
+	//예약취소
+	public int delReserve(int reserveNo) {
+		System.out.println("[AdminReserveService.delReserve()]");
+		
+		int count = adminDao.updatePaymentState(reserveNo);
+		adminDao.updateAdminReserveState(reserveNo);
+		
+		return count;
+	}
+	
+	//입실확인
+	public int checkIn(AdminReserveVo adminVo) {
+		System.out.println("[AdminReserveService.checkIn()]");
+		
+		int count = adminDao.insertPreRecord(adminVo);
+		System.out.println("테테테스트" + count);
+		
+		return count;
+	}
 	
 	
 }
