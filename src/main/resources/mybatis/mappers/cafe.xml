@@ -113,5 +113,56 @@
 		]]>
 	
 	</select>
+	
+	
+	
+	<!-- 테마 추가 -->
+	<insert id="addTheme" parameterType="com.nextroom.vo.CafeVo"> 
+		
+		<selectKey keyProperty="themeNo" resultType="int" order="BEFORE">
+			select themeNo.nextval from dual
+		</selectKey>
+		
+		<![CDATA[ 
+				insert into theme
+				values (
+						#{themeNo},
+						#{cafeNo},
+						#{themeName},
+						#{themeImg},
+						#{jenre},
+						#{levels},
+						#{themeType},
+						#{playTime},
+						#{activity},
+						#{themeIntro},
+						#{pRecommendMin},
+						#{pRecommendMax},
+						#{pMin},
+						#{pMax}
+				) ]]>
+	</insert>
+	
+	<!-- 테마 가격 추가 -->
+	<insert id="addThemePrice" parameterType="com.nextroom.vo.PriceVo"> 
+		<![CDATA[ 
+				insert into  
+				values (
+						#{themeNo},
+						#{headCount},
+						#{price}
+				) ]]>
+	</insert>
+	
+	<!-- 테마 시간표 추가 -->
+	<insert id="addThemeTime" parameterType="com.nextroom.vo.TimeVo"> 
+		<![CDATA[ 
+				insert into  
+				values (
+						themeTimeNo.nextval,
+						#{themeNo},
+						#{themeTime}
+				) ]]>
+	</insert>
 
 </mapper>
