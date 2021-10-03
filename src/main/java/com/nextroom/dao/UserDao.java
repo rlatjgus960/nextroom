@@ -25,4 +25,12 @@ public class UserDao {
 		
 		return sqlSession.selectOne("user.selectCafe", userVo);
 	}
+	
+	
+	//211004 by 대니
+	//파티다오에서 userNo로 user정보가져오기
+	public UserVo userNoGetUser(int userNo) {
+		
+		return sqlSession.selectOne("user.userNoGetUser", userNo);
+	}
 }

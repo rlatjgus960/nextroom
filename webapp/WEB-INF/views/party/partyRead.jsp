@@ -51,7 +51,7 @@
                            </div>
                            
                            <div class="title">
-                                <h3>카페 / 테마 : 무닐리사 / 1592 임진왜란 충무공 이순신</h3>
+                                <h3>카페 / 테마 : ${pReadMap.partyReadList.cafeName } / ${pReadMap.partyReadList.themeName }</h3>
                            </div>
                            
                            <div class="party_content">
@@ -59,31 +59,31 @@
                                 <table>
                                     <tbody>
                                         <td class="title_width">장르 : </td> 
-                                        <td>느와르</td>
+                                        <td>${pReadMap.partyReadList.jenre }</td>
                                     </tbody>
                                     <tbody>
                                         <td class="title_width">모집인원 : </td> 
-                                        <td>4인</td>
+                                        <td>${pReadMap.partyReadList.reservePerson } 인</td>
                                     </tbody>
                                     <tbody>
                                         <td class="title_width">난이도 : </td> 
-                                        <td>★ ★ ★ ☆ ☆ (3.0)</td>
+                                        <td>${pReadMap.partyReadList.levels } / 5</td>
                                     </tbody>
                                     <tbody>
                                         <td class="title_width">플레이타임 : </td> 
-                                        <td>60분</td>
+                                        <td>${pReadMap.partyReadList.playTime } 분</td>
                                     </tbody>
                                     <tbody>
                                         <td class="title_width">유형 : </td> 
-                                        <td>자물쇠 위주</td>
+                                        <td>${pReadMap.partyReadList.themeType }</td>
                                     </tbody>
                                     <tbody>
                                         <td class="title_width">이용일시 : </td> 
-                                        <td>2021.08.27 - 14:20</td>
+                                        <td>${pReadMap.partyReadList.reserveDate } / ${pReadMap.partyReadList.themeTime }</td>
                                     </tbody>
                                     <tbody>
                                         <td id="together" class="title_width">모임글 : </td> 
-                                        <td id="together_content">극쫄은 안되시구 극탱 중수 모집합아아아아아아ㅇㅎㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ핳ㅇ항나으으응아아아아아앙</td>
+                                        <td id="together_content">${pReadMap.partyReadList.content }</td>
                                         <!-- 모임글 테이블 만들때 100자 제한하기 -->
                                     </tbody>
 
@@ -141,16 +141,17 @@
                             </thead>
 
                             <tbody>
+                            
                                 <tr>
                                     <td>1</td>
                                     <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-                                    <td>이스케이프대니</td>
+                                    <td>킹갓대니</td>
                                     <td>37위</td>
                                     <td>97%</td>
                                     <td>100%</td>
                                     <td>50m 20s</td>
                                 </tr>
-                                <tr>
+                               <tr>
                                     <td>2</td>
                                     <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
                                     <td>앙기모띠</td>
@@ -158,17 +159,7 @@
                                     <td>98%</td>
                                     <td>100%</td>
                                     <td>38m 27s</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-                                    <td>다함께 차차차</td>
-                                    <td>40위</td>
-                                    <td>93%</td>
-                                    <td>100%</td>
-                                    <td>50m 20s</td>
-                                </tr>
-                         
+                                </tr> 
 								
                             </tbody>
                         </table>

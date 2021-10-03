@@ -23,4 +23,14 @@
 			and u.password= #{password}
 		]]>
 	</select>
+	
+	
+	<!-- 파티다오에서 userNo로 user정보가져오기 -->
+    <select id="userNoGetUser" parameterType="int" resultType="com.nextroom.vo.UserVo">
+		<![CDATA[
+			select userNo, id, password, userName, userHp, email, nickname, userType
+			from users
+			where userNo = #{userNo}
+		]]>
+	</select>
 </mapper>
