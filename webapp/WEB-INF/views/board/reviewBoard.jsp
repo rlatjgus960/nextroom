@@ -80,14 +80,14 @@
 								<input type="text" name="keyword" placeholder="검색어를 입력해주세요">
 								<button class="search_button" type="submit">검색</button>
 							</div>
-
-							<div>
+		
+							<!-- <div>
 								<select class="content_select">
 									<option>15개씩</option>
 									<option>30개씩</option>
 									<option>50개씩</option>
 								</select>
-							</div>
+							</div> -->
 
 						</form>
 					</div>
@@ -190,7 +190,7 @@
 		<!-- //footer -->
 	</div>
 
-
+	<!-- 닉네임 클릭시 모달 -->
 	<div id="nick_modal">
 		<ul class="nick_modal_list">
 			
@@ -213,7 +213,7 @@
 			</li>			
 		</ul>
 	</div>	
-
+	<!-- //닉네임 클릭시 모달 -->
 
 
 	 
