@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.nextroom.vo.CafeVo;
+import com.nextroom.vo.InteriorVo;
 import com.nextroom.vo.PriceVo;
+import com.nextroom.vo.ReviewBoardVo;
 import com.nextroom.vo.TimeVo;
 
 @Repository
@@ -35,28 +37,27 @@ public class CafeDao {
 	}
 
 	// 카페 내부이미지 추가
-	public int addInteriorImg(CafeVo cafeVo) {
+	public int addInteriorImg(InteriorVo interiorVo) {
 		System.out.println("[CafeDao.addInteriorImg()]");
 
-		int cafeNo = cafeVo.getCafeNo();
-		List<String> inteList = cafeVo.getInteList();
+		/*
+		 * int cafeNo = cafeVo.getCafeNo(); List<InteriorVo> inteList =
+		 * cafeVo.getInteList();
+		 * 
+		 * System.out.println("Dao cafeNo : " + cafeNo);
+		 * 
+		 * int count = 0;
+		 * 
+		 * for (int i = 0; i < inteList.size(); i++) {
+		 * 
+		 * Map<Object, Object> inteMap = new HashMap<Object, Object>();
+		 * inteMap.put("cafeNo", cafeNo); inteMap.put("intePath", inteList.get(i));
+		 * 
+		 * 
+		 * System.out.println(inteMap); count++; }
+		 */
 
-		System.out.println("Dao cafeNo : " + cafeNo);
-
-		int count = 0;
-
-		for (int i = 0; i < inteList.size(); i++) {
-
-			Map<Object, Object> inteMap = new HashMap<Object, Object>();
-			inteMap.put("cafeNo", cafeNo);
-			inteMap.put("intePath", inteList.get(i));
-
-			sqlSession.insert("cafe.addInteriorImg", inteMap);
-			System.out.println(inteMap);
-			count++;
-		}
-
-		return count;
+		return sqlSession.insert("cafe.addInteriorImg", interiorVo);
 	}
 
 	// 일반유저 --> 관리자유저로 상태 전환
@@ -74,17 +75,18 @@ public class CafeDao {
 	}
 
 	// 카페 인테리어 리스트 가져오기
-	public List<String> getInteList(int cafeNo) {
+	public List<InteriorVo> getInteList(int cafeNo) {
 		System.out.println("[CafeDao.getInteList()]");
 
 		System.out.println("dao cafeNo : " + cafeNo);
 
-		List<String> inteList = sqlSession.selectList("cafe.getInteList", cafeNo);
+		List<InteriorVo> inteList = sqlSession.selectList("cafe.getInteList", cafeNo);
 
 		System.out.println("dao inteList : " + inteList);
 
 		return inteList;
 	}
+	
 
 	// 카페 수정
 	public int updateCafe(CafeVo cafeVo) {
@@ -116,15 +118,44 @@ public class CafeDao {
 	}
 
 	// 테마 시간표 추가
-	public int addThemeTime(List<TimeVo> timeList) {
+	public int addThemeTime(TimeVo timeVo) {
 		System.out.println("[CafeDao.addThemeTime()]");
-		return sqlSession.insert("cafe.addThemeTime", timeList);
+		return sqlSession.insert("cafe.addThemeTime", timeVo);
 	}
 
 	// 테마 가격 추가
-	public int addThemePrice(List<PriceVo> priceList) {
+	public int addThemePrice(PriceVo priceVo) {
 		System.out.println("[CafeDao.addThemePrice()]");
-		return sqlSession.insert("cafe.addThemePrice", priceList);
+		return sqlSession.insert("cafe.addThemePrice", priceVo);
+	}
+
+	// 카페 내 전체 테마 리스트 가져오기
+	public List<CafeVo> getCafeTheme(int cafeNo) {
+		System.out.println("[CafeDao.getCafeTheme()]");
+		System.out.println("getCafeTheme cafeNo : " + cafeNo);
+		return sqlSession.selectList("cafe.getCafeTheme", cafeNo);
+	}
+
+	// 전체 테마 가격 가져오기
+	public List<PriceVo> getAllPrice(int cafeNo) {
+		System.out.println("[CafeDao.getAllPrice()]");
+		List<PriceVo> priceList = sqlSession.selectList("cafe.getAllPrice", cafeNo);
+		
+		System.out.println(priceList);
+		
+		return priceList;
+	}
+
+	// 전체 테마 시간표 가져오기
+	public List<TimeVo> getAllTime(int cafeNo) {
+		System.out.println("[CafeDao.getAllTime()]");
+		return sqlSession.selectList("cafe.getAllTime", cafeNo);
+	}
+	
+	// 테마 체감난이도, 별점 가져오기
+	public List<ReviewBoardVo> getRating(int cafeNo) {
+		System.out.println("[CafeDao.getRating()]");
+		return sqlSession.selectList("cafe.getRating", cafeNo);
 	}
 
 }

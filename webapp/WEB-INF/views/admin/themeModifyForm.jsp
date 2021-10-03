@@ -102,7 +102,7 @@
 	
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">장르</p>
-											<select id="themeGenre" name="themeGenre" class="cafe_explain_selectBox">
+											<select id="themeGenre" name="jenre" class="cafe_explain_selectBox">
 												<option value="" >장르를 선택해주세요.</option>
 												<option value="inference">추리</option>
 												<option value="thriller">스릴러</option>

@@ -28,7 +28,7 @@ public class CafeVo {
 
 	// 인테리어 테이블
 	private List<MultipartFile> interiorImg;
-	private List<String> inteList;
+	private List<InteriorVo> inteList;
 
 	// 테마 테이블
 	private int themeNo;
@@ -62,7 +62,7 @@ public class CafeVo {
 	public CafeVo(int cafeNo, int userNo, String cafeName, String cafeHp, String openTime, String closeTime,
 			String cafeIntro, String url, MultipartFile cafeImgFile, String cafeImg, String postCode, String address,
 			String addressDetail, String printAddress, String sido, String sigungu, String sidoDetail, String latitude,
-			String longitude, List<MultipartFile> interiorImg, List<String> inteList, int themeNo, String themeName,
+			String longitude, List<MultipartFile> interiorImg, List<InteriorVo> inteList, int themeNo, String themeName,
 			MultipartFile themeImgFile, String themeImg, String jenre, int levels, String themeType, int playTime,
 			String activity, String themeIntro, String pRecommendMin, String pRecommendMax, int pMin, int pMax,
 			List<Integer> headCount, List<Integer> price, List<String> themeStartTime) {
@@ -267,11 +267,11 @@ public class CafeVo {
 		this.interiorImg = interiorImg;
 	}
 
-	public List<String> getInteList() {
+	public List<InteriorVo> getInteList() {
 		return inteList;
 	}
 
-	public void setInteList(List<String> inteList) {
+	public void setInteList(List<InteriorVo> inteList) {
 		this.inteList = inteList;
 	}
 

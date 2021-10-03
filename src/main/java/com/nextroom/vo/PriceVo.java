@@ -1,6 +1,8 @@
 package com.nextroom.vo;
 
 public class PriceVo {
+	private String themeName;
+	private int playTime;
 	private int themeNo;
 	private int headCount;
 	private int price;
@@ -9,11 +11,29 @@ public class PriceVo {
 		super();
 	}
 
-	public PriceVo(int themeNo, int headCount, int price) {
+	public PriceVo(String themeName, int playTime, int themeNo, int headCount, int price) {
 		super();
+		this.themeName = themeName;
+		this.playTime = playTime;
 		this.themeNo = themeNo;
 		this.headCount = headCount;
 		this.price = price;
+	}
+
+	public String getThemeName() {
+		return themeName;
+	}
+
+	public void setThemeName(String themeName) {
+		this.themeName = themeName;
+	}
+
+	public int getPlayTime() {
+		return playTime;
+	}
+
+	public void setPlayTime(int playTime) {
+		this.playTime = playTime;
 	}
 
 	public int getThemeNo() {
@@ -42,7 +62,8 @@ public class PriceVo {
 
 	@Override
 	public String toString() {
-		return "PriceVo [themeNo=" + themeNo + ", headCount=" + headCount + ", price=" + price + "]";
+		return "PriceVo [themeName=" + themeName + ", playTime=" + playTime + ", themeNo=" + themeNo + ", headCount="
+				+ headCount + ", price=" + price + "]";
 	}
 
 }

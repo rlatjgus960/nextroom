@@ -31,31 +31,35 @@
 		<div id="content">
 			
 			<!-- main -->
+			
             <div id="cafe_detail_back" class="clearfix">
                 <div id="cafe_detail_wrap">
-                    <img id="cafe_detail_mainImg" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png">
+                    <img id="cafe_detail_mainImg" src="${pageContext.request.contextPath }/upload/${detailMap.cafeVo.cafeImg }">
                     <div id="cafe_detail_text">
                         <div id="cafe_detail_title">
-                            <p id="cafe_detail_name">넥스트에디션 강남신논현점</p>
-                            <p id="cafe_detail_content">넥스트에디션 강남신논현점 입니다.</p>
+                            <p id="cafe_detail_name">${detailMap.cafeVo.cafeName }</p>
+                            <p id="cafe_detail_content">${detailMap.cafeVo.cafeIntro }</p>
                         </div>
 
                         <div id="cafe_detail_contact" class="cafe_contact">
                             
                             <div>
                                 <img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">
-                                <a href="">050-7457-6272</a>
+                                <a href="">${detailMap.cafeVo.cafeHp }</a>
                             </div>
                             
                             <div>
                                 <img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">
-                                <a href="">서울특별시 서초구 사평대로56길 14 지하1층</a>
+                                <a href="">${detailMap.cafeVo.printAddress }</a>
                                 <button href="" id="cafe_btn_viewmap">지도보기</button>
+                                <input id="latitude" type="hidden" value="${detailMap.cafeVo.latitude }">
+                                <input id="longitude" type="hidden" value="${detailMap.cafeVo.longitude }">
+                                <input id="cafeName" type="hidden" value="${detailMap.cafeVo.cafeName }">
                             </div>
 
                             <div>
                                 <img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">
-                                <a href="">매일 10:30~24:00</a>
+                                <a href="">매일 ${detailMap.cafeVo.openTime } ~ ${detailMap.cafeVo.closeTime }</a>
                             </div>
                         </div>
 
@@ -72,12 +76,11 @@
             <div id="cafe_interior" class="scroll clearfix">
                 <!-- 이미지 반복영역 -->
                 <div class="scroll-image">
-                    <img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" />
-                    <img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" />
-                    <img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" />
-                    <img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" />
-                    <img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" />
-                    <img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" />
+                
+                <c:forEach items="${detailMap.inteList}" var="inteList" varStatus="status">
+                	<img alt="" src="${pageContext.request.contextPath }/upload/${inteList.img}" />
+				</c:forEach>
+                    
                 </div>
                 <!-- //이미지 반복영역 -->
 
@@ -91,19 +94,18 @@
 
                 <table id="cafe_priceTable">
                     <thead>
+                    
                         <th>인원수</th>
-                        <th>이웃집또털어(80분)</th>
-                        <th>어시스턴트(60분)</th>
-                        <th>메가스팀(60분)</th>
-                        <th>인터프리터(60분)</th>
-                        <th>조선피자몰(60분)</th>
-                        <th>트와이스어데이(60분)</th>
-                        <th>서치(60분)</th>
+                        <c:forEach items="${detailMap.priceList}" var="priceList" varStatus="status">
+	                        <th>${priceList.themeName }(${priceList.playTime })</th>
+                        </c:forEach>
                     </thead>
 
+					
                     <tbody>
+                    	<c:forEach items="${detailMap.themeList}" var="priceList" varStatus="status">
                         <tr>
-                            <td>2인</td>
+                            <td>${priceList.headCount}인</td>
                             <td>52,000원</td>
                             <td>44,000원</td>
                             <td>44,000원</td>
@@ -112,39 +114,9 @@
                             <td>44,000원</td>
                             <td>44,000원</td>
                         </tr>
+                        </c:forEach>
 
-                        <tr>
-                            <td>3인</td>
-                            <td>72,000원</td>
-                            <td>60,000원</td>
-                            <td>60,000원</td>
-                            <td>60,000원</td>
-                            <td>60,000원</td>
-                            <td>60,000원</td>
-                            <td>60,000원</td>
-                        </tr>
-
-                        <tr>
-                            <td>4인</td>
-                            <td>88,000원</td>
-                            <td>72,000원</td>
-                            <td>72,000원</td>
-                            <td>72,000원</td>
-                            <td>72,000원</td>
-                            <td>72,000원</td>
-                            <td>72,000원</td>
-                        </tr>
-
-                        <tr>
-                            <td>5인</td>
-                            <td>110,000원</td>
-                            <td>90,000원</td>
-                            <td>90,000원</td>
-                            <td>90,000원</td>
-                            <td>90,000원</td>
-                            <td>90,000원</td>
-                            <td>90,000원</td>
-                        </tr>
+                        
                     </tbody>
 
                 </table>
@@ -161,105 +133,29 @@
                 <div id="cafe_theme_list" class="clearfix">
 
                     <!-- 테마 반복영역 -->
+                    <c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status">
                     <div class="cafe_theme">
                         <a href="${pageContext.request.contextPath}/cafe/themeDetail">
-	                        <img src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
+	                        <img src="${pageContext.request.contextPath }/upload/${themeList.themeImg}" alt="">
                         </a>
 
                         <div class="cafe_theme_info">
-                            <p>넥스트에디션 강남신논현점</p>
+                            <p>${themeList.cafeName}</p>
 
 							<a href="${pageContext.request.contextPath }/cafe/themeDetail">
-                        	    <p class="cafe_theme_info_title">어시스턴트(Assistant)</p>
+                        	    <p class="cafe_theme_info_title">${themeList.themeName}</p>
                         	</a>
 
-                            <span>장르 : </span><span>판타지</span> | <span>추천인원 : </span><span>2~5인</span><br>
-                            <span>난이도 : </span><span>★★★★</span> | <span>플레이타임 : </span><span>60분</span><br>
+                            <span>장르 : </span><span>${themeList.jenre}</span> | <span>추천인원 : </span><span>${themeList.pRecommendMin}~${themeList.pRecommendMax}인</span><br>
+                            <span>난이도 : </span><span>${themeList.levels}</span> | <span>플레이타임 : </span><span>${themeList.playTime}분</span><br>
                             <span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br>
-                            <span>유형 : 장치, </span><span>자물쇠 반반</span> | <span>활동성 : </span><span>적음</span>
+                            <span>유형 : </span><span>${themeList.themeType}</span> | <span>활동성 : </span><span>${themeList.activity}</span>
                             
                         </div>
                     </div>
+                    </c:forEach>
                     
-                    <div class="cafe_theme">
-                        <img href="" src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
-
-                        <div class="cafe_theme_info">
-                            <p>넥스트에디션 강남신논현점</p>
-
-                            <p href="" class="cafe_theme_info_title">어시스턴트(Assistant)</p>
-
-                            <span>장르 : </span><span>판타지</span> | <span>추천인원 : </span><span>2~5인</span><br>
-                            <span>난이도 : </span><span>★★★★</span> | <span>플레이타임 : </span><span>60분</span><br>
-                            <span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br>
-                            <span>유형 : 장치, </span><span>자물쇠 반반</span> | <span>활동성 : </span><span>적음</span>
-                            
-                        </div>
-                    </div>
                     
-                    <div class="cafe_theme">
-                        <img href="" src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
-
-                        <div class="cafe_theme_info">
-                            <p>넥스트에디션 강남신논현점</p>
-
-                            <p href="" class="cafe_theme_info_title">어시스턴트(Assistant)</p>
-
-                            <span>장르 : </span><span>판타지</span> | <span>추천인원 : </span><span>2~5인</span><br>
-                            <span>난이도 : </span><span>★★★★</span> | <span>플레이타임 : </span><span>60분</span><br>
-                            <span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br>
-                            <span>유형 : 장치, </span><span>자물쇠 반반</span> | <span>활동성 : </span><span>적음</span>
-                            
-                        </div>
-                    </div>
-                    
-                    <div class="cafe_theme">
-                        <img href="" src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
-
-                        <div class="cafe_theme_info">
-                            <p>넥스트에디션 강남신논현점</p>
-
-                            <p href="" class="cafe_theme_info_title">어시스턴트(Assistant)</p>
-
-                            <span>장르 : </span><span>판타지</span> | <span>추천인원 : </span><span>2~5인</span><br>
-                            <span>난이도 : </span><span>★★★★</span> | <span>플레이타임 : </span><span>60분</span><br>
-                            <span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br>
-                            <span>유형 : 장치, </span><span>자물쇠 반반</span> | <span>활동성 : </span><span>적음</span>
-                            
-                        </div>
-                    </div>
-                    
-                    <div class="cafe_theme">
-                        <img href="" src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
-
-                        <div class="cafe_theme_info">
-                            <p>넥스트에디션 강남신논현점</p>
-
-                            <p href="" class="cafe_theme_info_title">어시스턴트(Assistant)</p>
-
-                            <span>장르 : </span><span>판타지</span> | <span>추천인원 : </span><span>2~5인</span><br>
-                            <span>난이도 : </span><span>★★★★</span> | <span>플레이타임 : </span><span>60분</span><br>
-                            <span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br>
-                            <span>유형 : 장치, </span><span>자물쇠 반반</span> | <span>활동성 : </span><span>적음</span>
-                            
-                        </div>
-                    </div>
-                    
-                    <div class="cafe_theme">
-                        <img href="" src="${pageContext.request.contextPath }/assets/image/cafe/theme_poster.jpg" alt="">
-
-                        <div class="cafe_theme_info">
-                            <p>넥스트에디션 강남신논현점</p>
-
-                            <p href="" class="cafe_theme_info_title">어시스턴트(Assistant)</p>
-
-                            <span>장르 : </span><span>판타지</span> | <span>추천인원 : </span><span>2~5인</span><br>
-                            <span>난이도 : </span><span>★★★★</span> | <span>플레이타임 : </span><span>60분</span><br>
-                            <span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br>
-                            <span>유형 : 장치, </span><span>자물쇠 반반</span> | <span>활동성 : </span><span>적음</span>
-                            
-                        </div>
-                    </div>
                     
                     <!-- //테마 반복영역 -->
 
@@ -287,21 +183,7 @@
         <div class="cafe_detail_modal_content">
                        
             <div id="cafe_map" style="width:500px; height:400px;"></div>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d"></script>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d&libraries=services,clusterer,drawing"></script>
-            <script>
-                var container = document.getElementById('cafe_map');
-                var options = {
-                    center: new kakao.maps.LatLng(37.50282142856503, 127.02300484029507),
-                    level: 3
-                };
-
-                var map = new kakao.maps.Map(container, options);
-                
-                
-             	 
-             	
-            </script>
+            
            
             <button type="button" id="modal_close_btn" class="mbutton">닫기</button>
            
@@ -324,7 +206,15 @@
 
 
     <!-- 제이쿼리 사용-->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8f0f56038184ef1eac6b631a3dfc277d&libraries=services,clusterer,drawing"></script>
+            
     <script>
+    
+    var latitude = $("#latitude").val();
+    var longitude = $("#longitude").val();
+    
+    
         $("#cafe_btn_viewmap").on("click", function(){
             $("#cafe_detail_modal").attr("style", "display:block");
             /* $('body').css("overflow", "hidden"); */
@@ -353,7 +243,9 @@
             // 마커가 지도 위에 표시되도록 설정합니다
             marker.setMap(map);
             
-            var iwContent = '<div style="padding:5px;">넥스트에디션 강남신논현점 <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            var cafeName = $("#cafeName").val();
+            
+            var iwContent = '<div style="padding:10px 10px; font-size:12px; text-align:center;">'+cafeName+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
             iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
             // 인포윈도우를 생성합니다

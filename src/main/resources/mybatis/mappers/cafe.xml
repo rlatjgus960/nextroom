@@ -3,7 +3,7 @@
 
 <mapper namespace="cafe">
 
-	
+
 	<!-- 카페 추가 및 카페번호 가져오기 -->
 	<insert id="addCafeKey" parameterType="com.nextroom.vo.CafeVo">
 		<selectKey keyProperty="cafeNo" resultType="int" order="BEFORE">
@@ -46,8 +46,8 @@
 			]]>
 
 	</update>
-	
-	
+
+
 	<!-- 유저 타입 수정 -->
 	<update id="updateUser" parameterType="int">
 		<![CDATA[
@@ -58,26 +58,26 @@
 	</update>
 
 	<!-- 카페 내부이미지 추가 -->
-	<insert id="addInteriorImg" parameterType="Map"> 
+	<insert id="addInteriorImg" parameterType="com.nextroom.vo.InteriorVo"> 
 		<![CDATA[ 
 				insert into interiorImg 
 				values (
 						#{cafeNo},
-						#{intePath}
+						#{img}
 				) ]]>
 	</insert>
-	
+
 	<!-- 카페 한개 정보 가져오기 -->
 	<select id="getCafe" parameterType="int" resultType="com.nextroom.vo.CafeVo">
 		<![CDATA[
 			select cafeName, cafeHp, openTime, closeTime, 
-				   cafeIntro, url, cafeImg, postCode, address, addressDetail, sido, sigungu, sidoDetail, latitude, longitude
+				   cafeIntro, url, cafeImg, postCode, address, addressDetail, printAddress, sido, sigungu, sidoDetail, latitude, longitude
 			from cafe
 			where cafeNo = #{cafeNo}
 		]]>
-	
+
 	</select>
-	
+
 	<!-- 카페 내부이미지 리스트 가져오기 -->
 	<select id="getInteList" parameterType="int" resultType="com.nextroom.vo.InteriorVo">
 		<![CDATA[
@@ -85,10 +85,10 @@
 			from INTERIORIMG
 			where cafeNo = #{cafeNo}
 		]]>
-	
+
 	</select>
-	
-	
+
+
 	<!-- 카페 전체 리스트 가져오기 -->
 	<select id="getCafeList" resultType="com.nextroom.vo.CafeVo">
 	
@@ -97,11 +97,11 @@
 				   cafeIntro, cafeImg, printAddress, sidoDetail
 			from cafe
 		]]>
-	
+
 	</select>
-	
-	
-	
+
+
+
 	<!-- 카페 상세 정보 가져오기 -->
 	<select id="getOneCafe" parameterType="int" resultType="com.nextroom.vo.CafeVo">
 	
@@ -111,14 +111,14 @@
 			from cafe
 			where cafeNo = #{cafeNo}
 		]]>
-	
+
 	</select>
-	
-	
-	
+
+
+
 	<!-- 테마 추가 -->
-	<insert id="addTheme" parameterType="com.nextroom.vo.CafeVo"> 
-		
+	<insert id="addTheme" parameterType="com.nextroom.vo.CafeVo">
+
 		<selectKey keyProperty="themeNo" resultType="int" order="BEFORE">
 			select themeNo.nextval from dual
 		</selectKey>
@@ -142,27 +142,102 @@
 						#{pMax}
 				) ]]>
 	</insert>
-	
+
 	<!-- 테마 가격 추가 -->
 	<insert id="addThemePrice" parameterType="com.nextroom.vo.PriceVo"> 
 		<![CDATA[ 
-				insert into  
+				insert into themePrice
 				values (
 						#{themeNo},
 						#{headCount},
 						#{price}
 				) ]]>
 	</insert>
-	
+
 	<!-- 테마 시간표 추가 -->
 	<insert id="addThemeTime" parameterType="com.nextroom.vo.TimeVo"> 
 		<![CDATA[ 
-				insert into  
+				insert into themeTime
 				values (
 						themeTimeNo.nextval,
 						#{themeNo},
 						#{themeTime}
 				) ]]>
 	</insert>
+
+
+
+
+	<!-- 카페 내 전체 테마 정보 가져오기 -->
+	<select id="getCafeTheme" parameterType="int" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select  c.cafeName,
+					th.THEMENO, 
+					th.THEMENAME,
+					th.THEMEIMG,
+					th.JENRE,
+					th.LEVELS,
+					th.THEMETYPE,
+					th.PLAYTIME,
+					th.ACTIVITY,
+					th.THEMEINTRO,
+					th.PRECOMMENDMIN,
+					th.PRECOMMENDMAX
+			from cafe c, theme th
+			where c.cafeNo = th.cafeNo
+			and c.cafeNo = #{cafeNo}
+		]]>
+
+	</select>
+
+	
+
+
+	<!-- 전체 테마 가격 가져오기 -->
+	<select id="getAllPrice" parameterType="int" resultType="com.nextroom.vo.PriceVo">
+	
+		<![CDATA[
+			select  th.themeName,
+					th.playTime,
+					p.themeNo,
+					p.headCount,
+					p.price
+			from cafe c, theme th, themePrice p
+			where c.cafeNo = th.cafeNo
+			and th.themeNo = p.themeNo
+			and c.cafeNo = #{cafeNo}
+		]]>
+
+	</select>
+
+	
+
+	<!-- 전체 테마 시간표 가져오기 -->
+	<select id="getAllTime" parameterType="int" resultType="com.nextroom.vo.TimeVo">
+	
+		<![CDATA[
+			select  t.THEMETIMENO,
+					t.THEMETIME
+			from theme th, themeTime t
+			where th.themeNo = t.themeNo
+			and th.themeNo = #{themeNo}
+		]]>
+
+	</select>
+	
+	
+	<!-- 테마 리뷰 체감난이도, 별점 가져오기 -->
+	<select id="getRating" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo">
+	
+		<![CDATA[
+			select r.feellevel, r.rating
+			from cafe c, theme th, review r
+			where c.cafeNo = th.cafeNo
+			and th.themeNo = r.themeNo
+			and c.cafeNo = #{cafeNo}
+		]]>
+
+	</select>
 
 </mapper>

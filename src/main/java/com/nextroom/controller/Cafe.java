@@ -1,6 +1,7 @@
 package com.nextroom.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nextroom.service.CafeService;
 import com.nextroom.vo.CafeVo;
+import com.nextroom.vo.PriceVo;
 
 @RequestMapping("/cafe")
 @Controller
@@ -34,14 +36,15 @@ public class Cafe {
 	   return "cafe/cafeMain";
 	}
 	
-	//카페 상세페이지 -- 수정중, 어떤식으로 정보 불러올건지 고민고민
+	//카페 상세페이지
 	@RequestMapping(value="/{cafeNo}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String cafeDetail(@PathVariable("cafeNo") int cafeNo, Model model) {
 	   System.out.println("cafeDetail");
 	   
-	   CafeVo cafeVo = cafeService.getCafeDetail(cafeNo);
+	   Map<Object, Object> detailMap = cafeService.getCafeDetail(cafeNo);
 	   
-	   model.addAttribute("cafeVo", cafeVo);
+	   model.addAttribute("detailMap", detailMap);
+	   
 	   
 	   return "cafe/cafeDetail";
 	}

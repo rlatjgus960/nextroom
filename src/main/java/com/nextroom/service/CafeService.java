@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.nextroom.dao.CafeDao;
 import com.nextroom.vo.CafeVo;
+import com.nextroom.vo.InteriorVo;
 import com.nextroom.vo.PriceVo;
 import com.nextroom.vo.TimeVo;
 
@@ -157,10 +160,12 @@ public class CafeService {
 		// ******************** //카페 메인 이미지 처리 ********************//
 
 		// ******************** 카페 내부이미지 처리 ********************//
-		List<String> inteList = new ArrayList<>();
+		List<InteriorVo> inteList = new ArrayList<>();
 
 		List<MultipartFile> interiorImg = cafeVo.getInteriorImg();
 
+		
+		int inteCount = 0;
 		for (int i = 0; i < interiorImg.size(); i++) {
 
 			long intefileSize = interiorImg.get(i).getSize();
@@ -204,15 +209,23 @@ public class CafeService {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
-				inteList.add(inteSaveName);
+				
+				InteriorVo interiorVo = new InteriorVo();
+				interiorVo.setImg(inteSaveName);
+				interiorVo.setCafeNo(cafeVo.getCafeNo());
+				
+				
+				inteCount += cafeDao.addInteriorImg(interiorVo);
+				//cafeVo.setInteList(interiorVo);
+				
+				//inteList.add(interiorVo);
 			}
 
-			cafeVo.setInteList(inteList);
+			//cafeVo.setInteList(inteList);
 
 		}
 
-		int inteCount = cafeDao.addInteriorImg(cafeVo);
+		//int inteCount = cafeDao.addInteriorImg(cafeVo);
 		// ******************** //카페 내부이미지 처리 ********************//
 
 		// ******************** 회원 타입 변경(1-->2) ********************//
@@ -232,7 +245,7 @@ public class CafeService {
 
 		CafeVo cafeVo = cafeDao.getCafe(cafeNo);
 
-		List<String> inteList = cafeDao.getInteList(cafeNo);
+		List<InteriorVo> inteList = cafeDao.getInteList(cafeNo);
 		cafeVo.setInteList(inteList);
 
 		System.out.println(inteList);
@@ -247,10 +260,30 @@ public class CafeService {
 	}
 
 	// 카페 상세페이지 출력용 가져오기
-	public CafeVo getCafeDetail(int cafeNo) {
+	public Map<Object, Object> getCafeDetail(int cafeNo) {
 		System.out.println("[CafeService.getCafeDetail()]");
+		CafeVo cafeVo = cafeDao.getCafe(cafeNo);
+		List<CafeVo> themeList = cafeDao.getCafeTheme(cafeNo);
+		List<PriceVo> priceList = cafeDao.getAllPrice(cafeNo);
+		List<InteriorVo> inteList = cafeDao.getInteList(cafeNo);
+		
+		
+		
+		//List<TimeVo> timeList = cafeDao.getAllTime(cafeNo);
+		//List<ReviewBoardVo> ratingList = cafeDao.getRating(cafeNo);
+		
+		System.out.println("themeList : " + themeList);
+		System.out.println("priceList : " + priceList);
+		
+		Map<Object, Object> detailMap = new HashMap<Object, Object>();
+		detailMap.put("cafeVo", cafeVo);
+		detailMap.put("themeList", themeList);
+		detailMap.put("priceList", priceList);
+		detailMap.put("inteList", inteList);
+		//detailMap.put("timeList", timeList);
+		//detailMap.put("ratingList", ratingList);
 
-		return cafeDao.getCafeDetail(cafeNo);
+		return detailMap;
 	}
 
 	// 테마 추가
@@ -304,17 +337,16 @@ public class CafeService {
 
 			cafeVo.setThemeImg(saveName);
 
-			
+			count += cafeDao.addTheme(cafeVo);
 		}
 		
-		count += cafeDao.addTheme(cafeVo);
+		
 		
 		System.out.println("insert theme 후 cafeVo : "+cafeVo);
 		System.out.println(cafeVo.getThemeNo());
 		
 		//테마 시간표 추가
 		List<String> timeTable = cafeVo.getThemeStartTime();
-		List<TimeVo> timeList = new ArrayList<TimeVo>();
 		
 		
 		System.out.println("timeTable : "+timeTable);
@@ -328,19 +360,13 @@ public class CafeService {
 			timeVo.setThemeNo(themeNo);
 			timeVo.setThemeTime(timeTable.get(i));
 			
-			timeList.add(timeVo);
+			count += cafeDao.addThemeTime(timeVo);
+			
 		}
-		System.out.println(timeList);
-		
-		//themeNo 값 들어있는데 왜 not found인지?
-		
-		count += cafeDao.addThemeTime(timeList);
 		
 		//테마 가격 추가
 		List<Integer> price = cafeVo.getPrice();
 		List<Integer> headCount = cafeVo.getHeadCount();
-		List<PriceVo> priceList = new ArrayList<PriceVo>();
-		
 		
 		for(int i=0; i<price.size(); i++) {
 			
@@ -350,11 +376,9 @@ public class CafeService {
 			priceVo.setHeadCount(headCount.get(i));
 			priceVo.setPrice(price.get(i));
 			
-			priceList.add(priceVo);
+			count += cafeDao.addThemePrice(priceVo);
 		}
 		
-		count += cafeDao.addThemePrice(priceList);
-
 		return count;
 	}
 
