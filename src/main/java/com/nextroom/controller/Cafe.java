@@ -46,16 +46,19 @@ public class Cafe {
 	   return "cafe/cafeDetail";
 	}
 	
+	//테마 메인
 	@RequestMapping(value="/theme", method = { RequestMethod.GET, RequestMethod.POST })
 	public String themeMain() {
 	   System.out.println("themeMain");
 	   return "theme/themeMain";
 	}
 	
+	//테마 상세페이지
 	@RequestMapping(value="/themeDetail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String themeDetail() {
 	   System.out.println("themeDetail");
 	   return "theme/themeDetail";
 	}
+	
 	
 }

@@ -269,6 +269,8 @@
 	
 }
 
+
+
 .theme_explain_item {
     margin-bottom: 20px;
 }
@@ -312,15 +314,34 @@
 	height: 30px;
 }
 
-#themePrice label, #themeTime label{
+#nonThemePrice {
+	display: block;
+}
+
+
+#themePrice{
+	display: none;
+}
+
+#themePrice label, #themeTime label, .timeWrap{
 	display: block;
 	margin: 5px 0px;
+
+}
+
+.priceWrap {
+	margin-bottom: 5px;
 }
 
 .themePrice {
-	margin-left: 5px;
-	width: 190px;
+	width: 180px;
 	height: 30px;
+}
+
+.headC{
+	width: 35px;
+	display: inline-block;
+	text-align: left;
 }
 
 .non-previewArea_item {
@@ -329,12 +350,21 @@
 }
 
 .themeTimeSelect {
-	width: 190px;
+	width: 175px;
 	height: 30px;
 }
 
+.removeTime {
+	width : 15px;
+	display : inline-block;
+}
+
+.removeTime:hover {
+	cursor: pointer;
+}
+
 #themeTimeWrap {
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 
@@ -342,3 +372,6 @@
 	margin-bottom: 20px;
 }
 
+#btnPlayNum {
+	margin-top: 10px;
+}

@@ -16,7 +16,7 @@ import com.nextroom.vo.UserVo;
 
 @Controller
 @RequestMapping("/admin")
-public class Admin {
+public class AdminCafeThemeController {
 	
 	@Autowired
 	private CafeService cafeService;
@@ -73,10 +73,10 @@ public class Admin {
 	}
 	
 	//관리자페이지 테마추가
-	@RequestMapping("/addTheme")
+	@RequestMapping("/addThemeForm")
 	public String addTheme() {
 	   System.out.println("addTheme");
-	   return "admin/addTheme";
+	   return "admin/addThemeForm";
 	}
 	
 	
