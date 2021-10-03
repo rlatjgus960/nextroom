@@ -8,12 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nextroom.dao.PartyDao;
+import com.nextroom.dao.UserDao;
 import com.nextroom.vo.PartyVo;
+import com.nextroom.vo.UserVo;
 
 @Service
 public class PartyService {
 
-	@Autowired PartyDao partyDao;
+	@Autowired 
+	PartyDao partyDao;
+	
+	@Autowired
+	UserDao userDao;
 	
 	//21-09-26 by 대니
 	//sido로 카페No, 카페이름가져오기
@@ -175,6 +181,12 @@ public class PartyService {
 		//partyNo로 파티대기멤버 리스트 가져오기
 		List<PartyVo> partyApplicantList = partyDao.partyApplicantList(partyNo);
 		
+		//userNo로 유저닉넴 & 각종 랭킹 가져오기
+		int userNo = partyReadList.getUserNo();
+		
+		UserVo partyUserVo = new UserVo();
+		partyUserVo = userDao.userNoGetUser(userNo);
+		
 		
 		//Map 열어서 각종 Vo와 List 담아주기
 		Map<String, Object> pReadMap = new HashMap<String, Object>();
@@ -182,6 +194,7 @@ public class PartyService {
 		pReadMap.put("partyReadList", partyReadList);
 		pReadMap.put("partyDetailList", partyDetailList);
 		pReadMap.put("partyApplicantList", partyApplicantList);
+//		pReadMap.put("partyDetailList", partyUserVo); 
 		
 		System.out.println("서비스구간 맵 다오너라 :" + pReadMap);
 		

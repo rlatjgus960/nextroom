@@ -125,7 +125,7 @@
 
                     <!-- 페이징 영역 -->
                     <div id="pager">
-                        <ol class="clearfix">
+                       <!-- <ol class="clearfix">
                             <li><a href="">◀</a></li>
                             <li><a href="">1</a></li>
                             <li><a href="">2</a></li>
@@ -138,7 +138,7 @@
                             <li><a href="">9</a></li>
                             <li><a href="">10</a></li>
                             <li><a href="">▶</a></li>
-                        </ol>
+                        </ol> -->
                     	
                      	<c:if test="${not empty sessionScope.authUser }"> 
 	                        <button type="button" id="submit_button" class="submit_button">등록하기</button>
