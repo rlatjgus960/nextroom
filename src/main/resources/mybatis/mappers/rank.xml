@@ -88,11 +88,15 @@
 	<select id="partySelectRankList" parameterType="int" resultType="com.nextroom.vo.PartyVo">
 		
 		<![CDATA[
-			select 	u.nickname
-					,ROW_NUMBER() OVER (ORDER BY r.userrating DESC) rank
-			from rankrating r,users u
-			where r.userno=u.userno
-			and u.userno = #{userNo}
+			select rk.rank, 
+       			   us.nickname
+			from users us,  (select u.nickname
+                					,ROW_NUMBER() OVER (ORDER BY r.userrating DESC) rank
+                					,r.userno
+                			 from rankrating r,users u
+                			 where r.userno=u.userno) rk 
+			where rk.userno = us.userno
+			and us.userno = #{userNo}
 		]]>
 		
 	</select>

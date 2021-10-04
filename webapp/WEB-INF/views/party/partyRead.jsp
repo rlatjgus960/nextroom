@@ -91,20 +91,22 @@
                            </div>
 
                            <!-- 마스터 버튼 -->
-               				<div class="btn_group">
-                            	<a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
-                           <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
-                               <button id="delete_button" class="submit_button">파티삭제</button>
-                               <button id="complete_button" class="mbutton">모집완료</button>
-                           </c:if>
+          				   <div class="btn_group">
+	                           <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
+	                               <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
+	                               <button id="delete_button" class="submit_button">파티삭제</button>
+	                               <button id="complete_button" class="mbutton">모집완료</button>
+	                           </c:if>
                            </div>	
                            <!-- //마스터 버튼 -->
 
                             <!-- 참가자 버튼 -->
-<!-- 		                         <div class="btn_group"> -->
-<!--                                 <button id="list_button" class="submit_button">목록</button> -->
-<!--                                 <button id="join_button" class="submit_button">파티참가</button> -->
-<!--                                 <button id="cancel_button" class="submit_button">참가취소</button> -->
+                         	<div class="btn_group">
+	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo }">
+	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
+	                                <button id="join_button" class="submit_button">파티참가</button> 
+	                                <button id="cancel_button" class="submit_button">참가취소</button>
+	                            </c:if> 
                             </div>
                             <!-- //참가자 버튼 -->
 
@@ -141,17 +143,18 @@
                             </thead>
 
                             <tbody>
-                            
+                            	<c:forEach items="${pReadMap.partyDetailList }" var="partyDetailList" varStatus="status">
                                 <tr>
-                                    <td>1</td>
+                                    <td>${status.count }</td>
                                     <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-                                    <td>킹갓대니</td>
-                                    <td>37위</td>
-                                    <td>97%</td>
-                                    <td>100%</td>
-                                    <td>50m 20s</td>
+                                    <td>${partyDetailList.nickname }</td>
+                                    <td>${partyDetailList.rank } 위</td>
+                                    <td>${partyDetailList.winRate } %</td>
+                                    <td>${partyDetailList.noHintWinRate } %</td>
+                                    <td>${partyDetailList.showAvgClearTime }</td>
                                 </tr>
-                               <tr>
+                            	</c:forEach>
+                               <%-- <tr>
                                     <td>2</td>
                                     <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
                                     <td>앙기모띠</td>
@@ -159,7 +162,7 @@
                                     <td>98%</td>
                                     <td>100%</td>
                                     <td>38m 27s</td>
-                                </tr> 
+                                </tr>  --%>
 								
                             </tbody>
                         </table>
@@ -169,7 +172,6 @@
                     
 
                     <!-- 대기현황 -->
-                    <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
                     <div id="hold_list">
                         <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;대기현황</div>
                         <table>
@@ -197,17 +199,37 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-                                    <td>이스케이프대니</td>
-                                    <td>37위</td>
-                                    <td>97%</td>
-                                    <td>100%</td>
-                                    <td>50m 20s</td>
-                                    <td><button>O</button> / <button>X</button></td>
-                                </tr>
-                                <tr>
+                            <c:choose>
+                            	<c:when test="${empty pReadMap.partyApplicantList }">
+                            		<tr>
+                            		<td></td>
+                            		<td></td>
+                            		<td></td>
+                            		<td>대기중인 신청 인원이 없습니다.</td>
+                            		<td></td>
+                            		<td></td>
+                            		<td></td>
+                            		<td></td>
+                            		</tr>
+                            	</c:when>
+                                <c:otherwise>
+	                            <c:forEach items="${pReadMap.partyApplicantList }" var="partyApplicantList" varStatus="status">
+	                                <tr>
+		                                    <td>${status.count }</td>
+		                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+		                                    <td>${partyApplicantList.nickname }</td>
+		                                    <td>${partyApplicantList.rank } 위</td>
+		                                    <td>${partyApplicantList.winRate } %</td>
+		                                    <td>${partyApplicantList.noHintWinRate } %</td>
+		                                    <td>${partyApplicantList.showAvgClearTime }</td>
+                    			<c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
+	                                    <td><button>O</button> / <button>X</button></td>
+                    			</c:if>
+	                                </tr>
+	                            </c:forEach>  
+                                </c:otherwise>
+                            </c:choose>
+                                <%-- <tr>
                                     <td>2</td>
                                     <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
                                     <td>앙기모띠</td>
@@ -216,11 +238,10 @@
                                     <td>100%</td>
                                     <td>38m 27s</td>
                                     <td><button>O</button> / <button>X</button></td>
-                                </tr>
+                                </tr> --%>
                             </tbody>
                         </table>
                     </div>
-                    </c:if>
 				<!-- //대기현황 -->
 
 			</div>
