@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/reserve")
 @Controller
-public class Reserve {
+public class ReserveController {
 	
 	
 	//예약 기본폼
