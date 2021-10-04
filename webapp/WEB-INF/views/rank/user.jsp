@@ -82,14 +82,14 @@
                            	<span><img class="f-left rank_profile img-circle" src="${pageContext.request.contextPath }/assets/image/profile/red.jpg"></span>
                         
                         
-                           	<p class="first_font m-left f-left">Junzzang</p>
+                           	<p class="first_font m-left f-left">${rankList[0].nickName}</p>
                         
                         
                             <ul class="rank_detail">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>평균 기록 : 00분 00초</li>
-                              <li>전적 300전 100승 200패</li>
+                              <li>성공률 : ${rankList[0].winRate}%</li>
+                              <li>노힌트 성공률 : ${rankList[0].noHintWinRate}%</li>
+                              <li>평균 기록 : ${rankList[0].showAvgClearTime}</li>
+                              <li>전적 : ${rankList[0].gameHistory}</li>
                             </ul>
                         
                         
@@ -107,14 +107,14 @@
                               <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/blue.jpg"></span>
                            
                            
-                              <p class="sec_font">Junzzang</p>
+                              <p class="sec_font">${rankList[1].nickName}</p>
                            
                            
                               <ul class="rank_detail">
-                                 <li>성공률 : 33.33%</li>
-                                 <li>노힌트 성공률 : 0%</li>
-                                 <li>평균 기록 : 00분 00초</li>
-                                 <li>전적 300전 100승 200패</li>
+                                 <li>성공률 : ${rankList[1].winRate}%</li>
+	                             <li>노힌트 성공률 : ${rankList[1].noHintWinRate}%</li>
+	                             <li>평균 기록 : ${rankList[1].showAvgClearTime}</li>
+	                             <li>전적 : ${rankList[1].gameHistory}</li>
                               </ul>
                            
                         
@@ -126,14 +126,14 @@
                               <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/yellow.jpg"></span>
                            
                            
-                              <p class="sec_font">Junzzang</p>
+                              <p class="sec_font">${rankList[2].nickName}</p>
                            
                            
                               <ul class="rank_detail">
-                                 <li>성공률 : 33.33%</li>
-                                 <li>노힌트 성공률 : 0%</li>
-                                 <li>평균 기록 : 00분 00초</li>
-                                 <li>전적 300전 100승 200패</li>
+                                 <li>성공률 : ${rankList[2].winRate}%</li>
+	                             <li>노힌트 성공률 : ${rankList[2].noHintWinRate}%</li>
+	                             <li>평균 기록 : ${rankList[2].showAvgClearTime}</li>
+	                             <li>전적 : ${rankList[2].gameHistory}</li>
                               </ul>
                            
                         
@@ -145,14 +145,14 @@
                               <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg"></span>
                            
                            
-                              <p class="sec_font">Junzzang</p>
+                              <p class="sec_font">${rankList[3].nickName}</p>
                            
                            
                               <ul class="rank_detail">
-                                 <li>성공률 : 33.33%</li>
-                                 <li>노힌트 성공률 : 0%</li>
-                                 <li>평균 기록 : 00분 00초</li>
-                                 <li>전적 300전 100승 200패</li>
+                                 <li>성공률 : ${rankList[3].winRate}%</li>
+	                             <li>노힌트 성공률 : ${rankList[3].noHintWinRate}%</li>
+	                             <li>평균 기록 : ${rankList[3].showAvgClearTime}</li>
+	                             <li>전적 : ${rankList[3].gameHistory}</li>
                               </ul>
                            
                         
@@ -164,14 +164,14 @@
                               <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/green.jpg"></span>
                            
                            
-                              <p class="sec_font">Junzzang</p>
+                              <p class="sec_font">${rankList[4].nickName}</p>
                            
                            
                               <ul class="rank_detail">
-                                 <li>성공률 : 33.33%</li>
-                                 <li>노힌트 성공률 : 0%</li>
-                                 <li>평균 기록 : 00분 00초</li>
-                                 <li>전적 300전 100승 200패</li>
+                                 <li>성공률 : ${rankList[4].winRate}%</li>
+	                             <li>노힌트 성공률 : ${rankList[4].noHintWinRate}%</li>
+	                             <li>평균 기록 : ${rankList[4].showAvgClearTime}</li>
+	                             <li>전적 : ${rankList[4].gameHistory}</li>
                               </ul>
                            
                         
@@ -186,550 +186,27 @@
               
                <div id="rank6-">
                   <ul id="third_pool">
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     <li>
-                        <div class="rank_list">
-                        
-                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/neoburi.jpg"></span>
-                        
-                        
-                           <p class="f-left">Junzzang</p>
-                        
-                        
-                           <ul class="ranklist_detail f-right">
-                              <li>성공률 : 33.33%</li>
-                              <li>노힌트 성공률 : 0%</li>
-                              <li>전적 300전 100승 200패</li>
-                           </ul>
-                        
-                     
-                        </div>
-                     </li>
-                     
-                     
-
-                     
+                  	
+                  	 <c:forEach var="ratingVo" items="${rankList}" begin="5">
+	                     <li>
+	                        <div class="rank_list">
+	                        
+	                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
+	                        
+	                        
+	                           <p class="f-left">${ratingVo.nickName}</p>
+	                        
+	                        
+	                           <ul class="ranklist_detail f-right">
+	                              <li>성공률 : ${ratingVo.winRate}%</li>
+	                              <li>노힌트 성공률 : ${ratingVo.noHintWinRate}%</li>
+	                              <li>전적 : ${ratingVo.gameHistory}</li>
+	                           </ul>
+	                        
+	                     
+	                        </div>
+	                     </li>
+                     </c:forEach>
 
                    </ul>
                </div>
