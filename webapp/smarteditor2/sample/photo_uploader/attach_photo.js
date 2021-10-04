@@ -334,7 +334,7 @@
     	var tempFile,
     		sUploadURL;
     	
-    	sUploadURL= '/smarteditor2/multiImageUploader.jsp'; 	//upload URL
+    	sUploadURL= '/file_uploader_html5.jsp'; 	//upload URL
     	
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
@@ -458,7 +458,7 @@
 	 * @return
 	 */
 	function onAjaxError (){
-		alert("[가이드]사진 업로더할 서버URL셋팅이 필요합니다.-onAjaxError");
+		alert("[가이드]사진 업로더할 서버URL셋팅이 필요합니다.-onAjaxError"+e._response.responseText);
 	}
 
  	/**
