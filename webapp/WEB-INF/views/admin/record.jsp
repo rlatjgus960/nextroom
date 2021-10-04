@@ -53,7 +53,7 @@
                         <ul>
 						<li>예약
 							<ul class="aside_mini_cate">
-								<li><a href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약 확인</a></li>
+								<li><a href="${pageContext.request.contextPath }/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}">&nbsp;-예약 확인</a></li>
 								<li><a href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약 관리</a></li>
 							</ul>
 						</li>
