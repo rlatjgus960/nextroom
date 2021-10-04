@@ -62,7 +62,7 @@ public class Board {
 		System.out.println(reviewBoardVo);
 		
 		model.addAttribute("reviewBoardVo",reviewBoardVo);
-		
+		System.out.println("정보 들어가있는거 내놔봐" + reviewBoardVo.getRecTime());
 		
 		return "board/readForm";
 	}
@@ -125,6 +125,8 @@ public class Board {
 		//vo에 세션에서 가져온 no담기
 		int no = authUser.getUserNo();
 		reviewBoardVo.setUserNo(no);
+		
+
 		
 		System.out.println(reviewBoardVo);
 		reviewBoardService.reviewWrite(reviewBoardVo);
