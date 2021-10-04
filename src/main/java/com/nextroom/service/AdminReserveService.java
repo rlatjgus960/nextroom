@@ -196,6 +196,16 @@ public class AdminReserveService {
 		return count;
 	}
 	
+	//입실확인
+	public AdminReserveVo btnCheckIn(int reserveNo) {
+		System.out.println("[AdminReserveService.btnCheckIn()]");
+		
+		AdminReserveVo preR = adminDao.selectPreR(reserveNo);
+		System.out.println("테테테스트" + preR);
+		
+		return preR;
+	}
+	
 	
 }
 

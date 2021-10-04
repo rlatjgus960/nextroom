@@ -161,6 +161,18 @@ public class AdminReserveController {
 		return count;
 	}
 	
+	//입실확인
+	@ResponseBody
+	@RequestMapping("/btnCheckIn")
+	public AdminReserveVo btnCheckIn(@RequestParam("reserveNo") int reserveNo) {
+		System.out.println("btnCheckIn");
+		
+		AdminReserveVo preR = adminService.btnCheckIn(reserveNo);
+		//System.out.println(count);
+		
+		return preR;
+	}
+	
 	
 
 }

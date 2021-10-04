@@ -308,6 +308,8 @@
 				</div>
 				
 				<input type='hidden' name="rDate" value="${param.reserveDate}">
+				<input id="resDate" type='hidden' name="resDate" value="">
+				<input id="tNo" type='hidden' name="tNo" value="">
 
 
 
@@ -349,6 +351,7 @@
 			$("#admin_reserve_Btns").show();
 		}
 		
+		
 		var reserveNo = $(this).data("reserveno");
 		console.log(reserveNo); 
 		
@@ -365,6 +368,15 @@
 				var path = "${pageContext.request.contextPath }/assets/image/" + reserveModalVo.themeImg;
 				var time = reserveModalVo.reserveTime.split(":");
 				
+				var year = (reserveModalVo.reserveDate).substring(0,4);
+				console.log(year);
+				
+				var month = (reserveModalVo.reserveDate).substring(4,6);
+				console.log(month);
+				
+				var day = (reserveModalVo.reserveDate).substring(6,8);
+				console.log(day);
+				
 				$('#modal_themeImg').attr('src',path);
 				
 				$("#modal_reserveNo").text(reserveModalVo.reserveNo);
@@ -373,8 +385,11 @@
 				$("#modal_reserveHp").text(reserveModalVo.reserveHp);
 				$("#modal_themeName").text(reserveModalVo.themeName);
 				$("#modal_payment").text(reserveModalVo.payment+"원");
-				$("#modal_reserveDateTime").text(reserveModalVo.reserveDate+" "+time[0]+"시 "+time[1]+"분");
+				$("#modal_reserveDateTime").text(year + "년 " + month + "월 " + day + "일 " + time[0]+"시 "+time[1]+"분");
 				$("#modal_reservePerson").text(reserveModalVo.reservePerson+"인");
+				
+				$("#tNo").val(reserveModalVo.themeNo);
+				$("#resDate").val(reserveModalVo.reserveDate);
 				
 				//예약취소
 				$("#delReserve").on("click", function() {
@@ -412,10 +427,10 @@
 					//console.log(person);
 					
 					var adminReserveVo = {
-						themeNo : $("[name='themeNo']").val(),
+						themeNo : $("[name='tNo']").val(),
 						reserveNo : reserveNo,
 						totalPerson : person,
-						reserveDate : $("[name='rDate']").val()
+						reserveDate : $("[name='resDate']").val()
 					};
 					
 					console.log(adminReserveVo);
@@ -442,6 +457,30 @@
 					});
 				});
 				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+		
+		
+		
+		
+		
+		$.ajax({
+			url: "${pageContext.request.contextPath}/admin/reserve/btnCheckIn",
+			type: "post",
+			data : { reserveNo : reserveNo },
+			
+			//dataType: "json",
+			success : function(preR) {
+				if(preR.gameState != null) {
+					$("#admin_reserve_Btns").hide();
+				} else {
+					$("#admin_reserve_Btns").show();
+				}
+				
+					
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
