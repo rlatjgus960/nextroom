@@ -106,6 +106,15 @@ public class CafeVo {
 		this.price = price;
 		this.themeStartTime = themeStartTime;
 	}
+	
+	
+
+	public CafeVo(int cafeNo, int pMin, int pMax) {
+		super();
+		this.cafeNo = cafeNo;
+		this.pMin = pMin;
+		this.pMax = pMax;
+	}
 
 	public int getCafeNo() {
 		return cafeNo;

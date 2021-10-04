@@ -153,6 +153,8 @@
 						#{price}
 				) ]]>
 	</insert>
+	
+	
 
 	<!-- 테마 시간표 추가 -->
 	<insert id="addThemeTime" parameterType="com.nextroom.vo.TimeVo"> 
@@ -183,7 +185,9 @@
 					th.ACTIVITY,
 					th.THEMEINTRO,
 					th.PRECOMMENDMIN,
-					th.PRECOMMENDMAX
+					th.PRECOMMENDMAX,
+					th.pMin,
+					th.pMax
 			from cafe c, theme th
 			where c.cafeNo = th.cafeNo
 			and c.cafeNo = #{cafeNo}
@@ -195,7 +199,25 @@
 
 
 	<!-- 전체 테마 가격 가져오기 -->
-	<select id="getAllPrice" parameterType="int" resultType="com.nextroom.vo.PriceVo">
+	<select id="getAllPrice" parameterType="com.nextroom.vo.CafeVo" resultType="com.nextroom.vo.PriceVo">
+	
+		<![CDATA[
+			select  th.themeName,
+					th.PLAYTIME,
+					p.THEMENO,
+					p.HEADCOUNT,
+					p.PRICE
+			from cafe c, theme th, themePrice p
+			where c.cafeNo = th.cafeNo
+			and th.themeNo = p.themeNo
+			and c.cafeNo = #{cafeNo}
+			and p.HEADCOUNT = #{pMin}
+		]]>
+
+	</select>
+	
+	<!-- 전체 테마 가격 가져오기 -->
+	<select id="aaa" parameterType="int" resultType="com.nextroom.vo.PriceVo">
 	
 		<![CDATA[
 			select  th.themeName,

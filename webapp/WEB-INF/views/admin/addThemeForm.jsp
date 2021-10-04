@@ -355,7 +355,7 @@
 
 		console.log("시간 추가 버튼 클릭");
 		
-		$("#themeTimeWrap").append("<div id='d-"+ i + "' class='clearfix timeWrap'> <input type='time' class='themeTimeSelect' name='themeTime'><img data-no="+ i + " class='removeTime' src='${pageContext.request.contextPath }/assets/image/admin/xmark.png'></div>")
+		$("#themeTimeWrap").append("<div id='d-"+ i + "' class='clearfix timeWrap'> <input type='time' class='themeTimeSelect' name='themeTime'>&nbsp;<img data-no="+ i + " class='removeTime' src='${pageContext.request.contextPath }/assets/image/admin/xmark.png'></div>")
 
 		i++; // 함수 내 하단에 증가문 설정
 

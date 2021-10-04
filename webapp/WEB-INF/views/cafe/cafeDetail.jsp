@@ -97,14 +97,15 @@
                     
                         <th>인원수</th>
                         <c:forEach items="${detailMap.priceList}" var="priceList" varStatus="status">
-	                        <th>${priceList.themeName }(${priceList.playTime })</th>
+	                        <th>${priceList.themeName }(${priceList.playTime }분)</th>
                         </c:forEach>
                     </thead>
 
 					
                     <tbody>
-                    	<c:forEach items="${detailMap.themeList}" var="priceList" varStatus="status">
-                        <tr>
+                    	
+                    	<c:forEach items="${detailMap.priceList}" var="priceList" varStatus="status">
+                    	 <tr>
                             <td>${priceList.headCount}인</td>
                             <td>52,000원</td>
                             <td>44,000원</td>
@@ -114,7 +115,7 @@
                             <td>44,000원</td>
                             <td>44,000원</td>
                         </tr>
-                        </c:forEach>
+                    	</c:forEach>
 
                         
                     </tbody>

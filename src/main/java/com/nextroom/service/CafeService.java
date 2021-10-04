@@ -264,7 +264,24 @@ public class CafeService {
 		System.out.println("[CafeService.getCafeDetail()]");
 		CafeVo cafeVo = cafeDao.getCafe(cafeNo);
 		List<CafeVo> themeList = cafeDao.getCafeTheme(cafeNo);
-		List<PriceVo> priceList = cafeDao.getAllPrice(cafeNo);
+		List<Object> priceAllList = new ArrayList<Object>();
+		
+		for (int i=0; i<themeList.size(); i++) {
+			System.out.println(themeList.get(i).getpMax());
+			
+			
+			
+			int pMax = themeList.get(i).getpMax();
+			int pMin = themeList.get(i).getpMin();
+			
+			
+			CafeVo getPriceVo = new CafeVo(cafeNo, pMin, pMax);
+			
+			priceAllList = cafeDao.getAllPrice(getPriceVo);
+			
+		}
+		
+		//List<PriceVo> priceList = cafeDao.getAllPrice(cafeNo);
 		List<InteriorVo> inteList = cafeDao.getInteList(cafeNo);
 		
 		
@@ -273,12 +290,12 @@ public class CafeService {
 		//List<ReviewBoardVo> ratingList = cafeDao.getRating(cafeNo);
 		
 		System.out.println("themeList : " + themeList);
-		System.out.println("priceList : " + priceList);
+		System.out.println("priceList : " + priceAllList);
 		
 		Map<Object, Object> detailMap = new HashMap<Object, Object>();
 		detailMap.put("cafeVo", cafeVo);
 		detailMap.put("themeList", themeList);
-		detailMap.put("priceList", priceList);
+		detailMap.put("priceList", priceAllList);
 		detailMap.put("inteList", inteList);
 		//detailMap.put("timeList", timeList);
 		//detailMap.put("ratingList", ratingList);

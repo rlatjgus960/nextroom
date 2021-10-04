@@ -1,8 +1,7 @@
 package com.nextroom.dao;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,13 +136,29 @@ public class CafeDao {
 	}
 
 	// 전체 테마 가격 가져오기
-	public List<PriceVo> getAllPrice(int cafeNo) {
+	public List<Object> getAllPrice(CafeVo getPriceVo) {
 		System.out.println("[CafeDao.getAllPrice()]");
-		List<PriceVo> priceList = sqlSession.selectList("cafe.getAllPrice", cafeNo);
 		
-		System.out.println(priceList);
+		List<PriceVo> priceList = new ArrayList<PriceVo>();
+		List<Object> priceAllList = new ArrayList<Object>();
 		
-		return priceList;
+		int pMax = getPriceVo.getpMax();
+		int pMin = getPriceVo.getpMin();
+		
+		
+		for(int i=pMin; i<=pMax; i++) {
+			getPriceVo.setpMin(i);
+			priceList = sqlSession.selectList("cafe.getAllPrice", getPriceVo);
+			System.out.println("DAO priceList : "+priceList);
+			
+			priceAllList.add(priceList);
+			
+		}
+		//List<PriceVo> priceList = sqlSession.selectList("cafe.getAllPrice", cafeNo);
+		
+		System.out.println(priceAllList);
+		
+		return priceAllList;
 	}
 
 	// 전체 테마 시간표 가져오기

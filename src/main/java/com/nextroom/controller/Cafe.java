@@ -41,7 +41,9 @@ public class Cafe {
 	public String cafeDetail(@PathVariable("cafeNo") int cafeNo, Model model) {
 	   System.out.println("cafeDetail");
 	   
+	   
 	   Map<Object, Object> detailMap = cafeService.getCafeDetail(cafeNo);
+	   
 	   
 	   model.addAttribute("detailMap", detailMap);
 	   
