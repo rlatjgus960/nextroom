@@ -918,6 +918,32 @@ Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,US
 Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (3,'junzzang','1111','준짱','010-0000-0000','aaa@aaa.com','준짱','1');
 Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (4,'ctct25','123','대근','010-0000-0000','aaa@aaa.com','대니','2');
 Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (5,'choi','1111','원호','010-0000-0000','aaa@aaa.com','choi','1');
+/* 유저추가 일반 19개 어드민(일반상태) 3개 */
+
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user01','user01','일유저','010-1111-1111','user01@nate.com','1유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user02','user02','이유저','010-1111-1111','user02@nate.com','2유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user03','user03','삼유저','010-1111-1111','user03@nate.com','3유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user04','user04','사유저','010-1111-1111','user04@nate.com','4유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user05','user05','오유저','010-1111-1111','user05@nate.com','5유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user06','user06','육유저','010-1111-1111','user06@nate.com','6유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user07','user07','칠유저','010-1111-1111','user07@nate.com','7유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user08','user08','팔유저','010-1111-1111','user08@nate.com','8유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user09','user09','구유저','010-1111-1111','user09@nate.com','9유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user10','user10','십유저','010-1111-1111','user10@nate.com','10유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user11','user11','십일유저','010-1111-1111','user11@nate.com','11유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user12','user12','십이유저','010-1111-1111','user12@nate.com','12유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user13','user13','십삼유저','010-1111-1111','user13@nate.com','13유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user14','user14','십사유저','010-1111-1111','user14@nate.com','14유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user15','user15','십오유저','010-1111-1111','user15@nate.com','15유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user16','user16','십육유저','010-1111-1111','user016nate.com','16유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user17','user17','십칠유저','010-1111-1111','user017nate.com','17유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user18','user18','십팔유저','010-1111-1111','user018@nate.com','18유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'user19','user19','십구유저','010-1111-1111','user01@nate.com','19유저',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'admin01','admin01','일드민','010-1111-1111','admin01@nate.com','1드민',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'admin02','admin02','이드민','010-1111-1111','admin02@nate.com','2드민',1);
+Insert into NEXTROOM.USERS (USERNO,ID,PASSWORD,USERNAME,USERHP,EMAIL,NICKNAME,USERTYPE) values (USERNO.nextval,'admin03','admin03','삼드민','010-1111-1111','admin03@nate.com','3드민',1);
+
+/******************************/
 REM INSERTING into NEXTROOM.CAFE
 SET DEFINE OFF;
 Insert into NEXTROOM.CAFE (CAFENO,USERNO,CAFENAME,CAFEHP,OPENTIME,CLOSETIME,CAFEINTRO,URL,CAFEIMG,POSTCODE,ADDRESS,ADDRESSDETAIL,PRINTADDRESS,SIDO,SIGUNGU,SIDODETAIL,LATITUDE,LONGITUDE) values (3,4,'카페4','02-0000-0000','09:00','24:00','소개글4','www.cafe.com','img04','12345','카페기본주소4','카페상세주소4','카페출력주소4','서울','광진구','건대','12.34','56.78');
@@ -1024,33 +1050,30 @@ Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVG
 Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (2,0,0,0,null,null);
 Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (4,0,0,0,null,null);
 Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (5,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (6,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (7,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (8,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (9,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (10,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (11,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (12,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (13,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (14,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (15,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (16,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (17,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (18,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (19,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (20,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (21,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (22,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (23,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (24,0,0,0,null,null)
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (25,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (26,0,0,0,null,null);
+Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (27,0,0,0,null,null);
 
-/* 유저추가 일반 19개 어드민(일반상태) 3개 */
 
-insert into users values (USERNO.nextval,'user01','user01','일유저','010-1111-1111','user01@nate.com','1유저',1);
-insert into users values (USERNO.nextval,'user02','user02','이유저','010-1111-1111','user02@nate.com','2유저',1);
-insert into users values (USERNO.nextval,'user03','user03','삼유저','010-1111-1111','user03@nate.com','3유저',1);
-insert into users values (USERNO.nextval,'user04','user04','사유저','010-1111-1111','user04@nate.com','4유저',1);
-insert into users values (USERNO.nextval,'user05','user05','오유저','010-1111-1111','user05@nate.com','5유저',1);
-insert into users values (USERNO.nextval,'user06','user06','육유저','010-1111-1111','user06@nate.com','6유저',1);
-insert into users values (USERNO.nextval,'user07','user07','칠유저','010-1111-1111','user07@nate.com','7유저',1);
-insert into users values (USERNO.nextval,'user08','user08','팔유저','010-1111-1111','user08@nate.com','8유저',1);
-insert into users values (USERNO.nextval,'user09','user09','구유저','010-1111-1111','user09@nate.com','9유저',1);
-insert into users values (USERNO.nextval,'user10','user10','십유저','010-1111-1111','user10@nate.com','10유저',1);
-insert into users values (USERNO.nextval,'user11','user11','십일유저','010-1111-1111','user11@nate.com','11유저',1);
-insert into users values (USERNO.nextval,'user12','user12','십이유저','010-1111-1111','user12@nate.com','12유저',1);
-insert into users values (USERNO.nextval,'user13','user13','십삼유저','010-1111-1111','user13@nate.com','13유저',1);
-insert into users values (USERNO.nextval,'user14','user14','십사유저','010-1111-1111','user14@nate.com','14유저',1);
-insert into users values (USERNO.nextval,'user15','user15','십오유저','010-1111-1111','user15@nate.com','15유저',1);
-insert into users values (USERNO.nextval,'user16','user16','십육유저','010-1111-1111','user016nate.com','16유저',1);
-insert into users values (USERNO.nextval,'user17','user17','십칠유저','010-1111-1111','user017nate.com','17유저',1);
-insert into users values (USERNO.nextval,'user18','user18','십팔유저','010-1111-1111','user018@nate.com','18유저',1);
-insert into users values (USERNO.nextval,'user19','user19','십구유저','010-1111-1111','user01@nate.com','19유저',1);
-insert into users values (USERNO.nextval,'admin01','admin01','일드민','010-1111-1111','admin01@nate.com','1드민',1);
-insert into users values (USERNO.nextval,'admin02','admin02','이드민','010-1111-1111','admin02@nate.com','2드민',1);
-insert into users values (USERNO.nextval,'admin03','admin03','삼드민','010-1111-1111','admin03@nate.com','3드민',1);
-
-/******************************/
 REM INSERTING into NEXTROOM.REVIEW
 SET DEFINE OFF;
 Insert into NEXTROOM.REVIEW (REVIEWNO,THEMENO,USERNO,FEELLEVEL,RATING,RECTIME,REVIEWHINTS,REVIEWCLEAR,MEMBERNUM,PLAYDATE,REVIEWREGDATE,REVIEWLIKE,REVIEWTITLE,REVIEWCONTENT,REVIEWHIT) values (1,1,4,3,5,1800,0,'clear',2,to_date('21/09/30','RR/MM/DD'),to_date('21/09/30','RR/MM/DD'),0,'ㅎㅇ','대니입니다 ~ ',0);
