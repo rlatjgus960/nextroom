@@ -1025,7 +1025,7 @@ Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVG
 Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (4,0,0,0,null,null);
 Insert into NEXTROOM.RANKRATING (USERNO,USERRATING,WINRATE,NOHINTWINRATE,SHOWAVGCLEARTIME,GAMEHISTORY) values (5,0,0,0,null,null);
 
-/* 유저추가 일반 19 어드민(일반상태) 3 */
+/* 유저추가 일반 19개 어드민(일반상태) 3개 */
 
 insert into users values (USERNO.nextval,'user01','user01','일유저','010-1111-1111','user01@nate.com','1유저',1);
 insert into users values (USERNO.nextval,'user02','user02','이유저','010-1111-1111','user02@nate.com','2유저',1);
