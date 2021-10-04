@@ -94,19 +94,7 @@ public class Hello {
 		return "user/mypage_party";
 	}
 	
-	//////// 관리자 예약확인 페이지 //////////
-	@RequestMapping("/adminReserve")
-	public String adminReserve() {
-		System.out.println("adminReserve");
-		return "admin/admin_Reserve";
-	}
 	
-	////////관리자 예약관리 페이지 //////////
-	@RequestMapping("/adminReserveTime")
-	public String adminReserveTime() {
-		System.out.println("adminReserveTime");
-		return "admin/admin_ReserveTime";
-	}
 
 	
 	////////받은 쪽지함 //////////
