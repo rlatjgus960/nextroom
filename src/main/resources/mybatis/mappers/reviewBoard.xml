@@ -129,7 +129,11 @@
 			        u.nickname,
 			        r.reviewhit,
 			        to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,	
-			        r.reviewcontent	
+			        r.reviewcontent,
+			        r.reviewhints,
+			        r.reviewClear,
+			        r.recTime,
+			        r.memberNum
 			from review r, users u
 			where r.userNo = u.userNo
 			and r.reviewno = #{reviewno}
