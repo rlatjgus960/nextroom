@@ -13,6 +13,6 @@
 		<mapper resource="mybatis/mappers/rank.xml" />
 		<mapper resource="mybatis/mappers/cafe.xml" />
 		<mapper resource="mybatis/mappers/reviewBoard.xml" />
-		<mapper resource="mybatis/mappers/adminReserve.xml" />
+		<mapper resource="mybatis/mappers/reserve.xml" />
 	</mappers>
 </configuration>

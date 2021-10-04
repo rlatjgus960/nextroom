@@ -7,54 +7,54 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nextroom.dao.AdminReserveDao;
-import com.nextroom.vo.AdminReserveVo;
+import com.nextroom.dao.ReserveDao;
+import com.nextroom.vo.ReserveVo;
 
 @Service
-public class AdminReserveService {
+public class ReserveService {
 
 	@Autowired
-	private AdminReserveDao adminDao;
+	private ReserveDao reserveDao;
 	
 	//테마 정보 불러오기
-	public List<AdminReserveVo> getTheme(int cafeNo) {
-		System.out.println("[AdminReserveService.getTheme()]");
+	public List<ReserveVo> getTheme(int cafeNo) {
+		System.out.println("[ReserveService.getTheme()]");
 		
-		List<AdminReserveVo> adminThemeList = adminDao.getTheme(cafeNo);
+		List<ReserveVo> adminThemeList = reserveDao.getTheme(cafeNo);
 		
 		return adminThemeList;
 	}
 	
 	//테마별 시간 정보 불러오기
-	public List<AdminReserveVo> getTime(Map<String, Object> rMap) {
-		System.out.println("[AdminReserveService.getTime()]");
+	public List<ReserveVo> getTime(Map<String, Object> rMap) {
+		System.out.println("[ReserveService.getTime()]");
 		
-		List<AdminReserveVo> themeTimeList = adminDao.getTime(rMap);
+		List<ReserveVo> themeTimeList = reserveDao.getTime(rMap);
 		
 		return themeTimeList;
 	}
 	
 	//예약가능 시간 변경
-	public int timeModify(AdminReserveVo adminVo) {
-		System.out.println("[AdminReserveService.timeModify()]");
+	public int timeModify(ReserveVo adminVo) {
+		System.out.println("[ReserveService.timeModify()]");
 		int reserveState;
 		int result = 0;
 		
 		//예약날짜 테이블 존재유무 확인
-		AdminReserveVo date = adminDao.selectReserveDate(adminVo);
+		ReserveVo date = reserveDao.selectReserveDate(adminVo);
 		System.out.println("date = " + date);
 		if(date == null) {
 			//없을때 만들기
 			System.out.println("해당 날짜의 데이터가 존재하지 않아 새롭게 생성합니다.");
-			adminDao.insertReserveDate(adminVo);
+			reserveDao.insertReserveDate(adminVo);
 			
-			date = adminDao.selectReserveDate(adminVo);
+			date = reserveDao.selectReserveDate(adminVo);
 			adminVo.setReserveDateNo(date.getReserveDateNo());
 			
 			//하위테이블인 예약시간에도 정보 추가 (예약불가능으로 생성)
 			reserveState = 3;
 			adminVo.setReserveState(reserveState); // 3 예약불가능
-			adminDao.insertReserveTime(adminVo);
+			reserveDao.insertReserveTime(adminVo);
 			
 			result = 3;
 			
@@ -62,7 +62,7 @@ public class AdminReserveService {
 			//예약날짜 테이블이 존재할 경우
 			//예약시간 테이블 정보 확인
 			adminVo.setReserveDateNo(date.getReserveDateNo());
-			AdminReserveVo time = adminDao.selectReserveTime(adminVo);
+			ReserveVo time = reserveDao.selectReserveTime(adminVo);
 			
 			if(time == null) {
 				//해당 시간의 정보가 없을 경우
@@ -70,7 +70,7 @@ public class AdminReserveService {
 				reserveState = 3;
 				adminVo.setReserveState(reserveState); // 3 예약불가능
 				System.out.println(adminVo);
-				adminDao.insertReserveTime(adminVo);
+				reserveDao.insertReserveTime(adminVo);
 				
 				result = 3;
 			} else {
@@ -82,7 +82,7 @@ public class AdminReserveService {
 				
 				if(state == 1) { // 예약가능 -> 예약불가능
 					tMap.put("reserveState", 3);
-					adminDao.updateReserveState(tMap);
+					reserveDao.updateReserveState(tMap);
 					
 					result = 3;
 				} else if(state == 2) { // 예약완료 상태
@@ -90,7 +90,7 @@ public class AdminReserveService {
 					
 				} else if(state == 3) { // 예약불가능 -> 예약가능
 					tMap.put("reserveState", 1);
-					adminDao.updateReserveState(tMap);
+					reserveDao.updateReserveState(tMap);
 					
 					result = 1;
 				}
@@ -107,7 +107,7 @@ public class AdminReserveService {
 	
 	//테마별 예약정보 가져오기
 	public Map<String, Object> getResevInfo(Map<String, Object> rMap, int crtPage) {
-		System.out.println("[AdminReserveService.getResevInfo()]");
+		System.out.println("[ReserveService.getResevInfo()]");
 		
 		int listCnt = 3; 
 		
@@ -122,10 +122,10 @@ public class AdminReserveService {
 		//끝번호 계산하기
 		int endRnum = (startRnum + listCnt) - 1;
 		
-		List<AdminReserveVo> themeReserveList = adminDao.getResevInfo(startRnum, endRnum, rMap);
+		List<ReserveVo> themeReserveList = reserveDao.getResevInfo(startRnum, endRnum, rMap);
 		
 		//전체글 갯수
-		int totalCount = adminDao.selectTotalCnt(rMap);
+		int totalCount = reserveDao.selectTotalCnt(rMap);
 		System.out.println("totalCount"+totalCount);
 		
 		//페이지당 버틍 갯수
@@ -167,10 +167,10 @@ public class AdminReserveService {
 	
 	
 	//예약 상세 정보 가져오기
-	public AdminReserveVo getReserveDetailInfo(int reserveNo) {
-		System.out.println("[AdminReserveService.getReserveDetailInfo()]");
+	public ReserveVo getReserveDetailInfo(int reserveNo) {
+		System.out.println("[ReserveService.getReserveDetailInfo()]");
 		
-		AdminReserveVo reserveModalVo = adminDao.getReserveDetailInfo(reserveNo);
+		ReserveVo reserveModalVo = reserveDao.getReserveDetailInfo(reserveNo);
 		
 		return reserveModalVo;
 	}
@@ -178,29 +178,29 @@ public class AdminReserveService {
 
 	//예약취소
 	public int delReserve(int reserveNo) {
-		System.out.println("[AdminReserveService.delReserve()]");
+		System.out.println("[ReserveService.delReserve()]");
 		
-		int count = adminDao.updatePaymentState(reserveNo);
-		adminDao.updateAdminReserveState(reserveNo);
+		int count = reserveDao.updatePaymentState(reserveNo);
+		reserveDao.updateAdminReserveState(reserveNo);
 		
 		return count;
 	}
 	
 	//입실확인
-	public int checkIn(AdminReserveVo adminVo) {
-		System.out.println("[AdminReserveService.checkIn()]");
+	public int checkIn(ReserveVo adminVo) {
+		System.out.println("[ReserveService.checkIn()]");
 		
-		int count = adminDao.insertPreRecord(adminVo);
+		int count = reserveDao.insertPreRecord(adminVo);
 		System.out.println("테테테스트" + count);
 		
 		return count;
 	}
 	
 	//입실확인
-	public AdminReserveVo btnCheckIn(int reserveNo) {
-		System.out.println("[AdminReserveService.btnCheckIn()]");
+	public ReserveVo btnCheckIn(int reserveNo) {
+		System.out.println("[ReserveService.btnCheckIn()]");
 		
-		AdminReserveVo preR = adminDao.selectPreR(reserveNo);
+		ReserveVo preR = reserveDao.selectPreR(reserveNo);
 		System.out.println("테테테스트" + preR);
 		
 		return preR;
