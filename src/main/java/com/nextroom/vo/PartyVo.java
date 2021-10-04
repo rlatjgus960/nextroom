@@ -24,6 +24,22 @@ public class PartyVo {
 	private String themeType;
 	private int levels;
 	
+	/*PARTYREAD 랭킹 출력용 필드*/
+	private int rank;
+	private int avgClearTime;
+	private String showAvgClearTime;
+	private int avgHints;
+	private int totalGame;
+	private int noHintGame;
+	private int wonGame;
+	private int rankRating;
+	private double winRate;
+	private double noHintWinRate;
+	
+	/*PARTYREAD 유저정보 출력용 필드*/
+	private String nickname;
+	private String profile;
+	
 	//생성자
 	public PartyVo() {
 		super();
@@ -92,7 +108,47 @@ public class PartyVo {
 		this.levels = levels;
 	}
 	
-	
+	public PartyVo(int partyNo, int userNo, String reserveDate, String sidoDetail, int cafeNo, String cafeName,
+			int themeNo, String themeName, String themeTime, String themeImg, String reserveTime, int reservePerson,
+			String content, String partyState, String userState, int userCount, String jenre, int playTime,
+			String themeType, int levels, int rank, int avgClearTime, String showAvgClearTime, int avgHints,
+			int totalGame, int noHintGame, int wonGame, int rankRating, double winRate, double noHintWinRate,
+			String nickname, String profile) {
+		super();
+		this.partyNo = partyNo;
+		this.userNo = userNo;
+		this.reserveDate = reserveDate;
+		this.sidoDetail = sidoDetail;
+		this.cafeNo = cafeNo;
+		this.cafeName = cafeName;
+		this.themeNo = themeNo;
+		this.themeName = themeName;
+		this.themeTime = themeTime;
+		this.themeImg = themeImg;
+		this.reserveTime = reserveTime;
+		this.reservePerson = reservePerson;
+		this.content = content;
+		this.partyState = partyState;
+		this.userState = userState;
+		this.userCount = userCount;
+		this.jenre = jenre;
+		this.playTime = playTime;
+		this.themeType = themeType;
+		this.levels = levels;
+		this.rank = rank;
+		this.avgClearTime = avgClearTime;
+		this.showAvgClearTime = showAvgClearTime;
+		this.avgHints = avgHints;
+		this.totalGame = totalGame;
+		this.noHintGame = noHintGame;
+		this.wonGame = wonGame;
+		this.rankRating = rankRating;
+		this.winRate = winRate;
+		this.noHintWinRate = noHintWinRate;
+		this.nickname = nickname;
+		this.profile = profile;
+	}
+
 	//메소드(게터세터)
 	public int getPartyNo() {
 		return partyNo;
@@ -256,7 +312,103 @@ public class PartyVo {
 		this.levels = levels;
 	}
 
+	public int getRank() {
+		return rank;
+	}
 
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
+	public double getWinRate() {
+		return winRate;
+	}
+
+	public void setWinRate(double winRate) {
+		this.winRate = winRate;
+	}
+
+	public double getNoHintWinRate() {
+		return noHintWinRate;
+	}
+
+	public void setNoHintWinRate(double noHintWinRate) {
+		this.noHintWinRate = noHintWinRate;
+	}
+
+	public String getShowAvgClearTime() {
+		return showAvgClearTime;
+	}
+
+	public void setShowAvgClearTime(String showAvgClearTime) {
+		this.showAvgClearTime = showAvgClearTime;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	public int getAvgClearTime() {
+		return avgClearTime;
+	}
+
+	public void setAvgClearTime(int avgClearTime) {
+		this.avgClearTime = avgClearTime;
+	}
+
+	public int getAvgHints() {
+		return avgHints;
+	}
+
+	public void setAvgHints(int avgHints) {
+		this.avgHints = avgHints;
+	}
+
+	public int getTotalGame() {
+		return totalGame;
+	}
+
+	public void setTotalGame(int totalGame) {
+		this.totalGame = totalGame;
+	}
+
+	public int getNoHintGame() {
+		return noHintGame;
+	}
+
+	public void setNoHintGame(int noHintGame) {
+		this.noHintGame = noHintGame;
+	}
+
+	public int getWonGame() {
+		return wonGame;
+	}
+
+	public void setWonGame(int wonGame) {
+		this.wonGame = wonGame;
+	}
+
+	public int getRankRating() {
+		return rankRating;
+	}
+
+	public void setRankRating(int rankRating) {
+		this.rankRating = rankRating;
+	}
+
+	
 	//메소드(일반)
 	@Override
 	public String toString() {
@@ -265,7 +417,11 @@ public class PartyVo {
 				+ themeName + ", themeTime=" + themeTime + ", themeImg=" + themeImg + ", reserveTime=" + reserveTime
 				+ ", reservePerson=" + reservePerson + ", content=" + content + ", partyState=" + partyState
 				+ ", userState=" + userState + ", userCount=" + userCount + ", jenre=" + jenre + ", playTime="
-				+ playTime + ", themeType=" + themeType + ", levels=" + levels + "]";
+				+ playTime + ", themeType=" + themeType + ", levels=" + levels + ", rank=" + rank + ", avgClearTime="
+				+ avgClearTime + ", showAvgClearTime=" + showAvgClearTime + ", avgHints=" + avgHints + ", totalGame="
+				+ totalGame + ", noHintGame=" + noHintGame + ", wonGame=" + wonGame + ", rankRating=" + rankRating
+				+ ", winRate=" + winRate + ", noHintWinRate=" + noHintWinRate + ", nickname=" + nickname + ", profile="
+				+ profile + "]";
 	}
 	
 	

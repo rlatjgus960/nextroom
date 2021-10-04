@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nextroom.dao.PartyDao;
+import com.nextroom.dao.RankDao;
 import com.nextroom.dao.UserDao;
 import com.nextroom.vo.PartyVo;
 import com.nextroom.vo.UserVo;
@@ -20,6 +21,9 @@ public class PartyService {
 	
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	RankDao rankDao;
 	
 	//21-09-26 by 대니
 	//sido로 카페No, 카페이름가져오기
@@ -177,6 +181,43 @@ public class PartyService {
 		
 		//partyNo로 파티승인멤버 리스트 가져오기
 		List<PartyVo> partyDetailList = partyDao.partyDetailList(partyNo); 
+		
+		for(int i=0; i<partyDetailList.size(); i++) {
+			
+			int userNo = partyDetailList.get(i).getUserNo();
+			
+			PartyVo partyUserRank = rankDao.partySelectRating(userNo);
+			
+			//평균기록
+			int cleartime = partyUserRank.getAvgClearTime();
+			
+			int min = (int) cleartime / 60;
+			int sec = cleartime % 60;
+			System.out.println(min + "" + sec);
+			String clearTime = min + "분" + " " + sec + "초";
+			
+			partyDetailList.get(i).setShowAvgClearTime(clearTime);
+			
+			//성공률
+			double winRate = (double) partyUserRank.getWonGame() / partyUserRank.getTotalGame();
+
+			winRate = Math.round(winRate * 100) / 100.00;
+			
+			partyDetailList.get(i).setWinRate(winRate);
+			
+			//노힌트성공률
+			double noHintWinRate = (double) partyUserRank.getNoHintGame() / partyUserRank.getTotalGame();
+
+			noHintWinRate = Math.round(noHintWinRate * 100) / 100.00;
+			
+			partyDetailList.get(i).setNoHintWinRate(noHintWinRate);
+			
+			//유저 현재순위, 닉네임, 프로필가져오기
+			PartyVo partySelectRankList = rankDao.partySelectRankList(userNo);
+			
+		}
+		
+			System.out.println("랭크리스트 제발; :" + partyDetailList);
 		
 		//partyNo로 파티대기멤버 리스트 가져오기
 		List<PartyVo> partyApplicantList = partyDao.partyApplicantList(partyNo);

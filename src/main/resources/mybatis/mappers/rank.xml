@@ -57,4 +57,44 @@
 		
 	</select>
 
+	
+	<!-- 21-10-04
+	PartyRead Rank 가져오기 by 대니 -->
+		<select id="partySelectRating" parameterType ="int" resultType="com.nextroom.vo.PartyVo">
+		
+		<![CDATA[
+			select  userno
+	        ,avg(recordhints)avgHints
+	        ,avg(recordtime) avgClearTime
+	        ,count(*) totalGame
+	        ,(SELECT count(*)
+	          FROM record
+	          where recordhints=0
+	          and userno = #{userNo}) nohintgame
+	        ,(SELECT count(*)
+	          FROM record
+	          where recordclear='success'
+	          and userno = #{userNo}) wongame
+			from record
+			where userno = #{userNo}
+			group by userno
+			
+		]]>
+		
+	</select>
+	
+	<!-- 21-10-04
+	userNo로 현재순위,닉네임,프로필 가져오기 by 대니 -->
+	<select id="partySelectRankList" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		
+		<![CDATA[
+			select 	u.nickname
+					,ROW_NUMBER() OVER (ORDER BY r.userrating DESC) rank
+			from rankrating r,users u
+			where r.userno=u.userno
+			and u.userno = #{userNo}
+		]]>
+		
+	</select>
+
 </mapper>

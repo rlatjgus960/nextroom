@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.nextroom.vo.PartyVo;
 import com.nextroom.vo.RatingVo;
 
 @Repository
@@ -31,6 +32,21 @@ public class RankDao {
 	public List<RatingVo> selectRankList(){
 		
 		return sqlSession.selectList("rank.selectRankList");
+	}
+	
+	
+	//21-10-04
+	//PartyRead Rank 가져오기 by 대니
+	public PartyVo partySelectRating(int userNo) {
+		
+		return sqlSession.selectOne("rank.partySelectRating", userNo);
+	}
+	
+	//21-10-04
+	//userNo로 현재순위,닉네임,프로필 가져오기 by 대니
+	public PartyVo partySelectRankList(int userNo) {
+		
+		return sqlSession.selectOne("rank.partySelectRankList", userNo);
 	}
 	
 }
