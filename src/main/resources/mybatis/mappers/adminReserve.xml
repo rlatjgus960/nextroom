@@ -110,7 +110,8 @@
 			        rt.reservetime,
 			        rt.reserveperson,
 			        rt.reservename,
-			        rt.paymentstate
+			        rt.paymentstate,
+			        rt.themeNo
 			from (  select  rownum rn,
 			                ot.themename,
 			                ot.reserveno,
@@ -118,14 +119,16 @@
 			                ot.reservetime,
 			                ot.reserveperson,
 			                ot.reservename,
-			                ot.paymentstate
+			                ot.paymentstate,
+			                ot.themeNo
 			        from (  select  t.themename, 
 							        r.reserveno,
 							        to_char(rd.reservedate, 'yyyy-mm-dd') reserveDate,
 							        rt.reservetime,
 							        r.reserveperson,
 							        r.reservename,
-							        r.paymentstate
+							        r.paymentstate,
+							        t.themeNo
 							from theme t, reserveDate rd, reserveTime rt, reserve r
 							where t.themeNo = rd.themeNo
 							and rd.reserveDateNo = rt.reservedateno
@@ -176,7 +179,8 @@
 			select  c.cafeName,
 			        t.themeImg,
 			        t.themeName,
-			        to_char(rd.reservedate, '""yyyy"년 "mm"월 "dd"일"') reserveDate,
+			        to_char(rd.reserveDate, 'yyyymmdd') reserveDate,
+			        t.themeNo,
 			        r.reserveNo,
 			        r.reservePerson,
 			        r.reserveName,
@@ -229,33 +233,17 @@
 		]]>
 	</insert>
 	
-</mapper>
-
-<!-- 
-select  t.themename, 
-			        r.reserveno,
-			        to_char(rd.reservedate, 'yyyy-mm-dd') reserveDate,
-			        rt.reservetime,
-			        r.reserveperson,
-			        r.reservename,
-			        r.paymentstate
-			from theme t, reserveDate rd, reserveTime rt, reserve r
-			where t.themeNo = rd.themeNo
-			and rd.reserveDateNo = rt.reservedateno
-			and rt.reservetimeNo = r.reservetimeno
-		]]>
-		
-		<if test="themeNo != -1 and themeNo != ''">
-			and t.themeNo = #{themeNo}
-		</if>
-		
-		<if test="reserveDate != '-1' and reserveDate != ''">
-			and rd.reserveDate = #{reserveDate}
-		</if>
-		
+	<!-- 기록테이블 가져오기 -->
+	<select id="selectPreR" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
 		<![CDATA[
+			select  p.gameState
+			from reserve r, preRecord p
+			where p.reserveNo = #{reserveNo}
+			and rownum = 1
 		]]>
- -->
+	</select>
+	
+</mapper>
 
 
 

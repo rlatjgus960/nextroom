@@ -125,6 +125,13 @@ public class AdminReserveDao {
 		
 		return sqlSession.insert("adminReserve.insertPreRecord", adminVo);
 	}
+	
+	//게임정보 테이블 데이터 입력
+	public AdminReserveVo selectPreR(int reserveNo) {
+		System.out.println("[AdminReserveDao.selectPreR()]");
+		
+		return sqlSession.selectOne("adminReserve.selectPreR", reserveNo);
+	}
 }
 
 

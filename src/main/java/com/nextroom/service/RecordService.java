@@ -94,12 +94,55 @@ public class RecordService {
 
 			// rating테이블에 기록 입력하기.
 
-			RatingVo ratingVo = new RatingVo(n); // userNo 담기
-
 			// 담은 userNo로 정보 알아내기
-			// rankDao.selectRating(ratingVo);
+			RatingVo ratingVo = rankDao.selectRating(n);
 
-			System.out.println(ratingVo);
+			// 평균기록 계산해서 보여주기용만들기 + rating 계산
+			int cleartime = ratingVo.getAvgClearTime();
+
+			int min = (int) cleartime / 60;
+			int sec = cleartime % 60;
+			System.out.println(min + "" + sec);
+			String clearTime = min + "분" + " " + sec + "초";
+
+			ratingVo.setShowAvgClearTime(clearTime);
+
+			double winRate = (double) ratingVo.getWonGame() / ratingVo.getTotalGame();
+
+			winRate = Math.round(winRate * 100) / 100.00;
+
+			ratingVo.setWinRate(winRate * 100);
+
+			double noHintWinRate = (double) ratingVo.getNoHintGame() / ratingVo.getTotalGame();
+
+			noHintWinRate = Math.round(noHintWinRate * 100) / 100.00;
+
+			ratingVo.setNoHintWinRate(noHintWinRate * 100);
+
+			System.out.println(noHintWinRate);
+
+			String gameHistory = "";
+			gameHistory += ratingVo.getTotalGame() + "전 ";
+			gameHistory += ratingVo.getWonGame() + "승 ";
+			gameHistory += (ratingVo.getTotalGame() - ratingVo.getWonGame()) + "패";
+
+			ratingVo.setGameHistory(gameHistory);
+
+			System.out.println(ratingVo); /////////// 여기까지 Vo완성 --> 이제 테이블에 데이터 쳐너쳐너
+
+			double totalGamePoint = ratingVo.getTotalGame() * 1.01;
+			double wonGamePoint = ratingVo.getWonGame() * 1.20;
+			double noHintGamePoint = ratingVo.getNoHintGame() * 1.50;
+			double failPoint = (ratingVo.getTotalGame() - ratingVo.getWonGame()) * 0.90;
+			double totalRating = (totalGamePoint + wonGamePoint + noHintGamePoint - failPoint) * 100;
+
+			int rankRating = (int) totalRating;
+
+			ratingVo.setRankRating(rankRating);
+
+			System.out.println("레이팅 추가 " + ratingVo);
+			
+			rankDao.updateRating(ratingVo);
 
 			count++;
 		}
@@ -114,8 +157,6 @@ public class RecordService {
 	public int modifyRecord(RecordVo recordVo, List<String> members) {
 
 		int count = 0;
-
-		List<RatingVo> raingList = new ArrayList<RatingVo>();
 
 		for (int i = 0; i < members.size(); i++) {
 
@@ -135,7 +176,54 @@ public class RecordService {
 			// 담은 userNo로 정보 알아내기
 			RatingVo ratingVo = rankDao.selectRating(n);
 
-			System.out.println(ratingVo);
+			// 평균기록 계산해서 보여주기용만들기 + rating 계산
+			int cleartime = ratingVo.getAvgClearTime();
+
+			int min = (int) cleartime / 60;
+			int sec = cleartime % 60;
+			System.out.println(min + "" + sec);
+			String clearTime = min + "분" + " " + sec + "초";
+
+			ratingVo.setShowAvgClearTime(clearTime);
+
+			double winRate = (double) ratingVo.getWonGame() / ratingVo.getTotalGame();
+
+			winRate = Math.round(winRate * 100) / 100.00;
+
+			ratingVo.setWinRate(winRate * 100);
+
+			double noHintWinRate = (double) ratingVo.getNoHintGame() / ratingVo.getTotalGame();
+
+			noHintWinRate = Math.round(noHintWinRate * 100) / 100.00;
+
+			ratingVo.setNoHintWinRate(noHintWinRate * 100);
+
+			System.out.println(noHintWinRate);
+
+			String gameHistory = "";
+			gameHistory += ratingVo.getTotalGame() + "전 ";
+			gameHistory += ratingVo.getWonGame() + "승 ";
+			gameHistory += (ratingVo.getTotalGame() - ratingVo.getWonGame()) + "패";
+
+			ratingVo.setGameHistory(gameHistory);
+
+			System.out.println(ratingVo); /////////// 여기까지 Vo완성 --> 이제 테이블에 데이터 쳐너쳐너
+
+			double totalGamePoint = ratingVo.getTotalGame() * 1.01;
+			double wonGamePoint = ratingVo.getWonGame() * 1.20;
+			double noHintGamePoint = ratingVo.getNoHintGame() * 1.50;
+			double failPoint = (ratingVo.getTotalGame() - ratingVo.getWonGame()) * 0.90;
+			double totalRating = (totalGamePoint + wonGamePoint + noHintGamePoint - failPoint) * 100;
+
+			int rankRating = (int) totalRating;
+
+			ratingVo.setRankRating(rankRating);
+
+			System.out.println("레이팅 추가 " + ratingVo);
+			
+			rankDao.updateRating(ratingVo);
+			
+			
 
 			count++;
 		}

@@ -26,5 +26,35 @@
 		
 	</select>
 	
+	<update id="updateRating" parameterType="com.nextroom.vo.RatingVo">
+	
+		<![CDATA[
+			update rankrating set
+			USERRATING = #{rankRating},
+			winrate = #{winRate},
+			nohintwinrate = #{noHintWinRate},
+			showAvgClearTime = #{showAvgClearTime},
+			gamehistory = #{gameHistory}
+			where userNo = #{userNo}
+		]]>
+	
+	
+	</update>
+	
+	<select id="selectRankList" resultType="com.nextroom.vo.RatingVo">
+		
+		<![CDATA[
+			select 	u.nickname
+					,ROW_NUMBER() OVER (ORDER BY r.userrating DESC) rank
+					,r.userno
+					,r.winrate
+					,r.nohintwinrate
+					,r.showavgcleartime
+					,r.gamehistory
+			from rankrating r,users u
+			where r.userno=u.userno
+		]]>
+		
+	</select>
 
 </mapper>
