@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="adminReserve">
+<mapper namespace="reserve">
 
 	<!-- admin회원 테마 정보 가져오기 -->
-	<select id="selectThemeList" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
+	<select id="selectThemeList" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			select  cafeNo,
 					themeNo,
@@ -16,7 +16,7 @@
 	</select>
 	
 	<!-- 테마별 시간 정보 가져오기 -->
-	<select id="selectTimeList" parameterType="map" resultType="com.nextroom.vo.AdminReserveVo">
+	<select id="selectTimeList" parameterType="map" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			select  ttbl.themeNo,
 			        ttbl.themename, 
@@ -44,7 +44,7 @@
 	</select>
 	
 	<!-- 예약날짜 정보 가져오기 -->
-	<select id="selectReserveDate" parameterType="com.nextroom.vo.AdminReserveVo" resultType="com.nextroom.vo.AdminReserveVo">
+	<select id="selectReserveDate" parameterType="com.nextroom.vo.ReserveVo" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			select	reserveDateNo,
 					themeNo,
@@ -56,7 +56,7 @@
 	</select>
 	
 	<!-- 예약날짜 데이터 추가 -->
-	<insert id="insertReserveDateData" parameterType="com.nextroom.vo.AdminReserveVo">
+	<insert id="insertReserveDateData" parameterType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			insert into reserveDate 
 			values(
@@ -67,7 +67,7 @@
 	</insert>
 	
 	<!-- 예약시간 데이터 생성 -->
-	<insert id="insertReserveTimeData" parameterType="com.nextroom.vo.AdminReserveVo">
+	<insert id="insertReserveTimeData" parameterType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			insert into reserveTime 
 			values(
@@ -79,7 +79,7 @@
 	</insert>
 
 	<!-- 테마별 시간 정보 가져오기 -->
-	<select id="selectReserveTime" parameterType="com.nextroom.vo.AdminReserveVo" resultType="com.nextroom.vo.AdminReserveVo">
+	<select id="selectReserveTime" parameterType="com.nextroom.vo.ReserveVo" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			select  reserveTimeNo,
 			        reserveDateNo,
@@ -101,7 +101,7 @@
 	</update>
 	
 	<!-- 테마별 예약정보 가져오기 -->
-	<select id="getResevInfo" parameterType="map" resultType="com.nextroom.vo.AdminReserveVo">
+	<select id="getResevInfo" parameterType="map" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			select  rt.rn,
 			        rt.themename,
@@ -174,7 +174,7 @@
 	</select>
 
 	<!-- 예약 상세 정보 가져오기 -->
-	<select id="getReserveDetailInfo" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
+	<select id="getReserveDetailInfo" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			select  c.cafeName,
 			        t.themeImg,
@@ -219,7 +219,7 @@
 
 
 	<!-- 예약시간 데이터 생성 -->
-	<insert id="insertPreRecord" parameterType="com.nextroom.vo.AdminReserveVo">
+	<insert id="insertPreRecord" parameterType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			insert into prerecord
 			values (
@@ -234,7 +234,7 @@
 	</insert>
 	
 	<!-- 기록테이블 가져오기 -->
-	<select id="selectPreR" parameterType="int" resultType="com.nextroom.vo.AdminReserveVo">
+	<select id="selectPreR" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			select  p.gameState
 			from reserve r, preRecord p

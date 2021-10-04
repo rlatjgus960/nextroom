@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nextroom.service.AdminReserveService;
-import com.nextroom.vo.AdminReserveVo;
+import com.nextroom.service.ReserveService;
+import com.nextroom.vo.ReserveVo;
 import com.nextroom.vo.UserVo;
 
 @Controller
@@ -25,7 +25,7 @@ import com.nextroom.vo.UserVo;
 public class AdminReserveController {
 	
 	@Autowired
-	private AdminReserveService adminService;
+	private ReserveService reserveService;
 	
 	//관리자페이지 예약관리
 	@RequestMapping("/timeManage/{cafeNo}")
@@ -36,7 +36,7 @@ public class AdminReserveController {
 		System.out.println("timeManage");
 		
 		//테마 정보
-		List<AdminReserveVo> adminThemeList = adminService.getTheme(cafeNo);
+		List<ReserveVo> adminThemeList = reserveService.getTheme(cafeNo);
 		//System.out.println(adminThemeList);
 		
 		UserVo userVo = (UserVo)session.getAttribute("authUser");
@@ -51,7 +51,7 @@ public class AdminReserveController {
 					
 					//테마별 시간정보
 					//System.out.println(reserveDate);
-					List<AdminReserveVo> themeTimeList = adminService.getTime(rMap);
+					List<ReserveVo> themeTimeList = reserveService.getTime(rMap);
 					//System.out.println(themeTimeList);
 					model.addAttribute("timeList", themeTimeList);
 				}
@@ -73,12 +73,12 @@ public class AdminReserveController {
 	//예약 수정 페이지
 	@ResponseBody
 	@RequestMapping("/timeModify")
-	public int timeModify(@ModelAttribute AdminReserveVo adminVo) {
+	public int timeModify(@ModelAttribute ReserveVo adminVo) {
 		System.out.println("timeModify");
 		System.out.println(adminVo);
 		//cafeNo, themeNo, themeTimeNo, reserveDate, reserveTime
 		
-		int count = adminService.timeModify(adminVo);
+		int count = reserveService.timeModify(adminVo);
 		System.out.println(count);
 		
 		return count;
@@ -100,7 +100,7 @@ public class AdminReserveController {
 		
 		System.out.println(reserveDate);
 		//테마 정보
-		List<AdminReserveVo> adminThemeList = adminService.getTheme(cafeNo);
+		List<ReserveVo> adminThemeList = reserveService.getTheme(cafeNo);
 		//System.out.println(adminThemeList);
 		
 		UserVo userVo = (UserVo)session.getAttribute("authUser");
@@ -108,7 +108,7 @@ public class AdminReserveController {
 		if(userVo != null) {
 			
 			if(userVo.getCafeNo() == cafeNo) {
-				Map<String, Object> listMap = adminService.getResevInfo(rMap, crtPage);
+				Map<String, Object> listMap = reserveService.getResevInfo(rMap, crtPage);
 				
 				model.addAttribute("listMap", listMap);
 				model.addAttribute("themeList", adminThemeList);
@@ -127,10 +127,10 @@ public class AdminReserveController {
 	//관리자 예약확인 모달페이지
 	@ResponseBody
 	@RequestMapping("/reserveModal")
-	public AdminReserveVo reserveModal(@RequestParam("reserveNo") int reserveNo) {
+	public ReserveVo reserveModal(@RequestParam("reserveNo") int reserveNo) {
 		System.out.println("modal");
 		
-		AdminReserveVo reserveModalVo = adminService.getReserveDetailInfo(reserveNo);
+		ReserveVo reserveModalVo = reserveService.getReserveDetailInfo(reserveNo);
 		System.out.println(reserveModalVo);
 		
 		return reserveModalVo;
@@ -142,7 +142,7 @@ public class AdminReserveController {
 	public int delReserve(@RequestParam("reserveNo") int reserveNo) {
 		System.out.println("delReserve");
 		
-		int count = adminService.delReserve(reserveNo);
+		int count = reserveService.delReserve(reserveNo);
 		System.out.println(count);
 		
 		return count;
@@ -152,10 +152,10 @@ public class AdminReserveController {
 	//입실확인
 	@ResponseBody
 	@RequestMapping("/checkIn")
-	public int checkIn(@ModelAttribute AdminReserveVo adminVo) {
+	public int checkIn(@ModelAttribute ReserveVo adminVo) {
 		System.out.println("checkIn");
 		
-		int count = adminService.checkIn(adminVo);
+		int count = reserveService.checkIn(adminVo);
 		//System.out.println(count);
 		
 		return count;
@@ -164,10 +164,10 @@ public class AdminReserveController {
 	//입실확인
 	@ResponseBody
 	@RequestMapping("/btnCheckIn")
-	public AdminReserveVo btnCheckIn(@RequestParam("reserveNo") int reserveNo) {
+	public ReserveVo btnCheckIn(@RequestParam("reserveNo") int reserveNo) {
 		System.out.println("btnCheckIn");
 		
-		AdminReserveVo preR = adminService.btnCheckIn(reserveNo);
+		ReserveVo preR = reserveService.btnCheckIn(reserveNo);
 		//System.out.println(count);
 		
 		return preR;

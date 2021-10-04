@@ -1,6 +1,6 @@
 package com.nextroom.vo;
 
-public class AdminReserveVo {
+public class ReserveVo {
 
 	private int userNo;
 	private int cafeNo;
@@ -25,13 +25,13 @@ public class AdminReserveVo {
 	private String regDate;
 	private String gameState;
 	
-	public AdminReserveVo() {
+	public ReserveVo() {
 		super();
 	}
 
 
 
-	public AdminReserveVo(int userNo, int cafeNo, int themeNo, String themeName, int themeTimeNo, String themeTime,
+	public ReserveVo(int userNo, int cafeNo, int themeNo, String themeName, int themeTimeNo, String themeTime,
 			int reserveDateNo, String reserveDate, int reserveTimeNo, String reserveTime, int reserveState,
 			int paymentState, int reservePerson, String reserveName, int reserveNo, String themeImg, String cafeName,
 			String reserveHp, String payment, int totalPerson, String regDate, String gameState) {
