@@ -46,11 +46,10 @@
 						
 						<div id="aside_cate">
 							<ul>
-								<li><a class="active" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
-								<li><a class="" href="">후기게시판</a></li>
-								<li><a class="" href="">양도/교환</a></li>
-								<li><a class="" href="">공지사항</a></li>
-								<li><a class="" href="">FAQ</a></li>		
+								<li><a class="" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
+								<li><a class="active" href="${pageContext.request.contextPath }/board/reviewBoard">후기게시판</a></li>
+								<li>양도/교환</li>
+								<li>공지사항</li>
 							</ul>
 						</div>
 					</div>
@@ -62,9 +61,9 @@
 					<!-- 버튼 -->
 					<div id="list_button" >
 						<ul>							
-							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
-							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
-							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
+							<a href="${pageContext.request.contextPath }/board/reviewBoard"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
+							<a href="${pageContext.request.contextPath }/board/reviewBoard"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href="${pageContext.request.contextPath }/board/reviewBoard"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
 
 						</ul>
 					</div>
@@ -74,7 +73,7 @@
 					<div>
 						<div id="update_button" class="clearfix" >
 							<ul>							
-								<a href="${pageContext.request.contextPath }/board/freeCommunity" class="submit_button">목 록</a>	
+								<a href="${pageContext.request.contextPath }/board/reviewBoard" class="submit_button">목 록</a>	
 								
 								<c:if test="${authUser.userNo ==  reviewBoardVo.userNo}">
 									<a href="" class="submit_button">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
@@ -112,7 +111,7 @@
 											</div>
 
 										<div id="wrap_up_down">
-											<a href="${pageContext.request.contextPath }/board/freeCommunity" class="back_button">목 록</a> <!-- href에 js 넣어야할듯-->
+											<a href="${pageContext.request.contextPath }/board/reviewBoard" class="back_button">목 록</a> <!-- href에 js 넣어야할듯-->
 											<a href="" class="up_down">추 천</a>
 											<a href="" class="up_down">반 대</a>
 										</div>
