@@ -87,7 +87,7 @@
   
 #admin_reserveitem_modal .admin_reserveitem_modal_content {
     width:1050px;
-    height: 550px;
+    height: auto;
     position: absolute;
     top: 50%;
     left: 50%;
