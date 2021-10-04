@@ -93,12 +93,24 @@
 								<h3>${reviewBoardVo.reviewTitle}</h3>
 							</div>
 
-							<div id="user_information">
+							<div class="user_information">
 								<span>작성자 : ${reviewBoardVo.nickname}</span>								
 								<span>조회 : ${reviewBoardVo.reviewHit}</span>
 								<span>작성일 : ${reviewBoardVo.reviewRegDate}</span>
 							</div>
 
+							<!-- 후기 정보 -->
+							<div class="user_information">
+								<span>테마 : ${reviewBoardVo.themeName }</span>
+								<span>체감 난이도 : ${reviewBoardVo.rating }</span>
+								<span>성공 여부 : ${reviewBoardVo.reviewClear }</span>
+								<span>힌트 사용갯수 : ${reviewBoardVo.reviewHints }</span>
+								<span>인원수 : ${reviewBoardVo.memberNum }</span>
+								<span>소요 시간 : ${reviewBoardVo.recTime/60 }분</span>
+							</div>
+							<!-- //후기 정보 -->
+							
+							
 							<!-- 콘텐츠 -->
 							<div id="board">								
 								<!-- 콘텐츠 메인정보 -->

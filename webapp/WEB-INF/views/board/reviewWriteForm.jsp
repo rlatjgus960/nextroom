@@ -108,7 +108,7 @@
                     <!-- 글등록 공간 -->
                     <div id="writecontent_area">
 
-						<form id="reviewForm" action="${pageContext.request.contextPath }/board/reviewWrite" method="get"> 
+						<form id="reviewForm" action="${pageContext.request.contextPath }/board/reviewWrite" method="post" enctype="multipart/form-data"> 
 
 							<div id="content_title">
 								<input type="text" id="reviewTitle" name="reviewTitle" placeholder="제목을 입력해 주세요">
@@ -121,11 +121,6 @@
 								
 							</div>
 
-
-							<div id="text_tool">
-								<textarea id="reviewContent" name="reviewContent" rows="50" cols="96" style="width: 1015px;"></textarea>
-							</div>
-							
 							
                             <!-- 후기게시판 글쓰기에만 보이게 -->
                             <!-- 지역/카페/테마/체감난이도 선택 -->
@@ -133,6 +128,7 @@
                                 <select class="region" name="">
 										<option value="" selected="">지역 선택</option>
                                         <option value="전국">전국</option>
+                                        <option value="서울">서울</option>
                                         <option value="홍대&신촌">홍대&신촌</option>
                                         <option value="강남">강남</option>
                                         <option value="건대">건대</option>
@@ -236,7 +232,15 @@
                             </div>
                             <!-- //별점 -->
                             <!-- //후기게시판 글쓰기에만 보이게 -->
+
+                            <div class="fileUp">
+                            	<p>이미지 업로드</p>
+                            	<input type="file">
+                            </div>
                             
+             				<div id="text_tool">
+								<textarea id="reviewContent" name="reviewContent" rows="50" cols="96" style="width: 1015px;"></textarea>
+							</div>
                             
 	                        <!-- 글등록 버튼 -->
 							<button id="btn_save" type="submit">글등록</button>

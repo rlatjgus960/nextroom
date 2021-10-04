@@ -51,7 +51,6 @@
 								<li><a class="active" href="${pageContext.request.contextPath }/board/reviewBoard">후기게시판</a></li>
 								<li>양도/교환</li>
 								<li>공지사항</li>
-								<li>FAQ</li>		
 							</ul>
 						</div>
 					</div>
@@ -119,7 +118,7 @@
 							<tbody>	
 								<c:forEach items = "${reviewBoardList.reviewList }" var = "reviewBoardList">					
 									<tr>
-										<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
+										<td><img class="img" src="${pageContext.request.contextPath }/reviewWrite/${saveName}"></td>
 										<td><a href="${pageContext.request.contextPath }/board/readForm?reviewNo=${reviewBoardList.reviewNo }">${reviewBoardList.reviewTitle }</a></td>
 										<td id="btnNick">
 											<a class="nickName">
@@ -138,11 +137,11 @@
 					<!-- //게시판 리스트 -->
 
 					<!-- 글쓰기버튼 -->
-					<c:if test = "${!empty authUser }">
+<%-- 					<c:if test = "${!empty authUser }"> --%>
 						<div>
 							<a class="submit_button" href="${pageContext.request.contextPath }/board/reviewWriteForm">글쓰기</a>
 						</div>
-					</c:if>
+<%-- 					</c:if> --%>
 					
 					<!-- 페이징 -->
 					<div id="pager">

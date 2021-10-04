@@ -15,19 +15,6 @@ public class ReviewBoardService {
 	@Autowired
 	private ReviewBoardDao reviewBoardDao;
 	
-	/*
-	 * //리스트 public List<ReviewBoardVo> list(String keyword){
-	 * System.out.println("[Service.list]");
-	 * 
-	 * //컨트롤러에서 넘어온 키워드 다오로 가자 List<ReviewBoardVo>
-	 * reviewBoardList=reviewBoardDao.reviewBoardList(keyword);
-	 * System.out.println(reviewBoardList);
-	 * 
-	 * // return reviewBoardList; }
-	 */
-	
-	
-	
 	//2021.09.30 by 원호
 	//후기게시판 리스트
 	public Map<String, Object> reviewList(String keyword, int crtPage){
