@@ -117,7 +117,7 @@
                     </div>
                     <!-- //정보 보드-->
 
-				<!-- 참여현황 -->
+					<!-- 참여현황 -->
                     <div id="party_list">
                         <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;참여현황</div>
                         <table>
@@ -171,50 +171,37 @@
                     <!-- //참여현황 -->
                     
 
-                    <!-- 대기현황 -->
-                    <div id="hold_list">
-                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;대기현황</div>
-                        <table>
-                            <colgroup>
-                                <col style="width: 120px;">
-                                <col style="width: 160px;">
-                                <col style="width: 206px;">
-                                <col style="width: 162px;">
-                                <col style="width: 162px;">
-                                <col style="width: 162px;">
-                                <col style="width: 162px;">
-                                <col style="width: 162px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>프로필</th>
-                                    <th>닉네임</th>
-                                    <th>현재 순위</th>
-                                    <th>성공률</th>
-                                    <th>노힌트 성공률</th>
-                                    <th>평균 기록</th>
-                                    <th>동의여부</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <c:choose>
-                            	<c:when test="${empty pReadMap.partyApplicantList }">
-                            		<tr>
-                            		<td></td>
-                            		<td></td>
-                            		<td></td>
-                            		<td>대기중인 신청 인원이 없습니다.</td>
-                            		<td></td>
-                            		<td></td>
-                            		<td></td>
-                            		<td></td>
-                            		</tr>
-                            	</c:when>
-                                <c:otherwise>
-	                            <c:forEach items="${pReadMap.partyApplicantList }" var="partyApplicantList" varStatus="status">
+                    <!-- 대기현황 방장용-->
+                    <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
+	                    <div id="hold_list">
+	                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;대기현황</div>
+	                        <table>
+	                            <colgroup>
+	                                <col style="width: 120px;">
+	                                <col style="width: 160px;">
+	                                <col style="width: 206px;">
+	                                <col style="width: 162px;">
+	                                <col style="width: 162px;">
+	                                <col style="width: 162px;">
+	                                <col style="width: 162px;">
+	                                <col style="width: 162px;">
+	                            </colgroup>
+	                            <thead>
 	                                <tr>
+	                                    <th>No</th>
+	                                    <th>프로필</th>
+	                                    <th>닉네임</th>
+	                                    <th>현재 순위</th>
+	                                    <th>성공률</th>
+	                                    <th>노힌트 성공률</th>
+	                                    <th>평균 기록</th>
+	                                    <th>동의여부</th>
+	                                </tr>
+	                            </thead>
+	
+	                            <tbody>
+		                            <c:forEach items="${pReadMap.partyApplicantList }" var="partyApplicantList" varStatus="status">
+		                                <tr>
 		                                    <td>${status.count }</td>
 		                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
 		                                    <td>${partyApplicantList.nickname }</td>
@@ -222,13 +209,75 @@
 		                                    <td>${partyApplicantList.winRate } %</td>
 		                                    <td>${partyApplicantList.noHintWinRate } %</td>
 		                                    <td>${partyApplicantList.showAvgClearTime }</td>
-                    			<c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
-	                                    <td><button>O</button> / <button>X</button></td>
-                    			</c:if>
+	                                    	<td><button>O</button> / <button>X</button></td>
+		                                </tr>
+		        					</c:forEach>
+	                            </tbody>
+	                        </table>
+	                    </div>
+                    </c:if>
+                    
+					<!-- //대기현황 -->
+				
+                    <!-- 대기현황 참가자용-->
+                    <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo }">
+	                    <div id="hold_list">
+	                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;대기현황</div>
+	                        <table>
+	                            <colgroup>
+	                                <col style="width: 120px;">
+	                                <col style="width: 210px;">
+	                                <col style="width: 225px;">
+	                                <col style="width: 185px;">
+	                                <col style="width: 185px;">
+	                                <col style="width: 185px;">
+	                                <col style="width: 185px;">
+	                            </colgroup>
+	                            <thead>
+	                                <tr>
+	                                    <th>No</th>
+	                                    <th>프로필</th>
+	                                    <th>닉네임</th>
+	                                    <th>현재 순위</th>
+	                                    <th>성공률</th>
+	                                    <th>노힌트 성공률</th>
+	                                    <th>평균 기록</th>
 	                                </tr>
-	                            </c:forEach>  
-                                </c:otherwise>
-                            </c:choose>
+	                            </thead>
+	
+	                            <tbody>
+		                            <c:choose>
+		                            	<c:when test="${empty pReadMap.partyApplicantList }">
+		                            		<tr>
+		                            		<td></td>
+		                            		<td></td>
+		                            		<td></td>
+		                            		<td>대기중인 신청 <br>인원이 없습니다.</td>
+		                            		<td></td>
+		                            		<td></td>
+		                            		<td></td>
+		                            		</tr>
+		                            	</c:when>
+		                                <c:otherwise>
+				                            <c:forEach items="${pReadMap.partyApplicantList }" var="partyApplicantList" varStatus="status">
+				                                <tr>
+				                                    <td>${status.count }</td>
+				                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+				                                    <td>${partyApplicantList.nickname }</td>
+				                                    <td>${partyApplicantList.rank } 위</td>
+				                                    <td>${partyApplicantList.winRate } %</td>
+				                                    <td>${partyApplicantList.noHintWinRate } %</td>
+				                                    <td>${partyApplicantList.showAvgClearTime }</td>
+				                               </tr>
+				                            </c:forEach>  
+		                                </c:otherwise>
+		                            </c:choose>
+	                            </tbody>
+	                        </table>
+	                    </div>
+                    </c:if>
+				<!-- //대기현황 -->
+
                                 <%-- <tr>
                                     <td>2</td>
                                     <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
@@ -239,11 +288,6 @@
                                     <td>38m 27s</td>
                                     <td><button>O</button> / <button>X</button></td>
                                 </tr> --%>
-                            </tbody>
-                        </table>
-                    </div>
-				<!-- //대기현황 -->
-
 			</div>
                 <!-- //main -->
                 
