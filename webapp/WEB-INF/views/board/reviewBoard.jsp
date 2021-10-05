@@ -14,7 +14,7 @@
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
 
-<title>자유게시판</title>
+<title>후기게시판</title>
 </head>
 <body>
 
@@ -118,7 +118,7 @@
 							<tbody>	
 								<c:forEach items = "${reviewBoardList.reviewList }" var = "reviewBoardList">					
 									<tr>
-										<td><img class="img" src="${pageContext.request.contextPath }/reviewWrite/${saveName}"></td>
+										<td><img class="img" src="${pageContext.request.contextPath }/upload/${reviewBoardList.reviewImg}"></td>
 										<td><a href="${pageContext.request.contextPath }/board/readForm?reviewNo=${reviewBoardList.reviewNo }">${reviewBoardList.reviewTitle }</a></td>
 										<td id="btnNick">
 											<a class="nickName">
