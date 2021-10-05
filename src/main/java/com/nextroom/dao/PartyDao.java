@@ -132,6 +132,16 @@ public class PartyDao {
 	}
 	
 	
+	//21-10-05 by 대니
+	//partyRead에서 파티삭제를 위한 partyNo 받기
+	public int partyDelete(int partyNo) {
+		
+		System.out.println(partyNo);
+		
+		int count = sqlSession.delete("party.partyDelete", partyNo);
+		
+		return count;
+	}
 	
 	
 	

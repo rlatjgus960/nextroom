@@ -170,4 +170,13 @@
 		]]>
 	</select>
 	
+	
+	<!-- partyRead에서 파티삭제를 위한 partyNo 받기 -->
+	<delete id="partyDelete" parameterType="int">
+		<![CDATA[
+			delete from party
+			where partyNo = #{partyNo} 
+		]]>
+	</delete>
+	
 </mapper>

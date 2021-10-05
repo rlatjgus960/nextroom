@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.nextroom.dao.PartyDao;
 import com.nextroom.service.PartyService;
 import com.nextroom.vo.PartyVo;
 
@@ -119,6 +120,19 @@ public class Party {
 		model.addAttribute("pReadMap", pReadMap);
 		
 		return "party/partyRead";
+	}
+	
+	
+	//21-10-05 by 대니
+	//partyRead에서 파티삭제를 위한 partyNo 받기
+	@ResponseBody
+	@RequestMapping(value="/partyDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	public int partyDelete(@RequestParam("partyNo") int partyNo) {
+		System.out.println("파티삭제위한 파티NO: " + partyNo);
+		
+		int count = partyService.partyDelete(partyNo);
+		
+		return count;
 	}
 	
 }

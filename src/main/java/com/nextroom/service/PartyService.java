@@ -291,4 +291,14 @@ public class PartyService {
 	}
 	
 	
+	//21-10-05 by 대니
+	//partyRead에서 파티삭제를 위한 partyNo 받기
+	public int partyDelete(int partyNo) {
+		
+		int count = partyDao.partyDelete(partyNo);
+		
+		return count;
+	}
+	
+	
 }

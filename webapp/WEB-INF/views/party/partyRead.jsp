@@ -94,7 +94,7 @@
           				   <div class="btn_group">
 	                           <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
 	                               <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
-	                               <button id="delete_button" class="submit_button">파티삭제</button>
+	                               <button type="button" data-partyno="${pReadMap.partyReadList.partyNo }" id="delete_button" class="submit_button">파티삭제</button>
 	                               <button id="complete_button" class="mbutton">모집완료</button>
 	                           </c:if>
                            </div>	
@@ -329,6 +329,46 @@
     	
     });
     	
+    
+   	/*partyRead에서 파티삭제를 눌렀을때*/
+   	$("#delete_button").on("click", function() {
+		
+   		var partyNo = $("#delete_button").data("partyno");
+   		console.log(partyNo);
+   		
+   		const result = confirm("파티를 삭제하시겠습니까?");
+		if(result) {
+			
+			//ajax서버에 요청 (partyNo 전달)
+			$.ajax({
+				
+				url : "${pageContext.request.contextPath }/party/partyDelete",		
+				type : "post",
+//	 			contentType : "application/json",
+				data : {partyNo: partyNo},
+
+//	 			dataType : "json",
+				success : function(count){
+					/*성공시 처리해야될 코드 작성*/
+					console.log("삭제완료");
+					
+					if(count == 1) {
+						window.location.assign('http://localhost:8088/nextroom/party/partyList');
+					}
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+				
+			});
+			
+		} 
+   		
+   		
+	});
+    
+    
     
 	</script>
 

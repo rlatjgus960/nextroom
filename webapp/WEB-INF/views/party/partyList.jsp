@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -96,9 +97,9 @@
                                 </tr>
                             </thead>
                             <tbody class="list_hover">
-								<c:forEach items="${partyList }" var="partyVo">
+								<c:forEach items="${partyList }" var="partyVo" varStatus="status">
 	                                <tr onclick="location.href='${pageContext.request.contextPath }/party/partyRead?partyNo=${partyVo.partyNo}'">
-		                                    <td>${partyVo.partyNo }</td>
+		                                    <td>${fn:length(partyList) - status.index} </td>
 		                                    <td><img src="" ${partyVo.themeImg } width="80px" height="90px"></td>
 		                                    <td>${partyVo.sidoDetail }</td>
 		                                    <td>${partyVo.cafeName } / ${partyVo.themeName }</td>
@@ -344,6 +345,7 @@
 		var sido = $(this).val();
 		
 	  	$('#party_cafe').empty();
+// 	  	$("#party_theme").remove();
 		
 		console.log(sido);
 		
