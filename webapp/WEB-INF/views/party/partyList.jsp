@@ -99,7 +99,7 @@
                             <tbody class="list_hover">
 								<c:forEach items="${partyList }" var="partyVo" varStatus="status">
 	                                <tr onclick="location.href='${pageContext.request.contextPath }/party/partyRead?partyNo=${partyVo.partyNo}'">
-		                                    <td>${fn:length(partyList) - status.index} </td>
+		                                    <td>${fn:length(partyList) - status.index } </td>
 		                                    <td><img src="" ${partyVo.themeImg } width="80px" height="90px"></td>
 		                                    <td>${partyVo.sidoDetail }</td>
 		                                    <td>${partyVo.cafeName } / ${partyVo.themeName }</td>
@@ -345,7 +345,8 @@
 		var sido = $(this).val();
 		
 	  	$('#party_cafe').empty();
-// 	  	$("#party_theme").remove();
+	  	$("#party_theme").empty();
+	  	$("#party_time").empty();
 		
 		console.log(sido);
 		
@@ -363,6 +364,9 @@
 				console.log(cafeList);
 				
 				$("#party_cafe").append('<option value="" selected="">카페를 선택해 주세요</option>');
+				$("#party_theme").append('<option value="" selected="">테마를 선택해 주세요</option>');
+				$("#party_time").append('<option value="" selected="">시간을 선택해 주세요</option>');
+				
 				
 				for(var i=0; i<cafeList.length; i++) {
 					cafeRender(cafeList[i], "down");
@@ -404,7 +408,7 @@
 		
 		
 	  	$('#party_theme').empty ();
-		
+	  	$("#party_time").empty();
 		
 		//ajax서버에 요청 (cafeNo 전달)
 		$.ajax({
@@ -420,6 +424,7 @@
 				console.log(themeList);
 				
 				$("#party_theme").append('<option value="" selected="">테마를 선택해 주세요</option>');
+				$("#party_time").append('<option value="" selected="">시간을 선택해 주세요</option>');
 				
 				for(var i=0; i<themeList.length; i++) {
 					themeRender(themeList[i], "down");
