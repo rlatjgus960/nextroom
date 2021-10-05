@@ -52,7 +52,7 @@ public class Board {
 	
 	
 	//2021.10.02 by 원호
-	//글 읽기
+	//후기 게시판 글 읽기
 	@RequestMapping(value = "/readForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String readForm(Model model, @RequestParam("reviewNo") int reviewNo) {
 		System.out.println("[reviewController.readForm]");
@@ -68,7 +68,7 @@ public class Board {
 	}
 		
 	
-	//글쓰기
+	//자유게시판 글쓰기
 	@RequestMapping("/writeForm")
 	public String writeForm() {
 		System.out.println("writeForm");
@@ -162,6 +162,10 @@ public class Board {
 		
 		return themeList;
 	}
+	
+	//2021.10.05 by 원호
+	//글삭제
+	
 	
 	
 	//쪽지 보내기

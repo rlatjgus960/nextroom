@@ -59,6 +59,11 @@
     border-bottom: 1px solid #b9b9b9;
 }
 
+#text_area>span>p{
+	margin-left: 120px;
+	width: 800px;
+}
+
 
 /* 추천 반대 목록 버튼 */
 #wrap_up_down{
