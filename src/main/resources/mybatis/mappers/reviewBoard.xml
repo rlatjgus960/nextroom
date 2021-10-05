@@ -14,7 +14,8 @@
 			        rt.reviewhit,
 			        rt.reviewLike,
 			        rt.reviewregdate,
-			        rt.userno
+			        rt.userno,
+			        rt.reviewImg
 			from (select  rownum rn,
 						  ot.reviewNo,
 			              ot.reviewTitle,
@@ -22,14 +23,16 @@
 			              ot.reviewhit,
 			              ot.reviewLike,
 			              ot.reviewregdate,
-			              ot.userno
+			              ot.userno,
+			              ot.reviewImg
 			      from (select  r.reviewNo,
 			      				r.reviewTitle,
 			                    u.nickname,
 			                    r.reviewhit,
 			                    r.reviewLike,
 			                    to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,
-			                    r.userno
+			                    r.userno,
+			                    r.reviewImg
 			            from review r, users u
 			            where r.userNo = u.userNo
 		]]>
@@ -80,6 +83,7 @@
 				        ,#{reviewTitle}
 				        ,#{reviewContent}
 				        ,#{reviewHit}
+				        ,#{reviewImg}
 				        )	
 			]]> 
 		</insert>
@@ -133,9 +137,12 @@
 			        r.reviewhints,
 			        r.reviewClear,
 			        r.recTime,
-			        r.memberNum
-			from review r, users u
+			        r.memberNum,
+			        r.reviewImg,
+	                t.themeName
+			from review r, users u, theme t
 			where r.userNo = u.userNo
+			and r.themeNo = t.themeNo
 			and r.reviewno = #{reviewno}
 		]]>
 	</select>

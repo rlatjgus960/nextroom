@@ -1,11 +1,18 @@
 package com.nextroom.service;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.nextroom.dao.ReviewBoardDao;
 import com.nextroom.vo.ReviewBoardVo;
 
@@ -39,7 +46,7 @@ public class ReviewBoardService {
 		int totalCount = reviewBoardDao.selectTotalCnt(keyword);
 		
 		//페이지당 버튼 갯수
-		int pageBtnCount = 1;
+		int pageBtnCount = 5;
 		
 		int endPageBtnNo = (int)Math.ceil((crtPage/(double)pageBtnCount)) * pageBtnCount;
 		
@@ -52,35 +59,20 @@ public class ReviewBoardService {
 		if((endPageBtnNo * listCnt) < totalCount) {
 			next = true;
 		} else {
-			//다음 화살표 버튼이 없을때 endPageBtnNo을 다시 계산해야 한다.
-			//전체 글 갯수(127개) / 한페이지의 갯수(10개) -> 사람이 계산하면 12.7이 나오지만 자바가 계산하면 12로 나옴
-			//우리가 필요한 숫자는 13임. 그래서 형변환 한 후에 올림처리함. 그리고 다시 정수형으로 형변환 시킴
+
 			endPageBtnNo = (int)Math.ceil(totalCount / (double)listCnt);
-		}								//127개     / 10.0  -> 12.7 -> 올림처리함.->13
-		
-		
-		//127개 /10.0 페이지 --> 12.7:버림처리해서 -> 12로 계산 -> 120 + 7 -> 13페이지까지 나와야함
-		
-		
-		
+		}		
 		
 		//이전 화살표 표현 유무
 		boolean prev = false;
 		if(startPageBtnNo != 1) {
-			prev = true;
+			prev = false;
 		}
 		
-		////////////////////////////
-		////Map로 리턴하기
-		///////////////////////////
-		
-		
-		//4개를 다 보내려면 map 또는 vo를 만든다.
-		   //↓
-		//리턴하기 (map)사용	->	사실상 순서는 상관없긴함.
+
 		Map<String, Object> listMap = new HashMap<String, Object>();
 		listMap.put("reviewList", reviewList);
-		listMap.put("prev", prev);			//prev는 boolean형
+		listMap.put("prev", prev);	
 		listMap.put("startPageBtnNo", startPageBtnNo);
 		listMap.put("endPageBtnNo", endPageBtnNo);
 		listMap.put("next", next);
@@ -95,7 +87,60 @@ public class ReviewBoardService {
 		System.out.println("Service.reviewWrite");
 		System.out.println("[Service Vo정보]" + reviewBoardVo);
 		
-		return reviewBoardDao.ReviewInsert(reviewBoardVo);
+		// ******************** 후기게시판 이미지 처리 ********************//
+		MultipartFile file = reviewBoardVo.getReviewImgFile();
+		long fileSize = file.getSize();
+		System.out.println("fileSize " + fileSize);
+
+		int reviewCount = 0;
+
+		if (fileSize > 0) {
+
+			String saveDir = "C:\\javaStudy\\upload\\";
+
+			System.out.println(file.getOriginalFilename());
+			System.out.println(file.getSize());
+
+			// 원파일이름
+			String orgName = file.getOriginalFilename();
+			System.out.println(orgName);
+
+			// 확장자
+			String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+			System.out.println(exName);
+
+			// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			System.out.println(saveName);
+
+			// 파일패스
+			String filePath = saveDir + "\\" + saveName;
+			System.out.println(filePath);
+
+			// 파일 서버하드디스크에 저장
+			try {
+				byte[] fileData = file.getBytes();
+				OutputStream out = new FileOutputStream(filePath);
+				BufferedOutputStream bout = new BufferedOutputStream(out);
+
+				bout.write(fileData);
+				bout.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			reviewBoardVo.setReviewImg(saveName);
+
+			reviewCount = reviewBoardDao.ReviewInsert(reviewBoardVo);
+
+			System.out.println("ReviewInsert 후 Vo : " + reviewBoardVo);
+
+		}
+		// ******************** //카페 메인 이미지 처리 ********************//
+		
+		return reviewCount;
 	}
 	
 	
