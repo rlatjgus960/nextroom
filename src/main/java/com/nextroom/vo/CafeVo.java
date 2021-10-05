@@ -45,6 +45,7 @@ public class CafeVo {
 	private String pRecommendMax;
 	private int pMin;
 	private int pMax;
+	private int reviewCount;
 
 	// 테마가격 테이블
 	private List<Integer> headCount;
@@ -55,8 +56,19 @@ public class CafeVo {
 	// private String themeTime;
 	private List<String> themeStartTime;
 
+	// 카페 테마 전체 최대최소인원
+	private int minPMin;
+	private int maxPMax;
+
 	public CafeVo() {
 		super();
+	}
+
+	public CafeVo(int cafeNo, int pMin, int pMax) {
+		super();
+		this.cafeNo = cafeNo;
+		this.pMin = pMin;
+		this.pMax = pMax;
 	}
 
 	public CafeVo(int cafeNo, int userNo, String cafeName, String cafeHp, String openTime, String closeTime,
@@ -65,7 +77,8 @@ public class CafeVo {
 			String longitude, List<MultipartFile> interiorImg, List<InteriorVo> inteList, int themeNo, String themeName,
 			MultipartFile themeImgFile, String themeImg, String jenre, int levels, String themeType, int playTime,
 			String activity, String themeIntro, String pRecommendMin, String pRecommendMax, int pMin, int pMax,
-			List<Integer> headCount, List<Integer> price, List<String> themeStartTime) {
+			int reviewCount, List<Integer> headCount, List<Integer> price, List<String> themeStartTime, int minPMin,
+			int maxPMax) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -102,18 +115,12 @@ public class CafeVo {
 		this.pRecommendMax = pRecommendMax;
 		this.pMin = pMin;
 		this.pMax = pMax;
+		this.reviewCount = reviewCount;
 		this.headCount = headCount;
 		this.price = price;
 		this.themeStartTime = themeStartTime;
-	}
-	
-	
-
-	public CafeVo(int cafeNo, int pMin, int pMax) {
-		super();
-		this.cafeNo = cafeNo;
-		this.pMin = pMin;
-		this.pMax = pMax;
+		this.minPMin = minPMin;
+		this.maxPMax = maxPMax;
 	}
 
 	public int getCafeNo() {
@@ -396,6 +403,14 @@ public class CafeVo {
 		this.pMax = pMax;
 	}
 
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
 	public List<Integer> getHeadCount() {
 		return headCount;
 	}
@@ -420,6 +435,22 @@ public class CafeVo {
 		this.themeStartTime = themeStartTime;
 	}
 
+	public int getMinPMin() {
+		return minPMin;
+	}
+
+	public void setMinPMin(int minPMin) {
+		this.minPMin = minPMin;
+	}
+
+	public int getMaxPMax() {
+		return maxPMax;
+	}
+
+	public void setMaxPMax(int maxPMax) {
+		this.maxPMax = maxPMax;
+	}
+
 	@Override
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
@@ -431,8 +462,9 @@ public class CafeVo {
 				+ ", themeName=" + themeName + ", themeImgFile=" + themeImgFile + ", themeImg=" + themeImg + ", jenre="
 				+ jenre + ", levels=" + levels + ", themeType=" + themeType + ", playTime=" + playTime + ", activity="
 				+ activity + ", themeIntro=" + themeIntro + ", pRecommendMin=" + pRecommendMin + ", pRecommendMax="
-				+ pRecommendMax + ", pMin=" + pMin + ", pMax=" + pMax + ", headCount=" + headCount + ", price=" + price
-				+ ", themeStartTime=" + themeStartTime + "]";
+				+ pRecommendMax + ", pMin=" + pMin + ", pMax=" + pMax + ", reviewCount=" + reviewCount + ", headCount="
+				+ headCount + ", price=" + price + ", themeStartTime=" + themeStartTime + ", minPMin=" + minPMin
+				+ ", maxPMax=" + maxPMax + "]";
 	}
 
 }

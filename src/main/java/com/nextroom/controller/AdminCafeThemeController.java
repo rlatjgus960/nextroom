@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nextroom.service.CafeService;
@@ -48,10 +49,13 @@ public class AdminCafeThemeController {
 		return "admin/cafeModifyForm";
 	}
 
-	// 관리자페이지 테마리스트
-	@RequestMapping("/themeList")
-	public String themeList() {
+	// 관리자페이지 테마 관리 리스트
+	@RequestMapping("/{cafeNo}/themeList")
+	public String themeList(@PathVariable int cafeNo, Model model) {
 		System.out.println("themeList");
+		
+		model.addAttribute("themeList", cafeService.getCafeTheme(cafeNo));
+		
 		return "admin/themeList";
 	}
 
@@ -63,8 +67,8 @@ public class AdminCafeThemeController {
 	}
 
 	// 관리자페이지 테마수정폼
-	@RequestMapping("/themeModifyForm")
-	public String themeModifyForm() {
+	@RequestMapping("/theme/modifyForm/{themeNo}")
+	public String themeModifyForm(@PathVariable int themeNo) {
 		System.out.println("themeModifyForm");
 		return "admin/themeModifyForm";
 	}
@@ -87,5 +91,6 @@ public class AdminCafeThemeController {
 		
 		return "redirect:/admin/themeList";
 	}
-
+	
+	
 }

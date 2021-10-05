@@ -119,6 +119,7 @@
 
 #theme_detail_mainImg {
     height: 400px;
+    width: 320px;
     float: left;
 }
 
@@ -246,6 +247,10 @@
 #cafe_priceTable td, #theme_priceTable td{
     border: 1px solid #e0e0e0;
     height: 35px;
+}
+
+.priceForeach {
+	float: left;
 }
 
 #theme_timeTable

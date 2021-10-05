@@ -18,6 +18,7 @@ import com.nextroom.dao.CafeDao;
 import com.nextroom.vo.CafeVo;
 import com.nextroom.vo.InteriorVo;
 import com.nextroom.vo.PriceVo;
+import com.nextroom.vo.ReviewBoardVo;
 import com.nextroom.vo.TimeVo;
 
 @Service
@@ -164,7 +165,6 @@ public class CafeService {
 
 		List<MultipartFile> interiorImg = cafeVo.getInteriorImg();
 
-		
 		int inteCount = 0;
 		for (int i = 0; i < interiorImg.size(); i++) {
 
@@ -209,23 +209,22 @@ public class CafeService {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 				InteriorVo interiorVo = new InteriorVo();
 				interiorVo.setImg(inteSaveName);
 				interiorVo.setCafeNo(cafeVo.getCafeNo());
-				
-				
+
 				inteCount += cafeDao.addInteriorImg(interiorVo);
-				//cafeVo.setInteList(interiorVo);
-				
-				//inteList.add(interiorVo);
+				// cafeVo.setInteList(interiorVo);
+
+				// inteList.add(interiorVo);
 			}
 
-			//cafeVo.setInteList(inteList);
+			// cafeVo.setInteList(inteList);
 
 		}
 
-		//int inteCount = cafeDao.addInteriorImg(cafeVo);
+		// int inteCount = cafeDao.addInteriorImg(cafeVo);
 		// ******************** //카페 내부이미지 처리 ********************//
 
 		// ******************** 회원 타입 변경(1-->2) ********************//
@@ -264,52 +263,113 @@ public class CafeService {
 		System.out.println("[CafeService.getCafeDetail()]");
 		CafeVo cafeVo = cafeDao.getCafe(cafeNo);
 		List<CafeVo> themeList = cafeDao.getCafeTheme(cafeNo);
-		List<Object> priceAllList = new ArrayList<Object>();
-		
-		for (int i=0; i<themeList.size(); i++) {
-			System.out.println(themeList.get(i).getpMax());
-			
-			
-			
-			int pMax = themeList.get(i).getpMax();
-			int pMin = themeList.get(i).getpMin();
-			
-			
-			CafeVo getPriceVo = new CafeVo(cafeNo, pMin, pMax);
-			
-			priceAllList = cafeDao.getAllPrice(getPriceVo);
-			
+
+		// 카페 내 전체 테마 최대인원 최소인원 구하기
+		CafeVo minMaxVo = cafeDao.getMinMaxP(cafeNo);
+		int min = minMaxVo.getMinPMin();
+		int max = minMaxVo.getMaxPMax();
+
+		List<PriceVo> headCountList = new ArrayList<PriceVo>();
+		for (int j = min; j <= max; j++) {
+			PriceVo headCountVo = new PriceVo();
+			headCountVo.setHeadCount(j);
+			headCountList.add(headCountVo);
 		}
 		
-		//List<PriceVo> priceList = cafeDao.getAllPrice(cafeNo);
+		
+		List<Object> allPriceList = new ArrayList<Object>();
+		
+		
+		System.out.println("min max 가져옴");
+		
+		
+		for (int i = 0; i < themeList.size(); i++) {
+
+			int themeNo = themeList.get(i).getThemeNo();
+			
+			System.out.println("themeNo 가져온 후");
+			System.out.println(themeNo);
+			
+			List<PriceVo> priceList = new ArrayList<PriceVo>();
+
+			for (int j = min; j <= max; j++) {
+
+				
+				PriceVo priceVo = new PriceVo();
+				priceVo.setThemeNo(themeNo);
+				priceVo.setHeadCount(j);
+				
+				
+				
+				Integer price = cafeDao.getPriceOne(priceVo);
+				
+
+				if (price != null) {
+					int intPrice = (int)price;
+					priceVo.setPrice(intPrice);
+					priceList.add(priceVo);
+					
+					
+				} else {
+					
+					priceVo.setPrice(0);
+					priceList.add(priceVo);
+					
+				}
+				
+			}
+			allPriceList.add(priceList);
+			
+			//priceMap.put("allPriceList", allPriceList);
+		}
+		
+
+		System.out.println("카페서비스 allPriceList :" + allPriceList);
+		System.out.println("카페서비스 headCountList :" + headCountList);
+
+		// 최소인원부터 최대인원까지 반복문 돌려서 테마별 가격 가져오기
+
+//		  List<Object> priceAllList = new ArrayList<Object>();
+//		  
+//		  for (int i=0; i<themeList.size(); i++) {
+//		  System.out.println(themeList.get(i).getpMax());
+//		  
+//		  
+//		  
+//		  int pMax = themeList.get(i).getpMax(); int pMin = themeList.get(i).getpMin();
+//		  
+//		  
+//		  CafeVo getPriceVo = new CafeVo(cafeNo, pMin, pMax);
+//		  
+//		  priceAllList.add(cafeDao.getAllPrice(getPriceVo));
+//		  
+//		  }
+
 		List<InteriorVo> inteList = cafeDao.getInteList(cafeNo);
-		
-		
-		
-		//List<TimeVo> timeList = cafeDao.getAllTime(cafeNo);
-		//List<ReviewBoardVo> ratingList = cafeDao.getRating(cafeNo);
-		
+
 		System.out.println("themeList : " + themeList);
-		System.out.println("priceList : " + priceAllList);
-		
+		//System.out.println("priceMap : " + priceMap);
+//		System.out.println("priceAllList : " + priceAllList);
+
 		Map<Object, Object> detailMap = new HashMap<Object, Object>();
 		detailMap.put("cafeVo", cafeVo);
 		detailMap.put("themeList", themeList);
-		detailMap.put("priceList", priceAllList);
+//		detailMap.put("priceAllList", priceAllList);
+		detailMap.put("allPriceList", allPriceList);
+		detailMap.put("headCountList", headCountList);
 		detailMap.put("inteList", inteList);
-		//detailMap.put("timeList", timeList);
-		//detailMap.put("ratingList", ratingList);
 
 		return detailMap;
 	}
 
 	// 테마 추가
 	public int addTheme(CafeVo cafeVo) {
-		
+
+		System.out.println("[CafeService.addTheme()]");
 		int count = 0;
-		
-		System.out.println("insert theme 전 cafeVo : "+cafeVo);
-		
+
+		System.out.println("insert theme 전 cafeVo : " + cafeVo);
+
 		// 테마 이미지 처리
 		MultipartFile file = cafeVo.getThemeImgFile();
 		long fileSize = file.getSize();
@@ -356,47 +416,94 @@ public class CafeService {
 
 			count += cafeDao.addTheme(cafeVo);
 		}
-		
-		
-		
-		System.out.println("insert theme 후 cafeVo : "+cafeVo);
+
+		System.out.println("insert theme 후 cafeVo : " + cafeVo);
 		System.out.println(cafeVo.getThemeNo());
-		
-		//테마 시간표 추가
+
+		// 테마 시간표 추가
 		List<String> timeTable = cafeVo.getThemeStartTime();
-		
-		
-		System.out.println("timeTable : "+timeTable);
-		
+
+		System.out.println("timeTable : " + timeTable);
+
 		int themeNo = cafeVo.getThemeNo();
-		
-		for(int i=0; i<timeTable.size(); i++) {
-			
+
+		for (int i = 0; i < timeTable.size(); i++) {
+
 			TimeVo timeVo = new TimeVo();
-			
+
 			timeVo.setThemeNo(themeNo);
 			timeVo.setThemeTime(timeTable.get(i));
-			
+
 			count += cafeDao.addThemeTime(timeVo);
-			
+
 		}
-		
-		//테마 가격 추가
+
+		// 테마 가격 추가
 		List<Integer> price = cafeVo.getPrice();
 		List<Integer> headCount = cafeVo.getHeadCount();
-		
-		for(int i=0; i<price.size(); i++) {
-			
+
+		for (int i = 0; i < price.size(); i++) {
+
 			PriceVo priceVo = new PriceVo();
-			
+
 			priceVo.setThemeNo(themeNo);
 			priceVo.setHeadCount(headCount.get(i));
 			priceVo.setPrice(price.get(i));
-			
+
 			count += cafeDao.addThemePrice(priceVo);
 		}
-		
+
 		return count;
 	}
+	
+	//테마 한개 정보 가져오기
+//	public Map<Object, Object> getTheme(int themeNo) {
+//		System.out.println("[CafeService.getTheme()]");
+//		
+//		Map<Object, Object> themeMap = new HashMap<Object, Object>();
+//		themeMap.put("themeVo", cafeDao.getOneTheme(themeNo));
+//		themeMap.put("timeList", cafeDao.getOneTime(themeNo));
+//		themeMap.put("priceList", cafeDao.getOnePrice(themeNo));
+//		themeMap.put("revireList", cafeDao.getReviewList(themeNo));
+//		
+//		return themeMap;
+//	}
+	
+	// 카페 테마 정보 가져오기
+	public List<CafeVo> getCafeTheme(int cafeNo) {
+		System.out.println("[CafeService.getCafeTheme()]");
+		
+		List<CafeVo> themeList = cafeDao.getCafeTheme(cafeNo);
+		return themeList;
+	}
 
+	// 테마 한개 정보 가져오기
+	public CafeVo getOneTheme(int themeNo) {
+		System.out.println("[CafeService.getOneTheme()]");
+		CafeVo cafeVo = cafeDao.getOneTheme(themeNo);
+		cafeVo.setReviewCount(cafeDao.getReviewCount(themeNo));
+		
+		return cafeVo;
+	}
+
+	// 테마 한개 시간표 가져오기
+	public List<TimeVo> getOneTime(int themeNo) {
+		System.out.println("[CafeService.getOneTime()]");
+		return cafeDao.getOneTime(themeNo);
+	}
+
+	// 테마 한개 가격표 가져오기
+	public List<PriceVo> getOnePrice(int themeNo) {
+		System.out.println("[CafeService.getOnePrice()]");
+		return cafeDao.getOnePrice(themeNo);
+	}
+
+	// 테마 한개 리뷰 가져오기
+	public List<ReviewBoardVo> getReviewList(int themeNo) {
+		System.out.println("[CafeService.getReviewList()]");
+		return cafeDao.getReviewList(themeNo);
+	}
+
+	
+	
 }

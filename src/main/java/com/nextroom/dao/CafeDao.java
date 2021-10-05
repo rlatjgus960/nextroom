@@ -85,7 +85,6 @@ public class CafeDao {
 
 		return inteList;
 	}
-	
 
 	// 카페 수정
 	public int updateCafe(CafeVo cafeVo) {
@@ -138,39 +137,74 @@ public class CafeDao {
 	// 전체 테마 가격 가져오기
 	public List<Object> getAllPrice(CafeVo getPriceVo) {
 		System.out.println("[CafeDao.getAllPrice()]");
-		
-		List<PriceVo> priceList = new ArrayList<PriceVo>();
-		List<Object> priceAllList = new ArrayList<Object>();
-		
+
+		List<Object> priceList = new ArrayList<Object>();
+
 		int pMax = getPriceVo.getpMax();
 		int pMin = getPriceVo.getpMin();
-		
-		
-		for(int i=pMin; i<=pMax; i++) {
+
+		for (int i = pMin; i <= pMax; i++) {
 			getPriceVo.setpMin(i);
-			priceList = sqlSession.selectList("cafe.getAllPrice", getPriceVo);
-			System.out.println("DAO priceList : "+priceList);
-			
-			priceAllList.add(priceList);
-			
+			priceList.add(sqlSession.selectList("cafe.getAllPrice", getPriceVo));
+			System.out.println("DAO priceList : " + priceList);
+
 		}
-		//List<PriceVo> priceList = sqlSession.selectList("cafe.getAllPrice", cafeNo);
-		
-		System.out.println(priceAllList);
-		
-		return priceAllList;
+		// List<PriceVo> priceList = sqlSession.selectList("cafe.getAllPrice", cafeNo);
+
+		System.out.println(priceList);
+
+		return priceList;
 	}
 
-	// 전체 테마 시간표 가져오기
-	public List<TimeVo> getAllTime(int cafeNo) {
-		System.out.println("[CafeDao.getAllTime()]");
-		return sqlSession.selectList("cafe.getAllTime", cafeNo);
-	}
-	
 	// 테마 체감난이도, 별점 가져오기
 	public List<ReviewBoardVo> getRating(int cafeNo) {
 		System.out.println("[CafeDao.getRating()]");
 		return sqlSession.selectList("cafe.getRating", cafeNo);
+	}
+
+	// 카페 내 전체 테마 최대인원 최소인원 구하기
+	public CafeVo getMinMaxP(int cafeNo) {
+		System.out.println("[CafeDao.getMinMaxP()]");
+		CafeVo minMaxVo = sqlSession.selectOne("cafe.getMinMaxP", cafeNo);
+		System.out.println("Dao min max 가져옴");
+		return minMaxVo;
+	}
+
+	// 테마당 인원별 가격 한개 가져오기
+	public Integer getPriceOne(PriceVo priceVo) {
+		System.out.println("[CafeDao.getPriceOne()]");
+		return sqlSession.selectOne("cafe.getPriceOne", priceVo);
+	}
+
+	//////////////////////////// 테마 상세페이지////////////////////////////
+	// 테마 한개 정보 가져오기
+	public CafeVo getOneTheme(int themeNo) {
+		System.out.println("[CafeDao.getOneTheme()]");
+		return sqlSession.selectOne("cafe.getOneTheme", themeNo);
+	}
+
+	// 테마 한개 시간표 가져오기
+	public List<TimeVo> getOneTime(int themeNo) {
+		System.out.println("[CafeDao.getOneTime()]");
+		return sqlSession.selectList("cafe.getOneTime", themeNo);
+	}
+
+	// 테마 한개 가격표 가져오기
+	public List<PriceVo> getOnePrice(int themeNo) {
+		System.out.println("[CafeDao.getOnePrice()]");
+		return sqlSession.selectList("cafe.getOnePrice", themeNo);
+	}
+
+	// 테마 한개 리뷰 가져오기
+	public List<ReviewBoardVo> getReviewList(int themeNo) {
+		System.out.println("[CafeDao.getReviewList()]");
+		return sqlSession.selectList("cafe.getReviewList", themeNo);
+	}
+
+	// 테마 한개 리뷰 개수 가져오기
+	public int getReviewCount(int themeNo) {
+		System.out.println("[CafeDao.getReviewList()]");
+		return sqlSession.selectOne("cafe.getReviewCount", themeNo);
 	}
 
 }

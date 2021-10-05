@@ -46,25 +46,30 @@
 				<div id="aside_cate">
 
 					<ul>
-					
+
 						<li>예약
 							<ul class="aside_mini_cate">
-								<li><a href="${pageContext.request.contextPath }/admin/reserve">&nbsp;-예약 확인</a></li>
-								<li><a href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약 관리</a></li>
+								<li><a
+									href="${pageContext.request.contextPath }/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}">&nbsp;-예약
+										확인</a></li>
+								<li><a
+									href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약
+										관리</a></li>
 							</ul>
 						</li>
-						
+
 						<li>기록
 							<ul class="aside_mini_cate">
-								<li><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a></p></li>
+								<li><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a>
+								</p></li>
 								<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
 							</ul>
 						</li>
-						
+
 						<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>
-						<li class="selected"><a href="${pageContext.request.contextPath }/admin/themeList">카페 테마
-									관리</a></li>
-									
+						<li class="selected"><a
+							href="${pageContext.request.contextPath }/admin/${authUser.cafeNo }/themeList">카페 테마 관리</a></li>
+
 					</ul>
 
 				</div>
@@ -75,9 +80,9 @@
 			<!-- contentMain -->
 			<div id="contentMain" class="clearfix">
 				<div id="contentWrap">
-	
+
 					<p id="admin_subHeader">| 카페 테마 관리</p>
-	
+
 					<div id="themeModify_table">
 						<table>
 							<tr>
@@ -85,62 +90,27 @@
 								<th class="theme_name">테마이름</th>
 								<th class="theme_checkbox"></th>
 							</tr>
-	
-							<tr class="">
-								<td>1</td>
-								<td><a href="${pageContext.request.contextPath }/adminThemeModifyForm">메가스팀</a></td>
-								<td></td>
-	
-							</tr>
-	
-							<tr>
-								<td>2</td>
-								<td><a href="">인터프리터</a></td>
-								<td></td>
-	
-							</tr>
-	
-							<tr>
-								<td>3</td>
-								<td><a href="">이웃집 또털어</a></td>
-								<td></td>
-	
-							</tr>
-	
-							<tr>
-								<td>4</td>
-								<td><a href="">조선피자몰</a></td>
-								<td></td>
-	
-							</tr>
-	
-							<tr>
-								<td>5</td>
-								<td><a href="">트와이스 어 데이</a></td>
-								<td></td>
-							</tr>
-	
-							<tr>
-								<td>6</td>
-								<td><a href="">서치</a></td>
-								<td></td>
-							</tr>
-	
-							<tr>
-								<td>7</td>
-								<td><a href="">어시스턴트</a></td>
-								<td></td>
-							</tr>
-	
-	
+
+							<c:forEach items="${themeList }" var="themeList">
+								<c:set var="i" value="${i+1 }" />
+								<tr class="">
+									<td>${i}</td>
+									<td><a href="${pageContext.request.contextPath }/admin/theme/modifyForm/${themeList.themeNo}">${themeList.themeName }</a></td>
+									<td></td>
+							</c:forEach>
+
+
+
 						</table>
 					</div>
-	
+
 					<div id="themeModify_button">
-						<button onclick="location.href='${pageContext.request.contextPath }/admin/addThemeForm'" class="mbutton">테마 추가</button>
-						<button onclick="location.href='${pageContext.request.contextPath }/admin/themeDeleteForm'" class="mbutton">테마 삭제</button>
+						<button onclick="location.href='${pageContext.request.contextPath }/admin/addThemeForm'"
+							class="mbutton">테마 추가</button>
+						<button onclick="location.href='${pageContext.request.contextPath }/admin/themeDeleteForm'"
+							class="mbutton">테마 삭제</button>
 					</div>
-	
+
 				</div>
 			</div>
 			<!-- contentMain -->

@@ -153,8 +153,8 @@
 						#{price}
 				) ]]>
 	</insert>
-	
-	
+
+
 
 	<!-- 테마 시간표 추가 -->
 	<insert id="addThemeTime" parameterType="com.nextroom.vo.TimeVo"> 
@@ -195,7 +195,7 @@
 
 	</select>
 
-	
+
 
 
 	<!-- 전체 테마 가격 가져오기 -->
@@ -215,7 +215,7 @@
 		]]>
 
 	</select>
-	
+
 	<!-- 전체 테마 가격 가져오기 -->
 	<select id="aaa" parameterType="int" resultType="com.nextroom.vo.PriceVo">
 	
@@ -233,22 +233,7 @@
 
 	</select>
 
-	
 
-	<!-- 전체 테마 시간표 가져오기 -->
-	<select id="getAllTime" parameterType="int" resultType="com.nextroom.vo.TimeVo">
-	
-		<![CDATA[
-			select  t.THEMETIMENO,
-					t.THEMETIME
-			from theme th, themeTime t
-			where th.themeNo = t.themeNo
-			and th.themeNo = #{themeNo}
-		]]>
-
-	</select>
-	
-	
 	<!-- 테마 리뷰 체감난이도, 별점 가져오기 -->
 	<select id="getRating" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo">
 	
@@ -261,5 +246,135 @@
 		]]>
 
 	</select>
+
+	<!-- 테마 전체 최대최소인원 가져오기 -->
+	<select id="getMinMaxP" parameterType="int" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select min(pMin)minPMin, max(pMax) maxPMax
+			from theme
+			where cafeNo = #{cafeNo}
+		]]>
+
+	</select>
+
+	<!-- 테마당 인원별 가격 한개 가져오기 -->
+	<select id="getPriceOne" parameterType="com.nextroom.vo.PriceVo" resultType="Integer">
+	
+		<![CDATA[
+			select p.price
+			from themePrice p,theme th
+			where th.themeNo = p.themeNo
+			and th.themeNo = #{themeNo}
+			and p.headCount = #{headCount}
+			
+		]]>
+
+	</select>
+
+	<!-- 테마 한개 정보 가져오기 -->
+	<select id="getOneTheme" parameterType="int" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select 	c.cafeName,
+					c.cafeNo,
+					th.THEMENO, 
+					th.THEMENAME,
+					th.THEMEIMG,
+					th.JENRE,
+					th.LEVELS,
+					th.THEMETYPE,
+					th.PLAYTIME,
+					th.ACTIVITY,
+					th.THEMEINTRO,
+					th.PRECOMMENDMIN,
+					th.PRECOMMENDMAX,
+					th.pMin,
+					th.pMax
+			from cafe c, theme th
+			where c.cafeNo = th.cafeNo
+			and th.themeNo = #{themeNo}
+			
+		]]>
+
+	</select>
+
+
+	<!-- 테마 한개 시간표 가져오기 -->
+	<select id="getOneTime" parameterType="int" resultType="com.nextroom.vo.TimeVo">
+	
+		<![CDATA[
+			select  t.THEMETIMENO,
+					t.THEMETIME
+			from theme th, themeTime t
+			where th.themeNo = t.themeNo
+			and th.themeNo = #{themeNo}
+			order by t.THEMETIME asc
+		]]>
+
+	</select>
+
+
+	<!-- 테마 한개 가격표 가져오기 -->
+	<select id="getOnePrice" parameterType="int" resultType="com.nextroom.vo.PriceVo">
+	
+		<![CDATA[
+			select  th.themeName,
+					th.playTime,
+					p.themeNo,
+					p.headCount,
+					p.price
+			from cafe c, theme th, themePrice p
+			where c.cafeNo = th.cafeNo
+			and th.themeNo = p.themeNo
+			and th.themeNo = #{themeNo}
+			order by p.headCount asc
+			
+		]]>
+
+	</select>
+
+	<!-- 테마 한개 리뷰 가져오기 -->
+	<select id="getReviewList" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo">
+	
+		<![CDATA[
+			select  r.REVIEWNO,
+					r.THEMENO,
+					r.USERNO,
+					r.FEELLEVEL,
+					r.RATING,
+					r.RECTIME,
+					r.REVIEWHINTS,
+					r.REVIEWCLEAR,
+					r.MEMBERNUM,
+					r.PLAYDATE,
+					r.REVIEWREGDATE,
+					r.REVIEWLIKE,
+					r.REVIEWTITLE,
+					r.REVIEWCONTENT,
+					r.REVIEWHIT,
+					u.NICKNAME 
+			from review r, users u
+			where r.userNo = u.userNo
+			and r.themeNo = #{themeNo}
+		]]>
+
+	</select>
+
+	<!-- 테마 한개 리뷰 개수 가져오기 -->
+	<select id="getReviewCount" parameterType="int" resultType="int">
+	
+		<![CDATA[
+			
+		select  count(r.REVIEWNO )
+		from review r, users u
+		where r.userNo = u.userNo
+		and r.themeNo = #{themeNo}
+		
+		]]>
+
+	</select>
+
+
 
 </mapper>

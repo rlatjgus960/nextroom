@@ -59,9 +59,18 @@ public class Cafe {
 	}
 	
 	//테마 상세페이지
-	@RequestMapping(value="/themeDetail", method = { RequestMethod.GET, RequestMethod.POST })
-	public String themeDetail() {
+	@RequestMapping(value="/theme/{themeNo}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String themeDetail(@PathVariable("themeNo") int themeNo, Model model) {
 	   System.out.println("themeDetail");
+	   
+//	   Map<Object, Object> themeMap = cafeService.getTheme(themeNo);
+//	   model.addAttribute("themeMap", themeMap);
+	   
+	   model.addAttribute("themeVo", cafeService.getOneTheme(themeNo));
+	   model.addAttribute("timeList", cafeService.getOneTime(themeNo));
+	   model.addAttribute("priceList", cafeService.getOnePrice(themeNo));
+	   model.addAttribute("reviewList", cafeService.getReviewList(themeNo));
+	   
 	   return "theme/themeDetail";
 	}
 	
