@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nextroom.dao.PartyDao;
 import com.nextroom.service.PartyService;
 import com.nextroom.vo.PartyVo;
 
@@ -134,5 +133,27 @@ public class Party {
 		
 		return count;
 	}
+	
+	
+	//21-10-05 by 대니
+	//partyRead에서 참여자가 참여신청을 눌렀을 경우
+	@ResponseBody
+	@RequestMapping(value = "/addPartyApplicant", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean addPartyApplicant(@ModelAttribute PartyVo partyVo) {
+		System.out.println("참가자 참가신청: " + partyVo);
+		
+		boolean result = partyService.addPartyApplicant(partyVo);
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
