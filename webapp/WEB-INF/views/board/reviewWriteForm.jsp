@@ -211,7 +211,7 @@
                                 </select>
 			
 								<label class="leadTime">소요 시간</label>
-								<input class="leadTime" type="text" value="0" name="recMin" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">분
+								<input class="leadTime" type="text" value="0" name="recMin" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">분
 								<input class="leadTime" type="text" value="0" name="recSec" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">초
 
 							</div>
@@ -233,10 +233,10 @@
                             <!-- //별점 -->
                             <!-- //후기게시판 글쓰기에만 보이게 -->
 
-                            <div class="fileUp">
-                            	<p>이미지 업로드</p>
-                            	<input type="file">
-                            </div>
+                             <div class="fileUp"> 
+                             	<p>이미지 업로드</p> 
+                             	<input type="file" name="reviewImgFile"> 
+                             </div>
                             
              				<div id="text_tool">
 								<textarea id="reviewContent" name="reviewContent" rows="50" cols="96" style="width: 1015px;"></textarea>
@@ -396,35 +396,7 @@ $(".select_thema").on("change", function() {
 	console.log(theme);
 	console.log(themeNo);
 	
-	
 
-	/*
-	//ajax서버에 요청 (themeNo 전달)
-	$.ajax({
-		
-		url : "${pageContext.request.contextPath }/board/theme",		
-		type : "post",
-	  //contentType : "application/json",
-		data : {themeNo: themeNo},
-
-	  //dataType : "json",
-		success : function(themeTimeList){
-			/*성공시 처리해야될 코드 작성*/
-			/*console.log(themeTimeList);
-			
-			$(".select_thema").append('<option value="" selected="">시간을 선택해 주세요</option>');
-			
-			for(var i=0; i<themeTimeList.length; i++) {
-				themeTimeRender(themeTimeList[i], "down");
-			}
-			
-			
-		},
-		error : function(XHR, status, error) {
-			console.error(status + " : " + error);
-		}
-		
-	});*/ 
 	
 });
 
