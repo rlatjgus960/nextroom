@@ -187,39 +187,63 @@ public class PartyService {
 			int userNo = partyDetailList.get(i).getUserNo();
 			
 			PartyVo partyUserRank = rankDao.partySelectRating(userNo);
+			UserVo userNickName = userDao.userNoGetUser(userNo);
 			
-			//평균기록
-			int cleartime = partyUserRank.getAvgClearTime();
+			if(partyUserRank != null) {
 			
-			int min = (int) cleartime / 60;
-			int sec = cleartime % 60;
-			System.out.println(min + "" + sec);
-			String clearTime = min + "분" + " " + sec + "초";
+				//평균기록
+				int cleartime = partyUserRank.getAvgClearTime();
+				
+				int min = (int) cleartime / 60;
+				int sec = cleartime % 60;
+				System.out.println(min + "" + sec);
+				String clearTime = min + "분" + " " + sec + "초";
+				
+				partyDetailList.get(i).setShowAvgClearTime(clearTime);
+				
+				
+				//성공률
+				double winRate = (double) partyUserRank.getWonGame() / partyUserRank.getTotalGame();
+	
+				winRate = Math.round(winRate * 100) / 100.00;
+				
+				partyDetailList.get(i).setWinRate(winRate * 100);
+				
+				
+				//노힌트성공률
+				double noHintWinRate = (double) partyUserRank.getNoHintGame() / partyUserRank.getTotalGame();
+				
+				noHintWinRate = Math.round(noHintWinRate * 100) / 100.00;
+				
+				partyDetailList.get(i).setNoHintWinRate(noHintWinRate * 100);
+	
+				
+				//유저 현재순위, 닉네임, 프로필가져오기
+				PartyVo partySelectRankList = rankDao.partySelectRankList(userNo);
+				
+				String nickname = userNickName.getNickname();
+				int rank = partySelectRankList.getRank();
+				
+				partyDetailList.get(i).setRank(rank);
+				partyDetailList.get(i).setNickname(nickname);
 			
-			partyDetailList.get(i).setShowAvgClearTime(clearTime);
-			
-			//성공률
-			double winRate = (double) partyUserRank.getWonGame() / partyUserRank.getTotalGame();
-
-			winRate = Math.round(winRate * 100) / 100.00;
-			
-			partyDetailList.get(i).setWinRate(winRate * 100);
-			
-			//노힌트성공률
-			double noHintWinRate = (double) partyUserRank.getNoHintGame() / partyUserRank.getTotalGame();
-
-			noHintWinRate = Math.round(noHintWinRate * 100) / 100.00;
-			
-			partyDetailList.get(i).setNoHintWinRate(noHintWinRate * 100);
-			
-			//유저 현재순위, 닉네임, 프로필가져오기
-			PartyVo partySelectRankList = rankDao.partySelectRankList(userNo);
-			
-			String nickname = partySelectRankList.getNickname();
-			int rank = partySelectRankList.getRank();
-			
-			partyDetailList.get(i).setRank(rank);
-			partyDetailList.get(i).setNickname(nickname);
+			} else {
+				
+				String clearTime = "0분 0초";
+				partyDetailList.get(i).setShowAvgClearTime(clearTime);
+				
+				double winRate = 0;
+				partyDetailList.get(i).setWinRate(winRate);
+				
+				double noHintWinRate = 0;
+				partyDetailList.get(i).setNoHintWinRate(noHintWinRate);
+				
+				String nickname = userNickName.getNickname();
+				int rank = 0;
+				partyDetailList.get(i).setRank(rank);
+				partyDetailList.get(i).setNickname(nickname);
+				
+			}
 			
 		}
 		
@@ -228,44 +252,67 @@ public class PartyService {
 		//partyNo로 파티대기멤버 리스트 가져오기
 		List<PartyVo> partyApplicantList = partyDao.partyApplicantList(partyNo);
 		
+		
 		for(int i=0; i<partyApplicantList.size(); i++) {
 			
 			int userNo = partyApplicantList.get(i).getUserNo();
 			
 			PartyVo partyUserRank = rankDao.partySelectRating(userNo);
+			UserVo userNickName = userDao.userNoGetUser(userNo);
 			
-			//평균기록
-			int cleartime = partyUserRank.getAvgClearTime();
-			
-			int min = (int) cleartime / 60;
-			int sec = cleartime % 60;
-			System.out.println(min + "" + sec);
-			String clearTime = min + "분" + " " + sec + "초";
-			
-			partyApplicantList.get(i).setShowAvgClearTime(clearTime);
-			
-			//성공률
-			double winRate = (double) partyUserRank.getWonGame() / partyUserRank.getTotalGame();
-
-			winRate = Math.round(winRate * 100) / 100.00;
-			
-			partyApplicantList.get(i).setWinRate(winRate * 100);
-			
-			//노힌트성공률
-			double noHintWinRate = (double) partyUserRank.getNoHintGame() / partyUserRank.getTotalGame();
-
-			noHintWinRate = Math.round(noHintWinRate * 100) / 100.00;
-			
-			partyApplicantList.get(i).setNoHintWinRate(noHintWinRate * 100);
-			
-			//유저 현재순위, 닉네임, 프로필가져오기
-			PartyVo partySelectRankList = rankDao.partySelectRankList(userNo);
-			
-			String nickname = partySelectRankList.getNickname();
-			int rank = partySelectRankList.getRank();
-			
-			partyApplicantList.get(i).setRank(rank);
-			partyApplicantList.get(i).setNickname(nickname);
+			if(partyUserRank != null) {
+				
+				//평균기록
+				int cleartime = partyUserRank.getAvgClearTime();
+				
+				int min = (int) cleartime / 60;
+				int sec = cleartime % 60;
+				System.out.println(min + "" + sec);
+				String clearTime = min + "분" + " " + sec + "초";
+				
+				partyApplicantList.get(i).setShowAvgClearTime(clearTime);
+				
+				//성공률
+				double winRate = (double) partyUserRank.getWonGame() / partyUserRank.getTotalGame();
+	
+				winRate = Math.round(winRate * 100) / 100.00;
+				
+				partyApplicantList.get(i).setWinRate(winRate * 100);
+				
+				//노힌트성공률
+				double noHintWinRate = (double) partyUserRank.getNoHintGame() / partyUserRank.getTotalGame();
+	
+				noHintWinRate = Math.round(noHintWinRate * 100) / 100.00;
+				
+				partyApplicantList.get(i).setNoHintWinRate(noHintWinRate * 100);
+				
+				//유저 현재순위, 닉네임, 프로필가져오기
+				PartyVo partySelectRankList = rankDao.partySelectRankList(userNo);
+				
+				String nickname = userNickName.getNickname();
+				int rank = partySelectRankList.getRank();
+				
+				partyApplicantList.get(i).setRank(rank);
+				partyApplicantList.get(i).setNickname(nickname);
+				
+			} else {
+				
+				
+				String clearTime = "0분 0초";
+				partyApplicantList.get(i).setShowAvgClearTime(clearTime);
+				
+				double winRate = 0;
+				partyApplicantList.get(i).setWinRate(winRate);
+				
+				double noHintWinRate = 0;
+				partyApplicantList.get(i).setNoHintWinRate(noHintWinRate);
+				
+				String nickname = userNickName.getNickname();
+				int rank = 0;
+				partyApplicantList.get(i).setRank(rank);
+				partyApplicantList.get(i).setNickname(nickname);
+				
+			}
 			
 		}
 		

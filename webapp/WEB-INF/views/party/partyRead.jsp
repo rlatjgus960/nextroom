@@ -31,7 +31,7 @@
     
                 <div id="subheader" class="clearfix">
                     <div id="subheader-title">
-                        <h2>파티정보</h2>
+                        <h2>파티정보 - ${pReadMap.partyReadList.partyState }</h2>
                     </div>
                 </div>
     
@@ -102,14 +102,14 @@
 
                             <!-- 참가자 버튼 -->
                          	<div class="btn_group">
-	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo != null}">
+	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo != null && pReadMap.partyReadList.partyState eq '모집중'}">
 	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
 	                                <button id="cancel_button" class="submit_button">참가취소</button>
 	                                <button type="button" data-userno="${sessionScope.authUser.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="join_button" class="submit_button">파티참가</button> 
 	                            </c:if> 
                             </div>
                            	<div class="btn_group">
-	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo == null}">
+	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo == null || pReadMap.partyReadList.partyState eq '모집완료'}">
 	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
 	                            </c:if> 
                             </div>
@@ -225,7 +225,7 @@
 					<!-- //대기현황 -->
 				
                     <!-- 대기현황 참가자용-->
-                    <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo }">
+                    <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && pReadMap.partyReadList.partyState == '모집중'}">
 	                    <div id="hold_list">
 	                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;대기현황</div>
 	                        <table>
@@ -252,7 +252,7 @@
 	
 	                            <tbody>
 		                            <c:choose>
-		                            	<c:when test="${empty pReadMap.partyApplicantList }">
+		                            	<c:when test="${empty pReadMap.partyApplicantList}">
 		                            		<tr>
 		                            		<td></td>
 		                            		<td></td>

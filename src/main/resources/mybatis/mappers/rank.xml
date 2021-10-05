@@ -88,8 +88,7 @@
 	<select id="partySelectRankList" parameterType="int" resultType="com.nextroom.vo.PartyVo">
 		
 		<![CDATA[
-			select rk.rank, 
-       			   us.nickname
+			select rk.rank
 			from users us,  (select u.nickname
                 					,ROW_NUMBER() OVER (ORDER BY r.userrating DESC) rank
                 					,r.userno
