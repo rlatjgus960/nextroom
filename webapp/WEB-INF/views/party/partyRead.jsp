@@ -102,10 +102,15 @@
 
                             <!-- 참가자 버튼 -->
                          	<div class="btn_group">
-	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo }">
+	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo != null}">
 	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
-	                                <button id="join_button" class="submit_button">파티참가</button> 
 	                                <button id="cancel_button" class="submit_button">참가취소</button>
+	                                <button type="button" data-userno="${sessionScope.authUser.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="join_button" class="submit_button">파티참가</button> 
+	                            </c:if> 
+                            </div>
+                           	<div class="btn_group">
+	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo == null}">
+	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
 	                            </c:if> 
                             </div>
                             <!-- //참가자 버튼 -->
@@ -328,7 +333,8 @@
 		});
     	
     });
-    	
+    /*////상태가 0이면 버튼클릭 or 1이라면 버튼클릭안되게하기 */	
+    
     
    	/*partyRead에서 파티삭제를 눌렀을때*/
    	$("#delete_button").on("click", function() {
@@ -367,8 +373,57 @@
    		
    		
 	});
-    
-    
+   	/*////partyRead에서 파티삭제를 눌렀을때*/
+   	
+   	
+   	/*참여자가 파티참가를 눌렀을 경우*/
+   	$("#join_button").on("click", function () {
+		
+   		var userNo = $("#join_button").data("userno");
+   		var partyNo = $("#join_button").data("partyno");
+   		console.log("유저번호 :" + userNo);
+   		console.log("파티번호 :" + partyNo)
+   		
+   		var partyVo = {
+   			userNo: $("#join_button").data("userno"),
+   	   		partyNo: $("#join_button").data("partyno")
+   		};
+   		
+   		console.log(partyVo);
+   		
+   		const result = confirm("파티에 참여하시겠습니까?");
+   		if(result) {
+   			
+			//ajax서버에 요청 (partyNo,userNo 전달)
+			$.ajax({
+				
+				url : "${pageContext.request.contextPath }/party/addPartyApplicant",		
+				type : "post",
+//	 			contentType : "application/json",
+				data : partyVo,
+
+//	 			dataType : "json",
+				success : function(result){
+					/*성공시 처리해야될 코드 작성*/
+					console.log("참여신청!");
+					
+					if(result == true) {
+						window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+					} else {
+						alert("이미 참여신청한 파티입니다.")
+					}
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+				
+			});
+   			
+   		}
+   		
+	});
+   	/*////참여자가 파티참가를 눌렀을 경우*/
     
 	</script>
 

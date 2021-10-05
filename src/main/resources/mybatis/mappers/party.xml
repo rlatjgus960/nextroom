@@ -179,4 +179,25 @@
 		]]>
 	</delete>
 	
+	
+	<!-- partyRead에서 참여자가 참여신청을 눌렀을 경우 -->
+	<select id="addPartyApplicant" parameterType="com.nextroom.vo.PartyVo" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select userNo
+			from partyapplicant
+			where partyNo = #{partyNo}
+			and userNo = #{userNo}
+		]]>
+	</select>
+	
+	
+	<!-- partyRead에서 참여자가 참여신청을 눌렀을때 성공했을경우 INSERT -->
+	<insert id="insertApplicant" parameterType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			INSERT into partyapplicant
+			VALUES (#{partyNo} ,
+        			#{userNo}
+        			)
+		]]>
+	</insert>
 </mapper>

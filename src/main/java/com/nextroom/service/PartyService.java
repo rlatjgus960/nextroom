@@ -301,4 +301,26 @@ public class PartyService {
 	}
 	
 	
+	//21-10-05 by 대니
+	//partyRead에서 참여자가 참여신청을 눌렀을 경우
+	public boolean addPartyApplicant(PartyVo partyVo) {
+		
+		PartyVo appPartyVo = partyDao.addPartyApplicant(partyVo);
+		
+		System.out.println("파티신청셀렉트 :" + appPartyVo);
+		
+		
+		if(appPartyVo == null) {
+			
+			partyDao.insertApplicant(partyVo);
+			
+			return true;
+			
+		} else {
+			
+			return false;
+		}
+		
+	}
+	
 }
