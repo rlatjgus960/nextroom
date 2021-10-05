@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
 
 
 
-<title>게시글 읽기</title>
+<title></title>
 </head>
 <body>
 
@@ -77,7 +78,7 @@
 								
 								<c:if test="${authUser.userNo ==  reviewBoardVo.userNo}">
 									<a href="" class="submit_button">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
-									<a href="" class="submit_button">수 정</a>	<!-- 수정폼으로 이동(작성자만 보임) -->
+									<a href="${pageContext.request.contextPath }/board/readForm?no=${reviewBoardVo.reviewNo}" class="submit_button">수 정</a>	<!-- 수정폼으로 이동(작성자만 보임) -->
 								</c:if>
 								
 							</ul>
@@ -106,7 +107,7 @@
 								<span>성공 여부 : ${reviewBoardVo.reviewClear }</span>
 								<span>힌트 사용갯수 : ${reviewBoardVo.reviewHints }</span>
 								<span>인원수 : ${reviewBoardVo.memberNum }</span>
-								<span>소요 시간 : ${reviewBoardVo.recTime/60 }분</span>
+								<span>소요 시간 : <fmt:formatNumber value="${reviewBoardVo.recTime/60 } " maxFractionDigits="0" ></fmt:formatNumber> 분 ${reviewBoardVo.recTime%60 }초</span>
 							</div>
 							<!-- //후기 정보 -->
 							
@@ -116,7 +117,7 @@
 								<!-- 콘텐츠 메인정보 -->
 								<div id=main_informa>
 									<div id="img_area" class="board_content">
-										<img src="${pageContext.request.contextPath }/assets/image/board_image/water.jpg">	<!-- 이미지 넣을때마다 반복 어케 하냐고 -->
+										<img src="${pageContext.request.contextPath }/upload/${reviewBoardVo.reviewImg}">	<!-- 이미지 넣을때마다 반복 어케 하냐고 -->
 
 											<div id="text_area">
 												<span>${reviewBoardVo.reviewContent}</span>
@@ -205,4 +206,13 @@
 
 	</div>
 </body>
+
+
+<script type="text/javascript">
+
+document.title = '${reviewBoardVo.reviewTitle}';
+
+</script>
+
+
 </html>
