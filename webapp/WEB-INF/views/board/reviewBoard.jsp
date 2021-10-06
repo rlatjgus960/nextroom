@@ -118,7 +118,14 @@
 							<tbody>	
 								<c:forEach items = "${reviewBoardList.reviewList }" var = "reviewBoardList">					
 									<tr>
-										<td><img class="img" src="${pageContext.request.contextPath }/upload/${reviewBoardList.reviewImg}"></td>
+										<c:if test="${reviewBoardList.reviewImg != null}">
+											<td><img class="img" src="${pageContext.request.contextPath }/upload/${reviewBoardList.reviewImg}"></td>
+										</c:if>
+										
+										<c:if test="${reviewBoardList.reviewImg == null}">
+											<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/yumdda.jpg"></td>
+										</c:if>
+										
 										<td><a href="${pageContext.request.contextPath }/board/readForm?reviewNo=${reviewBoardList.reviewNo }">${reviewBoardList.reviewTitle }</a></td>
 										<td id="btnNick">
 											<a class="nickName">

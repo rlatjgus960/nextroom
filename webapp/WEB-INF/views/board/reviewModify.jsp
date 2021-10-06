@@ -111,7 +111,7 @@
 						<form id="reviewForm" action="${pageContext.request.contextPath }/board/reviewWrite" method="post" enctype="multipart/form-data"> 
 
 							<div id="content_title">
-								<input type="text" id="reviewTitle" name="reviewTitle">${reviewBoardVo.reviewTitle}
+								<input type="text" id="reviewTitle" name="reviewTitle" value="${reviewBoardVo.reviewTitle}">
 							</div>
 								 
 							<div id="nick_date">
@@ -239,7 +239,7 @@
                              </div>
                             
              				<div id="text_tool">
-								<textarea id="reviewContent" name="reviewContent" rows="50" cols="96" style="width: 1015px;">${reviewBoardVo.reviewContent}</textarea>
+								<textarea id="reviewContent" name="reviewContent" rows="50" cols="96" style="width: 1015px;"></textarea>
 							</div>
                             
 	                        <!-- 글등록 버튼 -->
@@ -499,21 +499,39 @@ $(function(){
             // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
             bUseVerticalResizer : true,    
             // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseModeChanger : true,
-        }
+            bUseModeChanger : true,            
+        },
+        
+	    fOnAppLoad : function(){ 
+	
+	    	//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
+	    	oEditors.getById[reviewContent].exec("LOAD_CONTENTS_FIELD");
+	
+	    	
+
+
+
+
+
+	    },
+	    
+    
     });
      
     //전송버튼 클릭이벤트
     $("#btn_save").click(function(){
         //id가 smarteditor인 textarea에 에디터에서 대입
         editor_object.getById["reviewContent"].exec("UPDATE_CONTENTS_FIELD", []);
-         
+        
         // 이부분에 에디터 validation 검증
          
         //폼 submit
         $("#reviewForm").submit();
     })
 }) 
+
+
+
 
 </script>
 

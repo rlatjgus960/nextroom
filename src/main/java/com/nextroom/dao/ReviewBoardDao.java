@@ -58,6 +58,14 @@ public class ReviewBoardDao {
 		
 	}
 	
+	//2021.10.06 by 원호
+	//리뷰게시판 이미지 없이 글 등록
+	public int ReviewInsert2(ReviewBoardVo reviewBoardVo) {
+		System.out.println("[Dao.ReviewInsert2]");
+		
+		return sqlSession.insert("reviewBoard.reviewBoardInsert2", reviewBoardVo);
+	}
+	
 	
 	
 	//2021.09.29 by 원호
@@ -117,10 +125,10 @@ public class ReviewBoardDao {
 	}
 	
 	//2021.10.06 by 원호
-	//게시글 수정
+	//게시글 수정폼
 	public ReviewBoardVo reviewModify(int reviewNo) {
 		System.out.println("Dao.reviewModify");
 		
-		return sqlSession.selectOne("reviewBoard.reviewModify", reviewNo);
+		return sqlSession.selectOne("reviewBoard.selectBoard", reviewNo);
 	}
 }
