@@ -140,7 +140,7 @@ public class Party {
 	@ResponseBody
 	@RequestMapping(value = "/addPartyApplicant", method = {RequestMethod.GET, RequestMethod.POST})
 	public boolean addPartyApplicant(@ModelAttribute PartyVo partyVo) {
-		System.out.println("참가자 참가신청: " + partyVo);
+		System.out.println("참가자 파티참여: " + partyVo);
 		
 		boolean result = partyService.addPartyApplicant(partyVo);
 		
@@ -148,9 +148,30 @@ public class Party {
 	}
 	
 	
+	//21-10-06 by 대니
+	//partyRead에서 참여자가 참가취소를 눌렀을 경우
+	@ResponseBody
+	@RequestMapping(value = "/cancelPartyApplicant", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean cancelPartyApplicant(@ModelAttribute PartyVo partyVo) {
+		System.out.println("참가자 참가취소: " + partyVo);
+		
+		boolean result = partyService.cancelPartyApplicant(partyVo);
+		
+		return result;
+	}
 	
 	
-	
+	//21-10-06 by 대니
+	//방장이 대기자 O버튼을 눌렀을 경우
+	@ResponseBody
+	@RequestMapping(value = "/agreeMember", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean agreeMember(@ModelAttribute PartyVo partyVo) {
+		System.out.println("어그리멤버: " + partyVo);
+		
+		boolean result = partyService.agreeMember(partyVo);
+		
+		return result;
+	}
 	
 	
 	

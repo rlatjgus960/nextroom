@@ -104,7 +104,7 @@
                          	<div class="btn_group">
 	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo != null && pReadMap.partyReadList.partyState eq '모집중'}">
 	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
-	                                <button id="cancel_button" class="submit_button">참가취소</button>
+	                                <button type="button" data-userno="${sessionScope.authUser.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="cancel_button" class="submit_button">참가취소</button>
 	                                <button type="button" data-userno="${sessionScope.authUser.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="join_button" class="submit_button">파티참가</button> 
 	                            </c:if> 
                             </div>
@@ -122,58 +122,102 @@
                     </div>
                     <!-- //정보 보드-->
 
-					<!-- 참여현황 -->
-                    <div id="party_list">
-                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;참여현황</div>
-                        <table>
-                            <colgroup>
-                                <col style="width: 120px;">
-                                <col style="width: 210px;">
-                                <col style="width: 225px;">
-                                <col style="width: 185px;">
-                                <col style="width: 185px;">
-                                <col style="width: 185px;">
-                                <col style="width: 185px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>프로필</th>
-                                    <th>닉네임</th>
-                                    <th>현재 순위</th>
-                                    <th>성공률</th>
-                                    <th>노힌트 성공률</th>
-                                    <th>평균 기록</th>
-                                </tr>
-                            </thead>
 
-                            <tbody>
-                            	<c:forEach items="${pReadMap.partyDetailList }" var="partyDetailList" varStatus="status">
-                                <tr>
-                                    <td>${status.count }</td>
-                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-                                    <td>${partyDetailList.nickname }</td>
-                                    <td>${partyDetailList.rank } 위</td>
-                                    <td>${partyDetailList.winRate } %</td>
-                                    <td>${partyDetailList.noHintWinRate } %</td>
-                                    <td>${partyDetailList.showAvgClearTime }</td>
-                                </tr>
-                            	</c:forEach>
-                               <%-- <tr>
-                                    <td>2</td>
-                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-                                    <td>앙기모띠</td>
-                                    <td>33위</td>
-                                    <td>98%</td>
-                                    <td>100%</td>
-                                    <td>38m 27s</td>
-                                </tr>  --%>
-								
-                            </tbody>
-                        </table>
-                    </div>
+					<!-- 방장용 참여현황 -->
+		         	<c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
+	                    <div id="party_list">
+	                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;참여현황</div>
+	                        <table>
+	                            <colgroup>
+		                                <col style="width: 120px;">
+		                                <col style="width: 160px;">
+		                                <col style="width: 206px;">
+		                                <col style="width: 162px;">
+		                                <col style="width: 162px;">
+		                                <col style="width: 162px;">
+		                                <col style="width: 162px;">
+		                                <col style="width: 162px;">
+	                            </colgroup>
+	                            <thead>
+	                                <tr>
+	                                    <th>No</th>
+	                                    <th>프로필</th>
+	                                    <th>닉네임</th>
+	                                    <th>현재 순위</th>
+	                                    <th>성공률</th>
+	                                    <th>노힌트 성공률</th>
+	                                    <th>평균 기록</th>
+	                                    <th>동의여부</th>
+	                                </tr>
+	                            </thead>
+	
+	                            <tbody>
+	                            	<c:forEach items="${pReadMap.partyDetailList }" var="partyDetailList" varStatus="status">
+	                                <tr>
+	                                    <td>${status.count }</td>
+	                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+	                                    <td><c:if test="${partyDetailList.userState == '1' }">(BOSS) </c:if>${partyDetailList.nickname }</td>
+	                                    <td>${partyDetailList.rank } 위</td>
+	                                    <td>${partyDetailList.winRate } %</td>
+	                                    <td>${partyDetailList.noHintWinRate } %</td>
+	                                    <td>${partyDetailList.showAvgClearTime }</td>
+	                                    <td><c:if test="${partyDetailList.userState == '2' }"><button>추방하기</button></c:if></td>
+	                                </tr>
+	                            	</c:forEach>
+									
+	                            </tbody>
+	                        </table>
+	                    </div>
+		         	</c:if>
 
-                    <!-- //참여현황 -->
+                    <!-- //방장용 참여현황 -->
+
+
+					<!-- 참가자용 참여현황 -->
+					<c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo }">
+	                    <div id="party_list">
+	                        <div id="join_situ">&nbsp;&nbsp;&nbsp;&nbsp;참여현황</div>
+	                        <table>
+	                            <colgroup>
+	                                <col style="width: 120px;">
+	                                <col style="width: 210px;">
+	                                <col style="width: 225px;">
+	                                <col style="width: 185px;">
+	                                <col style="width: 185px;">
+	                                <col style="width: 185px;">
+	                                <col style="width: 185px;">
+	                            </colgroup>
+	                            <thead>
+	                                <tr>
+	                                    <th>No</th>
+	                                    <th>프로필</th>
+	                                    <th>닉네임</th>
+	                                    <th>현재 순위</th>
+	                                    <th>성공률</th>
+	                                    <th>노힌트 성공률</th>
+	                                    <th>평균 기록</th>
+	                                </tr>
+	                            </thead>
+	
+	                            <tbody>
+	                            	<c:forEach items="${pReadMap.partyDetailList }" var="partyDetailList" varStatus="status">
+	                                <tr>
+	                                    <td>${status.count }</td>
+	                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+	                                    <td><c:if test="${partyDetailList.userState == '1' }">(BOSS) </c:if>${partyDetailList.nickname }</td>
+	                                    <td>${partyDetailList.rank } 위</td>
+	                                    <td>${partyDetailList.winRate } %</td>
+	                                    <td>${partyDetailList.noHintWinRate } %</td>
+	                                    <td>${partyDetailList.showAvgClearTime }</td>
+	                                </tr>
+	                            	</c:forEach>
+									
+	                            </tbody>
+	                        </table>
+	                    </div>
+					</c:if>
+
+                    <!-- //참가자용 참여현황 -->
                     
 
                     <!-- 대기현황 방장용-->
@@ -204,7 +248,7 @@
 	                                </tr>
 	                            </thead>
 	
-	                            <tbody>
+	                            <tbody id="joinTr">
 		                            <c:forEach items="${pReadMap.partyApplicantList }" var="partyApplicantList" varStatus="status">
 		                                <tr>
 		                                    <td>${status.count }</td>
@@ -214,7 +258,7 @@
 		                                    <td>${partyApplicantList.winRate } %</td>
 		                                    <td>${partyApplicantList.noHintWinRate } %</td>
 		                                    <td>${partyApplicantList.showAvgClearTime }</td>
-	                                    	<td><button>O</button> / <button>X</button></td>
+	                                    	<td><button type="button" data-userno="${partyApplicantList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="agree_button">O</button> / <button type="button" data-userno="${partyApplicantList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="refuse_button">X</button></td>
 		                                </tr>
 		        					</c:forEach>
 	                            </tbody>
@@ -409,6 +453,7 @@
 					
 					if(result == true) {
 						window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+						alert("파티신청이 완료되었습니다.")
 					} else {
 						alert("이미 참여신청한 파티입니다.")
 					}
@@ -425,6 +470,119 @@
 	});
    	/*////참여자가 파티참가를 눌렀을 경우*/
     
+   	
+   	/*참여자가 파티취소를 눌렀을 경우*/
+   	$("#cancel_button").on("click", function () {
+		
+   		var userNo = $("#cancel_button").data("userno");
+   		var partyNo = $("#cancel_button").data("partyno");
+   		console.log("유저번호 :" + userNo);
+   		console.log("파티번호 :" + partyNo)
+   		
+   		var partyVo = {
+   			userNo: $("#cancel_button").data("userno"),
+   	   		partyNo: $("#cancel_button").data("partyno")
+   		};
+   		
+   		console.log(partyVo);
+   		
+   		const result = confirm("파티참여를 취소하시겠습니까?");
+   		if(result) {
+   			
+			//ajax서버에 요청 (partyNo,userNo 전달)
+			$.ajax({
+				
+				url : "${pageContext.request.contextPath }/party/cancelPartyApplicant",		
+				type : "post",
+//	 			contentType : "application/json",
+				data : partyVo,
+
+//	 			dataType : "json",
+				success : function(result){
+					/*성공시 처리해야될 코드 작성*/
+					console.log("참여신청!");
+					
+					if(result == true) {
+						window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+					} else {
+						alert("파티신청한 멤버가 아닙니다.")
+					}
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+				
+			});
+   			
+   		}
+   		
+	});
+   	
+   	
+   	/*////참여자가 파티취소를 눌렀을 경우*/
+   	
+   	
+   	/*방장이 대기자 O버튼을 눌렀을 경우*/
+   	$("#joinTr").on("click", "#agree_button", function () {
+		
+   		var userNo = $(this).data("userno");
+   		var partyNo = $(this).data("partyno");
+   		console.log("유저번호 :" + userNo);
+   		console.log("파티번호 :" + partyNo)
+   		
+  		var partyVo = {
+   			userNo: $(this).data("userno"),
+   	   		partyNo: $(this).data("partyno")
+   		};
+   		
+   		console.log(partyVo);
+   		
+   		const result = confirm("파티멤버로 수락하시겠습니까?");
+   		if(result) {
+   			
+			//ajax서버에 요청 (partyNo,userNo 전달)
+			$.ajax({
+				
+				url : "${pageContext.request.contextPath }/party/agreeMember",		
+				type : "post",
+//	 			contentType : "application/json",
+				data : partyVo,
+
+//	 			dataType : "json",
+				success : function(result){
+					/*성공시 처리해야될 코드 작성*/
+					
+					if(result == false) {
+						alert("모집인원을 확인해주세요.");
+					} else {
+						window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+					}
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+				
+			});
+   			
+   		}
+   		
+	});
+   	
+   	
+   	/*////방장이 대기자 O버튼을 눌렀을 경우*/
+   	
+   	
+   	
+   	
+   	
+   	
+   	
+   	
+   	
+   	
+   	
 	</script>
 
 

@@ -352,7 +352,7 @@ public class PartyService {
 	//partyRead에서 참여자가 참여신청을 눌렀을 경우
 	public boolean addPartyApplicant(PartyVo partyVo) {
 		
-		PartyVo appPartyVo = partyDao.addPartyApplicant(partyVo);
+		PartyVo appPartyVo = partyDao.selectPartyApplicant(partyVo);
 		
 		System.out.println("파티신청셀렉트 :" + appPartyVo);
 		
@@ -370,4 +370,68 @@ public class PartyService {
 		
 	}
 	
+	
+	// 21-10-06 by 대니
+	// partyRead에서 참여자가 참가취소를 눌렀을 경우
+	public boolean cancelPartyApplicant(PartyVo partyVo) {
+
+		PartyVo appPartyVo = partyDao.selectPartyApplicant(partyVo);
+
+		if(appPartyVo != null) {
+			
+			partyDao.deleteApplicant(partyVo);
+			
+			return true;
+			
+		} else {
+
+			return false;
+			
+		}
+		
+	}
+
+	
+	//21-10-06 by 대니
+	//방장이 대기자 O버튼을 눌렀을 경우
+	public boolean agreeMember(PartyVo partyVo) {
+		
+		int partyNo = partyVo.getPartyNo();
+		
+		//파티승인 총 멤버수
+		PartyVo pDetailCount = partyDao.getPartyNoList(partyNo);
+		
+		//해당 파티의 모임인원수
+		PartyVo partyReserveP = partyDao.getReservePerson(partyNo);
+		
+		if(pDetailCount.getUserCount() >= partyReserveP.getReservePerson()) {
+			
+			return false;
+			
+		} else {
+			
+			//파티대기멤버에서 삭제
+			partyDao.deleteApplicant(partyVo);
+			
+			//파티승인멤버에 추가
+			partyDao.pDetailEntryMember(partyVo);
+			
+			return true;
+		}
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

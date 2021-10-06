@@ -146,9 +146,9 @@ public class PartyDao {
 	
 	//21-10-05 by 대니
 	//partyRead에서 참여자가 참여신청을 눌렀을 경우
-	public PartyVo addPartyApplicant(PartyVo partyVo) {
+	public PartyVo selectPartyApplicant(PartyVo partyVo) {
 		
-		return sqlSession.selectOne("party.addPartyApplicant", partyVo);
+		return sqlSession.selectOne("party.selectPartyApplicant", partyVo);
 	}
 	
 	//21-10-05 by 대니
@@ -156,6 +156,29 @@ public class PartyDao {
 	public void insertApplicant(PartyVo partyVo) {
 		
 		sqlSession.insert("party.insertApplicant", partyVo);
+		
+	}
+	
+	// 21-10-06 by 대니
+	// partyRead에서 참여자가 참가취소를 눌렀을 경우
+	public void deleteApplicant(PartyVo partyVo) {
+
+		sqlSession.delete("party.deleteApplicant", partyVo);
+
+	}
+	
+	//21-10-06 by 대니
+	//partyNo로 party reservePerson 가져오기
+	public PartyVo getReservePerson(int partyNo) {
+		
+		return sqlSession.selectOne("party.getReservePerson", partyNo);
+	}
+	
+	//21-10-06 by 대니
+	//partyNo, userNo로 partyDetail 멤버추가하기
+	public void pDetailEntryMember(PartyVo partyVo) {
+		
+		sqlSession.insert("party.pDetailEntryMember", partyVo);
 		
 	}
 	

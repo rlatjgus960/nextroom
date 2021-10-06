@@ -181,7 +181,7 @@
 	
 	
 	<!-- partyRead에서 참여자가 참여신청을 눌렀을 경우 -->
-	<select id="addPartyApplicant" parameterType="com.nextroom.vo.PartyVo" resultType="com.nextroom.vo.PartyVo">
+	<select id="selectPartyApplicant" parameterType="com.nextroom.vo.PartyVo" resultType="com.nextroom.vo.PartyVo">
 		<![CDATA[
 			select userNo
 			from partyapplicant
@@ -200,4 +200,42 @@
         			)
 		]]>
 	</insert>
+	
+	
+	<!-- partyRead에서 참여자가 참가취소를 눌렀을 경우 -->
+	<delete id="deleteApplicant" parameterType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			delete from partyapplicant
+			where partyNo = #{partyNo}
+			and userNo = #{userNo}
+		]]>
+	</delete>
+	
+	
+	<!-- partyNo로 party reservePerson 가져오기 -->
+	<select id="getReservePerson" parameterType="int" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select reserveperson
+			from party
+			where partyNo = #{partyNo}
+		]]>
+	</select>
+	
+	
+	<!-- 파티대기멤버 파티승인멤버로 인서트 -->
+	<insert id="pDetailEntryMember" parameterType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			INSERT into partydetail
+			VALUES (#{partyNo},
+        			#{userNo},
+        			'2')
+		]]>		
+	</insert>
+	
+	
+	
+	
+	
+	
+	
 </mapper>
