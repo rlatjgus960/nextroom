@@ -13,8 +13,8 @@
 <link href="${pageContext.request.contextPath }/assets/css/board_css/board.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/board_css/read.css" rel="stylesheet" type="text/css">
 
-
-
+<script type="text/javascript"
+src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <title></title>
 </head>
 <body>
@@ -77,8 +77,8 @@
 								<a href="${pageContext.request.contextPath }/board/reviewBoard" class="submit_button">목 록</a>	
 								
 								<c:if test="${authUser.userNo ==  reviewBoardVo.userNo}">
-									<a href="" class="submit_button">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
-									<a href="${pageContext.request.contextPath }/board/readForm?no=${reviewBoardVo.reviewNo}" class="submit_button">수 정</a>	<!-- 수정폼으로 이동(작성자만 보임) -->
+									<a id="delete_button" class="submit_button" data-reviewno="${reviewBoardVo.reviewNo}">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
+									<a href="${pageContext.request.contextPath }/board/reviewModify?reviewNo=${reviewBoardVo.reviewNo}" class="submit_button">수 정</a>
 								</c:if>
 								
 							</ul>
@@ -202,15 +202,58 @@
 		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 		<!-- //footer -->
-
-
 	</div>
+
+
+	
 </body>
 
 
 <script type="text/javascript">
 
 document.title = '${reviewBoardVo.reviewTitle}';
+
+
+/*게시글의 삭제버튼을 눌렀을때*/
+$("#delete_button").on("click", function() {
+
+	var reviewNo = $("#delete_button").data("reviewno");
+	console.log(reviewNo);
+	
+	const result = confirm("게시물을 삭제하시겠습니까?");
+	if(result) {
+		
+		//ajax서버에 요청
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/board/reviewDelete",		
+			type : "post",
+// 			contentType : "application/json",
+			data : {reviewNo: reviewNo},
+
+// 			dataType : "json",
+			success : function(count){
+				/*성공시 처리해야될 코드 작성*/
+				console.log("삭제완료");
+				
+				if(count > 0) {
+					window.location.assign('http://localhost:8088/nextroom/board/reviewBoard');
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+			
+		});
+		
+	}
+		
+		
+});
+
+
+
 
 </script>
 
