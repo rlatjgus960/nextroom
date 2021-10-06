@@ -171,7 +171,7 @@ public class ReviewBoardService {
 	//2021.10.02 by 원호
 	//게시판 글 읽기
 	public ReviewBoardVo getBoard(int reviewNo) {
-		System.out.println("[Servie.getBoard]");		
+		System.out.println("[Service.getBoard]");		
 		
 		//조회수 올리기
 		int count = reviewBoardDao.hit(reviewNo);
@@ -179,6 +179,27 @@ public class ReviewBoardService {
 		//게시판정보 가져오기
 		ReviewBoardVo reviewBoardVo = reviewBoardDao.selectBoard(reviewNo);
 		System.out.println(reviewBoardVo);
+		
+		return reviewBoardVo;
+	}
+	
+	//2021.10.06 by 원호
+	//게시글 삭제
+	public int reviewDelete(int reviewNo) {
+		System.out.println("[Service.reviewDelete]");
+		
+		int count = reviewBoardDao.reviewDelete(reviewNo);
+		
+		return count;
+		
+	}
+	
+	//2021.10.06 by 원호
+	//게시글 수정
+	public ReviewBoardVo reviewModify(int reviewNo) {
+		System.out.println("[Service.reviewModify]");
+		
+		ReviewBoardVo reviewBoardVo = reviewBoardDao.reviewModify(reviewNo);
 		
 		return reviewBoardVo;
 	}
