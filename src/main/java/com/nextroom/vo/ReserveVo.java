@@ -24,6 +24,8 @@ public class ReserveVo {
 	private int totalPerson;
 	private String regDate;
 	private String gameState;
+	private String sidoDetail;
+	private String sido;
 	
 	public ReserveVo() {
 		super();
@@ -34,7 +36,7 @@ public class ReserveVo {
 	public ReserveVo(int userNo, int cafeNo, int themeNo, String themeName, int themeTimeNo, String themeTime,
 			int reserveDateNo, String reserveDate, int reserveTimeNo, String reserveTime, int reserveState,
 			int paymentState, int reservePerson, String reserveName, int reserveNo, String themeImg, String cafeName,
-			String reserveHp, String payment, int totalPerson, String regDate, String gameState) {
+			String reserveHp, String payment, int totalPerson, String regDate, String gameState, String sidoDetail, String sido) {
 		super();
 		this.userNo = userNo;
 		this.cafeNo = cafeNo;
@@ -58,6 +60,8 @@ public class ReserveVo {
 		this.totalPerson = totalPerson;
 		this.regDate = regDate;
 		this.gameState = gameState;
+		this.sidoDetail = sidoDetail;
+		this.sido = sido;
 	}
 
 
@@ -263,20 +267,45 @@ public class ReserveVo {
 	}
 
 
+	public String getSidoDetail() {
+		return sidoDetail;
+	}
+
+
+
+	public void setSidoDetail(String sidoDetail) {
+		this.sidoDetail = sidoDetail;
+	}
+	
+
+	public String getSido() {
+		return sido;
+	}
+
+
+
+	public void setSido(String sido) {
+		this.sido = sido;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "AdminReserveVo [userNo=" + userNo + ", cafeNo=" + cafeNo + ", themeNo=" + themeNo + ", themeName="
+		return "ReserveVo [userNo=" + userNo + ", cafeNo=" + cafeNo + ", themeNo=" + themeNo + ", themeName="
 				+ themeName + ", themeTimeNo=" + themeTimeNo + ", themeTime=" + themeTime + ", reserveDateNo="
 				+ reserveDateNo + ", reserveDate=" + reserveDate + ", reserveTimeNo=" + reserveTimeNo + ", reserveTime="
 				+ reserveTime + ", reserveState=" + reserveState + ", paymentState=" + paymentState + ", reservePerson="
 				+ reservePerson + ", reserveName=" + reserveName + ", reserveNo=" + reserveNo + ", themeImg=" + themeImg
 				+ ", cafeName=" + cafeName + ", reserveHp=" + reserveHp + ", payment=" + payment + ", totalPerson="
-				+ totalPerson + ", regDate=" + regDate + ", gameState=" + gameState + "]";
+				+ totalPerson + ", regDate=" + regDate + ", gameState=" + gameState + ", sidoDetail=" + sidoDetail
+				+ ", sido=" + sido + "]";
 	}
 
 
 
+
+	
 	
 	
 	

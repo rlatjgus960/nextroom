@@ -132,6 +132,16 @@ public class ReserveDao {
 		
 		return sqlSession.selectOne("reserve.selectPreR", reserveNo);
 	}
+	
+	
+	//예약 시 지역별 카페 리스트 불러오기
+	public List<ReserveVo> selectCafeList(String sidoDetail) {
+		System.out.println("[ReserveDao.selectCafeList()]");
+		List<ReserveVo> cafeList = sqlSession.selectList("reserve.selectCafeList", sidoDetail);
+		System.out.println("cafeList : "+cafeList);
+		
+		return cafeList;
+	}
 }
 
 

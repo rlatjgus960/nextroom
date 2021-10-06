@@ -243,6 +243,36 @@
 		]]>
 	</select>
 	
+	<!-- 지역별 카페 리스트 가져오기 -->
+	<select id="selectCafeList" parameterType="String" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  cafeNo,
+					cafeName
+			from cafe
+		]]>
+			<choose>
+				<when test="_parameter == '전국'">
+				</when>
+				<otherwise>
+					<choose>
+						<when test="_parameter == '서울'">
+							where sido = #{sidoDetail}
+						</when>
+						<otherwise>
+							<choose>
+								<when test="_parameter != '' and _parameter != null">
+									where sidoDetail = #{sidoDetail}
+								</when>
+							</choose>
+						</otherwise>
+					</choose>
+				</otherwise>
+			</choose>
+		
+		<![CDATA[
+		]]>
+	</select>
+	
 </mapper>
 
 

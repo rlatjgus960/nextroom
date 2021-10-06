@@ -58,6 +58,10 @@
     transform: translateY(-50%);
     font-weight: bolder;
 }
+
+.reserveImpos {
+	color: rgb(224,224,224);
+}
 /*************************************************/
 
 
@@ -140,7 +144,21 @@ div.ui-datepicker { font-size: 15px; width: 312px; height: 387px;}
 #reservation_main_content_region, #reservation_main_content_cafe, 
 #reservation_main_content_thema, #reservation_main_content_time {
     height: 381px;
+    overflow: auto;
 }
+
+#reservation_main_content_region::-webkit-scrollbar, #reservation_main_content_cafe::-webkit-scrollbar,
+#reservation_main_content_thema::-webkit-scrollbar, #reservation_main_content_time::-webkit-scrollbar {width: 10px;}
+
+#reservation_main_content_region::-webkit-scrollbar-track, #reservation_main_content_cafe::-webkit-scrollbar-track,
+#reservation_main_content_thema::-webkit-scrollbar-track, #reservation_main_content_time::-webkit-scrollbar-track {background-color:#f1f1f1;}
+
+#reservation_main_content_region::-webkit-scrollbar-thumb, #reservation_main_content_cafe::-webkit-scrollbar-thumb,
+#reservation_main_content_thema::-webkit-scrollbar-thumb, #reservation_main_content_time::-webkit-scrollbar-thumb {background-color:rgb(224,224,224);border-radius: 10px;}
+
+#reservation_main_content_region::-webkit-scrollbar-thumb:hover, #reservation_main_content_cafe::-webkit-scrollbar-thumb:hover,
+#reservation_main_content_thema::-webkit-scrollbar-thumb:hover, #reservation_main_content_time::-webkit-scrollbar-thumb:hover {background: #555;}
+
 /*************************************************/
 
 
@@ -289,3 +307,6 @@ label {
     margin-left: auto;
     margin-right: auto;
 }
+
+
+

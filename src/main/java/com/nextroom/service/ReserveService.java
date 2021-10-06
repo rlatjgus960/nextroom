@@ -206,6 +206,17 @@ public class ReserveService {
 		return preR;
 	}
 	
+	//지역별 카페 리스트
+	public List<ReserveVo> getCafeList(String sidoDetail) {
+		System.out.println("[ReserveService.getCafeList()]");
+		
+		List<ReserveVo> cafeList = reserveDao.selectCafeList(sidoDetail);
+		System.out.println("테테테스트" + cafeList);
+		
+		return cafeList;
+	}
+	
+
 	
 }
 
