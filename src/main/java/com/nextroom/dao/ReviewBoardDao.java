@@ -105,4 +105,22 @@ public class ReviewBoardDao {
 		
 		return sqlSession.selectOne("reviewBoard.selectBoard", reviewNo);
 	}
+	
+	//2021.10.06 by 원호
+	//게시글 삭제
+	public int reviewDelete(int reviewNo) {
+		System.out.println("Dao.reviewDelete");
+		
+		int count = sqlSession.delete("reviewBoard.reviewDelete", reviewNo);
+		
+		return reviewNo;
+	}
+	
+	//2021.10.06 by 원호
+	//게시글 수정
+	public ReviewBoardVo reviewModify(int reviewNo) {
+		System.out.println("Dao.reviewModify");
+		
+		return sqlSession.selectOne("reviewBoard.reviewModify", reviewNo);
+	}
 }
