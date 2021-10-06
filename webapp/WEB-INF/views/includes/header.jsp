@@ -10,7 +10,7 @@
 			<div id="nav">
 
 				<ul id="bar">
-					<li><a href="${pageContext.request.contextPath}/cafe/">카페/테마</a></li>
+					<li><a href="${pageContext.request.contextPath}/cafe/">카페</a>/<a href="${pageContext.request.contextPath}/cafe/theme">테마</a></li>
 					<li><a href="${pageContext.request.contextPath}/reserve/reserveBaseForm">예약</a></li>
 					<li><a href="${pageContext.request.contextPath}/party/partyList">파티구하기</a></li>
 					<li><a href="${pageContext.request.contextPath}/rank/user">랭킹</a></li>
