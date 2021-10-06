@@ -104,7 +104,6 @@
 
                             <!-- 참가자 버튼 -->
                          	<div class="btn_group">
-	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
 	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo != null && pReadMap.partyReadList.partyState eq '모집중'}">
 	                                <button type="button" data-userno="${sessionScope.authUser.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="cancel_button" class="submit_button">참가취소</button>
 	                                <button type="button" data-userno="${sessionScope.authUser.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="join_button" class="submit_button">파티참가</button> 
