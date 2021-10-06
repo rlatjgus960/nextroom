@@ -489,9 +489,9 @@
 						} else {
 	// 						alert("이미 참여신청한 파티입니다.");
 							Swal.fire({
-			                    icon: 'error',
+			                    icon: 'warning',
 			                    title: 'NEXTROOM',
-			                    text: '이미 참여신청한 파티입니다.',
+			                    text: '참가현황과 대기현황 명단을 확인해주세요.',
 			                });
 						
 						}
