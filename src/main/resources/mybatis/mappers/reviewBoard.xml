@@ -146,4 +146,36 @@
 			and r.reviewno = #{reviewno}
 		]]>
 	</select>
+	
+	<!-- 2021.10.06 by 원호-->
+	<!-- 게시글 삭제 -->
+	<delete id = "reviewDelete" parameterType = "int">
+		<![CDATA[
+			delete from review
+			where reviewNo = #{reviewNo}
+		]]>
+	</delete>
+	
+	
+	<!-- 2021.10.06 by 원호 -->
+	<!-- 게시글 수정 -->
+	<update id="reviewModify" parameterType = "int">
+		update review
+		set  reviewTitle = #{reviewTitle}
+		    ,reviewContent = #{reviewContent}
+		    ,themeNo = #{themeNo}
+		    ,feelLevel = #{feelLevel}
+		    ,rating = #{rating}
+		    ,recTime = #{recTime}
+		    ,reviewHints = #{reviewHints}
+		    ,reviewClear = #{reviewClear}
+		    ,memberNum = #{memberNum}
+		    ,playDate = sysdate
+		    ,reviewRegDate = sysdate
+		    ,reviewLike = #{reviewLike}
+		    ,reviewHit = #{reviewHit}
+		    ,reviewImg = #{reviewImg}
+		where reviewNo = #{reviewNo}
+		and userNo= #{userNo}
+	</update>
 </mapper>
