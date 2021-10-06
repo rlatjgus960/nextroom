@@ -117,12 +117,24 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 								<!-- 콘텐츠 메인정보 -->
 								<div id=main_informa>
 									<div id="img_area" class="board_content">
-										<img src="${pageContext.request.contextPath }/upload/${reviewBoardVo.reviewImg}">	<!-- 이미지 넣을때마다 반복 어케 하냐고 -->
-
+									
+										<!-- 이미지가 있을 경우 -->
+										<c:if test="${reviewBoardVo.reviewImg != null}">
+											<img src="${pageContext.request.contextPath }/upload/${reviewBoardVo.reviewImg}">	<!-- 이미지 넣을때마다 반복 어케 하냐고 -->
 											<div id="text_area">
 												<span>${reviewBoardVo.reviewContent}</span>
 											</div>
-
+										</c:if>
+										
+										<!-- 이미지가 없을 경우 텍스트만 출력 -->
+										<c:if test="${reviewBoardVo.reviewImg == null}">
+											<div id="text_area" style="position:relative; margin-top:20px;">
+												<span>${reviewBoardVo.reviewContent}</span>
+											</div>
+										</c:if>
+										
+										
+										
 										<div id="wrap_up_down">
 											<a href="${pageContext.request.contextPath }/board/reviewBoard" class="back_button">목 록</a> <!-- href에 js 넣어야할듯-->
 											<a href="" class="up_down">추 천</a>

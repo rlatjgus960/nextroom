@@ -137,10 +137,15 @@ public class ReviewBoardService {
 
 			System.out.println("ReviewInsert 후 Vo : " + reviewBoardVo);
 
+			
+		} else {
+			//이미지 업로드 하지 않고 글만 쓰는 경우
+			reviewCount = reviewBoardDao.ReviewInsert2(reviewBoardVo);
+			
 		}
 		// ******************** //카페 메인 이미지 처리 ********************//
-		
 		return reviewCount;
+		
 	}
 	
 	
@@ -195,7 +200,7 @@ public class ReviewBoardService {
 	}
 	
 	//2021.10.06 by 원호
-	//게시글 수정
+	//게시글 수정폼
 	public ReviewBoardVo reviewModify(int reviewNo) {
 		System.out.println("[Service.reviewModify]");
 		

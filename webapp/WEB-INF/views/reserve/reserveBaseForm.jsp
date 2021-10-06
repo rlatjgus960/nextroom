@@ -78,7 +78,7 @@
 
                 <!-- main -->
                 <div id="reservation_main">
-                	<form action="${pageContext.request.contextPath}/reserve/reserveInfoForm" method="">
+                	<form action="${pageContext.request.contextPath}/reserve/reserveInfoForm" method="get">
 	                    <div id="reservation_main_title" class="clearfix">
 	                        <div id="reservation_main_title_date" class="clearfix"><div class="reservation_main_title">날짜</div></div>
 	                        <div id="reservation_main_title_region" class="clearfix"><div class="reservation_main_title">지역</div></div>
@@ -287,7 +287,6 @@
 	
 	
 	function resetTime() {
-		console.log("아자아자");
 		var themeNo = $("[name='themeNo']").val();
 		console.log(themeNo);
 		
@@ -348,11 +347,11 @@
 
 		var str = "";
 		if(ReserveVo.reserveState === 1) {
-			str += '<p class="time reservePos" data-time="'+ReserveVo.timeNo+'">' + ReserveVo.themeTime + '</p>';
+			str += '<p class="time reservePos" data-timeno="'+ReserveVo.themeTimeNo+'">' + ReserveVo.themeTime + '</p>';
 		} else if(ReserveVo.reserveState === 2) {
-			str += '<p class="time reserveImpos" data-time="'+ReserveVo.timeNo+'">' + ReserveVo.themeTime + '</p>';
+			str += '<p class="time reserveImpos" data-timeno="'+ReserveVo.themeTimeNo+'">' + ReserveVo.themeTime + '</p>';
 		} else if(ReserveVo.reserveState === 3) {
-			str += '<p class="time reserveImpos" data-time="'+ReserveVo.timeNo+'">' + ReserveVo.themeTime + '</p>';	
+			str += '<p class="time reserveImpos" data-timeno="'+ReserveVo.themeTimeNo+'">' + ReserveVo.themeTime + '</p>';	
 		}
 
 		if (type === 'down') {
@@ -364,6 +363,22 @@
 		}
 
 	};
+	
+	
+	
+	
+	//시간 클릭
+	$("#reservation_main_content_time").on("click", ".time", function() {
+		console.log("시간 선택");
+		$(".time").removeClass("reservation_yellow");
+		
+		$(this).addClass("reservation_yellow");
+		var timeNo = $(this).data("timeno");
+		console.log(timeNo);
+		
+		$("[name='timeNo']").val(timeNo);
+
+	});
 	
 	
 	

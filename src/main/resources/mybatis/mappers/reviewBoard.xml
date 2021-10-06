@@ -64,7 +64,7 @@
 	
 	
 	<!-- 2021.09.30 by 원호 -->
-	<!-- 후기게시판 글등록 -->
+	<!-- 후기게시판 글등록(이미지 포함) -->
 		<insert id="reviewBoardInsert" parameterType = "ReviewBoardVo"> 
 			<![CDATA[ 
 				insert into review
@@ -84,6 +84,31 @@
 				        ,#{reviewContent}
 				        ,#{reviewHit}
 				        ,#{reviewImg}
+				        )	
+			]]> 
+		</insert>
+		
+		<!-- 2021.09.30 by 원호 -->
+		<!-- 후기게시판 글등록(글만등록할 경우) -->
+		<insert id="reviewBoardInsert2" parameterType = "ReviewBoardVo"> 
+			<![CDATA[ 
+				insert into review
+				values ( reviewNo.nextval
+				        ,#{themeNo}
+				        ,#{userNo}
+				        ,#{feelLevel}
+				        ,#{rating}
+				        ,#{recTime}
+				        ,#{reviewHints}
+				        ,#{reviewClear}
+				        ,#{memberNum}
+				        ,sysdate
+				        ,sysdate
+				        ,#{reviewLike}
+				        ,#{reviewTitle}
+				        ,#{reviewContent}
+				        ,#{reviewHit}
+				        ,null
 				        )	
 			]]> 
 		</insert>

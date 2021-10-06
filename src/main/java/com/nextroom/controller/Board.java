@@ -178,7 +178,7 @@ public class Board {
 	
 	
 	//2021.10.06 by 원호
-	//글 수정
+	//글 수정폼
 	@RequestMapping(value = "/reviewModify", method = {RequestMethod.GET, RequestMethod.POST})
 	public String reviewModify(@RequestParam("reviewNo") int reviewNo, Model model, HttpSession session) {
 		System.out.println("Controller.reviewModify");
@@ -186,26 +186,29 @@ public class Board {
 		ReviewBoardVo reviewBoardVo = reviewBoardService.reviewModify(reviewNo);
 		
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		System.out.println("유저정보 뭐냐" + authUser);
 		
-		if(authUser!= null) {
+		if(authUser== null) {
 			System.out.println("로그인 안한 경우");
 
 			//포워드 하기전에 모델에 담아줌
 			model.addAttribute("reviewBoardVo", reviewBoardVo);
+			System.out.println("여기엔 뭐있노"+reviewBoardVo);
 			return "redirect:/board/reviewBoard";
-		}else {
-			return "redirect:/board/modifyForm";
-		}
+		}else
 		
-		/*
+		
 		//로그인한 사용자 == 글작성자
 		if(reviewBoardVo.getUserNo() == authUser.getUserNo()) {
 			System.out.println("자신의 글인 경우 수정폼 포워드");
-			return "board/modifyForm";
+			System.out.println("여기에 정보 있는거 가져와" + reviewBoardVo);
+			
+			model.addAttribute("reviewBoardVo", reviewBoardVo);
+			return "board/reviewModify";
 		}else {
 			System.out.println("다른 사람의 글인 경우");
 			return "redirect:/board/reviewBoard";
-		}*/
+		}
 	}
 		
 	
