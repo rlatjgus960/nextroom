@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nextroom.service.CafeService;
 import com.nextroom.vo.CafeVo;
@@ -25,11 +26,12 @@ public class Cafe {
 	
 
 	//카페 메인
-	@RequestMapping(value="/", method = { RequestMethod.GET, RequestMethod.POST })
-	public String cafeMain(HttpSession session, Model model) {
+	@RequestMapping(value="", method = { RequestMethod.GET, RequestMethod.POST })
+	public String cafeMain(HttpSession session, Model model, 
+						   @RequestParam(value="region", required = false, defaultValue = "전국") String region) {
 	   System.out.println("cafe/main");
 	   	   
-	   List<CafeVo> cafeList = cafeService.getCafeList();
+	   List<CafeVo> cafeList = cafeService.getCafeList(region);
 	   System.out.println(cafeList);
 	   model.addAttribute("cafeList", cafeList);
 	   
@@ -53,8 +55,11 @@ public class Cafe {
 	
 	//테마 메인
 	@RequestMapping(value="/theme", method = { RequestMethod.GET, RequestMethod.POST })
-	public String themeMain() {
+	public String themeMain(Model model) {
 	   System.out.println("themeMain");
+	   
+	   model.addAttribute("themeList", cafeService.getThemeList());
+	   
 	   return "theme/themeMain";
 	}
 	

@@ -77,18 +77,68 @@
 						</svg>
 					</div>
 					
-					
-					
 					<div id="cafe_region">
-						<a href="" class="">전국</a> | <a href="" class="">홍대</a> | <a href="" class="">강남</a> | <a href="" class="">건대</a> | 
-						<a href="" class="">신촌</a> | <a href="" class="">대학로</a> | <a href="" class="">강북</a> | <a href="" class="">신림</a> |
-						<a href="" class="">서울(기타)</a> | <a href="" class="">부천</a> | <a href="" class="">일산</a> | <a href="" class="">수원</a> | 
-						<a href="" class="">안양</a> | <a href="" class="">경기(기타)</a><br>
+					<input id="region_css" type="hidden" value ="${param.region }">
+						<a href="${pageContext.request.contextPath }/cafe?region=전국" class=""><span <c:if test="${param.region eq '전국'}">class="Rselected"</c:if>>전국</span></a> 
 						
-						<a href="" class="">인천</a> | <a href="" class="">강원</a> | <a href="" class="">대전</a> | <a href="" class="">천안</a> | 
-						<a href="" class="">청주</a> | <a href="" class="">충청(기타)</a> | <a href="" class="">대구</a> | <a href="" class="">부산</a> | 
-						<a href="" class="">경상(기타)</a> | <a href="" class="">전주</a> | <a href="" class="">광주</a> | <a href="" class="">전라(기타)</a> | 
-						<a href="" class="">제주</a>
+						| <a href="${pageContext.request.contextPath }/cafe?region=홍대" class=""><span <c:if test="${param.region eq '홍대'}">class="Rselected"</c:if><c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>홍대</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=강남" class=""><span <c:if test="${param.region eq '강남'}">class="Rselected"</c:if><c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>강남</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=건대" class=""><span <c:if test="${param.region eq '건대'}">class="Rselected"</c:if><c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>건대</span></a> | 
+						
+						<a href="${pageContext.request.contextPath }/cafe?region=신촌" class=""><span <c:if test="${param.region eq '신촌'}">class="Rselected"</c:if><c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>신촌</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=대학로" class=""><span <c:if test="${param.region eq '대학로'}">class="Rselected"</c:if><c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>대학로</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=강북" class=""><span <c:if test="${param.region eq '강북'}">class="Rselected"</c:if><c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>강북</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=신림" class=""><span <c:if test="${param.region eq '신림'}">class="Rselected"</c:if><c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>신림</span></a> |
+						
+						<a href="${pageContext.request.contextPath }/cafe?region=서울(기타)" class=""><span <c:if test="${param.region eq '서울(기타)'}">class="Rselected"</c:if><c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>서울(기타)</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=부천" class=""><span <c:if test="${param.region eq '부천'}">class="Rselected"</c:if><c:if test="${param.region eq '경기'}">class="Rselected"</c:if>>부천</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=일산" class=""><span <c:if test="${param.region eq '일산'}">class="Rselected"</c:if><c:if test="${param.region eq '경기'}">class="Rselected"</c:if>>일산</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=수원" class=""><span <c:if test="${param.region eq '수원'}">class="Rselected"</c:if><c:if test="${param.region eq '경기'}">class="Rselected"</c:if>>수원</span></a> | 
+						
+						<a href="${pageContext.request.contextPath }/cafe?region=안양" class=""><span <c:if test="${param.region eq '안양'}">class="Rselected"</c:if><c:if test="${param.region eq '경기'}">class="Rselected"</c:if>>안양</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=경기(기타)" class=""><span <c:if test="${param.region eq '경기(기타)'}">class="Rselected"</c:if><c:if test="${param.region eq '경기'}">class="Rselected"</c:if>>경기(기타)</span></a><br>
+						
+						
+						<a href="${pageContext.request.contextPath }/cafe?region=인천" class=""><span <c:if test="${param.region eq '인천'}">class="Rselected"</c:if>>인천</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=강원" class=""><span <c:if test="${param.region eq '강원'}">class="Rselected"</c:if>>강원</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=대전" class=""><span <c:if test="${param.region eq '대전'}">class="Rselected"</c:if>>대전</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=천안" class=""><span <c:if test="${param.region eq '천안'}">class="Rselected"</c:if><c:if test="${param.region eq '충청'}">class="Rselected"</c:if>>천안</span></a> 
+						
+						| 
+						<a href="${pageContext.request.contextPath }/cafe?region=청주" class=""><span <c:if test="${param.region eq '청주'}">class="Rselected"</c:if><c:if test="${param.region eq '충청'}">class="Rselected"</c:if>>청주</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=충청(기타)" class=""><span <c:if test="${param.region eq '충청(기타)'}">class="Rselected"</c:if><c:if test="${param.region eq '충청'}">class="Rselected"</c:if>>충청(기타)</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=대구" class=""><span <c:if test="${param.region eq '대구'}">class="Rselected"</c:if>>대구</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=부산" class=""><span <c:if test="${param.region eq '부산'}">class="Rselected"</c:if>>부산</span></a> | 
+						
+						<a href="${pageContext.request.contextPath }/cafe?region=울산" class=""><span <c:if test="${param.region eq '울산'}">class="Rselected"</c:if>>울산</span></a> 
+						
+						|
+						<a href="${pageContext.request.contextPath }/cafe?region=경상(기타)" class=""><span <c:if test="${param.region eq '경상(기타)'}">class="Rselected"</c:if>>경상(기타)</span></a> 
+						
+						|
+						 <a href="${pageContext.request.contextPath }/cafe?region=전주" class=""><span <c:if test="${param.region eq '전주'}">class="Rselected"</c:if><c:if test="${param.region eq '전라'}">class="Rselected"</c:if>>전주</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=광주" class=""><span <c:if test="${param.region eq '광주'}">class="Rselected"</c:if>>광주</span></a> 
+						
+						| <a href="${pageContext.request.contextPath }/cafe?region=전라(기타)" class=""><span <c:if test="${param.region eq '전라(기타)'}">class="Rselected"</c:if><c:if test="${param.region eq '전라'}">class="Rselected"</c:if>>전라(기타)</span></a> |
+
+						<a href="${pageContext.request.contextPath }/cafe?region=제주" class=""><span <c:if test="${param.region eq '제주'}">class="Rselected"</c:if>>제주</span></a>
+						
 					</div>
 					
 				</div>
@@ -188,7 +238,7 @@
     var city_name = _path.id;
     var new_p = document.createElement('p');
     var province = $(_path).parent()[0].id;
-    d3.select(_path).style("fill", "#cbc3ac");
+    d3.select(_path).style("fill", "rgb(253, 213, 59)");
     //console.log(city_name);
   }).mouseout(function(event) {
     var _path = event.target;
@@ -197,48 +247,52 @@
 
   function go_branch(city_do) {
     var Arr = Array("sejong","chungnam","jeju","gyeongnam","gyeongbuk","jeonbuk","chungbuk","gangwon","gyeonggi","jeonnam","ulsan","busan","daegu","daejeon","incheon","seoul","gwangju");
-    var strArr = Array("세종특별자치시","충청남도","제주특별자치도","경상남도","경상북도","전라북도","충청북도","강원도","경기도","전라남도","울산광역시","부산광역시","대구광역시","대전광역시","인천광역시","서울특별시","광주광역시");
+    var strArr = Array("세종","충청","제주","경상","경상","전라","충청","강원","경기","전라","울산","부산","대구","대전","인천","서울","광주");
     //alert(city_do);
     var idx = Arr.indexOf(city_do);
     //alert(strArr[idx]);
-    location.href="./branches.php?stx="+strArr[idx];
+    location.href="./cafe?region="+strArr[idx];
+    
   }
+  
+  
 
   /*가맹점 지도 색칠*/
   $(document).ready(function(){
-    var mapCondition = '<?=$stx?>';
-    if (mapCondition == '세종특별자치시') {
-      $('#sejong').css("fill", "#cbc3ac");
-    }else if (mapCondition == '충청남도') {
-      $('#chungnam').css("fill", "#cbc3ac");
-    }else if (mapCondition =='제주특별자치도') {
-      $('#jeju').css("fill", "#cbc3ac");
-    }else if (mapCondition =='경상남도') {
-      $('#gyeongnam').css("fill", "#cbc3ac");
-    }else if (mapCondition == '경상북도') {
-      $('#gyeongbuk').css("fill", "#cbc3ac");
-    }else if (mapCondition =='전라북도') {
-      $('#jeonbuk').css("fill", "#cbc3ac");
-    }else if (mapCondition =='충청북도') {
-      $('#chungbuk').css("fill", "#cbc3ac");
-    }else if (mapCondition =='경기도') {
-      $('#gyeonggi').css("fill", "#cbc3ac");
-    }else if (mapCondition == '전라남도') {
-      $('#jeonnam').css("fill", "#cbc3ac");
-    }else if (mapCondition =='울산광역시') {
-      $('#ulsan').css("fill", "#cbc3ac");
-    }else if (mapCondition =='부산광역시') {
-      $('#busan').css("fill", "#cbc3ac");
-    }else if (mapCondition == '대구광역시') {
-      $('#daegu').css("fill", "#cbc3ac");
-    }else if (mapCondition =='대전광역시') {
-      $('#daejeon').css("fill", "#cbc3ac");
-    }else if (mapCondition =='인천광역시') {
-      $('#incheon').css("fill", "#cbc3ac");
-    }else if (mapCondition =='서울특별시') {
-      $('#seoul').css("fill", "#cbc3ac");
-    }else if (mapCondition =='광주광역시') {
-      $('#gwangju').css("fill", "#cbc3ac");
+    var mapCondition = $("#region_css").val();
+    console.log(mapCondition);
+    if (mapCondition == '세종') {
+      $('#sejong').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition == '충청') {
+      $('#chungnam').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='제주') {
+      $('#jeju').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='경상') {
+      $('#gyeongnam').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition == '경상') {
+      $('#gyeongbuk').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='전라') {
+      $('#jeonbuk').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='충청') {
+      $('#chungbuk').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='경기') {
+      $('#gyeonggi').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition == '전라') {
+      $('#jeonnam').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='울산') {
+      $('#ulsan').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='부산') {
+      $('#busan').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition == '대구') {
+      $('#daegu').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='대전') {
+      $('#daejeon').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='인천') {
+      $('#incheon').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='서울') {
+      $('#seoul').css("fill", "rgb(253, 213, 59)");
+    }else if (mapCondition =='광주') {
+      $('#gwangju').css("fill", "rgb(253, 213, 59)");
     }
   })
 </script>

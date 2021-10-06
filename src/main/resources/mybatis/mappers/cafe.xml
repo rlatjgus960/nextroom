@@ -90,12 +90,34 @@
 
 
 	<!-- 카페 전체 리스트 가져오기 -->
-	<select id="getCafeList" resultType="com.nextroom.vo.CafeVo">
+	<select id="getCafeList" parameterType="String" resultType="com.nextroom.vo.CafeVo">
 	
 		<![CDATA[
 			select cafeNo, cafeName, cafeHp, openTime, closeTime, 
 				   cafeIntro, cafeImg, printAddress, sidoDetail
 			from cafe
+			
+		]]>
+			<choose>
+				<when test="_parameter == '전국'">
+				</when>
+				<otherwise>
+					<choose>
+						<when test="_parameter == '서울'">
+							where sido = #{sidoDetail}
+						</when>
+						<otherwise>
+							<choose>
+								<when test="_parameter != '' and _parameter != null">
+									where sidoDetail = #{sidoDetail}
+								</when>
+							</choose>
+						</otherwise>
+					</choose>
+				</otherwise>
+			</choose>
+		
+		<![CDATA[
 		]]>
 
 	</select>
@@ -191,6 +213,30 @@
 			from cafe c, theme th
 			where c.cafeNo = th.cafeNo
 			and c.cafeNo = #{cafeNo}
+		]]>
+
+	</select>
+	
+	<!-- 전체 테마 리스트 가져오기 -->
+	<select id="getThemeList" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select  c.cafeName,
+					th.THEMENO, 
+					th.THEMENAME,
+					th.THEMEIMG,
+					th.JENRE,
+					th.LEVELS,
+					th.THEMETYPE,
+					th.PLAYTIME,
+					th.ACTIVITY,
+					th.THEMEINTRO,
+					th.PRECOMMENDMIN,
+					th.PRECOMMENDMAX,
+					th.pMin,
+					th.pMax
+			from cafe c, theme th
+			where c.cafeNo = th.cafeNo
 		]]>
 
 	</select>
@@ -375,6 +421,16 @@
 
 	</select>
 
+
+	<!-- 장르 리스트 가져오기 -->
+	<select id="getGenreList" resultType="com.nextroom.vo.CafeVo">
+		<![CDATA[
+			select genre jenre
+			from genre
+			order by genre asc
+			
+		]]>
+	</select>
 
 
 </mapper>

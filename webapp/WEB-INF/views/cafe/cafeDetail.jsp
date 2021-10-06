@@ -100,41 +100,43 @@
 						<th>인원수</th>
 						<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status">
 							<th>${themeList.themeName }(${themeList.playTime }분)</th>
-							
-							
+
+
 						</c:forEach>
 					</thead>
 
 
+					<tbody style="float : left;">
 						<c:forEach items="${detailMap.headCountList}" var="headCountList" varStatus="status">
+							<tr>
+								<td>${headCountList.headCount}인</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+
+
+					<c:forEach items="${detailMap.allPriceList}" var="allPriceList" varStatus="status">
+
+						<tbody style="float: left;">
+							<c:forEach items="${allPriceList}" var="priceList" varStatus="status">
+
 								<tr>
-									<td>${headCountList.headCount}인</td>
+									<c:choose>
+										<c:when test="${priceList.price == 0}">
+											<td>-</td>
+										</c:when>
+										<c:otherwise>
+											<td>${priceList.price}원</td>
+										</c:otherwise>
+									</c:choose>
 								</tr>
 							</c:forEach>
-							
-						
+						</tbody>
 
-						<c:forEach items="${detailMap.allPriceList}" var="allPriceList" varStatus="status">
-
-							
-								<c:forEach items="${allPriceList}" var="priceList" varStatus="status">
-
-									<tr>
-										<c:choose>
-											<c:when test="${priceList.price == 0}">
-												<td>-</td>
-											</c:when>
-											<c:otherwise>
-												<td>${priceList.price}원</td>
-											</c:otherwise>
-										</c:choose>
-									</tr>
-								</c:forEach>
-							
-						</c:forEach>
+					</c:forEach>
 
 
-					
+
 
 				</table>
 

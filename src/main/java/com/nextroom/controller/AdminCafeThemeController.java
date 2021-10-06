@@ -68,8 +68,17 @@ public class AdminCafeThemeController {
 
 	// 관리자페이지 테마수정폼
 	@RequestMapping("/theme/modifyForm/{themeNo}")
-	public String themeModifyForm(@PathVariable int themeNo) {
+	public String themeModifyForm(@PathVariable int themeNo, Model model, HttpSession session) {
 		System.out.println("themeModifyForm");
+		
+		int cafeNo = ((UserVo)session.getAttribute("authUser")).getCafeNo();
+		
+		
+		model.addAttribute("themeList",cafeService.getCafeTheme(cafeNo));
+		model.addAttribute("themeVo",cafeService.getOneTheme(themeNo));
+		model.addAttribute("genreList", cafeService.getGenreList());
+		model.addAttribute("priceList",cafeService.getOnePrice(themeNo));
+		model.addAttribute("timeList",cafeService.getOneTime(themeNo));
 		return "admin/themeModifyForm";
 	}
 
@@ -88,8 +97,9 @@ public class AdminCafeThemeController {
 		int count = cafeService.addTheme(cafeVo);
 		
 		System.out.println(count+"건 저장되었습니다.");
-		
-		return "redirect:/admin/themeList";
+
+		int cafeNo = cafeVo.getCafeNo();
+		return "redirect:/admin/"+cafeNo+"/themeList";
 	}
 	
 	

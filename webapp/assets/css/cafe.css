@@ -13,6 +13,11 @@
     font-size: 15px;
 }
 
+.Rselected {
+	font-weight: bolder;
+	color: rgb(253, 213, 59);
+}
+
 .dg-map-area{
     margin: 20px 0px;
 }

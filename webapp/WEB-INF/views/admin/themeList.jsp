@@ -16,6 +16,11 @@
 
 <title>테마 관리</title>
 </head>
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+
+
 <body>
 	<!-- 헤더영역 -->
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>

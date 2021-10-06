@@ -261,21 +261,21 @@
 										<!-- 시간표 반복영역 -->
 										<div id="d-1" class="clearfix timeWrap">
 										<input class="themeTimeSelect"
-											name="themeStartTime" type="time">
+											name="themeTime" type="time">
 										<img data-no="1" class="removeTime" src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
 										</div>
 										
 										
 										<div class="clearfix timeWrap" id="d-2" >
 										<input class="themeTimeSelect"
-											name="themeStartTime" type="time">
+											name="themeTime" type="time">
 										<img data-no="2" class="removeTime" src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
 										</div>
 										
 										
 										<div class="clearfix timeWrap" id="d-3" >
 										<input class="themeTimeSelect"
-											name="themeStartTime" type="time">
+											name="themeTime" type="time">
 										<img data-no="3" class="removeTime" src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
 										</div>
 										<!-- //시간표 반복영역 -->
@@ -355,7 +355,8 @@
 
 		console.log("시간 추가 버튼 클릭");
 		
-		$("#themeTimeWrap").append("<div id='d-"+ i + "' class='clearfix timeWrap'> <input type='time' class='themeTimeSelect' name='themeTime'>&nbsp;<img data-no="+ i + " class='removeTime' src='${pageContext.request.contextPath }/assets/image/admin/xmark.png'></div>")
+		$("#themeTimeWrap").append("<div id='d-"+ i + "' class='clearfix timeWrap'> <input type='time' class='themeTimeSelect' name='themeTime'>&nbsp;<img data-no="
+		+ i + " class='removeTime' src='${pageContext.request.contextPath }/assets/image/admin/xmark.png'></div>")
 
 		i++; // 함수 내 하단에 증가문 설정
 

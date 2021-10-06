@@ -16,6 +16,11 @@
 
 <title>테마 수정</title>
 </head>
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+
+
 <body>
 	<!-- 헤더영역 -->
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
@@ -47,21 +52,27 @@
 					<ul>
 						<li>예약
 							<ul class="aside_mini_cate">
-								<li><a href="${pageContext.request.contextPath }/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}">&nbsp;-예약 확인</a></li>
-								<li><a href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약 관리</a></li>
+								<li><a
+									href="${pageContext.request.contextPath }/admin/reserve/reserveConfirm/${sessionScope.authUser.cafeNo}">&nbsp;-예약
+										확인</a></li>
+								<li><a
+									href="${pageContext.request.contextPath }/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}">&nbsp;-예약
+										관리</a></li>
 							</ul>
 						</li>
-						
+
 						<li>기록
 							<ul class="aside_mini_cate">
-								<li><p class="selected"><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a></p></li>
+								<li><p class="selected">
+										<a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a>
+									</p></li>
 								<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
 							</ul>
 						</li>
-						
+
 						<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>
-						<li class="selected"><a href="${pageContext.request.contextPath }/admin/${authUser.cafeNo }/themeList">카페 테마
-									관리</a></li>
+						<li class="selected"><a
+							href="${pageContext.request.contextPath }/admin/${authUser.cafeNo }/themeList">카페 테마 관리</a></li>
 					</ul>
 
 				</div>
@@ -77,8 +88,16 @@
 
 					<p id="adminTheme_subHeader">| 카페 테마 수정</p>
 					<select id="themeSelect" name="themeSelect" class="cafe_explain_selectBox">
-						<option value="" selected="selected">메가스팀</option>
-						<option value=""></option>
+						<c:forEach items="${themeList}" var="themeList">
+							<c:choose>
+								<c:when test="${themeList.themeName eq themeVo.themeName}">
+									<option value="${themeList.themeNo }" selected="selected">${themeList.themeName }</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${themeList.themeNo }">${themeList.themeName }</option>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 					</select>
 
 
@@ -88,24 +107,36 @@
 								<!-- 테마 리스트에 출력되는 내용 영역 -->
 								<div id="theme_poster_wrap">
 									<p class="cafModi_subTitle">테마 포스터</p>
-									<img alt="" src="${pageContext.request.contextPath }/assets/image/admin/empty_poster.png">
-									<input type="file" name="mainImg">
+									<img alt="" src="${pageContext.request.contextPath }/upload/${themeVo.themeImg }"> <input
+										type="file" name="mainImg">
 								</div>
-	
+
 								<div id="theme_explain_wrap">
 									<div id="" class="theme_explain_item clearfix">
 										<p class="addTheme_subTitle">제목</p>
-										<input type="text" id="themeTitle" name="themeTitle" placeholder="제목을 입력해주세요." value="메가스팀">
+										<input type="text" id="themeTitle" name="themeTitle" placeholder="제목을 입력해주세요."
+											value="${themeVo.themeName }">
 									</div>
-	
+
 									<div id="previewArea_left">
-	
+
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">장르</p>
 											<select id="themeGenre" name="jenre" class="cafe_explain_selectBox">
-												<option value="" >장르를 선택해주세요.</option>
-												<option value="inference">추리</option>
-												<option value="thriller">스릴러</option>
+												<option value="">장르를 선택해주세요.</option>
+												<c:forEach items="${genreList }" var="genreList">
+													<c:choose>
+														<c:when test="${genreList.jenre eq themeVo.jenre}">
+															<option value="${genreList.jenre }" selected="selected">${genreList.jenre }</option>
+														</c:when>
+														<c:otherwise>
+															<option value="${genreList.jenre }">${genreList.jenre }</option>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>
+
+
+												<!-- <option value="thriller">스릴러</option>
 												<option value="sensitivity">감성</option>
 												<option value="romance">로맨스</option>
 												<option value="crime">범죄</option>
@@ -123,97 +154,103 @@
 												<option value="sneak">잠입</option>
 												<option value="history">역사</option>
 												<option value="sf" selected="selected">공상과학</option>
-												<option value="qmark">?</option>
-												
+												<option value="qmark">?</option> -->
+
 											</select>
 										</div>
-	
-	
+
+
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">난이도</p>
 											<select id="themeLevel" name="themeLevel" class="cafe_explain_selectBox">
-												<option value="" >난이도를 선택해주세요.</option>
-												<option value="star1">★</option>
-												<option value="star2">★★</option>
-												<option value="star3" selected="selected">★★★</option>
-												<option value="star4">★★★★</option>
-												<option value="star5">★★★★★</option>
+												<option value="">난이도를 선택해주세요.</option>
+												<option value="1" <c:if test="${themeVo.levels == 1}">selected="selected"</c:if>>★</option>
+												<option value="2" <c:if test="${themeVo.levels == 2}">selected="selected"</c:if>>★★</option>
+												<option value="3" <c:if test="${themeVo.levels == 3}">selected="selected"</c:if>>★★★</option>
+												<option value="4" <c:if test="${themeVo.levels == 4}">selected="selected"</c:if>>★★★★</option>
+												<option value="5" <c:if test="${themeVo.levels == 5}">selected="selected"</c:if>>★★★★★</option>
 											</select>
 										</div>
-	
+
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">유형</p>
 											<select id="themeType" name="themeType" class="cafe_explain_selectBox">
 												<option value="" selected="selected">유형을 선택해주세요.</option>
-												<option value="lock">자물쇠 위주</option>
-												<option value="machine">장치 위주</option>
-												<option value="half" selected="selected">자물쇠/장치 반반</option>
+												<option value="자물쇠 위주"
+													<c:if test="${themeVo.themeType eq '자물쇠 위주'}">selected="selected"</c:if>>자물쇠
+													위주</option>
+												<option value="장치 위주"
+													<c:if test="${themeVo.themeType eq '장치 위주'}">selected="selected"</c:if>>장치 위주</option>
+												<option value="자물쇠/장치 반반"
+													<c:if test="${themeVo.themeType eq '자물쇠/장치 반반'}">selected="selected"</c:if>>자물쇠/장치
+													반반</option>
 											</select>
 										</div>
-	
-	
-	
+
+
+
 									</div>
-	
+
 									<div id="previewArea_right">
-	
-	
+
+
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">추천 플레이인원</p>
-											<input id="recommandMinNum" name="recommandMinNum" type="number" placeholder="최소인원" value="2">
-											<span>&nbsp;~&nbsp;</span> <input id="recommandMaxNum" name="recommandMaxNum"
-												type="number" placeholder="최대인원" value="5">
+											<input id="recommandMinNum" name="recommandMinNum" type="number" placeholder="최소인원"
+												value="${themeVo.pRecommendMin }"> <span>&nbsp;~&nbsp;</span> <input
+												id="recommandMaxNum" name="recommandMaxNum" type="number" placeholder="최대인원"
+												value="${themeVo.pRecommendMax }">
 										</div>
-	
-	
+
+
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">플레이타임</p>
 											<select id="themeLevel" name="themeLevel" class="cafe_explain_selectBox">
 												<option value="">플레이타임을 선택해주세요.</option>
-												<option value="60min" selected="selected">60분</option>
-												<option value="65min">65분</option>
-												<option value="70min">70분</option>
-												<option value="75min">75분</option>
-												<option value="80min">80분</option>
-												<option value="85min">85분</option>
-												<option value="90min">90분</option>
-												<option value="95min">95분</option>
-												<option value="100min">100분</option>
-												<option value="105min">105분</option>
-												<option value="110min">110분</option>
-												<option value="115min">115분</option>
-												<option value="120min">120분</option>
-												<option value="125min">125분</option>
-												<option value="130min">130분</option>
-												<option value="135min">135분</option>
-												<option value="140min">140분</option>
-												<option value="145min">145분</option>
-												<option value="150min">150분</option>
-												<option value="155min">155분</option>
-												<option value="160min">160분</option>
-												<option value="165min">165분</option>
-												<option value="170min">170분</option>
-												<option value="175min">175분</option>
-												<option value="180min">180분</option>
+												<option value="60" <c:if test="${themeVo.playTime == 60}">selected="selected"</c:if>>60분</option>
+												<option value="65" <c:if test="${themeVo.playTime == 65}">selected="selected"</c:if>>65분</option>
+												<option value="70" <c:if test="${themeVo.playTime == 70}">selected="selected"</c:if>>70분</option>
+												<option value="75" <c:if test="${themeVo.playTime == 75}">selected="selected"</c:if>>75분</option>
+												<option value="80" <c:if test="${themeVo.playTime == 80}">selected="selected"</c:if>>80분</option>
+												<option value="85" <c:if test="${themeVo.playTime == 85}">selected="selected"</c:if>>85분</option>
+												<option value="90" <c:if test="${themeVo.playTime == 90}">selected="selected"</c:if>>90분</option>
+												<option value="95" <c:if test="${themeVo.playTime == 95}">selected="selected"</c:if>>95분</option>
+												<option value="100" <c:if test="${themeVo.playTime == 100}">selected="selected"</c:if>>100분</option>
+												<option value="105" <c:if test="${themeVo.playTime == 105}">selected="selected"</c:if>>105분</option>
+												<option value="110" <c:if test="${themeVo.playTime == 110}">selected="selected"</c:if>>110분</option>
+												<option value="115" <c:if test="${themeVo.playTime == 115}">selected="selected"</c:if>>115분</option>
+												<option value="120" <c:if test="${themeVo.playTime == 120}">selected="selected"</c:if>>120분</option>
+												<option value="125" <c:if test="${themeVo.playTime == 125}">selected="selected"</c:if>>125분</option>
+												<option value="130" <c:if test="${themeVo.playTime == 130}">selected="selected"</c:if>>130분</option>
+												<option value="135" <c:if test="${themeVo.playTime == 135}">selected="selected"</c:if>>135분</option>
+												<option value="140" <c:if test="${themeVo.playTime == 140}">selected="selected"</c:if>>140분</option>
+												<option value="145" <c:if test="${themeVo.playTime == 145}">selected="selected"</c:if>>145분</option>
+												<option value="150" <c:if test="${themeVo.playTime == 150}">selected="selected"</c:if>>150분</option>
+												<option value="155" <c:if test="${themeVo.playTime == 155}">selected="selected"</c:if>>155분</option>
+												<option value="160" <c:if test="${themeVo.playTime == 160}">selected="selected"</c:if>>160분</option>
+												<option value="165" <c:if test="${themeVo.playTime == 165}">selected="selected"</c:if>>165분</option>
+												<option value="170" <c:if test="${themeVo.playTime == 170}">selected="selected"</c:if>>170분</option>
+												<option value="175" <c:if test="${themeVo.playTime == 175}">selected="selected"</c:if>>175분</option>
+												<option value="180" <c:if test="${themeVo.playTime == 180}">selected="selected"</c:if>>180분</option>
 											</select>
 										</div>
-	
+
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">활동성</p>
 											<select id="themeType" name="themeType" class="cafe_explain_selectBox">
-												<option value="" >활동성을 선택해주세요.</option>
-												<option value="lowActivity" selected="selected">적음</option>
-												<option value="regularActivity">보통</option>
-												<option value="highActivity">많음</option>
+												<option value="">활동성을 선택해주세요.</option>
+												<option value="적음" <c:if test="${themeVo.activity eq '적음'}">selected="selected"</c:if>>적음</option>
+												<option value="보통" <c:if test="${themeVo.activity eq '보통'}">selected="selected"</c:if>>보통</option>
+												<option value="많음" <c:if test="${themeVo.activity eq '많음'}">selected="selected"</c:if>>많음</option>
 											</select>
 										</div>
-	
-	
-	
+
+
+
 									</div>
-	
+
 								</div>
-	
+
 							</div>
 
 
@@ -221,13 +258,15 @@
 								<!-- 테마 리스트에 출력되지 않는 내용 영역 -->
 								<div id="themeExplain" class="non-previewArea_item clearfix">
 									<p class="addTheme_subTitle">소개글</p>
-									<textarea rows="" cols="" >박사님의 꿈은 제가 꼭 이루겠습니다!</textarea>
+									<textarea rows="" cols="">${themeVo.themeIntro }</textarea>
 								</div>
 
 								<div id="" class="non-previewArea_item clearfix">
 									<p class="addTheme_subTitle">수용가능 플레이인원</p>
-									<input id="peopleMinNum" name="peopleMinNum" type="number" placeholder="최소인원" value="2"> <span>&nbsp;~&nbsp;</span>
-									<input id="peopleMaxNum" name="peopleMaxNum" type="number" placeholder="최대인원" value="5">
+									<input id="peopleMinNum" name="peopleMinNum" type="number" placeholder="최소인원"
+										value="${themeVo.pMin }"> <span>&nbsp;~&nbsp;</span> <input id="peopleMaxNum"
+										name="peopleMaxNum" type="number" placeholder="최대인원" value="${themeVo.pMax }">
+									<button type="button" id="btnPlayNum" class="mbutton">확인</button>
 								</div>
 
 
@@ -238,15 +277,36 @@
 								</div> -->
 
 								<!-- 수용인원이 입력되었을때 -->
-								<div id="themePrice" class="non-previewArea_item clearfix">
+								<!-- <div id="themePrice" class="non-previewArea_item clearfix">
 									<p class="addTheme_subTitle">가격</p>
-									
-									<!-- 가격입력칸 반복영역 -->
-									<label for="themePrice2">2인<input type="number" class="themePrice" name="themePrice2" value="44000">원</label>
-									<label for="themePrice3">3인<input type="number" class="themePrice" name="themePrice3" value="60000">원</label>
-									<label for="themePrice4">4인<input type="number" class="themePrice" name="themePrice4" value="72000">원</label>
-									<label for="themePrice5">5인<input type="number" class="themePrice" name="themePrice5" value="90000">원</label>
-									<!-- //가격입력칸 반복영역 -->
+
+									가격입력칸 반복영역
+									<label for="themePrice2">2인<input type="number" class="themePrice"
+										name="themePrice2" value="44000">원
+									</label> <label for="themePrice3">3인<input type="number" class="themePrice"
+										name="themePrice3" value="60000">원
+									</label> <label for="themePrice4">4인<input type="number" class="themePrice"
+										name="themePrice4" value="72000">원
+									</label> <label for="themePrice5">5인<input type="number" class="themePrice"
+										name="themePrice5" value="90000">원
+									</label>
+									//가격입력칸 반복영역
+								</div> -->
+
+
+
+
+
+								<div id="addthemePrice" class="non-previewArea_item clearfix">
+									<p class="addTheme_subTitle">가격</p>
+									<c:forEach items="${priceList }" var="priceList">
+										<div class="priceWrap">
+											<div class="headC">${priceList.headCount }인</div>
+											<input type="hidden" name="headCount" value="${priceList.headCount }"><input
+												type="number" class="themePrice" name="price" value="${priceList.price }">원
+										</div>
+									</c:forEach>
+
 								</div>
 
 
@@ -255,50 +315,37 @@
 
 									<div id="themeTimeWrap">
 										<!-- 시간표 반복영역 -->
-										<label for="themeStartTime1">1
-											<input class="themeTimeSelect" name="themeStartTime1" type="time" value="11:20">
-										</label>
+										<input type="hidden" value="">
 										
-										<label for="themeStartTime2">2
-											<input class="themeTimeSelect" name="themeStartTime2" type="time" value="12:40">
-										</label>
-										
-										<label for="themeStartTime3">3
-											<input class="themeTimeSelect" name="themeStartTime3" type="time" value="14:00">
-										</label>
-										
-										<label for="themeStartTime4">4
-											<input class="themeTimeSelect" name="themeStartTime4" type="time" value="15:20">
-										</label>
-										
-										<label for="themeStartTime5">5
-											<input class="themeTimeSelect" name="themeStartTime5" type="time" value="16:40">
-										</label>
-										
-										<label for="themeStartTime6">6
-											<input class="themeTimeSelect" name="themeStartTime6" type="time" value="18:00">
-										</label>
-										
-										<label for="themeStartTime7">7
-											<input class="themeTimeSelect" name="themeStartTime7" type="time" value="19:20">
-										</label>
-										
-										<label for="themeStartTime8">8
-											<input class="themeTimeSelect" name="themeStartTime8" type="time" value="20:40">
-										</label>
-										
-										<label for="themeStartTime9">9
-											<input class="themeTimeSelect" name="themeStartTime9" type="time" value="22:00">
-										</label>
-										
-										<label for="themeStartTime10">10
-											<input class="themeTimeSelect" name="themeStartTime10" type="time" value="23:20">
-										</label>
-										
+										<c:forEach items="${timeList }" var="timeList">
+											<c:set var="i" value="${i+1 }" />
+											<div id="d-${i }" class="clearfix timeWrap">
+												<input class="themeTimeSelect" name="themeStartTime" type="time"
+													value="${timeList.themeTime }"> <img data-no="${i }" class="removeTime"
+													src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
+											</div>
+											
+										</c:forEach>
+										<input id="i" type="hidden" value="${i }">
+
+
+										<!-- 										<div class="clearfix timeWrap" id="d-2"> -->
+										<!-- 											<input class="themeTimeSelect" name="themeStartTime" type="time"> <img -->
+										<!-- 												data-no="2" class="removeTime" -->
+										<%-- 												src="${pageContext.request.contextPath }/assets/image/admin/xmark.png"> --%>
+										<!-- 										</div> -->
+
+
+										<!-- 										<div class="clearfix timeWrap" id="d-3"> -->
+										<!-- 											<input class="themeTimeSelect" name="themeStartTime" type="time"> <img -->
+										<!-- 												data-no="3" class="removeTime" -->
+										<%-- 												src="${pageContext.request.contextPath }/assets/image/admin/xmark.png"> --%>
+										<!-- 										</div> -->
+
 										<!-- //시간표 반복영역 -->
 									</div>
 
-									<button class="mbutton">시간 추가</button>
+									<button type="button" id="btnAddTime" class="mbutton">시간 추가</button>
 								</div>
 
 							</div>
@@ -325,6 +372,71 @@
 	</div>
 	<!-- wrap -->
 </body>
+
+
+<script type="text/javascript">
+	var i = $("#i").val();
+	console.log(i);
+
+	$("#btnPlayNum")
+			.on(
+					"click",
+					function() {
+
+						console.log("플레이인원 확인 버튼 클릭");
+
+						$(".priceWrap").remove();
+
+						var pMin = $("#peopleMinNum").val();
+						var pMax = $("#peopleMaxNum").val();
+
+						console.log(pMin);
+						console.log(pMax);
+
+						var j = pMax - pMin;
+
+						// 						$("#nonThemePrice").css("display", "none");
+						// 						$("#themePrice").css("display", "block");
+
+						for (var i = 0; i <= j; i++) {
+							$("#addthemePrice")
+									.append(
+											"<div class='priceWrap'><div class='headC'>"
+													+ pMin
+													+ "인</div><input type='hidden' name='headCount' value='"
+		            +pMin+"'><input type='number' class='themePrice' name='price'>원</div>");
+							pMin++;
+						}
+
+					});
+
+// 	var i = 4; // 변수설정은 함수의 바깥에 설정
+
+	$("#btnAddTime")
+			.on(
+					"click",
+					function() {
+
+						console.log("시간 추가 버튼 클릭");
+
+						$("#themeTimeWrap")
+								.append(
+										"<div id='d-"+ i + "' class='clearfix timeWrap'> <input type='time' class='themeTimeSelect' name='themeTime'>&nbsp;<img data-no="+ i + " class='removeTime' src='${pageContext.request.contextPath }/assets/image/admin/xmark.png'></div>")
+
+						i++; // 함수 내 하단에 증가문 설정
+
+					});
+
+	$("#themeTimeWrap").on("click", ".removeTime", function() {
+
+		var no = $(this).data("no");
+
+		console.log("시간 삭제 버튼 클릭");
+
+		$("#d-" + no).remove();
+
+	});
+</script>
 
 
 

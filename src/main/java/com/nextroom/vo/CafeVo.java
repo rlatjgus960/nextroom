@@ -54,7 +54,7 @@ public class CafeVo {
 	// 테마 시간 테이블
 	// private int themeTimeNo;
 	// private String themeTime;
-	private List<String> themeStartTime;
+	private List<String> themeTime;
 
 	// 카페 테마 전체 최대최소인원
 	private int minPMin;
@@ -77,7 +77,7 @@ public class CafeVo {
 			String longitude, List<MultipartFile> interiorImg, List<InteriorVo> inteList, int themeNo, String themeName,
 			MultipartFile themeImgFile, String themeImg, String jenre, int levels, String themeType, int playTime,
 			String activity, String themeIntro, String pRecommendMin, String pRecommendMax, int pMin, int pMax,
-			int reviewCount, List<Integer> headCount, List<Integer> price, List<String> themeStartTime, int minPMin,
+			int reviewCount, List<Integer> headCount, List<Integer> price, List<String> themeTime, int minPMin,
 			int maxPMax) {
 		super();
 		this.cafeNo = cafeNo;
@@ -118,7 +118,7 @@ public class CafeVo {
 		this.reviewCount = reviewCount;
 		this.headCount = headCount;
 		this.price = price;
-		this.themeStartTime = themeStartTime;
+		this.themeTime = themeTime;
 		this.minPMin = minPMin;
 		this.maxPMax = maxPMax;
 	}
@@ -427,12 +427,12 @@ public class CafeVo {
 		this.price = price;
 	}
 
-	public List<String> getThemeStartTime() {
-		return themeStartTime;
+	public List<String> getThemeTime() {
+		return themeTime;
 	}
 
-	public void setThemeStartTime(List<String> themeStartTime) {
-		this.themeStartTime = themeStartTime;
+	public void setThemeTime(List<String> themeTime) {
+		this.themeTime = themeTime;
 	}
 
 	public int getMinPMin() {
@@ -463,8 +463,8 @@ public class CafeVo {
 				+ jenre + ", levels=" + levels + ", themeType=" + themeType + ", playTime=" + playTime + ", activity="
 				+ activity + ", themeIntro=" + themeIntro + ", pRecommendMin=" + pRecommendMin + ", pRecommendMax="
 				+ pRecommendMax + ", pMin=" + pMin + ", pMax=" + pMax + ", reviewCount=" + reviewCount + ", headCount="
-				+ headCount + ", price=" + price + ", themeStartTime=" + themeStartTime + ", minPMin=" + minPMin
-				+ ", maxPMax=" + maxPMax + "]";
+				+ headCount + ", price=" + price + ", themeTime=" + themeTime + ", minPMin=" + minPMin + ", maxPMax="
+				+ maxPMax + "]";
 	}
 
 }

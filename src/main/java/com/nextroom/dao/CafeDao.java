@@ -95,11 +95,18 @@ public class CafeDao {
 	}
 
 	// 카페 리스트 출력
-	public List<CafeVo> getCafeList() {
+//	public List<CafeVo> getCafeList() {
+//
+//		System.out.println("[CafeDao.getCafeList()]");
+//
+//		return sqlSession.selectList("cafe.getCafeList");
+//	}
+	
+	public List<CafeVo> getCafeList(String region) {
 
 		System.out.println("[CafeDao.getCafeList()]");
 
-		return sqlSession.selectList("cafe.getCafeList");
+		return sqlSession.selectList("cafe.getCafeList", region);
 	}
 
 	// 카페 상세페이지 출력용 데이터 가져오기
@@ -205,6 +212,18 @@ public class CafeDao {
 	public int getReviewCount(int themeNo) {
 		System.out.println("[CafeDao.getReviewList()]");
 		return sqlSession.selectOne("cafe.getReviewCount", themeNo);
+	}
+
+	// 장르 리스트 가져오기
+	public List<CafeVo> getGenreList() {
+		System.out.println("[CafeDao.getGenreList()]");
+		return sqlSession.selectList("cafe.getGenreList");
+	}
+	
+	// 전체 테마 리스트 가져오기
+	public List<CafeVo> getThemeList() {
+		System.out.println("[CafeDao.getThemeList()]");
+		return sqlSession.selectList("cafe.getThemeList");
 	}
 
 }
