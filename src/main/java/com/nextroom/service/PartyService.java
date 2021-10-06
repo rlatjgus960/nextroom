@@ -352,12 +352,16 @@ public class PartyService {
 	//partyRead에서 참여자가 참여신청을 눌렀을 경우
 	public boolean addPartyApplicant(PartyVo partyVo) {
 		
+		//파티대기멤버 확인
 		PartyVo appPartyVo = partyDao.selectPartyApplicant(partyVo);
+		
+		//파티승인멤버 확인
+		PartyVo partyDetailCheck = partyDao.partyDetailCheckSelect(partyVo);
 		
 		System.out.println("파티신청셀렉트 :" + appPartyVo);
 		
 		
-		if(appPartyVo == null) {
+		if(appPartyVo == null && partyDetailCheck == null) {
 			
 			partyDao.insertApplicant(partyVo);
 			
@@ -396,6 +400,10 @@ public class PartyService {
 	//방장이 대기자 O버튼을 눌렀을 경우
 	public boolean agreeMember(PartyVo partyVo) {
 		
+		//partyDetail에 있는지 없는지 체크
+		PartyVo partyDetailCheck = partyDao.partyDetailCheckSelect(partyVo);
+		
+		//인원수 확인을위한 파티No 추출
 		int partyNo = partyVo.getPartyNo();
 		
 		//파티승인 총 멤버수
@@ -404,7 +412,7 @@ public class PartyService {
 		//해당 파티의 모임인원수
 		PartyVo partyReserveP = partyDao.getReservePerson(partyNo);
 		
-		if(pDetailCount.getUserCount() >= partyReserveP.getReservePerson()) {
+		if(pDetailCount.getUserCount() >= partyReserveP.getReservePerson() || partyDetailCheck != null) {
 			
 			return false;
 			
@@ -421,6 +429,19 @@ public class PartyService {
 		
 	}
 
+	
+	//21-10-06 by 대니
+	//방장이 partyDetail에서 멤버취소를 눌렀을 경우
+	public boolean exceptDetailMember(PartyVo partyVo) {
+		
+		//partyDetail에서 멤버삭제
+		partyDao.exceptDetailMember(partyVo);
+		
+		//추방된 멤버 partyApplicant로 다시 추가
+		partyDao.insertApplicant(partyVo);
+		
+		return true;
+	}
 
 
 

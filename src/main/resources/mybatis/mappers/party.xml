@@ -9,8 +9,27 @@
 			select cafeNo,
 				   cafeName
 			from cafe
-			where (sidodetail like '%' || #{sido} || '%'
-			OR sido like '%' || #{sido} || '%')
+		]]>
+			<choose>
+				<when test="_parameter == '전국'">
+				</when>
+				<otherwise>
+					<choose>
+						<when test="_parameter == '서울'">
+							where sido = #{sido}
+						</when>
+						<otherwise>
+							<choose>
+								<when test="_parameter != '' and _parameter != null">
+									where sidoDetail = #{sido}
+								</when>
+							</choose>
+						</otherwise>
+					</choose>
+				</otherwise>
+			</choose>
+		
+		<![CDATA[
 		]]>
 	</select>
 	
@@ -190,6 +209,15 @@
 		]]>
 	</select>
 	
+	<!-- partyRead에서 참여자가 참여신청을 눌렀을 경우 partyDetail에 있는지 확인 -->
+	<select id="partyDetailCheckSelect" parameterType="com.nextroom.vo.PartyVo" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select userNo
+			from partydetail
+			where partyNo = #{partyNo}
+			and userNo = #{userNo}
+		]]>
+	</select>
 	
 	<!-- partyRead에서 참여자가 참여신청을 눌렀을때 성공했을경우 INSERT -->
 	<insert id="insertApplicant" parameterType="com.nextroom.vo.PartyVo">
@@ -233,7 +261,14 @@
 	</insert>
 	
 	
-	
+	<!-- 방장이 partyDetail에서 멤버취소를 눌렀을 경우 -> partyDetail에서 멤버삭제 -->
+	<delete id="exceptDetailMember" parameterType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			delete from partydetail
+			where partyNo = #{partyNo}
+			and userNo = #{userNo}
+		]]>
+	</delete>
 	
 	
 	

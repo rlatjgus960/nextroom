@@ -152,6 +152,14 @@ public class PartyDao {
 	}
 	
 	//21-10-05 by 대니
+	//partyRead에서 참여자가 참여신청을 눌렀을 경우 partyDetail에 있는지 확인
+	public PartyVo partyDetailCheckSelect(PartyVo partyVo) {
+		
+		return sqlSession.selectOne("party.partyDetailCheckSelect", partyVo);
+		
+	}
+	
+	//21-10-05 by 대니
 	//partyRead에서 참여자가 참여신청을 눌렀을때 성공했을경우 INSERT
 	public void insertApplicant(PartyVo partyVo) {
 		
@@ -182,5 +190,15 @@ public class PartyDao {
 		
 	}
 	
+	//21-10-06 by 대니
+	//방장이 partyDetail에서 멤버취소를 눌렀을 경우
+	public void exceptDetailMember(PartyVo partyVo) {
+		
+		//partyDetail에서 멤버삭제
+		sqlSession.delete("party.exceptDetailMember", partyVo);
+		
+	}
+	
+		
 	
 }

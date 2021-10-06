@@ -174,6 +174,20 @@ public class Party {
 	}
 	
 	
+	//21-10-06 by 대니
+	//방장이 partyDetail에서 멤버취소를 눌렀을 경우
+	@ResponseBody
+	@RequestMapping(value = "/exceptDetailMember", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean exceptDetailMember(@ModelAttribute PartyVo partyVo) {
+		
+		System.out.println("파티디테일 멤버추방: " + partyVo);
+		
+		boolean result = partyService.exceptDetailMember(partyVo);
+		
+		return result;
+		
+	}
+	
 	
 	
 	

@@ -13,6 +13,8 @@
 
 		<script type="text/javascript"
 		src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 		
     </head>
 
@@ -92,8 +94,8 @@
 
                            <!-- 마스터 버튼 -->
           				   <div class="btn_group">
-	                           <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
 	                               <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
+	                           <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
 	                               <button type="button" data-partyno="${pReadMap.partyReadList.partyNo }" id="delete_button" class="submit_button">파티삭제</button>
 	                               <button id="complete_button" class="mbutton">모집완료</button>
 	                           </c:if>
@@ -102,15 +104,10 @@
 
                             <!-- 참가자 버튼 -->
                          	<div class="btn_group">
-	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo != null && pReadMap.partyReadList.partyState eq '모집중'}">
 	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
+	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo != null && pReadMap.partyReadList.partyState eq '모집중'}">
 	                                <button type="button" data-userno="${sessionScope.authUser.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="cancel_button" class="submit_button">참가취소</button>
 	                                <button type="button" data-userno="${sessionScope.authUser.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="join_button" class="submit_button">파티참가</button> 
-	                            </c:if> 
-                            </div>
-                           	<div class="btn_group">
-	                            <c:if test="${sessionScope.authUser.userNo ne pReadMap.partyReadList.userNo && sessionScope.authUser.userNo == null || pReadMap.partyReadList.partyState eq '모집완료'}">
-	                                <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
 	                            </c:if> 
                             </div>
                             <!-- //참가자 버튼 -->
@@ -151,7 +148,7 @@
 	                                </tr>
 	                            </thead>
 	
-	                            <tbody>
+	                            <tbody id="joinFinishTr">
 	                            	<c:forEach items="${pReadMap.partyDetailList }" var="partyDetailList" varStatus="status">
 	                                <tr>
 	                                    <td>${status.count }</td>
@@ -161,7 +158,7 @@
 	                                    <td>${partyDetailList.winRate } %</td>
 	                                    <td>${partyDetailList.noHintWinRate } %</td>
 	                                    <td>${partyDetailList.showAvgClearTime }</td>
-	                                    <td><c:if test="${partyDetailList.userState == '2' }"><button>추방하기</button></c:if></td>
+	                                    <td><c:if test="${partyDetailList.userState == '2' }"><button type="button" data-userno="${partyDetailList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" class ="refuse_button">멤버취소</button></c:if></td>
 	                                </tr>
 	                            	</c:forEach>
 									
@@ -258,7 +255,7 @@
 		                                    <td>${partyApplicantList.winRate } %</td>
 		                                    <td>${partyApplicantList.noHintWinRate } %</td>
 		                                    <td>${partyApplicantList.showAvgClearTime }</td>
-	                                    	<td><button type="button" data-userno="${partyApplicantList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="agree_button">O</button> / <button type="button" data-userno="${partyApplicantList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="refuse_button">X</button></td>
+	                                    	<td><button type="button" data-userno="${partyApplicantList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" class ="agree_button">멤버승인</button></td>
 		                                </tr>
 		        					</c:forEach>
 	                            </tbody>
@@ -386,34 +383,52 @@
    		var partyNo = $("#delete_button").data("partyno");
    		console.log(partyNo);
    		
-   		const result = confirm("파티를 삭제하시겠습니까?");
-		if(result) {
+//    		const result = confirm("파티를 삭제하시겠습니까?");
+   			
+		Swal.fire({
+            title: 'NEXTROOM',
+            text: "파티를 삭제하시겠습니까?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '삭제',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        	
+            if (result.isConfirmed) {
+   								
+// 		if(result) {
 			
-			//ajax서버에 요청 (partyNo 전달)
-			$.ajax({
-				
-				url : "${pageContext.request.contextPath }/party/partyDelete",		
-				type : "post",
-//	 			contentType : "application/json",
-				data : {partyNo: partyNo},
-
-//	 			dataType : "json",
-				success : function(count){
-					/*성공시 처리해야될 코드 작성*/
-					console.log("삭제완료");
+				//ajax서버에 요청 (partyNo 전달)
+				$.ajax({
 					
-					if(count == 1) {
-						window.location.assign('http://localhost:8088/nextroom/party/partyList');
+					url : "${pageContext.request.contextPath }/party/partyDelete",		
+					type : "post",
+	//	 			contentType : "application/json",
+					data : {partyNo: partyNo},
+	
+	//	 			dataType : "json",
+					success : function(count){
+						/*성공시 처리해야될 코드 작성*/
+						console.log("삭제완료");
+						
+						if(count == 1) {
+							window.location.assign('http://localhost:8088/nextroom/party/partyList');
+						}
+						
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
 					}
 					
-				},
-				error : function(XHR, status, error) {
-					console.error(status + " : " + error);
-				}
-				
-			});
+				});
 			
-		} 
+               
+             }
+         });
+   			
+// 		} 
    		
    		
 	});
@@ -435,37 +450,63 @@
    		
    		console.log(partyVo);
    		
-   		const result = confirm("파티에 참여하시겠습니까?");
-   		if(result) {
+//    		const result = confirm("파티에 참여하시겠습니까?");
+//    		if(result) {
+	
+		Swal.fire({
+            title: 'NEXTROOM',
+            text: "파티에 참여하시겠습니까?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '참여',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        	
+             if (result.isConfirmed) {
    			
-			//ajax서버에 요청 (partyNo,userNo 전달)
-			$.ajax({
-				
-				url : "${pageContext.request.contextPath }/party/addPartyApplicant",		
-				type : "post",
-//	 			contentType : "application/json",
-				data : partyVo,
-
-//	 			dataType : "json",
-				success : function(result){
-					/*성공시 처리해야될 코드 작성*/
-					console.log("참여신청!");
+				//ajax서버에 요청 (partyNo,userNo 전달)
+				$.ajax({
 					
-					if(result == true) {
-						window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
-						alert("파티신청이 완료되었습니다.")
-					} else {
-						alert("이미 참여신청한 파티입니다.")
+					url : "${pageContext.request.contextPath }/party/addPartyApplicant",		
+					type : "post",
+	//	 			contentType : "application/json",
+					data : partyVo,
+	
+	//	 			dataType : "json",
+					success : function(result){
+						/*성공시 처리해야될 코드 작성*/
+						console.log("참여신청!");
+						
+						if(result == true) {
+							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+	// 						alert("파티신청이 완료되었습니다.");
+// 							Swal.fire({
+// 			                    icon: 'success',
+// 			                    title: 'NEXTROOM',
+// 			                    text: '파티신청이 완료되었습니다.',
+// 			                });
+						} else {
+	// 						alert("이미 참여신청한 파티입니다.");
+							Swal.fire({
+			                    icon: 'error',
+			                    title: 'NEXTROOM',
+			                    text: '이미 참여신청한 파티입니다.',
+			                });
+						
+						}
+						
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
 					}
 					
-				},
-				error : function(XHR, status, error) {
-					console.error(status + " : " + error);
-				}
-				
-			});
+				});
    			
-   		}
+             }
+        });
+//    		}
    		
 	});
    	/*////참여자가 파티참가를 눌렀을 경우*/
@@ -486,36 +527,57 @@
    		
    		console.log(partyVo);
    		
-   		const result = confirm("파티참여를 취소하시겠습니까?");
-   		if(result) {
+//    		const result = confirm("파티참여를 취소하시겠습니까?");
+//    		if(result) {
    			
-			//ajax서버에 요청 (partyNo,userNo 전달)
-			$.ajax({
-				
-				url : "${pageContext.request.contextPath }/party/cancelPartyApplicant",		
-				type : "post",
-//	 			contentType : "application/json",
-				data : partyVo,
-
-//	 			dataType : "json",
-				success : function(result){
-					/*성공시 처리해야될 코드 작성*/
-					console.log("참여신청!");
+		Swal.fire({
+            title: 'NEXTROOM',
+            text: "파티참여를 취소하시겠습니까?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '확인',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        	
+             if (result.isConfirmed) {
+	
+				//ajax서버에 요청 (partyNo,userNo 전달)
+				$.ajax({
 					
-					if(result == true) {
-						window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
-					} else {
-						alert("파티신청한 멤버가 아닙니다.")
+					url : "${pageContext.request.contextPath }/party/cancelPartyApplicant",		
+					type : "post",
+	//	 			contentType : "application/json",
+					data : partyVo,
+	
+	//	 			dataType : "json",
+					success : function(result){
+						/*성공시 처리해야될 코드 작성*/
+						console.log("참여신청!");
+						
+						if(result == true) {
+							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+						} else {
+	// 						alert("참가현황과 대기현황 명단을 확인해주세요.")
+							Swal.fire({
+			                    icon: 'warning',
+			                    title: 'NEXTROOM',
+			                    text: '참가현황과 대기현황 명단을 확인해주세요.',
+			                });
+						}
+						
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
 					}
 					
-				},
-				error : function(XHR, status, error) {
-					console.error(status + " : " + error);
-				}
-				
-			});
+				});
+
+             }
+        });
    			
-   		}
+//    		}
    		
 	});
    	
@@ -523,8 +585,8 @@
    	/*////참여자가 파티취소를 눌렀을 경우*/
    	
    	
-   	/*방장이 대기자 O버튼을 눌렀을 경우*/
-   	$("#joinTr").on("click", "#agree_button", function () {
+   	/*방장이 대기자현황 멤버승인버튼을 눌렀을 경우*/
+   	$("#joinTr").on("click", ".agree_button", function () {
 		
    		var userNo = $(this).data("userno");
    		var partyNo = $(this).data("partyno");
@@ -538,41 +600,121 @@
    		
    		console.log(partyVo);
    		
-   		const result = confirm("파티멤버로 수락하시겠습니까?");
-   		if(result) {
+//    		const result = confirm("파티멤버로 수락하시겠습니까?");
+//    		if(result) {
+	
+		Swal.fire({
+            title: 'NEXTROOM',
+            text: "파티멤버로 수락하시겠습니까?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '확인',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        	
+             if (result.isConfirmed) {
    			
-			//ajax서버에 요청 (partyNo,userNo 전달)
-			$.ajax({
-				
-				url : "${pageContext.request.contextPath }/party/agreeMember",		
-				type : "post",
-//	 			contentType : "application/json",
-				data : partyVo,
-
-//	 			dataType : "json",
-				success : function(result){
-					/*성공시 처리해야될 코드 작성*/
+				//ajax서버에 요청 (partyNo,userNo 전달)
+				$.ajax({
 					
-					if(result == false) {
-						alert("모집인원을 확인해주세요.");
-					} else {
-						window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+					url : "${pageContext.request.contextPath }/party/agreeMember",		
+					type : "post",
+	//	 			contentType : "application/json",
+					data : partyVo,
+	
+	//	 			dataType : "json",
+					success : function(result){
+						/*성공시 처리해야될 코드 작성*/
+						
+						if(result == false) {
+	// 						alert("모집인원을 확인해주세요.");
+							Swal.fire({
+			                    icon: 'warning',
+			                    title: 'NEXTROOM',
+			                    text: '모집인원을 확인해주세요.',
+			                });
+						} else {
+							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+						}
+						
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
 					}
 					
-				},
-				error : function(XHR, status, error) {
-					console.error(status + " : " + error);
-				}
-				
-			});
+				});
    			
-   		}
+             }
+        });
+		
+//    		}
    		
 	});
    	
+   	/*////방장이 대기자현황 멤버승인버튼을 눌렀을 경우*/
    	
-   	/*////방장이 대기자 O버튼을 눌렀을 경우*/
    	
+   	/*방장이 참여현황에서 멤버취소버튼을 눌렀을 경우*/
+   	$("#joinFinishTr").on("click", ".refuse_button", function () {
+		
+   		var userNo = $(this).data("userno");
+   		var partyNo = $(this).data("partyno");
+   		console.log("유저번호 :" + userNo);
+   		console.log("파티번호 :" + partyNo)
+   		
+  		var partyVo = {
+   			userNo: $(this).data("userno"),
+   	   		partyNo: $(this).data("partyno")
+   		};
+   		
+   		console.log(partyVo);
+   		
+		Swal.fire({
+            title: 'NEXTROOM',
+            text: "파티멤버에서 추방하시겠습니까?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '확인',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        	
+             if (result.isConfirmed) {
+   			
+				//ajax서버에 요청 (partyNo,userNo 전달)
+				$.ajax({
+					
+					url : "${pageContext.request.contextPath }/party/exceptDetailMember",		
+					type : "post",
+	//	 			contentType : "application/json",
+					data : partyVo,
+	
+	//	 			dataType : "json",
+					success : function(result){
+						/*성공시 처리해야될 코드 작성*/
+						
+						if(result == true) {
+	// 						alert("모집인원을 확인해주세요.");
+							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+						} 
+						
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+					
+				});
+   			
+             }
+        });
+   		
+   		
+	});
+   	
+   	/*////방장이 참여현황에서 멤버취소버튼을 눌렀을 경우*/
    	
    	
    	
