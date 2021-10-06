@@ -165,8 +165,49 @@ public class Board {
 	
 	//2021.10.05 by 원호
 	//글삭제
+	@ResponseBody
+	@RequestMapping(value="reviewDelete",method = {RequestMethod.GET, RequestMethod.POST})
+	public int reviewDelete(@RequestParam("reviewNo") int reviewNo) {
+		System.out.println("Controller.reviewDelete");
+		System.out.println("번호 왔냐?" + reviewNo);
+		
+		int count = reviewBoardService.reviewDelete(reviewNo);
+		System.out.println("갔다왔니?" + count);
+		return count;
+	}
 	
 	
+	//2021.10.06 by 원호
+	//글 수정
+	@RequestMapping(value = "/reviewModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String reviewModify(@RequestParam("reviewNo") int reviewNo, Model model, HttpSession session) {
+		System.out.println("Controller.reviewModify");
+		
+		ReviewBoardVo reviewBoardVo = reviewBoardService.reviewModify(reviewNo);
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		
+		if(authUser!= null) {
+			System.out.println("로그인 안한 경우");
+
+			//포워드 하기전에 모델에 담아줌
+			model.addAttribute("reviewBoardVo", reviewBoardVo);
+			return "redirect:/board/reviewBoard";
+		}else {
+			return "redirect:/board/modifyForm";
+		}
+		
+		/*
+		//로그인한 사용자 == 글작성자
+		if(reviewBoardVo.getUserNo() == authUser.getUserNo()) {
+			System.out.println("자신의 글인 경우 수정폼 포워드");
+			return "board/modifyForm";
+		}else {
+			System.out.println("다른 사람의 글인 경우");
+			return "redirect:/board/reviewBoard";
+		}*/
+	}
+		
 	
 	//쪽지 보내기
 	@RequestMapping("/massageForm")
@@ -174,4 +215,6 @@ public class Board {
 		System.out.println("massageForm");
 		return "board/massageForm";
 	}
+	
+	
 }
