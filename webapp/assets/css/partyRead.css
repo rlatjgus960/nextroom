@@ -121,12 +121,17 @@
     text-align: center;
 }
 
-#hold_list table>tbody>tr>td>button {
-    background-color: white;
-    border: white;
+#hold_list table>tbody>tr>td>button, #party_list table>tbody>tr>td>button {
+	width: 65px;
+	height: 25px;
+    background-color: rgb(224,224,224);
+    cursor: pointer;
+    color: #000;
+    border: none;
+    border-radius: 5px;
 }
 
-#hold_list table>tbody>tr>td>button:hover {
+#hold_list table>tbody>tr>td>button:hover, #party_list table>tbody>tr>td>button:hover {
     background-color: rgb(253, 213, 59);
     color: #fff;
 }
