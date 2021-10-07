@@ -7,6 +7,8 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.nextroom.vo.FreeBoardVo;
 import com.nextroom.vo.ReviewBoardVo;
 
 @Repository
@@ -139,4 +141,54 @@ public class ReviewBoardDao {
 		
 		return sqlSession.update("reviewBoard.update",reviewBoardVo);
 	}
+	
+	
+//////////////////////////////////////////////////////////
+	/*자유게시판*/
+	
+	//2021.10.07 by 원호
+	//자유게시판 글쓰기(이미지 포함)
+	public int boardInsert(FreeBoardVo freeBoardVo) {
+		System.out.println("[Dao.boardInsert]");
+		System.out.println("[Dao Vo정보]" + freeBoardVo);
+		
+
+		return sqlSession.insert("reviewBoard.boardInsert", freeBoardVo);
+		
+	}
+	
+	//2021.10.07 by 원호
+	//자유게시판 이미지 없이 글 등록
+	public int boardInsert2(FreeBoardVo freeBoardVo) {
+		System.out.println("[Dao.boardInsert2]");
+		
+		return sqlSession.insert("reviewBoard.boardInsert2", freeBoardVo);
+	}
+	
+	//2021.10.07 by 원호
+	//자유게시판 리스트,페이징,검색
+	public List<FreeBoardVo> boardList(String keyword,int startRnum, int endRnum){
+		System.out.println("[Dao.boardList]");
+		
+		
+		Map<String, Object> pMap = new HashMap<String, Object>();
+		
+		pMap.put("startRnum", startRnum);
+		pMap.put("endRnum", endRnum);
+		pMap.put("keyword", keyword);
+		System.out.println(pMap);
+		
+		return sqlSession.selectList("reviewBoard.boardList",pMap);
+	}
+	
+	//2021.10.07 by 원호
+	//전체 게시물 갯수 구하기
+	public int totalCnt(String keyword) {
+		System.out.println("[Dao.selectTotalCnt]");
+		
+		
+		
+		return sqlSession.selectOne("reviewBoard.totalCnt",keyword);
+	}
+	
 }

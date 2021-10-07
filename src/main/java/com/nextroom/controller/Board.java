@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.ReviewBoardService;
+import com.nextroom.vo.FreeBoardVo;
 import com.nextroom.vo.ReviewBoardVo;
 import com.nextroom.vo.UserVo;
 
@@ -26,31 +27,58 @@ public class Board {
 	private ReviewBoardService reviewBoardService;
 	
 	
-	//자유게시판 리스트
-	@RequestMapping("/freeCommunity")
-	public String freeCommunity() {
-		System.out.println("freeCommunity");
-		
-		return"board/freeCommunity";
+	//자유게시판 글쓰기폼
+	@RequestMapping("/writeForm")
+	public String writeForm() {
+		System.out.println("writeForm");
+		return "board/writeForm";
 	}
 	
-	/*
-	//자유게시판 리스트
+	
+	//2021.10.07 by 원호
+	//자유게시판 글등록
+	@RequestMapping(value = "/boardWrite", method = {RequestMethod.GET, RequestMethod.POST})
+	public String boardWrite(@ModelAttribute FreeBoardVo freeBoardVo, HttpSession session) {
+		System.out.println("Controller.reviewWrite");
+		
+		//세션에서 정보가져옴
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		System.out.println("authUser:" + authUser);
+		
+		//vo에 세션에서 가져온 no담기
+		int no = authUser.getUserNo();
+		freeBoardVo.setUserNo(no);
+		
+		
+		System.out.println(freeBoardVo);
+		reviewBoardService.boardWrite(freeBoardVo);
+		
+		
+		return "redirect:/board/freeCommunity";
+	}
+	
+	//2021.10.07 by 원호
+	//자유게시판 리스트,페이징
 	@RequestMapping(value = "/freeCommunity", method = {RequestMethod.GET, RequestMethod.POST})
-	public String freeCommunity(Model model, @RequestParam(value="keyword", required = false, defaultValue = "") String keyword) {
+	public String freeBoard(Model model, 
+							  @RequestParam(value="keyword", required = false, defaultValue = "") String keyword,
+							  @RequestParam(value="crtPage", required = false, defaultValue = "1")int crtPage) {
 		System.out.println("freeCommunity");
 		
 		//사용자가 list요청
-		List<ReviewBoardVo> reviewBoardVo = reviewBoardService.list(keyword);
+		Map<String, Object> freeBoardList = reviewBoardService.boardList(keyword, crtPage);
+		System.out.println("[reviewController.freeBoard]:" + freeBoardList);
 		
 		//jsp로 보냄
-		model.addAttribute("reviewBoardVo", reviewBoardVo);
-		
+		model.addAttribute("freeBoardList", freeBoardList);
+		System.out.println("xml갔다온거:" + freeBoardList);
 		
 		return "board/freeCommunity";
-	}*/
-	
-	
+	}
+
+
+//////////////////////////////////////////////////////////////////
+/*후기 게시판*/
 	//2021.10.02 by 원호
 	//후기 게시판 글 읽기
 	@RequestMapping(value = "/readForm", method = {RequestMethod.GET, RequestMethod.POST})
@@ -67,14 +95,7 @@ public class Board {
 		return "board/readForm";
 	}
 		
-	
-	//자유게시판 글쓰기
-	@RequestMapping("/writeForm")
-	public String writeForm() {
-		System.out.println("writeForm");
-		return "board/writeForm";
-	}
-	
+
 	
 	//2021.09.30~10.01 by 원호
 	//후기게시판 리스트,페이징

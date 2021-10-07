@@ -144,11 +144,11 @@
 					<!-- //게시판 리스트 -->
 
 					<!-- 글쓰기버튼 -->
-<%-- 					<c:if test = "${!empty authUser }"> --%>
+ 					<c:if test = "${!empty authUser }">
 						<div>
 							<a class="submit_button" href="${pageContext.request.contextPath }/board/reviewWriteForm">글쓰기</a>
 						</div>
-<%-- 					</c:if> --%>
+- 					</c:if>
 					
 					<!-- 페이징 -->
 					<div id="pager">

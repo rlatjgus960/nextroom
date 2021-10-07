@@ -81,7 +81,7 @@
 								<input type="text" name="keyword" value="" placeholder="검색어를 입력해주세요">
 								<button class="search_button" type="submit">검색</button>
 							</div>
-
+<!-- 
 							<div>
 								<select class="content_select">
 									<option>15개씩</option>
@@ -89,7 +89,7 @@
 									<option>50개씩</option>
 								</select>
 							</div>
-
+ -->
 						</form>
 					</div>
 					<!-- //기간 선택 -->
@@ -116,150 +116,56 @@
 								</tr>
 							</thead>
 
-							<tbody>							
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName1">
-											최원호
-										</span>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>																 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>								
-									
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>	
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
-								
-								<tr>
-									<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/image.jpg"></td>
-									<td><a href="${pageContext.request.contextPath }/board/readForm">자유게시판입니다.</a></td>
-									<td class="btnNick">
-										<span class="nickName">
-											최원호
-										</span>																	 
-									</td>
-									<td>123</td>
-									<td>321</td>
-									<td>2021.09.09</td>
-								</tr>
+							<tbody>	
+								<c:forEach items = "${freeBoardList.boardList}" var="freeBoardList">						
+									<tr>
+										<td><img class="img" src="${pageContext.request.contextPath }/upload/${freeBoardList.boardImg}"></td>
+										<td><a href="${pageContext.request.contextPath }/board/readForm">${freeBoardList.boardTitle}</a></td>
+										<td class="btnNick">
+											<span class="nickName1">
+												${freeBoardList.nickname }
+											</span>																	 
+										</td>
+										<td>${freeBoardList.boardHit }</td>
+										<td>${freeBoardList.boardLike }</td>
+										<td>${freeBoardList.regDate }</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
 					<!-- //게시판 리스트 -->
 
 					<!-- 글쓰기버튼 -->
-					<div>
-						<a class="submit_button" href="${pageContext.request.contextPath }/board/writeForm">글쓰기</a>
-					</div>
+					<c:if test = "${!empty authUser }">
+						<div>
+							<a class="submit_button" href="${pageContext.request.contextPath }/board/writeForm">글쓰기</a>
+						</div>
+					</c:if>
 					<!-- 페이징 -->
 					<div id="pager">
-						<ul class="clearfix">
-							<li><a href="">◀</a></li>
-							<li><a class="active" href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">4</a></li>
-							<li><a href="">5</a></li>
-							<li><a href="">6</a></li>
-							<li><a href="">7</a></li>
-							<li><a href="">8</a></li>
-							<li><a href="">9</a></li>
-							<li><a href="">10</a></li>
-							<li><a href="">▶</a></li>
-						</ul>					
+						<ul>
+							<c:if test="${freeBoardList.prev == true }">
+								<li><a href="${pageContext.request.contextPath}/board/freeCommunity?crtPage=${freeBoardList.startPageBtnNo-1}&keyword=${param.keyword}">◀</a></li>
+							</c:if>
+							
+							<c:forEach begin = "${freeBoardList.startPageBtnNo}" end = "${freeBoardList.endPageBtnNo}" step = "1" var = "page">
+								<c:choose>
+									<c:when test = "${param.crtPage eq page}">
+										<li class = "active"><a href="${pageContext.request.contextPath}/board/reviewBoard?crtPage=${page}&keyword=${param.keyword}">${page }</a></li>
+									</c:when>
+									<c:otherwise>
+									<li><a href="${pageContext.request.contextPath}/board/freeCommunity?crtPage=${page}&keyword=${param.keyword}">${page }</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:if test = "${freeBoardList.next == true}">
+								<li><a href="${pageContext.request.contextPath}/board/freeCommunity?crtPage=${freeBoardList.endPageBtnNo+1}&keyword=${param.keyword}">▶</a></li>
+							</c:if>
+						</ul>			
 
-					</div>                            
+					</div>                               
 					<!-- //페이징 -->
 
 
