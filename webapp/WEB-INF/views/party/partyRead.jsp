@@ -114,7 +114,7 @@
 			                               <c:if test="${pReadMap.partyReadList.partyState eq '모집완료'}">
 			                               		<button type="button" data-userno="${pReadMap.partyReadList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="working_button" class="submit_button">모집중</button>
 	                               		   </c:if>
-			                               		<button id="reserve_button" class="mbutton">예약하기</button>
+			                               		<button type="button" data-userno="${pReadMap.partyReadList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="reserve_button" class="mbutton">예약하기</button>
 	                               		</c:when>
 	                               </c:choose>
                            </div>	
@@ -884,6 +884,46 @@
    	/*////방장이 참여현황에서 멤버취소버튼을 눌렀을 경우*/
    	
    	
+   	/* 방장이 예약하기 버튼을 눌렀을 경우 */
+   	$("#reserve_button").on("click", function () {
+		
+   		var userNo = $(this).data("userno");
+   		var partyNo = $(this).data("partyno");
+   		console.log("유저번호 :" + userNo);
+   		console.log("파티번호 :" + partyNo)
+   		
+  		var partyVo = {
+   			userNo: $(this).data("userno"),
+   	   		partyNo: $(this).data("partyno")
+   		};
+				
+    	
+		Swal.fire({
+            title: 'NEXTROOM',
+            text: "방탈출 예약을 진행하시겠습니까?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '확인',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        	
+            if (result.isConfirmed) {
+            	
+            	//모집중이라면 모집완료를 해주세요
+            	//예약에 필요한 정보들 확인해서 정리하기
+            
+            
+            
+            }
+            
+        });
+   		
+	});
+   	
+   	
+   	/*////방장이 예약하기 버튼을 눌렀을 경우*/
    	
    	
    	
