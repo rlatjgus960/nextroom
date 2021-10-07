@@ -128,10 +128,15 @@ DROP TABLE record
 /* 레이팅 */
 DROP TABLE rankRating 
 	CASCADE CONSTRAINTS;
+	
+/* 자유게시판 */
+DROP TABLE freeBoard 
+	CASCADE CONSTRAINTS;
    
+/* 자유게시판 이미지 */
+DROP TABLE FREEBOARDIMG 
+	CASCADE CONSTRAINTS;  
    
-   
-
 
 
 
@@ -206,6 +211,13 @@ DROP TABLE rankRating
 --------------------------------------------------------
 
    CREATE SEQUENCE  "NEXTROOM"."BOARDNO"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 2 NOCACHE  NOORDER  NOCYCLE ;
+   
+--------------------------------------------------------
+--  DDL for Sequence BOARDNO
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "NEXTROOM"."BOARDNO"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 6 NOCACHE  NOORDER  NOCYCLE ;   
+   
 --------------------------------------------------------
 --  DDL for Table CAFE
 --------------------------------------------------------
