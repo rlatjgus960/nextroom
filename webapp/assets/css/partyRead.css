@@ -52,16 +52,13 @@
     margin-left: 10px;
 }
 
-#complete_button {
-    margin-right: 250px;
-}
-
-.btn_group>.mbutton {
-    margin-left: 170px;
-}
 
 #list_button { 
     padding: 5px 28px 4px 28px;
+}
+
+#working_button {
+	padding: 5px 22px 4px 22px;
 }
 
 /* 참여현황 */
