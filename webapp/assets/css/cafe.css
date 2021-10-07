@@ -29,6 +29,10 @@
     width: 300px;
 }
 
+.dg-map polyline:hover {
+	cursor: pointer;
+}
+
 
 #cafe_list{
     margin-left: auto;
