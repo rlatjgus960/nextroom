@@ -9,7 +9,7 @@
 <link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/rankUser.css" rel="stylesheet" type="text/css">
 
-<title>Insert title here</title>
+<title>랭킹-유저</title>
 </head>
 <body>
 
@@ -60,10 +60,10 @@
                <!--검색-->
                <div class="clearfix">
                	
-               		<form id="searchbar" class="" action="" method="get">
+               		<form id="searchbar" class="" action="${pageContext.request.contextPath}/rank/detail/" method="get">
 						<div class="form-group text-right">
 							<span>검색 :&nbsp;</span>
-							<input placeholder="닉네임을 입력하세요." type="text" name="keyword">
+							<input placeholder="닉네임을 입력하세요." type="text" name="nickName">
 							<button type="submit" id=btn_search class="search_button">검색</button>
 						</div>
 					</form>

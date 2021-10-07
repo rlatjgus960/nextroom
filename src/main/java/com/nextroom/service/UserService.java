@@ -29,4 +29,15 @@ public class UserService {
 		
 		return cafeNo;
 	}
+	
+	//회원가입
+	public int addUser(UserVo userVo) {
+		System.out.println("유서비-회원추가   "+userVo);
+		
+		int count = userDao.insertUser(userVo);
+		
+		
+		
+		return count;
+	}
 }

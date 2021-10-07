@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nextroom.service.UserService;
 import com.nextroom.vo.UserVo;
@@ -61,5 +62,33 @@ public class UserController {
 		session.invalidate();
 		
 		return "redirect:/user/loginForm";
+	}
+	
+	//회원가입폼
+	@RequestMapping(value = "/joinForm")
+	public String joinForm() {
+		System.out.println("유컨-가입폼");
+
+		return "user/joinForm";
+	}
+	
+	@RequestMapping(value = "/join")
+	public String joinOk(@ModelAttribute UserVo userVo,
+						 @RequestParam(value="emailDetail")String emailDetail) {
+		
+		userVo.setEmail(userVo.getEmail()+"@"+emailDetail);
+		System.out.println("유컨-조인 " + userVo);
+		
+		userService.addUser(userVo);
+
+		return "user/joinSuccess";
+	}
+	
+	@RequestMapping(value = "/joinSuccess")
+	public String joinOk() {
+		
+		
+
+		return "user/joinSuccess";
 	}
 }

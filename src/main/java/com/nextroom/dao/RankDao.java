@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nextroom.vo.PartyVo;
 import com.nextroom.vo.RatingVo;
+import com.nextroom.vo.UserHistoryVo;
 
 @Repository
 public class RankDao {
@@ -28,25 +29,47 @@ public class RankDao {
 
 		return sqlSession.update("rank.updateRating", ratingVo);
 	}
-	
-	public List<RatingVo> selectRankList(){
-		
+
+	public List<RatingVo> selectRankList() {
+
 		return sqlSession.selectList("rank.selectRankList");
 	}
-	
-	
-	//21-10-04
-	//PartyRead Rank 가져오기 by 대니
+
+	// 21-10-04
+	// PartyRead Rank 가져오기 by 대니
 	public PartyVo partySelectRating(int userNo) {
-		
+
 		return sqlSession.selectOne("rank.partySelectRating", userNo);
 	}
-	
-	//21-10-04
-	//userNo로 현재순위,닉네임,프로필 가져오기 by 대니
+
+	// 21-10-04
+	// userNo로 현재순위,닉네임,프로필 가져오기 by 대니
 	public PartyVo partySelectRankList(int userNo) {
-		
+
 		return sqlSession.selectOne("rank.partySelectRankList", userNo);
 	}
-	
+
+	public RatingVo selectUserStat(int userNo) {
+
+		return sqlSession.selectOne("rank.selectUserStat", userNo);
+	}
+
+	public List<UserHistoryVo> selectUserHistory(int userNo) {
+
+		return sqlSession.selectList("rank.selectUserHistory", userNo);
+	}
+
+	public int selectUserNo(String nickName) {
+
+		if (sqlSession.selectOne("rank.selectUserNo", nickName) == null
+				|| sqlSession.selectOne("rank.selectUserNo", nickName).equals("")) {
+			System.out.println("오휴오휴ㅗ후후후후후후후ㅜ");
+			
+			return -1;
+		}
+
+		else {
+			return sqlSession.selectOne("rank.selectUserNo", nickName);
+		}
+	}
 }

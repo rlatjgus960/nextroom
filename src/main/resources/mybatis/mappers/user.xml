@@ -33,4 +33,21 @@
 			where userNo = #{userNo}
 		]]>
 	</select>
+	
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="com.nextroom.vo.UserVo">
+		<![CDATA[
+			insert into users
+			values 	(USERNO.nextval
+			        ,#{id }
+			        ,#{password }
+			        ,#{userName }
+			        ,#{userHp }
+			        ,#{email }
+			        ,#{nickname }
+			        ,'1')
+		]]>
+	</insert>
+	
 </mapper>

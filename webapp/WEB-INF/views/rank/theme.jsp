@@ -10,14 +10,11 @@
 <link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/rankTheme.css" rel="stylesheet" type="text/css">
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
-/>
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"
 ></script>
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 
 <title>Insert title here</title>
@@ -446,7 +443,7 @@
           prevEl: ".swiper-button-prev",
         },
       });
-    </script>
+</script>
     
     
 </html>

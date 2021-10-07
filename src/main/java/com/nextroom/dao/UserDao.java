@@ -33,4 +33,9 @@ public class UserDao {
 		
 		return sqlSession.selectOne("user.userNoGetUser", userNo);
 	}
+	
+	public int insertUser(UserVo userVo) {
+		
+		return sqlSession.insert("user.insertUser", userVo);
+	}
 }

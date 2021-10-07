@@ -70,3 +70,21 @@
     font-size: 14px;
     font-weight: bold;
  }
+ 
+ #searchbar{
+    float: right;
+    margin-top: 10px;
+}
+
+#searchbar input {
+   
+    padding: 4px 0px;
+    font-size:15px;
+}
+
+#search-null{
+	margin : 170px auto;
+	line-height: 50px;
+	font-size : 20px;
+	color : red;
+}

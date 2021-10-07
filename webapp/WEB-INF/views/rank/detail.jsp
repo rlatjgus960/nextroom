@@ -9,7 +9,7 @@
 <link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/userDetail.css" rel="stylesheet" type="text/css">
 
-<title>Insert title here</title>
+<title>랭킹-유저상세</title>
 </head>
 <body>
 
@@ -36,7 +36,19 @@
 
 			<!-- contentMain -->
 			<div id="" class="">
-			
+			<div class="clearfix">
+               	
+               		<form id="searchbar" class="" action="${pageContext.request.contextPath}/rank/detail/" method="get">
+						<div class="form-group text-right">
+							<span>검색 :&nbsp;</span>
+							<input placeholder="닉네임을 입력하세요." type="text" name="nickName">
+							<button type="submit" id=btn_search class="search_button">검색</button>
+						</div>
+					</form>
+
+                  
+
+               </div>
 			<!--userprofile-->
 
             <div id="user_detail">
@@ -46,17 +58,17 @@
                     <span><img class="detail_profile_img" src="../../../assets/image/profile/red.jpg"></span>
                    
                     <div class="nick_box">
-                    <span class="detail_profile_nickname">Junzzang12</span>
+                    <span class="detail_profile_nickname">${detailMap.statVo.nickName}</span>
                     </div>
                    
                         
                     
                     <ul class="detail_profile_stats">
-                        <li>현재순위 : --위</li>
-                        <li>성공률 : 33.33%</li>
-                        <li>노힌트 성공률 : 0%</li>
-                        <li>평균 기록 : 00분 00초</li>
-                        <li>전적 300전 100승 200패</li>
+                        <li>현재순위 : ${detailMap.statVo.rank}위</li>
+                        <li>성공률 : ${detailMap.statVo.winRate}%</li>
+                        <li>노힌트 성공률 : ${detailMap.statVo.noHintWinRate}%</li>
+                        <li>평균 기록 : ${detailMap.statVo.showAvgClearTime}</li>
+                        <li>전적 : ${detailMap.statVo.gameHistory}</li>
                     </ul>
                     
                    
@@ -82,51 +94,19 @@
                             <th>인원</th>
                             <th>탈출</th>
                         </tr>
-
-                        <tr>
-                            <td>2021.08.27</td>
-                            <td>비밀의화원 미드나잇</td>
-                            <td>57m 40s</td>
-                            <td>3 hints</td>
-                            <td>2인</td>
-                            <td>탈출실패</td>
+						<c:forEach items="${detailMap.historyList}" var="historyVo">
+						 <tr>
+                            <td>${historyVo.regDate }</td>
+                            <td>${historyVo.themeName }</td>
+                            <td>${historyVo.clearTime }</td>
+                            <td>${historyVo.recordHints } hints</td>
+                            <td>${historyVo.totalPerson }인</td>
+                            <td>${historyVo.recordClear }</td>
                         </tr>
+						</c:forEach>
+                       
 
-                        <tr>
-                            <td>2021.07.08</td>
-                            <td>싸인이스케이프 홍대점</td>
-                            <td>2021070822</td>
-                            <td>No hint</td>
-                            <td>1인</td>
-                            <td>탈출완료</td>
-                        </tr>
-
-                        <tr>
-                            <td>2021.08.27</td>
-                            <td>비밀의화원 미드나잇</td>
-                            <td>57m 40s</td>
-                            <td>3 hints</td>
-                            <td>2인</td>
-                            <td>탈출실패</td>
-                        </tr>
-
-                        <tr>
-                            <td>2021.07.08</td>
-                            <td>싸인이스케이프 홍대점</td>
-                            <td>2021070822</td>
-                            <td>No hint</td>
-                            <td>1인</td>
-                            <td>탈출완료</td>
-                        </tr>
-
-                        <tr>
-                            <td>2021.07.08</td>
-                            <td>싸인이스케이프 홍대점</td>
-                            <td>2021070822</td>
-                            <td>No hint</td>
-                            <td>1인</td>
-                            <td>탈출완료</td>
-                        </tr>
+                        
 
 
                     </table>

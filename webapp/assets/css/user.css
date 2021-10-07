@@ -24,3 +24,44 @@
 #loginForm #textPassword {width: 160px; height: 30px; }
 #loginForm #tdMsg {padding-top: 20px; text-align: center; }
 
+
+#joinForm {width: 400px; margin: 0px auto; padding: 20px; border: 1px solid #B7B7B7; }
+#joinForm #txtId {width: 170px; height: 20px; }
+#joinForm #tdMsg {padding-top: 0px; }
+#joinForm #txtPassword {width: 170px; height: 20px; }
+#joinForm #txtUserName {width: 170px; height: 20px; }
+#joinForm #chkAgree {width: 15px; height: 15px; }
+#joinForm .txtEmail {width: 70px; height: 20px;}
+#joinForm .txtNickName {width: 170px; height: 20px; }
+#joinForm .txtPhoneNumber{ width: 170px; height: 20px;}
+#joinForm select {
+	width: 80px;
+	font-size: 15px;
+	padding: 0px;
+}
+
+#joinForm  { 
+	width: 420px; 
+	margin: 20px auto; 
+	padding-top: 20px;
+	margin-top: 150px; 
+}
+
+
+
+.checkbutton{ padding:5px 3px; }
+
+#joinForm>table {
+	margin-bottom: 15px;
+	border-spacing: 9px;
+	text-align:left;
+}
+
+
+.mbutton{
+	text-align: center;
+}
+
+#joinSuccess{
+	margin-top: 170px;
+}

@@ -109,8 +109,8 @@
 						    </c:when>
 						
 						    <c:otherwise>
-						    
                        			<c:forEach items="${gameList}" var="prerecordVo">
+						    
 							        <tr id="list-table">
 			                           <td>${ prerecordVo.themeName}</td>
 			                           <td>${ prerecordVo.regDate}</td>

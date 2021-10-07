@@ -7,14 +7,14 @@
 		
 		<![CDATA[
 			select  userno
-	        ,avg(recordhints)avgHints
-	        ,avg(recordtime) avgClearTime
-	        ,count(*) totalGame
-	        ,(SELECT count(*)
-	          FROM record
-	          where recordhints=0
-	          and userno = #{userNo}) nohintgame
-	        ,(SELECT count(*)
+			        ,avg(recordhints)avgHints
+			        ,avg(recordtime) avgClearTime
+			        ,count(*) totalGame
+			        ,(SELECT count(*)
+			          FROM record
+			          where recordhints=0
+			          and userno = #{userNo}) nohintgame
+			        ,(SELECT count(*)
 	          FROM record
 	          where recordclear='success'
 	          and userno = #{userNo}) wongame
@@ -29,12 +29,12 @@
 	<update id="updateRating" parameterType="com.nextroom.vo.RatingVo">
 	
 		<![CDATA[
-			update rankrating set
-			USERRATING = #{rankRating},
-			winrate = #{winRate},
-			nohintwinrate = #{noHintWinRate},
-			showAvgClearTime = #{showAvgClearTime},
-			gamehistory = #{gameHistory}
+			update 	rankrating set
+					USERRATING = #{rankRating},
+					winrate = #{winRate},
+					nohintwinrate = #{noHintWinRate},
+					showAvgClearTime = #{showAvgClearTime},
+					gamehistory = #{gameHistory}
 			where userNo = #{userNo}
 		]]>
 	
@@ -53,6 +53,7 @@
 					,r.gamehistory
 			from rankrating r,users u
 			where r.userno=u.userno
+			and r.userrating != 0
 		]]>
 		
 	</select>
@@ -64,17 +65,17 @@
 		
 		<![CDATA[
 			select  userno
-	        ,avg(recordhints)avgHints
-	        ,avg(recordtime) avgClearTime
-	        ,count(*) totalGame
-	        ,(SELECT count(*)
-	          FROM record
-	          where recordhints=0
-	          and userno = #{userNo}) nohintgame
-	        ,(SELECT count(*)
-	          FROM record
-	          where recordclear='success'
-	          and userno = #{userNo}) wongame
+			        ,avg(recordhints)avgHints
+			        ,avg(recordtime) avgClearTime
+			        ,count(*) totalGame
+			        ,(SELECT count(*)
+			          FROM record
+			          where recordhints=0
+			          and userno = #{userNo}) nohintgame
+			        ,(SELECT count(*)
+			          FROM record
+			          where recordclear='success'
+			          and userno = #{userNo}) wongame
 			from record
 			where userno = #{userNo}
 			group by userno
@@ -99,5 +100,55 @@
 		]]>
 		
 	</select>
-
+	
+	<select id="selectUserStat" parameterType="int" resultType="com.nextroom.vo.RatingVo">
+		<![CDATA[
+		select us.userno,us.nickname,rk.avghints,rk.avgcleartime,rk.totalgame,rk.nohintgame,rk.wongame,rnk.rank
+		from users us,(select  r.userno
+		            
+		                    ,avg(r.recordhints)avgHints
+		                    ,avg(r.recordtime) avgClearTime
+		                    ,count(*) totalGame
+		                    ,(SELECT count(*)
+		                      FROM record
+		                      where recordhints=0
+		                      ) nohintgame
+		                    ,(SELECT count(*)
+		                      FROM record
+		                      where recordclear='success'
+		                      and userno = #{userno} ) wongame
+		                from record r,users u
+		                where r.userno = u.userno
+		                group by r.userno) rk , (select rkk.rank,uss.userno
+		                                        from users uss,  (select uaa.nickname
+		                                                                ,ROW_NUMBER() OVER (ORDER BY raa.userrating DESC) rank
+		                                                                ,uaa.userno
+		                                                         from rankrating raa,users uaa
+		                                                         where raa.userno=uaa.userno) rkk 
+		                                        where rkk.userno = uss.userno) rnk
+		where us.userno = rk.userno
+		and rk.userno = rnk.userno
+		and rk.userno = #{userno}
+		]]>
+	</select>
+	
+	<select id="selectUserHistory" parameterType="int" resultType="com.nextroom.vo.UserHistoryVo">
+		<![CDATA[
+		select to_char(p.regdate,'yy.mm.dd') regdate,t.themename,r.recordhints,r.recordtime,p.totalperson,r.recordclear
+		from prerecord p ,record r,theme t,users u
+		where p.gameno = r.gameno
+		and p.themeno = t.themeno
+		and r.userno = u.userno
+		and u.userno = #{userno}
+		]]>
+	</select>
+	
+	<select id="selectUserNo" parameterType="String" resultType="int">
+		<![CDATA[
+		select userno
+		from users
+		where nickname = #{nickName}
+		]]>
+	</select>
+	
 </mapper>
