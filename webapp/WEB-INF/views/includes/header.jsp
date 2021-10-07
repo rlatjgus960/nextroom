@@ -23,7 +23,7 @@
 					<c:choose>
 						<c:when test="${empty sessionScope.authUser }">
 							<li class="mypageBtn"><a href="${pageContext.request.contextPath}/user/loginForm" class="btn_s">로그인</a></li>
-							<li class="mypageBtn"><a href="" class="btn_s">회원가입</a></li>
+							<li class="mypageBtn"><a href="${pageContext.request.contextPath}/user/joinForm" class="btn_s">회원가입</a></li>
 						</c:when>
 						
 						<c:otherwise>
