@@ -48,13 +48,14 @@
 
                     <!-- 서치영역 -->
                     <div id="search_area" class="clearfix">
+                            <select id="party_view" name="partyView">
+                                <option value="" selected="">전체보기</option>
+                                <option value="partyIng">모집중</option>
+                                <option value="partyEnd">모집완료</option>
+                            </select>
+                            
                         <form action="" method="">
 
-                            <select id="party_view" name="party_view">
-                                <option value="" selected="">전체보기</option>
-                                <option value="party_ing">모집중</option>
-                                <option value="party_ed">모집완료</option>
-                            </select>
 
                             <div id="kind">
                                 <label for="cafe_pick">카페</label>

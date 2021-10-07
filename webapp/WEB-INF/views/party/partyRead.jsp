@@ -176,7 +176,7 @@
 	                                    <td>${partyDetailList.winRate } %</td>
 	                                    <td>${partyDetailList.noHintWinRate } %</td>
 	                                    <td>${partyDetailList.showAvgClearTime }</td>
-	                                    <td><c:if test="${partyDetailList.userState == '2' }"><button type="button" data-userno="${partyDetailList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" class ="refuse_button">멤버취소</button></c:if></td>
+	                                    <td><c:if test="${partyDetailList.userState == '2' && pReadMap.partyReadList.partyState == '모집중'}"><button type="button" data-userno="${partyDetailList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" class ="refuse_button">멤버취소</button></c:if></td>
 	                                </tr>
 	                            	</c:forEach>
 									
@@ -273,7 +273,12 @@
 		                                    <td>${partyApplicantList.winRate } %</td>
 		                                    <td>${partyApplicantList.noHintWinRate } %</td>
 		                                    <td>${partyApplicantList.showAvgClearTime }</td>
-	                                    	<td><button type="button" data-userno="${partyApplicantList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" class ="agree_button">멤버승인</button></td>
+		                                    <c:if test="${pReadMap.partyReadList.partyState == '모집중' }">
+		                                    	<td><button type="button" data-userno="${partyApplicantList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" class ="agree_button">멤버승인</button></td>
+		                                    </c:if>
+		                                    <c:if test="${pReadMap.partyReadList.partyState == '모집완료' }">
+		                                    	<td></td>
+		                                    </c:if>
 		                                </tr>
 		        					</c:forEach>
 	                            </tbody>
@@ -390,150 +395,145 @@
     
     
     /* 파티마스터가 모집완료를 눌렀을경우 */
-   	$(document).ready(function() {
     
-		$("#complete_button").on("click", function() {
-	    		
-	   		var userNo = $(this).data("userno");
-	   		var partyNo = $(this).data("partyno");
-	   		console.log("유저번호 :" + userNo);
-	   		console.log("파티번호 :" + partyNo)
-	   		
-	  		var partyVo = {
-	   			userNo: $(this).data("userno"),
-	   	   		partyNo: $(this).data("partyno")
-	   		};
+	$("#complete_button").on("click", function() {
+    		
+   		var userNo = $(this).data("userno");
+   		var partyNo = $(this).data("partyno");
+   		console.log("유저번호 :" + userNo);
+   		console.log("파티번호 :" + partyNo)
+   		
+  		var partyVo = {
+   			userNo: $(this).data("userno"),
+   	   		partyNo: $(this).data("partyno")
+   		};
+				
+    	
+		Swal.fire({
+            title: 'NEXTROOM',
+            text: "파티 모집을 완료하시겠습니까?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '확인',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        	
+            if (result.isConfirmed) {
+               
+				//ajax서버에 요청 (partyNo 전달)
+				$.ajax({
 					
-	    	
-			Swal.fire({
-	            title: 'NEXTROOM',
-	            text: "파티 모집을 완료하시겠습니까?",
-	            icon: 'question',
-	            showCancelButton: true,
-	            confirmButtonColor: '#3085d6',
-	            cancelButtonColor: '#d33',
-	            confirmButtonText: '확인',
-	            cancelButtonText: '취소'
-	        }).then((result) => {
-	        	
-	            if (result.isConfirmed) {
-	               
-					//ajax서버에 요청 (partyNo 전달)
-					$.ajax({
+					url : "${pageContext.request.contextPath }/party/partyComplete",		
+					type : "post",
+	//	 			contentType : "application/json",
+					data : partyVo,
+	
+	//	 			dataType : "json",
+					success : function(result){
+						/*성공시 처리해야될 코드 작성*/
+						console.log("모집완료");
+						console.log(result);
 						
-						url : "${pageContext.request.contextPath }/party/partyComplete",		
-						type : "post",
-		//	 			contentType : "application/json",
-						data : partyVo,
-		
-		//	 			dataType : "json",
-						success : function(result){
-							/*성공시 처리해야될 코드 작성*/
-							console.log("모집완료");
-							console.log(result);
-							
-							Swal.fire({
-					            title: 'NEXTROOM',
-					            text: "구성된 파티로 예약하러 가시겠습니까?",
-					            icon: 'question',
-					            showCancelButton: true,
-					            confirmButtonColor: '#3085d6',
-					            cancelButtonColor: '#d33',
-					            confirmButtonText: '확인',
-					            cancelButtonText: '취소'
-					        }).then((result) => {
-					        	
-					            if (result.isConfirmed) {
-					            	
-					            	//예약을위한 정보 넘겨야함!!!
-					            	location.reload();
-					            	
-					            } else {
-					            	location.reload();
-					            }
-					            
-					        });
-							
-						},
-						error : function(XHR, status, error) {
-							console.error(status + " : " + error);
-						}
+						Swal.fire({
+				            title: 'NEXTROOM',
+				            text: "구성된 파티로 예약하러 가시겠습니까?",
+				            icon: 'question',
+				            showCancelButton: true,
+				            confirmButtonColor: '#3085d6',
+				            cancelButtonColor: '#d33',
+				            confirmButtonText: '확인',
+				            cancelButtonText: '취소'
+				        }).then((result) => {
+				        	
+				            if (result.isConfirmed) {
+				            	
+				            	//예약을위한 정보 넘겨야함!!!
+				            	location.reload();
+				            	
+				            } else {
+				            	location.reload();
+				            }
+				            
+				        });
 						
-					});            	
-	            	
-	            }
-	            
-	        });
-	  			
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
 					
-		});
-		
+				});            	
+            	
+            }
+            
+        });
+  			
+				
 	});
+		
     	
     /*//// 파티마스터가 모집완료를 눌렀을경우  */	
     
     
     /* 파티마스터가 모집중을 눌렀을경우 */
-   	$(document).ready(function() {
     
-		$("#working_button").on("click", function() {
-	    		
-	   		var userNo = $(this).data("userno");
-	   		var partyNo = $(this).data("partyno");
-	   		console.log("유저번호 :" + userNo);
-	   		console.log("파티번호 :" + partyNo)
-	   		
-	  		var partyVo = {
-	   			userNo: $(this).data("userno"),
-	   	   		partyNo: $(this).data("partyno")
-	   		};
+	$("#working_button").on("click", function() {
+    		
+   		var userNo = $(this).data("userno");
+   		var partyNo = $(this).data("partyno");
+   		console.log("유저번호 :" + userNo);
+   		console.log("파티번호 :" + partyNo)
+   		
+  		var partyVo = {
+   			userNo: $(this).data("userno"),
+   	   		partyNo: $(this).data("partyno")
+   		};
+				
+    	
+		Swal.fire({
+            title: 'NEXTROOM',
+            text: "파티 모집을 다시하시겠습니까?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '확인',
+            cancelButtonText: '취소'
+        }).then((result) => {
+        	
+            if (result.isConfirmed) {
+                
+	//         	$("#working_button").html("모집완료");
+            	
+				//ajax서버에 요청 (partyNo 전달)
+				$.ajax({
 					
-	    	
-			Swal.fire({
-	            title: 'NEXTROOM',
-	            text: "파티 모집을 다시하시겠습니까?",
-	            icon: 'question',
-	            showCancelButton: true,
-	            confirmButtonColor: '#3085d6',
-	            cancelButtonColor: '#d33',
-	            confirmButtonText: '확인',
-	            cancelButtonText: '취소'
-	        }).then((result) => {
-	        	
-	            if (result.isConfirmed) {
-	                
-// 	            	$("#working_button").html("모집완료");
-	            	
-					//ajax서버에 요청 (partyNo 전달)
-					$.ajax({
+					url : "${pageContext.request.contextPath }/party/partyWorking",		
+					type : "post",
+	//	 			contentType : "application/json",
+					data : partyVo,
+	
+	//	 			dataType : "json",
+					success : function(result){
+						/*성공시 처리해야될 코드 작성*/
+						console.log("모집중");
+						console.log(result);
 						
-						url : "${pageContext.request.contextPath }/party/partyWorking",		
-						type : "post",
-		//	 			contentType : "application/json",
-						data : partyVo,
-		
-		//	 			dataType : "json",
-						success : function(result){
-							/*성공시 처리해야될 코드 작성*/
-							console.log("모집중");
-							console.log(result);
-							
-							location.reload();
-							
-						},
-						error : function(XHR, status, error) {
-							console.error(status + " : " + error);
-						}
+						location.reload();
 						
-					});            	
-	            	
-	            }
-	            
-	        });
-	  			
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
 					
-		});
-    
+				});            	
+            	
+            }
+            
+        });
+  			
+				
 	});
 	
     /*//// 파티마스터가 모집중을 눌렀을경우 */

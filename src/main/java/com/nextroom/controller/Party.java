@@ -22,12 +22,6 @@ public class Party {
 	@Autowired
 	private PartyService partyService;
 	
-	//파티 리스트
-//	@RequestMapping("/partyList")
-//	public String partyList() {
-//		System.out.println("partyList");
-//		return "party/partyList";
-//	}
 	
 	//파티 읽기폼
 	@RequestMapping("/partyRead")
