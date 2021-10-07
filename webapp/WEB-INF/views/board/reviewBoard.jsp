@@ -123,7 +123,7 @@
 										</c:if>
 										
 										<c:if test="${reviewBoardList.reviewImg == null}">
-											<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/yumdda.jpg"></td>
+											<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/none.png"></td>
 										</c:if>
 										
 										<td><a href="${pageContext.request.contextPath }/board/readForm?reviewNo=${reviewBoardList.reviewNo }">${reviewBoardList.reviewTitle }</a></td>

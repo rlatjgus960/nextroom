@@ -119,8 +119,14 @@
 							<tbody>	
 								<c:forEach items = "${freeBoardList.boardList}" var="freeBoardList">						
 									<tr>
-										<td><img class="img" src="${pageContext.request.contextPath }/upload/${freeBoardList.boardImg}"></td>
-										<td><a href="${pageContext.request.contextPath }/board/readForm">${freeBoardList.boardTitle}</a></td>
+										<c:if test="${freeBoardList.boardImg != null}">
+											<td><img class="img" src="${pageContext.request.contextPath }/upload/${freeBoardList.boardImg}"></td>
+										</c:if>
+										
+										<c:if test="${freeBoardList.boardImg == null}">
+											<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/none.png"></td>
+										</c:if>
+										<td><a href="${pageContext.request.contextPath }/board/freeRead?boardNo=${freeBoardList.boardNo}">${freeBoardList.boardTitle}</a></td>
 										<td class="btnNick">
 											<span class="nickName1">
 												${freeBoardList.nickname }

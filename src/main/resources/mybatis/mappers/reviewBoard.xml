@@ -15,7 +15,8 @@
 			        rt.reviewLike,
 			        rt.reviewregdate,
 			        rt.userno,
-			        rt.reviewImg
+			        rt.reviewImg,
+			        rt.rating
 			from (select  rownum rn,
 						  ot.reviewNo,
 			              ot.reviewTitle,
@@ -24,7 +25,8 @@
 			              ot.reviewLike,
 			              ot.reviewregdate,
 			              ot.userno,
-			              ot.reviewImg
+			              ot.reviewImg,
+			              ot.rating
 			      from (select  r.reviewNo,
 			      				r.reviewTitle,
 			                    u.nickname,
@@ -32,7 +34,8 @@
 			                    r.reviewLike,
 			                    to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,
 			                    r.userno,
-			                    r.reviewImg
+			                    r.reviewImg,
+			                    r.rating
 			            from review r, users u
 			            where r.userNo = u.userNo
 		]]>
@@ -164,7 +167,8 @@
 			        r.recTime,
 			        r.memberNum,
 			        r.reviewImg,
-	                t.themeName
+	                t.themeName,
+	                r.rating
 			from review r, users u, theme t
 			where r.userNo = u.userNo
 			and r.themeNo = t.themeNo
@@ -314,5 +318,34 @@
 			and b.boardTitle || u.nickname like '%' || #{keyword} ||'%'
 		</if>
 	</select>
+	
+	
+	<!-- 2021.10.07 by 원호 -->
+	<!-- 글 1개 정보 가져오기 -->
+	<select id="freeRead" parameterType="int" resultType = "FreeBoardVo">
+		<![CDATA[
+			select  b.boardno,
+					b.userNo,
+       				b.boardtitle,
+			        u.nickname,
+			        b.boardhit,
+			        to_char(b.regdate, 'yy-mm-dd') regdate,	
+			        b.boardcontent,
+			        b.boardImg
+			from freeboard b, users u
+			where b.userNo = u.userNo
+			and b.boardno = #{boardno}
+		]]>
+	</select>
+	
+	<!-- 2021.10.07 by 원호 -->
+	<!-- 자유 게시판 조회수올리기 -->
+	<update id="hitup" parameterType="int">
+		<![CDATA[
+			update freeboard
+			set boardhit = boardhit+1
+			where boardno = #{boardno}
+		]]>
+	</update>
 	
 </mapper>

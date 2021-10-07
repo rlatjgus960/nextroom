@@ -144,7 +144,6 @@ public class ReviewBoardService {
 			reviewCount = reviewBoardDao.ReviewInsert2(reviewBoardVo);
 			
 		}
-		// ******************** //카페 메인 이미지 처리 ********************//
 		return reviewCount;
 		
 	}
@@ -346,6 +345,21 @@ public class ReviewBoardService {
 		listMap.put("next", next);
 		
 		return listMap;
+	}
+	
+	//2021.10.07 by 원호
+	//자유게시판 글 읽기
+	public FreeBoardVo freeRead(int boardNo) {
+		System.out.println("[Service.freeRead]");		
+		
+		//조회수 올리기
+		int count = reviewBoardDao.hitup(boardNo);
+		
+		//게시판정보 가져오기
+		FreeBoardVo freeBoardVo = reviewBoardDao.freeRead(boardNo);
+		System.out.println(freeBoardVo);
+		
+		return freeBoardVo;
 	}
 	
 

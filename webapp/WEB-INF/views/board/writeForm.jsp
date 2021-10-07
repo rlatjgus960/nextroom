@@ -113,7 +113,7 @@
 								<p>작성일 : ${today }</p>
 							</div>
 
-                             <div class="fileUp"> 
+                             <div id="fileUp"> 
                              	<p>이미지 업로드</p> 
                              	<input type="file" name="boardImgFile"> 
                              </div>

@@ -185,8 +185,8 @@
 							<div class="select_area2">
 								<select class="SorF" name="reviewClear">
                                     <option value="none">성공 여부</option>
-                                    <option value="clear">성 공</option>
-                                    <option value="false">실 패</option>
+                                    <option value="성공">성 공</option>
+                                    <option value="실패">실 패</option>
                                 </select>
 
 								<select class="hint" name="reviewHints">

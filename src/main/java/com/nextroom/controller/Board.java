@@ -75,6 +75,21 @@ public class Board {
 		
 		return "board/freeCommunity";
 	}
+	
+	//2021.10.07 by 원호
+	//자유게시판 글 읽기
+	@RequestMapping(value = "/freeRead", method = {RequestMethod.GET, RequestMethod.POST})
+	public String freeRead(Model model, @RequestParam("boardNo") int boardNo) {
+		System.out.println("[reviewController.freeRead]");
+		System.out.println(boardNo);
+		
+		FreeBoardVo freewBoardVo = reviewBoardService.freeRead(boardNo);
+		System.out.println(freewBoardVo);
+		
+		model.addAttribute("freewBoardVo",freewBoardVo);
+		
+		return "board/freeRead";
+	}
 
 
 //////////////////////////////////////////////////////////////////
@@ -149,9 +164,9 @@ public class Board {
 		
 
 		
-		System.out.println(reviewBoardVo);
+		System.out.println("등록할 때 갔다온거 찍어보셈" + reviewBoardVo);
 		reviewBoardService.reviewWrite(reviewBoardVo);
-		
+		System.out.println("등록할 때 갔다온거 찍어보셈" + reviewBoardVo);
 		
 		
 		return "redirect:/board/reviewBoard";

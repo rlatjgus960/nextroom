@@ -191,4 +191,22 @@ public class ReviewBoardDao {
 		return sqlSession.selectOne("reviewBoard.totalCnt",keyword);
 	}
 	
+	//2021.10.07 by 원호
+	//자유게시판 조회수 올리기
+	public int hitup(int boardNo) {
+		System.out.println("Dao.hitup");
+
+		int count = sqlSession.update("reviewBoard.hitup", boardNo);
+		System.out.println(count);
+		return count;
+	}
+	
+	//2021.10.07 by 원호
+	//자유게시판 글 정보 가져오기
+	public FreeBoardVo freeRead(int boardNo) {
+		System.out.println("Dao.freeRead");
+		
+		return sqlSession.selectOne("reviewBoard.freeRead", boardNo);
+	}
+	
 }

@@ -273,3 +273,19 @@ p{
 	border:1px solid;
 	padding:1px;
 }
+
+#fileUp{
+	margin: 10px auto;
+	padding-top:10px;
+}
+
+#fileUp>p{
+	display:inline-block;
+	margin-right:20px;
+	font-size:15px;
+}
+
+#fileUp>input{
+	border:1px solid;
+	padding:1px;
+}
