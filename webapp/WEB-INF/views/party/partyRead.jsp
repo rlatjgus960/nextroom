@@ -92,15 +92,34 @@
                                 </table> 
                            </div>
 
+          				   <div class="btn_group">
+                           </div>
+
+
+
+
                            <!-- 마스터 버튼 -->
           				   <div class="btn_group">
-	                               <a href="${pageContext.request.contextPath }/party/partyList"><button id="list_button" class="submit_button">목록</button></a>
-	                           <c:if test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
-	                               <button type="button" data-partyno="${pReadMap.partyReadList.partyNo }" id="delete_button" class="submit_button">파티삭제</button>
-	                               <button id="complete_button" class="mbutton">모집완료</button>
-	                           </c:if>
+	                               <a href="${pageContext.request.contextPath }/party/partyList">
+	                               		<button id="list_button" class="submit_button">목록</button>
+                               	   </a>
+	                               <c:choose>
+	                               		<c:when test="${sessionScope.authUser.userNo eq pReadMap.partyReadList.userNo }">
+			                               		<button type="button" data-partyno="${pReadMap.partyReadList.partyNo }" id="delete_button" class="submit_button">파티삭제</button>
+			                               		
+			                               <c:if test="${pReadMap.partyReadList.partyState eq '모집중'}">
+			                               		<button type="button" data-userno="${pReadMap.partyReadList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="complete_button" class="submit_button">모집완료</button>
+		                               		</c:if>
+		                               		
+			                               <c:if test="${pReadMap.partyReadList.partyState eq '모집완료'}">
+			                               		<button type="button" data-userno="${pReadMap.partyReadList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="working_button" class="submit_button">모집중</button>
+	                               		   </c:if>
+			                               		<button id="reserve_button" class="mbutton">예약하기</button>
+	                               		</c:when>
+	                               </c:choose>
                            </div>	
                            <!-- //마스터 버튼 -->
+
 
                             <!-- 참가자 버튼 -->
                          	<div class="btn_group">
@@ -354,26 +373,171 @@
     </body>
     
     <script>
-    /* 상태가 0이면 버튼클릭 or 1이라면 버튼클릭안되게하기 */
-    $(document).ready(function() {
-    	$("#complete_button").on("click", function() {
-			$(this).html('예약하기') 
-			
-	    	$("#complete_button").click(function() {
-				const result = confirm("예약하러 가시겠습니까?");
-					if(result) {
-						
-						$("#complete_button").hide();
-						
-					} else {
-						$("#complete_button").show();
-					}
-			});
-				
-		});
+    
+    /*화면이 로딩되기 직전 모집중 버튼 상황!*/
+//     $(document).ready(function() {
     	
-    });
-    /*////상태가 0이면 버튼클릭 or 1이라면 버튼클릭안되게하기 */	
+//     	var partyState = '${pReadMap.partyReadList.partyState}';
+    	
+//     	if(partyState == '모집중') {
+//     		$("#complete_button").show("#working_button");
+//     	} else if(partyState == '모집완료') {
+//     		$("#working_button").show("#complete_button");
+//     	}
+    	
+//     });
+    /*////화면이 로딩되기 직전 모집중 버튼 상황!*/
+    
+    
+    /* 파티마스터가 모집완료를 눌렀을경우 */
+   	$(document).ready(function() {
+    
+		$("#complete_button").on("click", function() {
+	    		
+	   		var userNo = $(this).data("userno");
+	   		var partyNo = $(this).data("partyno");
+	   		console.log("유저번호 :" + userNo);
+	   		console.log("파티번호 :" + partyNo)
+	   		
+	  		var partyVo = {
+	   			userNo: $(this).data("userno"),
+	   	   		partyNo: $(this).data("partyno")
+	   		};
+					
+	    	
+			Swal.fire({
+	            title: 'NEXTROOM',
+	            text: "파티 모집을 완료하시겠습니까?",
+	            icon: 'question',
+	            showCancelButton: true,
+	            confirmButtonColor: '#3085d6',
+	            cancelButtonColor: '#d33',
+	            confirmButtonText: '확인',
+	            cancelButtonText: '취소'
+	        }).then((result) => {
+	        	
+	            if (result.isConfirmed) {
+	               
+					//ajax서버에 요청 (partyNo 전달)
+					$.ajax({
+						
+						url : "${pageContext.request.contextPath }/party/partyComplete",		
+						type : "post",
+		//	 			contentType : "application/json",
+						data : partyVo,
+		
+		//	 			dataType : "json",
+						success : function(result){
+							/*성공시 처리해야될 코드 작성*/
+							console.log("모집완료");
+							console.log(result);
+							
+							Swal.fire({
+					            title: 'NEXTROOM',
+					            text: "구성된 파티로 예약하러 가시겠습니까?",
+					            icon: 'question',
+					            showCancelButton: true,
+					            confirmButtonColor: '#3085d6',
+					            cancelButtonColor: '#d33',
+					            confirmButtonText: '확인',
+					            cancelButtonText: '취소'
+					        }).then((result) => {
+					        	
+					            if (result.isConfirmed) {
+					            	
+					            	//예약을위한 정보 넘겨야함!!!
+					            	location.reload();
+					            	
+					            } else {
+					            	location.reload();
+					            }
+					            
+					        });
+							
+						},
+						error : function(XHR, status, error) {
+							console.error(status + " : " + error);
+						}
+						
+					});            	
+	            	
+	            }
+	            
+	        });
+	  			
+					
+		});
+		
+	});
+    	
+    /*//// 파티마스터가 모집완료를 눌렀을경우  */	
+    
+    
+    /* 파티마스터가 모집중을 눌렀을경우 */
+   	$(document).ready(function() {
+    
+		$("#working_button").on("click", function() {
+	    		
+	   		var userNo = $(this).data("userno");
+	   		var partyNo = $(this).data("partyno");
+	   		console.log("유저번호 :" + userNo);
+	   		console.log("파티번호 :" + partyNo)
+	   		
+	  		var partyVo = {
+	   			userNo: $(this).data("userno"),
+	   	   		partyNo: $(this).data("partyno")
+	   		};
+					
+	    	
+			Swal.fire({
+	            title: 'NEXTROOM',
+	            text: "파티 모집을 다시하시겠습니까?",
+	            icon: 'question',
+	            showCancelButton: true,
+	            confirmButtonColor: '#3085d6',
+	            cancelButtonColor: '#d33',
+	            confirmButtonText: '확인',
+	            cancelButtonText: '취소'
+	        }).then((result) => {
+	        	
+	            if (result.isConfirmed) {
+	                
+// 	            	$("#working_button").html("모집완료");
+	            	
+					//ajax서버에 요청 (partyNo 전달)
+					$.ajax({
+						
+						url : "${pageContext.request.contextPath }/party/partyWorking",		
+						type : "post",
+		//	 			contentType : "application/json",
+						data : partyVo,
+		
+		//	 			dataType : "json",
+						success : function(result){
+							/*성공시 처리해야될 코드 작성*/
+							console.log("모집중");
+							console.log(result);
+							
+							location.reload();
+							
+						},
+						error : function(XHR, status, error) {
+							console.error(status + " : " + error);
+						}
+						
+					});            	
+	            	
+	            }
+	            
+	        });
+	  			
+					
+		});
+    
+	});
+	
+    /*//// 파티마스터가 모집중을 눌렀을경우 */
+    
     
     
    	/*partyRead에서 파티삭제를 눌렀을때*/
@@ -479,7 +643,8 @@
 						console.log("참여신청!");
 						
 						if(result == true) {
-							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+							location.reload();
+// 							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
 	// 						alert("파티신청이 완료되었습니다.");
 // 							Swal.fire({
 // 			                    icon: 'success',
@@ -556,7 +721,8 @@
 						console.log("참여신청!");
 						
 						if(result == true) {
-							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+							location.reload();
+// 							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
 						} else {
 	// 						alert("참가현황과 대기현황 명단을 확인해주세요.")
 							Swal.fire({
@@ -635,7 +801,8 @@
 			                    text: '모집인원을 확인해주세요.',
 			                });
 						} else {
-							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+							location.reload();
+// 							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
 						}
 						
 					},
@@ -697,7 +864,8 @@
 						
 						if(result == true) {
 	// 						alert("모집인원을 확인해주세요.");
-							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
+							location.reload();
+// 							window.location.assign('http://localhost:8088/nextroom/party/partyRead?partyNo=' + partyNo);
 						} 
 						
 					},

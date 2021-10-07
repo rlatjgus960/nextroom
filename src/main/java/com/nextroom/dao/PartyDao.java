@@ -199,6 +199,21 @@ public class PartyDao {
 		
 	}
 	
+	
+	//21-10-07 by 대니
+	//방장이 자신의 파티에서 모집완료 버튼을 클릭했을경우
+	public void partyCompleteUdate(PartyVo partyVo) {
 		
+		sqlSession.update("party.partyCompleteUdate", partyVo);
+		
+	}
+		
+	//21-10-07 by 대니
+	//방장이 자신의 파티에서 모집중 버튼을 클릭했을경우
+	public void partyWorkingUdate(PartyVo partyVo) {
+		
+		sqlSession.update("party.partyWorkingUdate", partyVo);
+		
+	}
 	
 }

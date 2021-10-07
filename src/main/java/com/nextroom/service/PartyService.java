@@ -319,10 +319,10 @@ public class PartyService {
 		System.out.println("파티대기인원: " + partyApplicantList);
 		
 		//userNo로 유저닉넴 & 각종 랭킹 가져오기
-		int userNo = partyReadList.getUserNo();
+//		int userNo = partyReadList.getUserNo();
 		
-		UserVo partyUserVo = new UserVo();
-		partyUserVo = userDao.userNoGetUser(userNo);
+//		UserVo partyUserVo = new UserVo();
+//		partyUserVo = userDao.userNoGetUser(userNo);
 		
 		
 		//Map 열어서 각종 Vo와 List 담아주기
@@ -444,9 +444,25 @@ public class PartyService {
 	}
 
 
+	//21-10-07 by 대니
+	//방장이 자신의 파티에서 모집완료 버튼을 클릭했을경우
+	public boolean partyCompleteUdate(PartyVo partyVo) {
+		
+		//partyState을 "모집완료"로 업데이트
+		partyDao.partyCompleteUdate(partyVo);
+		
+		return true;
+	}
 
-
-
+	//21-10-07 by 대니
+	//방장이 자신의 파티에서 모집중 버튼을 클릭했을경우
+	public boolean partyWorkingUdate(PartyVo partyVo) {
+		
+		//partyState을 "모집완료"로 업데이트
+		partyDao.partyWorkingUdate(partyVo);
+		
+		return true;
+	}
 
 
 

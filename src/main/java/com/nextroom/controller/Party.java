@@ -189,6 +189,32 @@ public class Party {
 	}
 	
 	
+	//21-10-07 by 대니
+	//방장이 자신의 파티에서 모집완료 버튼을 클릭했을경우
+	@ResponseBody
+	@RequestMapping(value = "/partyComplete", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean partyComplete(@ModelAttribute PartyVo partyVo) {
+		
+		System.out.println("모집완료버튼을 클릭했을때: " + partyVo);
+		
+		boolean result = partyService.partyCompleteUdate(partyVo);
+		
+		return result;
+	}
+	
+	//21-10-07 by 대니
+	//방장이 자신의 파티에서 모집중 버튼을 클릭했을경우
+	@ResponseBody
+	@RequestMapping(value = "/partyWorking", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean partyWorking(@ModelAttribute PartyVo partyVo) {
+		
+		System.out.println("모집중버튼을 클릭했을때: " + partyVo);
+		
+		boolean result = partyService.partyWorkingUdate(partyVo);
+		
+		return result;
+	}
+	
 	
 	
 }

@@ -271,6 +271,25 @@
 	</delete>
 	
 	
+	<!-- 방장이 자신의 파티에서 모집완료 버튼을 클릭했을경우 -->
+	<update id="partyCompleteUdate" parameterType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			UPDATE party
+			Set partystate = '모집완료'
+			where partyNo = #{partyNo}
+			and userNo = #{userNo}
+		]]>
+	</update>
+	
+	<!-- 방장이 자신의 파티에서 모집완료 버튼을 클릭했을경우 -->
+	<update id="partyWorkingUdate" parameterType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			UPDATE party
+			Set partystate = '모집중'
+			where partyNo = #{partyNo}
+			and userNo = #{userNo}
+		]]>
+	</update>
 	
 	
 </mapper>
