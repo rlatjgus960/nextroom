@@ -184,7 +184,7 @@
 	
 	<!-- 2021.10.06 by 원호 -->
 	<!-- 게시글 수정 -->
-	<update id="reviewModify" parameterType = "int">
+	<update id="update2" parameterType = "int">
 		update review
 		set  reviewTitle = #{reviewTitle}
 		    ,reviewContent = #{reviewContent}
@@ -195,12 +195,27 @@
 		    ,reviewHints = #{reviewHints}
 		    ,reviewClear = #{reviewClear}
 		    ,memberNum = #{memberNum}
-		    ,playDate = sysdate
-		    ,reviewRegDate = sysdate
-		    ,reviewLike = #{reviewLike}
-		    ,reviewHit = #{reviewHit}
 		    ,reviewImg = #{reviewImg}
 		where reviewNo = #{reviewNo}
 		and userNo= #{userNo}
 	</update>
+	
+	<!-- 2021.10.06 by 원호 -->
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType = "int">
+		update review
+		set  reviewTitle = #{reviewTitle}
+		    ,reviewContent = #{reviewContent}
+		    ,themeNo = #{themeNo}
+		    ,feelLevel = #{feelLevel}
+		    ,rating = #{rating}
+		    ,recTime = #{recTime}
+		    ,reviewHints = #{reviewHints}
+		    ,reviewClear = #{reviewClear}
+		    ,memberNum = #{memberNum}
+		where reviewNo = #{reviewNo}
+		and userNo= #{userNo}
+	</update>
+	
+	
 </mapper>

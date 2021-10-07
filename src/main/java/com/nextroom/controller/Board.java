@@ -210,6 +210,22 @@ public class Board {
 			return "redirect:/board/reviewBoard";
 		}
 	}
+	
+	//2010.10.07 by 원호
+	//글 수정
+	@RequestMapping(value="modify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String modify(@ModelAttribute ReviewBoardVo reviewBoardVo,  HttpSession session) {
+		System.out.println("Controller.modify");
+		System.out.println(reviewBoardVo);
+		
+		//로그인한 사용자만 수정
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		reviewBoardVo.setUserNo(authUser.getUserNo());
+		
+		reviewBoardService.modify(reviewBoardVo);
+		
+		return "redirect:/board/reviewBoard";
+		}
 		
 	
 	//쪽지 보내기

@@ -209,4 +209,14 @@ public class ReviewBoardService {
 		return reviewBoardVo;
 	}
 
+	//2021.10.07 by 원호
+	//게시글 수정
+	public int modify(ReviewBoardVo reviewBoardVo) {
+		System.out.println("[Service.modify]");
+		
+		
+		return reviewBoardDao.modify(reviewBoardVo);
+		
+		
+	}
 }

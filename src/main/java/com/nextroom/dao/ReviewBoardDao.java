@@ -131,4 +131,12 @@ public class ReviewBoardDao {
 		
 		return sqlSession.selectOne("reviewBoard.selectBoard", reviewNo);
 	}
+	
+	//2021.10.07 by 원호
+	//글 수정
+	public int modify(ReviewBoardVo reviewBoardVo) {
+		System.out.println("Dao.modify");
+		
+		return sqlSession.update("reviewBoard.update",reviewBoardVo);
+	}
 }

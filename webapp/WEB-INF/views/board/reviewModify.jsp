@@ -108,7 +108,7 @@
                     <!-- 글등록 공간 -->
                     <div id="writecontent_area">
 
-						<form id="reviewForm" action="${pageContext.request.contextPath }/board/reviewWrite" method="post" enctype="multipart/form-data"> 
+						<form id="reviewForm" action="modify" method="post" enctype="multipart/form-data"> 
 
 							<div id="content_title">
 								<input type="text" id="reviewTitle" name="reviewTitle" value="${reviewBoardVo.reviewTitle}">
@@ -235,7 +235,7 @@
 
                              <div class="fileUp"> 
                              	<p>이미지 업로드</p> 
-                             	<input type="file" name="reviewImgFile"> 
+                             	<input type="file" name="reviewImgfile"> 
                              </div>
                             
              				<div id="text_tool">
@@ -244,6 +244,7 @@
                             
 	                        <!-- 글등록 버튼 -->
 							<button id="btn_save" type="submit">글수정</button>
+							<input type="text" name="reviewNo" value="${reviewBoardVo.reviewNo}">
 						</form>
 
 
