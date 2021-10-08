@@ -210,5 +210,19 @@ public class Party {
 	}
 	
 	
+	//21-10-08 by 대니
+	//방장이 예약하기 버튼을 클릭했을때
+	@ResponseBody
+	@RequestMapping(value = "/partyReserve", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean partyReserve(@ModelAttribute PartyVo partyVo) {
+		
+		System.out.println("예약하기 버튼클릭: " + partyVo);
+		
+		boolean result = partyService.partyReserve(partyVo);
+		
+		System.out.println(result);
+		
+		return result;
+	}
 	
 }

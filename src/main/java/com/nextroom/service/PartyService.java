@@ -465,7 +465,31 @@ public class PartyService {
 	}
 
 
-
+	//21-10-08 by 대니
+	//방장이 예약하기 버튼을 클릭했을때
+	public boolean partyReserve(PartyVo partyVo) {
+		
+		int partyNo = partyVo.getPartyNo();
+		
+		PartyVo partyStateCheck = partyDao.getPartyReadList(partyNo);
+		
+		String partyState = partyStateCheck.getPartyState();
+		
+		if(partyState.equals("모집완료")) {
+			
+			return true;
+			
+		} else {
+			
+			//이제 예약할때필요한 정보들가지고와서
+			//예약쪽으로 보내줘야함.
+			
+			return false;
+			
+		}  
+		
+		
+	}
 
 
 
