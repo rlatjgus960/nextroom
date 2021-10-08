@@ -514,4 +514,20 @@ public class CafeService {
 		return cafeDao.getThemeList();
 	}
 
+	// ajax 카페 목록 가져오기
+	public List<CafeVo> cafeList(String region, int startNum) {
+		System.out.println("[CafeService.cafeList()]");
+		int i = 10;
+		startNum = startNum + 1;
+		int cnt = startNum + i;
+		Map<String, Object> map = new HashMap<>();
+		map.put("startNum", startNum);
+		map.put("cnt", cnt);
+		map.put("region", region);
+
+		List<CafeVo> cafeList = cafeDao.cafeList(map);
+		
+		return cafeList;
+	}
+
 }

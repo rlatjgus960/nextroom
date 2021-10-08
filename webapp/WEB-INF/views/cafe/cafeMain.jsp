@@ -232,7 +232,7 @@
 
 					<!-- 리스트 반복영역 -->
 
-					<c:forEach items="${cafeList }" var="cafeList">
+					<c:forEach items="${cafeList }" var="cafeList" end="9">
 
 						<div class="cafe_list_item clearfix">
 							<a href="${pageContext.request.contextPath}/cafe/${cafeList.cafeNo}"> <img id=""
@@ -269,15 +269,13 @@
 						</div>
 
 					</c:forEach>
+					
 
 
 					<!-- //리스트 반복영역 -->
 
-
-					<button type="button" id="btn_more" class="lbutton">더보기</button>
-
-
 				</div>
+				<button type="button" id="btn_more" class="lbutton">더보기</button>
 				<!-- 카페리스트 -->
 
 			</div>
@@ -307,7 +305,7 @@
 	}).mouseout(function(event) {
 		var _path = event.target;
 		d3.select(_path).style("fill", "#fff");
-	}); */
+	});  */
 
 	function go_branch(city_do) {
 		var Arr = Array("sejong", "chungnam", "jeju", "gyeongnam", "gyeongbuk",
@@ -323,10 +321,11 @@
 
 	}
 
+	var mapCondition = $("#region_css").val();
 	/*가맹점 지도 색칠*/
 	$(document).ready(
 			function() {
-				var mapCondition = $("#region_css").val();
+				
 				console.log(mapCondition);
 				if (mapCondition == '세종') {
 					$('#sejong').css("fill", "rgb(253, 213, 59)");
@@ -374,45 +373,84 @@
 			});
 	
 	
-	moreList(); //함수 호출
+	
+	
+	$("#btn_more").on("click", function() {
+		console.log("더보기 버튼 클릭");
+		moreList(); //함수 호출
+	});
+	
 	 
 	function moreList() {
-	 
+		 
 	    var startNum = $("#cafe_list .cafe_list_item").length;  //마지막 리스트 번호를 알아내기 위해서 tr태그의 length를 구함.
 	    var addListHtml = "";  
 	    console.log("startNum", startNum); //콘솔로그로 startNum에 값이 들어오는지 확인
-	 
-	     $.ajax({
-	        url : "/study/getfilmList",
+	    console.log("startNum", mapCondition);
+	    
+	    $.ajax({
+	    
+	        url : "${pageContext.request.contextPath }/cafe/getCafeList?region="+mapCondition,
 	        type : "post",
 	        dataType : "json",
 	        data : {"startNum":startNum},
 	        
-	        success : function(data) {
-	            if(data.length < 10){
-	                $("#addBtn").remove();   // 더보기 버튼을 div 클래스로 줘야 할 수도 있음
-	            }else{
-	            var addListHtml ="";
-	            if(data.length > 0){
-	                
-	                for(var i=0; i<data.length;i++) {
-	                    var idx = Number(startNum)+Number(i)+1;   
-	                    // 글번호 : startNum 이  10단위로 증가되기 때문에 startNum +i (+1은 i는 0부터 시작하므로 )
-	                    addListHtml += "<tr>";
-	                    addListHtml += "<td>"+ idx + "</td>";
-	                    addListHtml += "<td>"+ data[i].title + "</td>";
-	                    addListHtml += "<td>"+ data[i].description + "</td>";
-	                    addListHtml += "</tr>";
-	                }
-	                $("#listBody").append(addListHtml);
-	            }
-	            }
+	        success : function(cafeList) {
+	        	
+	        	console.log(cafeList);
+
+
+		        if(cafeList.length < 10){
+		                $("#btn_more").remove();   // 더보기 버튼을 div 클래스로 줘야 할 수도 있음
+		            }else{
+		            var addListHtml ="";
+			            if(cafeList.length > 0){
+			            	
+			            	for(var i=0; i<cafeList.length;i++) {  
+			            		console.log(cafeList[i]);
+
+			                    addListHtml += '<div class="cafe_list_item clearfix">';
+			                    addListHtml += '	<a href="${pageContext.request.contextPath}/cafe/'+cafeList[i].cafeNo+'"> <img id="" class="cafe_img" src="${pageContext.request.contextPath }/upload/'+cafeList[i].cafeImg+'"></a>';
+			                    addListHtml += '	<div id="" class="cafe_info">';
+			                    addListHtml += '		<div class="cafe_intro">';
+			                    addListHtml += '			<p class="cafe_name">';
+			                    addListHtml += '				<a href="${pageContext.request.contextPath}/cafe/cafeDetail">'+cafeList[i].cafeName+'</a>';
+			                    addListHtml += '			</p>';
+			                    addListHtml += '			<p class="cafe_content">'+cafeList[i].cafeIntro+'</p>';
+			                    addListHtml += '		</div>';
+			                    addListHtml += '		<div class="cafe_contact">';
+			                    addListHtml += '			<div>';
+			                    addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">';
+			                    addListHtml += '				<p>'+cafeList[i].cafeHp+'</p>';
+			                    addListHtml += '			</div>';
+			                    addListHtml += '			<div>';
+			                    addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">';
+			                    addListHtml += '				<p>'+cafeList[i].printAddress+'</p>';
+			                    addListHtml += '			</div>';
+			                    addListHtml += '			<div>';
+			                    addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">';
+			                    addListHtml += '				<p>'+cafeList[i].openTime+'~'+cafeList[i].closeTime+'</p>';
+			                    addListHtml += '			</div>';
+			                    addListHtml += '		</div>';
+			                    addListHtml += '	</div>';
+			                    addListHtml += '</div>';
+			                }
+			                $("#cafe_list").append(addListHtml);
+			                
+			           }
+		            }
+	            
 	        }
-	    });
+	
+
+	        
+	        
+	    }); 
 	 
 	}
 	
 
+	
 	
 </script>
 

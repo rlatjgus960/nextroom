@@ -13,7 +13,7 @@
 <title>테마 메인</title>
 </head>
 
-<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <script type="text/javascript"
@@ -33,11 +33,15 @@
 			<!-- main -->
 			<div id="theme_recommend_back" class="clearfix">
 				<!-- 스와이퍼 -->
-				<div class="swiper mySwiper">
+				<div class="swiper mySwiper clearfix">
 					<div class="swiper-wrapper">
+
+
+						<!-- 반복영역 -->
 						<div class="swiper-slide">
 							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg">
+								<img id="" class="theme_img"
+									src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg">
 								<div id="" class="theme_info">
 									<div class="theme_intro">
 										<p class="theme_name">방탈출 카페 이름</p>
@@ -48,251 +52,234 @@
 										<ul>
 											<li>
 												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
+													<span>평점 :&nbsp;</span> 3.3점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
+													<span>난이도 :&nbsp;</span> 9.4점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
+													<span>리뷰 :&nbsp;</span> 1004개
 												</div>
 											</li>
-										
-										
+
+
 										</ul>
-		
+
 									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
+									<br> <a class="mbutton">자세히보기</a>
+
 								</div>
 							</div>
 						</div>
-						
+						<!-- 반복영역 -->
+
+
 						<div class="swiper-slide">
 							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/red.jpg">
+								<img id="" class="theme_img"
+									src="${pageContext.request.contextPath }/assets/image/profile/red.jpg">
 								<div id="" class="theme_info">
 									<div class="theme_intro">
 										<p class="theme_name">방탈출 카페 이름</p>
 										<p class="theme_content">방탈출 카페 한줄 소개</p>
 									</div>
 									<br>
-		
+
 									<div class="swiper_theme_detail">
 										<ul>
-										<li>
+											<li>
 												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
+													<span>평점 :&nbsp;</span> 3.3점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
+													<span>난이도 :&nbsp;</span> 9.4점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
+													<span>리뷰 :&nbsp;</span> 1004개
 												</div>
 											</li>
-										
-										
+
+
 										</ul>
-		
+
 									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
+									<br> <a class="mbutton">자세히보기</a>
+
 								</div>
 							</div>
 						</div>
 						<div class="swiper-slide">
 							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/blue.jpg">
+								<img id="" class="theme_img"
+									src="${pageContext.request.contextPath }/assets/image/profile/blue.jpg">
 								<div id="" class="theme_info">
 									<div class="theme_intro">
 										<p class="theme_name">방탈출 카페 이름</p>
 										<p class="theme_content">방탈출 카페 한줄 소개</p>
 									</div>
 									<br>
-		
+
 									<div class="swiper_theme_detail">
 										<ul>
-										<li>
+											<li>
 												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
+													<span>평점 :&nbsp;</span> 3.3점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
+													<span>난이도 :&nbsp;</span> 9.4점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
+													<span>리뷰 :&nbsp;</span> 1004개
 												</div>
 											</li>
-										
-										
+
+
 										</ul>
-		
+
 									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
+									<br> <a class="mbutton">자세히보기</a>
+
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="swiper-slide">
 							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/green.jpg">
+								<img id="" class="theme_img"
+									src="${pageContext.request.contextPath }/assets/image/profile/green.jpg">
 								<div id="" class="theme_info">
 									<div class="theme_intro">
 										<p class="theme_name">방탈출 카페 이름</p>
 										<p class="theme_content">방탈출 카페 한줄 소개</p>
 									</div>
 									<br>
-		
+
 									<div class="swiper_theme_detail">
 										<ul>
 											<li>
 												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
+													<span>평점 :&nbsp;</span> 3.3점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
+													<span>난이도 :&nbsp;</span> 9.4점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
+													<span>리뷰 :&nbsp;</span> 1004개
 												</div>
 											</li>
-										
-										
+
+
 										</ul>
-		
+
 									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
+									<br> <a class="mbutton">자세히보기</a>
+
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="swiper-slide">
 							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/yellow.jpg">
+								<img id="" class="theme_img"
+									src="${pageContext.request.contextPath }/assets/image/profile/yellow.jpg">
 								<div id="" class="theme_info">
 									<div class="theme_intro">
 										<p class="theme_name">방탈출 카페 이름</p>
 										<p class="theme_content">방탈출 카페 한줄 소개</p>
 									</div>
 									<br>
-		
+
 									<div class="swiper_theme_detail">
 										<ul>
 											<li>
 												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
+													<span>평점 :&nbsp;</span> 3.3점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
+													<span>난이도 :&nbsp;</span> 9.4점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
+													<span>리뷰 :&nbsp;</span> 1004개
 												</div>
 											</li>
-										
-										
+
+
 										</ul>
-		
+
 									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
+									<br> <a class="mbutton">자세히보기</a>
+
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="swiper-slide">
 							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg">
+								<img id="" class="theme_img"
+									src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg">
 								<div id="" class="theme_info">
 									<div class="theme_intro">
 										<p class="theme_name">방탈출 카페 이름</p>
 										<p class="theme_content">방탈출 카페 한줄 소개</p>
 									</div>
 									<br>
-		
+
 									<div class="swiper_theme_detail">
 										<ul>
 											<li>
 												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
+													<span>평점 :&nbsp;</span> 3.3점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
+													<span>난이도 :&nbsp;</span> 9.4점
 												</div>
 											</li>
 											<li>
 												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
+													<span>리뷰 :&nbsp;</span> 1004개
 												</div>
 											</li>
-										
-										
+
+
 										</ul>
-		
+
 									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
+									<br> <a class="mbutton">자세히보기</a>
+
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
 					<div class="swiper-pagination"></div>
 				</div>
 				<!-- //스와이퍼 -->
-			
-			
+
+
 			</div>
 
 			<!-- <table>
@@ -318,7 +305,7 @@
 					<div>활동성</div>
 				</div>
 
-				<div id="theme_region_wrap">
+				<div id="theme_region_wrap" class="clearfix">
 
 					<form>
 						<div id="theme_region" class="theme_select_condition">
@@ -409,8 +396,9 @@
 
 
 						</div>
-
-						<button type="submit" id="theme_searchBtn" class="lbutton">검색하기</button>
+						<button type="reset" id="theme_resetBtn" class="themeSearchBtn">초기화</button>
+						<button type="submit" id="theme_searchBtn" class="themeSearchBtn">검색하기</button>
+						
 					</form>
 				</div>
 
@@ -418,8 +406,6 @@
 
 
 			</div>
-
-			<button id="theme_searchBtn" class="lbutton">검색하기</button>
 
 
 
@@ -503,22 +489,20 @@
 
 </body>
 <script>
-
 	var swiper = new Swiper(".mySwiper", {
-	  slidesPerView: 3,  //한번에 보여줄 슬라이드 개수
-	  spaceBetween: 30,  //슬라이드 사이 간격
-	  loop: true,
-	  pagination: {
-	    el: ".swiper-pagination",
-	    clickable: true,
-	    dynamicBullets: true,
-	  },
-	  navigation: {
-	    nextEl: ".swiper-button-next",
-	    prevEl: ".swiper-button-prev",
-	  },
+		slidesPerView : 3, //한번에 보여줄 슬라이드 개수
+		spaceBetween : 30, //슬라이드 사이 간격
+		loop : true,
+		pagination : {
+			el : ".swiper-pagination",
+			clickable : true,
+			dynamicBullets : true,
+		},
+		navigation : {
+			nextEl : ".swiper-button-next",
+			prevEl : ".swiper-button-prev",
+		},
 	});
-	
 </script>
 
 

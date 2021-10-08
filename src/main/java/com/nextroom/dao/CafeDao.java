@@ -2,6 +2,7 @@ package com.nextroom.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,7 +102,7 @@ public class CafeDao {
 //
 //		return sqlSession.selectList("cafe.getCafeList");
 //	}
-	
+
 	public List<CafeVo> getCafeList(String region) {
 
 		System.out.println("[CafeDao.getCafeList()]");
@@ -219,11 +220,21 @@ public class CafeDao {
 		System.out.println("[CafeDao.getGenreList()]");
 		return sqlSession.selectList("cafe.getGenreList");
 	}
-	
+
 	// 전체 테마 리스트 가져오기
 	public List<CafeVo> getThemeList() {
 		System.out.println("[CafeDao.getThemeList()]");
 		return sqlSession.selectList("cafe.getThemeList");
+	}
+
+	// ajax 카페 목록 가져오기
+
+	public List<CafeVo> cafeList(Map<String, Object> map) {
+		System.out.println("[CafeDao.cafeList()]");
+		System.out.println(map);
+		List<CafeVo> cafeList = sqlSession.selectList("cafe.getApiCafeList", map);
+		
+		return cafeList;
 	}
 
 }

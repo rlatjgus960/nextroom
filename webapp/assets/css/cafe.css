@@ -491,3 +491,24 @@
     width: 280px;
     box-shadow:0 0 5px #555;
 }
+
+
+
+
+.themeSearchBtn {
+	background-color: rgb(224,224,224);
+    cursor: pointer;
+    color: #000;
+    border: none;
+    font-size: 15px;
+    padding: 10px 100px;
+    border-radius: 5px;
+	
+}
+
+
+
+.themeSearchBtn:hover {
+    background-color: rgb(253, 213, 59);
+    color: #fff;
+}
