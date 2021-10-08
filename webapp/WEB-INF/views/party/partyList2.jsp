@@ -98,9 +98,9 @@
                                 </tr>
                             </thead>
                             <tbody class="list_hover">
-								<c:forEach items="${partyAllListMap.partyList }" var="partyVo" varStatus="status">
+								<c:forEach items="${partyList }" var="partyVo" varStatus="status">
 	                                <tr onclick="location.href='${pageContext.request.contextPath }/party/partyRead?partyNo=${partyVo.partyNo}'">
-		                                    <td>${partyVo.partyNo} </td>
+		                                    <td>${fn:length(partyList) - status.index } </td>
 		                                    <td><img src="" ${partyVo.themeImg } width="80px" height="90px"></td>
 		                                    <td>${partyVo.sidoDetail }</td>
 		                                    <td>${partyVo.cafeName } / ${partyVo.themeName }</td>
@@ -126,32 +126,22 @@
                     <!-- //파티리스트 영역 -->
 
                     <!-- 페이징 영역 -->
-                    <div id="paging">
-                       <ul id="page" class="clearfix">
-                       
-                       	   <c:if test="${partyAllListMap.prev == true}">
-                            	<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${partyAllListMap.startPageBtnNo-1}">◀</a></li>
-                       	   </c:if>
-                           
-                           <c:forEach begin ="${partyAllListMap.startPageBtnNo}" end = "${partyAllListMap.endPageBtnNo}" step = "1" var = "page">
-                           		<c:choose>
-	                           		<c:when test="${param.crtPage eq page }">
-	                           			<li class="active"><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${page }">${page}</a></li>
-	                           		</c:when>
-	                           		
-	                           		<c:otherwise>
-	                           			<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${page }">${page}</a></li>
-	                           		</c:otherwise>
-                           		</c:choose>
-                           		
-                           </c:forEach>
-                           <c:if test = "${partyAllListMap.next == true}">
-                           		<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${partyAllListMap.endPageBtnNo+1}">▶</a></li>
-                           </c:if>
-                        </ul>
+                    <div id="pager">
+                       <!-- <ol class="clearfix">
+                            <li><a href="">◀</a></li>
+                            <li><a href="">1</a></li>
+                            <li><a href="">2</a></li>
+                            <li><a href="">3</a></li>
+                            <li><a href="">4</a></li>
+                            <li><a href="">5</a></li>
+                            <li><a class="active" href="">6</a></li>
+                            <li><a href="">7</a></li>
+                            <li><a href="">8</a></li>
+                            <li><a href="">9</a></li>
+                            <li><a href="">10</a></li>
+                            <li><a href="">▶</a></li>
+                        </ol> -->
                     	
-                    </div>
-                    <div>
                      	<c:if test="${not empty sessionScope.authUser }"> 
 	                        <button type="button" id="submit_button" class="submit_button">등록하기</button>
                    		</c:if> 
