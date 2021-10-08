@@ -113,20 +113,29 @@
                 </div>
             </div>
 
-            <div id="paging" class="clearfix">
-                <ul>
-                    <li><a href="">◀</a></li>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li class="active"><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
-                    <li><a href="">▶</a></li>
-                </ul>
-                
-                
-                <div class="clear"></div>
-            </div>
+            <div id="paging">
+						<ul>
+							<c:if test="${detailMap.prev == true }">
+							<li><a href="${pageContext.request.contextPath }/board/list2?crtPage=${detailMap.startPageBtnNo-1 }">◀</a></li>
+							</c:if>
+							<c:forEach var="i" begin="${detailMap.startPageBtnNo }" end="${detailMap.endPageBtnNo }" step="1">
+								<c:choose>
+									<c:when test="${param.crtPage == i }">
+										<li class="active"><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${i }">${i }</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${i }">${i }</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${detailMap.next == true }">
+							<li><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${detailMap.endPageBtnNo+1 }">▶</a></li>
+							</c:if>
+						</ul>
+						
+						
+						<div class="clear"></div>
+					</div>
 
 
             <!--//recent play-->
