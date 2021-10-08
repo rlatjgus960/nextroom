@@ -211,12 +211,92 @@ public class ReviewBoardService {
 
 	//2021.10.07 by 원호
 	//게시글 수정
+	/*
+	 * public int modify(ReviewBoardVo reviewBoardVo) {
+	 * System.out.println("[Service.modify]");
+	 * 
+	 * return reviewBoardDao.modify(reviewBoardVo); }
+	 */
+	
+	//2021.10.07 by 원호
+	//게시글 수정
 	public int modify(ReviewBoardVo reviewBoardVo) {
 		System.out.println("[Service.modify]");
 		
 		
-		return reviewBoardDao.modify(reviewBoardVo);
+		// ******************** 후기게시판 이미지 처리 ********************//
+		MultipartFile file = reviewBoardVo.getReviewImgFile();
+		long fileSize = file.getSize();
+		System.out.println("fileSize " + fileSize);
+
+		int reviewCount = 0;
+
+		if (fileSize > 0) {
+
+			String saveDir = "C:\\javaStudy\\upload\\";
+
+			System.out.println(file.getOriginalFilename());
+			System.out.println(file.getSize());
+
+			// 원파일이름
+			String orgName = file.getOriginalFilename();
+			System.out.println(orgName);
+
+			// 확장자
+			String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+			System.out.println(exName);
+
+			// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			System.out.println(saveName);
+
+			// 파일패스
+			String filePath = saveDir + "\\" + saveName;
+			System.out.println(filePath);
+
+			// 파일 서버하드디스크에 저장
+			try {
+				byte[] fileData = file.getBytes();
+				OutputStream out = new FileOutputStream(filePath);
+				BufferedOutputStream bout = new BufferedOutputStream(out);
+
+				bout.write(fileData);
+				bout.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			reviewBoardVo.setReviewImg(saveName);
+
+			reviewCount = reviewBoardDao.modify2(reviewBoardVo);
+
+			System.out.println("ReviewInsert 후 Vo : " + reviewBoardVo);
+
+			
+		} else {
+			//이미지 업로드 하지 않고 글만 쓰는 경우
+			reviewCount = reviewBoardDao.modify(reviewBoardVo);
+			
+		}
+		
+		
+		return reviewCount;
 	}
+	
+	
+//	//2021.10.08 by 원호
+//	//추천버튼
+//	public int upAndDown(int reviewNo) {
+//		System.out.println("[Service.upAndDown]");
+//		System.out.println(reviewNo);
+//		
+//		int count = reviewBoardDao.upAndDown(reviewNo);
+//		
+//		return count;
+//		//return 1;
+//	}
 	
 	
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -288,6 +368,8 @@ public class ReviewBoardService {
 		return boardCount;
 		
 	}
+	
+
 	
 	//2021.10.07 by 원호
 	//자유게시판 리스트,페이징,검색
@@ -362,5 +444,15 @@ public class ReviewBoardService {
 		return freeBoardVo;
 	}
 	
+	//2021.10.08 by 원호
+	//자유게시판 게시글 삭제
+	public int freeDelete(int boardNo) {
+		System.out.println("[Service.freeDelete]");
+		
+		int count = reviewBoardDao.freeDelete(boardNo);
+		
+		return count;
+		
+	}
 
 }

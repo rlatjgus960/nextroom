@@ -222,6 +222,11 @@
     margin: 3px 0px 2px 0px;
 }
 
+/* 체감난이도 표현 색상 */
+#star {
+	color : rgb(253, 213, 59);
+	font-size:18px;
+}
 
 
 

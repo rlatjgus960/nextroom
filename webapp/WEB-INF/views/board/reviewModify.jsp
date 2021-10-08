@@ -239,12 +239,12 @@
                              </div>
                             
              				<div id="text_tool">
-								<textarea id="reviewContent" name="reviewContent" rows="50" cols="96" style="width: 1015px;"></textarea>
+								<textarea id="reviewContent" name="reviewContent" rows="50" cols="96" style="width: 1015px;">${reviewBoardVo.reviewContent}</textarea>
 							</div>
                             
 	                        <!-- 글등록 버튼 -->
 							<button id="btn_save" type="submit">글수정</button>
-							<input type="text" name="reviewNo" value="${reviewBoardVo.reviewNo}">
+							<input type="hidden" name="reviewNo" value="${reviewBoardVo.reviewNo}">
 						</form>
 
 

@@ -119,7 +119,7 @@
                              </div>
 
 							<div id="text_tool">
-								<textarea id="boardContent" name="boardContent" rows="50" cols="96" style="width: 1020px;"> 스마트 에디터 적용해야하는데 어떻게 하냐 최근글이 아니라 옛날 글밖에 없는데 ㅡㅡ</textarea>
+								<textarea id="boardContent" name="boardContent" rows="50" cols="96" style="width: 1020px;"></textarea>
 							</div>
 							<!-- 글등록 버튼 -->
 							<button id="btn_save" type="submit">글등록</button>
