@@ -1,6 +1,8 @@
 package com.nextroom.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,12 +81,34 @@ public class PartyDao {
 	
 	// 21-10-01~21-10-02 by 대니
 	// 파티등록 리스트 목록 출력하기
-	public List<PartyVo> getPartyList() {
-		System.out.println("파티다오의 PartyList 출력구간");
-		List<PartyVo> partyList = sqlSession.selectList("party.partyListSelect");
+//	public List<PartyVo> getPartyList() {
+//		System.out.println("파티다오의 PartyList 출력구간");
+//		List<PartyVo> partyList = sqlSession.selectList("party.partyListSelect");
+//		
+//		
+//		return partyList;
+//	}
+	
+	//21-10-08 by 대니
+	//파티등록 리스트 목록 출력하기(페이징 + 검색)
+	public List<PartyVo> getPartyList(int startRnum, int endRnum) {
+		
+		Map<String, Object> pageMap = new HashMap<String, Object>();
+
+		pageMap.put("startRnum", startRnum);
+		pageMap.put("endRnum", endRnum);
 		
 		
-		return partyList;
+		
+		return sqlSession.selectList("party.partyListSelect", pageMap);
+	}
+	
+	
+	//21-10-08 by대니
+	//페이징 갯수와 페이징버튼을 위한 전체게시물갯수
+	public int selectTotalCount() {
+		
+		return sqlSession.selectOne("party.selectTotalCount");
 	}
 	
 	// 21-10-01~21-10-02 by 대니

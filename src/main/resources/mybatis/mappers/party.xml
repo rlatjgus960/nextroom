@@ -94,7 +94,7 @@
 	
 	
 	<!-- 파티등록 리스트 목록 출력하기 -->
-	<select id="partyListSelect" resultType="com.nextroom.vo.PartyVo">
+<!-- 	<select id="partyListSelect" resultType="com.nextroom.vo.PartyVo">
 		<![CDATA[
 			select partyNo,
 				   userNo,
@@ -109,6 +109,57 @@
        		   	   partystate
 			from party
 			order by partyNo desc
+		]]>
+	</select> -->
+	
+	
+		<!-- 파티등록 리스트 목록 출력하기(페이징 + 검색) -->
+	<select id="partyListSelect" parameterType="map" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select rt.rn,
+			       rt.partyNo,
+			       rt.userNo,
+			       rt.reservedateno,
+			       rt.reserveDate,
+			       rt.cafeNo,
+			       rt.themeNo,
+			       rt.themetime,
+			       rt.reserveperson,
+			       rt.content,
+			       rt.partyState
+			from (select rownum rn,
+			             ot.partyNo,
+			             ot.userNo,
+			             ot.reservedateno,
+			             ot.reserveDate,
+			             ot.cafeNo,
+			             ot.themeNo,
+			             ot.themetime,
+			             ot.reserveperson,
+			             ot.content,
+			             ot.partyState
+			      from ( select partyNo,
+			                    userno,
+			                    reservedateno,
+			                    to_char(reservedate, 'YY-MM-DD') reserveDate,
+			                    cafeNo,
+			                    themeno,
+			                    themetime,
+			                    reserveperson,
+			                    content,
+			                    partystate
+			             from party
+			             order by partyNo desc) ot ) rt
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
+		]]>
+	</select>
+	
+	<!-- 페이징 갯수와 페이징버튼을 위한 전체게시물갯수 -->
+	<select id="selectTotalCount" resultType="int">
+		<![CDATA[
+			select count(*)
+			from party			
 		]]>
 	</select>
 	

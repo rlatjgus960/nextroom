@@ -88,13 +88,28 @@ public class Party {
 	
 	//21-10-01~21-10-02 by 대니
 	//파티등록 리스트 목록 출력하기
+//	@RequestMapping(value = "/partyList", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String partyList(Model model) {
+//		System.out.println("파티컨트롤러: partyList");
+//		
+//		List<PartyVo> partyList = partyService.getPartyList();
+//		
+//		model.addAttribute("partyList", partyList);
+//		
+//		return "party/partyList";
+//	}
+	
+	
+	//21-10-08 by 대니
+	//파티등록 리스트 목록 출력하기(페이징 + 검색)
 	@RequestMapping(value = "/partyList", method = {RequestMethod.GET, RequestMethod.POST})
-	public String partyList(Model model) {
+	public String partyList(Model model,
+							@RequestParam(value="crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("파티컨트롤러: partyList");
+		System.out.println("씨알티페이지: " + crtPage);
+		Map<String, Object> partyAllListMap = partyService.getPartyList(crtPage);
 		
-		List<PartyVo> partyList = partyService.getPartyList();
-		
-		model.addAttribute("partyList", partyList);
+		model.addAttribute("partyAllListMap", partyAllListMap);
 		
 		return "party/partyList";
 	}
