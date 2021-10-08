@@ -913,6 +913,32 @@
             	
             	//모집중이라면 모집완료를 해주세요
             	//예약에 필요한 정보들 확인해서 정리하기
+				//ajax서버에 요청 (partyNo,userNo 전달)
+				$.ajax({
+					
+					url : "${pageContext.request.contextPath }/party/partyReserve",		
+					type : "post",
+	//	 			contentType : "application/json",
+					data : partyVo,
+	
+	//	 			dataType : "json",
+					success : function(result){
+						/*성공시 처리해야될 코드 작성*/
+						
+						if(result == false) {
+							Swal.fire({
+			                    icon: 'warning',
+			                    title: 'NEXTROOM',
+			                    text: '모집완료를 클릭해주세요.',
+			                });
+						} 
+						
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+					
+				});
             
             
             
