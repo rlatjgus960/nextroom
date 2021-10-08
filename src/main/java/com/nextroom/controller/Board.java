@@ -90,6 +90,19 @@ public class Board {
 		
 		return "board/freeRead";
 	}
+	
+	//2021.10.08 by 원호
+	//글삭제
+	@ResponseBody
+	@RequestMapping(value="freeDelete",method = {RequestMethod.GET, RequestMethod.POST})
+	public int freeDelete(@RequestParam("boardNo") int boardNo) {
+		System.out.println("Controller.reviewDelete");
+		System.out.println("번호 왔냐?" + boardNo);
+		
+		int count = reviewBoardService.freeDelete(boardNo);
+		System.out.println("갔다왔니?" + count);
+		return count;
+	}
 
 
 //////////////////////////////////////////////////////////////////
@@ -261,7 +274,20 @@ public class Board {
 		reviewBoardService.modify(reviewBoardVo);
 		
 		return "redirect:/board/reviewBoard";
-		}
+	}
+	
+	
+//	//2021.10.08 by 원호
+//	//추천버튼시 추천수 올라감
+//	@ResponseBody
+//	@RequestMapping(value="upAndDown", method = {RequestMethod.GET, RequestMethod.POST})
+//	public int upAndDown(@RequestParam("reviewNo") int reviewNo) {
+//		System.out.println("추천버튼 누른거");
+//		System.out.println(reviewNo);
+//		
+//		int count = reviewBoardService.upAndDown(reviewNo);
+//		return count;
+//	}
 		
 	
 	//쪽지 보내기

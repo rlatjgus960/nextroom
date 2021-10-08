@@ -145,7 +145,9 @@ public class FreeBoardVo {
 				+ boardLike + ", boardImg=" + boardImg + ", boardImgFile=" + boardImgFile + ", nickname=" + nickname
 				+ "]";
 	}
-	
+
+
+
 	
 	
 	
