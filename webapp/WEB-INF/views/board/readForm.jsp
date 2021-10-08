@@ -103,7 +103,28 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 							<!-- 후기 정보 -->
 							<div class="user_information">
 								<span>테마 : ${reviewBoardVo.themeName }</span>
-								<span>체감 난이도 : ${reviewBoardVo.rating }</span>
+								
+								<c:if test="${reviewBoardVo.rating == 5 }">
+									<span >체감 난이도 : <span id="star">★★★★★ </span> </span>
+								</c:if>
+								
+								<c:if test="${reviewBoardVo.rating == 4 }">
+									<span>체감 난이도 : ★★★★</span>
+								</c:if>
+
+								<c:if test="${reviewBoardVo.rating == 3 }">
+									<span>체감 난이도 : ★★★</span>
+								</c:if>
+
+								<c:if test="${reviewBoardVo.rating == 2 }">
+									<span>체감 난이도 : ★★</span>
+								</c:if>
+								
+								<c:if test="${reviewBoardVo.rating == 1 }">
+									<span>체감 난이도 : ★</span>
+								</c:if>
+								
+																																
 								<span>성공 여부 : ${reviewBoardVo.reviewClear }</span>
 								<span>힌트 사용갯수 : ${reviewBoardVo.reviewHints }</span>
 								<span>인원수 : ${reviewBoardVo.memberNum }</span>
@@ -136,9 +157,9 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										
 										
 										<div id="wrap_up_down">
-											<a href="${pageContext.request.contextPath }/board/reviewBoard" class="back_button">목 록</a> <!-- href에 js 넣어야할듯-->
-											<a href="" class="up_down">추 천</a>
-											<a href="" class="up_down">반 대</a>
+											<a href="${pageContext.request.contextPath }/board/reviewBoard" class="back_button">목 록</a>
+											<button type="button" id="up"  class="up_down" onclick="Like">추 천</button>
+											<button type="button" id="down" class="up_down" onclick="Hate">반 대</button>
 										</div>
 
 										<!-- 이전/다음 글 -->
@@ -263,7 +284,6 @@ $("#delete_button").on("click", function() {
 		
 		
 });
-
 
 
 

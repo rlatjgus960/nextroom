@@ -221,6 +221,17 @@
 		and userNo= #{userNo}
 	</update>
 	
+
+	<!-- 2021.10.08 by 원호 -->
+	<!-- 조회수올리기 -->
+<!-- 	<update id="reviewLike" parameterType="int">
+		<![CDATA[
+			update review
+			set reviewLike = reviewLike+1
+			where reviewno = #{reviewno}
+		]]>
+	</update> -->
+	
 <!-- 자유게시판 -->
 
 		<!-- 2021.10.07 by 원호 -->
@@ -347,5 +358,15 @@
 			where boardno = #{boardno}
 		]]>
 	</update>
+	
+		
+	<!-- 2021.10.08 by 원호-->
+	<!-- 자유게시판 게시글 삭제 -->
+	<delete id = "freeDelete" parameterType = "int">
+		<![CDATA[
+			delete from freeboard
+			where boardNo = #{boardNo}
+		]]>
+	</delete>
 	
 </mapper>
