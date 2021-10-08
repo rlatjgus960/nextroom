@@ -232,7 +232,7 @@
 #cafe_detail_price p, #cafe_detail_theme>p, #theme_detail_price p, #theme_detail_review>p, #theme_detail_timeTable > p {
     text-align: left;
     font-size: 24px;
-    font-weight: bolder;
+    font-weight:  bolder;
 }
 
 #cafe_priceTable {
