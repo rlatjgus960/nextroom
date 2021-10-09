@@ -47,16 +47,16 @@
                 
                 <!-- board -->
                 <div id="board">
+                        <form action="" method="">
 
                     <!-- 서치영역 -->
                     <div id="search_area" class="clearfix">
                             <select id="party_view" name="partyView">
-                                <option value="" selected="">전체보기</option>
-                                <option value="partyIng">모집중</option>
-                                <option value="partyEnd">모집완료</option>
+                                <option value="전체보기" selected="">전체보기</option>
+                                <option value="모집중">모집중</option>
+                                <option value="모집완료">모집완료</option>
                             </select>
                             
-                        <form action="" method="">
 
 
                             <div id="kind">
@@ -140,23 +140,23 @@
                        <ul id="page" class="clearfix">
                        
                        	   <c:if test="${partyAllListMap.prev == true}">
-                            	<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${partyAllListMap.startPageBtnNo-1}">◀</a></li>
+                            	<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${partyAllListMap.startPageBtnNo-1}&keyword=${param.keyword}&partyView=${param.partyView}">◀</a></li>
                        	   </c:if>
                            
                            <c:forEach begin ="${partyAllListMap.startPageBtnNo}" end = "${partyAllListMap.endPageBtnNo}" step = "1" var = "page">
                            		<c:choose>
 	                           		<c:when test="${param.crtPage eq page }">
-	                           			<li class="active"><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${page }">${page}</a></li>
+	                           			<li class="active"><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${page }&keyword=${param.keyword}&partyView=${param.partyView}">${page}</a></li>
 	                           		</c:when>
 	                           		
 	                           		<c:otherwise>
-	                           			<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${page }">${page}</a></li>
+	                           			<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${page }&keyword=${param.keyword}&partyView=${param.partyView}">${page}</a></li>
 	                           		</c:otherwise>
                            		</c:choose>
                            		
                            </c:forEach>
                            <c:if test = "${partyAllListMap.next == true}">
-                           		<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${partyAllListMap.endPageBtnNo+1}">▶</a></li>
+                           		<li><a href="${pageContext.request.contextPath }/party/partyList?crtPage=${partyAllListMap.endPageBtnNo+1}&keyword=${param.keyword}&partyView=${param.partyView}">▶</a></li>
                            </c:if>
                         </ul>
                     	
