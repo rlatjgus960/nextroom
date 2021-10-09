@@ -144,13 +144,13 @@ public class PartyService {
 	
 	//21-10-08 by 대니
 	//파티등록 리스트 목록 출력하기(페이징 + 검색)
-	public Map<String, Object> getPartyList(int crtPage) {
+	public Map<String, Object> getPartyList(int crtPage, String keyword, String partyView) {
 		
 		////////////////////////////////////////////
 		//리스트 가져오기
 		////////////////////////////////////////////
 		
-		int listCnt = 1;
+		int listCnt = 5;
 		
 		//crtPage 계산(- 값일때 1page 처리)
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1); //삼항연산자; 아래랑 같은 논리
@@ -169,7 +169,7 @@ public class PartyService {
 		int endRnum = crtPage * listCnt;
 		
 		//파티리스트 전체 출력
-		List<PartyVo> partyList = partyDao.getPartyList(startRnum, endRnum);
+		List<PartyVo> partyList = partyDao.getPartyList(startRnum, endRnum, keyword, partyView);
 		
 		//cafeNo 뽑아서 필요한 정보가져오기
 		for(int i=0; i<partyList.size(); i++) {

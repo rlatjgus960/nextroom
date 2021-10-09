@@ -91,13 +91,14 @@ public class PartyDao {
 	
 	//21-10-08 by 대니
 	//파티등록 리스트 목록 출력하기(페이징 + 검색)
-	public List<PartyVo> getPartyList(int startRnum, int endRnum) {
+	public List<PartyVo> getPartyList(int startRnum, int endRnum, String keyword, String partyView) {
 		
 		Map<String, Object> pageMap = new HashMap<String, Object>();
 
 		pageMap.put("startRnum", startRnum);
 		pageMap.put("endRnum", endRnum);
-		
+		pageMap.put("keyword", keyword);
+		pageMap.put("partyView", partyView);
 		
 		
 		return sqlSession.selectList("party.partyListSelect", pageMap);

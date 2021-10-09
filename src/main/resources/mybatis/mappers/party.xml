@@ -138,17 +138,37 @@
 			             ot.reserveperson,
 			             ot.content,
 			             ot.partyState
-			      from ( select partyNo,
-			                    userno,
-			                    reservedateno,
-			                    to_char(reservedate, 'YY-MM-DD') reserveDate,
-			                    cafeNo,
-			                    themeno,
-			                    themetime,
-			                    reserveperson,
-			                    content,
-			                    partystate
-			             from party
+			      from ( select p.partyNo,
+						        p.userno,
+						        p.reservedateno,
+						        to_char(reservedate, 'YY-MM-DD') reserveDate,
+						        p.cafeNo,
+						        p.themeno,
+						        p.themetime,
+						        p.reserveperson,
+						        p.content,
+						        p.partystate
+			             from party p , cafe c , theme t
+			             where p.cafeNo = c.cafeNo
+						 and c.cafeNo = t.cafeNo
+						 and t.themeNo = p.themeNo
+		]]>
+		
+		<choose>
+			<when test="partyView.equals('모집완료') and keyword != null and keyword !='' " >
+				and c.cafename || t.themename like '%' || #{keyword} || '%'
+				and p.partyState = '모집완료'			
+			</when>
+			<when test="partyView.equals('모집중') and keyword != null and keyword !='' ">
+				and c.cafename || t.themename like '%' || #{keyword} || '%'
+				and p.partyState = '모집중'	
+			</when>
+			<otherwise>
+				and c.cafename || t.themename like '%' || #{keyword} || '%'				
+			</otherwise>
+		</choose>
+				
+		<![CDATA[
 			             order by partyNo desc) ot ) rt
 			where rn >= #{startRnum}
 			and rn <= #{endRnum}

@@ -104,10 +104,14 @@ public class Party {
 	//파티등록 리스트 목록 출력하기(페이징 + 검색)
 	@RequestMapping(value = "/partyList", method = {RequestMethod.GET, RequestMethod.POST})
 	public String partyList(Model model,
-							@RequestParam(value="crtPage", required = false, defaultValue = "1") int crtPage) {
+							@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
+							@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
+							@RequestParam(value = "partyView", required = false, defaultValue = "") String partyView) {
 		System.out.println("파티컨트롤러: partyList");
 		System.out.println("씨알티페이지: " + crtPage);
-		Map<String, Object> partyAllListMap = partyService.getPartyList(crtPage);
+		System.out.println("키워드: " + keyword);
+		System.out.println("파티뷰: " + partyView);
+		Map<String, Object> partyAllListMap = partyService.getPartyList(crtPage, keyword, partyView);
 		
 		model.addAttribute("partyAllListMap", partyAllListMap);
 		
