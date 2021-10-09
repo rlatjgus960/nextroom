@@ -12,8 +12,8 @@
 }
 
 #search_area #party_view {
-    padding: 2px 6px 2px 6px;
-    margin: 5px 0px 0px 0px;
+    padding: 5px 6px 5px 6px;
+    margin: 0px 0px 0px 850px;
     float: left;
     font-size: 15px;
 }
@@ -23,6 +23,7 @@
 }
 
 #kind>input[type="text"] {
+	width: 240px;
 	padding: 4px 0px 4px 0px;
 	margin: 0px 0px 4px 0px;
 	font-size:15px;
