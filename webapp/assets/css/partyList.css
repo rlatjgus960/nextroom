@@ -89,14 +89,19 @@ color: #0000ff;
 #content_main #paging {
 	margin: 0px auto;
 	width: 310px;
-	float: left;
 }
 
 #content_main #paging #page {
-	margin: 10px 5px 10px 650px;
+	margin: 20px 5px 10px 5px;
+	padding-left: 90px;
 }
 
 #content_main #paging ul>li {
+	float: left;
 	margin: 0px 8px 0px 8px;
 }
 
+#paging #page ul>li.active {
+	font-size: 14px;
+	font-weight: bold;
+}

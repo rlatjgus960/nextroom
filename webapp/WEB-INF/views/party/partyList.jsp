@@ -18,6 +18,8 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- 		<script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 	
 <title>파티구하기</title>
 </head>
@@ -58,13 +60,13 @@
 
 
                             <div id="kind">
-                                <label for="cafe_pick">카페</label>
+                               <!--  <label for="cafe_pick">카페</label>
                                 <input type="checkbox" id="cafe_pick" name="searchPick" value="cafe">
 
                                 <label for="theme_pick">테마</label>
-                                <input type="checkbox" id="theme_pick" name="searchPick" value="theme">
+                                <input type="checkbox" id="theme_pick" name="searchPick" value="theme"> -->
 
-                                <input type="text" name="keyword" value="">
+                                <input type="text" name="keyword" value="" placeholder="카페, 테마를 입력해주세요">
 
                                 <button class="search_button" type="submit">검색</button>
                                 
@@ -124,7 +126,15 @@
                         </table>
                     </div>
                     <!-- //파티리스트 영역 -->
-
+					
+					<!-- 등록하기 버튼영역 -->
+                    <div>
+                     	<%-- <c:if test="${not empty sessionScope.authUser }"> --%> 
+	                        <button type="button" id="submit_button" class="submit_button" data-userno="${sessionScope.authUser.userNo }">등록하기</button>
+                   		<%-- </c:if> --%> 
+                    </div>
+                    <!-- //등록하기 버튼영역 -->
+                    
                     <!-- 페이징 영역 -->
                     <div id="paging">
                        <ul id="page" class="clearfix">
@@ -150,11 +160,6 @@
                            </c:if>
                         </ul>
                     	
-                    </div>
-                    <div>
-                     	<c:if test="${not empty sessionScope.authUser }"> 
-	                        <button type="button" id="submit_button" class="submit_button">등록하기</button>
-                   		</c:if> 
                     </div>
                     <!-- 페이징 끝나는 영역 -->
 
@@ -316,8 +321,35 @@
 
 	//파티등록 모달창 열기
 	$("#submit_button").on("click", function() {
-		$("#partyWrite_modal").attr("style", "display:block");
-		document.body.classList.add("stop-scroll");
+		
+		var userNo = $(this).data("userno");
+		console.log(userNo);
+		
+		if(userNo == "") {
+			
+			Swal.fire({
+	            title: 'NEXTROOM',
+	            text: "로그인이 필요합니다.",
+	            icon: 'question',
+	            showCancelButton: true,
+	            confirmButtonColor: '#3085d6',
+	            cancelButtonColor: '#d33',
+	            confirmButtonText: '확인',
+	            cancelButtonText: '취소'
+	        }).then((result) => {
+	        	
+	             if (result.isConfirmed) {
+	            	 window.location.assign('http://localhost:8088/nextroom/user/loginForm');
+	             }
+	        });
+			
+		} else if(userNo != ""){
+			
+			$("#partyWrite_modal").attr("style", "display:block");
+			document.body.classList.add("stop-scroll");
+		} 
+			
+		
 	
 	});
 	
