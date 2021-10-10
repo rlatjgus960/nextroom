@@ -64,8 +64,8 @@
 					<div id="list_button" >
 						<ul>							
 							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/Board_all_icon.jpg" width="14px" height="14px" >전 체</a>
-							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
-							<a href="${pageContext.request.contextPath }/board/freeCommunity"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
+							<a href="${pageContext.request.contextPath }/board/freeCommunity/hot"><img src="${pageContext.request.contextPath }/assets/image/board_image/hot.png" width="14px" height="14px" >인 기</a>
+							<a href="${pageContext.request.contextPath }/board/freeCommunity/Like"><img src="${pageContext.request.contextPath }/assets/image/board_image/hit.png" width="14px" height="14px" >조 회</a>
 
 						</ul>
 					</div>

@@ -428,6 +428,121 @@ public class ReviewBoardService {
 		
 		return listMap;
 	}
+	//2021.10.10 by 원호
+	//자유게시판 인기순
+	public Map<String, Object> boardHot(String keyword, int crtPage){
+		System.out.println("Service.boardList");
+		
+		///리스트 가져올 갯수 정하기
+		int listCnt = 10;
+		
+		crtPage = (crtPage >0) ? crtPage : (crtPage = 1);
+		
+		//시작번호 계산
+		int startRnum = (crtPage-1)*listCnt+1;
+		//끝번호 계산
+		int endRnum = (startRnum+listCnt)-1;
+		
+		
+		List<FreeBoardVo> boardList = reviewBoardDao.boardHot(keyword, startRnum, endRnum);
+		System.out.println("[Service Vo 정보]:" + boardList);
+		
+		
+		//전체 글 갯수
+		int totalCount = reviewBoardDao.totalCnt(keyword);
+		
+		//페이지당 버튼 갯수
+		int pageBtnCount = 5;
+		
+		int endPageBtnNo = (int)Math.ceil((crtPage/(double)pageBtnCount)) * pageBtnCount;
+		
+		//시작버튼 번호
+		int startPageBtnNo = endPageBtnNo - (pageBtnCount - 1);
+		
+		
+		//다음 화살표 표현 유무
+		boolean next = false;
+		if((endPageBtnNo * listCnt) < totalCount) {
+			next = true;
+		} else {
+
+			endPageBtnNo = (int)Math.ceil(totalCount / (double)listCnt);
+		}		
+		
+		//이전 화살표 표현 유무
+		boolean prev = false;
+		if(startPageBtnNo != 1) {
+			prev = false;
+		}
+		
+
+		Map<String, Object> listMap = new HashMap<String, Object>();
+		listMap.put("boardList", boardList);
+		listMap.put("prev", prev);	
+		listMap.put("startPageBtnNo", startPageBtnNo);
+		listMap.put("endPageBtnNo", endPageBtnNo);
+		listMap.put("next", next);
+		
+		return listMap;
+	}
+	
+	//2021.10.10 by 원호
+	//자유게시판(조회순)
+	public Map<String, Object> boardLike(String keyword, int crtPage){
+		System.out.println("Service.boardList");
+		
+		///리스트 가져올 갯수 정하기
+		int listCnt = 10;
+		
+		crtPage = (crtPage >0) ? crtPage : (crtPage = 1);
+		
+		//시작번호 계산
+		int startRnum = (crtPage-1)*listCnt+1;
+		//끝번호 계산
+		int endRnum = (startRnum+listCnt)-1;
+		
+		
+		List<FreeBoardVo> boardList = reviewBoardDao.boardLike(keyword, startRnum, endRnum);
+		System.out.println("[Service Vo 정보]:" + boardList);
+		
+		
+		//전체 글 갯수
+		int totalCount = reviewBoardDao.totalCnt(keyword);
+		
+		//페이지당 버튼 갯수
+		int pageBtnCount = 5;
+		
+		int endPageBtnNo = (int)Math.ceil((crtPage/(double)pageBtnCount)) * pageBtnCount;
+		
+		//시작버튼 번호
+		int startPageBtnNo = endPageBtnNo - (pageBtnCount - 1);
+		
+		
+		//다음 화살표 표현 유무
+		boolean next = false;
+		if((endPageBtnNo * listCnt) < totalCount) {
+			next = true;
+		} else {
+
+			endPageBtnNo = (int)Math.ceil(totalCount / (double)listCnt);
+		}		
+		
+		//이전 화살표 표현 유무
+		boolean prev = false;
+		if(startPageBtnNo != 1) {
+			prev = false;
+		}
+		
+
+		Map<String, Object> listMap = new HashMap<String, Object>();
+		listMap.put("boardList", boardList);
+		listMap.put("prev", prev);	
+		listMap.put("startPageBtnNo", startPageBtnNo);
+		listMap.put("endPageBtnNo", endPageBtnNo);
+		listMap.put("next", next);
+		
+		return listMap;
+	}
 	
 	//2021.10.07 by 원호
 	//자유게시판 글 읽기

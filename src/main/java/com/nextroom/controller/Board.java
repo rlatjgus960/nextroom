@@ -103,7 +103,44 @@ public class Board {
 		System.out.println("갔다왔니?" + count);
 		return count;
 	}
+	
+	//2021.10.07 by 원호
+	//자유게시판 리스트,페이징(인기순)
+	@RequestMapping(value = "/freeCommunity/hot", method = {RequestMethod.GET, RequestMethod.POST})
+	public String freeBoardhot(Model model, 
+							  @RequestParam(value="keyword", required = false, defaultValue = "") String keyword,
+							  @RequestParam(value="crtPage", required = false, defaultValue = "1")int crtPage) {
+		System.out.println("freeCommunity/hot");
+		
+		//사용자가 list요청
+		Map<String, Object> freeBoardList = reviewBoardService.boardHot(keyword, crtPage);
+		System.out.println("[reviewController.freeBoard]:" + freeBoardList);
+		
+		//jsp로 보냄
+		model.addAttribute("freeBoardList", freeBoardList);
+		System.out.println("xml갔다온거:" + freeBoardList);
+		
+		return "board/freeCommunity";
+	}
 
+	//2021.10.07 by 원호
+	//자유게시판 리스트,페이징(조회순)
+	@RequestMapping(value = "/freeCommunity/Like", method = {RequestMethod.GET, RequestMethod.POST})
+	public String freeBoardLike(Model model, 
+							  @RequestParam(value="keyword", required = false, defaultValue = "") String keyword,
+							  @RequestParam(value="crtPage", required = false, defaultValue = "1")int crtPage) {
+		System.out.println("freeCommunity/hot");
+		
+		//사용자가 list요청
+		Map<String, Object> freeBoardList = reviewBoardService.boardLike(keyword, crtPage);
+		System.out.println("[reviewController.freeBoard]:" + freeBoardList);
+		
+		//jsp로 보냄
+		model.addAttribute("freeBoardList", freeBoardList);
+		System.out.println("xml갔다온거:" + freeBoardList);
+		
+		return "board/freeCommunity";
+	}
 
 //////////////////////////////////////////////////////////////////
 /*후기 게시판*/
