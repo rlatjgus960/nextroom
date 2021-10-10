@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.nextroom.vo.FreeBoardImgVo;
 import com.nextroom.vo.FreeBoardVo;
 import com.nextroom.vo.ReviewBoardVo;
 
@@ -202,6 +203,14 @@ public class ReviewBoardDao {
 
 		return sqlSession.insert("reviewBoard.boardInsert", freeBoardVo);
 		
+	}
+	
+	//2021.10.10 by 원호
+	//자유게시판 멀티 이미지
+	public int addMultiImg(FreeBoardImgVo freeBoardImgVo) {
+		System.out.println("[Dao.addMultiImg]");
+		
+		return sqlSession.insert("reviewBoard.addMultiImg", freeBoardImgVo);
 	}
 	
 	//2021.10.07 by 원호

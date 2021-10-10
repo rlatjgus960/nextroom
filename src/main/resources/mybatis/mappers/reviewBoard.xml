@@ -560,4 +560,15 @@
 		]]>
 	</delete>
 	
+	<!-- 2021.10.10 by 원호 -->
+	<!-- 멀티 이미지 추가 -->
+	<insert id="addMultiImg" parameterType="com.nextroom.vo.FreeBoardImgVo"> 
+		<![CDATA[ 
+				insert into FreeBoardImg
+				values (
+						#{boardNo},
+						#{img}
+				) ]]>
+	</insert>
+	
 </mapper>
