@@ -171,7 +171,7 @@
 	                                <tr>
 	                                    <td>${status.count }</td>
 	                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-	                                    <td><c:if test="${partyDetailList.userState == '1' }">(BOSS) </c:if>${partyDetailList.nickname }</td>
+	                                    <td><c:if test="${partyDetailList.userState == '1' }"><img src="${pageContext.request.contextPath }/assets/image/party/crown1.jpg"> </c:if>${partyDetailList.nickname }</td>
 	                                    <td>${partyDetailList.rank } 위</td>
 	                                    <td>${partyDetailList.winRate } %</td>
 	                                    <td>${partyDetailList.noHintWinRate } %</td>
@@ -219,7 +219,7 @@
 	                                <tr>
 	                                    <td>${status.count }</td>
 	                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
-	                                    <td><c:if test="${partyDetailList.userState == '1' }">(BOSS) </c:if>${partyDetailList.nickname }</td>
+	                                    <td><c:if test="${partyDetailList.userState == '1' }"><img src="${pageContext.request.contextPath }/assets/image/party/crown1.jpg"> </c:if>${partyDetailList.nickname }</td>
 	                                    <td>${partyDetailList.rank } 위</td>
 	                                    <td>${partyDetailList.winRate } %</td>
 	                                    <td>${partyDetailList.noHintWinRate } %</td>
@@ -913,10 +913,11 @@
             	
             	//모집중이라면 모집완료를 해주세요
             	//예약에 필요한 정보들 확인해서 정리하기
+            	
 				//ajax서버에 요청 (partyNo,userNo 전달)
 				$.ajax({
 					
-					url : "${pageContext.request.contextPath }/party/partyReserve",		
+					url : "${pageContext.request.contextPath }/party/partyReserveCheck",		
 					type : "post",
 	//	 			contentType : "application/json",
 					data : partyVo,
@@ -931,7 +932,31 @@
 			                    title: 'NEXTROOM',
 			                    text: '모집완료를 클릭해주세요.',
 			                });
-						} 
+							
+						} else {
+							
+							//예약하기를 눌렀을때 파티가 모집완료면 예약2단계로 포워드
+							//ajax서버에 요청 (partyNo,userNo 전달)
+							$.ajax({
+								
+								url : "${pageContext.request.contextPath }/party/partyReserve",		
+								type : "post",
+				//	 			contentType : "application/json",
+								data : partyVo,
+				
+				//	 			dataType : "json",
+								success : function(result){
+									/*성공시 처리해야될 코드 작성*/
+									
+									
+								},
+								error : function(XHR, status, error) {
+									console.error(status + " : " + error);
+								}
+								
+							});
+							
+						}
 						
 					},
 					error : function(XHR, status, error) {

@@ -232,16 +232,34 @@ public class Party {
 	//21-10-08 by 대니
 	//방장이 예약하기 버튼을 클릭했을때
 	@ResponseBody
-	@RequestMapping(value = "/partyReserve", method = {RequestMethod.GET, RequestMethod.POST})
-	public boolean partyReserve(@ModelAttribute PartyVo partyVo) {
+	@RequestMapping(value = "/partyReserveCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public boolean partyReserveCheck(@ModelAttribute PartyVo partyVo) {
 		
 		System.out.println("예약하기 버튼클릭: " + partyVo);
 		
-		boolean result = partyService.partyReserve(partyVo);
+		boolean result = partyService.partyReserveCheck(partyVo);
 		
 		System.out.println(result);
 		
 		return result;
 	}
+	
+	
+	//21-10-10 by 대니
+	//방장이 모집완료된 파티의 예약하기를 눌렀을 경우
+	@ResponseBody
+	@RequestMapping(value = "/partyReserve", method = {RequestMethod.GET, RequestMethod.POST})
+	public String partyReserve(@ModelAttribute PartyVo partyVo, Model model) {
+		
+		System.out.println("모집완료된 예약하기버튼: " + partyVo);
+		
+		
+		Map<String, Object> partyReserveInfo = partyService.partyReserve(partyVo);
+		
+		model.addAttribute("partyReserveInfo", partyReserveInfo);
+		
+		return null;
+	}
+	
 	
 }

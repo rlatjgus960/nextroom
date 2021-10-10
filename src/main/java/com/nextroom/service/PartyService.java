@@ -595,7 +595,7 @@ public class PartyService {
 
 	//21-10-08 by 대니
 	//방장이 예약하기 버튼을 클릭했을때
-	public boolean partyReserve(PartyVo partyVo) {
+	public boolean partyReserveCheck(PartyVo partyVo) {
 		
 		int partyNo = partyVo.getPartyNo();
 		
@@ -620,7 +620,15 @@ public class PartyService {
 	}
 
 
-
+	//21-10-10 by 대니
+	//방장이 모집완료된 파티의 예약하기를 눌렀을 경우
+	public Map<String, Object> partyReserve(PartyVo partyVo) {
+		
+		//파티번호와 유저번호로 리절브인포폼에 필요한 정보들 다 가져와서
+		//포워드해야함
+		
+		return null;
+	}
 
 
 }
