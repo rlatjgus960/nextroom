@@ -233,8 +233,21 @@ public class CafeDao {
 		System.out.println("[CafeDao.cafeList()]");
 		System.out.println(map);
 		List<CafeVo> cafeList = sqlSession.selectList("cafe.getApiCafeList", map);
-		
+
 		return cafeList;
+	}
+
+	// 테마 수정 - 파일이 있을때
+	public int themeModify_basic(CafeVo cafeVo) {
+		System.out.println("[CafeDao.themeModify_basic()]");
+		return sqlSession.update("cafe.updateTheme-basic", cafeVo);
+	}
+
+	// 테마 수정 - 파일이 없을때
+	public int themeModify_noFile(CafeVo cafeVo) {
+		System.out.println("[CafeDao.themeModify_noFile()]");
+		System.out.println("업데이트 전 cafeVo : "+cafeVo);
+		return sqlSession.update("cafe.updateTheme-noFile", cafeVo);
 	}
 
 }

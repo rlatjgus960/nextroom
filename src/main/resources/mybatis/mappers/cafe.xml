@@ -533,6 +533,55 @@
 			
 		]]>
 	</select>
+	
+	<!-- 파일 있을때 -->
+	<update id="updateTheme-basic">
+		<![CDATA[
+			update cafe
+			set 
+				cafeName = #{cafeName}, 
+				cafeHp = #{cafeHp}, 
+				openTime = #{openTime}, 
+				closeTime = #{closeTime}, 
+				cafeIntro = #{cafeIntro}, 
+				url = #{url}, 
+				cafeImg = #{cafeImg},
+				postCode = #{postCode},
+				address = #{address}, 
+				addressDetail = #{addressDetail},  
+				printAddress = #{printAddress}, 
+				sido = #{sido}, 
+				sigungu = #{sigungu},
+				sidoDetail = #{sidoDetail},
+				latitude = #{latitude},
+				longitude = #{longitude}
+			where cafeNo = #{cafeNo}
+		]]>
+	</update>
+	
+	<!-- 파일 없을때 -->
+	<update id="updateTheme-noFile" parameterType="com.nextroom.vo.CafeVo">
+		<![CDATA[
+			update cafe
+			set 
+				cafeName = #{cafeName}, 
+				cafeHp = #{cafeHp}, 
+				openTime = #{openTime}, 
+				closeTime = #{closeTime}, 
+				cafeIntro = #{cafeIntro}, 
+				url = #{url},
+				postCode = #{postCode},
+				address = #{address}, 
+				addressDetail = #{addressDetail},  
+				printAddress = #{printAddress}, 
+				sido = #{sido}, 
+				sigungu = #{sigungu},
+				sidoDetail = #{sidoDetail},
+				latitude = #{latitude},
+				longitude = #{longitude}
+			where cafeNo = #{cafeNo}
+		]]>
+	</update>
 
 
 </mapper>

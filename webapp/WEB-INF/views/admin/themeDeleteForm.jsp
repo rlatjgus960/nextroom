@@ -136,7 +136,7 @@
 						</div>
 	
 						<div id="themeModify_button">
-							<button type="reset" onclick="location.href='${pageContext.request.contextPath }/adminTheme'" class="mbutton">취소</button>
+							<button type="reset" onclick="location.href='${pageContext.request.contextPath }/admin/${authUser.cafeNo }/themeList'" class="mbutton">취소</button>
 							<button type="submit" class="mbutton">삭제</button>
 						</div>
 	

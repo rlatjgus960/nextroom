@@ -47,11 +47,11 @@
 						<div id="cafe_detail_contact" class="cafe_contact">
 
 							<div>
-								<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png"> <a href="">${detailMap.cafeVo.cafeHp }</a>
+								<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">&nbsp;${detailMap.cafeVo.cafeHp }
 							</div>
 
 							<div>
-								<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png"> <a href="">${detailMap.cafeVo.printAddress }</a>
+								<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">&nbsp;${detailMap.cafeVo.printAddress }
 								<button href="" id="cafe_btn_viewmap">지도보기</button>
 								<input id="latitude" type="hidden" value="${detailMap.cafeVo.latitude }"> <input
 									id="longitude" type="hidden" value="${detailMap.cafeVo.longitude }"> <input
@@ -59,15 +59,15 @@
 							</div>
 
 							<div>
-								<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png"> <a href="">매일
-									${detailMap.cafeVo.openTime } ~ ${detailMap.cafeVo.closeTime }</a>
+								<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">&nbsp;매일
+									${detailMap.cafeVo.openTime } ~ ${detailMap.cafeVo.closeTime }
 							</div>
 						</div>
 
 						<div id="cafe_detail_btn">
 							<button class="cbutton" id="cafe_wish">관심카페등록</button>
 							<button class="cbutton" id="cafe_reserv">예약하기</button>
-							<button class="cbutton" id="cafe_site">공식사이트</button>
+							<a href="${detailMap.cafeVo.url}" target="_blank"><button class="cbutton" id="cafe_site">공식사이트</button></a>
 						</div>
 					</div>
 
@@ -92,54 +92,57 @@
 			<div id="cafe_detail_price">
 
 				<p>| 가격</p>
+				<c:if test="${not empty detailMap.themeList}">
+					<table id="cafe_priceTable">
 
-				<table id="cafe_priceTable">
+						<thead>
 
-					<thead>
-
-						<th>인원수</th>
-						<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status">
-							<th>${themeList.themeName }(${themeList.playTime }분)</th>
-
-
-						</c:forEach>
-					</thead>
+							<th>인원수</th>
+							<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status">
+								<th>${themeList.themeName }(${themeList.playTime }분)</th>
 
 
-					<tbody style="float : left;">
-						<c:forEach items="${detailMap.headCountList}" var="headCountList" varStatus="status">
-							<tr>
-								<td>${headCountList.headCount}인</td>
-							</tr>
-						</c:forEach>
-					</tbody>
+							</c:forEach>
+						</thead>
 
-
-					<c:forEach items="${detailMap.allPriceList}" var="allPriceList" varStatus="status">
 
 						<tbody style="float: left;">
-							<c:forEach items="${allPriceList}" var="priceList" varStatus="status">
-
+							<c:forEach items="${detailMap.headCountList}" var="headCountList" varStatus="status">
 								<tr>
-									<c:choose>
-										<c:when test="${priceList.price == 0}">
-											<td>-</td>
-										</c:when>
-										<c:otherwise>
-											<td>${priceList.price}원</td>
-										</c:otherwise>
-									</c:choose>
+									<td>${headCountList.headCount}인</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 
-					</c:forEach>
+
+						<c:forEach items="${detailMap.allPriceList}" var="allPriceList" varStatus="status">
+
+							<tbody style="float: left;">
+								<c:forEach items="${allPriceList}" var="priceList" varStatus="status">
+
+									<tr>
+										<c:choose>
+											<c:when test="${priceList.price == 0}">
+												<td>-</td>
+											</c:when>
+											<c:otherwise>
+												<td>${priceList.price}원</td>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:forEach>
+							</tbody>
+
+						</c:forEach>
 
 
 
 
-				</table>
-
+					</table>
+				</c:if>
+				<c:if test="${empty detailMap.themeList}">
+					<p>등록된 테마가 없습니다.</p>
+				</c:if>
 
 
 			</div>
@@ -149,35 +152,40 @@
 
 				<p>| 테마</p>
 
-				<div id="cafe_theme_list" class="clearfix">
+				<c:if test="${empty detailMap.themeList}">
+					<p>등록된 테마가 없습니다.</p>
+				</c:if>
 
-					<!-- 테마 반복영역 -->
-					<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status">
-						<div class="cafe_theme">
-							<a href="${pageContext.request.contextPath}/cafe/theme/${themeList.themeNo}"> <img
-								src="${pageContext.request.contextPath }/upload/${themeList.themeImg}" alt="">
-							</a>
+				<c:if test="${not empty detailMap.themeList}">
+					<div id="cafe_theme_list" class="clearfix">
 
-							<div class="cafe_theme_info">
-								<p>${themeList.cafeName}</p>
+						<!-- 테마 반복영역 -->
+						<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status">
+							<div class="cafe_theme">
+								<a href="${pageContext.request.contextPath}/cafe/theme/${themeList.themeNo}"> <img
+									src="${pageContext.request.contextPath }/upload/${themeList.themeImg}" alt="">
+								</a>
 
-								<a href="${pageContext.request.contextPath }/cafe/themeDetail">
-									<p class="cafe_theme_info_title">${themeList.themeName}</p>
-								</a> <span>장르 : </span><span>${themeList.jenre}</span> | <span>추천인원 : </span><span>${themeList.pRecommendMin}~${themeList.pRecommendMax}인</span><br>
-								<span>난이도 : </span><span>${themeList.levels}</span> | <span>플레이타임 : </span><span>${themeList.playTime}분</span><br>
-								<span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br> <span>유형
-									: </span><span>${themeList.themeType}</span> | <span>활동성 : </span><span>${themeList.activity}</span>
+								<div class="cafe_theme_info">
+									<p>${themeList.cafeName}</p>
 
+									<a href="${pageContext.request.contextPath }/cafe/themeDetail">
+										<p class="cafe_theme_info_title">${themeList.themeName}</p>
+									</a> <span>장르 : </span><span>${themeList.jenre}</span> | <span>추천인원 : </span><span>${themeList.pRecommendMin}~${themeList.pRecommendMax}인</span><br>
+									<span>난이도 : </span><span>${themeList.levels}</span> | <span>플레이타임 : </span><span>${themeList.playTime}분</span><br>
+									<span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br> <span>유형
+										: </span><span>${themeList.themeType}</span> | <span>활동성 : </span><span>${themeList.activity}</span>
+
+								</div>
 							</div>
-						</div>
-					</c:forEach>
+						</c:forEach>
 
 
 
-					<!-- //테마 반복영역 -->
+						<!-- //테마 반복영역 -->
 
-				</div>
-
+					</div>
+				</c:if>
 
 
 			</div>

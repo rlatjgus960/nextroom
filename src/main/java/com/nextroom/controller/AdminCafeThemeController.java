@@ -49,13 +49,25 @@ public class AdminCafeThemeController {
 		return "admin/cafeModifyForm";
 	}
 
+	// 카페 수정
+	@RequestMapping("/cafe/modify")
+	public String themeModify(@ModelAttribute CafeVo cafeVo, HttpSession session) {
+		System.out.println("cafeModify");
+
+		cafeService.cafeModify(cafeVo);
+
+		int cafeNo = ((UserVo) session.getAttribute("authUser")).getCafeNo();
+
+		return "redirect:/cafe/" + cafeNo;
+	}
+
 	// 관리자페이지 테마 관리 리스트
 	@RequestMapping("/{cafeNo}/themeList")
 	public String themeList(@PathVariable int cafeNo, Model model) {
 		System.out.println("themeList");
-		
+
 		model.addAttribute("themeList", cafeService.getCafeTheme(cafeNo));
-		
+
 		return "admin/themeList";
 	}
 
@@ -70,15 +82,14 @@ public class AdminCafeThemeController {
 	@RequestMapping("/theme/modifyForm/{themeNo}")
 	public String themeModifyForm(@PathVariable int themeNo, Model model, HttpSession session) {
 		System.out.println("themeModifyForm");
-		
-		int cafeNo = ((UserVo)session.getAttribute("authUser")).getCafeNo();
-		
-		
-		model.addAttribute("themeList",cafeService.getCafeTheme(cafeNo));
-		model.addAttribute("themeVo",cafeService.getOneTheme(themeNo));
+
+		int cafeNo = ((UserVo) session.getAttribute("authUser")).getCafeNo();
+
+		model.addAttribute("themeList", cafeService.getCafeTheme(cafeNo));
+		model.addAttribute("themeVo", cafeService.getOneTheme(themeNo));
 		model.addAttribute("genreList", cafeService.getGenreList());
-		model.addAttribute("priceList",cafeService.getOnePrice(themeNo));
-		model.addAttribute("timeList",cafeService.getOneTime(themeNo));
+		model.addAttribute("priceList", cafeService.getOnePrice(themeNo));
+		model.addAttribute("timeList", cafeService.getOneTime(themeNo));
 		return "admin/themeModifyForm";
 	}
 
@@ -93,14 +104,13 @@ public class AdminCafeThemeController {
 	@RequestMapping("/addTheme")
 	public String addTheme(@ModelAttribute CafeVo cafeVo) {
 		System.out.println("addTheme");
-		
+
 		int count = cafeService.addTheme(cafeVo);
-		
-		System.out.println(count+"건 저장되었습니다.");
+
+		System.out.println(count + "건 저장되었습니다.");
 
 		int cafeNo = cafeVo.getCafeNo();
-		return "redirect:/admin/"+cafeNo+"/themeList";
+		return "redirect:/admin/" + cafeNo + "/themeList";
 	}
-	
-	
+
 }

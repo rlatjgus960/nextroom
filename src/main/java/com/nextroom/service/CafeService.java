@@ -268,62 +268,75 @@ public class CafeService {
 	// 카페 상세페이지 출력용 가져오기
 	public Map<Object, Object> getCafeDetail(int cafeNo) {
 		System.out.println("[CafeService.getCafeDetail()]");
+		
+		Map<Object, Object> detailMap = new HashMap<Object, Object>();
+		
+		
 		CafeVo cafeVo = cafeDao.getCafe(cafeNo);
 		List<CafeVo> themeList = cafeDao.getCafeTheme(cafeNo);
 
 		// 카페 내 전체 테마 최대인원 최소인원 구하기
 		CafeVo minMaxVo = cafeDao.getMinMaxP(cafeNo);
-		int min = minMaxVo.getMinPMin();
-		int max = minMaxVo.getMaxPMax();
+		System.out.println(minMaxVo);
 
-		List<PriceVo> headCountList = new ArrayList<PriceVo>();
-		for (int j = min; j <= max; j++) {
-			PriceVo headCountVo = new PriceVo();
-			headCountVo.setHeadCount(j);
-			headCountList.add(headCountVo);
-		}
+		if (minMaxVo != null) {
+			int min = minMaxVo.getMinPMin();
+			int max = minMaxVo.getMaxPMax();
+			System.out.println("min:" + min + " max:" + max);
 
-		List<Object> allPriceList = new ArrayList<Object>();
-
-		System.out.println("min max 가져옴");
-
-		for (int i = 0; i < themeList.size(); i++) {
-
-			int themeNo = themeList.get(i).getThemeNo();
-
-			System.out.println("themeNo 가져온 후");
-			System.out.println(themeNo);
-
-			List<PriceVo> priceList = new ArrayList<PriceVo>();
-
+			List<PriceVo> headCountList = new ArrayList<PriceVo>();
 			for (int j = min; j <= max; j++) {
+				PriceVo headCountVo = new PriceVo();
+				headCountVo.setHeadCount(j);
+				headCountList.add(headCountVo);
+			}
 
-				PriceVo priceVo = new PriceVo();
-				priceVo.setThemeNo(themeNo);
-				priceVo.setHeadCount(j);
+			List<Object> allPriceList = new ArrayList<Object>();
 
-				Integer price = cafeDao.getPriceOne(priceVo);
+			System.out.println("min max 가져옴");
 
-				if (price != null) {
-					int intPrice = (int) price;
-					priceVo.setPrice(intPrice);
-					priceList.add(priceVo);
+			for (int i = 0; i < themeList.size(); i++) {
 
-				} else {
+				int themeNo = themeList.get(i).getThemeNo();
 
-					priceVo.setPrice(0);
-					priceList.add(priceVo);
+				System.out.println("themeNo 가져온 후");
+				System.out.println(themeNo);
+
+				List<PriceVo> priceList = new ArrayList<PriceVo>();
+
+				for (int j = min; j <= max; j++) {
+
+					PriceVo priceVo = new PriceVo();
+					priceVo.setThemeNo(themeNo);
+					priceVo.setHeadCount(j);
+
+					Integer price = cafeDao.getPriceOne(priceVo);
+
+					if (price != null) {
+						int intPrice = (int) price;
+						priceVo.setPrice(intPrice);
+						priceList.add(priceVo);
+
+					} else {
+
+						priceVo.setPrice(0);
+						priceList.add(priceVo);
+
+					}
 
 				}
+				allPriceList.add(priceList);
 
+				// priceMap.put("allPriceList", allPriceList);
 			}
-			allPriceList.add(priceList);
 
-			// priceMap.put("allPriceList", allPriceList);
+			System.out.println("카페서비스 allPriceList :" + allPriceList);
+			System.out.println("카페서비스 headCountList :" + headCountList);
+			
+			detailMap.put("allPriceList", allPriceList);
+			detailMap.put("headCountList", headCountList);
+
 		}
-
-		System.out.println("카페서비스 allPriceList :" + allPriceList);
-		System.out.println("카페서비스 headCountList :" + headCountList);
 
 		// 최소인원부터 최대인원까지 반복문 돌려서 테마별 가격 가져오기
 
@@ -349,12 +362,10 @@ public class CafeService {
 		// System.out.println("priceMap : " + priceMap);
 //		System.out.println("priceAllList : " + priceAllList);
 
-		Map<Object, Object> detailMap = new HashMap<Object, Object>();
+		
 		detailMap.put("cafeVo", cafeVo);
 		detailMap.put("themeList", themeList);
 //		detailMap.put("priceAllList", priceAllList);
-		detailMap.put("allPriceList", allPriceList);
-		detailMap.put("headCountList", headCountList);
 		detailMap.put("inteList", inteList);
 
 		return detailMap;
@@ -526,8 +537,60 @@ public class CafeService {
 		map.put("region", region);
 
 		List<CafeVo> cafeList = cafeDao.cafeList(map);
-		
+
 		return cafeList;
+	}
+
+	// 카페 수정
+	public int cafeModify(CafeVo cafeVo) {
+		
+		cafeVo.setPrintAddress(cafeVo.getAddress()+" "+cafeVo.getAddressDetail());
+		
+		
+		MultipartFile file = cafeVo.getCafeImgFile();
+		System.out.println(file);
+		
+		long fileSize = file.getSize();
+		System.out.println("fileSize " + fileSize);
+		
+		if (fileSize > 0) {
+
+			String saveDir = "C:\\javaStudy\\upload\\";
+
+			// 원파일이름
+			String orgName = file.getOriginalFilename();
+
+			// 확장자
+			String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+
+			// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+
+			// 파일패스
+			String filePath = saveDir + "\\" + saveName;
+
+			// 파일 서버하드디스크에 저장
+			try {
+				byte[] fileData = file.getBytes();
+				OutputStream out = new FileOutputStream(filePath);
+				BufferedOutputStream bout = new BufferedOutputStream(out);
+
+				bout.write(fileData);
+				bout.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			cafeVo.setCafeImg(saveName);
+			
+			// 로고 경로, 블로그 타이틀 업데이트
+			return cafeDao.themeModify_basic(cafeVo);
+
+		} else {
+			return cafeDao.themeModify_noFile(cafeVo);
+		}
 	}
 
 }
