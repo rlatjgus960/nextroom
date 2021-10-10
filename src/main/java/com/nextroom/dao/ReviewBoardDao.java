@@ -33,10 +33,6 @@ public class ReviewBoardDao {
 	public List<ReviewBoardVo> reviewBoardList(String keyword,int startRnum, int endRnum){
 		System.out.println("[Dao.reviewBoardList]");
 		
-		//서비스에서 넘어온 리스트 -> sqlSession으로 토스
-		//List<ReviewBoardVo> reviewBoardList = sqlSession.selectList("reviewBoard.reviewBoardList",keyword);
-		//System.out.println(reviewBoardList);
-		
 		
 		Map<String, Object> pMap = new HashMap<String, Object>();
 		
@@ -46,6 +42,37 @@ public class ReviewBoardDao {
 		System.out.println(pMap);
 		
 		return sqlSession.selectList("reviewBoard.reviewBoardList",pMap);
+	}
+	
+	//2021.10.10 by 원호
+	//후기게시판 리스트
+	public List<ReviewBoardVo> reviewBoardHot(String keyword,int startRnum, int endRnum){
+		System.out.println("[Dao.reviewBoardList]");
+		
+		
+		Map<String, Object> pMap = new HashMap<String, Object>();
+		
+		pMap.put("startRnum", startRnum);
+		pMap.put("endRnum", endRnum);
+		pMap.put("keyword", keyword);
+		System.out.println(pMap);
+		
+		return sqlSession.selectList("reviewBoard.reviewBoardHot",pMap);
+	}
+	
+	//2021.09.30 by 원호
+	//후기게시판 리스트
+	public List<ReviewBoardVo> reviewBoardLike(String keyword,int startRnum, int endRnum){
+		System.out.println("[Dao.reviewBoardList]");
+		
+		Map<String, Object> pMap = new HashMap<String, Object>();
+		
+		pMap.put("startRnum", startRnum);
+		pMap.put("endRnum", endRnum);
+		pMap.put("keyword", keyword);
+		System.out.println(pMap);
+		
+		return sqlSession.selectList("reviewBoard.reviewBoardLike",pMap);
 	}
 	
 	

@@ -104,7 +104,7 @@ public class Board {
 		return count;
 	}
 	
-	//2021.10.07 by 원호
+	//2021.10.10 by 원호
 	//자유게시판 리스트,페이징(인기순)
 	@RequestMapping(value = "/freeCommunity/hot", method = {RequestMethod.GET, RequestMethod.POST})
 	public String freeBoardhot(Model model, 
@@ -123,7 +123,7 @@ public class Board {
 		return "board/freeCommunity";
 	}
 
-	//2021.10.07 by 원호
+	//2021.10.10 by 원호
 	//자유게시판 리스트,페이징(조회순)
 	@RequestMapping(value = "/freeCommunity/Like", method = {RequestMethod.GET, RequestMethod.POST})
 	public String freeBoardLike(Model model, 
@@ -181,6 +181,43 @@ public class Board {
 		return "board/reviewBoard";
 	}
 	
+	//2021.10.10 by 원호
+	//후기게시판 리스트,페이징(인기)
+	@RequestMapping(value = "/reviewBoard/hot", method = {RequestMethod.GET, RequestMethod.POST})
+	public String reviewBoardHot(Model model, 
+							  @RequestParam(value="keyword", required = false, defaultValue = "") String keyword,
+							  @RequestParam(value="crtPage", required = false, defaultValue = "1")int crtPage) {
+		System.out.println("reviewBoard");
+		
+		//사용자가 list요청
+		Map<String, Object> reviewBoardList = reviewBoardService.reviewHot(keyword, crtPage);
+		System.out.println("[reviewController.reviewBoard]:" + reviewBoardList);
+		
+		//jsp로 보냄
+		model.addAttribute("reviewBoardList", reviewBoardList);
+		System.out.println("xml갔다온거:" + reviewBoardList);
+		
+		return "board/reviewBoard";
+	}
+	
+	//2021.10.10 by 원호
+	//후기게시판 리스트,페이징(조회)
+	@RequestMapping(value = "/reviewBoard/Like", method = {RequestMethod.GET, RequestMethod.POST})
+	public String reviewBoardLike(Model model, 
+							  @RequestParam(value="keyword", required = false, defaultValue = "") String keyword,
+							  @RequestParam(value="crtPage", required = false, defaultValue = "1")int crtPage) {
+		System.out.println("reviewBoard");
+		
+		//사용자가 list요청
+		Map<String, Object> reviewBoardList = reviewBoardService.reviewLike(keyword, crtPage);
+		System.out.println("[reviewController.reviewBoard]:" + reviewBoardList);
+		
+		//jsp로 보냄
+		model.addAttribute("reviewBoardList", reviewBoardList);
+		System.out.println("xml갔다온거:" + reviewBoardList);
+		
+		return "board/reviewBoard";
+	}
 	
 	
 	//후기글쓰기폼

@@ -50,6 +50,103 @@
 			and rn <= #{endRnum}
 		]]>
 	</select>
+	
+	<!-- 2021.09.30 by 원호 -->
+	<!-- 후기게시판 리스트 -->
+	<select id = "reviewBoardHot" parameterType = "Map" resultType = "ReviewBoardVo">
+		<![CDATA[
+			select  rt.rn,
+					rt.reviewNo,
+			        rt.reviewTitle,
+			        rt.nickname,
+			        rt.reviewhit,
+			        rt.reviewLike,
+			        rt.reviewregdate,
+			        rt.userno,
+			        rt.reviewImg,
+			        rt.rating
+			from (select  rownum rn,
+						  ot.reviewNo,
+			              ot.reviewTitle,
+			              ot.nickname,
+			              ot.reviewhit,
+			              ot.reviewLike,
+			              ot.reviewregdate,
+			              ot.userno,
+			              ot.reviewImg,
+			              ot.rating
+			      from (select  r.reviewNo,
+			      				r.reviewTitle,
+			                    u.nickname,
+			                    r.reviewhit,
+			                    r.reviewLike,
+			                    to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,
+			                    r.userno,
+			                    r.reviewImg,
+			                    r.rating
+			            from review r, users u
+			            where r.userNo = u.userNo
+		]]>
+		
+		 <if test=" keyword != null and keyword !='' ">
+			and r.reviewTitle || u.nickname like '%' || #{keyword} ||'%'
+		</if>
+		
+		<![CDATA[
+						order by r.reviewLike desc)ot)rt
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
+		]]>
+	</select>
+	
+	
+	<!-- 2021.09.30 by 원호 -->
+	<!-- 후기게시판 리스트 -->
+	<select id = "reviewBoardLike" parameterType = "Map" resultType = "ReviewBoardVo">
+		<![CDATA[
+			select  rt.rn,
+					rt.reviewNo,
+			        rt.reviewTitle,
+			        rt.nickname,
+			        rt.reviewhit,
+			        rt.reviewLike,
+			        rt.reviewregdate,
+			        rt.userno,
+			        rt.reviewImg,
+			        rt.rating
+			from (select  rownum rn,
+						  ot.reviewNo,
+			              ot.reviewTitle,
+			              ot.nickname,
+			              ot.reviewhit,
+			              ot.reviewLike,
+			              ot.reviewregdate,
+			              ot.userno,
+			              ot.reviewImg,
+			              ot.rating
+			      from (select  r.reviewNo,
+			      				r.reviewTitle,
+			                    u.nickname,
+			                    r.reviewhit,
+			                    r.reviewLike,
+			                    to_char(r.reviewregdate, 'yy-mm-dd') reviewregdate,
+			                    r.userno,
+			                    r.reviewImg,
+			                    r.rating
+			            from review r, users u
+			            where r.userNo = u.userNo
+		]]>
+		
+		 <if test=" keyword != null and keyword !='' ">
+			and r.reviewTitle || u.nickname like '%' || #{keyword} ||'%'
+		</if>
+		
+		<![CDATA[
+						order by r.reviewHit desc)ot)rt
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
+		]]>
+	</select>
 
 	<!-- 2021.10.01 by 원호 -->
 	<!-- 전체 게시물 갯수 구하기 -->
