@@ -217,7 +217,7 @@ public class PartyService {
 		//////////////////////////////////////////////
 		
 		//페이징 갯수와 페이징버튼을 위한 전체게시물갯수
-		int totalCount = partyDao.selectTotalCount();
+		int totalCount = partyDao.selectTotalCount(keyword, partyView);
 		
 		//페이지당 버튼갯수
 		int pageBtnCount = 5;

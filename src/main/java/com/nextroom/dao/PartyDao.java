@@ -107,9 +107,15 @@ public class PartyDao {
 	
 	//21-10-08 by대니
 	//페이징 갯수와 페이징버튼을 위한 전체게시물갯수
-	public int selectTotalCount() {
+	public int selectTotalCount(String keyword, String partyView) {
 		
-		return sqlSession.selectOne("party.selectTotalCount");
+		Map<String, Object> totalCountMap = new HashMap<String, Object>();
+		
+		totalCountMap.put("keyword", keyword);
+		totalCountMap.put("partyView", partyView);
+		
+		
+		return sqlSession.selectOne("party.selectTotalCount", totalCountMap);
 	}
 	
 	// 21-10-01~21-10-02 by 대니

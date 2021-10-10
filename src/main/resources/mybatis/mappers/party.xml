@@ -176,10 +176,29 @@
 	</select>
 	
 	<!-- 페이징 갯수와 페이징버튼을 위한 전체게시물갯수 -->
-	<select id="selectTotalCount" resultType="int">
+	<select id="selectTotalCount" parameterType="map" resultType="int">
 		<![CDATA[
 			select count(*)
-			from party			
+			from party p , cafe c , theme t
+            where p.cafeNo = c.cafeNo
+		    and c.cafeNo = t.cafeNo
+		    and t.themeNo = p.themeNo	
+		]]>
+			
+		<choose>
+			<when test="partyView.equals('모집완료') and keyword != null and keyword !='' " >
+				and c.cafename || t.themename like '%' || #{keyword} || '%'
+				and p.partyState = '모집완료'			
+			</when>
+			<when test="partyView.equals('모집중') and keyword != null and keyword !='' ">
+				and c.cafename || t.themename like '%' || #{keyword} || '%'
+				and p.partyState = '모집중'	
+			</when>
+			<otherwise>
+				and c.cafename || t.themename like '%' || #{keyword} || '%'				
+			</otherwise>
+		</choose>	
+		<![CDATA[
 		]]>
 	</select>
 	
