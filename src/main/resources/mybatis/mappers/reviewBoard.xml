@@ -317,6 +317,100 @@
 	</select>
 	
 	
+	<select id = "boardHot" parameterType = "Map" resultType = "FreeBoardVo">
+		<![CDATA[
+			select  rt.rn,
+			        rt.boardNo,
+			        rt.boardtitle,
+			        rt.boardcontent,
+			        rt.regdate,
+			        rt.boardhit,
+			        rt.boardlike,
+			        rt.boardimg,
+			        rt.userno,
+			        rt.nickname
+			from (select  rownum rn,
+			              ot.boardNo,
+			              ot.boardtitle,
+			              ot.boardcontent,
+			              ot.regdate,
+			              ot.boardhit,
+			              ot.boardlike,
+			              ot.boardimg,
+			              ot.nickname,
+			              ot.userno
+			      from (select  b.boardNo,
+			                    b.boardtitle,
+			                    b.boardcontent,
+			                    to_char(b.regdate, 'yy-mm-dd') as regdate,
+			                    b.boardHit,             
+			                    b.boardlike,
+			                    b.boardimg,
+			                    u.nickname,
+			                    b.userno
+			            from freeboard b, users u
+			            where b.userNo = u.userNo
+		]]>
+		
+		 <if test=" keyword != null and keyword !='' ">
+			and b.boardTitle || u.nickname like '%' || #{keyword} ||'%'
+		</if>
+		
+		<![CDATA[
+						order by b.boardLike desc)ot)rt
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
+		]]>
+	</select>
+	
+	
+	<select id = "boardLike" parameterType = "Map" resultType = "FreeBoardVo">
+		<![CDATA[
+			select  rt.rn,
+			        rt.boardNo,
+			        rt.boardtitle,
+			        rt.boardcontent,
+			        rt.regdate,
+			        rt.boardhit,
+			        rt.boardlike,
+			        rt.boardimg,
+			        rt.userno,
+			        rt.nickname
+			from (select  rownum rn,
+			              ot.boardNo,
+			              ot.boardtitle,
+			              ot.boardcontent,
+			              ot.regdate,
+			              ot.boardhit,
+			              ot.boardlike,
+			              ot.boardimg,
+			              ot.nickname,
+			              ot.userno
+			      from (select  b.boardNo,
+			                    b.boardtitle,
+			                    b.boardcontent,
+			                    to_char(b.regdate, 'yy-mm-dd') as regdate,
+			                    b.boardHit,             
+			                    b.boardlike,
+			                    b.boardimg,
+			                    u.nickname,
+			                    b.userno
+			            from freeboard b, users u
+			            where b.userNo = u.userNo
+		]]>
+		
+		 <if test=" keyword != null and keyword !='' ">
+			and b.boardTitle || u.nickname like '%' || #{keyword} ||'%'
+		</if>
+		
+		<![CDATA[
+						order by b.boardHit desc)ot)rt
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
+		]]>
+	</select>
+	
+	
 	<!-- 2021.10.01 by 원호 -->
 	<!-- 전체 게시물 갯수 구하기 -->
 		<select id = "totalCnt" parameterType = "String" resultType = "int">

@@ -201,6 +201,37 @@ public class ReviewBoardDao {
 		return sqlSession.selectList("reviewBoard.boardList",pMap);
 	}
 	
+	//2021.10.10 by 원호
+	//자유게시판 인기순
+	public List<FreeBoardVo> boardHot(String keyword,int startRnum, int endRnum){
+		System.out.println("[Dao.boardList]");
+		
+		
+		Map<String, Object> pMap = new HashMap<String, Object>();
+		
+		pMap.put("startRnum", startRnum);
+		pMap.put("endRnum", endRnum);
+		pMap.put("keyword", keyword);
+		System.out.println(pMap);
+		
+		return sqlSession.selectList("reviewBoard.boardHot",pMap);
+	}
+	
+	//2021.10.10 by 원호
+	//자유게시판 조회순
+	public List<FreeBoardVo> boardLike(String keyword,int startRnum, int endRnum){
+		System.out.println("[Dao.boardList]");
+		
+		
+		Map<String, Object> pMap = new HashMap<String, Object>();
+		
+		pMap.put("startRnum", startRnum);
+		pMap.put("endRnum", endRnum);
+		pMap.put("keyword", keyword);
+		System.out.println(pMap);
+		
+		return sqlSession.selectList("reviewBoard.boardLike",pMap);
+	}
 	//2021.10.07 by 원호
 	//전체 게시물 갯수 구하기
 	public int totalCnt(String keyword) {
