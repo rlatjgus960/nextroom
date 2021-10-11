@@ -96,7 +96,7 @@
                                     <th>카페 / 테마</th>
                                     <th>날짜 / 시간</th>
                                     <th>인원</th>
-                                    <th>지원현황</th>
+                                    <th>모집상태</th>
                                 </tr>
                             </thead>
                             <tbody class="list_hover">

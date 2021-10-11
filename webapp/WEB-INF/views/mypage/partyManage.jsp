@@ -85,21 +85,22 @@
 
 					<div id="party_table_select">
 						<select name="partyJoinSelect">
+							<option value="makeParty" selected="">전체보기</option>
 							<option value="makeParty">내가 등록한 파티</option>
 							<option value="joinParty">내가 참여한 파티</option>
-							<option value="pastJoin">지난 파티 활동내역</option>
 						</select>
 					</div>
 
 					<div id="partyJoin_detail_table">
 						<table>
 							<colgroup>
-								<col style="width: 110px;">
-								<col style="width: 145px;">
-								<col style="width: 190px;">
-								<col style="width: 265px;">
-								<col style="width: 190px;">
+								<col style="width: 70px;">
+								<col style="width: 100px;">
 								<col style="width: 150px;">
+								<col style="width: 380px;">
+								<col style="width: 170px;">
+								<col style="width: 80px;">
+								<col style="width: 100px;">
 							</colgroup>
 							<tr>
 								<th>No</th>
@@ -108,6 +109,7 @@
 								<th>카페 / 테마</th>
 								<th>날짜</th>
 								<th>인원</th>
+								<th>모집상태</th>
 							</tr>
 
 							<tr>
@@ -116,9 +118,10 @@
 										src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px"
 										height="90px"></a></td>
 								<td>서울 신논현</td>
-								<td>넥스트에디션 / 인터프리터</td>
+								<td>넥스트에디션넥스트에디션 / 인터프리터인터프리터</td>
 								<td>2021-08-27 14:20</td>
 								<td>2 / 4</td>
+								<td>모집완료</td>
 							</tr>
 							<tr>
 								<td>2</td>
@@ -129,6 +132,7 @@
 								<td>넥스트에디션 / 인터프리터</td>
 								<td>2021-08-27 14:20</td>
 								<td>2 / 4</td>
+								<td>모집중</td>
 							</tr>
 							<tr>
 								<td>3</td>
@@ -139,6 +143,7 @@
 								<td>넥스트에디션 / 인터프리터</td>
 								<td>2021-08-27 14:20</td>
 								<td>2 / 4</td>
+								<td>모집중</td>
 							</tr>
 							<tr>
 								<td>4</td>
@@ -149,6 +154,7 @@
 								<td>넥스트에디션 / 인터프리터</td>
 								<td>2021-08-27 14:20</td>
 								<td>2 / 4</td>
+								<td>모집중</td>
 							</tr>
 							<tr>
 								<td>5</td>
@@ -159,6 +165,7 @@
 								<td>넥스트에디션 / 인터프리터</td>
 								<td>2021-08-27 14:20</td>
 								<td>2 / 4</td>
+								<td>모집완료</td>
 							</tr>
 
 						</table>
