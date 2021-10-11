@@ -126,7 +126,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										
 										<div id="wrap_up_down">
 											<a href="${pageContext.request.contextPath }/board/freeCommunity" class="back_button">목 록</a>
-											<a  id="like" class="up_down" name = "${freeBoardVo.boardLike }">추 천</a>
+											<a id="like" class="up_down" value="${freeBoardVo.boardNo}">추 천</a>
 											<a href="" class="up_down">반 대</a>
 										</div>
 
@@ -253,13 +253,12 @@ $("#delete_button").on("click", function() {
 		
 });
 
-
+//추천버튼 클릭시
 $("#like").on("click",function(){
 	console.log("추천 클릭")
+	console.log(this.value)
 	
-	var boardNo = ${freeBoardVo.boardNo}
-	var boardLike = $("#like").attr('name');
-	console.log(boardLike);
+	var boardNo = ${freeBoardVo.boardNo};
 	
 	const result = confirm("게시물을 추천하시겠습니까?");
 	if(result) {
@@ -270,8 +269,7 @@ $("#like").on("click",function(){
 			url : "${pageContext.request.contextPath }/board/readLike",		
 			type : "post",
 // 			contentType : "application/json",
-			data : {boardNo: boardNo
-					boardLike: boardLike},
+			data : {boardNo: boardNo},
 
 // 			dataType : "json",
 			success : function(count){
