@@ -571,4 +571,15 @@
 				) ]]>
 	</insert>
 	
+	<!-- 2021.10.07 by 원호 -->
+	<!-- 자유 게시판 조회수올리기 -->
+	<update id="readLike" parameterType="FreeBoardVo">
+		<![CDATA[
+			update freeboard
+			set boardLike = boardLike+1
+			where boardno = #{boardno}
+			and boardLike = #{boardLike}
+		]]>
+	</update>
+	
 </mapper>

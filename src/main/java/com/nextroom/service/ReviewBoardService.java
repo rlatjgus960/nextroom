@@ -343,7 +343,7 @@ public class ReviewBoardService {
 		
 		
 		// ******************** 후기게시판 이미지 처리 ********************//
-		MultipartFile file = reviewBoardVo.getReviewImgFile();
+		/*MultipartFile file = reviewBoardVo.getReviewImgFile();
 		long fileSize = file.getSize();
 		System.out.println("fileSize " + fileSize);
 
@@ -397,10 +397,10 @@ public class ReviewBoardService {
 			//이미지 업로드 하지 않고 글만 쓰는 경우
 			reviewCount = reviewBoardDao.modify(reviewBoardVo);
 			
-		}
+		}*/
 		
 		
-		return reviewCount;
+		return reviewBoardDao.modify(reviewBoardVo);
 	}
 	
 	
@@ -477,7 +477,7 @@ public class ReviewBoardService {
 			System.out.println("ReviewInsert 후 Vo : " + freeBoardVo);
 
 			
-		} else {
+		} else if(fileSize == 0){
 			//이미지 업로드 하지 않고 글만 쓰는 경우
 			boardCount = reviewBoardDao.boardInsert2(freeBoardVo);
 			
@@ -489,13 +489,13 @@ public class ReviewBoardService {
 	
 	//2021.10.07 by 원호
 	//자유게시판 글 등록(멀티 이미지)
-/*	public int boardWrite(FreeBoardVo freeBoardVo) {
+	public int boardWriteMulti(FreeBoardVo freeBoardVo) {
 		System.out.println("Service.reviewWrite");
 		System.out.println("[Service Vo정보]" + freeBoardVo);
 		
 		// ******************** 자유게시판 이미지 처리 ********************/
-/*		List<FreeBoardImgVo> MultiList = new ArrayList<>();
-		List<MultipartFile> MultiImg = freeBoardVo.getBoardImgFile();
+		List<FreeBoardImgVo> MultiList = new ArrayList<>();
+		List<MultipartFile> MultiImg = freeBoardVo.getMultiImgFile();
 		
 		int count = 0;
 		
@@ -553,7 +553,7 @@ public class ReviewBoardService {
 		}
 		
 		return count;
-	}*/
+	}
 	
 
 	
@@ -754,6 +754,15 @@ public class ReviewBoardService {
 		
 		return count;
 		
+	}
+	
+	//2021.10.11 by 원호
+	//게시글 추천
+	public int readLike(FreeBoardVo freeBoardVo) {
+		System.out.println("서비스 추천");
+		int like = reviewBoardDao.readLike(freeBoardVo);
+		System.out.println(like);
+		return like;
 	}
 
 }

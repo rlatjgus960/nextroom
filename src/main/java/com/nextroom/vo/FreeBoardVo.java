@@ -178,8 +178,5 @@ public class FreeBoardVo {
 	
 	
 	
-
-	
-	
 	
 }

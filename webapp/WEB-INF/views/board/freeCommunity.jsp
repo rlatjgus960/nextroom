@@ -51,7 +51,6 @@
 								<li><a class="" href="${pageContext.request.contextPath }/board/reviewBoard">후기게시판</a></li>
 								<li>양도/교환</li>
 								<li>공지사항</li>
-								<li>FAQ</li>		
 							</ul>
 						</div>
 					</div>

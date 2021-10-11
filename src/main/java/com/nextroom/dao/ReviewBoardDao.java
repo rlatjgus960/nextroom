@@ -306,4 +306,12 @@ public class ReviewBoardDao {
 		return boardNo;
 	}
 	
+	//2021.10.10 by 원호
+	//게시글 추천
+	public int readLike(FreeBoardVo freeBoardVo) {
+		System.out.println("다오추천");
+		int like = sqlSession.update("reviewBoard.readLike", freeBoardVo);
+		System.out.println(like);
+		return like;
+	}
 }
