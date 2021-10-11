@@ -83,10 +83,10 @@ public class Board {
 		System.out.println("[reviewController.freeRead]");
 		System.out.println(boardNo);
 		
-		FreeBoardVo freewBoardVo = reviewBoardService.freeRead(boardNo);
-		System.out.println(freewBoardVo);
+		FreeBoardVo freeBoardVo = reviewBoardService.freeRead(boardNo);
+		System.out.println(freeBoardVo);
 		
-		model.addAttribute("freewBoardVo",freewBoardVo);
+		model.addAttribute("freeBoardVo",freeBoardVo);
 		
 		return "board/freeRead";
 	}
@@ -142,6 +142,22 @@ public class Board {
 		return "board/freeCommunity";
 	}
 
+	
+	//2021.10.11 by 원호
+	//게시글 추천
+	@ResponseBody
+	@RequestMapping(value = "/readLike", method = {RequestMethod.GET, RequestMethod.POST})
+	public int like(FreeBoardVo freeBoardVo) {
+		System.out.println("컨트롤러 게시글 추천");
+		
+		int like = freeBoardVo.getBoardLike();
+		System.out.println(like);
+		
+		like = reviewBoardService.readLike(freeBoardVo);
+		
+		
+		return like;
+	}
 //////////////////////////////////////////////////////////////////
 /*후기 게시판*/
 	//2021.10.02 by 원호

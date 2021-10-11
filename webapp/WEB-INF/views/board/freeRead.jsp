@@ -76,9 +76,9 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 							<ul>							
 								<a href="${pageContext.request.contextPath }/board/freeCommunity" class="submit_button">목 록</a>	
 								
-								<c:if test="${authUser.userNo ==  freewBoardVo.userNo}">
-									<a id="delete_button" class="submit_button" data-boardno="${freewBoardVo.boardNo}">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
-									<a href="${pageContext.request.contextPath }/board/freeModify?boardNo=${freewBoardVo.boardNo}" class="submit_button">수 정</a>
+								<c:if test="${authUser.userNo ==  freeBoardVo.userNo}">
+									<a id="delete_button" class="submit_button" data-boardno="${freeBoardVo.boardNo}">삭 제</a>	<!-- 글 삭제(작성자만 보임) -->
+									<a href="${pageContext.request.contextPath }/board/freeModify?boardNo=${freeBoardVo.boardNo}" class="submit_button">수 정</a>
 								</c:if>
 								
 							</ul>
@@ -91,13 +91,13 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 						<form action="" method="get" class="form_area">
 
 							<div>
-								<h3>${freewBoardVo.boardTitle}</h3>
+								<h3>${freeBoardVo.boardTitle}</h3>
 							</div>
 
 							<div class="user_information">
-								<span>작성자 : ${freewBoardVo.nickname}</span>								
-								<span>조회 : ${freewBoardVo.boardHit}</span>
-								<span>작성일 : ${freewBoardVo.regDate}</span>
+								<span>작성자 : ${freeBoardVo.nickname}</span>								
+								<span>조회 : ${freeBoardVo.boardHit}</span>
+								<span>작성일 : ${freeBoardVo.regDate}</span>
 							</div>
 							
 							<!-- 콘텐츠 -->
@@ -105,19 +105,20 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 								<!-- 콘텐츠 메인정보 -->
 								<div id=main_informa>
 									<div id="img_area" class="board_content">
-									
+										
 										<!-- 이미지가 있을 경우 -->
-										<c:if test="${freewBoardVo.boardImg != null}">
-											<img src="${pageContext.request.contextPath }/upload/${freewBoardVo.boardImg}">
+										<c:if test="${freeBoardVo.boardImg != null}">
+												<img src="${pageContext.request.contextPath }/upload/${freeBoardVo.boardImg}">
+											
 											<div id="text_area">
-												<span>${freewBoardVo.boardContent}</span>
+												<span>${freeBoardVo.boardContent}</span>
 											</div>
 										</c:if>
 										
 										<!-- 이미지가 없을 경우 텍스트만 출력 -->
-										<c:if test="${freewBoardVo.boardImg == null}">
+										<c:if test="${freeBoardVo.boardImg == null}">
 											<div id="text_area" style="position:relative; margin-top:20px;">
-												<span>${freewBoardVo.boardContent}</span>
+												<span>${freeBoardVo.boardContent}</span>
 											</div>
 										</c:if>
 										
@@ -125,7 +126,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										
 										<div id="wrap_up_down">
 											<a href="${pageContext.request.contextPath }/board/freeCommunity" class="back_button">목 록</a>
-											<a href="" class="up_down">추 천</a>
+											<a  id="like" class="up_down" name = "${freeBoardVo.boardLike }">추 천</a>
 											<a href="" class="up_down">반 대</a>
 										</div>
 
@@ -211,7 +212,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 
 <script type="text/javascript">
 
-document.title = '${freewBoardVo.boardTitle}';
+document.title = '${freeBoardVo.boardTitle}';
 
 
 /*게시글의 삭제버튼을 눌렀을때*/
@@ -253,6 +254,41 @@ $("#delete_button").on("click", function() {
 });
 
 
+$("#like").on("click",function(){
+	console.log("추천 클릭")
+	
+	var boardNo = ${freeBoardVo.boardNo}
+	var boardLike = $("#like").attr('name');
+	console.log(boardLike);
+	
+	const result = confirm("게시물을 추천하시겠습니까?");
+	if(result) {
+		
+		//ajax서버에 요청
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath }/board/readLike",		
+			type : "post",
+// 			contentType : "application/json",
+			data : {boardNo: boardNo
+					boardLike: boardLike},
+
+// 			dataType : "json",
+			success : function(count){
+				/*성공시 처리해야될 코드 작성*/
+				console.log("추천완료");
+				${freeBoardVo.boardLike+1}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+			
+		});
+		
+	}
+
+});
 
 
 </script>
