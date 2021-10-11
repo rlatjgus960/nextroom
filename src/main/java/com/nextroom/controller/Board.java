@@ -51,7 +51,7 @@ public class Board {
 		
 		
 		System.out.println(freeBoardVo);
-		reviewBoardService.boardWrite(freeBoardVo);
+		reviewBoardService.boardWriteMulti(freeBoardVo);
 		
 		
 		return "redirect:/board/freeCommunity";

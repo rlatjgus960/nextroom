@@ -15,7 +15,7 @@ public class FreeBoardVo {
 	private int boardHit;
 	private int boardLike;
 	private String boardImg;
-    private MultipartFile boardImgFile;
+    private List<MultipartFile> boardImgFile;
 	private String nickname;
 	
 	//2021.10.10 추가
@@ -29,7 +29,7 @@ public class FreeBoardVo {
 
 
 	public FreeBoardVo(int boardNo, int userNo, String boardTitle, String boardContent, String regDate, int boardHit,
-			int boardLike, String boardImg, MultipartFile boardImgFile, String nickname,
+			int boardLike, String boardImg, List<MultipartFile> boardImgFile, String nickname,
 			List<MultipartFile> multiImgFile, List<FreeBoardImgVo> multiList) {
 		super();
 		this.boardNo = boardNo;
@@ -127,12 +127,12 @@ public class FreeBoardVo {
 	}
 
 
-	public MultipartFile getBoardImgFile() {
+	public List<MultipartFile> getBoardImgFile() {
 		return boardImgFile;
 	}
 
 
-	public void setBoardImgFile(MultipartFile boardImgFile) {
+	public void setBoardImgFile(List<MultipartFile> boardImgFile) {
 		this.boardImgFile = boardImgFile;
 	}
 
@@ -174,6 +174,9 @@ public class FreeBoardVo {
 				+ boardLike + ", boardImg=" + boardImg + ", boardImgFile=" + boardImgFile + ", nickname=" + nickname
 				+ ", multiImgFile=" + multiImgFile + ", MultiList=" + MultiList + "]";
 	}
+
+
+
 
 	
 	

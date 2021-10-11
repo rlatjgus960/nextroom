@@ -413,7 +413,8 @@
 		]]>
 	</select>
 	
-	
+	<!-- 2021.10.10 by 원호 -->
+	<!-- 자유게시판 인기순 -->
 	<select id = "boardHot" parameterType = "Map" resultType = "FreeBoardVo">
 		<![CDATA[
 			select  rt.rn,
@@ -460,7 +461,8 @@
 		]]>
 	</select>
 	
-	
+	<!-- 2021.10.07 by 원호 -->
+	<!-- 자유게시판 조회순 -->
 	<select id = "boardLike" parameterType = "Map" resultType = "FreeBoardVo">
 		<![CDATA[
 			select  rt.rn,
