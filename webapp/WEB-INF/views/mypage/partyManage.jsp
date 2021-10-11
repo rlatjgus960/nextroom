@@ -111,62 +111,30 @@
 								<th>인원</th>
 								<th>모집상태</th>
 							</tr>
-
-							<tr>
-								<td>1</td>
-								<td><a href="${pageContext.request.contextPath }/party/partyRead"><img
-										src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px"
-										height="90px"></a></td>
-								<td>서울 신논현</td>
-								<td>넥스트에디션넥스트에디션 / 인터프리터인터프리터</td>
-								<td>2021-08-27 14:20</td>
-								<td>2 / 4</td>
-								<td>모집완료</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td><a href=""><img
-										src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px"
-										height="90px"></a></td>
-								<td>서울 신논현</td>
-								<td>넥스트에디션 / 인터프리터</td>
-								<td>2021-08-27 14:20</td>
-								<td>2 / 4</td>
-								<td>모집중</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td><a href=""><img
-										src="${pageContext.request.contextPath }/assets/image/party/pepe.jpg" width="80px"
-										height="90px"></a></td>
-								<td>서울 신논현</td>
-								<td>넥스트에디션 / 인터프리터</td>
-								<td>2021-08-27 14:20</td>
-								<td>2 / 4</td>
-								<td>모집중</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td><a href=""><img
-										src="${pageContext.request.contextPath }/assets/image/party/butterfly.jpg" width="80px"
-										height="90px"></a></td>
-								<td>서울 신논현</td>
-								<td>넥스트에디션 / 인터프리터</td>
-								<td>2021-08-27 14:20</td>
-								<td>2 / 4</td>
-								<td>모집중</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td><a href=""><img
-										src="${pageContext.request.contextPath }/assets/image/party/이연복.jpg" width="80px"
-										height="90px"></a></td>
-								<td>서울 신논현</td>
-								<td>넥스트에디션 / 인터프리터</td>
-								<td>2021-08-27 14:20</td>
-								<td>2 / 4</td>
-								<td>모집완료</td>
-							</tr>
+							<c:forEach items="${mypagePartyManage.partyManageList }" var="partyManageList" varStatus="status">
+								<tr>
+									<td><a href="${pageContext.request.contextPath }/party/partyRead?partyNo=${partyManageList.partyNo}">${partyManageList.partyNo} </a></td>
+									<td><a href="${pageContext.request.contextPath }/party/partyRead"><img
+											src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px"
+											height="90px"></a></td>
+									<td>${partyManageList.sidoDetail }</td>
+									<td>${partyManageList.cafeName } / ${partyManageList.themeName }</td>
+									<td>${partyManageList.reserveDate } / ${partyManageList.themeTime }</td>
+									<td>${partyManageList.userCount } / ${partyManageList.reservePerson }</td>
+									<td>${partyManageList.partyState }</td>
+								</tr>
+							</c:forEach>
+								<%-- <tr>
+									<td>2</td>
+									<td><a href=""><img
+											src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="80px"
+											height="90px"></a></td>
+									<td>서울 신논현</td>
+									<td>넥스트에디션 / 인터프리터</td>
+									<td>2021-08-27 14:20</td>
+									<td>2 / 4</td>
+									<td>모집중</td>
+								</tr> --%>
 
 						</table>
 					</div>

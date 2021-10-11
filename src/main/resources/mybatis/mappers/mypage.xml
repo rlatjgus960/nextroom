@@ -3,7 +3,24 @@
 
 <mapper namespace="mypage">
 
-	
+	<!-- 마이페이지 파티관리 -->
+	<select id="mypagePartyManage" parameterType="map" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[
+			select partyNo,
+			       userNo,
+			       reservedateno,
+			       to_char(reservedate, 'YY-MM-DD') reserveDate,
+			       cafeno,
+			       themeno,
+			       themeno,
+			       themetime,
+			       reserveperson,
+			       content,
+			       partyState
+			from party
+			where userno = #{userNo}
+		]]>
+	</select>
 	
 
 </mapper>

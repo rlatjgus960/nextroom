@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +50,7 @@ public class Mypage {
 	//21-10-11 by 대니
 	// 마이페이지 파티관리
 	@RequestMapping("/partyManage")
-	public String mypageParty(HttpSession session) {
+	public String mypageParty(HttpSession session, Model model) {
 		System.out.println("mypage/partyManage");
 		
 		// 세션(로그인한 사용자)의 번호
@@ -58,7 +59,9 @@ public class Mypage {
 		
 		Map<String, Object> mypagePartyManage = mypageService.mypagePartyManage(userNo);
 		
-		return null;
+		model.addAttribute("mypagePartyManage", mypagePartyManage);
+		
+		return "mypage/partyManage";
 	}
 
 	// 마이페이지 결제내역

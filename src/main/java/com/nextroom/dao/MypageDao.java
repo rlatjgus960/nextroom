@@ -24,9 +24,7 @@ public class MypageDao {
 		
 		partyManageListMap.put("userNo", userNo);
 		
-		sqlSession.selectList("mypage.mypagePartyManage", partyManageListMap);
 		
-		
-		return null;
+		return sqlSession.selectList("mypage.mypagePartyManage", partyManageListMap);
 	}
 }
