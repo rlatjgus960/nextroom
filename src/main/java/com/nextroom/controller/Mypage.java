@@ -1,6 +1,6 @@
 package com.nextroom.controller;
 
-import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,10 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.nextroom.service.CafeService;
+import com.nextroom.service.MypageService;
 import com.nextroom.vo.CafeVo;
 import com.nextroom.vo.UserVo;
 
@@ -22,6 +21,9 @@ public class Mypage {
 
 	@Autowired
 	private CafeService cafeService;
+	
+	@Autowired
+	private MypageService mypageService;
 
 	// 마이페이지 메인
 	@RequestMapping("/main")
@@ -44,11 +46,19 @@ public class Mypage {
 		return "mypage/receiveMassage";
 	}
 
+	//21-10-11 by 대니
 	// 마이페이지 파티관리
 	@RequestMapping("/partyManage")
-	public String mypageParty() {
+	public String mypageParty(HttpSession session) {
 		System.out.println("mypage/partyManage");
-		return "mypage/partyManage";
+		
+		// 세션(로그인한 사용자)의 번호
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int userNo = authUser.getUserNo();
+		
+		Map<String, Object> mypagePartyManage = mypageService.mypagePartyManage(userNo);
+		
+		return null;
 	}
 
 	// 마이페이지 결제내역
