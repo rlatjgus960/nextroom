@@ -34,20 +34,6 @@
 	</insert>
 
 
-
-	<!-- 카페 수정 -->
-	<update id="updateCafe" parameterType="com.nextroom.vo.CafeVo">
-	
-		<![CDATA[
-				update cafe
-				set cafeImg = #{cafeImg}
-					
-				where cafeNo = #{no}
-			]]>
-
-	</update>
-
-
 	<!-- 유저 타입 수정 -->
 	<update id="updateUser" parameterType="int">
 		<![CDATA[
@@ -98,35 +84,35 @@
 			from cafe
 			
 		]]>
-			<choose>
-				<when test="_parameter == '전국'">
-				</when>
-				<otherwise>
-					<choose>
-						<when test="_parameter == '서울'">
-							where sido = #{sidoDetail}
-						</when>
-						<otherwise>
-							<choose>
-								<when test="_parameter != '' and _parameter != null">
-									where sidoDetail = #{sidoDetail}
-								</when>
-							</choose>
-						</otherwise>
-					</choose>
-				</otherwise>
-			</choose>
+		<choose>
+			<when test="_parameter == '전국'">
+			</when>
+			<otherwise>
+				<choose>
+					<when test="_parameter == '서울'">
+						where sido = #{sidoDetail}
+					</when>
+					<otherwise>
+						<choose>
+							<when test="_parameter != '' and _parameter != null">
+								where sidoDetail = #{sidoDetail}
+							</when>
+						</choose>
+					</otherwise>
+				</choose>
+			</otherwise>
+		</choose>
 		
 		<![CDATA[
 		order by cafeNo desc
 		]]>
 
 	</select>
-	
-	
-		<!-- 페이징 카페 전체 리스트 가져오기 -->
-	
-	
+
+
+	<!-- 페이징 카페 전체 리스트 가져오기 -->
+
+
 	<select id="gggggg" parameterType="map" resultType="com.nextroom.vo.CafeVo">
 		<![CDATA[
 			select  rt.rn,
@@ -163,9 +149,9 @@
 		]]>
 
 	</select>
-	
-	
-		<select id="getApiCafeList" parameterType="map" resultType="com.nextroom.vo.CafeVo">
+
+
+	<select id="getApiCafeList" parameterType="map" resultType="com.nextroom.vo.CafeVo">
 		<![CDATA[
 			select  rt.rn,
 			        rt.cafeNo,
@@ -195,24 +181,24 @@
 		
 		
 		]]>
-							<choose>
-								<when test="region.equals('전국')">
-								</when>
-								<otherwise>
-									<choose>
-										<when test="region.equals('서울')">
-											where sido = #{region}
-										</when>
-										<otherwise>
-											<choose>
-												<when test="region != '' and region != null">
-													where sidoDetail = #{region}
-												</when>
-											</choose>
-										</otherwise>
-									</choose>
-								</otherwise>
-							</choose>
+		<choose>
+			<when test="region.equals('전국')">
+			</when>
+			<otherwise>
+				<choose>
+					<when test="region.equals('서울')">
+						where sido = #{region}
+					</when>
+					<otherwise>
+						<choose>
+							<when test="region != '' and region != null">
+								where sidoDetail = #{region}
+							</when>
+						</choose>
+					</otherwise>
+				</choose>
+			</otherwise>
+		</choose>
 						
 		<![CDATA[
              			 order by cafeNo desc ) ot ) rt 
@@ -318,7 +304,7 @@
 		]]>
 
 	</select>
-	
+
 	<!-- 전체 테마 리스트 가져오기 -->
 	<select id="getThemeList" resultType="com.nextroom.vo.CafeVo">
 	
@@ -533,9 +519,9 @@
 			
 		]]>
 	</select>
-	
-	<!-- 파일 있을때 -->
-	<update id="updateTheme-basic">
+
+	<!-- 카페 업데이트 - 파일 있을때 -->
+	<update id="updateCafe-basic">
 		<![CDATA[
 			update cafe
 			set 
@@ -558,9 +544,9 @@
 			where cafeNo = #{cafeNo}
 		]]>
 	</update>
-	
-	<!-- 파일 없을때 -->
-	<update id="updateTheme-noFile" parameterType="com.nextroom.vo.CafeVo">
+
+	<!-- 카페 업데이트 - 파일 없을때 -->
+	<update id="updateCafe-noFile" parameterType="com.nextroom.vo.CafeVo">
 		<![CDATA[
 			update cafe
 			set 
@@ -583,5 +569,79 @@
 		]]>
 	</update>
 
+	<!-- 카페 내부이미지 업데이트 - 파일 있을때 -->
+	<!-- 카페 내부이미지 업데이트 - 부분 수정.. 어떻게? 뭔가 테마 이미지 고유넘버 있으면 될거같기도 하고 -->
 
+	<!-- 테마 업데이트 - 파일 있을때 -->
+	<update id="updateTheme-basic">
+		<![CDATA[
+			update theme
+			set 
+				themeName = #{themeName},
+				themeImg = #{themeImg},
+				jenre = #{jenre},
+				levels = #{levels},
+				themeType = #{themeType},
+				playTime = #{playTime},
+				activity = #{activity},
+				themeIntro = #{themeIntro},
+				pRecommendMin = #{pRecommendMin},
+				pRecommendMax = #{pRecommendMax},
+				pMin = #{pMin},
+				pMax = #{pMax}
+			where themeNo = #{themeNo}
+		]]>
+	</update>
+
+	<!-- 테마 업데이트 - 파일 없을때 -->
+	<update id="updateTheme-noFile" parameterType="com.nextroom.vo.CafeVo">
+		<![CDATA[
+			update theme
+			set 
+				themeName = #{themeName},
+				jenre = #{jenre},
+				levels = #{levels},
+				themeType = #{themeType},
+				playTime = #{playTime},
+				activity = #{activity},
+				themeIntro = #{themeIntro},
+				pRecommendMin = #{pRecommendMin},
+				pRecommendMax = #{pRecommendMax},
+				pMin = #{pMin},
+				pMax = #{pMax}
+			where themeNo = #{themeNo}
+		]]>
+	</update>
+
+	<!-- 테마 가격 업데이트 -->
+	<update id="updateThemePrice" parameterType="com.nextroom.vo.CafeVo">
+		<![CDATA[
+			update themePrice
+			set 
+				themeName = #{themeName},
+				jenre = #{jenre},
+				levels = #{levels},
+				themeType = #{themeType},
+				playTime = #{playTime},
+				activity = #{activity},
+				themeIntro = #{themeIntro},
+				pRecommendMin = #{pRecommendMin},
+				pRecommendMax = #{pRecommendMax},
+				pMin = #{pMin},
+				pMax = #{pMax}
+			where themeNo = #{themeNo}
+		]]>
+	</update>
+
+	<!-- 테마 시간표 업데이트 -->
+	<update id="updateThemeTime" parameterType="com.nextroom.vo.CafeVo">
+		<![CDATA[
+			update themeTime
+			set 
+				themeTimeNo.nextval,
+				#{themeNo},
+				#{themeTime}
+			where themeTimeNo = #{themeTimeNo}
+		]]>
+	</update>
 </mapper>

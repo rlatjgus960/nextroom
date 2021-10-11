@@ -237,17 +237,35 @@ public class CafeDao {
 		return cafeList;
 	}
 
-	// 테마 수정 - 파일이 있을때
-	public int themeModify_basic(CafeVo cafeVo) {
+	// 카페 수정 - 파일이 있을때
+	public int cafeModify_basic(CafeVo cafeVo) {
 		System.out.println("[CafeDao.themeModify_basic()]");
+		return sqlSession.update("cafe.updateCafe-basic", cafeVo);
+	}
+
+	// 카페 수정 - 파일이 없을때
+	public int cafeModify_noFile(CafeVo cafeVo) {
+		System.out.println("[CafeDao.themeModify_noFile()]");
+		System.out.println("업데이트 전 cafeVo : "+cafeVo);
+		return sqlSession.update("cafe.updateCafe-noFile", cafeVo);
+	}
+	
+
+	// 테마 수정 - 파일이 있을때
+	public int updateTheme_basic(CafeVo cafeVo) {
+		System.out.println("[CafeDao.themeModify_basic()]");
+//		sqlSession.update("cafe.updateThemePrice", cafeVo);
+//		sqlSession.update("cafe.updateThemeTime", cafeVo);
 		return sqlSession.update("cafe.updateTheme-basic", cafeVo);
 	}
 
 	// 테마 수정 - 파일이 없을때
-	public int themeModify_noFile(CafeVo cafeVo) {
+	public int updateTheme_noFile(CafeVo cafeVo) {
 		System.out.println("[CafeDao.themeModify_noFile()]");
-		System.out.println("업데이트 전 cafeVo : "+cafeVo);
+//		sqlSession.update("cafe.updateThemePrice", cafeVo);
+//		sqlSession.update("cafe.updateThemeTime", cafeVo);
 		return sqlSession.update("cafe.updateTheme-noFile", cafeVo);
 	}
+
 
 }

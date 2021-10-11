@@ -585,12 +585,63 @@ public class CafeService {
 
 			cafeVo.setCafeImg(saveName);
 			
-			// 로고 경로, 블로그 타이틀 업데이트
-			return cafeDao.themeModify_basic(cafeVo);
+			return cafeDao.cafeModify_basic(cafeVo);
 
 		} else {
-			return cafeDao.themeModify_noFile(cafeVo);
+			return cafeDao.cafeModify_noFile(cafeVo);
 		}
+	}
+	
+	
+	//테마 수정
+	public int themeModify(CafeVo cafeVo) {
+		
+		MultipartFile file = cafeVo.getThemeImgFile();
+		System.out.println(file);
+		
+		long fileSize = file.getSize();
+		System.out.println("fileSize " + fileSize);
+		
+		if (fileSize > 0) {
+
+			String saveDir = "C:\\javaStudy\\upload\\";
+
+			// 원파일이름
+			String orgName = file.getOriginalFilename();
+
+			// 확장자
+			String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+
+			// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+
+			// 파일패스
+			String filePath = saveDir + "\\" + saveName;
+
+			// 파일 서버하드디스크에 저장
+			try {
+				byte[] fileData = file.getBytes();
+				OutputStream out = new FileOutputStream(filePath);
+				BufferedOutputStream bout = new BufferedOutputStream(out);
+
+				bout.write(fileData);
+				bout.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			cafeVo.setThemeImg(saveName);
+			
+			// 로고 경로, 블로그 타이틀 업데이트
+
+			return cafeDao.updateTheme_basic(cafeVo);
+
+		} else {
+			return cafeDao.updateTheme_noFile(cafeVo);
+		}
+		
 	}
 
 }

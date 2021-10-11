@@ -92,6 +92,19 @@ public class AdminCafeThemeController {
 		model.addAttribute("timeList", cafeService.getOneTime(themeNo));
 		return "admin/themeModifyForm";
 	}
+	
+	// 테마수정
+	@RequestMapping("/theme/modify")
+	public String themeModify(HttpSession session, @ModelAttribute CafeVo cafeVo) {
+		System.out.println("themeModify");
+		
+		int count = cafeService.themeModify(cafeVo);
+		
+		int cafeNo = ((UserVo) session.getAttribute("authUser")).getCafeNo();
+		
+		
+		return "redirect:/admin/"+cafeNo+"/themeList";
+	}
 
 	// 관리자페이지 테마추가폼
 	@RequestMapping("/addThemeForm")

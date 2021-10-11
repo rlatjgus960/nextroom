@@ -101,20 +101,21 @@
 					</select>
 
 
-					<form action="">
+					<form action="${pageContext.request.contextPath }/admin/theme/modify" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="themeNo" value="${themeVo.themeNo }">
 						<div id="addThwme_formDiv" class="clearfix">
 							<div id="previewArea">
 								<!-- 테마 리스트에 출력되는 내용 영역 -->
 								<div id="theme_poster_wrap">
 									<p class="cafModi_subTitle">테마 포스터</p>
 									<img alt="" src="${pageContext.request.contextPath }/upload/${themeVo.themeImg }"> <input
-										type="file" name="mainImg">
+										type="file" name="themeImgFile">
 								</div>
 
 								<div id="theme_explain_wrap">
 									<div id="" class="theme_explain_item clearfix">
 										<p class="addTheme_subTitle">제목</p>
-										<input type="text" id="themeTitle" name="themeTitle" placeholder="제목을 입력해주세요."
+										<input type="text" id="themeTitle" name="themeName" placeholder="제목을 입력해주세요."
 											value="${themeVo.themeName }">
 									</div>
 
@@ -162,7 +163,7 @@
 
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">난이도</p>
-											<select id="themeLevel" name="themeLevel" class="cafe_explain_selectBox">
+											<select id="themeLevel" name="levels" class="cafe_explain_selectBox">
 												<option value="">난이도를 선택해주세요.</option>
 												<option value="1" <c:if test="${themeVo.levels == 1}">selected="selected"</c:if>>★</option>
 												<option value="2" <c:if test="${themeVo.levels == 2}">selected="selected"</c:if>>★★</option>
@@ -196,16 +197,16 @@
 
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">추천 플레이인원</p>
-											<input id="recommandMinNum" name="recommandMinNum" type="number" placeholder="최소인원"
+											<input id="recommandMinNum" name="pRecommendMin" type="number" placeholder="최소인원"
 												value="${themeVo.pRecommendMin }"> <span>&nbsp;~&nbsp;</span> <input
-												id="recommandMaxNum" name="recommandMaxNum" type="number" placeholder="최대인원"
+												id="recommandMaxNum" name="pRecommendMax" type="number" placeholder="최대인원"
 												value="${themeVo.pRecommendMax }">
 										</div>
 
 
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">플레이타임</p>
-											<select id="themeLevel" name="themeLevel" class="cafe_explain_selectBox">
+											<select id="playTime" name="playTime" class="cafe_explain_selectBox">
 												<option value="">플레이타임을 선택해주세요.</option>
 												<option value="60" <c:if test="${themeVo.playTime == 60}">selected="selected"</c:if>>60분</option>
 												<option value="65" <c:if test="${themeVo.playTime == 65}">selected="selected"</c:if>>65분</option>
@@ -237,7 +238,7 @@
 
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">활동성</p>
-											<select id="themeType" name="themeType" class="cafe_explain_selectBox">
+											<select id="activity" name="activity" class="cafe_explain_selectBox">
 												<option value="">활동성을 선택해주세요.</option>
 												<option value="적음" <c:if test="${themeVo.activity eq '적음'}">selected="selected"</c:if>>적음</option>
 												<option value="보통" <c:if test="${themeVo.activity eq '보통'}">selected="selected"</c:if>>보통</option>
@@ -258,14 +259,14 @@
 								<!-- 테마 리스트에 출력되지 않는 내용 영역 -->
 								<div id="themeExplain" class="non-previewArea_item clearfix">
 									<p class="addTheme_subTitle">소개글</p>
-									<textarea rows="" cols="">${themeVo.themeIntro }</textarea>
+									<textarea name="themeIntro" rows="" cols="">${themeVo.themeIntro }</textarea>
 								</div>
 
 								<div id="" class="non-previewArea_item clearfix">
 									<p class="addTheme_subTitle">수용가능 플레이인원</p>
-									<input id="peopleMinNum" name="peopleMinNum" type="number" placeholder="최소인원"
+									<input id="peopleMinNum" name="pMin" type="number" placeholder="최소인원"
 										value="${themeVo.pMin }"> <span>&nbsp;~&nbsp;</span> <input id="peopleMaxNum"
-										name="peopleMaxNum" type="number" placeholder="최대인원" value="${themeVo.pMax }">
+										name="pMax" type="number" placeholder="최대인원" value="${themeVo.pMax }">
 									<button type="button" id="btnPlayNum" class="mbutton">확인</button>
 								</div>
 
