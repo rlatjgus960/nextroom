@@ -211,12 +211,98 @@ public class ReserveService {
 		System.out.println("[ReserveService.getCafeList()]");
 		
 		List<ReserveVo> cafeList = reserveDao.selectCafeList(sidoDetail);
-		System.out.println("테테테스트" + cafeList);
+		//System.out.println("테테테스트" + cafeList);
 		
 		return cafeList;
 	}
 	
-
+	//카페, 테마 이름 확인
+	public ReserveVo getCafeThemeName(ReserveVo rVo) {
+		System.out.println("[ReserveService.getCafeThemeName()]");
+		
+		ReserveVo ctVo = reserveDao.selectName(rVo);
+		//System.out.println("테테테스트" + ctVo);
+		
+		return ctVo;
+	}
+	
+	//가격리스트
+	public List<ReserveVo> getPrice(ReserveVo rVo) {
+		System.out.println("[ReserveService.getPrice()]");
+		
+		List<ReserveVo> priceList = reserveDao.getPriceLsit(rVo);
+		//System.out.println("테테테스트" + ctVo);
+		
+		return priceList;
+	}
+	
+	//인원에 따른 가격
+	public ReserveVo getOnePrice(ReserveVo rVo) {
+		System.out.println("[ReserveService.getOnePrice()]");
+		
+		ReserveVo price = reserveDao.getOnePrice(rVo);
+		//System.out.println("테테테스트" + ctVo);
+		
+		return price;
+	}
+	
+	//유저확인
+	public ReserveVo idCheck(String id) {
+		System.out.println("[ReserveService.idCheck()]");
+		
+		ReserveVo reserveVo = reserveDao.idCheck(id);
+		
+		return reserveVo;
+	}
+	
+	//예약하고 정보 가져오기
+	public ReserveVo getReserveComplete(Map<String, Object> rMap) {
+		System.out.println("[ReserveService.getReserveComplete()]");
+		
+		//예약날짜 테이블 존재확인
+		ReserveVo date = reserveDao.selectReserveDate(rMap);
+		System.out.println("date"+date);
+		
+		if(date == null) {
+			//없을 때 만들기
+			System.out.println("없을 때 만들기");
+			reserveDao.insertReserveDate(rMap);
+		}
+		
+		date = reserveDao.selectReserveDate(rMap);
+		rMap.put("reserveDateNo",date.getReserveDateNo());
+		
+		System.out.println("첫번째"+rMap);
+		
+		ReserveVo time = reserveDao.selectReserveTime(rMap);
+		System.out.println("time" + time);
+		rMap.put("reserveState",2);
+		
+		
+		if(time == null) {
+			//없을 때 만들기
+			reserveDao.insertReserveTime(rMap);
+		} else if(time.getReserveState() == 1) {
+			time = reserveDao.selectReserveTime(rMap);
+			rMap.put("reserveTimeNo",time.getReserveTimeNo());
+			System.out.println("두번째"+rMap);
+			reserveDao.updateReserveState(rMap);
+		}
+		
+		time = reserveDao.selectReserveTime(rMap);
+		rMap.put("reserveTimeNo",time.getReserveTimeNo());
+		System.out.println("세번째"+rMap);
+		
+		//예약 테이블 정보 입력
+		reserveDao.insertReserve(rMap);
+			
+			
+		
+		
+		return null;
+	}
+	
+	
 	
 }
 

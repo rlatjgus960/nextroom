@@ -55,8 +55,31 @@
 		]]>
 	</select>
 	
+	<!-- 예약날짜 정보 가져오기(Map) -->
+	<select id="selectReserveDateByMap" parameterType="map" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select	reserveDateNo,
+					themeNo,
+					reserveDate
+		    from reserveDate
+		    where themeNo = #{themeNo}
+		    and reserveDate = #{reserveDate}
+		]]>
+	</select>
+	
 	<!-- 예약날짜 데이터 추가 -->
 	<insert id="insertReserveDateData" parameterType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			insert into reserveDate 
+			values(
+				reserveDateNo.nextval,
+				#{themeNo},
+				#{reserveDate})
+		]]>
+	</insert>
+	
+	<!-- 예약날짜 데이터 추가(Map) -->
+	<insert id="insertReserveDateDataByMap" parameterType="map">
 		<![CDATA[
 			insert into reserveDate 
 			values(
@@ -77,6 +100,18 @@
 				#{reserveState})
 		]]>
 	</insert>
+	
+	<!-- 예약시간 데이터 생성 -->
+	<insert id="insertReserveTimeDataByMap" parameterType="map">
+		<![CDATA[
+			insert into reserveTime 
+			values(
+				reserveTimeNo.nextval,
+				#{reserveDateNo},
+				#{themeTime},
+				#{reserveState})
+		]]>
+	</insert>
 
 	<!-- 테마별 시간 정보 가져오기 -->
 	<select id="selectReserveTime" parameterType="com.nextroom.vo.ReserveVo" resultType="com.nextroom.vo.ReserveVo">
@@ -88,6 +123,20 @@
 			from reserveTime
 			where reserveDateNo = #{reserveDateNo}
 			and reserveTime = #{reserveTime}
+		]]>
+	</select>
+	
+	<!-- 테마별 시간 정보 가져오기(Map) -->
+	<select id="selectReserveTimeByMap" parameterType="map" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  rt.reserveTimeNo,
+			        rt.reserveDateNo,
+			        rt.reserveTime,
+			        rt.reserveState
+			from reserveTime rt, reserveDate rd
+			where rd.reserveDateNo = rt.reserveDateNo
+			and rd.reserveDate = #{reserveDate}
+			and rt.reserveTime = #{themeTime}
 		]]>
 	</select>
 	
@@ -273,7 +322,84 @@
 		]]>
 	</select>
 	
+	<!-- 카페, 테마이름 가져오기 -->
+	<select id="selectName" parameterType="com.nextroom.vo.ReserveVo" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  c.cafeName,
+			        t.themeName,
+			        c.cafeNo,
+			        t.themeNo
+			from cafe c, theme t
+			where c.cafeNo = t.cafeNo
+			and c.cafeNo = #{cafeNo}
+			and t.themeNo = #{themeNo}
+		]]>
+	</select>
+	
+	<!-- 테마 가격 정보 가져오기 -->
+	<select id="selectPriceList" parameterType="com.nextroom.vo.ReserveVo" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  t.themeNo,
+			        tp.headcount,
+			        tp.price
+			from theme t, themePrice tp
+			where t.themeNo = tp.themeNo
+			and t.themeNo = #{themeNo}
+			order by tp.headcount asc
+		]]>
+	</select>
+	
+	<!-- 테마 가격 정보 가져오기 -->
+	<select id="selectPrice" parameterType="com.nextroom.vo.ReserveVo" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  tp.headCount,
+					to_char(tp.price, '999,999') price
+			from theme t, themePrice tp
+			where t.themeNo = tp.themeNo
+			and t.themeNo = #{themeNo}
+			and tp.headCount = #{headCount}
+			order by tp.headcount asc
+		]]>
+	</select>
+	
+	<!-- 테마 가격 정보 가져오기 -->
+	<select id="selectUserById" parameterType="String" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  id,
+					userNo,
+					userName
+			from users
+		]]>
+		
+			<if test="_parameter != '' and _parameter != null">
+				where id = #{id}
+			</if>
+		
+		<![CDATA[
+		]]>
+	</select>
+	
+	<!-- 예약시간 데이터 생성 -->
+	<insert id="insertReserve" parameterType="map">
+		<![CDATA[
+			insert into reserve
+			values (
+			    reserveNo.nextval,
+			    #{reserveTimeNo},
+			    #{userNo},
+			    #{reserveName},
+			    #{reserveHp},
+			    #{payment},
+			    #{headCount},
+			    1
+			)
+		]]>
+	</insert>
 </mapper>
+
+
+
+
 
 
 

@@ -26,17 +26,21 @@ public class ReserveVo {
 	private String gameState;
 	private String sidoDetail;
 	private String sido;
+	private int headCount;
+	private String price;
+	private String id;
+	private String userName;
 	
 	public ReserveVo() {
 		super();
 	}
 
 
-
 	public ReserveVo(int userNo, int cafeNo, int themeNo, String themeName, int themeTimeNo, String themeTime,
 			int reserveDateNo, String reserveDate, int reserveTimeNo, String reserveTime, int reserveState,
 			int paymentState, int reservePerson, String reserveName, int reserveNo, String themeImg, String cafeName,
-			String reserveHp, String payment, int totalPerson, String regDate, String gameState, String sidoDetail, String sido) {
+			String reserveHp, String payment, int totalPerson, String regDate, String gameState, String sidoDetail,
+			String sido, int headCount, String price, String id, String userName) {
 		super();
 		this.userNo = userNo;
 		this.cafeNo = cafeNo;
@@ -62,6 +66,10 @@ public class ReserveVo {
 		this.gameState = gameState;
 		this.sidoDetail = sidoDetail;
 		this.sido = sido;
+		this.headCount = headCount;
+		this.price = price;
+		this.id = id;
+		this.userName = userName;
 	}
 
 
@@ -287,6 +295,59 @@ public class ReserveVo {
 	public void setSido(String sido) {
 		this.sido = sido;
 	}
+	
+	
+
+
+
+	public int getHeadCount() {
+		return headCount;
+	}
+
+
+
+	public void setHeadCount(int headCount) {
+		this.headCount = headCount;
+	}
+
+
+
+	public String getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	
+	
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	
+
 
 
 
@@ -299,15 +360,11 @@ public class ReserveVo {
 				+ reservePerson + ", reserveName=" + reserveName + ", reserveNo=" + reserveNo + ", themeImg=" + themeImg
 				+ ", cafeName=" + cafeName + ", reserveHp=" + reserveHp + ", payment=" + payment + ", totalPerson="
 				+ totalPerson + ", regDate=" + regDate + ", gameState=" + gameState + ", sidoDetail=" + sidoDetail
-				+ ", sido=" + sido + "]";
+				+ ", sido=" + sido + ", headCount=" + headCount + ", price=" + price + ", id=" + id + ", userName="
+				+ userName + "]";
 	}
 
+	
 
-
-
-	
-	
-	
-	
 	
 }

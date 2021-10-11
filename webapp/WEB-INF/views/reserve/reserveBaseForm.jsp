@@ -78,7 +78,7 @@
 
                 <!-- main -->
                 <div id="reservation_main">
-                	<form action="${pageContext.request.contextPath}/reserve/reserveInfoForm" method="get">
+                	<form action="${pageContext.request.contextPath}/reserve/reserveInfoForm" method="get" id="next_form">
 	                    <div id="reservation_main_title" class="clearfix">
 	                        <div id="reservation_main_title_date" class="clearfix"><div class="reservation_main_title">날짜</div></div>
 	                        <div id="reservation_main_title_region" class="clearfix"><div class="reservation_main_title">지역</div></div>
@@ -129,13 +129,13 @@
 	                    </div>
 	
 	                    <div id="reservation_button">
-	                        <button type="submit" class="mbutton">예약하기</button>
+	                        <button id="resBtn" class="mbutton">예약하기</button>
 	                    </div>
 	                    
-	                    <input type="text" name="regionNo" value=""> <!-- 처음 test는 type="text"로 하고 나중에 "hidden"으로 고치기 -->
 	                    <input type="text" name="cafeNo" value="">
 	                    <input type="text" name="themeNo" value="">
-	                    <input type="text" name="timeNo" value="">
+	                    <input type="text" name="themeTime" value="">
+	                    <input type="text" name="themeTimeNo" value="">
 	                     
                     </form>
                     
@@ -157,6 +157,33 @@
 </body>
 
 <script>
+	$("#resBtn").on("click", function() {
+		
+		if($("[name='reserveDate']").val() == '' || $("[name='reserveDate']").val() == null){
+			
+			alert("모두 선택해 주세요");
+			event.preventDefault();
+			return flase;
+	      } else if($("[name='cafeNo']").val() == '' || $("[name='cafeNo']").val() == null){
+	    	 
+	    	alert("모두 선택해 주세요");
+	    	event.preventDefault();
+	    	return flase;
+	      } else if($("[name='themeNo']").val() == '' || $("[name='themeNo']").val() == null){
+	    	  
+	    	alert("모두 선택해 주세요");
+	    	event.preventDefault();
+	    	return flase;
+	      } else if($("[name='themeTime']").val() == '' || $("[name='themeTime']").val() == null){
+	    	  
+	    	alert("모두 선택해 주세요");
+	    	event.preventDefault();
+	    	return flase;
+	      } else {
+	    	  $("#next_form").submit();	  
+	      }
+	    
+	});
 	
 	//지역 클릭
 	$(".region").on("click", function() {
@@ -174,7 +201,6 @@
 
 		fetchList(sidoDetail);
 		
-		$("[name='regionNo']").val(region);
 		
 	});
 	
@@ -376,7 +402,11 @@
 		var timeNo = $(this).data("timeno");
 		console.log(timeNo);
 		
-		$("[name='timeNo']").val(timeNo);
+		var themeTime = $(this).html();
+		console.log(themeTime);
+		
+		$("[name='themeTime']").val(themeTime);
+		$("[name='themeTimeNo']").val(timeNo);
 
 	});
 	

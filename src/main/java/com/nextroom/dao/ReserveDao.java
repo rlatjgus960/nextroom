@@ -39,11 +39,25 @@ public class ReserveDao {
 		return sqlSession.selectOne("reserve.selectReserveDate",adminVo);
 	}
 	
+	//예약날짜 테이블 확인
+	public ReserveVo selectReserveDate(Map<String, Object> rMap) {
+		System.out.println("[ReserveDao.selectReserveDate()]");
+		
+		return sqlSession.selectOne("reserve.selectReserveDateByMap",rMap);
+	}
+	
 	//예약날짜 테이블 데이터 입력
 	public int insertReserveDate(ReserveVo adminVo)  {
 		System.out.println("[ReserveDao.insertReserveDate()]");
 		
 		return sqlSession.insert("reserve.insertReserveDateData", adminVo);
+	}
+	
+	//예약날짜 테이블 데이터 입력
+	public int insertReserveDate(Map<String, Object> rMap)  {
+		System.out.println("[ReserveDao.insertReserveDate()]");
+		
+		return sqlSession.insert("reserve.insertReserveDateDataByMap", rMap);
 	}
 	
 	//예약시간 테이블 데이터 입력
@@ -53,6 +67,13 @@ public class ReserveDao {
 		return sqlSession.insert("reserve.insertReserveTimeData", adminVo);
 	}
 	
+	//예약시간 테이블 데이터 입력
+	public int insertReserveTime(Map<String, Object> rMap) {
+		System.out.println("[ReserveDao.insertReserveTime()]");
+		
+		return sqlSession.insert("reserve.insertReserveTimeDataByMap", rMap);
+	}
+	
 	
 	//예약시간 테이블 확인
 	public ReserveVo selectReserveTime(ReserveVo adminVo) {
@@ -60,6 +81,13 @@ public class ReserveDao {
 		ReserveVo a = sqlSession.selectOne("reserve.selectReserveTime", adminVo);
 		System.out.println(a);
 		return sqlSession.selectOne("reserve.selectReserveTime", adminVo);
+	}
+	
+	//예약시간 테이블 확인
+	public ReserveVo selectReserveTime(Map<String, Object> rMap) {
+		System.out.println("[ReserveDao.selectReserveTime()]");
+		
+		return sqlSession.selectOne("reserve.selectReserveTimeByMap", rMap);
 	}
 	
 	
@@ -142,7 +170,50 @@ public class ReserveDao {
 		
 		return cafeList;
 	}
+	
+	//게임정보 테이블 데이터 입력
+	public ReserveVo selectName(ReserveVo rVo) {
+		System.out.println("[ReserveDao.selectName()]");
+		
+		return sqlSession.selectOne("reserve.selectName", rVo);
+	}
+	
+	//테마 가격 리스트 불러오기
+	public List<ReserveVo> getPriceLsit(ReserveVo rVo) {
+		System.out.println("[ReserveDao.getPriceLsit()]");
+		List<ReserveVo> priceList = sqlSession.selectList("reserve.selectPriceList", rVo);
+		
+		return priceList;
+	}
+	
+	//테마 가격 리스트 불러오기
+	public ReserveVo getOnePrice(ReserveVo rVo) {
+		System.out.println("[ReserveDao.getOnePrice()]");
+		ReserveVo price = sqlSession.selectOne("reserve.selectPrice", rVo);
+		
+		return price;
+	}
+	
+	//유저확인
+	public ReserveVo idCheck(String id) {
+		System.out.println("[ReserveDao.idCheck()]");
+		ReserveVo reserveVo = sqlSession.selectOne("reserve.selectUserById", id);
+		
+		return reserveVo;
+	}
+
+	//예약 테이블 정보 입력
+	public int insertReserve(Map<String, Object> rMap) {
+		System.out.println("[ReserveDao.insertReserve()]");
+		
+		return sqlSession.insert("reserve.insertReserve", rMap);
+	}
 }
+
+
+
+
+
 
 
 

@@ -192,7 +192,7 @@ input {
 
 select {
     height: 30px;
-    width: 100px;
+    width: 200px;
 }
 /****************************************************/
 
@@ -200,34 +200,34 @@ select {
 
 /************************ 팀원등록 ****************************/
 .member {
-    padding: 20px 0px;
-    height: 200px;
-}
-
-.nonmember {
-    padding: 20px 0px;
-    height: 80px;
+    height: 220px;
 }
 
 .reservation_partyMember_info {
+	height: 220px;
+	width: 700px;
+	line-height: 30px;
+	
+}
+
+.info_item {
     float: left;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    line-height: 40px;
 }
 
-#reservation_partyMember_img {
+.reservation_partyMember_img {
     float: right;
-    margin-right: 300px;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
 
-#reservation_partyMember_img>img {
+.reservation_partyMember_img>img {
     width: 200px;
     height: 200px;
+    margin-top: 10px;
 }
 
 .nolast {
@@ -266,6 +266,10 @@ label>input {
     width: 1200px;
     padding: 5px;
     margin: 5px 0px;
+}
+
+#nextPage {
+	margin-bottom: 20px; 
 }
 /****************************************************/
 
