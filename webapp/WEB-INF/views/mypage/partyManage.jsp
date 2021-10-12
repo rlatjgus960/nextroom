@@ -93,11 +93,37 @@
 						</form>					
 					</div> --%>
 					
-					<div id="party_table_select">
-						<a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a>
-						<a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a>
-						<a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a>
-						
+					<div id="mypage_partyManage_select">
+						<c:choose>
+							<c:when test="${param.partyJoinSelect eq 'allParty' }">
+								<ul>
+									<li class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a></li>
+									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a></li>
+								</ul>
+							</c:when>
+							<c:when test="${param.partyJoinSelect eq 'makeParty' }">
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a></li>
+									<li class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a></li>
+									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a></li>
+								</ul>
+							</c:when>
+							<c:when test="${param.partyJoinSelect eq 'joinParty' }">
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a></li>
+									<li id="mypage_partyManage_select_none" class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a></li>
+								</ul>								
+							</c:when>
+							<c:otherwise>
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a></li>
+									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a></li>
+								</ul>											
+							</c:otherwise>
+						</c:choose>
 					</div>
 
 					<div id="partyJoin_detail_table">

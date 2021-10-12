@@ -242,4 +242,31 @@ li.active {
 #paging ul>li.active{
 	font-size: 14px;
 	font-weight: bold;
+	text-decoration: none;
 }
+
+#mypage_partyManage_select {
+	float: right;
+	margin: 15px 0px 12px 0px;
+}
+
+#mypage_partyManage_select ul>li {
+	float: left;
+}
+
+#mypage_partyManage_select ul>li:after {
+	content: "│";
+    margin: 0px 5px 0px 5px;
+}
+
+#mypage_partyManage_select ul>li#mypage_partyManage_select_none:after {
+	content: none;
+}
+
+#mypage_partyManage_select ul>li.active {
+	font-size: 15px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/******************************************************************************/
