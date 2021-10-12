@@ -35,6 +35,15 @@ public class ReserveVo {
 		super();
 	}
 
+	
+
+	public ReserveVo(int userNo, int reserveNo) {
+		super();
+		this.userNo = userNo;
+		this.reserveNo = reserveNo;
+	}
+
+
 
 	public ReserveVo(int userNo, int cafeNo, int themeNo, String themeName, int themeTimeNo, String themeTime,
 			int reserveDateNo, String reserveDate, int reserveTimeNo, String reserveTime, int reserveState,

@@ -1,5 +1,6 @@
 package com.nextroom.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -207,6 +208,22 @@ public class ReserveDao {
 		System.out.println("[ReserveDao.insertReserve()]");
 		
 		return sqlSession.insert("reserve.insertReserve", rMap);
+	}
+	
+	//예약회원 테이블 정보 입력
+	public int insertReservePeople(ReserveVo hiVo) {
+		System.out.println("[ReserveDao.insertReservePeople()]");
+		
+		System.out.println(hiVo);
+		
+		return sqlSession.insert("reserve.insertReservePeople", hiVo);
+	}
+	
+	//reserve 테이블 정보 가져오기
+	public ReserveVo selectReserve(Map<String, Object> rMap) {
+		System.out.println("[ReserveDao.selectReserve()]");
+		
+		return sqlSession.selectOne("reserve.selectReserve", rMap);
 	}
 }
 

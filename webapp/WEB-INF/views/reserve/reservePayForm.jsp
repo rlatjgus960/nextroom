@@ -62,7 +62,7 @@
 				<!-- main -->
 
 				<!--table-->
-				<form action="${pageContext.request.contextPath}/reserve/reserveInsert" method="get">
+				<form action="${pageContext.request.contextPath}/reserve/reserveInsert" method="post">
 					<table id="reservation_table">
 						<tr>
 							<th>결제수단</th>
@@ -129,13 +129,13 @@
 				<button id="nextPageBtn" class="mbutton" type="submit">예약하기</button>
 			</div>
 
-			<input type="text" name="cafeName" value="${param.cafeName}">
-			<input type="text" name="themeName" value="${param.themeName}">
-			<input type="text" name="reserveDate" value="${param.reserveDate}">
-			<input type="text" name="themeTime" value="${param.themeTime}">
-			<input type="text" name="reserveName" value="${param.reserveName}">
-			<input type="text" name="reserveHp" value="${param.reserveHp}">
-			<input type="text" name="partyMember" value="${param.partyMember}">
+			<input type="hidden" name="cafeName" value="${param.cafeName}">
+			<input type="hidden" name="themeName" value="${param.themeName}">
+			<input type="hidden" name="reserveDate" value="${param.reserveDate}">
+			<input type="hidden" name="themeTime" value="${param.themeTime}">
+			<input type="hidden" name="reserveName" value="${param.reserveName}">
+			<input type="hidden" name="reserveHp" value="${param.reserveHp}">
+			<input type="hidden" name="partyMember" value="${param.partyMember}">
 
 			<%-- 
 	            <c:forEach var="i" begin="0" end="${param.headcount}" varStatus="status">
@@ -144,89 +144,144 @@
 	            </c:forEach> --%>
 
 			<c:if test="${param.headcount eq 1}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
 			</c:if>
 			<c:if test="${param.headcount eq 2}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
 			</c:if>
 			<c:if test="${param.headcount eq 3}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
-				<input type="text" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
+				<input type="hidden" name="userNo2" value="${param.userNo2}">
 			</c:if>
 			<c:if test="${param.headcount eq 4}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
-				<input type="text" name="playerId2" value="${param.playerId2}">
-				<input type="text" name="playerId3" value="${param.playerId3}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="playerId3" value="${param.playerId3}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
+				<input type="hidden" name="userNo2" value="${param.userNo2}">
+				<input type="hidden" name="userNo3" value="${param.userNo3}">
 			</c:if>
 			<c:if test="${param.headcount eq 5}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
-				<input type="text" name="playerId2" value="${param.playerId2}">
-				<input type="text" name="playerId3" value="${param.playerId3}">
-				<input type="text" name="playerId4" value="${param.playerId4}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="playerId3" value="${param.playerId3}">
+				<input type="hidden" name="playerId4" value="${param.playerId4}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
+				<input type="hidden" name="userNo2" value="${param.userNo2}">
+				<input type="hidden" name="userNo3" value="${param.userNo3}">
+				<input type="hidden" name="userNo4" value="${param.userNo4}">
 			</c:if>
 			<c:if test="${param.headcount eq 6}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
-				<input type="text" name="playerId2" value="${param.playerId2}">
-				<input type="text" name="playerId3" value="${param.playerId3}">
-				<input type="text" name="playerId4" value="${param.playerId4}">
-				<input type="text" name="playerId5" value="${param.playerId5}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="playerId3" value="${param.playerId3}">
+				<input type="hidden" name="playerId4" value="${param.playerId4}">
+				<input type="hidden" name="playerId5" value="${param.playerId5}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
+				<input type="hidden" name="userNo2" value="${param.userNo2}">
+				<input type="hidden" name="userNo3" value="${param.userNo3}">
+				<input type="hidden" name="userNo4" value="${param.userNo4}">
+				<input type="hidden" name="userNo5" value="${param.userNo5}">
 			</c:if>
 
 			<c:if test="${param.headcount eq 7}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
-				<input type="text" name="playerId2" value="${param.playerId2}">
-				<input type="text" name="playerId3" value="${param.playerId3}">
-				<input type="text" name="playerId4" value="${param.playerId4}">
-				<input type="text" name="playerId5" value="${param.playerId5}">
-				<input type="text" name="playerId6" value="${param.playerId6}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="playerId3" value="${param.playerId3}">
+				<input type="hidden" name="playerId4" value="${param.playerId4}">
+				<input type="hidden" name="playerId5" value="${param.playerId5}">
+				<input type="hidden" name="playerId6" value="${param.playerId6}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
+				<input type="hidden" name="userNo2" value="${param.userNo2}">
+				<input type="hidden" name="userNo3" value="${param.userNo3}">
+				<input type="hidden" name="userNo4" value="${param.userNo4}">
+				<input type="hidden" name="userNo5" value="${param.userNo5}">
+				<input type="hidden" name="userNo6" value="${param.userNo6}">
 			</c:if>
 
 			<c:if test="${param.headcount eq 8}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
-				<input type="text" name="playerId2" value="${param.playerId2}">
-				<input type="text" name="playerId3" value="${param.playerId3}">
-				<input type="text" name="playerId4" value="${param.playerId4}">
-				<input type="text" name="playerId5" value="${param.playerId5}">
-				<input type="text" name="playerId6" value="${param.playerId6}">
-				<input type="text" name="playerId7" value="${param.playerId7}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="playerId3" value="${param.playerId3}">
+				<input type="hidden" name="playerId4" value="${param.playerId4}">
+				<input type="hidden" name="playerId5" value="${param.playerId5}">
+				<input type="hidden" name="playerId6" value="${param.playerId6}">
+				<input type="hidden" name="playerId7" value="${param.playerId7}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
+				<input type="hidden" name="userNo2" value="${param.userNo2}">
+				<input type="hidden" name="userNo3" value="${param.userNo3}">
+				<input type="hidden" name="userNo4" value="${param.userNo4}">
+				<input type="hidden" name="userNo5" value="${param.userNo5}">
+				<input type="hidden" name="userNo6" value="${param.userNo6}">
+				<input type="hidden" name="userNo7" value="${param.userNo7}">
 			</c:if>
 
 			<c:if test="${param.headcount eq 9}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
-				<input type="text" name="playerId2" value="${param.playerId2}">
-				<input type="text" name="playerId3" value="${param.playerId3}">
-				<input type="text" name="playerId4" value="${param.playerId4}">
-				<input type="text" name="playerId5" value="${param.playerId5}">
-				<input type="text" name="playerId6" value="${param.playerId6}">
-				<input type="text" name="playerId7" value="${param.playerId7}">
-				<input type="text" name="playerId8" value="${param.playerId8}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="playerId3" value="${param.playerId3}">
+				<input type="hidden" name="playerId4" value="${param.playerId4}">
+				<input type="hidden" name="playerId5" value="${param.playerId5}">
+				<input type="hidden" name="playerId6" value="${param.playerId6}">
+				<input type="hidden" name="playerId7" value="${param.playerId7}">
+				<input type="hidden" name="playerId8" value="${param.playerId8}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
+				<input type="hidden" name="userNo2" value="${param.userNo2}">
+				<input type="hidden" name="userNo3" value="${param.userNo3}">
+				<input type="hidden" name="userNo4" value="${param.userNo4}">
+				<input type="hidden" name="userNo5" value="${param.userNo5}">
+				<input type="hidden" name="userNo6" value="${param.userNo6}">
+				<input type="hidden" name="userNo7" value="${param.userNo7}">
+				<input type="hidden" name="userNo8" value="${param.userNo8}">
 			</c:if>
 
 			<c:if test="${param.headcount eq 10}">
-				<input type="text" name="playerId0" value="${param.playerId0}">
-				<input type="text" name="playerId1" value="${param.playerId1}">
-				<input type="text" name="playerId2" value="${param.playerId2}">
-				<input type="text" name="playerId3" value="${param.playerId3}">
-				<input type="text" name="playerId4" value="${param.playerId4}">
-				<input type="text" name="playerId5" value="${param.playerId5}">
-				<input type="text" name="playerId6" value="${param.playerId6}">
-				<input type="text" name="playerId7" value="${param.playerId7}">
-				<input type="text" name="playerId8" value="${param.playerId8}">
-				<input type="text" name="playerId9" value="${param.playerId9}">
+				<input type="hidden" name="playerId0" value="${param.playerId0}">
+				<input type="hidden" name="playerId1" value="${param.playerId1}">
+				<input type="hidden" name="playerId2" value="${param.playerId2}">
+				<input type="hidden" name="playerId3" value="${param.playerId3}">
+				<input type="hidden" name="playerId4" value="${param.playerId4}">
+				<input type="hidden" name="playerId5" value="${param.playerId5}">
+				<input type="hidden" name="playerId6" value="${param.playerId6}">
+				<input type="hidden" name="playerId7" value="${param.playerId7}">
+				<input type="hidden" name="playerId8" value="${param.playerId8}">
+				<input type="hidden" name="playerId9" value="${param.playerId9}">
+				<input type="hidden" name="userNo0" value="${param.userNo0}">
+				<input type="hidden" name="userNo1" value="${param.userNo1}">
+				<input type="hidden" name="userNo2" value="${param.userNo2}">
+				<input type="hidden" name="userNo3" value="${param.userNo3}">
+				<input type="hidden" name="userNo4" value="${param.userNo4}">
+				<input type="hidden" name="userNo5" value="${param.userNo5}">
+				<input type="hidden" name="userNo6" value="${param.userNo6}">
+				<input type="hidden" name="userNo7" value="${param.userNo7}">
+				<input type="hidden" name="userNo8" value="${param.userNo8}">
+				<input type="hidden" name="userNo9" value="${param.userNo9}">
 			</c:if>
 
 
 
-			<input type="text" name="headcount" value="${param.headcount}">
-			<input type="text" name="payment" value="${param.payment}">
+			<input type="hidden" name="headcount" value="${param.headcount}">
+			<input type="hidden" name="payment" value="${param.payment}">
 			<input type="hidden" name="cafeNo" value="${param.cafeNo}">
 		    <input type="hidden" name="themeNo" value="${param.themeNo}">
 

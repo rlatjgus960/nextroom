@@ -1,5 +1,6 @@
 package com.nextroom.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -149,7 +150,7 @@ public class ReserveController {
 	
 	//예약
 	@RequestMapping("/reserveInsert")
-	public String reserveInsert(HttpSession session, @RequestParam("cafeName") String cafeName,
+	public String reserveInsert(HttpSession session, Model model, @RequestParam("cafeName") String cafeName,
 								@RequestParam("themeName") String themeName, @RequestParam("reserveDate") String reserveDate,
 								@RequestParam("themeTime") String themeTime, @RequestParam("reserveName") String reserveName,
 								@RequestParam("reserveHp") String reserveHp, @RequestParam(value="playerId0", required = false, defaultValue="") String playerId0,
@@ -163,7 +164,17 @@ public class ReserveController {
 								@RequestParam(value="playerId8", required = false, defaultValue="") String playerId8,
 								@RequestParam(value="playerId9", required = false, defaultValue="") String playerId9, 
 								@RequestParam("headcount") String headCount, @RequestParam("payment") String payment,
-								@RequestParam("cafeNo") String cafeNo, @RequestParam("themeNo") String themeNo) {
+								@RequestParam("cafeNo") String cafeNo, @RequestParam("themeNo") String themeNo,
+								@RequestParam(value="userNo0", required = false, defaultValue="-1") int userNo0,
+								@RequestParam(value="userNo1", required = false, defaultValue="-1") int userNo1,
+								@RequestParam(value="userNo2", required = false, defaultValue="-1") int userNo2,
+								@RequestParam(value="userNo3", required = false, defaultValue="-1") int userNo3,
+								@RequestParam(value="userNo4", required = false, defaultValue="-1") int userNo4,
+								@RequestParam(value="userNo5", required = false, defaultValue="-1") int userNo5,
+								@RequestParam(value="userNo6", required = false, defaultValue="-1") int userNo6,
+								@RequestParam(value="userNo7", required = false, defaultValue="-1") int userNo7,
+								@RequestParam(value="userNo8", required = false, defaultValue="-1") int userNo8,
+								@RequestParam(value="userNo9", required = false, defaultValue="-1") int userNo9) {
 		System.out.println("reserveInsert");
 		
 		Map<String, Object> rMap = new HashMap<String, Object>();
@@ -188,13 +199,29 @@ public class ReserveController {
 		rMap.put("cafeNo", cafeNo);
 		rMap.put("themeNo", themeNo);
 		
+		Map<String, Object> uMap = new HashMap<String, Object>();
+		
+		uMap.put("0", userNo0);
+		uMap.put("1", userNo1);
+		uMap.put("2", userNo2);
+		uMap.put("3", userNo3);
+		uMap.put("4", userNo4);
+		uMap.put("5", userNo5);
+		uMap.put("6", userNo6);
+		uMap.put("7", userNo7);
+		uMap.put("8", userNo8);
+		uMap.put("9", userNo9);
+		
+		
 		System.out.println(rMap);
 		
 		UserVo userVo = (UserVo)session.getAttribute("authUser");
 		
 		if(userVo != null) {
 			rMap.put("userNo", userVo.getUserNo());
-			ReserveVo reserveVo = reserveService.getReserveComplete(rMap);
+			//예약하기
+			ReserveVo reserveVo = reserveService.getReserveComplete(rMap, uMap);
+			model.addAttribute("reserveVo", reserveVo);
 			
 			return "reserve/reserveComplete";
 		} else {

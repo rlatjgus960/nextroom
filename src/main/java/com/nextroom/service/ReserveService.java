@@ -256,8 +256,11 @@ public class ReserveService {
 	}
 	
 	//예약하고 정보 가져오기
-	public ReserveVo getReserveComplete(Map<String, Object> rMap) {
+	public ReserveVo getReserveComplete(Map<String, Object> rMap, Map<String, Object> uMap) {
 		System.out.println("[ReserveService.getReserveComplete()]");
+		
+		Map<String, Object> lastMap = new HashMap<String, Object>();
+		ReserveVo hiVo = new ReserveVo();
 		
 		//예약날짜 테이블 존재확인
 		ReserveVo date = reserveDao.selectReserveDate(rMap);
@@ -295,11 +298,30 @@ public class ReserveService {
 		
 		//예약 테이블 정보 입력
 		reserveDao.insertReserve(rMap);
-			
-			
+		ReserveVo rVo = reserveDao.selectReserve(rMap);
+		System.out.println("rVo"+rVo);
+		
+		int reserveNo = rVo.getReserveNo();
+		int no;
 		
 		
-		return null;
+		for( Object value : uMap.values() ) {
+			System.out.println( String.format("value : %s", value ) );
+			no = (int)value;
+			System.out.println(no);
+			
+			if(no != -1) {
+				hiVo.setReserveNo(reserveNo);
+				hiVo.setUserNo(no);
+				System.out.println("살려줘");
+				reserveDao.insertReservePeople(hiVo);
+			}
+		}
+	    
+		ReserveVo finishVo = reserveDao.getReserveDetailInfo(reserveNo);
+		//System.out.println("finishVo"+finishVo);
+		
+		return finishVo;
 	}
 	
 	

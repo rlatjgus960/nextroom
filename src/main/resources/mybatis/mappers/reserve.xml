@@ -395,6 +395,35 @@
 			)
 		]]>
 	</insert>
+	
+	<!-- 예약회원 데이터 생성 -->
+	<insert id="insertReservePeople" parameterType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			insert into reservePeople
+			values (
+				reserveMemberNo.nextval,
+				#{reserveNo},
+				#{userNo}
+			)
+		]]>
+	</insert>
+	
+	<!-- reserve 테이블 정보 가져오기 -->
+	<select id="selectReserve" parameterType="map" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  reserveNo,
+			        reserveTimeNo,
+			        userNo,
+			        reserveName,
+			        reserveHp,
+			        payment,
+			        reservePerson,
+			        paymentState
+			from reserve
+			where reserveTimeNo = #{reserveTimeNo}
+		]]>
+	</select>
+	
 </mapper>
 
 

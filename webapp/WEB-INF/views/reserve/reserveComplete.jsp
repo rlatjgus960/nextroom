@@ -8,6 +8,7 @@
 
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/reservation.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 
 <title>방탈출 예약</title>
 </head>
@@ -51,35 +52,35 @@
                 <!--table-->
                 <table id="reservation_check_table">
                     <tr>
-                        <td id="reservation_thema_img" rowspan="5"><img src="${pageContext.request.contextPath }/assets/image/reserveEtc/factoryM.JPG"></td>
+                        <td id="reservation_thema_img" rowspan="5"><img src="${pageContext.request.contextPath }/assets/image/${reserveVo.themeImg}"></td>
                         <th>예약번호</th>
-                        <td>2021082701</td>
+                        <td>${reserveVo.reserveNo}</td>
                         <th>예약자</th>
-                        <td>차예진</td>
+                        <td>${reserveVo.reserveName}</td>
                     </tr>
 
                     <tr>
                         <th>지점</th>
-                        <td>비밀의화원 미드나잇</td>
+                        <td>${reserveVo.cafeName}</td>
                         <th>연락처</th>
-                        <td>010-1111-1111</td>
+                        <td>${reserveVo.reserveHp}</td>
                     </tr>
 
                     <tr>
                         <th>테마</th>
-                        <td>팩토리 엠</td>
+                        <td>${reserveVo.themeName}</td>
                         <th>결제금액</th>
-                        <td>50,000원</td>
+                        <td>${reserveVo.cafeName}원</td>
                     </tr>
 
                     <tr>
                         <th>예약일시</th>
-                        <td colspan="3">2021년 8월 27일   15시 30분</td>
+                        <td colspan="3" id="date" data-day="${reserveVo.reserveDate}" data-time="${reserveVo.reserveTime}"></td>
                     </tr>
 
                     <tr>
                         <th>인원</th>
-                        <td colspan="3">2인</td>
+                        <td colspan="3">${reserveVo.reservePerson}인</td>
                     </tr>
                 </table>
                 <!-- //table -->
@@ -105,4 +106,31 @@
 		
 	</div>
 </body>
+
+<script>
+	var a = $("#date").data("time");
+	var b = $("#date").data("day");
+
+	
+	var time = a.split(":");
+	var yy = String(b).substring(0,4);
+	var mm = String(b).substring(4,6);
+	var dd = String(b).substring(6,8);
+	
+	
+	console.log(a);
+	console.log(b);
+	
+	
+	console.log(time[0]);
+	console.log(time[1]);
+	console.log(yy);
+	console.log(mm);
+	console.log(dd);
+	
+	
+	$("#date").text(yy + "년 " + mm + "월 " + dd + "일 " + time[0]+"시 "+time[1]+"분");
+	
+	
+</script>
 </html>

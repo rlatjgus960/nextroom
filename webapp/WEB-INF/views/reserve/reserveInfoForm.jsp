@@ -46,7 +46,7 @@
 
                 <!-- main -->
 
-				<form action="${pageContext.request.contextPath}/reserve/reservePayForm" method="get">
+				<form action="${pageContext.request.contextPath}/reserve/reservePayForm" method="post">
 	                <!--table-->
 	                <table id="reservation_table">
 	                    <tr>
@@ -220,8 +220,9 @@
 		
 		str += '			<div class="reservation_partyMember_info_item">';
 		str += '    			<input name="playerId'+i+'" type="text" value="">';
+		str += '				<input type="hidden" name="userNo'+i+'" value="">'
 		str += '    			<button id="btnIdCheck" class="mbutton">아이디 확인</button>';		
-		str += '			</div>';	
+		str += '			</div>';	 
 		
 		str += '			<div class="reservation_partyMember_info_item reservation_party_text">';
 		str += '				당신의 무사탈출을 기원합니다.';
@@ -295,6 +296,7 @@
 			
 			if(playerVo.userName !== null && playerVo.userName !== undefined) {
 				$(this).parent().nextAll(".reservation_party_text").html(playerVo.userName+"님 당신의 무사탈출을 기원합니다.");
+				$(this).prev().val(playerVo.userNo);
 			} else {
 				$(this).parent().nextAll(".reservation_party_text").html("일치하는 사용자가 없습니다");
 			}
