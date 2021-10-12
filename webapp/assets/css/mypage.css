@@ -231,6 +231,7 @@ li.active {
 #mypageMain #paging {
 	margin: 20px auto;
 	width: 200px;
+	padding: 0px 0px 0px 80px;
 }
 
 #paging ul {margin: 10px 5px 10px 5px;}
