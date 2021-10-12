@@ -22,9 +22,32 @@ public class MypageService {
 	
 	//21-10-11 by 대니
 	// 마이페이지 파티관리
-	public Map<String, Object> mypagePartyManage(int userNo) {
+	public Map<String, Object> mypagePartyManage(int userNo, int crtPage, String partyJoinSelect) {
+
+		////////////////////////////////////////////
+		//리스트 가져오기
+		////////////////////////////////////////////
 		
-		List<PartyVo> partyManageList = mypageDao.mypagePartyManage(userNo);
+		int listCnt = 5;
+		
+		//crtPage 계산(- 값일때 1page 처리)
+		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1); //삼항연산자; 아래랑 같은 논리
+		
+//		if(crtPage > 0) {
+//			//crtPage = crtPage;
+//		} else {
+//			crtPage = 1;
+//		}
+		
+		
+		//시작번호 계산하기
+		int startRnum = (crtPage-1) * listCnt + 1;
+		
+		//끝번호 계산하기
+		int endRnum = crtPage * listCnt;		
+		
+		//파티관리 리스트 출력
+		List<PartyVo> partyManageList = mypageDao.mypagePartyManage(userNo, startRnum, endRnum, partyJoinSelect);
 		
 		//cafeNo 뽑아서 필요한 정보가져오기
 		for(int i=0; i<partyManageList.size(); i++) {
@@ -73,6 +96,13 @@ public class MypageService {
 		mypagePartyManage.put("partyManageList", partyManageList);
 		
 		return mypagePartyManage;
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	

@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.CafeService;
 import com.nextroom.service.MypageService;
@@ -50,14 +52,17 @@ public class Mypage {
 	//21-10-11 by 대니
 	// 마이페이지 파티관리
 	@RequestMapping("/partyManage")
-	public String mypageParty(HttpSession session, Model model) {
+	public String mypageParty(HttpSession session, Model model,
+							  @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage,
+							  @RequestParam(value = "partyJoinSelect", required = false, defaultValue = "") String partyJoinSelect) {
 		System.out.println("mypage/partyManage");
 		
+		System.out.println(partyJoinSelect);
 		// 세션(로그인한 사용자)의 번호
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		int userNo = authUser.getUserNo();
 		
-		Map<String, Object> mypagePartyManage = mypageService.mypagePartyManage(userNo);
+		Map<String, Object> mypagePartyManage = mypageService.mypagePartyManage(userNo, crtPage, partyJoinSelect);
 		
 		model.addAttribute("mypagePartyManage", mypagePartyManage);
 		

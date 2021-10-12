@@ -11,6 +11,9 @@
 <link href="${pageContext.request.contextPath }/assets/css/mypage.css" rel="stylesheet"
 	type="text/css">
 
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+
 <title>마이페이지-파티관리</title>
 </head>
 <body>
@@ -79,16 +82,22 @@
 				<!-- main -->
 				<div id="mypageMain" class="clearfix">
 
-
-
-
-
+<%-- 					<div id="party_table_select">
+						<form action="${pageContext.request.contextPath}/mypage/partyManage">
+							<select id="partyJoinSelect" name="partyJoinSelect">
+								<option value="allParty" selected="">전체보기</option>
+								<option value="makeParty">내가 등록한 파티</option>
+								<option value="joinParty">내가 참여한 파티</option>
+							</select>
+							<input type="submit">
+						</form>					
+					</div> --%>
+					
 					<div id="party_table_select">
-						<select name="partyJoinSelect">
-							<option value="makeParty" selected="">전체보기</option>
-							<option value="makeParty">내가 등록한 파티</option>
-							<option value="joinParty">내가 참여한 파티</option>
-						</select>
+						<a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a>
+						<a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a>
+						<a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a>
+						
 					</div>
 
 					<div id="partyJoin_detail_table">
@@ -112,7 +121,7 @@
 								<th>모집상태</th>
 							</tr>
 							<c:forEach items="${mypagePartyManage.partyManageList }" var="partyManageList" varStatus="status">
-								<tr>
+								<tr onclick="location.href='${pageContext.request.contextPath }/party/partyRead?partyNo=${partyManageList.partyNo}'">
 									<td><a href="${pageContext.request.contextPath }/party/partyRead?partyNo=${partyManageList.partyNo}">${partyManageList.partyNo} </a></td>
 									<td><a href="${pageContext.request.contextPath }/party/partyRead"><img
 											src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px"
@@ -177,6 +186,8 @@
 </body>
 
 <script type="text/javascript">
+
+	/**********************************************************************/
 	//쪽지보내기 팝업
 	function popup() {
 		var url = "${pageContext.request.contextPath }/board/massageForm";
@@ -184,5 +195,42 @@
 		var option = "width = 500, height = 500, top = 250, left = 700, location = no"
 		window.open(url, name, option);
 	}
+	/**********************************************************************/
+	
+	
+	/**********************************************************************/
+	//파티관리에서 전체보기, 내가 등록한, 내가 참여한 SELECT를 눌렀을때
+// 	$("#partyJoinSelect").on("change", function () {
+		
+// 		var partyJoinSelect = $("#partyJoinSelect option:selected").val();
+// 		console.log(partyJoinSelect);
+		
+// 		//ajax서버에 요청 (partyJoinSelect 전달)
+// 		$.post({
+			
+// 			url : "${pageContext.request.contextPath }/mypage/partyManage",		
+// 			type : "post",
+// // 			contentType : "application/json",
+// 			data : {partyJoinSelect: partyJoinSelect},
+
+// // 			dataType : "json",
+// 			success : function(partyJoinSelect){
+// 				/*성공시 처리해야될 코드 작성*/
+				
+// 				console.log("1")
+				
+				
+// 			},
+// 			error : function(XHR, status, error) {
+// 				console.error(status + " : " + error);
+// 			}
+			
+// 		}); 
+		
+// 	});
+	
+	
+	/**********************************************************************/
+	
 </script>
 </html>

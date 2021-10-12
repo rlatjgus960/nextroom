@@ -6,19 +6,58 @@
 	<!-- 마이페이지 파티관리 -->
 	<select id="mypagePartyManage" parameterType="map" resultType="com.nextroom.vo.PartyVo">
 		<![CDATA[
-			select partyNo,
-			       userNo,
-			       reservedateno,
-			       to_char(reservedate, 'YY-MM-DD') reserveDate,
-			       cafeno,
-			       themeno,
-			       themeno,
-			       themetime,
-			       reserveperson,
-			       content,
-			       partyState
-			from party
-			where userno = #{userNo}
+			select rt.rn,
+			       rt.partyNo,
+			       rt.userNo,
+			       rt.reservedateno,
+			       rt.reserveDate,
+			       rt.cafeno,
+			       rt.themeno,
+			       rt.themetime,
+			       rt.reservePerson,
+			       rt.content,
+			       rt.partyState
+			from ( select rownum rn,
+			              ot.partyNo,
+			              ot.userNo,
+			              ot.reservedateno,
+			              ot.reserveDate,
+			              ot.cafeno,
+			              ot.themeno,
+			              ot.themetime,
+			              ot.reservePerson,
+			              ot.content,
+			              ot.partyState
+			       from ( select p.partyNo,
+			                     p.userNo,
+			                     p.reservedateno,
+			                     to_char(reservedate, 'YY-MM-DD') reserveDate,
+			                     p.cafeno,
+			                     p.themeno,
+			                     p.themetime,
+			                     p.reserveperson,
+			                     p.content,
+			                     p.partyState
+			              from party p , partyDetail pd
+			              where p.partyNo = pd.partyno
+			              and pd.userno = #{userNo}
+		]]>
+		
+		<choose>
+			<when test="partyJoinSelect.equals('makeParty')">
+			              and pd.userstate = '2'
+			</when>
+			<when test="partyJoinSelect.equals('joinParty')">
+						  and pd.userstate = '1'
+			</when>
+			<otherwise>
+						  
+			</otherwise>
+		</choose>
+		<![CDATA[
+			              order by p.partyNo desc ) ot ) rt
+			where rn >= #{startRnum}
+			and rn <= #{endRnum}
 		]]>
 	</select>
 	
