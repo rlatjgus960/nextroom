@@ -68,6 +68,7 @@
 /* 추천 반대 목록 버튼 */
 #wrap_up_down{
     margin-bottom: 20px;
+    height:20px;
     text-align: left;
 }
 
@@ -104,8 +105,6 @@
     background-color: rgb(253, 213, 59);
     color: #fff;
 }
-
-
 
 
 /* 이전/다음 글 */

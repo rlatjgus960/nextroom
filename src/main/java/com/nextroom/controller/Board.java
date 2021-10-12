@@ -146,7 +146,7 @@ public class Board {
 	//2021.10.11 by 원호
 	//게시글 추천
 	@ResponseBody
-	@RequestMapping(value = "/readLike", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/freeLike", method = {RequestMethod.GET, RequestMethod.POST})
 	public int like(FreeBoardVo freeBoardVo) {
 		System.out.println("컨트롤러 게시글 추천");
 		
@@ -158,6 +158,78 @@ public class Board {
 		
 		return like;
 	}
+	
+	//2021.10.12 by 원호
+	//게시글 추천
+	@ResponseBody
+	@RequestMapping(value = "/freeHate", method = {RequestMethod.GET, RequestMethod.POST})
+	public int hate(FreeBoardVo freeBoardVo) {
+		System.out.println("컨트롤러 게시글 비추천");
+		
+		int hate = freeBoardVo.getBoardLike();
+		System.out.println(hate);
+		
+		hate = reviewBoardService.readHate(freeBoardVo);
+		
+		return hate;
+	}
+	
+	//2021.10.12 by 원호
+	//자유게시판 글 수정폼
+	@RequestMapping(value = "/freeModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String freeModifyForm(@RequestParam("boardNo") int boardNo, Model model, HttpSession session) {
+		System.out.println("Controller.freeModify");
+		System.out.println(boardNo);
+		
+		FreeBoardVo freeBoardVo = reviewBoardService.freeModify(boardNo);
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		System.out.println("유저정보 뭐냐" + authUser);
+		
+		if(authUser== null) {
+			System.out.println("로그인 안한 경우");
+
+			//포워드 하기전에 모델에 담아줌
+			model.addAttribute("freeBoardVo", freeBoardVo);
+			System.out.println("여기엔 뭐있노"+freeBoardVo);
+			return "redirect:/board/freeCommunity";
+		}else
+		
+		
+		//로그인한 사용자 == 글작성자
+		if(freeBoardVo.getUserNo() == authUser.getUserNo()) {
+			System.out.println("자신의 글인 경우 수정폼 포워드");
+			System.out.println("여기에 정보 있는거 가져와" + freeBoardVo);
+			
+			model.addAttribute("freeBoardVo", freeBoardVo);
+			return "board/freeModify";
+		}else {
+			System.out.println("다른 사람의 글인 경우");
+			return "redirect:/board/freeCommunity";
+		}
+		
+	}
+	
+//	//2010.10.12 by 원호
+//	//자유게시판 글 수정
+//	@RequestMapping(value="freeModify", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String freeModify(@ModelAttribute ReviewBoardVo reviewBoardVo,  HttpSession session) {
+//		System.out.println("Controller.modify");
+//		System.out.println(reviewBoardVo);
+//		
+//		//로그인한 사용자만 수정
+//		UserVo authUser = (UserVo)session.getAttribute("authUser");
+//		reviewBoardVo.setUserNo(authUser.getUserNo());
+//		
+//		reviewBoardService.modify(reviewBoardVo);
+//		
+//		return "redirect:/board/reviewBoard";
+//	}
+	
+	
+	
+	
+	
 //////////////////////////////////////////////////////////////////
 /*후기 게시판*/
 	//2021.10.02 by 원호
@@ -367,16 +439,16 @@ public class Board {
 	}
 	
 	
-//	//2021.10.08 by 원호
-//	//추천버튼시 추천수 올라감
+	//2021.10.11 by 원호
+	//추천버튼시 추천수 올라감
 //	@ResponseBody
-//	@RequestMapping(value="upAndDown", method = {RequestMethod.GET, RequestMethod.POST})
+//	@RequestMapping(value="/upAndDown", method = {RequestMethod.GET, RequestMethod.POST})
 //	public int upAndDown(@RequestParam("reviewNo") int reviewNo) {
 //		System.out.println("추천버튼 누른거");
 //		System.out.println(reviewNo);
 //		
-//		int count = reviewBoardService.upAndDown(reviewNo);
-//		return count;
+//		//int count = reviewBoardService.upAndDown(reviewNo);
+//		return 0;
 //	}
 		
 	

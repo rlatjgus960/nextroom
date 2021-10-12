@@ -124,12 +124,20 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										
 										
 										
-										<div id="wrap_up_down">
-											<a href="${pageContext.request.contextPath }/board/freeCommunity" class="back_button">목 록</a>
-											<a id="like" class="up_down" value="${freeBoardVo.boardNo}">추 천</a>
-											<a href="" class="up_down">반 대</a>
-										</div>
+											<div id="wrap_up_down">
+												<a href="${pageContext.request.contextPath }/board/freeCommunity" class="back_button">목 록</a>
+												
+												<c:if test="${authUser != null }">
+													<a id="like" class="up_down" name="${freeBoardVo.boardLike}">추 천</a>
+													<a id="hate" class="up_down" name="${freeBoardVo.boardLike}">반 대</a>
+													<input id="boardNoData" type="hidden" value = "${freeBoardVo.boardNo }">
+												</c:if>
+											</div>
+											
 
+										
+										
+										
 										<!-- 이전/다음 글 -->
 										<div id="wrap_preview">
 											<div class="prv">
@@ -253,40 +261,64 @@ $("#delete_button").on("click", function() {
 		
 });
 
-//추천버튼 클릭시
+//게시글 추천
 $("#like").on("click",function(){
 	console.log("추천 클릭")
-	console.log(this.value)
 	
-	var boardNo = ${freeBoardVo.boardNo};
+	var boardNo = $("#boardNoData").val();
+	console.log(boardNo);
 	
-	const result = confirm("게시물을 추천하시겠습니까?");
-	if(result) {
+	//ajax서버에 요청
+	$.ajax({
 		
-		//ajax서버에 요청
-		$.ajax({
-			
-			url : "${pageContext.request.contextPath }/board/readLike",		
-			type : "post",
-// 			contentType : "application/json",
-			data : {boardNo: boardNo},
+		url : "${pageContext.request.contextPath }/board/freeLike",		
+		type : "post",
+//			contentType : "application/json",
+		data : {boardNo: boardNo},
 
-// 			dataType : "json",
-			success : function(count){
-				/*성공시 처리해야될 코드 작성*/
-				console.log("추천완료");
-				${freeBoardVo.boardLike+1}
-				
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
+//			dataType : "json",
+		success : function(count){
+			/*성공시 처리해야될 코드 작성*/
+			console.log("추천완료");
 			
-		});
-		
-	}
-
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
 });
+
+//게시글 비추천
+$("#hate").on("click",function(){
+	console.log("비추천 클릭")
+	
+	var boardNo = $("#boardNoData").val();
+	console.log(boardNo);
+	
+	//ajax서버에 요청
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/board/freeHate",		
+		type : "post",
+//			contentType : "application/json",
+		data : {boardNo: boardNo},
+
+//			dataType : "json",
+		success : function(count){
+			/*성공시 처리해야될 코드 작성*/
+			console.log("비추천완료");
+			
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+});
+
 
 
 </script>
