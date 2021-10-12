@@ -314,4 +314,22 @@ public class ReviewBoardDao {
 		System.out.println(like);
 		return like;
 	}
+	
+	//2021.10.12 by 원호
+	//게시글 비추천
+	public int readHate(FreeBoardVo freeBoardVo) {
+		System.out.println("다오비추천");
+		int hate = sqlSession.update("reviewBoard.readHate", freeBoardVo);
+		System.out.println(hate);
+		return hate;
+	}
+	
+	//2021.10.12 by 원호
+	//자유게시판 게시글 수정폼
+	public FreeBoardVo freeModify(int boardNo) {
+		System.out.println("Dao.freeModify");
+		
+		return sqlSession.selectOne("reviewBoard.selectFreeBoard", boardNo);
+	}
+	
 }

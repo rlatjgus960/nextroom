@@ -232,10 +232,11 @@
                             </div>
                             <!-- //별점 -->
                             <!-- //후기게시판 글쓰기에만 보이게 -->
-
-                             <div class="fileUp"> 
+							
+                             <div class="fileUp">
+                             	<img src="${pageContext.request.contextPath }/upload/${reviewBoardVo.reviewImg}" style="width: 50px; height:50px;"> 
                              	<p>이미지 업로드</p> 
-                             	<input type="file" name="reviewImgfile"> 
+                             	<input type="file" name="reviewImgFile"> 
                              </div>
                             
              				<div id="text_tool">

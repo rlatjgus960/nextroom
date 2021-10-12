@@ -574,14 +574,44 @@
 	</insert>
 	
 	<!-- 2021.10.07 by 원호 -->
-	<!-- 자유 게시판 조회수올리기 -->
+	<!-- 자유 게시판 추천 -->
 	<update id="readLike" parameterType="FreeBoardVo">
 		<![CDATA[
 			update freeboard
 			set boardLike = boardLike+1
-			where boardno = #{boardno}
-			and boardLike = #{boardLike}
+			where boardno = #{boardNo}
 		]]>
 	</update>
+	
+	<!-- 2021.10.12 by 원호 -->
+	<!-- 자유 게시판 비추천 -->
+	<update id="readHate" parameterType="FreeBoardVo">
+		<![CDATA[
+			update freeboard
+			set boardLike = boardLike-1
+			where boardno = #{boardNo}
+		]]>
+	</update>
+	
+	
+	<!-- 2021.10.12 by 원호 -->
+	<!-- 글 1개 정보 가져오기 -->
+	<select id="selectFreeBoard" parameterType="int" resultType = "FreeBoardVo">
+		<![CDATA[
+			select  f.boardno,
+					f.userNo,
+       				f.boardtitle,
+			        u.nickname,
+			        f.boardhit,
+			        to_char(f.regdate, 'yy-mm-dd') regdate,	
+			        f.boardContent,
+			        f.boardImg
+			from freeboard f, users u
+			where f.userNo = u.userNo
+			and f.boardno = #{boardNo}
+		]]>
+	</select>
+	
+	
 	
 </mapper>

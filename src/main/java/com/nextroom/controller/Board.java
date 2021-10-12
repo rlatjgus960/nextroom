@@ -51,7 +51,7 @@ public class Board {
 		
 		
 		System.out.println(freeBoardVo);
-		reviewBoardService.boardWriteMulti(freeBoardVo);
+		reviewBoardService.boardWrite(freeBoardVo);
 		
 		
 		return "redirect:/board/freeCommunity";
@@ -160,7 +160,7 @@ public class Board {
 	}
 	
 	//2021.10.12 by 원호
-	//게시글 추천
+	//게시글 비추천
 	@ResponseBody
 	@RequestMapping(value = "/freeHate", method = {RequestMethod.GET, RequestMethod.POST})
 	public int hate(FreeBoardVo freeBoardVo) {

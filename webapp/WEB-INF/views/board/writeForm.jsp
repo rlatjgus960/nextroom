@@ -115,11 +115,11 @@
 
                              <div id="fileUp"> 
                              	<p>이미지 업로드</p> 
-                             	<input type="file" name="boardImgFile" multiple="multiple"> 
+                             	<input type="file" name="boardImgFile"> 
                              </div>
 
 							<div id="text_tool">
-								<textarea id="boardContent" name="boardContent" rows="50" cols="96" style="width: 1020px;"></textarea>
+								<textarea id="boardContent" name="boardContent" rows="50" cols="96" style="width: 1015px;"></textarea>
 							</div>
 							<!-- 글등록 버튼 -->
 							<button id="btn_save" type="submit">글등록</button>
