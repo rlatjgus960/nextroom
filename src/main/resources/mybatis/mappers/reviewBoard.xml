@@ -319,15 +319,30 @@
 	</update>
 	
 
-	<!-- 2021.10.08 by 원호 -->
-	<!-- 조회수올리기 -->
-<!-- 	<update id="reviewLike" parameterType="int">
+	<!-- 2021.10.07 by 원호 -->
+	<!-- 후기 게시판 추천 -->
+	<update id="reviewLike" parameterType="ReviewBoardVo">
 		<![CDATA[
 			update review
 			set reviewLike = reviewLike+1
-			where reviewno = #{reviewno}
+			where reviewno = #{reviewNo}
 		]]>
-	</update> -->
+	</update>
+	
+	<!-- 2021.10.12 by 원호 -->
+	<!-- 후기 게시판 비추천 -->
+	<update id="reviewHate" parameterType="ReviewBoardVo">
+		<![CDATA[
+			update review
+			set reviewLike = reviewLike-1
+			where reviewno = #{reviewNo}
+		]]>
+	</update>
+	
+	
+	
+	
+	
 	
 <!-- 자유게시판 -->
 

@@ -88,7 +88,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 
 					<!-- 글 읽기폼 -->
 					<div id="read_area" class="clearfix">
-						<form action="" method="get" class="form_area">
+						
 
 							<div>
 								<h3>${reviewBoardVo.reviewTitle}</h3>
@@ -158,8 +158,12 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										
 										<div id="wrap_up_down">
 											<a href="${pageContext.request.contextPath }/board/reviewBoard" class="back_button">목 록</a>
-											<button type="button" id="up"  class="up_down" onclick="Like">추 천</button>
-											<button type="button" id="down" class="up_down" onclick="Hate">반 대</button>
+											
+											<c:if test="${authUser != null }">
+												<a id="like" type="button" id="up"  class="up_down" name="${reviewBoardVo.reviewLike }">추 천</a>
+												<a id="hate" type="button" id="down" class="up_down" name="${reviewBoardVo.reviewLike}">반 대</a>
+												<input id="reviewNoData" type="hidden" value="${reviewBoardVo.reviewNo}">
+											</c:if>
 										</div>
 
 										<!-- 이전/다음 글 -->
@@ -179,16 +183,18 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										</div>
 										<!-- //이전/다음 글 -->
 
+									<form action="" method="get" class="form_area">
 										<!-- 댓글쓰기 -->
 										<div id="comment">
 											<strong>댓글 쓰기</strong>
 											<div>
-												<input type="text" placeholder="로그인 후 이용해 주세요">
-												<a href="">등 록</a>
+												<input type="text" placeholder="로그인 후 이용해 주세요" name="">
+												<a id="commentAdd">등 록</a>
 											</div>
 										</div>
 										<!-- //댓글쓰기 -->
-
+									</form>
+									
 										<!-- 댓글 리스트 -->
 										<div id="comment_box">
 											<ul id="comment_list">
@@ -214,7 +220,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 
 							</div>
 							<!-- //콘텐츠-->
-						</form>
+						
 					</div>
 					<!-- //글 읽기폼 -->
 
@@ -284,6 +290,72 @@ $("#delete_button").on("click", function() {
 		
 		
 });
+
+//2021.10.12 by 원호
+//게시글 추천
+$("#like").on("click",function(){
+	console.log("추천 클릭")
+	
+	var reviewNo = $("#reviewNoData").val();
+	console.log(reviewNo);
+	
+	//ajax서버에 요청
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/board/ReviewLike",		
+		type : "post",
+//			contentType : "application/json",
+		data : {reviewNo: reviewNo},
+
+//			dataType : "json",
+		success : function(count){
+			/*성공시 처리해야될 코드 작성*/
+			console.log("추천완료");
+			
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+});
+
+//2021.10.12 by 원호
+//게시글 비추천
+$("#hate").on("click",function(){
+	console.log("비추천 클릭")
+	
+	var reviewNo = $("#reviewNoData").val();
+	console.log(reviewNo);
+	
+	//ajax서버에 요청
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/board/ReviewHate",		
+		type : "post",
+//			contentType : "application/json",
+		data : {reviewNo: reviewNo},
+
+//			dataType : "json",
+		success : function(count){
+			/*성공시 처리해야될 코드 작성*/
+			console.log("비추천완료");
+			
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+});
+
+
+//댓글 등록
+$("#commentAdd").on("click", function(){
+	console.log("댓글등록 클릭")
+})
 
 
 

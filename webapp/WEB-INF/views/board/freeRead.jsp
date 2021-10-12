@@ -156,6 +156,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										<!-- //이전/다음 글 -->
 
 										<!-- 댓글쓰기 -->
+										
 										<div id="comment">
 											<strong>댓글 쓰기</strong>
 											<div>
@@ -163,6 +164,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 												<a href="">등 록</a>
 											</div>
 										</div>
+										
 										<!-- //댓글쓰기 -->
 
 										<!-- 댓글 리스트 -->
@@ -318,6 +320,9 @@ $("#hate").on("click",function(){
 	});
 	
 });
+
+
+
 
 
 

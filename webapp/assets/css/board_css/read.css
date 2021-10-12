@@ -228,6 +228,12 @@
 }
 
 
+/* 추천/비추천 */
 
+#like{
+	cursor:pointer;
+}
 
-
+#hate{
+	cursor:pointer;
+}

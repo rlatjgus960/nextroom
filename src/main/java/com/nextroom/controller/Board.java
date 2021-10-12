@@ -52,10 +52,32 @@ public class Board {
 		
 		System.out.println(freeBoardVo);
 		reviewBoardService.boardWrite(freeBoardVo);
-		
+		System.out.println("controller -> xml까지 갔다온거 뭐있냐" + freeBoardVo);
 		
 		return "redirect:/board/freeCommunity";
 	}
+	
+	//2021.10.07 by 원호
+	//자유게시판 글등록
+//	@RequestMapping(value = "/boardWrite2", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String boardWrite2(@ModelAttribute FreeBoardVo freeBoardVo, HttpSession session) {
+//		System.out.println("Controller.reviewWrite");
+//		
+//		//세션에서 정보가져옴
+//		UserVo authUser = (UserVo)session.getAttribute("authUser");
+//		System.out.println("authUser:" + authUser);
+//		
+//		//vo에 세션에서 가져온 no담기
+//		int no = authUser.getUserNo();
+//		freeBoardVo.setUserNo(no);
+//		
+//		
+//		System.out.println(freeBoardVo);
+//		reviewBoardService.boardWriteMulti(freeBoardVo);
+//		System.out.println("controller -> xml까지 갔다온거 뭐있냐" + freeBoardVo);
+//		
+//		return "redirect:/board/freeCommunity";
+//	}
 	
 	//2021.10.07 by 원호
 	//자유게시판 리스트,페이징
@@ -438,18 +460,36 @@ public class Board {
 		return "redirect:/board/reviewBoard";
 	}
 	
-	
 	//2021.10.11 by 원호
-	//추천버튼시 추천수 올라감
-//	@ResponseBody
-//	@RequestMapping(value="/upAndDown", method = {RequestMethod.GET, RequestMethod.POST})
-//	public int upAndDown(@RequestParam("reviewNo") int reviewNo) {
-//		System.out.println("추천버튼 누른거");
-//		System.out.println(reviewNo);
-//		
-//		//int count = reviewBoardService.upAndDown(reviewNo);
-//		return 0;
-//	}
+	//게시글 추천
+	@ResponseBody
+	@RequestMapping(value = "/ReviewLike", method = {RequestMethod.GET, RequestMethod.POST})
+	public int reviewlike(ReviewBoardVo reviewBoardVo) {
+		System.out.println("컨트롤러 게시글 추천");
+		
+		int like = reviewBoardVo.getReviewLike();
+		System.out.println(like);
+		
+		like = reviewBoardService.reviewLike(reviewBoardVo);
+		
+		
+		return like;
+	}
+	
+	//2021.10.12 by 원호
+	//게시글 비추천
+	@ResponseBody
+	@RequestMapping(value = "/ReviewHate", method = {RequestMethod.GET, RequestMethod.POST})
+	public int reviewhate(ReviewBoardVo reviewBoardVo) {
+		System.out.println("컨트롤러 게시글 비추천");
+		
+		int hate = reviewBoardVo.getReviewLike();
+		System.out.println(hate);
+		
+		hate = reviewBoardService.reviewHate(reviewBoardVo);
+		
+		return hate;
+	}
 		
 	
 	//쪽지 보내기
