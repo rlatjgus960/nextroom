@@ -63,7 +63,7 @@
 
 						<li>기록
 							<ul class="aside_mini_cate">
-								<li><p class="selected">
+								<li><p>
 										<a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a>
 									</p></li>
 								<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
@@ -101,7 +101,8 @@
 					</select>
 
 
-					<form action="${pageContext.request.contextPath }/admin/theme/modify" method="post" enctype="multipart/form-data">
+					<form id="themeModifyForm" action="${pageContext.request.contextPath }/admin/theme/modify"
+						method="post" enctype="multipart/form-data">
 						<input type="hidden" name="themeNo" value="${themeVo.themeNo }">
 						<div id="addThwme_formDiv" class="clearfix">
 							<div id="previewArea">
@@ -124,7 +125,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">장르</p>
 											<select id="themeGenre" name="jenre" class="cafe_explain_selectBox">
-												<option value="">장르를 선택해주세요.</option>
+												<option value="" disabled>장르를 선택해주세요.</option>
 												<c:forEach items="${genreList }" var="genreList">
 													<c:choose>
 														<c:when test="${genreList.jenre eq themeVo.jenre}">
@@ -164,7 +165,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">난이도</p>
 											<select id="themeLevel" name="levels" class="cafe_explain_selectBox">
-												<option value="">난이도를 선택해주세요.</option>
+												<option value="" disabled>난이도를 선택해주세요.</option>
 												<option value="1" <c:if test="${themeVo.levels == 1}">selected="selected"</c:if>>★</option>
 												<option value="2" <c:if test="${themeVo.levels == 2}">selected="selected"</c:if>>★★</option>
 												<option value="3" <c:if test="${themeVo.levels == 3}">selected="selected"</c:if>>★★★</option>
@@ -176,7 +177,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">유형</p>
 											<select id="themeType" name="themeType" class="cafe_explain_selectBox">
-												<option value="" selected="selected">유형을 선택해주세요.</option>
+												<option value="" selected="selected" disabled>유형을 선택해주세요.</option>
 												<option value="자물쇠 위주"
 													<c:if test="${themeVo.themeType eq '자물쇠 위주'}">selected="selected"</c:if>>자물쇠
 													위주</option>
@@ -207,7 +208,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">플레이타임</p>
 											<select id="playTime" name="playTime" class="cafe_explain_selectBox">
-												<option value="">플레이타임을 선택해주세요.</option>
+												<option value="" disabled>플레이타임을 선택해주세요.</option>
 												<option value="60" <c:if test="${themeVo.playTime == 60}">selected="selected"</c:if>>60분</option>
 												<option value="65" <c:if test="${themeVo.playTime == 65}">selected="selected"</c:if>>65분</option>
 												<option value="70" <c:if test="${themeVo.playTime == 70}">selected="selected"</c:if>>70분</option>
@@ -239,7 +240,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">활동성</p>
 											<select id="activity" name="activity" class="cafe_explain_selectBox">
-												<option value="">활동성을 선택해주세요.</option>
+												<option value="" disabled>활동성을 선택해주세요.</option>
 												<option value="적음" <c:if test="${themeVo.activity eq '적음'}">selected="selected"</c:if>>적음</option>
 												<option value="보통" <c:if test="${themeVo.activity eq '보통'}">selected="selected"</c:if>>보통</option>
 												<option value="많음" <c:if test="${themeVo.activity eq '많음'}">selected="selected"</c:if>>많음</option>
@@ -317,15 +318,15 @@
 									<div id="themeTimeWrap">
 										<!-- 시간표 반복영역 -->
 										<input type="hidden" value="">
-										
+
 										<c:forEach items="${timeList }" var="timeList">
 											<c:set var="i" value="${i+1 }" />
 											<div id="d-${i }" class="clearfix timeWrap">
-												<input class="themeTimeSelect" name="themeStartTime" type="time"
+												<input class="themeTimeSelect" name="themeTime" type="time"
 													value="${timeList.themeTime }"> <img data-no="${i }" class="removeTime"
 													src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
 											</div>
-											
+
 										</c:forEach>
 										<input id="i" type="hidden" value="${i }">
 
@@ -354,7 +355,10 @@
 						</div>
 
 						<div id="addTheme_button">
-							<button type="submit" class="mbutton">수정</button>
+
+							<button id="deleteBtn" type="submit" class="mbutton">삭제</button>
+							<button id="updateBtn" type="submit" class="mbutton">수정</button>
+
 						</div>
 					</form>
 
@@ -411,7 +415,7 @@
 
 					});
 
-// 	var i = 4; // 변수설정은 함수의 바깥에 설정
+	// 	var i = 4; // 변수설정은 함수의 바깥에 설정
 
 	$("#btnAddTime")
 			.on(
@@ -437,6 +441,94 @@
 		$("#d-" + no).remove();
 
 	});
+
+	$("#updateBtn").on(
+			"click",
+			function() {
+
+				if ($("[name='themeName']").val() == ''
+						|| $("[name='themeName']").val() == null) {
+
+					alert("제목을 입력해주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='jenre']").val() == ''
+						|| $("[name='jenre']").val() == null) {
+
+					alert("장르를 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='levels']").val() == ''
+						|| $("[name='levels']").val() == null) {
+
+					alert("난이도를 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='themeType']").val() == ''
+						|| $("[name='themeType']").val() == null) {
+
+					alert("유형을 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='pRecommendMin']").val() == ''
+						|| $("[name='pRecommendMin']").val() == null) {
+
+					alert("추천인원 최솟값을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='pRecommendMax']").val() == ''
+						|| $("[name='pRecommendMax']").val() == null) {
+
+					alert("추천인원 최댓값을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='playTime']").val() == ''
+						|| $("[name='playTime']").val() == null) {
+
+					alert("플레이타임을 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='activity']").val() == ''
+						|| $("[name='activity']").val() == null) {
+
+					alert("활동성을 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='themeIntro']").val() == ''
+						|| $("[name='themeIntro']").val() == null) {
+
+					alert("소개글을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='pMin']").val() == ''
+						|| $("[name='pMin']").val() == null) {
+
+					alert("수용가능 최소인원을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='pMax']").val() == ''
+						|| $("[name='pMax']").val() == null) {
+
+					alert("수용가능 최대인원을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='price']").val() == ''
+						|| $("[name='price']").val() == null) {
+
+					alert("가격을 한개 이상 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='themeTime']").val() == ''
+						|| $("[name='themeTime']").val() == null) {
+
+					alert("시간을 한개 이상 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else {
+					$("#themeModifyForm").submit();
+				}
+
+			});
 </script>
 
 

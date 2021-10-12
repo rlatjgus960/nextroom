@@ -268,10 +268,9 @@ public class CafeService {
 	// 카페 상세페이지 출력용 가져오기
 	public Map<Object, Object> getCafeDetail(int cafeNo) {
 		System.out.println("[CafeService.getCafeDetail()]");
-		
+
 		Map<Object, Object> detailMap = new HashMap<Object, Object>();
-		
-		
+
 		CafeVo cafeVo = cafeDao.getCafe(cafeNo);
 		List<CafeVo> themeList = cafeDao.getCafeTheme(cafeNo);
 
@@ -332,7 +331,7 @@ public class CafeService {
 
 			System.out.println("카페서비스 allPriceList :" + allPriceList);
 			System.out.println("카페서비스 headCountList :" + headCountList);
-			
+
 			detailMap.put("allPriceList", allPriceList);
 			detailMap.put("headCountList", headCountList);
 
@@ -362,7 +361,6 @@ public class CafeService {
 		// System.out.println("priceMap : " + priceMap);
 //		System.out.println("priceAllList : " + priceAllList);
 
-		
 		detailMap.put("cafeVo", cafeVo);
 		detailMap.put("themeList", themeList);
 //		detailMap.put("priceAllList", priceAllList);
@@ -543,16 +541,15 @@ public class CafeService {
 
 	// 카페 수정
 	public int cafeModify(CafeVo cafeVo) {
-		
-		cafeVo.setPrintAddress(cafeVo.getAddress()+" "+cafeVo.getAddressDetail());
-		
-		
+
+		cafeVo.setPrintAddress(cafeVo.getAddress() + " " + cafeVo.getAddressDetail());
+
 		MultipartFile file = cafeVo.getCafeImgFile();
 		System.out.println(file);
-		
+
 		long fileSize = file.getSize();
 		System.out.println("fileSize " + fileSize);
-		
+
 		if (fileSize > 0) {
 
 			String saveDir = "C:\\javaStudy\\upload\\";
@@ -584,24 +581,52 @@ public class CafeService {
 			}
 
 			cafeVo.setCafeImg(saveName);
-			
+
 			return cafeDao.cafeModify_basic(cafeVo);
 
 		} else {
 			return cafeDao.cafeModify_noFile(cafeVo);
 		}
 	}
-	
-	
-	//테마 수정
+
+	// 테마 수정
 	public int themeModify(CafeVo cafeVo) {
-		
+
+		int themeNo = cafeVo.getThemeNo();
+		int count = 0;
+
+		// 테마 가격 처리 (테마번호로 삭제 후 다시 추가)
+		cafeDao.deleteThemePrice(themeNo);
+		List<Integer> price = cafeVo.getPrice();
+		List<Integer> headCount = cafeVo.getHeadCount();
+
+		for (int i = 0; i < price.size(); i++) {
+			PriceVo priceVo = new PriceVo();
+			priceVo.setThemeNo(themeNo);
+			priceVo.setHeadCount(headCount.get(i));
+			priceVo.setPrice(price.get(i));
+			count += cafeDao.addThemePrice(priceVo);
+		}
+
+		// 테마 시간표 처리 (테마번호로 삭제 후 다시 추가)
+		cafeDao.deleteThemeTime(themeNo);
+		List<String> timeTable = cafeVo.getThemeTime();
+
+		System.out.println("timeTable : " + timeTable);
+		for (int i = 0; i < timeTable.size(); i++) {
+			TimeVo timeVo = new TimeVo();
+			timeVo.setThemeNo(themeNo);
+			timeVo.setThemeTime(timeTable.get(i));
+			count += cafeDao.addThemeTime(timeVo);
+		}
+
+		// 이미지 첨부 여부 따라 처리
 		MultipartFile file = cafeVo.getThemeImgFile();
 		System.out.println(file);
-		
+
 		long fileSize = file.getSize();
 		System.out.println("fileSize " + fileSize);
-		
+
 		if (fileSize > 0) {
 
 			String saveDir = "C:\\javaStudy\\upload\\";
@@ -633,7 +658,7 @@ public class CafeService {
 			}
 
 			cafeVo.setThemeImg(saveName);
-			
+
 			// 로고 경로, 블로그 타이틀 업데이트
 
 			return cafeDao.updateTheme_basic(cafeVo);
@@ -641,7 +666,7 @@ public class CafeService {
 		} else {
 			return cafeDao.updateTheme_noFile(cafeVo);
 		}
-		
+
 	}
 
 }

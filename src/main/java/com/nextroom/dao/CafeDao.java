@@ -266,6 +266,21 @@ public class CafeDao {
 //		sqlSession.update("cafe.updateThemeTime", cafeVo);
 		return sqlSession.update("cafe.updateTheme-noFile", cafeVo);
 	}
+	
+	// 테마 가격 삭제
+	public int deleteThemePrice(int themeNo) {
+		System.out.println("[CafeDao.deleteThemePrice()]");
+		
+		return sqlSession.update("cafe.deleteThemePrice", themeNo);
+	}
+	
+	// 테마 시간표 삭제
+		public int deleteThemeTime(int themeNo) {
+			System.out.println("[CafeDao.deleteThemeTime()]");
+			
+			return sqlSession.update("cafe.deleteThemeTime", themeNo);
+		}
+	
 
 
 }

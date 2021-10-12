@@ -612,36 +612,23 @@
 			where themeNo = #{themeNo}
 		]]>
 	</update>
-
-	<!-- 테마 가격 업데이트 -->
-	<update id="updateThemePrice" parameterType="com.nextroom.vo.CafeVo">
+	
+	<!-- 테마 가격 삭제 -->
+	<delete id="deleteThemePrice" parameterType="int">
 		<![CDATA[
-			update themePrice
-			set 
-				themeName = #{themeName},
-				jenre = #{jenre},
-				levels = #{levels},
-				themeType = #{themeType},
-				playTime = #{playTime},
-				activity = #{activity},
-				themeIntro = #{themeIntro},
-				pRecommendMin = #{pRecommendMin},
-				pRecommendMax = #{pRecommendMax},
-				pMin = #{pMin},
-				pMax = #{pMax}
+			delete themePrice
 			where themeNo = #{themeNo}
 		]]>
-	</update>
+	</delete>
 
-	<!-- 테마 시간표 업데이트 -->
-	<update id="updateThemeTime" parameterType="com.nextroom.vo.CafeVo">
+
+	<!-- 테마 시간표 삭제 -->
+	<delete id="deleteThemeTime" parameterType="int">
 		<![CDATA[
-			update themeTime
-			set 
-				themeTimeNo.nextval,
-				#{themeNo},
-				#{themeTime}
-			where themeTimeNo = #{themeTimeNo}
+			delete themeTime
+			where themeNo = #{themeNo}
 		]]>
-	</update>
+	</delete>
+	
+	
 </mapper>

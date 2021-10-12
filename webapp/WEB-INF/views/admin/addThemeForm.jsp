@@ -83,7 +83,7 @@
 
 					<p id="admin_subHeader">| 카페 테마 추가</p>
 
-					<form action="${pageContext.request.contextPath}/admin/addTheme" method="post"
+					<form id="addThemeForm" action="${pageContext.request.contextPath}/admin/addTheme" method="post"
 							enctype="multipart/form-data">
 							
 							<input type="hidden" name="cafeNo" value="${authUser.cafeNo }">
@@ -107,7 +107,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">장르</p>
 											<select id="themeGenre" name="jenre" class="cafe_explain_selectBox">
-												<option value="" selected="selected">장르를 선택해주세요.</option>
+												<option value="" selected="selected" disabled>장르를 선택해주세요.</option>
 												<option value="추리">추리</option>
 												<option value="스릴러">스릴러</option>
 												<option value="감성">감성</option>
@@ -136,7 +136,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">난이도</p>
 											<select id="themeLevel" name="levels" class="cafe_explain_selectBox">
-												<option value="" selected="selected">난이도를 선택해주세요.</option>
+												<option value="" selected="selected" disabled>난이도를 선택해주세요.</option>
 												<option value="1">★</option>
 												<option value="2">★★</option>
 												<option value="3">★★★</option>
@@ -148,7 +148,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">유형</p>
 											<select id="themeType" name="themeType" class="cafe_explain_selectBox">
-												<option value="" selected="selected">유형을 선택해주세요.</option>
+												<option value="" selected="selected" disabled>유형을 선택해주세요.</option>
 												<option value="자물쇠 위주">자물쇠 위주</option>
 												<option value="장치 위주">장치 위주</option>
 												<option value="자물쇠/장치 반반">자물쇠/장치 반반</option>
@@ -173,7 +173,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">플레이타임</p>
 											<select id="themeLevel" name="playTime" class="cafe_explain_selectBox">
-												<option value="" selected="selected">플레이타임을 선택해주세요.</option>
+												<option value="" selected="selected" disabled>플레이타임을 선택해주세요.</option>
 												<option value="60">60분</option>
 												<option value="65">65분</option>
 												<option value="70">70분</option>
@@ -205,7 +205,7 @@
 										<div id="" class="theme_explain_item clearfix">
 											<p class="addTheme_subTitle">활동성</p>
 											<select id="themeType" name="activity" class="cafe_explain_selectBox">
-												<option value="" selected="selected">활동성을 선택해주세요.</option>
+												<option value="" selected="selected" disabled>활동성을 선택해주세요.</option>
 												<option value="적음">적음</option>
 												<option value="보통">보통</option>
 												<option value="많음">많음</option>
@@ -289,7 +289,7 @@
 						</div>
 
 						<div id="addTheme_button">
-							<button type="submit" class="mbutton">추가</button>
+							<button id="addThemeBtn" type="submit" class="mbutton">추가</button>
 						</div>
 					</form>
 
@@ -373,6 +373,102 @@
 
 
 	});
+	
+	$("#addThemeBtn").on(
+			"click",
+			function() {
+				
+				if ($("[name='themeImgFile']").val() == ''
+						|| $("[name='themeImgFile']").val() == null) {
+
+					alert("포스터 이미지를 첨부해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='themeName']").val() == ''
+						|| $("[name='themeName']").val() == null) {
+
+					alert("제목을 입력해주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='jenre']").val() == ''
+						|| $("[name='jenre']").val() == null) {
+
+					alert("장르를 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='levels']").val() == ''
+						|| $("[name='levels']").val() == null) {
+
+					alert("난이도를 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='themeType']").val() == ''
+						|| $("[name='themeType']").val() == null) {
+
+					alert("유형을 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='pRecommendMin']").val() == ''
+						|| $("[name='pRecommendMin']").val() == null) {
+
+					alert("추천인원 최솟값을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='pRecommendMax']").val() == ''
+						|| $("[name='pRecommendMax']").val() == null) {
+
+					alert("추천인원 최댓값을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='playTime']").val() == ''
+						|| $("[name='playTime']").val() == null) {
+
+					alert("플레이타임을 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='activity']").val() == ''
+						|| $("[name='activity']").val() == null) {
+
+					alert("활동성을 선택해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='themeIntro']").val() == ''
+						|| $("[name='themeIntro']").val() == null) {
+
+					alert("소개글을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='pMin']").val() == ''
+						|| $("[name='pMin']").val() == null) {
+
+					alert("수용가능 최소인원을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='pMax']").val() == ''
+						|| $("[name='pMax']").val() == null) {
+
+					alert("수용가능 최대인원을 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='price']").val() == ''
+						|| $("[name='price']").val() == null) {
+
+					alert("가격을 한개 이상 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else if ($("[name='themeTime']").val() == ''
+						|| $("[name='themeTime']").val() == null) {
+
+					alert("시간을 한개 이상 입력해 주세요");
+					event.preventDefault();
+					return flase;
+				} else {
+					$("#addThemeForm").submit();
+				}
+				
+				
+
+			});
 	
 </script>
 

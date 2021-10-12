@@ -60,14 +60,14 @@
 
 							<div>
 								<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">&nbsp;매일
-									${detailMap.cafeVo.openTime } ~ ${detailMap.cafeVo.closeTime }
+								${detailMap.cafeVo.openTime } ~ ${detailMap.cafeVo.closeTime }
 							</div>
 						</div>
 
 						<div id="cafe_detail_btn">
 							<button class="cbutton" id="cafe_wish">관심카페등록</button>
 							<button class="cbutton" id="cafe_reserv">예약하기</button>
-							<a href="${detailMap.cafeVo.url}" target="_blank"><button class="cbutton" id="cafe_site">공식사이트</button></a>
+							<button onclick="window.open('${detailMap.cafeVo.url}')" class="cbutton" id="cafe_site">공식사이트</button>
 						</div>
 					</div>
 
@@ -93,23 +93,33 @@
 
 				<p>| 가격</p>
 				<c:if test="${not empty detailMap.themeList}">
-					<table id="cafe_priceTable">
+				
+				
+<!-- 					<span> 인원수 </span> -->
+<%-- 					<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status"> --%>
+<%-- 						<span>${themeList.themeName }(${themeList.playTime }분)</span> --%>
+<%-- 					</c:forEach> --%>
+
+
+
+
+					<table id="cafe_priceTable" style="display: table; table-layout: fixed">
+
 
 						<thead>
+							<th style="display: table-cell;">인원수</th>
 
-							<th>인원수</th>
 							<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status">
-								<th>${themeList.themeName }(${themeList.playTime }분)</th>
 
+								<th style="display: table-cell;">${themeList.themeName }(${themeList.playTime }분)</th>
 
 							</c:forEach>
 						</thead>
 
-
-						<tbody style="float: left;">
+						<tbody style="display: table-cell;">
 							<c:forEach items="${detailMap.headCountList}" var="headCountList" varStatus="status">
 								<tr>
-									<td>${headCountList.headCount}인</td>
+									<td style="display: table-cell; width: 100%;">${headCountList.headCount}인</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -117,16 +127,16 @@
 
 						<c:forEach items="${detailMap.allPriceList}" var="allPriceList" varStatus="status">
 
-							<tbody style="float: left;">
+							<tbody style="display: table-cell; width: 100%;">
 								<c:forEach items="${allPriceList}" var="priceList" varStatus="status">
 
 									<tr>
 										<c:choose>
 											<c:when test="${priceList.price == 0}">
-												<td>-</td>
+												<td style="display: table-cell; width: 100%;">-</td>
 											</c:when>
 											<c:otherwise>
-												<td>${priceList.price}원</td>
+												<td style="display: table-cell; width: 100%;">${priceList.price}원</td>
 											</c:otherwise>
 										</c:choose>
 									</tr>
@@ -306,9 +316,10 @@
     
     <script type="text/javascript">
     
-    $("#cafe_btn_viewmap").on("click", function() {
+    $("
+							#cafe_btn_viewmap").on("click", function() {
 		
-		//모달창 보이기
+		//모달창보이기
 		$("#cafe_detail_modal").modal();
 
 	}); -->
@@ -323,7 +334,6 @@
 
 
 	<!-- //지도보기 모달 -->
-
 </body>
 
 </html>

@@ -33,12 +33,12 @@
 			<!-- main -->
 			<div id="theme_recommend_back" class="clearfix">
 				<!-- 스와이퍼 -->
-				<div class="swiper mySwiper clearfix">
+				<div class="swiper mySwiper">
 					<div class="swiper-wrapper">
 
 
 						<!-- 반복영역 -->
-						<div class="swiper-slide">
+						<div class="swiper-slide clearfix">
 							<div class="theme_swiper_list">
 								<img id="" class="theme_img"
 									src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg">
@@ -273,8 +273,8 @@
 						</div>
 
 					</div>
-					<div class="swiper-button-next"></div>
-					<div class="swiper-button-prev"></div>
+					<div id="swiper-button-next" class="swiper-button-next"></div>
+					<div id="swiper-button-prev" class="swiper-button-prev"></div>
 					<div class="swiper-pagination"></div>
 				</div>
 				<!-- //스와이퍼 -->
@@ -294,7 +294,7 @@
 
             </table> -->
 
-			<div id="theme_select">
+			<div id="theme_select" class="clearfix">
 
 				<div id="theme_select_title">
 					<div>지역</div>
@@ -309,96 +309,90 @@
 
 					<form>
 						<div id="theme_region" class="theme_select_condition">
-							<label><input type="checkbox" name="theme_region" value="">전국</label> <label><input
-								type="checkbox" name="theme_region" value="">홍대</label> <label><input
-								type="checkbox" name="theme_region" value="">강남</label> <label><input
-								type="checkbox" name="theme_region" value="">건대</label> <label><input
-								type="checkbox" name="theme_region" value="">신촌</label> <label><input
-								type="checkbox" name="theme_region" value="">대학로</label> <label><input
-								type="checkbox" name="theme_region" value="">강북</label> <label><input
-								type="checkbox" name="theme_region" value="">신림</label> <label><input
-								type="checkbox" name="theme_region" value="">서울(기타)</label> <label><input
-								type="checkbox" name="theme_region" value="">부천</label> <label><input
-								type="checkbox" name="theme_region" value="">일산</label> <label><input
-								type="checkbox" name="theme_region" value="">수원</label> <label><input
-								type="checkbox" name="theme_region" value="">안양</label> <label><input
-								type="checkbox" name="theme_region" value="">경기(기타)</label> <label><input
-								type="checkbox" name="theme_region" value="">인천</label> <label><input
-								type="checkbox" name="theme_region" value="">강원</label> <label><input
-								type="checkbox" name="theme_region" value="">대전</label> <label><input
-								type="checkbox" name="theme_region" value="">천안</label> <label><input
-								type="checkbox" name="theme_region" value="">청주</label> <label><input
-								type="checkbox" name="theme_region" value="">충청(기타)</label> <label><input
-								type="checkbox" name="theme_region" value="">대구</label> <label><input
-								type="checkbox" name="theme_region" value="">부산</label> <label><input
-								type="checkbox" name="theme_region" value="">경상(기타)</label> <label><input
-								type="checkbox" name="theme_region" value="">전주</label> <label><input
-								type="checkbox" name="theme_region" value="">광주</label> <label><input
-								type="checkbox" name="theme_region" value="">전라(기타)</label> <label><input
-								type="checkbox" name="theme_region" value="">제주</label>
+							<label><input type="checkbox" name="theme_region" value="전국">전국</label> <label><input
+								type="checkbox" name="sidoDetail" value="홍대">홍대</label> <label><input
+								type="checkbox" name="sidoDetail" value="강남">강남</label> <label><input
+								type="checkbox" name="sidoDetail" value="건대">건대</label> <label><input
+								type="checkbox" name="sidoDetail" value="신촌">신촌</label> <label><input
+								type="checkbox" name="sidoDetail" value="대학로">대학로</label> <label><input
+								type="checkbox" name="sidoDetail" value="강북">강북</label> <label><input
+								type="checkbox" name="sidoDetail" value="신림">신림</label> <label><input
+								type="checkbox" name="sidoDetail" value="서울">서울(기타)</label> <label><input
+								type="checkbox" name="sidoDetail" value="부천">부천</label> <label><input
+								type="checkbox" name="sidoDetail" value="일산">일산</label> <label><input
+								type="checkbox" name="sidoDetail" value="수원">수원</label> <label><input
+								type="checkbox" name="sidoDetail" value="안양">안양</label> <label><input
+								type="checkbox" name="sidoDetail" value="경기(기타)">경기(기타)</label> <label><input
+								type="checkbox" name="sidoDetail" value="인천">인천</label> <label><input
+								type="checkbox" name="sidoDetail" value="강원">강원</label> <label><input
+								type="checkbox" name="sidoDetail" value="대전">대전</label> <label><input
+								type="checkbox" name="sidoDetail" value="천안">천안</label> <label><input
+								type="checkbox" name="sidoDetail" value="청주">청주</label> <label><input
+								type="checkbox" name="sidoDetail" value="충청(기타)">충청(기타)</label> <label><input
+								type="checkbox" name="sidoDetail" value="대구">대구</label> <label><input
+								type="checkbox" name="sidoDetail" value="부산">부산</label> <label><input
+								type="checkbox" name="sidoDetail" value="경상(기타)">경상(기타)</label> <label><input
+								type="checkbox" name="sidoDetail" value="전주">전주</label> <label><input
+								type="checkbox" name="sidoDetail" value="광주">광주</label> <label><input
+								type="checkbox" name="sidoDetail" value="전라(기타)">전라(기타)</label> <label><input
+								type="checkbox" name="sidoDetail" value="제주">제주</label>
 
 						</div>
 
 						<div id="theme_genre" class="theme_select_condition">
-							<label><input type="checkbox" name="theme_region" value="">전체</label> <label><input
-								type="checkbox" name="theme_region" value="">추리</label> <label><input
-								type="checkbox" name="theme_region" value="">스릴러</label> <label><input
-								type="checkbox" name="theme_region" value="">감성</label> <label><input
-								type="checkbox" name="theme_region" value="">로맨스</label> <label><input
-								type="checkbox" name="theme_region" value="">범죄</label> <label><input
-								type="checkbox" name="theme_region" value="">코미디</label> <label><input
-								type="checkbox" name="theme_region" value="">모험</label> <label><input
-								type="checkbox" name="theme_region" value="">판타지</label> <label><input
-								type="checkbox" name="theme_region" value="">19금</label> <label><input
-								type="checkbox" name="theme_region" value="">공포</label> <label><input
-								type="checkbox" name="theme_region" value="">드라마</label> <label><input
-								type="checkbox" name="theme_region" value="">미스터리</label> <label><input
-								type="checkbox" name="theme_region" value="">아케이드</label> <label><input
-								type="checkbox" name="theme_region" value="">액션</label> <label><input
-								type="checkbox" name="theme_region" value="">야외</label> <label><input
-								type="checkbox" name="theme_region" value="">음악</label> <label><input
-								type="checkbox" name="theme_region" value="">잠입</label> <label><input
-								type="checkbox" name="theme_region" value="">역사</label> <label><input
-								type="checkbox" name="theme_region" value="">공상과학</label> <label><input
-								type="checkbox" name="theme_region" value="">?</label>
+							<label><input type="checkbox" name="jenre" value="전체">전체</label> <label><input
+								type="checkbox" name="jenre" value="추리">추리</label> <label><input type="checkbox"
+								name="jenre" value="스릴러">스릴러</label> <label><input type="checkbox" name="jenre"
+								value="감성">감성</label> <label><input type="checkbox" name="jenre" value="로맨스">로맨스</label>
+							<label><input type="checkbox" name="jenre" value="범죄">범죄</label> <label><input
+								type="checkbox" name="jenre" value="코미디">코미디</label> <label><input type="checkbox"
+								name="jenre" value="모험">모험</label> <label><input type="checkbox" name="jenre"
+								value="판타지">판타지</label> <label><input type="checkbox" name="jenre" value="19금">19금</label>
+							<label><input type="checkbox" name="jenre" value="공포">공포</label> <label><input
+								type="checkbox" name="jenre" value="드라마">드라마</label> <label><input type="checkbox"
+								name="jenre" value="미스터리">미스터리</label> <label><input type="checkbox" name="jenre"
+								value="아케이드">아케이드</label> <label><input type="checkbox" name="jenre" value="액션">액션</label>
+							<label><input type="checkbox" name="jenre" value="야외">야외</label> <label><input
+								type="checkbox" name="jenre" value="음악">음악</label> <label><input type="checkbox"
+								name="jenre" value="잠입">잠입</label> <label><input type="checkbox" name="jenre"
+								value="역사">역사</label> <label><input type="checkbox" name="jenre" value="공상과학">공상과학</label>
+							<label><input type="checkbox" name="jenre" value="?">?</label>
 
 						</div>
 
 						<div id="theme_kind" class="theme_select_condition">
-							<label><input type="checkbox" name="theme_region" value="">자물쇠 위주</label> <label><input
-								type="checkbox" name="theme_region" value="">장치 위주</label> <label><input
-								type="checkbox" name="theme_region" value="">자물쇠, 장치 반반</label>
+							<label><input type="checkbox" name="themeType" value="자물쇠 위주">자물쇠 위주</label> <label><input
+								type="checkbox" name="themeType" value="장치 위주">장치 위주</label> <label><input
+								type="checkbox" name="themeType" value="자물쇠, 장치 반반">자물쇠, 장치 반반</label>
 
 						</div>
 
 						<div id="theme_people" class="theme_select_condition">
-							<label><input type="checkbox" name="theme_region" value="">혼방</label> <label><input
-								type="checkbox" name="theme_region" value="">2인</label> <label><input
-								type="checkbox" name="theme_region" value="">3인</label> <label><input
-								type="checkbox" name="theme_region" value="">4인</label> <label><input
-								type="checkbox" name="theme_region" value="">5인</label> <label><input
-								type="checkbox" name="theme_region" value="">6인 이상</label>
+							<label><input type="checkbox" name="pMin" value="1">혼방</label> <label><input
+								type="checkbox" name="pMin" value="2">2인</label> <label><input type="checkbox"
+								name="pMin" value="3">3인</label> <label><input type="checkbox" name="pMin"
+								value="4">4인</label> <label><input type="checkbox" name="pMin" value="5">5인</label>
+							<label><input type="checkbox" name="pMin" value="6">6인 이상</label>
 						</div>
 
 						<div id="theme_level" class="theme_select_condition">
-							<label><input type="checkbox" name="theme_region" value="">★</label> <label><input
-								type="checkbox" name="theme_region" value="">★★</label> <label><input
-								type="checkbox" name="theme_region" value="">★★★</label> <label><input
-								type="checkbox" name="theme_region" value="">★★★★</label> <label><input
-								type="checkbox" name="theme_region" value="">★★★★★</label>
+							<label><input type="checkbox" name="levels" value="1">★</label> <label><input
+								type="checkbox" name="levels" value="2">★★</label> <label><input type="checkbox"
+								name="levels" value="3">★★★</label> <label><input type="checkbox" name="levels"
+								value="4">★★★★</label> <label><input type="checkbox" name="levels" value="5">★★★★★</label>
 
 						</div>
 
 						<div id="theme_active" class="theme_select_condition">
-							<label><input type="checkbox" name="theme_region" value="">적음</label> <label><input
-								type="checkbox" name="theme_region" value="">보통</label> <label><input
-								type="checkbox" name="theme_region" value="">많음</label>
+							<label><input type="checkbox" name="activity" value="적음">적음</label> <label><input
+								type="checkbox" name="activity" value="보통">보통</label> <label><input type="checkbox"
+								name="activity" value="많음">많음</label>
 
 
 						</div>
 						<button type="reset" id="theme_resetBtn" class="themeSearchBtn">초기화</button>
 						<button type="submit" id="theme_searchBtn" class="themeSearchBtn">검색하기</button>
-						
+
 					</form>
 				</div>
 
@@ -436,14 +430,15 @@
 				<!-- 테마 반복영역 -->
 				<c:forEach items="${themeList }" var="themeList">
 					<div class="cafe_theme">
-						<img href="" src="${pageContext.request.contextPath }/upload/${themeList.themeImg }" alt="">
+						<a href="${pageContext.request.contextPath}/cafe/theme/${themeList.themeNo}"> <img
+							src="${pageContext.request.contextPath }/upload/${themeList.themeImg}" alt=""></a>
 
 						<div class="cafe_theme_info">
 							<p>${themeList.cafeName }</p>
 
-							<p href="" class="cafe_theme_info_title">${themeList.themeName }</p>
-
-							<span>장르 : </span><span>${themeList.jenre}</span> | <span>추천인원 : </span><span>${themeList.pRecommendMin}~${themeList.pRecommendMax}인</span><br>
+							<a href="${pageContext.request.contextPath }/cafe/themeDetail">
+								<p class="cafe_theme_info_title">${themeList.themeName}</p>
+							</a> <span>장르 : </span><span>${themeList.jenre}</span> | <span>추천인원 : </span><span>${themeList.pRecommendMin}~${themeList.pRecommendMax}인</span><br>
 							<span>난이도 : </span><span>${themeList.levels}</span> | <span>플레이타임 : </span><span>${themeList.playTime}분</span><br>
 							<span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br> <span>유형
 								: </span><span>${themeList.themeType}</span> | <span>활동성 : </span><span>${themeList.activity}</span>

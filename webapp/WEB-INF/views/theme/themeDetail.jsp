@@ -56,7 +56,7 @@
 						<div id="theme_detail_btn">
 							<button type="button" class="cbutton" id="theme_wish">관심테마등록</button>
 							<button type="button" class="cbutton" id="theme_reserv">예약하기</button>
-							<button type="button" class="cbutton" id="theme_cafe">카페정보</button>
+							<button onclick = "location.href = '${pageContext.request.contextPath }/cafe/${themeVo.cafeNo }'" type="button" class="cbutton" id="theme_cafe">카페정보</button>
 						</div>
 					</div>
 
