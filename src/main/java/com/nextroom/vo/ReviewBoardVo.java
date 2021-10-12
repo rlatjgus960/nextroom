@@ -34,6 +34,13 @@ public class ReviewBoardVo {
 	//2021.10.05추가
 	private String reviewImg;
 	private MultipartFile reviewImgFile;
+	
+	
+	//2021.10.12 추가
+	//댓글 테이블
+	private int commentNo;
+	private String commentContent;
+	private String commentDate;
 	//생성자
 	public ReviewBoardVo() {
 		super();
@@ -41,7 +48,8 @@ public class ReviewBoardVo {
 	public ReviewBoardVo(int reviewNo, int themeNo, int userNo, int feelLevel, int rating, int recTime, int reviewHints,
 			String reviewClear, int memberNum, String playDate, String reviewRegDate, int reviewLike,
 			String reviewTitle, String reviewContent, int reviewHit, String sido, String sidoDetail, String themeName,
-			int cafeNo, String cafeName, String nickname, String reviewImg, MultipartFile reviewImgFile) {
+			int cafeNo, String cafeName, String nickname, String reviewImg, MultipartFile reviewImgFile, int commentNo,
+			String commentContent, String commentDate) {
 		super();
 		this.reviewNo = reviewNo;
 		this.themeNo = themeNo;
@@ -66,6 +74,9 @@ public class ReviewBoardVo {
 		this.nickname = nickname;
 		this.reviewImg = reviewImg;
 		this.reviewImgFile = reviewImgFile;
+		this.commentNo = commentNo;
+		this.commentContent = commentContent;
+		this.commentDate = commentDate;
 	}
 	public int getReviewNo() {
 		return reviewNo;
@@ -205,6 +216,24 @@ public class ReviewBoardVo {
 	public void setReviewImgFile(MultipartFile reviewImgFile) {
 		this.reviewImgFile = reviewImgFile;
 	}
+	public int getCommentNo() {
+		return commentNo;
+	}
+	public void setCommentNo(int commentNo) {
+		this.commentNo = commentNo;
+	}
+	public String getCommentContent() {
+		return commentContent;
+	}
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
+	}
+	public String getCommentDate() {
+		return commentDate;
+	}
+	public void setCommentDate(String commentDate) {
+		this.commentDate = commentDate;
+	}
 	@Override
 	public String toString() {
 		return "ReviewBoardVo [reviewNo=" + reviewNo + ", themeNo=" + themeNo + ", userNo=" + userNo + ", feelLevel="
@@ -213,15 +242,10 @@ public class ReviewBoardVo {
 				+ ", reviewRegDate=" + reviewRegDate + ", reviewLike=" + reviewLike + ", reviewTitle=" + reviewTitle
 				+ ", reviewContent=" + reviewContent + ", reviewHit=" + reviewHit + ", sido=" + sido + ", sidoDetail="
 				+ sidoDetail + ", themeName=" + themeName + ", cafeNo=" + cafeNo + ", cafeName=" + cafeName
-				+ ", nickname=" + nickname + ", reviewImg=" + reviewImg + ", reviewImgFile=" + reviewImgFile + "]";
+				+ ", nickname=" + nickname + ", reviewImg=" + reviewImg + ", reviewImgFile=" + reviewImgFile
+				+ ", commentNo=" + commentNo + ", commentContent=" + commentContent + ", commentDate=" + commentDate
+				+ "]";
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

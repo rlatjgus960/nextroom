@@ -182,15 +182,28 @@ public class ReviewBoardDao {
 		return sqlSession.update("reviewBoard.update2",reviewBoardVo);
 	}
 	
-//	//2021.10.08 by 원호
-//	//추천버튼
-//	public int upAndDown(int reviewNo) {
-//		System.out.println("Dao.upAndDown");
-//		
-//		int count = sqlSession.update("reviewBoard.reviewLike", reviewNo);
-//		
-//		return count;
-//	}
+	//2021.10.10 by 원호
+	//게시글 추천
+	public int reviewLike(ReviewBoardVo reviewBoardVo) {
+		System.out.println("다오추천");
+		int like = sqlSession.update("reviewBoard.reviewLike", reviewBoardVo);
+		System.out.println(like);
+		return like;
+	}
+	
+	//2021.10.12 by 원호
+	//게시글 비추천
+	public int reviewHate(ReviewBoardVo reviewBoardVo) {
+		System.out.println("다오비추천");
+		int hate = sqlSession.update("reviewBoard.reviewHate", reviewBoardVo);
+		System.out.println(hate);
+		return hate;
+	}
+	
+	
+	
+	
+	
 //////////////////////////////////////////////////////////
 	/*자유게시판*/
 	

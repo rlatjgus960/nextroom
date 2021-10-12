@@ -405,17 +405,23 @@ public class ReviewBoardService {
 	}
 	
 	
-//	//2021.10.08 by 원호
-//	//추천버튼
-//	public int upAndDown(int reviewNo) {
-//		System.out.println("[Service.upAndDown]");
-//		System.out.println(reviewNo);
-//		
-//		int count = reviewBoardDao.upAndDown(reviewNo);
-//		
-//		return count;
-//		//return 1;
-//	}
+	//2021.10.11 by 원호
+	//게시글 추천
+	public int reviewLike(ReviewBoardVo reviewBoardVo) {
+		System.out.println("서비스 추천");
+		int like = reviewBoardDao.reviewLike(reviewBoardVo);
+		System.out.println(like);
+		return like;
+	}
+	
+	//2021.10.12 by 원호
+	//게시글 비추천
+	public int reviewHate(ReviewBoardVo reviewBoardVo) {
+		System.out.println("서비스 비추천");
+		int hate = reviewBoardDao.reviewHate(reviewBoardVo);
+		System.out.println(hate);
+		return hate;
+	}
 	
 	
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -490,71 +496,81 @@ public class ReviewBoardService {
 	
 	//2021.10.07 by 원호
 	//자유게시판 글 등록(멀티 이미지)
-	public int boardWriteMulti(FreeBoardVo freeBoardVo) {
-		System.out.println("Service.reviewWrite");
-		System.out.println("[Service Vo정보]" + freeBoardVo);
-		
-		// ******************** 자유게시판 이미지 처리 ********************/
-		List<FreeBoardImgVo> MultiList = new ArrayList<>();
-		List<MultipartFile> MultiImg = freeBoardVo.getMultiImgFile();
-		
-		int count = 0;
-		
-		for(int i = 0; i < MultiImg.size(); i++) {
-			
-			long fileSize = MultiImg.get(i).getSize();
-			System.out.println("fileSize " + fileSize);
-
-			if (fileSize > 0) {
-
-				String multiSaveDir = "C:\\javaStudy\\upload\\";
-
-				System.out.println(MultiImg.get(i).getOriginalFilename());
-				System.out.println(MultiImg.get(i).getSize());
-
-				// 원파일이름
-				String multiOrgName = MultiImg.get(i).getOriginalFilename();
-				System.out.println(multiOrgName);
-
-				// 확장자
-				String multiExName = MultiImg.get(i).getOriginalFilename().substring(MultiImg.get(i).getOriginalFilename().lastIndexOf("."));
-				System.out.println(multiExName);
-
-				// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
-				String multiSaveName = System.currentTimeMillis() + UUID.randomUUID().toString() + multiExName;
-				System.out.println(multiSaveName);
-
-				// 파일패스
-				String multiFilePath = multiSaveDir + "\\" + multiSaveName;
-				System.out.println(multiFilePath);
-
-				// 파일 서버하드디스크에 저장
-				try {
-					byte[] fileData = MultiImg.get(i).getBytes();
-					OutputStream out = new FileOutputStream(multiFilePath);
-					BufferedOutputStream bout = new BufferedOutputStream(out);
-
-					bout.write(fileData);
-					bout.close();
-
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				FreeBoardImgVo freeBoardImgVo = new FreeBoardImgVo();
-				freeBoardImgVo.setImg(multiSaveName);
-				freeBoardImgVo.setBoardNo(freeBoardVo.getBoardNo());
-
-				count += reviewBoardDao.addMultiImg(freeBoardImgVo);
-				
-				System.out.println("ReviewInsert 후 Vo : " + freeBoardVo);
-				
-			}
-		}
-		
-		return count;
-	}
+//	public int boardWriteMulti(FreeBoardVo freeBoardVo) {
+//		System.out.println("Service.reviewWrite");
+//		System.out.println("[Service Vo정보]" + freeBoardVo);
+//		
+//		// ******************** 자유게시판 이미지 처리 ********************/
+//		List<FreeBoardImgVo> MultiList = new ArrayList<>();
+//		List<MultipartFile> MultiImg = freeBoardVo.getBoardImgFile();
+//		
+//		System.out.println(MultiImg);
+//		
+//		int count = 0;
+//		
+//		if(MultiImg == null) {
+//			count = reviewBoardDao.boardInsert2(freeBoardVo);
+//		}else {
+//			for(int i = 0; i < MultiImg.size(); i++) {
+//				
+//				long fileSize = MultiImg.get(i).getSize();
+//				System.out.println("fileSize " + fileSize);
+//
+//				if (fileSize > 0) {
+//
+//					String multiSaveDir = "C:\\javaStudy\\upload\\";
+//
+//					System.out.println(MultiImg.get(i).getOriginalFilename());
+//					System.out.println(MultiImg.get(i).getSize());
+//
+//					// 원파일이름
+//					String multiOrgName = MultiImg.get(i).getOriginalFilename();
+//					System.out.println(multiOrgName);
+//
+//					// 확장자
+//					String multiExName = MultiImg.get(i).getOriginalFilename().substring(MultiImg.get(i).getOriginalFilename().lastIndexOf("."));
+//					System.out.println(multiExName);
+//
+//					// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+//					String multiSaveName = System.currentTimeMillis() + UUID.randomUUID().toString() + multiExName;
+//					System.out.println(multiSaveName);
+//
+//					// 파일패스
+//					String multiFilePath = multiSaveDir + "\\" + multiSaveName;
+//					System.out.println(multiFilePath);
+//
+//					// 파일 서버하드디스크에 저장
+//					try {
+//						byte[] fileData = MultiImg.get(i).getBytes();
+//						OutputStream out = new FileOutputStream(multiFilePath);
+//						BufferedOutputStream bout = new BufferedOutputStream(out);
+//
+//						bout.write(fileData);
+//						bout.close();
+//
+//					} catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//
+//					FreeBoardImgVo freeBoardImgVo = new FreeBoardImgVo();
+//					freeBoardImgVo.setImg(multiSaveName);
+//					freeBoardImgVo.setBoardNo(freeBoardVo.getBoardNo());
+//
+//					count += reviewBoardDao.addMultiImg(freeBoardImgVo);
+//					
+//					System.out.println("ReviewInsert 후 Vo : " + freeBoardVo);
+//					
+//				}
+//			}
+//		}
+//		
+//		
+//		
+//		
+//		
+//		return count;
+//	}
 	
 
 	

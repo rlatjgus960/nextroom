@@ -3,13 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<!-- 작성일때문에 필요함 -->
-<%@ page import = "java.util.Calendar" %>
-
-<%
-  String Date = new java.text.SimpleDateFormat("yyyy. MM. dd").format(new java.util.Date());
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,8 +109,7 @@
 								 
 							<div id="nick_date">
 								<h6>작성자: ${authUser.nickname }</h6>
-									<c:set value="<%=Date%>" var="today" />
-								<p>작성일: ${today }</p>
+								<p>작성일: ${reviewBoardVo.reviewRegDate}</p>
 								
 							</div>
 
