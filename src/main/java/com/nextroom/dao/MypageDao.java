@@ -30,4 +30,20 @@ public class MypageDao {
 		
 		return sqlSession.selectList("mypage.mypagePartyManage", partyManageListMap);
 	}
+	
+	
+	//21-10-11 by 대니
+	//페이징 갯수와 페이징버튼을 위한 전체게시물갯수
+	public int partyJoinTotalCount(int userNo, String partyJoinSelect) {
+		
+		Map<String, Object> totalCountMap = new HashMap<String, Object>();
+		
+		totalCountMap.put("userNo", userNo);
+		totalCountMap.put("partyJoinSelect", partyJoinSelect);
+		
+		return sqlSession.selectOne("mypage.partyJoinTotalCount", totalCountMap);
+	}
+	
+	
+	
 }

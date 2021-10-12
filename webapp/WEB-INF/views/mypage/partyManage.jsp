@@ -97,30 +97,30 @@
 						<c:choose>
 							<c:when test="${param.partyJoinSelect eq 'allParty' }">
 								<ul>
-									<li class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a></li>
-									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a></li>
-									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a></li>
+									<li class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=allParty">전체보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=makeParty">내가 등록한 파티</a></li>
+									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=joinParty">내가 참여한 파티</a></li>
 								</ul>
 							</c:when>
 							<c:when test="${param.partyJoinSelect eq 'makeParty' }">
 								<ul>
-									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a></li>
-									<li class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a></li>
-									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=allParty">전체보기</a></li>
+									<li class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=makeParty">내가 등록한 파티</a></li>
+									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=joinParty">내가 참여한 파티</a></li>
 								</ul>
 							</c:when>
 							<c:when test="${param.partyJoinSelect eq 'joinParty' }">
 								<ul>
-									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a></li>
-									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a></li>
-									<li id="mypage_partyManage_select_none" class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=allParty">전체보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=makeParty">내가 등록한 파티</a></li>
+									<li id="mypage_partyManage_select_none" class="active"><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=joinParty">내가 참여한 파티</a></li>
 								</ul>								
 							</c:when>
 							<c:otherwise>
 								<ul>
-									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=allParty">전체보기</a></li>
-									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=makeParty">내가 등록한 파티</a></li>
-									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?partyJoinSelect=joinParty">내가 참여한 파티</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=allParty">전체보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=makeParty">내가 등록한 파티</a></li>
+									<li id="mypage_partyManage_select_none"><a href="${pageContext.request.contextPath}/mypage/partyManage?crtPage=1&partyJoinSelect=joinParty">내가 참여한 파티</a></li>
 								</ul>											
 							</c:otherwise>
 						</c:choose>
@@ -175,16 +175,38 @@
 					</div>
 
 					<div id="paging" class="clearfix">
-						<ul>
-							<li><a href="">◀</a></li>
+						<ul class="page">
+						
+                     	   <c:if test="${mypagePartyManage.prev == true}">
+                            	<li><a href="${pageContext.request.contextPath }/mypage/partyManage?crtPage=${mypagePartyManage.startPageBtnNo-1}&partyJoinSelect=${mypagePartyManage.partyJoinSelect }">◀</a></li>
+                       	   </c:if>
+                           
+                           <c:forEach begin ="${mypagePartyManage.startPageBtnNo}" end = "${mypagePartyManage.endPageBtnNo}" step = "1" var = "page">
+                           		<c:choose>
+	                           		<c:when test="${param.crtPage eq page }">
+	                           			<li class="active"><a href="${pageContext.request.contextPath }/mypage/partyManage?crtPage=${page }&partyJoinSelect=${mypagePartyManage.partyJoinSelect }">${page}</a></li>
+	                           		</c:when>
+	                           		
+	                           		<c:otherwise>
+	                           			<li><a href="${pageContext.request.contextPath }/mypage/partyManage?crtPage=${page }&partyJoinSelect=${mypagePartyManage.partyJoinSelect }">${page}</a></li>
+	                           		</c:otherwise>
+                           		</c:choose>
+                           		
+                           </c:forEach>
+                           <c:if test = "${mypagePartyManage.next == true}">
+                           		<li><a href="${pageContext.request.contextPath }/mypage/partyManage?crtPage=${mypagePartyManage.endPageBtnNo+1}&partyJoinSelect=${mypagePartyManage.partyJoinSelect }">▶</a></li>
+                           </c:if>
+						
+						
+						</ul>
+
+<!-- 							<li><a href="">◀</a></li>
 							<li><a href="">1</a></li>
 							<li><a href="">2</a></li>
 							<li class="active"><a href="">3</a></li>
 							<li><a href="">4</a></li>
 							<li><a href="">5</a></li>
-							<li><a href="">▶</a></li>
-						</ul>
-
+							<li><a href="">▶</a></li> -->
 
 						<div class="clear"></div>
 					</div>

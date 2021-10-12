@@ -28,7 +28,7 @@ public class MypageService {
 		//리스트 가져오기
 		////////////////////////////////////////////
 		
-		int listCnt = 5;
+		int listCnt = 1;
 		
 		//crtPage 계산(- 값일때 1page 처리)
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1); //삼항연산자; 아래랑 같은 논리
@@ -90,18 +90,62 @@ public class MypageService {
 			System.out.println("파티관리: " + partyManageList);
 		}
 		
+		//////////////////////////////////////////////
+		// 페이징 계산하기
+		//////////////////////////////////////////////
+		
+		//페이징 갯수와 페이징버튼을 위한 전체게시물갯수
+		int totalCount = mypageDao.partyJoinTotalCount(userNo, partyJoinSelect);
+		
+		//페이지당 버튼갯수
+		int pageBtnCount = 5;
+		
+		
+		//마지막 버튼 번호
+		int endPageBtnNo = (int)Math.ceil((crtPage/(double)pageBtnCount))* pageBtnCount;
+			//    1 / 5.0 * 5  = 1.0
+			//    2 / 5.0 * 5  = 2.0
+		
+		
+		//시작 버튼 번호
+		int startPageBtnNo = endPageBtnNo - (pageBtnCount-1);
+		
+		
+		//다음 화살표 펴현 유무
+		boolean next = false;
+		if(endPageBtnNo * listCnt < totalCount) {
+		next = true;
+		} else {
+		//	다음 화살표 버튼이 없을때 endPageBtnNo 를 다시 계산해야한다.
+		//	전체 글의 갯수/한페이지의 글갯수(10)
+		//	127  /  10	= 12.7(자바에선 12로나옴)		--> 12.1여도 13페이지까지 나와야하기때문에 올림처리함
+		
+		endPageBtnNo = (int)Math.ceil(totalCount/(double)listCnt);
+		// 127	/ 10.0  = 12.7	-->올림	-> 13.0 --> 13
+		}
+		
+		
+		//이전 화살표 표현 유무
+		boolean prev = false;
+		if(startPageBtnNo !=1) {
+		prev = true;
+		}		
+		
+		
+		
+		
 		//맵으로 리턴
 		Map<String, Object> mypagePartyManage = new HashMap<String, Object>();
 		
 		mypagePartyManage.put("partyManageList", partyManageList);
+		mypagePartyManage.put("prev", prev);
+		mypagePartyManage.put("startPageBtnNo", startPageBtnNo);
+		mypagePartyManage.put("endPageBtnNo", endPageBtnNo);
+		mypagePartyManage.put("next", next);
+		mypagePartyManage.put("partyJoinSelect", partyJoinSelect);
+		mypagePartyManage.put("crtPage", crtPage);
 		
 		return mypagePartyManage;
-		
-		
-		
-		
-		
-		
 		
 	}
 	
