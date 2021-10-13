@@ -266,6 +266,7 @@
 										<select id="party_time" name="themeTime">
 	                                		<option value="" selected="">시간을 선택해 주세요</option>
 	                            		</select>
+	                            			<input type="text" name="themeTimeNo" value="">
 									</td>
 								</tr>
 							
@@ -502,10 +503,18 @@
 		
 		var theme = $(this).val();
 		var themeNo = $("#party_theme option:selected").data("themeno");
+		var cafeNo = $("#party_cafe option:selected").data("cafeno");
 		$("[name=themeNo]").val(themeNo);
 		console.log(theme);
 		console.log(themeNo);
+		console.log(cafeNo);
 		
+		var partyVo = {
+				themeNo: $("#party_theme option:selected").data("themeno"),
+				cafeNo: $("#party_cafe option:selected").data("cafeno")
+		};
+		
+		console.log(partyVo);
 		
 		
 	  	$('#party_time').empty ();
@@ -517,7 +526,7 @@
 			url : "${pageContext.request.contextPath }/party/theme",		
 			type : "post",
 // 			contentType : "application/json",
-			data : {themeNo: themeNo},
+			data : partyVo,
 
 // 			dataType : "json",
 			success : function(themeTimeList){
@@ -544,12 +553,30 @@
 // 	시간표 1개씩 렌더링
 	function themeTimeRender(themeTimeList, type) {
 		var str = "";
-		str += '<option id="themeTime" value="' + themeTimeList.themeTime + '">' + themeTimeList.themeTime + '</option>';
+		str += '<option class="themeTime" data-themetimeno="' + themeTimeList.themeTimeNo + '" value="' + themeTimeList.themeTime + '">' + themeTimeList.themeTime + '</option>';
 		
 		if(type === 'down') {
 			$("#party_time").append(str);
 		}
 	};
+	
+	/********************************************************************************************/
+	
+	
+	/********************************************************************************************/
+	
+	//시간표 클릭시
+	$("#party_time").on("change", function () {
+		
+// 		var themeTimeNo = $(this).data("themetimeno");
+		var themeTimeNo = $(this).find("option:selected").data("themetimeno");
+
+		console.log(themeTimeNo);
+		
+		
+// 		$("[name='themeTimeNo']").val(themeTimeNo);
+		$('input[name=themeTimeNo]').attr('value',themeTimeNo);
+	});
 	
 	/********************************************************************************************/
 	
