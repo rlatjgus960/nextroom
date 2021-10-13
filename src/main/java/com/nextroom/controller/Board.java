@@ -492,6 +492,34 @@ public class Board {
 	}
 		
 	
+	//2021.10.13 by 원호
+	//댓글 등록
+	@ResponseBody
+	@RequestMapping(value="/addComment", method = {RequestMethod.GET, RequestMethod.POST})
+	public ReviewBoardVo addComment(@ModelAttribute ReviewBoardVo reviewBoardVo) {
+		System.out.println("[controller.addComment]");
+		System.out.println(reviewBoardVo);
+		
+		ReviewBoardVo resultVo = reviewBoardService.addComment(reviewBoardVo);
+		System.out.println(resultVo);
+		return resultVo;
+	}
+	
+	//2021.10.13 by 원호
+	//댓글 리스트
+	@ResponseBody
+	@RequestMapping(value = "/commentList", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<ReviewBoardVo> List() {
+		System.out.println("[controller.commentList]");
+		
+		List<ReviewBoardVo> commentList= reviewBoardService.commentList();
+		
+		System.out.println(commentList);
+		
+		return commentList;
+
+	}
+	
 	//쪽지 보내기
 	@RequestMapping("/massageForm")
 	public String massageForm() {
