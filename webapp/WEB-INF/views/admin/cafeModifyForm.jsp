@@ -22,7 +22,8 @@
 
 
 <body>
-	<!-- 헤더영역 -->s
+	<!-- 헤더영역 -->
+	s
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!-- //헤더영역 -->
 
@@ -108,7 +109,10 @@
 									<div id="add_cafeInterior" class="scroll-image">
 										<!-- 카페내부사진 반복영역 -->
 										<c:forEach items="${cafeVo.inteList}" var="inteList">
-											<img src="${pageContext.request.contextPath }/upload/${inteList.img}" alt="">
+											<c:set var="i" value="${i+1 }" />
+											<img class="inteImg" src="${pageContext.request.contextPath }/upload/${inteList.img}" alt="">
+											<img data-no="${i }" class="removeImg"
+												src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
 										</c:forEach>
 										<!-- //카페내부사진 반복영역 -->
 									</div>

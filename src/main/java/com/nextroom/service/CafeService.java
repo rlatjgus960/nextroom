@@ -544,6 +544,56 @@ public class CafeService {
 
 		cafeVo.setPrintAddress(cafeVo.getAddress() + " " + cafeVo.getAddressDetail());
 
+		List<MultipartFile> interiorImg = cafeVo.getInteriorImg();
+
+		if (interiorImg.get(0).getSize() > 0) {
+			
+			for (int i = 0; i < interiorImg.size(); i++) {
+
+				long intefileSize = interiorImg.get(i).getSize();
+				System.out.println("fileSize " + intefileSize);
+
+				// 이미지가 첨부되었을때
+				if (intefileSize > 0) {
+					String inteSaveDir = "C:\\javaStudy\\upload\\";
+					
+					// 원파일이름
+					String inteOrgName = interiorImg.get(i).getOriginalFilename();
+					
+					// 확장자
+					String inteExName = interiorImg.get(i).getOriginalFilename()
+							.substring(interiorImg.get(i).getOriginalFilename().lastIndexOf("."));
+					
+					// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+					String inteSaveName = System.currentTimeMillis() + UUID.randomUUID().toString() + inteExName;
+					
+					// 파일패스
+					String inteFilePath = inteSaveDir + "\\" + inteSaveName;
+					
+					// 파일 서버하드디스크에 저장
+					try {
+						byte[] fileData = interiorImg.get(i).getBytes();
+						OutputStream out = new FileOutputStream(inteFilePath);
+						BufferedOutputStream bout = new BufferedOutputStream(out);
+						bout.write(fileData);
+						bout.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					InteriorVo interiorVo = new InteriorVo();
+					interiorVo.setImg(inteSaveName);
+					interiorVo.setCafeNo(cafeVo.getCafeNo());
+
+					cafeDao.addInteriorImg(interiorVo);
+
+				}
+
+			}
+
+		}
+
 		MultipartFile file = cafeVo.getCafeImgFile();
 		System.out.println(file);
 
