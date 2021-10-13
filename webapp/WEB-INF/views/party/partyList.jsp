@@ -378,10 +378,12 @@
 	     showOn:"button"
 	     , buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
 	     ,buttonImageOnly: true
+	     , minDate: 0
 	 });
 	
-	$("#party_date").datepicker("option", "dateFormat", "yy-mm-dd");
+		
 	
+	$("#party_date").datepicker("option", "dateFormat", "yy-mm-dd");
 /********************************************************************************************/	 
 	//파티등록 모달창에서 @지역@선택시!
 	 $("#party_region").on("change", function() {
