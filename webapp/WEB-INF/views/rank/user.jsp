@@ -82,7 +82,7 @@
                            	<span><img class="f-left rank_profile img-circle" src="${pageContext.request.contextPath }/assets/image/profile/red.jpg"></span>
                         
                         
-                           	<p class="first_font m-left f-left">${rankList[0].nickName}</p>
+                           	<p class="first_font m-left f-left"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${rankList[0].nickName}">${rankList[0].nickName}</a></p>
                         
                         
                             <ul class="rank_detail">
@@ -102,12 +102,12 @@
                   <div id="sec_pool">
                      <ul>
                         <li>
-                           <div class="">
+                           <div>
                         
                               <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/blue.jpg"></span>
                            
                            
-                              <p class="sec_font">${rankList[1].nickName}</p>
+                              <p class="sec_font"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${rankList[1].nickName}">${rankList[1].nickName}</a></p>
                            
                            
                               <ul class="rank_detail">
@@ -126,7 +126,7 @@
                               <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/yellow.jpg"></span>
                            
                            
-                              <p class="sec_font">${rankList[2].nickName}</p>
+                              <p class="sec_font"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${rankList[2].nickName}">${rankList[2].nickName}</a></p>
                            
                            
                               <ul class="rank_detail">
@@ -145,7 +145,7 @@
                               <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg"></span>
                            
                            
-                              <p class="sec_font">${rankList[3].nickName}</p>
+                              <p class="sec_font"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${rankList[3].nickName}">${rankList[3].nickName}</a></p>
                            
                            
                               <ul class="rank_detail">
@@ -164,7 +164,7 @@
                               <span><img class="rank_profile" src="${pageContext.request.contextPath }/assets/image/profile/green.jpg"></span>
                            
                            
-                              <p class="sec_font">${rankList[4].nickName}</p>
+                              <p class="sec_font"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${rankList[4].nickName}">${rankList[4].nickName}</a></p>
                            
                            
                               <ul class="rank_detail">
@@ -194,7 +194,7 @@
 	                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/162987894184116907021-a01a-4bdc-ac86-936ae366b7b8.jpg"></span>
 	                        
 	                        
-	                           <p class="f-left">${ratingVo.nickName}</p>
+	                           <p class="f-left"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${ratingVo.nickName} }">${ratingVo.nickName}</a></p>
 	                        
 	                        
 	                           <ul class="ranklist_detail f-right">

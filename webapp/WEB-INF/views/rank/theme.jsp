@@ -88,7 +88,7 @@
 											</li>
 											<li>
 												<div>
-													<span>난이도 :&nbsp;</span>
+													<span>체감난이도 :&nbsp;</span>
 													9.4점
 												</div>
 											</li>
@@ -326,82 +326,42 @@
 				</div>
 				<!-- //스와이퍼 -->
 				
+				<!-- 평점순,리뷰순 -->
+				<div id="selectList">
+					<span class="selected"><a href="${pageContext.request.contextPath }/rank/theme?List=rating"><img src="${pageContext.request.contextPath }/assets/image/selectedIcon.jpg">평점순</a></span>
+					<span><a href="${pageContext.request.contextPath }/rank/theme?List=review"><img src="${pageContext.request.contextPath }/assets/image/unSelectedIcon.jpg">리뷰순</a></span>
+				</div>
+				
+				
 				<div id="rank_list">
 							<div class="rank_head clearfix">
                                <ul>
                                    <li>순위</li>
                                    <li class="body_img">포스터</li>
-                                   <li>테마명</li>
+                                   <li>테마(카페)명</li>
                                    <li>평점</li>
-                                   <li>난이도</li>
+                                   <li>체감난이도</li>
                                    <li>리뷰</li>
                                    <li></li>
                                </ul>
                           	</div>
                           	
-                          	<div class="rank_body clearfix">
-                               <ul>
-                                   <li class="body_data">1</li>
-                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
-                                   <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
-                                   <li class="body_data">4.8점</li>
-                                   <li class="body_data">9.4점</li>
-                                   <li class="body_data">1004개</li>
-                                   <li class="body_data"><a class="mbutton">자세히보기</a></li>
-                               </ul>
-                             </div>
+                          	<c:forEach var="themeRankVo" items="${rankList }">
+                          	
+	                          	<div class="rank_body clearfix">
+	                               <ul>
+	                                   <li class="body_data">${themeRankVo.rank }</li>
+	                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
+	                                   <li class="body_data">${themeRankVo.themeName }(${themeRankVo.cafeName })</li>
+	                                   <li class="body_data">${themeRankVo.avgRating }점</li>
+	                                   <li class="body_data">${themeRankVo.avgDifficulty }점</li>
+	                                   <li class="body_data">${themeRankVo.review }</li>
+	                                   <li class="body_data"><a class="mbutton">자세히보기</a></li>
+	                               </ul>
+	                             </div>
                              
-                             <div class="rank_body clearfix">
-                               <ul>
-                                   <li class="body_data">1</li>
-                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
-                                   <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
-                                   <li class="body_data">4.8점</li>
-                                   <li class="body_data">9.4점</li>
-                                   <li class="body_data">1004개</li>
-                                   <li class="body_data"><a class="mbutton">자세히보기</a></li>
-                               </ul>
-                             </div>
-                             
-                             <div class="rank_body clearfix">
-                               <ul>
-                                   <li class="body_data">1</li>
-                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
-                                   <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
-                                   <li class="body_data">4.8점</li>
-                                   <li class="body_data">9.4점</li>
-                                   <li class="body_data">1004개</li>
-                                   <li class="body_data"><a class="mbutton">자세히보기</a></li>
-                               </ul>
-                             </div>
-                             
-                             <div class="rank_body clearfix">
-                               <ul>
-                                   <li class="body_data">1</li>
-                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
-                                   <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
-                                   <li class="body_data">4.8점</li>
-                                   <li class="body_data">9.4점</li>
-                                   <li class="body_data">1004개</li>
-                                   <li class="body_data"><a class="mbutton">자세히보기</a></li>
-                               </ul>
-                             </div>
-                             
-                             <div class="rank_body clearfix">
-                               <ul>
-                                   <li class="body_data">1</li>
-                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
-                                   <li class="body_data">포로리의 도토리는 어디로 갔을까?</li>
-                                   <li class="body_data">4.8점</li>
-                                   <li class="body_data">9.4점</li>
-                                   <li class="body_data">1004개</li>
-                                   <li class="body_data"><a class="mbutton">자세히보기</a></li>
-                               </ul>
-                             </div>
-                              
-                              
-							
-					
+                             </c:forEach>
+                             					
 				</div>
 				
 				

@@ -15,9 +15,9 @@
 			          where recordhints=0
 			          and userno = #{userNo}) nohintgame
 			        ,(SELECT count(*)
-	          FROM record
-	          where recordclear='success'
-	          and userno = #{userNo}) wongame
+	          		  FROM record
+			          where recordclear='success'
+			          and userno = #{userNo}) wongame
 			from record
 			where userno = #{userNo}
 			group by userno
@@ -112,6 +112,7 @@
 		                    ,(SELECT count(*)
 		                      FROM record
 		                      where recordhints=0
+		                      and userno = #{userno}
 		                      ) nohintgame
 		                    ,(SELECT count(*)
 		                      FROM record
@@ -132,14 +133,31 @@
 		]]>
 	</select>
 	
-	<select id="selectUserHistory" parameterType="int" resultType="com.nextroom.vo.UserHistoryVo">
+	<select id="selectUserHistory" parameterType="Map" resultType="com.nextroom.vo.UserHistoryVo">
 		<![CDATA[
-		select to_char(p.regdate,'yy.mm.dd') regdate,t.themename,r.recordhints,r.recordtime,p.totalperson,r.recordclear
-		from prerecord p ,record r,theme t,users u
-		where p.gameno = r.gameno
-		and p.themeno = t.themeno
-		and r.userno = u.userno
-		and u.userno = #{userno}
+		select 	rt.rn,
+				rt.regdate,
+				rt.themename,
+				rt.recordhints,
+				rt.recordtime,
+				rt.totalperson,
+				rt.recordclear
+		from 	(select rownum rn,
+					ot.regdate,
+					ot.themename,
+					ot.recordhints,
+					ot.recordtime,
+					ot.totalperson,
+					ot.recordclear
+				from 	(select to_char(p.regdate,'yy.mm.dd') regdate,t.themename,r.recordhints,r.recordtime,p.totalperson,r.recordclear
+						from prerecord p ,record r,theme t,users u
+						where p.gameno = r.gameno
+						and p.themeno = t.themeno
+						and r.userno = u.userno
+						and u.userno = #{userNo}
+						order by p.regdate desc) ot ) rt
+		where rn >= #{startRnum}
+		and rn <= #{endRnum}
 		]]>
 	</select>
 	
@@ -149,6 +167,44 @@
 		from users
 		where nickname = #{nickName}
 		]]>
+	</select>
+	
+	<select id="selectTotalCnt" parameterType="String" resultType="int">
+		
+		<![CDATA[
+		select count(*)
+		from prerecord p ,record r,theme t,users u
+		where p.gameno = r.gameno
+		and p.themeno = t.themeno
+		and r.userno = u.userno
+		and u.userno = #{userno}
+		]]>
+		
+	</select>
+	
+	<select id="selectThemeRankList" parameterType="String" resultType="com.nextroom.vo.ThemeRankVo">
+		<![CDATA[
+		
+		select t.themename,r.avgrating,r.themeno,c.cafename,t.themeintro,t.themeimg themeimgpath,r.review,r.avgdifficulty
+
+		from theme t    ,cafe c     ,(select themeno,trunc (avg(rating),2) avgrating,count(*) review,trunc (avg(feellevel),2) avgDifficulty
+		                            from review
+		                            group by themeno) r
+		where t.themeno = r. themeno
+		and t.cafeno=c.cafeno
+		]]>
+		<choose>
+			<when test=" _parameter == 'review' ">
+			<![CDATA[
+			order by r.review desc
+			]]>
+			</when>
+			<otherwise>
+			<![CDATA[
+			order by r.avgrating desc
+			]]>
+			</otherwise>
+		</choose>
 	</select>
 	
 </mapper>

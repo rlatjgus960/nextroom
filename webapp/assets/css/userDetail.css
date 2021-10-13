@@ -57,6 +57,7 @@
 #paging {
     margin: 30px auto;
     width: 200px;
+    margin-bottom: 50px;
  }
  
  #paging ul {margin: 10px 5px 10px 5px;}

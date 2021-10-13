@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.nextroom.dao.RankDao;
 import com.nextroom.vo.RatingVo;
+import com.nextroom.vo.ThemeRankVo;
 import com.nextroom.vo.UserHistoryVo;
 
 @Service
@@ -24,7 +25,7 @@ public class RankService {
 		return rankList;
 	}
 
-	public Map<String, Object> getUserDetail(String nickName) {
+	public Map<String, Object> getUserDetail(String nickName, int crtPage) {
 
 		Map<String, Object> detailMap = new HashMap<String, Object>();
 
@@ -66,8 +67,45 @@ public class RankService {
 
 			ratingVo.setGameHistory(gameHistory);
 
-			List<UserHistoryVo> uList = rankDao.selectUserHistory(userNo);
+			int listCnt = 3;
 
+			// crtPage 계산(- 값일 때 --> 1page 처리)
+			crtPage = (crtPage > 0) ? crtPage : (crtPage = 1);
+
+			// 시작번호 계산하기
+			int startRnum = (crtPage - 1) * listCnt + 1;
+
+			// 끝번호 계산하기
+			int endRnum = (startRnum + listCnt) - 1;
+
+			List<UserHistoryVo> uList = rankDao.selectUserHistory(userNo, startRnum, endRnum);
+
+			// 전체글 갯수
+			int totalCount = rankDao.selectTotalCnt(userNo);
+			System.out.println("totalCount" + totalCount);
+
+			// 페이지당 버틍 갯수
+			int pageBtnCount = 5;
+
+			// 마지막 버튼 번호
+			int endPageBtnNo = (int) Math.ceil((crtPage / (double) pageBtnCount)) * pageBtnCount;
+
+			// 시작 버튼 번호
+			int startPageBtnNo = endPageBtnNo - (pageBtnCount - 1);
+
+			// 다음 화살표 표현 유무
+			boolean next = false;
+			if ((endPageBtnNo * listCnt) < totalCount) {
+				next = true;
+			} else {
+				endPageBtnNo = (int) Math.ceil(totalCount / (double) listCnt);
+			}
+
+			// 이전 화살표 표현 유무
+			boolean prev = false;
+			if (startPageBtnNo != 1) {
+				prev = true;
+			}
 			System.out.println(uList);
 
 			for (int i = 0; i < uList.size(); i++) {
@@ -91,10 +129,29 @@ public class RankService {
 
 			detailMap.put("statVo", ratingVo);
 			detailMap.put("historyList", uList);
+			detailMap.put("prev", prev);
+			detailMap.put("startPageBtnNo", startPageBtnNo);
+			detailMap.put("endPageBtnNo", endPageBtnNo);
+			detailMap.put("next", next);
 
 			return detailMap;
 		} else {
 			return null;
 		}
+	}
+
+	public List<ThemeRankVo> getThemeRankList(String listType) {
+
+		List<ThemeRankVo> rankList = rankDao.selectThemeRankList(listType);
+
+		
+		for(int i=0;i<rankList.size();i++) {
+			
+			rankList.get(i).setRank(i+1);
+			
+		}
+		
+		System.out.println("랭크 부여된"+rankList);
+		return rankList;
 	}
 }

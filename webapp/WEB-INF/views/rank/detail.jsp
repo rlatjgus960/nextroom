@@ -116,20 +116,20 @@
             <div id="paging">
 						<ul>
 							<c:if test="${detailMap.prev == true }">
-							<li><a href="${pageContext.request.contextPath }/board/list2?crtPage=${detailMap.startPageBtnNo-1 }">◀</a></li>
+							<li><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${detailMap.startPageBtnNo-1 }&nickName=${detailMap.statVo.nickName}">◀</a></li>
 							</c:if>
 							<c:forEach var="i" begin="${detailMap.startPageBtnNo }" end="${detailMap.endPageBtnNo }" step="1">
 								<c:choose>
 									<c:when test="${param.crtPage == i }">
-										<li class="active"><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${i }">${i }</a></li>
+										<li class="active"><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${i }&nickName=${detailMap.statVo.nickName}">${i }</a></li>
 									</c:when>
 									<c:otherwise>
-										<li><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${i }">${i }</a></li>
+										<li><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${i }&nickName=${detailMap.statVo.nickName}">${i }</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 							<c:if test="${detailMap.next == true }">
-							<li><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${detailMap.endPageBtnNo+1 }">▶</a></li>
+							<li><a href="${pageContext.request.contextPath }/rank/detail?crtPage=${detailMap.endPageBtnNo+1 }&nickName=${detailMap.statVo.nickName}">▶</a></li>
 							</c:if>
 						</ul>
 						

@@ -1,6 +1,8 @@
 package com.nextroom.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nextroom.vo.PartyVo;
 import com.nextroom.vo.RatingVo;
+import com.nextroom.vo.ThemeRankVo;
 import com.nextroom.vo.UserHistoryVo;
 
 @Repository
@@ -54,9 +57,15 @@ public class RankDao {
 		return sqlSession.selectOne("rank.selectUserStat", userNo);
 	}
 
-	public List<UserHistoryVo> selectUserHistory(int userNo) {
-
-		return sqlSession.selectList("rank.selectUserHistory", userNo);
+	public List<UserHistoryVo> selectUserHistory(int userNo,int startRnum,int endRnum) {
+		
+		Map<String,Object> rankMap = new HashMap<String,Object>();
+		
+		rankMap.put("userNo", userNo);
+		rankMap.put("startRnum", startRnum);
+		rankMap.put("endRnum", endRnum);
+		
+		return sqlSession.selectList("rank.selectUserHistory", rankMap);
 	}
 
 	public int selectUserNo(String nickName) {
@@ -71,5 +80,15 @@ public class RankDao {
 		else {
 			return sqlSession.selectOne("rank.selectUserNo", nickName);
 		}
+	}
+	
+	public int selectTotalCnt(int userNo) {
+		
+		return sqlSession.selectOne("rank.selectTotalCnt", userNo);
+	}
+	
+	public List<ThemeRankVo> selectThemeRankList(String listType){
+		System.out.println(listType);
+		return sqlSession.selectList("rank.selectThemeRankList",listType);
 	}
 }
