@@ -4,7 +4,6 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.nextroom.dao.ReviewBoardDao;
-import com.nextroom.vo.FreeBoardImgVo;
 import com.nextroom.vo.FreeBoardVo;
 import com.nextroom.vo.ReviewBoardVo;
 
@@ -423,6 +421,32 @@ public class ReviewBoardService {
 		return hate;
 	}
 	
+	
+	//2021.10.13 by 원호
+	//댓글 등록
+	public ReviewBoardVo addComment(ReviewBoardVo reviewBoardVo) {
+		System.out.println("[Service.addComment]");
+		
+		System.out.println("닉넴 없음?"+reviewBoardVo);//유저닉넴x
+		int count = reviewBoardDao.addComment(reviewBoardVo);
+		System.out.println("닉넴 있음?"+reviewBoardVo);//유저닉넴 있나 확인
+		
+		int commentNo = reviewBoardVo.getCommentNo();
+		
+		ReviewBoardVo resultVo = reviewBoardDao.selectComment(commentNo);
+		
+		return resultVo;
+	}
+	
+	//2021.10.13 by 원호
+	//댓글 리스트
+	public List<ReviewBoardVo> commentList(){
+		System.out.println("Service.commentList");
+		
+		List<ReviewBoardVo> commentList = reviewBoardDao.commentList();
+		
+		return commentList;
+	}
 	
 ////////////////////////////////////////////////////////////////////////////////////////
 	/*자유게시판*/
