@@ -188,7 +188,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										<div id="comment">
 											<strong>댓글 쓰기</strong>
 											<div>
-												<input type="text" placeholder="로그인 후 이용해 주세요" name="">
+												<input type="text" id="commentContent" name="commentContent">
 												<a id="commentAdd">등 록</a>
 											</div>
 										</div>
@@ -197,15 +197,17 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 									
 										<!-- 댓글 리스트 -->
 										<div id="comment_box">
-											<ul id="comment_list">
+<%-- 											<ul id="comment_list">
 												<li id="">
 													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
 													<div id="write_date">2021.09.12</div>
 													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
 												</li>																																																								
-											</ul>
+											</ul> --%>
 										</div>
+										
+
 										<!-- //댓글 리스트 -->
 
 										<!-- 하단 여백 -->
@@ -352,10 +354,119 @@ $("#hate").on("click",function(){
 });
 
 
+/********************댓글**********************/
+ 
+//화면이 로딩되기 직전 -> DOM생성
+/* $(document).ready(function(){
+	console.log("화면 로딩 직전");
+	
+	//ajax로 요청하기
+	fetchList();
+}); */
+ 
+//댓글 쓰기 (버튼을 눌러서 id값이 넘어와 실행되는 자바스크립트 구문)
+$("#commentAdd").click(function(){
+    var commentContent=$("#commentContent").val(); //댓글 내용
+    var reviewNo="${reviewBoardVo.reviewNo}"; //게시물 번호
+    var userNo="${authUser.userNo}";
+    //var param={ "replytext": replytext, "bno": bno};
+    console.log("등록버튼 클릭")
+    console.log(commentContent)
+    console.log(reviewNo)
+    console.log(userNo)
+    
+    var reviewBoardVo = {
+    	commentContent : commentContent,
+    	reviewNo : reviewNo,
+    	userNo : userNo
+    }
+    
+    console.log(reviewBoardVo)
+    
+	//데이터 ajax방식으로 서버에 전송
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/board/addComment",
+		type : "get",
+		//contentType : "application/json",	//json방식으로 보내겠다!
+		data : reviewBoardVo,
+		
+		dataType : "json",
+		success : function(reviewBoardVo){
+			/*성공시 처리해야될 코드 작성*/
+			console.log(reviewBoardVo);
+			render(reviewBoardVo, "up");
+			
+			//입력폼 초기화
+			$("#commentAdd").val("");	//()안에 ""있으면 값 비워줌
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+});
+
+fetchList();
+
+//리스트 가져오기
+function fetchList(){
+	$.ajax({
+		
+		/******여긴 요청 보내는거********/
+		url : "${pageContext.request.contextPath }/board/commentList",		
+		type : "get",
+		//contentType : "application/json",
+		//data : {reviewNo: reviewNo},
+
+		//dataType : "json",
+		success : function(commentList){
+			/*성공시 처리해야될 코드 작성*/
+			console.log(commentList);
+			
+			//화면에 그리기
+	         for(var i = 0; i < commentList.length; i++) {
+	             render(commentList[i], "down");
+	          }
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+};
+
+//그리는 문법임
+//방명록 1개씩 랜더링
+function render(resultVo, type){
+	console.log(resultVo)
+    var str = "";
+    str += '<ul id="comment_list">';
+    str += '   <li id="">';
+    str += '      <div id="nick_box">' + resultVo.nickname + '</div>';
+    str += '      <div id="comment_content">' + resultVo.commentContent + '</div>';
+    str += '      <div id="write_date">'+ resultVo.commentDate + '</div>';
+    str += '      <div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>';
+    str += '   </li>';
+   	str += '</ul>';
+    
+    if(type === 'down'){
+    	$("#comment_box").append(str);            	
+    } else if(type === 'up'){
+    	$("#comment_box").prepend(str);
+    } else {
+    	console.log("방향을 지정해 주세요");
+    }
+};
+
+
+
+
+
+
 //댓글 등록
-$("#commentAdd").on("click", function(){
+/*$("#commentAdd").on("click", function(){
 	console.log("댓글등록 클릭")
-})
+})*/
 
 
 
