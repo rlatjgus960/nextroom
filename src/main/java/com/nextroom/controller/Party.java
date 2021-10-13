@@ -59,14 +59,14 @@ public class Party {
 	
 	
 	//21-09-28 by 대니
-	//themeNo로 시간표 가져오기  --->>***수정해야함
+	//themeNo, cafeNo로 시간표 가져오기  --->>***수정해야함
 	@ResponseBody
 	@RequestMapping(value = "/theme", method = {RequestMethod.GET, RequestMethod.POST})
-	public List<PartyVo> themeTimeList(@RequestParam("themeNo") int themeNo) {
+	public List<PartyVo> themeTimeList(@ModelAttribute PartyVo partyVo) {
 		
-		System.out.println("컨트롤러 파티 테마넘버 넘어오기: " + themeNo);
+		System.out.println("컨트롤러 파티 테마넘버 넘어오기: " + partyVo);
 		
-		List<PartyVo> themeTimeList = partyService.getThemeTimeList(themeNo);
+		List<PartyVo> themeTimeList = partyService.getThemeTimeList(partyVo);
 		
 		return themeTimeList;
 	}

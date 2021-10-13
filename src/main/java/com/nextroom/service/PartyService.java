@@ -50,11 +50,11 @@ public class PartyService {
 	
 	
 	//21-09-28 by 대니
-	//themeNo로 시간표 가져오기
-	public List<PartyVo> getThemeTimeList(int themeNo) {
-		System.out.println("서비스구간 테마No: " + themeNo);
+	//themeNo, cafeNo로 시간표 가져오기
+	public List<PartyVo> getThemeTimeList(PartyVo partyVo) {
+		System.out.println("서비스구간 테마No: " + partyVo);
 		
-		List<PartyVo> themeTimeList = partyDao.getThemeTimeList(themeNo);
+		List<PartyVo> themeTimeList = partyDao.getThemeTimeList(partyVo);
 		
 		
 		return themeTimeList;
