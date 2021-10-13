@@ -12,6 +12,7 @@ public class PartyVo {
 	private int themeNo;
 	private String themeName;
 	private String themeTime;
+	private int themeTimeNo;
 	private String themeImg;
 	private String reserveTime;
 	private int reservePerson;
@@ -124,6 +125,48 @@ public class PartyVo {
 		this.themeNo = themeNo;
 		this.themeName = themeName;
 		this.themeTime = themeTime;
+		this.themeImg = themeImg;
+		this.reserveTime = reserveTime;
+		this.reservePerson = reservePerson;
+		this.content = content;
+		this.partyState = partyState;
+		this.userState = userState;
+		this.userCount = userCount;
+		this.jenre = jenre;
+		this.playTime = playTime;
+		this.themeType = themeType;
+		this.levels = levels;
+		this.rank = rank;
+		this.avgClearTime = avgClearTime;
+		this.showAvgClearTime = showAvgClearTime;
+		this.avgHints = avgHints;
+		this.totalGame = totalGame;
+		this.noHintGame = noHintGame;
+		this.wonGame = wonGame;
+		this.rankRating = rankRating;
+		this.winRate = winRate;
+		this.noHintWinRate = noHintWinRate;
+		this.nickname = nickname;
+		this.profile = profile;
+	}
+
+	public PartyVo(int partyNo, int userNo, String reserveDate, String sidoDetail, int cafeNo, String cafeName,
+			int themeNo, String themeName, String themeTime, int themeTimeNo, String themeImg, String reserveTime,
+			int reservePerson, String content, String partyState, String userState, int userCount, String jenre,
+			int playTime, String themeType, int levels, int rank, int avgClearTime, String showAvgClearTime,
+			int avgHints, int totalGame, int noHintGame, int wonGame, int rankRating, double winRate,
+			double noHintWinRate, String nickname, String profile) {
+		super();
+		this.partyNo = partyNo;
+		this.userNo = userNo;
+		this.reserveDate = reserveDate;
+		this.sidoDetail = sidoDetail;
+		this.cafeNo = cafeNo;
+		this.cafeName = cafeName;
+		this.themeNo = themeNo;
+		this.themeName = themeName;
+		this.themeTime = themeTime;
+		this.themeTimeNo = themeTimeNo;
 		this.themeImg = themeImg;
 		this.reserveTime = reserveTime;
 		this.reservePerson = reservePerson;
@@ -407,6 +450,14 @@ public class PartyVo {
 	public void setRankRating(int rankRating) {
 		this.rankRating = rankRating;
 	}
+	
+	public int getThemeTimeNo() {
+		return themeTimeNo;
+	}
+
+	public void setThemeTimeNo(int themeTimeNo) {
+		this.themeTimeNo = themeTimeNo;
+	}
 
 	
 	//메소드(일반)
@@ -414,15 +465,16 @@ public class PartyVo {
 	public String toString() {
 		return "PartyVo [partyNo=" + partyNo + ", userNo=" + userNo + ", reserveDate=" + reserveDate + ", sidoDetail="
 				+ sidoDetail + ", cafeNo=" + cafeNo + ", cafeName=" + cafeName + ", themeNo=" + themeNo + ", themeName="
-				+ themeName + ", themeTime=" + themeTime + ", themeImg=" + themeImg + ", reserveTime=" + reserveTime
-				+ ", reservePerson=" + reservePerson + ", content=" + content + ", partyState=" + partyState
-				+ ", userState=" + userState + ", userCount=" + userCount + ", jenre=" + jenre + ", playTime="
-				+ playTime + ", themeType=" + themeType + ", levels=" + levels + ", rank=" + rank + ", avgClearTime="
-				+ avgClearTime + ", showAvgClearTime=" + showAvgClearTime + ", avgHints=" + avgHints + ", totalGame="
-				+ totalGame + ", noHintGame=" + noHintGame + ", wonGame=" + wonGame + ", rankRating=" + rankRating
-				+ ", winRate=" + winRate + ", noHintWinRate=" + noHintWinRate + ", nickname=" + nickname + ", profile="
-				+ profile + "]";
+				+ themeName + ", themeTime=" + themeTime + ", themeTimeNo=" + themeTimeNo + ", themeImg=" + themeImg
+				+ ", reserveTime=" + reserveTime + ", reservePerson=" + reservePerson + ", content=" + content
+				+ ", partyState=" + partyState + ", userState=" + userState + ", userCount=" + userCount + ", jenre="
+				+ jenre + ", playTime=" + playTime + ", themeType=" + themeType + ", levels=" + levels + ", rank="
+				+ rank + ", avgClearTime=" + avgClearTime + ", showAvgClearTime=" + showAvgClearTime + ", avgHints="
+				+ avgHints + ", totalGame=" + totalGame + ", noHintGame=" + noHintGame + ", wonGame=" + wonGame
+				+ ", rankRating=" + rankRating + ", winRate=" + winRate + ", noHintWinRate=" + noHintWinRate
+				+ ", nickname=" + nickname + ", profile=" + profile + "]";
 	}
+	
 	
 	
 	
