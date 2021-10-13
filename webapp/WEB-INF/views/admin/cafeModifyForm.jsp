@@ -110,9 +110,12 @@
 										<!-- 카페내부사진 반복영역 -->
 										<c:forEach items="${cafeVo.inteList}" var="inteList">
 											<c:set var="i" value="${i+1 }" />
-											<img class="inteImg" src="${pageContext.request.contextPath }/upload/${inteList.img}" alt="">
-											<img data-no="${i }" class="removeImg"
-												src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
+											<div id="d-${i }">
+												<img class="inteImg" src="${pageContext.request.contextPath }/upload/${inteList.img}"
+													alt=""> <img data-no="${i }" class="removeImg"
+													src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
+
+											</div>
 										</c:forEach>
 										<!-- //카페내부사진 반복영역 -->
 									</div>
@@ -341,6 +344,18 @@
 				}
 
 			});
+
+	
+	//이미지 삭제 -- 일단은 영역지워지게 해놨고 이미지 넘버 컬럼 추가 후에 넘버 받아서 그거 받아서 delete까지 해야지
+	$(".removeImg").on("click", function() {
+
+		var no = $(this).data("no");
+
+		console.log("이미지 삭제 버튼 클릭");
+
+		$("#d-" + no).remove();
+
+	});
 </script>
 
 
