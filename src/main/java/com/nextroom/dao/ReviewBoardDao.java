@@ -201,8 +201,32 @@ public class ReviewBoardDao {
 	}
 	
 	
+	//2021.10.13 by 원호
+	//댓글 저장
+	public int addComment(ReviewBoardVo reviewBoardVo) {
+		System.out.println("[Dao.addComment]");
+		
+		return sqlSession.insert("reviewBoard.addComment", reviewBoardVo);
+	}
 	
+	//2021.10.13 by 원호
+	//댓글 가져오기
+	public ReviewBoardVo selectComment(int commentNo) {
+		System.out.println("[Dao.selectComment]");
+		System.out.println(commentNo);
+		
+		return sqlSession.selectOne("reviewBoard.selectComment", commentNo);
+	}
 	
+	//2021.10.13 by 원호
+	//댓글 리스트
+	public List<ReviewBoardVo> commentList(){
+		System.out.println("dao 리스트");
+		
+		List<ReviewBoardVo> commentList = sqlSession.selectList("reviewBoard.commentList");
+		
+		return commentList;
+	}
 	
 //////////////////////////////////////////////////////////
 	/*자유게시판*/
