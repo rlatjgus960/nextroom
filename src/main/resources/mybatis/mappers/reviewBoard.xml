@@ -364,7 +364,7 @@
    			select  rc.commentno,
 			        u.nickname,
 			        rc.commentContent,
-			        rc.commentDate
+			        to_char(rc.commentDate, 'yy-mm-dd') commentDate
 			from review r, users u, reviewcomment rc
 			where rc.userNo = u.userNo
             and rc.reviewNo = r.reviewNo
@@ -373,14 +373,18 @@
 	</select>
 	
 	<!-- 댓글 리스트 -->
-	<select id="commentList" resultType="ReviewBoardVo">
+	<select id="commentList" parameterType="int" resultType="ReviewBoardVo">
 	<![CDATA[
-		select   u.nickname
-		        ,r.commentcontent
-		        ,to_char(r.commentdate, 'yy-mm-dd') commentdate
-		        ,r.commentNo
-		from reviewcomment r, users u
-		order by commentNo desc
+		select  rc.commentno,
+				u.nickname,
+		        rc.commentContent,
+		        to_char(rc.commentDate, 'yy-mm-dd') commentDate,
+		        rc.reviewNo
+		from review r, users u, reviewcomment rc
+		where rc.userNo = u.userNo
+		and r.reviewNo = rc.reviewNo
+		and rc.reviewno = #{reviewNo}
+		order by rc.commentNo desc
 	]]>
 
 	</select>

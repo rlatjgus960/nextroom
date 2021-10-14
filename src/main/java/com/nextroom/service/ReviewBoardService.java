@@ -440,10 +440,10 @@ public class ReviewBoardService {
 	
 	//2021.10.13 by 원호
 	//댓글 리스트
-	public List<ReviewBoardVo> commentList(){
+	public List<ReviewBoardVo> commentList(int reviewNo){
 		System.out.println("Service.commentList");
-		
-		List<ReviewBoardVo> commentList = reviewBoardDao.commentList();
+		System.out.println(reviewNo);
+		List<ReviewBoardVo> commentList = reviewBoardDao.commentList(reviewNo);
 		
 		return commentList;
 	}

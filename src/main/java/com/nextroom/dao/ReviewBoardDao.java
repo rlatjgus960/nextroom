@@ -220,10 +220,10 @@ public class ReviewBoardDao {
 	
 	//2021.10.13 by 원호
 	//댓글 리스트
-	public List<ReviewBoardVo> commentList(){
-		System.out.println("dao 리스트");
-		
-		List<ReviewBoardVo> commentList = sqlSession.selectList("reviewBoard.commentList");
+	public List<ReviewBoardVo> commentList(int reviewNo){
+		System.out.println("[Dao.commentList]");
+		System.out.println(reviewNo);
+		List<ReviewBoardVo> commentList = sqlSession.selectList("reviewBoard.commentList", reviewNo);
 		
 		return commentList;
 	}
