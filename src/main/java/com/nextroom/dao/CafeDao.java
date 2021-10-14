@@ -246,10 +246,9 @@ public class CafeDao {
 	// 카페 수정 - 파일이 없을때
 	public int cafeModify_noFile(CafeVo cafeVo) {
 		System.out.println("[CafeDao.themeModify_noFile()]");
-		System.out.println("업데이트 전 cafeVo : "+cafeVo);
+		System.out.println("업데이트 전 cafeVo : " + cafeVo);
 		return sqlSession.update("cafe.updateCafe-noFile", cafeVo);
 	}
-	
 
 	// 테마 수정 - 파일이 있을때
 	public int updateTheme_basic(CafeVo cafeVo) {
@@ -266,21 +265,31 @@ public class CafeDao {
 //		sqlSession.update("cafe.updateThemeTime", cafeVo);
 		return sqlSession.update("cafe.updateTheme-noFile", cafeVo);
 	}
-	
+
 	// 테마 가격 삭제
 	public int deleteThemePrice(int themeNo) {
 		System.out.println("[CafeDao.deleteThemePrice()]");
-		
+
 		return sqlSession.update("cafe.deleteThemePrice", themeNo);
 	}
-	
-	// 테마 시간표 삭제
-		public int deleteThemeTime(int themeNo) {
-			System.out.println("[CafeDao.deleteThemeTime()]");
-			
-			return sqlSession.update("cafe.deleteThemeTime", themeNo);
-		}
-	
 
+	// 테마 시간표 삭제
+	public int deleteThemeTime(int themeNo) {
+		System.out.println("[CafeDao.deleteThemeTime()]");
+
+		return sqlSession.update("cafe.deleteThemeTime", themeNo);
+	}
+
+	// 테마 삭제(업데이트)
+	public int updateTheme(int themeNo) {
+		System.out.println("[CafeDao.updateTheme()]");
+		return sqlSession.update("cafe.updateTheme-delete", themeNo);
+	}
+
+	// 인테리어 이미지 삭제
+	public int inteDelete(int inteNo) {
+		System.out.println("[CafeDao.inteDelete()]");
+		return sqlSession.delete("cafe.inteDelete", inteNo);
+	}
 
 }

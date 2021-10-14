@@ -2,6 +2,7 @@ package com.nextroom.vo;
 
 public class InteriorVo {
 
+	private int interiorNo;
 	private int cafeNo;
 	private String img;
 
@@ -9,10 +10,19 @@ public class InteriorVo {
 		super();
 	}
 
-	public InteriorVo(int cafeNo, String img) {
+	public InteriorVo(int interiorNo, int cafeNo, String img) {
 		super();
+		this.interiorNo = interiorNo;
 		this.cafeNo = cafeNo;
 		this.img = img;
+	}
+
+	public int getInteriorNo() {
+		return interiorNo;
+	}
+
+	public void setInteriorNo(int interiorNo) {
+		this.interiorNo = interiorNo;
 	}
 
 	public int getCafeNo() {
@@ -33,7 +43,7 @@ public class InteriorVo {
 
 	@Override
 	public String toString() {
-		return "InteriorVo [cafeNo=" + cafeNo + ", img=" + img + "]";
+		return "InteriorVo [interiorNo=" + interiorNo + ", cafeNo=" + cafeNo + ", img=" + img + "]";
 	}
 
 }

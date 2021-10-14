@@ -82,7 +82,7 @@
 	margin-top: 3px;
 }
 
-.removeImg:hover {
+.removeImg:hover, .deleteBtn:hover {
 	cursor: pointer;
 }
 

@@ -109,10 +109,9 @@
 									<div id="add_cafeInterior" class="scroll-image">
 										<!-- 카페내부사진 반복영역 -->
 										<c:forEach items="${cafeVo.inteList}" var="inteList">
-											<c:set var="i" value="${i+1 }" />
-											<div id="d-${i }">
+											<div id="d-${inteList.interiorNo }">
 												<img class="inteImg" src="${pageContext.request.contextPath }/upload/${inteList.img}"
-													alt=""> <img data-no="${i }" class="removeImg"
+													alt=""> <img data-no="${inteList.interiorNo }" class="removeImg"
 													src="${pageContext.request.contextPath }/assets/image/admin/xmark.png">
 
 											</div>
@@ -348,12 +347,42 @@
 	
 	//이미지 삭제 -- 일단은 영역지워지게 해놨고 이미지 넘버 컬럼 추가 후에 넘버 받아서 그거 받아서 delete까지 해야지
 	$(".removeImg").on("click", function() {
-
-		var no = $(this).data("no");
-
+		
+		var inteNo = $(this).data("no");
+		
 		console.log("이미지 삭제 버튼 클릭");
 
-		$("#d-" + no).remove();
+		
+		if(!confirm("해당 이미지를 정말 삭제하시겠습니까?")) {
+			//아니오
+		} else {
+			//예
+			console.log("이미지 삭제");
+			
+			console.log(inteNo);
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/cafe/inteDelete",
+				type : "get",
+				data : {inteNo : inteNo},
+				
+				dataType : "json",
+				success : function(count) {
+					console.log(count);
+					if(count === 1) {
+						$("#d-" + inteNo).remove();
+					}
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+		}
+
+		
+
+		
 
 	});
 </script>
