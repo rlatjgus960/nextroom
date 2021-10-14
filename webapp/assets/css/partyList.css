@@ -106,3 +106,11 @@ color: #0000ff;
 	font-size: 14px;
 	font-weight: bold;
 }
+
+.reserveImpos {
+	color: rgb(224,224,224);
+}
+
+.reservation_yellow {
+	background-color: rgb(253, 213, 59);
+}
