@@ -1,3 +1,148 @@
+DROP SEQUENCE userNO;
+DROP SEQUENCE cafeNo;
+DROP SEQUENCE themeNo;
+DROP SEQUENCE partyNo;
+DROP SEQUENCE reserveDateNo;
+DROP SEQUENCE reserveTimeNo;
+DROP SEQUENCE reserveNo;
+DROP SEQUENCE reserveMemberNo;
+DROP SEQUENCE reviewNo;
+DROP SEQUENCE recordNo;
+DROP SEQUENCE gameNo;
+DROP SEQUENCE themeTimeNo;
+DROP SEQUENCE boardNo;
+
+ALTER TABLE users
+   DROP
+      UNIQUE (
+         id,
+         nickname,
+         email
+      )
+      CASCADE
+      KEEP INDEX;
+
+DROP INDEX UIX_users;
+
+DROP INDEX PK_users;
+
+DROP TABLE users 
+   CASCADE CONSTRAINTS;
+   
+   DROP INDEX PK_cafe;
+
+/* 카페 */
+DROP TABLE cafe 
+   CASCADE CONSTRAINTS;
+   
+   
+   DROP INDEX PK_theme;
+
+/* 테마 */
+DROP TABLE theme 
+   CASCADE CONSTRAINTS;
+   
+   
+   DROP TABLE party 
+    CASCADE CONSTRAINTS;
+    
+    DROP TABLE themePrice 
+   CASCADE CONSTRAINTS;
+    
+    
+    DROP INDEX PK_themeTime;
+
+/* 새 테이블5 */
+DROP TABLE themeTime 
+   CASCADE CONSTRAINTS;
+    
+
+    DROP INDEX PK_review;
+
+/* 후기게시판 */
+DROP TABLE review 
+   CASCADE CONSTRAINTS;
+   
+   DROP INDEX PK_reserveDate;
+
+/* 예약날짜 */
+DROP TABLE reserveDate 
+   CASCADE CONSTRAINTS;
+   
+
+   DROP INDEX PK_reserveTime;
+
+/* 예약시간 */
+DROP TABLE reserveTime 
+   CASCADE CONSTRAINTS;
+    
+
+    DROP INDEX PK_reserve;
+
+/* 예약정보 */
+DROP TABLE reserve 
+   CASCADE CONSTRAINTS;
+    
+
+    DROP INDEX PK_reservePeople;
+
+/* 예약회원 */
+DROP TABLE reservePeople 
+   CASCADE CONSTRAINTS;
+   
+
+   DROP INDEX PK_partyApplicant;
+
+/* 파티지원맴버 */
+DROP TABLE partyApplicant 
+   CASCADE CONSTRAINTS;
+   
+
+   DROP INDEX PK_partyDetail;
+
+/* 파티승인맴버 */
+DROP TABLE partyDetail 
+   CASCADE CONSTRAINTS;
+   
+
+   /* 카페이미지 */
+DROP TABLE interiorImg 
+   CASCADE CONSTRAINTS;
+   
+
+   DROP INDEX PK_preRecord;
+
+/* 게임정보 */
+DROP TABLE preRecord 
+   CASCADE CONSTRAINTS;
+    
+
+    
+    DROP INDEX PK_record;
+
+/* 개인별경기기록 */
+DROP TABLE record 
+   CASCADE CONSTRAINTS;
+
+
+/* 레이팅 */
+DROP TABLE rankRating 
+	CASCADE CONSTRAINTS;
+	
+/* 자유게시판 */
+DROP TABLE freeBoard 
+	CASCADE CONSTRAINTS;
+   
+/* 자유게시판 이미지 */
+DROP TABLE FREEBOARDIMG 
+	CASCADE CONSTRAINTS;  
+   
+/* 장르 */
+
+DROP TABLE GENRE 
+	CASCADE CONSTRAINTS;  
+
+
 --------------------------------------------------------
 --  파일이 생성됨 - 목요일-10월-14-2021   
 --------------------------------------------------------
