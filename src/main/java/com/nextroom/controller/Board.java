@@ -1,5 +1,6 @@
 package com.nextroom.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -57,27 +58,6 @@ public class Board {
 		return "redirect:/board/freeCommunity";
 	}
 	
-	//2021.10.07 by 원호
-	//자유게시판 글등록
-//	@RequestMapping(value = "/boardWrite2", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String boardWrite2(@ModelAttribute FreeBoardVo freeBoardVo, HttpSession session) {
-//		System.out.println("Controller.reviewWrite");
-//		
-//		//세션에서 정보가져옴
-//		UserVo authUser = (UserVo)session.getAttribute("authUser");
-//		System.out.println("authUser:" + authUser);
-//		
-//		//vo에 세션에서 가져온 no담기
-//		int no = authUser.getUserNo();
-//		freeBoardVo.setUserNo(no);
-//		
-//		
-//		System.out.println(freeBoardVo);
-//		reviewBoardService.boardWriteMulti(freeBoardVo);
-//		System.out.println("controller -> xml까지 갔다온거 뭐있냐" + freeBoardVo);
-//		
-//		return "redirect:/board/freeCommunity";
-//	}
 	
 	//2021.10.07 by 원호
 	//자유게시판 리스트,페이징
@@ -501,7 +481,7 @@ public class Board {
 		System.out.println(reviewBoardVo);
 		
 		ReviewBoardVo resultVo = reviewBoardService.addComment(reviewBoardVo);
-		System.out.println(resultVo);
+		System.out.println("리절트븨오"+resultVo);
 		return resultVo;
 	}
 	
@@ -509,10 +489,12 @@ public class Board {
 	//댓글 리스트
 	@ResponseBody
 	@RequestMapping(value = "/commentList", method = {RequestMethod.GET, RequestMethod.POST})
-	public List<ReviewBoardVo> List() {
+	public List<ReviewBoardVo> List(ReviewBoardVo reviewBoardVo) {
 		System.out.println("[controller.commentList]");
 		
-		List<ReviewBoardVo> commentList= reviewBoardService.commentList();
+		int reviewNo = reviewBoardVo.getReviewNo();
+		System.out.println(reviewNo);
+		List<ReviewBoardVo>	commentList= reviewBoardService.commentList(reviewNo);
 		
 		System.out.println(commentList);
 		
