@@ -1,5 +1,6 @@
 package com.nextroom.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -59,14 +60,22 @@ public class Party {
 	
 	
 	//21-09-28 by 대니
-	//themeNo, cafeNo로 시간표 가져오기  --->>***수정해야함
+	//themeNo, reserveDate로 시간표 가져오기
 	@ResponseBody
 	@RequestMapping(value = "/theme", method = {RequestMethod.GET, RequestMethod.POST})
-	public List<PartyVo> themeTimeList(@ModelAttribute PartyVo partyVo) {
+	public List<PartyVo> themeTimeList(@RequestParam("themeNo") int themeNo,
+										@RequestParam("reserveDate") String reserveDate) {
 		
-		System.out.println("컨트롤러 파티 테마넘버 넘어오기: " + partyVo);
+		System.out.println("컨트롤러 파티 테마넘버 넘어오기: " + themeNo + reserveDate);
 		
-		List<PartyVo> themeTimeList = partyService.getThemeTimeList(partyVo);
+		Map<String, Object> themeTimeMap = new HashMap<String, Object>();
+		
+		themeTimeMap.put("themeNo", themeNo);
+		themeTimeMap.put("reserveDate", reserveDate);
+		
+		List<PartyVo> themeTimeList = partyService.getThemeTimeList(themeTimeMap);
+		
+		System.out.println("넘어왓냐?: " + themeTimeList );
 		
 		return themeTimeList;
 	}

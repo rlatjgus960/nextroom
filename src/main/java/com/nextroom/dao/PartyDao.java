@@ -43,11 +43,11 @@ public class PartyDao {
 	
 	
 	//21-09-28 by 대니
-	//themeNo, cafeNo로 시간표 가져오기
-	public List<PartyVo> getThemeTimeList(PartyVo partyVo) {
-		System.out.println("다오구간테마NO: " + partyVo);
+	//themeNo, reserveDate로 시간표 가져오기
+	public List<PartyVo> getThemeTimeList(Map<String, Object> themeTimeMap) {
+		System.out.println("다오구간테마NO: " + themeTimeMap);
 		
-		List<PartyVo> themeTimeList = sqlSession.selectList("party.themeTimeListSelect", partyVo);
+		List<PartyVo> themeTimeList = sqlSession.selectList("party.themeTimeListSelect", themeTimeMap);
 		
 		System.out.println("다오구간 테마타임리스트: " + themeTimeList);
 		

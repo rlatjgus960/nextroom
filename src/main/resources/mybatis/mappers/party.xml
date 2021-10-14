@@ -48,7 +48,7 @@
 	
 	
 	<!-- themeNo, cafeNo로 시간표 가져오기 -->
-	<select id="themeTimeListSelect" parameterType="com.nextroom.vo.PartyVo" resultType="com.nextroom.vo.PartyVo">
+	<!-- <select id="themeTimeListSelect" parameterType="com.nextroom.vo.PartyVo" resultType="com.nextroom.vo.PartyVo">
 		<![CDATA[
 			select tt.themetime,
 				   tt.themetimeno
@@ -60,7 +60,33 @@
 			and c.cafeno = #{cafeNo}
 			and t.themeno = #{themeNo}
 		]]>
+	</select> -->
+	
+	
+	<!-- themeNo, reserveDate로 시간표 가져오기 -->
+	<select id="themeTimeListSelect" parameterType="map" resultType="com.nextroom.vo.PartyVo">
+		<![CDATA[	
+			select  ttbl.themetimeno, 
+			        ttbl.themetime,
+			        rtbl.reserveDate,
+			        rtbl.reserveTime, 
+			        nvl(rtbl.reserveState, 1) reserveState
+			from (  select  t.themeNo, t.themename, tt.themetimeno, tt.themetime     
+			        from theme t, themetime tt
+			        where t.themeNo = tt.themeNo
+			        and t.themeNo = #{themeNo}) ttbl,
+			      ( select t.themeNo, rd.reserveDateNo, rd.themeNo, rd.reserveDate,
+			               rt.reserveTimeNo, rt.reserveTime, rt.reserveState
+			        from theme t, reservedate rd, reservetime rt
+			        where t.themeNo = rd.themeNo
+			        and rd.reserveDateNo = rt.reserveDateNo
+			        and rd.themeNo = #{themeNo}
+			        and rd.reserveDate = #{reserveDate}) rtbl
+			where ttbl.themetime   = rtbl.reserveTime(+)
+			order by themeTimeNo asc
+		]]>
 	</select>
+	
 	
 	
 	<!-- 파티등록폼에서 넘어온 정보로 파티리스트 인서트! -->

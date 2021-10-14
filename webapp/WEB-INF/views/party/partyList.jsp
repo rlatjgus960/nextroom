@@ -197,6 +197,7 @@
 									<td id="text_bold">날짜&nbsp;&nbsp;&nbsp;</td> 
 									<td>
 										<input type="text" id="party_date" name="reserveDate" value="" placeholder="날짜를 선택해 주세요">
+										<input type="hidden" id="datepicker2" value="" >
 									</td>
 								</tr>
 							
@@ -266,7 +267,7 @@
 										<select id="party_time" name="themeTime">
 	                                		<option value="" selected="">시간을 선택해 주세요</option>
 	                            		</select>
-	                            			<input type="text" name="themeTimeNo" value="">
+	                            			<input type="hidden" name="themeTimeNo" value="">
 									</td>
 								</tr>
 							
@@ -378,12 +379,19 @@
 	     showOn:"button"
 	     , buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
 	     ,buttonImageOnly: true
-	     , minDate: 0
+	     , minDate: 0,
+	 	onSelect : function(dateText)
+		{
+			$('#datepicker2').datepicker("setDate", $(this).datepicker("getDate"));
+			resetTime();
+		}
 	 });
 	
 		
-	
+	 $("#datepicker2").datepicker();
 	$("#party_date").datepicker("option", "dateFormat", "yy-mm-dd");
+	$("#datepicker2").datepicker("option", "dateFormat", "yy-mm-dd");
+	$('#datepicker2').datepicker('setDate', 'today');
 /********************************************************************************************/	 
 	//파티등록 모달창에서 @지역@선택시!
 	 $("#party_region").on("change", function() {
@@ -506,10 +514,12 @@
 		var theme = $(this).val();
 		var themeNo = $("#party_theme option:selected").data("themeno");
 		var cafeNo = $("#party_cafe option:selected").data("cafeno");
+		var reserveDate = $("[name='reserveDate']").val();
 		$("[name=themeNo]").val(themeNo);
 		console.log(theme);
 		console.log(themeNo);
 		console.log(cafeNo);
+		console.log(reserveDate);
 		
 		var partyVo = {
 				themeNo: $("#party_theme option:selected").data("themeno"),
@@ -528,7 +538,8 @@
 			url : "${pageContext.request.contextPath }/party/theme",		
 			type : "post",
 // 			contentType : "application/json",
-			data : partyVo,
+			data : {themeNo: themeNo,
+					reserveDate : $("[name='reserveDate']").val()},
 
 // 			dataType : "json",
 			success : function(themeTimeList){
@@ -555,7 +566,13 @@
 // 	시간표 1개씩 렌더링
 	function themeTimeRender(themeTimeList, type) {
 		var str = "";
-		str += '<option class="themeTime" data-themetimeno="' + themeTimeList.themeTimeNo + '" value="' + themeTimeList.themeTime + '">' + themeTimeList.themeTime + '</option>';
+		if(themeTimeList.reserveState === 1) {
+			str += '<option class="themeTime reservePos" data-themetimeno="' + themeTimeList.themeTimeNo + '" value="' + themeTimeList.themeTime + '">' + themeTimeList.themeTime + '</option>';
+		} else if(themeTimeList.reserveState === 2) {
+			str += '<option id="reserveImpos" class="themeTime reserveImpos" data-themetimeno="' + themeTimeList.themeTimeNo + '" value="' + themeTimeList.themeTime + '">' + themeTimeList.themeTime + '</option>';
+		} else if(themeTimeList.reserveState === 3) {
+			str += '<option id="reserveImpos" class="themeTime reserveImpos" data-themetimeno="' + themeTimeList.themeTimeNo + '" value="' + themeTimeList.themeTime + '">' + themeTimeList.themeTime + '</option>';
+		}
 		
 		if(type === 'down') {
 			$("#party_time").append(str);
@@ -564,21 +581,80 @@
 	
 	/********************************************************************************************/
 	
+	function resetTime() {
+		var themeNo = $("#party_theme option:selected").data("themeno");
+		console.log(themeNo);
+		
+
+		fetchTimeList(themeNo);
+		
+// 		$("[name='themeNo']").val(themeNo);
+// 		$("[name='themeTime']").val("");
+// 		$("[name='themeTimeNo']").val("");
+	}
+	
+	//리스트 가져오기
+	function fetchTimeList(themeNo) {
+		console.log(themeNo);
+		$("#party_time").empty();
+		$("#party_time").append('<option value="" selected="">시간을 선택해 주세요</option>');
+		$.ajax({
+			url: "${pageContext.request.contextPath}/party/theme",
+			type: "post",
+			data : {themeNo : themeNo,
+				reserveDate : $("#datepicker2").val()},
+			
+			//dataType: "json",
+			success : function(themeTimeList) {
+				console.log(themeTimeList);
+				
+				//화면에 그리기
+				
+				for(var i=0; i<themeTimeList.length; i++) {
+					themeTimeRender(themeTimeList[i], "down");
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	}
 	
 	/********************************************************************************************/
 	
 	//시간표 클릭시
 	$("#party_time").on("change", function () {
-		
-// 		var themeTimeNo = $(this).data("themetimeno");
-		var themeTimeNo = $(this).find("option:selected").data("themetimeno");
-
-		console.log(themeTimeNo);
-		
-		
-// 		$("[name='themeTimeNo']").val(themeTimeNo);
-		$('input[name=themeTimeNo]').attr('value',themeTimeNo);
+		console.log("시간 선택");
+			var themeTimeNo = $(this).find("option:selected").data("themetimeno");
+			$('input[name=themeTimeNo]').attr('value', themeTimeNo);
+			
 	});
+	
+	
+	//시간표가 주목됐을때 disabled 기능하기
+	$("#party_time").on('focus', function () {
+		
+		if ( $(this).hasClass("reservePos") === false ) {
+			$("#reserveImpos").prop('disabled', true);
+			$(".reserveImpos").prop('disabled', true);
+			$("#reserveImpos").attr('disabled', true);
+			$(".reserveImpos").attr('disabled', true);
+			
+		}
+		else if( $(this).hasClass("reservePos") === true ) {
+			$(".themeTime").removeClass("reservation_yellow");
+			
+			$(this).addClass("reservation_yellow");
+// 			var themetimeNo = $(this).data("themetimeno");
+			var themeTime = $(this).html();
+			$("[name='themeTime']").val(themeTime);
+
+// 			$('input[name=themeTimeNo]').val(themeTimeNo);
+		}
+		
+	});
+	
 	
 	/********************************************************************************************/
 	
