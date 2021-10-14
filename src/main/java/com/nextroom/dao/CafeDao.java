@@ -286,4 +286,10 @@ public class CafeDao {
 		return sqlSession.update("cafe.updateTheme-delete", themeNo);
 	}
 
+	// 인테리어 이미지 삭제
+	public int inteDelete(int inteNo) {
+		System.out.println("[CafeDao.inteDelete()]");
+		return sqlSession.delete("cafe.inteDelete", inteNo);
+	}
+
 }

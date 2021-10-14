@@ -727,4 +727,10 @@ public class CafeService {
 		return cafeDao.updateTheme(themeNo);
 	}
 
+	// 어드민 카페 인테리어 이미지 삭제
+	public int inteDelete(int inteNo) {
+		System.out.println("[CafeService.inteDelete()]");
+		return cafeDao.inteDelete(inteNo);
+	}
+
 }

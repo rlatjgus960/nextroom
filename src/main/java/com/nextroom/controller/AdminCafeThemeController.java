@@ -48,6 +48,8 @@ public class AdminCafeThemeController {
 		CafeVo cafeVo = cafeService.getCafe(cafeNo);
 
 		model.addAttribute("cafeVo", cafeVo);
+		
+		System.out.println(cafeVo);
 
 		return "admin/cafeModifyForm";
 	}
@@ -134,5 +136,13 @@ public class AdminCafeThemeController {
 	public int deleteTheme(@RequestParam int themeNo) {
 		System.out.println("deleteTheme");
 		return cafeService.deleteTheme(themeNo);
+	}
+
+	// 관리자페이지 인테리어 이미지 삭제
+	@ResponseBody
+	@RequestMapping("/cafe/inteDelete")
+	public int inteDelete(@RequestParam int inteNo) {
+		System.out.println("inteDelete");
+		return cafeService.inteDelete(inteNo);
 	}
 }

@@ -654,4 +654,13 @@
 	</update>
 	
 	
+	<!-- 인테리어 이미지 삭제 -->
+	<delete id="inteDelete" parameterType="int">
+		<![CDATA[
+			delete interiorImg
+			where interiorNo = #{inteNo}
+		]]>
+	</delete>
+	
+	
 </mapper>
