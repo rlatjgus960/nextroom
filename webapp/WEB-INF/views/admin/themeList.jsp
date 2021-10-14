@@ -66,7 +66,7 @@
 						<li>기록
 							<ul class="aside_mini_cate">
 								<li><a href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록 입력</a>
-								</p></li>
+									</p></li>
 								<li><a href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록 관리</a></li>
 							</ul>
 						</li>
@@ -87,6 +87,8 @@
 				<div id="contentWrap">
 
 					<p id="admin_subHeader">| 카페 테마 관리</p>
+					
+					<input id="cafeNo" type="hidden" value="${authUser.cafeNo }">
 
 					<div id="themeModify_table">
 						<table>
@@ -98,10 +100,11 @@
 
 							<c:forEach items="${themeList }" var="themeList">
 								<c:set var="i" value="${i+1 }" />
-								<tr class="">
+								<tr id="t-${i }">
 									<td>${i}</td>
-									<td><a href="${pageContext.request.contextPath }/admin/theme/modifyForm/${themeList.themeNo}">${themeList.themeName }</a></td>
-									<td></td>
+									<td><a
+										href="${pageContext.request.contextPath }/admin/theme/modifyForm/${themeList.themeNo}">${themeList.themeName }</a></td>
+									<td><p data-no ="${themeList.themeNo}" class="deleteBtn">[삭제]</p></td>
 							</c:forEach>
 
 
@@ -112,8 +115,8 @@
 					<div id="themeModify_button">
 						<button onclick="location.href='${pageContext.request.contextPath }/admin/addThemeForm'"
 							class="mbutton">테마 추가</button>
-						<button onclick="location.href='${pageContext.request.contextPath }/admin/themeDeleteForm'"
-							class="mbutton">테마 삭제</button>
+						<%-- <button onclick="location.href='${pageContext.request.contextPath }/admin/themeDeleteForm'"
+							class="mbutton">테마 삭제</button> --%>
 					</div>
 
 				</div>
@@ -129,6 +132,48 @@
 	</div>
 	<!-- wrap -->
 </body>
+
+<script type="text/javascript">
+
+$(".deleteBtn").on("click", function(){
+	
+	var themeNo = $(this).data("no");
+	var cafeNo = $("#cafeNo").val();
+	
+	if(!confirm("테마를 정말 삭제하시겠습니까?")) {
+		//아니오
+	} else {
+		//예
+		console.log("테마 삭제");
+		
+		console.log(themeNo);
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/admin/theme/delete",
+			type : "get",
+			data : {themeNo : themeNo},
+			
+			dataType : "json",
+			success : function(count) {
+				console.log(count);
+				if(count === 1) {
+					
+					location.replace("${pageContext.request.contextPath}/admin/"+cafeNo+"/themeList")
+					alert("테마가 삭제되었습니다.");
+				}
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	}
+});
+
+
+
+
+</script>
 
 
 

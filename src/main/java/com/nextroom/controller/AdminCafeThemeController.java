@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.CafeService;
 import com.nextroom.vo.CafeVo;
@@ -92,18 +95,17 @@ public class AdminCafeThemeController {
 		model.addAttribute("timeList", cafeService.getOneTime(themeNo));
 		return "admin/themeModifyForm";
 	}
-	
+
 	// 테마수정
 	@RequestMapping("/theme/modify")
 	public String themeModify(HttpSession session, @ModelAttribute CafeVo cafeVo) {
 		System.out.println("themeModify");
-		
+
 		int count = cafeService.themeModify(cafeVo);
-		
+
 		int cafeNo = ((UserVo) session.getAttribute("authUser")).getCafeNo();
-		
-		
-		return "redirect:/admin/"+cafeNo+"/themeList";
+
+		return "redirect:/admin/" + cafeNo + "/themeList";
 	}
 
 	// 관리자페이지 테마추가폼
@@ -126,4 +128,11 @@ public class AdminCafeThemeController {
 		return "redirect:/admin/" + cafeNo + "/themeList";
 	}
 
+	// 관리자페이지 테마 삭제
+	@ResponseBody
+	@RequestMapping("/theme/delete")
+	public int deleteTheme(@RequestParam int themeNo) {
+		System.out.println("deleteTheme");
+		return cafeService.deleteTheme(themeNo);
+	}
 }

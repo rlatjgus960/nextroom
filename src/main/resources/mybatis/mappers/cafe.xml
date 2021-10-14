@@ -28,7 +28,8 @@
 						#{sigungu},
 						#{sidoDetail},
 						#{latitude},
-						#{longitude}
+						#{longitude},
+						'available'
 						)
 	    	]]>
 	</insert>
@@ -48,6 +49,7 @@
 		<![CDATA[ 
 				insert into interiorImg 
 				values (
+						interiorNo.nextval,						
 						#{cafeNo},
 						#{img}
 				) ]]>
@@ -67,7 +69,8 @@
 	<!-- 카페 내부이미지 리스트 가져오기 -->
 	<select id="getInteList" parameterType="int" resultType="com.nextroom.vo.InteriorVo">
 		<![CDATA[
-			select img
+			select  interiorNo,
+					img
 			from INTERIORIMG
 			where cafeNo = #{cafeNo}
 		]]>
@@ -249,7 +252,8 @@
 						#{pRecommendMin},
 						#{pRecommendMax},
 						#{pMin},
-						#{pMax}
+						#{pMax},
+						'available'
 				) ]]>
 	</insert>
 
@@ -301,6 +305,7 @@
 			from cafe c, theme th
 			where c.cafeNo = th.cafeNo
 			and c.cafeNo = #{cafeNo}
+			and th.state = 'available'
 		]]>
 
 	</select>
@@ -325,6 +330,7 @@
 					th.pMax
 			from cafe c, theme th
 			where c.cafeNo = th.cafeNo
+			and th.state = 'available'
 		]]>
 
 	</select>
@@ -346,6 +352,7 @@
 			and th.themeNo = p.themeNo
 			and c.cafeNo = #{cafeNo}
 			and p.HEADCOUNT = #{pMin}
+			and th.state = 'available'
 		]]>
 
 	</select>
@@ -363,6 +370,7 @@
 			where c.cafeNo = th.cafeNo
 			and th.themeNo = p.themeNo
 			and c.cafeNo = #{cafeNo}
+			and th.state = 'available'
 		]]>
 
 	</select>
@@ -388,6 +396,7 @@
 			select min(pMin)minPMin, max(pMax) maxPMax
 			from theme
 			where cafeNo = #{cafeNo}
+			and state = 'available'
 		]]>
 
 	</select>
@@ -401,6 +410,7 @@
 			where th.themeNo = p.themeNo
 			and th.themeNo = #{themeNo}
 			and p.headCount = #{headCount}
+			and th.state = 'available'
 			
 		]]>
 
@@ -428,6 +438,7 @@
 			from cafe c, theme th
 			where c.cafeNo = th.cafeNo
 			and th.themeNo = #{themeNo}
+			and th.state = 'available'
 			
 		]]>
 
@@ -443,6 +454,7 @@
 			from theme th, themeTime t
 			where th.themeNo = t.themeNo
 			and th.themeNo = #{themeNo}
+			and th.state = 'available'
 			order by t.THEMETIME asc
 		]]>
 
@@ -462,6 +474,7 @@
 			where c.cafeNo = th.cafeNo
 			and th.themeNo = p.themeNo
 			and th.themeNo = #{themeNo}
+			and th.state = 'available'
 			order by p.headCount asc
 			
 		]]>
@@ -629,6 +642,16 @@
 			where themeNo = #{themeNo}
 		]]>
 	</delete>
+	
+	<!-- 테마 삭제시 상태 업데이트 -->
+	<update id="updateTheme-delete" parameterType="int">
+		<![CDATA[
+			update theme
+			set 
+				state = 'disable'
+			where themeNo = #{themeNo}
+		]]>
+	</update>
 	
 	
 </mapper>

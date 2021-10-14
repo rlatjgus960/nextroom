@@ -542,12 +542,14 @@ public class CafeService {
 	// 카페 수정
 	public int cafeModify(CafeVo cafeVo) {
 
+		System.out.println("[CafeService.cafeModify()]");
+
 		cafeVo.setPrintAddress(cafeVo.getAddress() + " " + cafeVo.getAddressDetail());
 
 		List<MultipartFile> interiorImg = cafeVo.getInteriorImg();
 
 		if (interiorImg.get(0).getSize() > 0) {
-			
+
 			for (int i = 0; i < interiorImg.size(); i++) {
 
 				long intefileSize = interiorImg.get(i).getSize();
@@ -556,20 +558,20 @@ public class CafeService {
 				// 이미지가 첨부되었을때
 				if (intefileSize > 0) {
 					String inteSaveDir = "C:\\javaStudy\\upload\\";
-					
+
 					// 원파일이름
 					String inteOrgName = interiorImg.get(i).getOriginalFilename();
-					
+
 					// 확장자
 					String inteExName = interiorImg.get(i).getOriginalFilename()
 							.substring(interiorImg.get(i).getOriginalFilename().lastIndexOf("."));
-					
+
 					// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
 					String inteSaveName = System.currentTimeMillis() + UUID.randomUUID().toString() + inteExName;
-					
+
 					// 파일패스
 					String inteFilePath = inteSaveDir + "\\" + inteSaveName;
-					
+
 					// 파일 서버하드디스크에 저장
 					try {
 						byte[] fileData = interiorImg.get(i).getBytes();
@@ -581,7 +583,7 @@ public class CafeService {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
+
 					InteriorVo interiorVo = new InteriorVo();
 					interiorVo.setImg(inteSaveName);
 					interiorVo.setCafeNo(cafeVo.getCafeNo());
@@ -717,6 +719,12 @@ public class CafeService {
 			return cafeDao.updateTheme_noFile(cafeVo);
 		}
 
+	}
+
+	// 어드민 테마 삭제
+	public int deleteTheme(int themeNo) {
+		System.out.println("[CafeService.deleteTheme()]");
+		return cafeDao.updateTheme(themeNo);
 	}
 
 }
