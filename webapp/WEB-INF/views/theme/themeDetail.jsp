@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,7 +142,9 @@
 
 								<div class="theme_review_item">
 									<p>${reviewList.nickname } (${reviewList.playDate })</p>
-									<p>${reviewList.reviewClear }, ${reviewList.memberNum }인, 힌트 ${reviewList.reviewHints }개 사용, ${reviewList.recTime } 소요, 체감 난이도 ${reviewList.feelLevel }, 평점 ${reviewList.rating }</p>
+									<p>${reviewList.reviewClear }, ${reviewList.memberNum }인, 
+									힌트 ${reviewList.reviewHints }개 사용, 
+									<fmt:formatNumber value="${reviewList.recTime/60 } " maxFractionDigits="0" ></fmt:formatNumber>분 ${reviewList.recTime%60 }초 소요, 체감 난이도 ${reviewList.feelLevel }, 평점 ${reviewList.rating }</p>
 								</div>
 
 								<div class="theme_review_edit">

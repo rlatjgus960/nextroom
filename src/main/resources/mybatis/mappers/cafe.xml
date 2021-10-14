@@ -504,6 +504,41 @@
 			from review r, users u
 			where r.userNo = u.userNo
 			and r.themeNo = #{themeNo}
+			order by r.REVIEWNO desc
+		]]>
+
+	</select>
+	
+	
+	<!-- 테마 한개 리뷰 가져오기(테마 평균 체감난이도, 별점 포함) -->
+	<select id="getReviewListAvg" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo">
+	
+		<![CDATA[
+			select  r.REVIEWNO,
+					r.THEMENO,
+					r.USERNO,
+					r.FEELLEVEL,
+					r.RATING,
+					r.RECTIME,
+					r.REVIEWHINTS,
+					r.REVIEWCLEAR,
+					r.MEMBERNUM,
+					to_char(r.PLAYDATE, 'yyyy-mm-dd') playDate,
+					r.REVIEWREGDATE,
+					r.REVIEWLIKE,
+					r.REVIEWTITLE,
+					r.REVIEWCONTENT,
+					r.REVIEWHIT,
+					u.NICKNAME,
+                    avg.aRating,
+                    avg.aFeelLevel
+			from review r, users u, (select themeNo, avg(rating) aRating, avg(feelLevel) aFeelLevel
+                                     from review
+                                     where themeNo = #{themeNo}
+                                     GROUP BY themeNo)avg
+			where r.userNo = u.userNo
+			and r.themeNo = #{themeNo}
+			order by r.REVIEWNO desc
 		]]>
 
 	</select>
@@ -517,6 +552,19 @@
 		from review r, users u
 		where r.userNo = u.userNo
 		and r.themeNo = #{themeNo}
+		
+		]]>
+
+	</select>
+
+	<!-- 전체 테마 체감난이도, 평점 가져오기 -->
+	<select id="getReviewCountAvg" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo">
+	
+		<![CDATA[
+			
+		select themeNo, avg(rating), avg(feelLevel)
+		from review
+		GROUP BY themeNo;
 		
 		]]>
 
@@ -625,7 +673,7 @@
 			where themeNo = #{themeNo}
 		]]>
 	</update>
-	
+
 	<!-- 테마 가격 삭제 -->
 	<delete id="deleteThemePrice" parameterType="int">
 		<![CDATA[
@@ -642,7 +690,7 @@
 			where themeNo = #{themeNo}
 		]]>
 	</delete>
-	
+
 	<!-- 테마 삭제시 상태 업데이트 -->
 	<update id="updateTheme-delete" parameterType="int">
 		<![CDATA[
@@ -652,8 +700,8 @@
 			where themeNo = #{themeNo}
 		]]>
 	</update>
-	
-	
+
+
 	<!-- 인테리어 이미지 삭제 -->
 	<delete id="inteDelete" parameterType="int">
 		<![CDATA[
@@ -661,6 +709,6 @@
 			where interiorNo = #{inteNo}
 		]]>
 	</delete>
-	
-	
+
+
 </mapper>

@@ -12,6 +12,7 @@ import com.nextroom.vo.CafeVo;
 import com.nextroom.vo.InteriorVo;
 import com.nextroom.vo.PriceVo;
 import com.nextroom.vo.ReviewBoardVo;
+import com.nextroom.vo.ThemeVo;
 import com.nextroom.vo.TimeVo;
 
 @Repository
@@ -213,6 +214,12 @@ public class CafeDao {
 	public int getReviewCount(int themeNo) {
 		System.out.println("[CafeDao.getReviewList()]");
 		return sqlSession.selectOne("cafe.getReviewCount", themeNo);
+	}
+	
+	// 테마 한개 체감난이도, 평점 가져오기
+	public ThemeVo getAvgReview(int themeNo) {
+		System.out.println("[CafeDao.getReviewList()]");
+		return sqlSession.selectOne("cafe.getAvgReview", themeNo);
 	}
 
 	// 장르 리스트 가져오기
