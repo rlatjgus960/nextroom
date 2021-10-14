@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +57,9 @@
 						<div id="theme_detail_btn">
 							<button type="button" class="cbutton" id="theme_wish">관심테마등록</button>
 							<button type="button" class="cbutton" id="theme_reserv">예약하기</button>
-							<button onclick = "location.href = '${pageContext.request.contextPath }/cafe/${themeVo.cafeNo }'" type="button" class="cbutton" id="theme_cafe">카페정보</button>
+							<button
+								onclick="location.href = '${pageContext.request.contextPath }/cafe/${themeVo.cafeNo }'"
+								type="button" class="cbutton" id="theme_cafe">카페정보</button>
 						</div>
 					</div>
 
@@ -128,7 +130,53 @@
 				<p>| 후기</p>
 
 				<div>
-					<p>${themeVo.reviewCount }개의 후기, 평균 체감난이도 ★★(2.0) 평점 ★★★★(4.0)</p>
+					<p>${themeVo.reviewCount }개의
+						후기, 
+						
+						평균 체감난이도
+						<c:if test="${themeVo.aFeelLevel >= 4.5 }">
+							★★★★★
+						</c:if>
+
+						<c:if test="${themeVo.aFeelLevel >= 3.5 && themeVo.aFeelLevel < 4.5}">
+							★★★★
+						</c:if>
+
+						<c:if test="${themeVo.aFeelLevel >= 2.5 && themeVo.aFeelLevel < 3.5}">
+							★★★
+						</c:if>
+
+						<c:if test="${themeVo.aFeelLevel >= 1.5 && themeVo.aFeelLevel < 2.5}">
+							★★
+						</c:if>
+
+						<c:if test="${themeVo.aFeelLevel >= 0.5 && themeVo.aFeelLevel < 1.5}">
+							★
+						</c:if>
+						(${themeVo.aFeelLevel}),
+						
+						평점 
+						<c:if test="${themeVo.aRating >= 4.5 }">
+							★★★★★
+						</c:if>
+
+						<c:if test="${themeVo.aRating >= 3.5 && themeVo.aRating < 4.5}">
+							★★★★
+						</c:if>
+
+						<c:if test="${themeVo.aRating >= 2.5 && themeVo.aRating < 3.5}">
+							★★★
+						</c:if>
+
+						<c:if test="${themeVo.aRating >= 1.5 && themeVo.aRating < 2.5}">
+							★★
+						</c:if>
+
+						<c:if test="${themeVo.aRating >= 0.5 && themeVo.aRating < 1.5}">
+							★
+						</c:if>
+						(${themeVo.aRating})
+					</p>
 				</div>
 
 				<div id="theme_review_list" class="clearfix">
@@ -141,10 +189,12 @@
 
 
 								<div class="theme_review_item">
-									<p>${reviewList.nickname } (${reviewList.playDate })</p>
-									<p>${reviewList.reviewClear }, ${reviewList.memberNum }인, 
-									힌트 ${reviewList.reviewHints }개 사용, 
-									<fmt:formatNumber value="${reviewList.recTime/60 } " maxFractionDigits="0" ></fmt:formatNumber>분 ${reviewList.recTime%60 }초 소요, 체감 난이도 ${reviewList.feelLevel }, 평점 ${reviewList.rating }</p>
+									<p>${reviewList.nickname }(${reviewList.playDate })</p>
+									<p>${reviewList.reviewClear },
+										${reviewList.memberNum }인, 힌트 ${reviewList.reviewHints }개 사용,
+										<fmt:formatNumber value="${reviewList.recTime/60 } " maxFractionDigits="0"></fmt:formatNumber>
+										분 ${reviewList.recTime%60 }초 소요, 체감 난이도 ${reviewList.feelLevel }, 평점 ${reviewList.rating }
+									</p>
 								</div>
 
 								<div class="theme_review_edit">

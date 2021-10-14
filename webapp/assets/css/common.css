@@ -175,3 +175,88 @@ h2 {font-size: 30px;}
 }
 /*************************************************/
 
+
+
+
+/************************드롭메뉴 css***********************/
+.dropmenu{
+    border:none;
+    border:0px;
+    margin:0px;
+    padding:0px;
+    font: "sans-serif";
+    font-size:18px;
+}
+
+.dropmenu ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.dropmenu li{
+    float:left;
+    padding:0px;
+}
+
+.dropmenu li a{
+    display:block;
+    margin:0px;
+    text-align:center;
+}
+
+.dropmenu li a:hover, .dropmenu ul li:hover a{
+    text-align: center;
+    background: rgb(253, 213, 59);
+    text-decoration:none;
+}
+
+.dropmenu li ul{
+    text-align: center;
+    display:none; 
+    height:auto;
+    border:0px;
+    position:absolute;
+    width:100px;
+    z-index:200;
+    /*top:1em;
+    /*left:0;*/
+}
+
+.dropmenu li:hover ul{
+    background-color: #ffffff;
+    display:block;
+}
+
+.dropmenu li li {
+    display:block;
+    float:none;
+    margin:0px;
+    padding:0px;
+}
+
+.dropmenu li:hover li a{
+    background:none;
+}
+
+.dropmenu li ul a{
+    width: 100px;
+    height: 20px;
+    display:block;
+    font-size:14px;
+    margin:0px;
+    text-align:left;
+}
+
+.dropmenu li ul a:hover, .dropmenu li ul li:hover a{
+    background: #e0e0e0;
+    border:0px;
+    color:#ffffff;
+    text-decoration:none;
+}
+
+.dropmenu p{
+    clear:left;
+}
+
+

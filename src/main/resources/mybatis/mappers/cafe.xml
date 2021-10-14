@@ -434,8 +434,14 @@
 					th.PRECOMMENDMIN,
 					th.PRECOMMENDMAX,
 					th.pMin,
-					th.pMax
-			from cafe c, theme th
+					th.pMax,
+                    a.reviewCount,
+                    a.aRating, 
+                    a.aFeelLevel
+			from cafe c, theme th, (select  themeNo, count(REVIEWNO) reviewCount, round(avg(rating),1) aRating, round(avg(feelLevel),1) aFeelLevel
+                                    from review
+                                    where themeNo = #{themeNo}
+                                    GROUP BY themeNo) a
 			where c.cafeNo = th.cafeNo
 			and th.themeNo = #{themeNo}
 			and th.state = 'available'
@@ -494,7 +500,7 @@
 					r.REVIEWHINTS,
 					r.REVIEWCLEAR,
 					r.MEMBERNUM,
-					r.PLAYDATE,
+					to_char(r.PLAYDATE, 'yyyy-mm-dd') playDate,
 					r.REVIEWREGDATE,
 					r.REVIEWLIKE,
 					r.REVIEWTITLE,
@@ -511,64 +517,64 @@
 	
 	
 	<!-- 테마 한개 리뷰 가져오기(테마 평균 체감난이도, 별점 포함) -->
-	<select id="getReviewListAvg" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo">
+<!-- 	<select id="getReviewListAvg" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo"> -->
 	
-		<![CDATA[
-			select  r.REVIEWNO,
-					r.THEMENO,
-					r.USERNO,
-					r.FEELLEVEL,
-					r.RATING,
-					r.RECTIME,
-					r.REVIEWHINTS,
-					r.REVIEWCLEAR,
-					r.MEMBERNUM,
-					to_char(r.PLAYDATE, 'yyyy-mm-dd') playDate,
-					r.REVIEWREGDATE,
-					r.REVIEWLIKE,
-					r.REVIEWTITLE,
-					r.REVIEWCONTENT,
-					r.REVIEWHIT,
-					u.NICKNAME,
-                    avg.aRating,
-                    avg.aFeelLevel
-			from review r, users u, (select themeNo, avg(rating) aRating, avg(feelLevel) aFeelLevel
-                                     from review
-                                     where themeNo = #{themeNo}
-                                     GROUP BY themeNo)avg
-			where r.userNo = u.userNo
-			and r.themeNo = #{themeNo}
-			order by r.REVIEWNO desc
-		]]>
+<!-- 		<![CDATA[ -->
+<!-- 			select  r.REVIEWNO, -->
+<!-- 					r.THEMENO, -->
+<!-- 					r.USERNO, -->
+<!-- 					r.FEELLEVEL, -->
+<!-- 					r.RATING, -->
+<!-- 					r.RECTIME, -->
+<!-- 					r.REVIEWHINTS, -->
+<!-- 					r.REVIEWCLEAR, -->
+<!-- 					r.MEMBERNUM, -->
+<!-- 					to_char(r.PLAYDATE, 'yyyy-mm-dd') playDate, -->
+<!-- 					r.REVIEWREGDATE, -->
+<!-- 					r.REVIEWLIKE, -->
+<!-- 					r.REVIEWTITLE, -->
+<!-- 					r.REVIEWCONTENT, -->
+<!-- 					r.REVIEWHIT, -->
+<!-- 					u.NICKNAME, -->
+<!--                     avg.aRating, -->
+<!--                     avg.aFeelLevel -->
+<!-- 			from review r, users u, (select themeNo, avg(rating) aRating, avg(feelLevel) aFeelLevel -->
+<!--                                      from review -->
+<!--                                      where themeNo = #{themeNo} -->
+<!--                                      GROUP BY themeNo)avg -->
+<!-- 			where r.userNo = u.userNo -->
+<!-- 			and r.themeNo = #{themeNo} -->
+<!-- 			order by r.REVIEWNO desc -->
+<!-- 		]]> -->
 
-	</select>
+<!-- 	</select> -->
 
-	<!-- 테마 한개 리뷰 개수 가져오기 -->
-	<select id="getReviewCount" parameterType="int" resultType="int">
+<!-- 	테마 한개 리뷰 개수 가져오기 -->
+<!-- 	<select id="getReviewCount" parameterType="int" resultType="int"> -->
 	
-		<![CDATA[
+<!-- 		<![CDATA[ -->
 			
-		select  count(r.REVIEWNO )
-		from review r, users u
-		where r.userNo = u.userNo
-		and r.themeNo = #{themeNo}
+<!-- 		select  count(r.REVIEWNO ), avg(rating) aRating, avg(feelLevel) aFeelLevel -->
+<!-- 		from review r, users u -->
+<!-- 		where r.userNo = u.userNo -->
+<!-- 		and r.themeNo = #{themeNo} -->
 		
-		]]>
+<!-- 		]]> -->
 
-	</select>
+<!-- 	</select> -->
 
-	<!-- 전체 테마 체감난이도, 평점 가져오기 -->
-	<select id="getReviewCountAvg" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo">
+<!-- 	전체 테마 체감난이도, 평점 가져오기 -->
+<!-- 	<select id="getReviewCountAvg" parameterType="int" resultType="com.nextroom.vo.ThemeVo"> -->
 	
-		<![CDATA[
+<!-- 		<![CDATA[ -->
 			
-		select themeNo, avg(rating), avg(feelLevel)
-		from review
-		GROUP BY themeNo;
+<!-- 		select themeNo, avg(rating) aRating, avg(feelLevel) aFeelLevel -->
+<!-- 		from review -->
+<!-- 		GROUP BY themeNo; -->
 		
-		]]>
+<!-- 		]]> -->
 
-	</select>
+<!-- 	</select> -->
 
 
 	<!-- 장르 리스트 가져오기 -->

@@ -19,6 +19,7 @@ import com.nextroom.vo.CafeVo;
 import com.nextroom.vo.InteriorVo;
 import com.nextroom.vo.PriceVo;
 import com.nextroom.vo.ReviewBoardVo;
+import com.nextroom.vo.ThemeVo;
 import com.nextroom.vo.TimeVo;
 
 @Service
@@ -488,8 +489,7 @@ public class CafeService {
 	public CafeVo getOneTheme(int themeNo) {
 		System.out.println("[CafeService.getOneTheme()]");
 		CafeVo cafeVo = cafeDao.getOneTheme(themeNo);
-		cafeVo.setReviewCount(cafeDao.getReviewCount(themeNo));
-
+		
 		return cafeVo;
 	}
 

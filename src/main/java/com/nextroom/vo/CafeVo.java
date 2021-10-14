@@ -45,7 +45,6 @@ public class CafeVo {
 	private String pRecommendMax;
 	private int pMin;
 	private int pMax;
-	private int reviewCount;
 
 	// 테마가격 테이블
 	private List<Integer> headCount;
@@ -59,6 +58,11 @@ public class CafeVo {
 	// 카페 테마 전체 최대최소인원
 	private int minPMin;
 	private int maxPMax;
+
+	// 테마 상세 출력용 리뷰 정보
+	private int reviewCount;
+	private double aRating;
+	private double aFeelLevel;
 
 	public CafeVo() {
 		super();
@@ -77,8 +81,8 @@ public class CafeVo {
 			String longitude, List<MultipartFile> interiorImg, List<InteriorVo> inteList, int themeNo, String themeName,
 			MultipartFile themeImgFile, String themeImg, String jenre, int levels, String themeType, int playTime,
 			String activity, String themeIntro, String pRecommendMin, String pRecommendMax, int pMin, int pMax,
-			int reviewCount, List<Integer> headCount, List<Integer> price, List<String> themeTime, int minPMin,
-			int maxPMax) {
+			List<Integer> headCount, List<Integer> price, List<String> themeTime, int minPMin, int maxPMax,
+			int reviewCount, double aRating, double aFeelLevel) {
 		super();
 		this.cafeNo = cafeNo;
 		this.userNo = userNo;
@@ -115,12 +119,14 @@ public class CafeVo {
 		this.pRecommendMax = pRecommendMax;
 		this.pMin = pMin;
 		this.pMax = pMax;
-		this.reviewCount = reviewCount;
 		this.headCount = headCount;
 		this.price = price;
 		this.themeTime = themeTime;
 		this.minPMin = minPMin;
 		this.maxPMax = maxPMax;
+		this.reviewCount = reviewCount;
+		this.aRating = aRating;
+		this.aFeelLevel = aFeelLevel;
 	}
 
 	public int getCafeNo() {
@@ -403,14 +409,6 @@ public class CafeVo {
 		this.pMax = pMax;
 	}
 
-	public int getReviewCount() {
-		return reviewCount;
-	}
-
-	public void setReviewCount(int reviewCount) {
-		this.reviewCount = reviewCount;
-	}
-
 	public List<Integer> getHeadCount() {
 		return headCount;
 	}
@@ -451,6 +449,30 @@ public class CafeVo {
 		this.maxPMax = maxPMax;
 	}
 
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
+	public double getaRating() {
+		return aRating;
+	}
+
+	public void setaRating(double aRating) {
+		this.aRating = aRating;
+	}
+
+	public double getaFeelLevel() {
+		return aFeelLevel;
+	}
+
+	public void setaFeelLevel(double aFeelLevel) {
+		this.aFeelLevel = aFeelLevel;
+	}
+
 	@Override
 	public String toString() {
 		return "CafeVo [cafeNo=" + cafeNo + ", userNo=" + userNo + ", cafeName=" + cafeName + ", cafeHp=" + cafeHp
@@ -462,9 +484,9 @@ public class CafeVo {
 				+ ", themeName=" + themeName + ", themeImgFile=" + themeImgFile + ", themeImg=" + themeImg + ", jenre="
 				+ jenre + ", levels=" + levels + ", themeType=" + themeType + ", playTime=" + playTime + ", activity="
 				+ activity + ", themeIntro=" + themeIntro + ", pRecommendMin=" + pRecommendMin + ", pRecommendMax="
-				+ pRecommendMax + ", pMin=" + pMin + ", pMax=" + pMax + ", reviewCount=" + reviewCount + ", headCount="
-				+ headCount + ", price=" + price + ", themeTime=" + themeTime + ", minPMin=" + minPMin + ", maxPMax="
-				+ maxPMax + "]";
+				+ pRecommendMax + ", pMin=" + pMin + ", pMax=" + pMax + ", headCount=" + headCount + ", price=" + price
+				+ ", themeTime=" + themeTime + ", minPMin=" + minPMin + ", maxPMax=" + maxPMax + ", reviewCount="
+				+ reviewCount + ", aRating=" + aRating + ", aFeelLevel=" + aFeelLevel + "]";
 	}
 
 }

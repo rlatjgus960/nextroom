@@ -20,7 +20,6 @@ public class ThemeVo {
 	private String pRecommendMax;
 	private int pMin;
 	private int pMax;
-	private int reviewCount;
 
 	// 테마가격 테이블
 	private List<Integer> headCount;
@@ -33,14 +32,19 @@ public class ThemeVo {
 	private int minPMin;
 	private int maxPMax;
 
+	// 테마 상세 출력용 리뷰 정보
+	private int reviewCount;
+	private int aRating;
+	private int aFeelLevel;
+
 	public ThemeVo() {
 		super();
 	}
 
 	public ThemeVo(int themeNo, String themeName, MultipartFile themeImgFile, String themeImg, String jenre, int levels,
 			String themeType, int playTime, String activity, String themeIntro, String pRecommendMin,
-			String pRecommendMax, int pMin, int pMax, int reviewCount, List<Integer> headCount, List<Integer> price,
-			List<String> themeStartTime, int minPMin, int maxPMax) {
+			String pRecommendMax, int pMin, int pMax, List<Integer> headCount, List<Integer> price,
+			List<String> themeStartTime, int minPMin, int maxPMax, int reviewCount, int aRating, int aFeelLevel) {
 		super();
 		this.themeNo = themeNo;
 		this.themeName = themeName;
@@ -56,12 +60,14 @@ public class ThemeVo {
 		this.pRecommendMax = pRecommendMax;
 		this.pMin = pMin;
 		this.pMax = pMax;
-		this.reviewCount = reviewCount;
 		this.headCount = headCount;
 		this.price = price;
 		this.themeStartTime = themeStartTime;
 		this.minPMin = minPMin;
 		this.maxPMax = maxPMax;
+		this.reviewCount = reviewCount;
+		this.aRating = aRating;
+		this.aFeelLevel = aFeelLevel;
 	}
 
 	public int getThemeNo() {
@@ -176,14 +182,6 @@ public class ThemeVo {
 		this.pMax = pMax;
 	}
 
-	public int getReviewCount() {
-		return reviewCount;
-	}
-
-	public void setReviewCount(int reviewCount) {
-		this.reviewCount = reviewCount;
-	}
-
 	public List<Integer> getHeadCount() {
 		return headCount;
 	}
@@ -224,14 +222,39 @@ public class ThemeVo {
 		this.maxPMax = maxPMax;
 	}
 
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
+	public int getaRating() {
+		return aRating;
+	}
+
+	public void setaRating(int aRating) {
+		this.aRating = aRating;
+	}
+
+	public int getaFeelLevel() {
+		return aFeelLevel;
+	}
+
+	public void setaFeelLevel(int aFeelLevel) {
+		this.aFeelLevel = aFeelLevel;
+	}
+
 	@Override
 	public String toString() {
 		return "ThemeVo [themeNo=" + themeNo + ", themeName=" + themeName + ", themeImgFile=" + themeImgFile
 				+ ", themeImg=" + themeImg + ", jenre=" + jenre + ", levels=" + levels + ", themeType=" + themeType
 				+ ", playTime=" + playTime + ", activity=" + activity + ", themeIntro=" + themeIntro
 				+ ", pRecommendMin=" + pRecommendMin + ", pRecommendMax=" + pRecommendMax + ", pMin=" + pMin + ", pMax="
-				+ pMax + ", reviewCount=" + reviewCount + ", headCount=" + headCount + ", price=" + price
-				+ ", themeStartTime=" + themeStartTime + ", minPMin=" + minPMin + ", maxPMax=" + maxPMax + "]";
+				+ pMax + ", headCount=" + headCount + ", price=" + price + ", themeStartTime=" + themeStartTime
+				+ ", minPMin=" + minPMin + ", maxPMax=" + maxPMax + ", reviewCount=" + reviewCount + ", aRating="
+				+ aRating + ", aFeelLevel=" + aFeelLevel + "]";
 	}
 
 }

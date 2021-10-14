@@ -211,16 +211,10 @@ public class CafeDao {
 	}
 
 	// 테마 한개 리뷰 개수 가져오기
-	public int getReviewCount(int themeNo) {
-		System.out.println("[CafeDao.getReviewList()]");
-		return sqlSession.selectOne("cafe.getReviewCount", themeNo);
-	}
-	
-	// 테마 한개 체감난이도, 평점 가져오기
-	public ThemeVo getAvgReview(int themeNo) {
-		System.out.println("[CafeDao.getReviewList()]");
-		return sqlSession.selectOne("cafe.getAvgReview", themeNo);
-	}
+//	public ThemeVo getReviewCount(int themeNo) {
+//		System.out.println("[CafeDao.getReviewList()]");
+//		return sqlSession.selectOne("cafe.getReviewCountAvg", themeNo);
+//	}
 
 	// 장르 리스트 가져오기
 	public List<CafeVo> getGenreList() {
