@@ -7,6 +7,8 @@ public class PartyVo {
 	private int userNo;
 	private String reserveDate;
 	private String sidoDetail;
+	private String sido;
+	private int headCount;
 	private int cafeNo;
 	private String cafeName;
 	private int themeNo;
@@ -15,6 +17,7 @@ public class PartyVo {
 	private int themeTimeNo;
 	private String themeImg;
 	private String reserveTime;
+	private int reserveState;
 	private int reservePerson;
 	private String content;
 	private String partyState;
@@ -191,7 +194,54 @@ public class PartyVo {
 		this.nickname = nickname;
 		this.profile = profile;
 	}
+	
 
+	public PartyVo(int partyNo, int userNo, String reserveDate, String sidoDetail, String sido, int headCount,
+			int cafeNo, String cafeName, int themeNo, String themeName, String themeTime, int themeTimeNo,
+			String themeImg, String reserveTime, int reserveState, int reservePerson, String content, String partyState,
+			String userState, int userCount, String jenre, int playTime, String themeType, int levels, int rank,
+			int avgClearTime, String showAvgClearTime, int avgHints, int totalGame, int noHintGame, int wonGame,
+			int rankRating, double winRate, double noHintWinRate, String nickname, String profile) {
+		super();
+		this.partyNo = partyNo;
+		this.userNo = userNo;
+		this.reserveDate = reserveDate;
+		this.sidoDetail = sidoDetail;
+		this.sido = sido;
+		this.headCount = headCount;
+		this.cafeNo = cafeNo;
+		this.cafeName = cafeName;
+		this.themeNo = themeNo;
+		this.themeName = themeName;
+		this.themeTime = themeTime;
+		this.themeTimeNo = themeTimeNo;
+		this.themeImg = themeImg;
+		this.reserveTime = reserveTime;
+		this.reserveState = reserveState;
+		this.reservePerson = reservePerson;
+		this.content = content;
+		this.partyState = partyState;
+		this.userState = userState;
+		this.userCount = userCount;
+		this.jenre = jenre;
+		this.playTime = playTime;
+		this.themeType = themeType;
+		this.levels = levels;
+		this.rank = rank;
+		this.avgClearTime = avgClearTime;
+		this.showAvgClearTime = showAvgClearTime;
+		this.avgHints = avgHints;
+		this.totalGame = totalGame;
+		this.noHintGame = noHintGame;
+		this.wonGame = wonGame;
+		this.rankRating = rankRating;
+		this.winRate = winRate;
+		this.noHintWinRate = noHintWinRate;
+		this.nickname = nickname;
+		this.profile = profile;
+	}
+
+	
 	//메소드(게터세터)
 	public int getPartyNo() {
 		return partyNo;
@@ -459,14 +509,39 @@ public class PartyVo {
 		this.themeTimeNo = themeTimeNo;
 	}
 
+	public String getSido() {
+		return sido;
+	}
+
+	public void setSido(String sido) {
+		this.sido = sido;
+	}
+
+	public int getHeadCount() {
+		return headCount;
+	}
+
+	public void setHeadCount(int headCount) {
+		this.headCount = headCount;
+	}
+
+	public int getReserveState() {
+		return reserveState;
+	}
+
+	public void setReserveState(int reserveState) {
+		this.reserveState = reserveState;
+	}
+
 	
 	//메소드(일반)
 	@Override
 	public String toString() {
 		return "PartyVo [partyNo=" + partyNo + ", userNo=" + userNo + ", reserveDate=" + reserveDate + ", sidoDetail="
-				+ sidoDetail + ", cafeNo=" + cafeNo + ", cafeName=" + cafeName + ", themeNo=" + themeNo + ", themeName="
-				+ themeName + ", themeTime=" + themeTime + ", themeTimeNo=" + themeTimeNo + ", themeImg=" + themeImg
-				+ ", reserveTime=" + reserveTime + ", reservePerson=" + reservePerson + ", content=" + content
+				+ sidoDetail + ", sido=" + sido + ", headCount=" + headCount + ", cafeNo=" + cafeNo + ", cafeName="
+				+ cafeName + ", themeNo=" + themeNo + ", themeName=" + themeName + ", themeTime=" + themeTime
+				+ ", themeTimeNo=" + themeTimeNo + ", themeImg=" + themeImg + ", reserveTime=" + reserveTime
+				+ ", reserveState=" + reserveState + ", reservePerson=" + reservePerson + ", content=" + content
 				+ ", partyState=" + partyState + ", userState=" + userState + ", userCount=" + userCount + ", jenre="
 				+ jenre + ", playTime=" + playTime + ", themeType=" + themeType + ", levels=" + levels + ", rank="
 				+ rank + ", avgClearTime=" + avgClearTime + ", showAvgClearTime=" + showAvgClearTime + ", avgHints="
@@ -474,7 +549,6 @@ public class PartyVo {
 				+ ", rankRating=" + rankRating + ", winRate=" + winRate + ", noHintWinRate=" + noHintWinRate
 				+ ", nickname=" + nickname + ", profile=" + profile + "]";
 	}
-	
 	
 	
 	
