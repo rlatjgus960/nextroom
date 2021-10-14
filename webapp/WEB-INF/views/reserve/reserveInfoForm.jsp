@@ -61,12 +61,12 @@
 	
 	                    <tr>
 	                        <th>예약일</th>
-	                        <td id="reserveDate">${rInfoVo.reserveDate}<input type="hidden" name="reserveDate" value="${rInfoVo.reserveDate}"></td>
+	                        <td id="reserveDate"></td>
 	                    </tr>
 	
 	                    <tr>
 	                        <th>예약시간</th>
-	                        <td id="themeTime">${rInfoVo.themeTime}<input type="hidden" name="themeTime" value="${rInfoVo.themeTime}"></td>
+	                        <td id="themeTime"></td>
 	                    </tr>
 	
 	                    <tr>
@@ -132,6 +132,8 @@
 		            <input type="hidden" name="payment" value="">
 		            <input type="hidden" name="cafeNo" value="${param.cafeNo}">
 		            <input type="hidden" name="themeNo" value="${param.themeNo}">
+		            <input type="hidden" name="reserveDate" value="${rInfoVo.reserveDate}">
+		            <input type="hidden" name="themeTime" value="${rInfoVo.themeTime}">
 		            
 	            </form>
                 
@@ -152,6 +154,20 @@
 </body>
 
 <script>
+
+	var a = $("[name='themeTime']").val();
+	var c = $("[name='reserveDate']").val();
+	var b = c.replaceAll('-','');
+	console.log(b);
+	
+	
+	var time = a.split(":");
+	var yy = String(b).substring(0,4);
+	var mm = String(b).substring(4,6);
+	var dd = String(b).substring(6,8);
+	
+	$("#reserveDate").text(yy + "년 " + mm + "월 " + dd + "일");
+	$("#themeTime").text(time[0]+"시 "+time[1]+"분");
 	
 	$("#headCountSelect").on('change', function() {
 		
@@ -193,7 +209,7 @@
 		
 		
 		for (var i = 0; i < headCount; i++) {
-			render("down", i);
+			render("down", i, headCount);
 		}
 		
 		
@@ -201,21 +217,26 @@
 	});
 	
 	//테마 한개씩 렌더링
-	function render(type, i) {
+	function render(type, i, headCount) {
 		$("#teamPlayer").hide();
 		
 		var str = "";
-		str += '<div class="clearfix member nolast">';
+		if (i == headCount-1) {
+			str += '<div class="clearfix member">';
+		} else {
+			str += '<div class="clearfix member nolast">';
+		}
+		
 		str += '	<div class="reservation_partyMember_info clearfix">';
 		str += '		<div class="info_item">';
-		str += '			<select id="memberSelect" name="partyMember">';
+		str += '			<select id="memberSelect" name="partyMember" class="pp'+i+'">';
 		str += '				<option value="default" selected>팀원 정보를 선택해 주세요</option>';
 		str += '				<option value="member">회원</option>';
 		str += '				<option value="nonmember">비회원</option>';
 		str += '			</select>';
 		
 		str += '			<div class="reservation_partyMember_info_item">';
-		str += '				팀원 1 (회원아이디)';
+		str += '				팀원 '+(i+1)+' (회원아이디)';
 		str += '			</div>';
 		
 		str += '			<div class="reservation_partyMember_info_item">';
@@ -224,8 +245,8 @@
 		str += '    			<button id="btnIdCheck" class="mbutton">아이디 확인</button>';		
 		str += '			</div>';	 
 		
-		str += '			<div class="reservation_partyMember_info_item reservation_party_text">';
-		str += '				당신의 무사탈출을 기원합니다.';
+		str += '			<div class="reservation_partyMember_info_item reservation_party_text pText'+i+'">';
+		str += '';
 		str += '			</div>';
 		str += '		</div>';
 		str += '		<div class="reservation_partyMember_img reservation_partyMember_info_item">';
@@ -247,6 +268,7 @@
 
 	};
 	
+	
 	$("#reserveTeam").on('change', "#memberSelect", function() {
 		var team = $(this).val();
 		console.log(team);
@@ -260,6 +282,7 @@
 			
 			($(this).nextAll()).show();
 			($(this).parent().siblings()).show();
+			($(this).siblings(".reservation_party_text")).text("");
 			/*
 			$(".teamPlayer").show();
 			$(".publicTeamPlayer").show();
@@ -269,7 +292,7 @@
 			($(this).nextAll()).hide();
 			($(this).parent().siblings()).hide();
 			($(this).siblings(".reservation_party_text")).show();
-			($(this).siblings(".reservation_party_text")).html("당신의 무사탈출을 기원합니다.");
+			($(this).siblings(".reservation_party_text")).text("당신의 무사탈출을 기원합니다.");
 		}
 	});
 	
@@ -295,10 +318,10 @@
 			console.log(playerVo.userName);
 			
 			if(playerVo.userName !== null && playerVo.userName !== undefined) {
-				$(this).parent().nextAll(".reservation_party_text").html(playerVo.userName+"님 당신의 무사탈출을 기원합니다.");
+				$(this).parent().nextAll(".reservation_party_text").text(playerVo.userName+"님 당신의 무사탈출을 기원합니다.");
 				$(this).prev().val(playerVo.userNo);
 			} else {
-				$(this).parent().nextAll(".reservation_party_text").html("일치하는 사용자가 없습니다");
+				$(this).parent().nextAll(".reservation_party_text").text("일치하는 사용자가 없습니다");
 			}
 			
 			},
@@ -339,6 +362,32 @@
 			event.preventDefault();
 			return false;
 		}
+		
+		var hc = headCountSelect.replace('명', '');
+		console.log(hc);
+		for(var j=0; j<hc; j++) {
+			var test = $(".pp"+j+"").val();
+			console.log("test"+test);
+			
+			var ttt = $(".pText"+j+"").text();
+			console.log("ttt"+ttt);
+			if(test =="default") {
+				alert("팀원 정보를 선택해 주세요");
+				event.preventDefault();
+				return false;
+			} else if(test == "member") {
+				if(ttt == '' || ttt == null || ttt == '일치하는 사용자가 없습니다') {
+					alert("아이디를 확인해 주세요");
+					event.preventDefault();
+					return false;
+				}
+			}
+			
+		}
+		
+		
+		
+		
 		
 		//약관동의 체크 여부
 		var agree = $("#chkAgree").is(":checked");
