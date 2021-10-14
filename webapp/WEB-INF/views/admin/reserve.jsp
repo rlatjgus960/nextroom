@@ -152,6 +152,16 @@
 											<td></td>
 											<td></td>
 										</c:if>
+										
+										<c:if test="${3-(status.count%3) eq 3}">
+											<c:if test="${status.count eq 6 }">
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</c:if>
+										</c:if>
 									</c:if>
 
 									<c:if test="${i%j==j-1}">
@@ -159,7 +169,7 @@
 									</c:if>
 									
 									<c:if test="${status.last}">
-										<c:if test="${status.count eq 5 || status.count eq 4}">
+										<c:if test="${status.count eq 5 || status.count eq 4 }">
 											<tr>
 												<td></td>
 												<td></td>
