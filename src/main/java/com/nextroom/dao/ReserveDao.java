@@ -1,6 +1,5 @@
 package com.nextroom.dao;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +20,22 @@ public class ReserveDao {
 	public List<ReserveVo> getTheme(int cafeNo) {
 		System.out.println("[ReserveDao.getTheme()]");
 		List<ReserveVo> adminThemeList = sqlSession.selectList("reserve.selectThemeList", cafeNo);
+		
+		return adminThemeList;
+	}
+	
+	//테마 리스트 불러오기
+	public List<ReserveVo> getThemeForReserve(int cafeNo) {
+		System.out.println("[ReserveDao.getThemeForReserve()]");
+		List<ReserveVo> adminThemeList = sqlSession.selectList("reserve.selectThemeForReserve", cafeNo);
+		
+		return adminThemeList;
+	}
+	
+	//테마 리스트 불러오기
+	public List<ReserveVo> getDisableTheme(int cafeNo) {
+		System.out.println("[ReserveDao.getDisableTheme()]");
+		List<ReserveVo> adminThemeList = sqlSession.selectList("reserve.selectDisableTheme", cafeNo);
 		
 		return adminThemeList;
 	}

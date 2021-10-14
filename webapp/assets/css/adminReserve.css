@@ -154,8 +154,7 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 }
 
 #admin_reserve_change_Btns button {
-    margin-top: 30px;
-    margin-left: 380px;
+    margin-top: 20px;
 }
 
 .timeover {
@@ -210,4 +209,16 @@ div.ui-datepicker { font-size: 15px; width: 400px; height: 330px;}
 #redbox {
     background-color: rgb(252, 107, 52);
     border: 1px solid #b9b9b9;
+}
+
+#resreveWrap {
+	height: auto;
+}
+
+.disableTheme {
+	background-color: rgb(243, 235, 236);
+}
+
+#checkWrap{
+	height:auto;
 }

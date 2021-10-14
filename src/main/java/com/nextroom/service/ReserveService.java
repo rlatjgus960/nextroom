@@ -25,6 +25,24 @@ public class ReserveService {
 		return adminThemeList;
 	}
 	
+	//테마 정보 불러오기
+	public List<ReserveVo> getThemeForReserve(int cafeNo) {
+		System.out.println("[ReserveService.getThemeForReserve()]");
+		
+		List<ReserveVo> adminThemeList = reserveDao.getThemeForReserve(cafeNo);
+		
+		return adminThemeList;
+	}
+	
+	//테마 정보 불러오기
+	public List<ReserveVo> getDisableTheme(int cafeNo) {
+		System.out.println("[ReserveService.getDisableTheme()]");
+		
+		List<ReserveVo> adminThemeList = reserveDao.getDisableTheme(cafeNo);
+		
+		return adminThemeList;
+	}
+	
 	//테마별 시간 정보 불러오기
 	public List<ReserveVo> getTime(Map<String, Object> rMap) {
 		System.out.println("[ReserveService.getTime()]");
@@ -259,7 +277,6 @@ public class ReserveService {
 	public ReserveVo getReserveComplete(Map<String, Object> rMap, Map<String, Object> uMap) {
 		System.out.println("[ReserveService.getReserveComplete()]");
 		
-		Map<String, Object> lastMap = new HashMap<String, Object>();
 		ReserveVo hiVo = new ReserveVo();
 		
 		//예약날짜 테이블 존재확인

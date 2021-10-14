@@ -115,7 +115,7 @@
 								href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페
 									소개 관리</a></li>
 							<li><a
-								href="${pageContext.request.contextPath }/admin/${authUser.cafeNo }/themeList">카페
+								href="${pageContext.request.contextPath }/admin/themeList">카페
 									테마 관리</a></li>
 						</ul>
 
@@ -128,6 +128,7 @@
 						<!--컨텐츠 여기에 작성하세요 !!!!!!!!!-->
 
 					<form action="${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}" method="get">
+						<div id="resreveWrap" class="clearfix">
 						<div id="admin_reservation_themas">
 							<table>
 								<c:set var="i" value="0" />
@@ -145,27 +146,75 @@
 												<input type='hidden' name="themeNo" value="${thList.themeNo}">
 										</c:when>
 										<c:otherwise>
-											<td class="thema"
-												onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+											<c:choose>
+												<c:when test="${thList.state eq 'disable'}">
+													<td class="thema disableTheme" onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+												</c:when>
+												<c:otherwise>
+														<td class="thema" onclick="location.href='${pageContext.request.contextPath}/admin/reserve/timeManage/${sessionScope.authUser.cafeNo}?themeNo=${thList.themeNo}';">${thList.themeName}</td>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 
 									<c:if test="${status.last}">
-										<c:if test="${3-(thList.themeNo%3) eq 1}">
+										
+										<c:if test="${3-(status.count%3) eq 1}">
 											<td></td>
 										</c:if>
 
-										<c:if test="${3-(thList.themeNo%3) eq 2}">
+										<c:if test="${3-(status.count%3) eq 2}">
 											<td></td>
 											<td></td>
 										</c:if>
+										
+										<<c:if test="${3-(status.count%3) eq 3}">
+											<c:if test="${status.count eq 6 }">
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</c:if>
+										</c:if>
+										
+										
 									</c:if>
+									
 
 									<c:if test="${i%j==j-1}">
 										</tr>
 									</c:if>
-
+									
+									<c:if test="${status.last}">
+										<c:if test="${status.count eq 5 || status.count eq 4}">
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+										</c:if>
+										
+										<c:if test="${status.count eq 1 || status.count eq 2 || status.count eq 3}">
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+										</c:if>
+										
+									</c:if>
+									
+										
 									<c:set var="i" value="${i+1 }" />
+									
+									
 								</c:forEach>
 							</table>
 						</div>
@@ -175,6 +224,7 @@
 							<input type="hidden" id="datepicker2" name="reserveDate">
 
 
+						</div>
 						</div>
 						
 						<div id="admin_reserve_change_Btns">

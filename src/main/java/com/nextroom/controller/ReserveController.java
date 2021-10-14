@@ -1,6 +1,5 @@
 package com.nextroom.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +57,7 @@ public class ReserveController {
 	public List<ReserveVo> getTheme(@RequestParam("cafeNum") int cafeNum) {
 		System.out.println("getTheme");
 		
-		List<ReserveVo> themeList = reserveService.getTheme(cafeNum);
+		List<ReserveVo> themeList = reserveService.getThemeForReserve(cafeNum);
 		
 		return themeList;
 	}

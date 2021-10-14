@@ -30,6 +30,7 @@ public class ReserveVo {
 	private String price;
 	private String id;
 	private String userName;
+	private String state;
 	
 	public ReserveVo() {
 		super();
@@ -49,7 +50,7 @@ public class ReserveVo {
 			int reserveDateNo, String reserveDate, int reserveTimeNo, String reserveTime, int reserveState,
 			int paymentState, int reservePerson, String reserveName, int reserveNo, String themeImg, String cafeName,
 			String reserveHp, String payment, int totalPerson, String regDate, String gameState, String sidoDetail,
-			String sido, int headCount, String price, String id, String userName) {
+			String sido, int headCount, String price, String id, String userName, String state) {
 		super();
 		this.userNo = userNo;
 		this.cafeNo = cafeNo;
@@ -79,6 +80,7 @@ public class ReserveVo {
 		this.price = price;
 		this.id = id;
 		this.userName = userName;
+		this.state = state;
 	}
 
 
@@ -360,6 +362,18 @@ public class ReserveVo {
 
 
 
+	public String getState() {
+		return state;
+	}
+
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "ReserveVo [userNo=" + userNo + ", cafeNo=" + cafeNo + ", themeNo=" + themeNo + ", themeName="
@@ -370,8 +384,10 @@ public class ReserveVo {
 				+ ", cafeName=" + cafeName + ", reserveHp=" + reserveHp + ", payment=" + payment + ", totalPerson="
 				+ totalPerson + ", regDate=" + regDate + ", gameState=" + gameState + ", sidoDetail=" + sidoDetail
 				+ ", sido=" + sido + ", headCount=" + headCount + ", price=" + price + ", id=" + id + ", userName="
-				+ userName + "]";
+				+ userName + ", state=" + state + "]";
 	}
+
+
 
 	
 

@@ -36,8 +36,12 @@ public class AdminReserveController {
 		System.out.println("timeManage");
 		
 		//테마 정보
-		List<ReserveVo> adminThemeList = reserveService.getTheme(cafeNo);
-		//System.out.println(adminThemeList);
+		List<ReserveVo> adminThemeList = reserveService.getThemeForReserve(cafeNo);
+		
+		List<ReserveVo> disableThemeList = reserveService.getDisableTheme(cafeNo);
+		System.out.println(disableThemeList);
+		
+		adminThemeList.addAll(disableThemeList);
 		
 		UserVo userVo = (UserVo)session.getAttribute("authUser");
 		
@@ -100,8 +104,13 @@ public class AdminReserveController {
 		
 		System.out.println(reserveDate);
 		//테마 정보
-		List<ReserveVo> adminThemeList = reserveService.getTheme(cafeNo);
+		List<ReserveVo> adminThemeList = reserveService.getThemeForReserve(cafeNo);
 		//System.out.println(adminThemeList);
+		
+		List<ReserveVo> disableThemeList = reserveService.getDisableTheme(cafeNo);
+		System.out.println(disableThemeList);
+		
+		adminThemeList.addAll(disableThemeList);
 		
 		UserVo userVo = (UserVo)session.getAttribute("authUser");
 		

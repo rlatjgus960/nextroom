@@ -15,6 +15,44 @@
 		]]>
 	</select>
 	
+	<!-- admin회원 테마 정보 가져오기 -->
+	<select id="selectThemeForReserve" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  cafeNo,
+					themeNo,
+			        themeName,
+			        state
+			from theme
+			where cafeNo = #{cafeNo}
+			and state = 'available'
+			order by themeNo asc
+		]]>
+	</select>
+	
+	<!-- admin회원 테마 정보 가져오기 -->
+	<select id="selectDisableTheme" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  ttt.cafeNo,
+			        ttt.themeNo,
+			        ttt.themeName,
+			        ttt.state
+			from theme ttt
+			where exists (select    c.cafeNo,
+			                        t.themeNo,
+			                        t.themeName,
+			                        t.state
+			                from cafe c, theme t, reserveDate rd, reserveTime rt
+			                where c.cafeNo = t.cafeNo
+			                and t.themeNo = rd.themeNo
+			                and rd.reserveDateNo = rt.reserveDateNo
+			                and ttt.themeNo = t.themeNo
+			                and rt.reserveState = 2
+			                and c.cafeNo = #{cafeNo}
+			                and t.state = 'disable'
+			                and rd.reserveDate > to_char(sysdate, 'yy-mm-dd'))
+		]]>
+	</select>
+	
 	<!-- 테마별 시간 정보 가져오기 -->
 	<select id="selectTimeList" parameterType="map" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
@@ -319,6 +357,7 @@
 			</choose>
 		
 		<![CDATA[
+			
 		]]>
 	</select>
 	
