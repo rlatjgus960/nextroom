@@ -1,6 +1,6 @@
 package com.nextroom.dao;
 
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +43,7 @@ public class ReserveDao {
 	//예약날짜 테이블 확인
 	public ReserveVo selectReserveDate(Map<String, Object> rMap) {
 		System.out.println("[ReserveDao.selectReserveDate()]");
+		System.out.println(rMap);
 		
 		return sqlSession.selectOne("reserve.selectReserveDateByMap",rMap);
 	}

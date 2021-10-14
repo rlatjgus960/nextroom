@@ -78,7 +78,7 @@
 
                 <!-- main -->
                 <div id="reservation_main">
-                	<form action="${pageContext.request.contextPath}/reserve/reserveInfoForm" method="get" id="next_form">
+                	<form action="${pageContext.request.contextPath}/reserve/reserveInfoForm" method="post" id="next_form">
 	                    <div id="reservation_main_title" class="clearfix">
 	                        <div id="reservation_main_title_date" class="clearfix"><div class="reservation_main_title">날짜</div></div>
 	                        <div id="reservation_main_title_region" class="clearfix"><div class="reservation_main_title">지역</div></div>
@@ -198,6 +198,10 @@
 		$("#reservation_main_content_cafe").text("");
 		$("#reservation_main_content_thema").text("");
 		$("#reservation_main_content_time").text("");
+		$("[name='themeTime']").val("");
+		$("[name='themeTimeNo']").val("");
+		$("[name='themeNo']").val("");
+		$("[name='cafeNo']").val("");
 
 		fetchList(sidoDetail);
 		
@@ -261,6 +265,10 @@
 		
 		$("#reservation_main_content_thema").text("");
 		$("#reservation_main_content_time").text("");
+		$("[name='themeTime']").val("");
+		$("[name='themeTimeNo']").val("");
+		$("[name='themeNo']").val("");
+		
 
 		fetchThemeList(cafeNum);
 		
@@ -321,6 +329,8 @@
 		fetchTimeList(themeNo);
 		
 		$("[name='themeNo']").val(themeNo);
+		$("[name='themeTime']").val("");
+		$("[name='themeTimeNo']").val("");
 	}
 		
 	
@@ -336,6 +346,8 @@
 		console.log(themeNo);
 		
 		$("#reservation_main_content_time").text("");
+		$("[name='themeTime']").val("");
+		$("[name='themeTimeNo']").val("");
 
 		fetchTimeList(themeNo);
 		
@@ -396,17 +408,21 @@
 	//시간 클릭
 	$("#reservation_main_content_time").on("click", ".time", function() {
 		console.log("시간 선택");
-		$(".time").removeClass("reservation_yellow");
 		
-		$(this).addClass("reservation_yellow");
-		var timeNo = $(this).data("timeno");
-		console.log(timeNo);
+		if($(this).hasClass("reservePos") === true) {
+			$(".time").removeClass("reservation_yellow");
+			
+			$(this).addClass("reservation_yellow");
+			var timeNo = $(this).data("timeno");
+			console.log(timeNo);
+			
+			var themeTime = $(this).html();
+			console.log(themeTime);
+			
+			$("[name='themeTime']").val(themeTime);
+			$("[name='themeTimeNo']").val(timeNo);	
+		}
 		
-		var themeTime = $(this).html();
-		console.log(themeTime);
-		
-		$("[name='themeTime']").val(themeTime);
-		$("[name='themeTimeNo']").val(timeNo);
 
 	});
 	
