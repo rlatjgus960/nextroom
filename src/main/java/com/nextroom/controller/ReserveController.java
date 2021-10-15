@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.nextroom.service.PartyService;
 import com.nextroom.service.ReserveService;
 import com.nextroom.vo.ReserveVo;
 import com.nextroom.vo.UserVo;
@@ -24,6 +25,9 @@ public class ReserveController {
 	
 	@Autowired
 	private ReserveService reserveService;
+	
+	@Autowired
+	private PartyService partyService;
 	
 	//예약 기본폼
 	@RequestMapping("/reserveBaseForm")
@@ -109,6 +113,52 @@ public class ReserveController {
 			return "user/loginForm";
 		}
 	}
+	
+	
+	//21-10-15 by 대니
+	//파티에서 예약하기 눌렀을때 정보받기
+	@RequestMapping("/partyReserveInfoForm")
+	public String partyReserveInfoForm(HttpSession session, @ModelAttribute ReserveVo rVo, Model model) {
+		System.out.println("reserveInfoForm");
+		
+		System.out.println("대니의:" + rVo);
+		//reserveDate, cafeNo, themeNo, themeTimeNo
+		
+		UserVo userVo = (UserVo)session.getAttribute("authUser");
+		
+		if(userVo != null) {
+			ReserveVo reserveVo = reserveService.getCafeThemeName(rVo);
+			reserveVo.setReserveDate(rVo.getReserveDate());
+			reserveVo.setThemeTime(rVo.getThemeTime());
+			reserveVo.setThemeTimeNo(rVo.getThemeTimeNo());
+			
+			//파티No로 partyDetail의 총 인원수 가져오기
+			int partyNo = rVo.getPartyNo();
+			ReserveVo partyCount = partyService.getPartyDetailCount(partyNo);
+			reserveVo.setUserCount(partyCount.getUserCount());
+			
+			System.out.println("test: " + reserveVo);
+			
+			//파티No로 partyDetail의 userNo 가져오기
+			List<ReserveVo> pDetailUserList = partyService.pDetailUserList(partyNo);
+			System.out.println("디테일유저노: " + pDetailUserList);
+			
+			//가격리스트 가져오기
+			List<ReserveVo> priceList = reserveService.getPrice(rVo);
+			
+			System.out.println("가격" + priceList);
+			
+			model.addAttribute("rInfoVo", reserveVo);
+			model.addAttribute("pList", priceList);
+			model.addAttribute("pDetailUserList", pDetailUserList);
+			
+			return "reserve/reserveInfoForm";
+		} else {
+			return "user/loginForm";
+		}
+	}
+	
+	
 	
 	//가격 정보
 	@ResponseBody

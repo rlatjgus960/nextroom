@@ -11,6 +11,7 @@ import com.nextroom.dao.PartyDao;
 import com.nextroom.dao.RankDao;
 import com.nextroom.dao.UserDao;
 import com.nextroom.vo.PartyVo;
+import com.nextroom.vo.ReserveVo;
 import com.nextroom.vo.UserVo;
 
 @Service
@@ -630,5 +631,29 @@ public class PartyService {
 		return null;
 	}
 
+	
+	//21-10-15 by 대니
+	//파티에서 예약하기 눌렀을때 reserve컨트롤러에서 넘어온 파티No
+	public ReserveVo getPartyDetailCount(int partyNo) {
+		
+		ReserveVo partyCount = partyDao.getPartyDetailCount(partyNo);
+		
+		return partyCount;
+		
+	}
+	
+	
+	//21-10-15 by 대니
+	//파티에서 예약하기 눌렀을때 reserve에서 넘어온 파티no로 userno찾기
+	public List<ReserveVo> pDetailUserList(int partyNo) {
+		
+		List<ReserveVo> pDetailUserList = partyDao.pDetailUserList(partyNo);
+		
+		return pDetailUserList;
+	}
+	
+	
+	
+	
 
 }

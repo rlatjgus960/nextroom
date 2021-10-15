@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.nextroom.vo.PartyVo;
+import com.nextroom.vo.ReserveVo;
 
 @Repository
 public class PartyDao {
@@ -141,6 +142,7 @@ public class PartyDao {
 	}
 	
 	
+	
 	//21-10-03 by 대니
 	//리스트에서 넘어온 파티No로 partyRead에 정보 뿌려주기
 	public PartyVo getPartyReadList(int partyNo) {
@@ -246,5 +248,25 @@ public class PartyDao {
 		sqlSession.update("party.partyWorkingUdate", partyVo);
 		
 	}
+	
+	//21-10-15 by 대니
+	//partyNo로 유저카운트 가져오기
+	public ReserveVo getPartyDetailCount(int partyNo) {
+		
+		return sqlSession.selectOne("party.getPartyDetailCount", partyNo);
+	}
+	
+	//21-10-15 by 대니
+	//파티에서 예약하기 눌렀을때 reserve에서 넘어온 파티no로 userno찾기
+	public List<ReserveVo> pDetailUserList(int partyNo) {
+		
+		List<ReserveVo> pDetailUserList = sqlSession.selectList("party.pDetailUserList", partyNo);
+		
+		return pDetailUserList;
+	}
+	
+	
+	
+	
 	
 }
