@@ -212,23 +212,36 @@ public class Board {
 		
 	}
 	
-//	//2010.10.12 by 원호
-//	//자유게시판 글 수정
-//	@RequestMapping(value="freeModify", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String freeModify(@ModelAttribute ReviewBoardVo reviewBoardVo,  HttpSession session) {
-//		System.out.println("Controller.modify");
-//		System.out.println(reviewBoardVo);
-//		
-//		//로그인한 사용자만 수정
-//		UserVo authUser = (UserVo)session.getAttribute("authUser");
-//		reviewBoardVo.setUserNo(authUser.getUserNo());
-//		
-//		reviewBoardService.modify(reviewBoardVo);
-//		
-//		return "redirect:/board/reviewBoard";
-//	}
+	//2021.10.15 by 원호
+	//댓글 리스트
+	@ResponseBody
+	@RequestMapping(value = "/freeCommentList", method = {RequestMethod.GET, RequestMethod.POST})
+	public List<FreeBoardVo> freeCommentList(FreeBoardVo freeBoardVo) {
+		System.out.println("[controller.commentList]");
+		
+		int boardNo = freeBoardVo.getBoardNo();
+		System.out.println(boardNo);
+		List<FreeBoardVo> freeCommentList = reviewBoardService.freeCommentList(boardNo);
+		
+		System.out.println(freeCommentList);
+		
+		return freeCommentList;
+
+	}
 	
 	
+	//2021.10.15 by 원호
+	//댓글 등록
+	@ResponseBody
+	@RequestMapping(value="/commentAdd", method = {RequestMethod.GET, RequestMethod.POST})
+	public FreeBoardVo commentAdd(@ModelAttribute FreeBoardVo freeBoardVo) {
+		System.out.println("[controller.commentAdd]");
+		System.out.println(freeBoardVo);
+		
+		FreeBoardVo resultVo = reviewBoardService.commentAdd(freeBoardVo);
+		System.out.println("리절트븨오"+resultVo);
+		return resultVo;
+	}
 	
 	
 	
