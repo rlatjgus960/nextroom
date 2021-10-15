@@ -373,6 +373,7 @@
 </body>
 
 <script>
+	
 	$(".thema").on("click", function() {
 		if ($(this).hasClass("yellow_colorOn")) {
 			$(this).removeClass("yellow_colorOn");
@@ -535,7 +536,6 @@
 	$("#modal_close_btn").on("click", function() {
 		$("#admin_reserveitem_modal").attr("style", "display:none");
 		document.body.classList.remove("stop-scroll");
-
 	});
 </script>
 

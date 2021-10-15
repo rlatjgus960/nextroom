@@ -168,7 +168,7 @@
 											<td></td>
 										</c:if>
 										
-										<<c:if test="${3-(status.count%3) eq 3}">
+										<c:if test="${3-(status.count%3) eq 3}">
 											<c:if test="${status.count eq 6 }">
 												<tr>
 													<td></td>

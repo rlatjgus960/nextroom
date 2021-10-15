@@ -250,7 +250,7 @@
 		str += '			</div>';
 		str += '		</div>';
 		str += '		<div class="reservation_partyMember_img reservation_partyMember_info_item">';
-		str += '			<img src="${pageContext.request.contextPath }/assets/image/profile/blue.jpg">';
+		str += '			<img src="${pageContext.request.contextPath }/assets/image/mypageEtc/chacha.JPG">';
 		str += '		</div>';
 		str += '	</div>';
 		str += '</div>';
