@@ -53,7 +53,7 @@
                            </div>
                            
                            <div class="title">
-                                <h3>카페 / 테마 : ${pReadMap.partyReadList.cafeName } / ${pReadMap.partyReadList.themeName }</h3>
+                                <h3 class="cafeAndTheme" data-cafeno="${pReadMap.partyReadList.cafeNo }" data-themeno="${pReadMap.partyReadList.themeNo }">카페 / 테마 : ${pReadMap.partyReadList.cafeName } / ${pReadMap.partyReadList.themeName }</h3>
                            </div>
                            
                            <div class="party_content">
@@ -81,7 +81,7 @@
                                     </tbody>
                                     <tbody>
                                         <td class="title_width">이용일시 : </td> 
-                                        <td>${pReadMap.partyReadList.reserveDate } / ${pReadMap.partyReadList.themeTime }</td>
+                                        <td class="reserveDate" data-reservedate="${pReadMap.partyReadList.reserveDate }" data-themetimeno="${pReadMap.partyReadList.themeTimeNo }">${pReadMap.partyReadList.reserveDate } / ${pReadMap.partyReadList.themeTime }</td>
                                     </tbody>
                                     <tbody>
                                         <td id="together" class="title_width">모임글 : </td> 
@@ -114,6 +114,15 @@
 			                               <c:if test="${pReadMap.partyReadList.partyState eq '모집완료'}">
 			                               		<button type="button" data-userno="${pReadMap.partyReadList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="working_button" class="submit_button">모집중</button>
 	                               		   </c:if>
+	                               		   <form name="form" id="formform" action="${pageContext.request.contextPath}/reserve/partyReserveInfoForm" method="post">
+	                               		   		<input type="hidden" name="partyNo" value="${pReadMap.partyReadList.partyNo }">
+	                               		   		<input type="hidden" name="cafeNo" value="${pReadMap.partyReadList.cafeNo }">
+	                               		   		<input type="hidden" name="themeNo" value="${pReadMap.partyReadList.themeNo }">
+	                               		   		<input type="hidden" name="themeTimeNo" value="${pReadMap.partyReadList.themeTimeNo }">
+	                               		   		<input type="hidden" name="reserveDate" value="${pReadMap.partyReadList.reserveDate }">
+	                               		   		<input type="hidden" name="themeTime" value="${pReadMap.partyReadList.themeTime }">
+	                               		   		
+	                               		   </form>
 			                               		<button type="button" data-userno="${pReadMap.partyReadList.userNo }" data-partyno="${pReadMap.partyReadList.partyNo }" id="reserve_button" class="mbutton">예약하기</button>
 	                               		</c:when>
 	                               </c:choose>
@@ -450,7 +459,7 @@
 				            if (result.isConfirmed) {
 				            	
 				            	//예약을위한 정보 넘겨야함!!!
-				            	location.reload();
+				            	$("#formform").submit();
 				            	
 				            } else {
 				            	location.reload();
@@ -911,9 +920,6 @@
         	
             if (result.isConfirmed) {
             	
-            	//모집중이라면 모집완료를 해주세요
-            	//예약에 필요한 정보들 확인해서 정리하기
-            	
 				//ajax서버에 요청 (partyNo,userNo 전달)
 				$.ajax({
 					
@@ -926,42 +932,20 @@
 					success : function(result){
 						/*성공시 처리해야될 코드 작성*/
 						
-						if(result == false) {
+						if(result == true) {
+							$("#formform").submit();
+						}
+						
+						
+						else {
 							Swal.fire({
 			                    icon: 'warning',
 			                    title: 'NEXTROOM',
 			                    text: '모집완료를 클릭해주세요.',
 			                });
 							
-						} else {
-							
-							//예약하기를 눌렀을때 파티가 모집완료면 예약2단계로 포워드
-							//ajax서버에 요청 (partyNo,userNo 전달)
-							$.ajax({
-								
-								url : "${pageContext.request.contextPath }/party/partyReserve",		
-								type : "post",
-				//	 			contentType : "application/json",
-								data : partyVo,
-				
-				//	 			dataType : "json",
-								success : function(result){
-									/*성공시 처리해야될 코드 작성*/
-									
-									
-								},
-								error : function(XHR, status, error) {
-									console.error(status + " : " + error);
-								}
-								
-							});
-							
 						}
-						
 					},
-					error : function(XHR, status, error) {
-						console.error(status + " : " + error);
-					}
 					
 				});
             
