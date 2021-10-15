@@ -22,15 +22,20 @@ public class FreeBoardVo {
 	private List<MultipartFile> multiImgFile;
 	private List<FreeBoardImgVo> MultiList;
 	
+	// 2021.10.15 추가
+	// 댓글 테이블
+	private int commentNo;
+	private String commentContent;
+	private String commentDate;
 	
 	public FreeBoardVo() {
 		super();
 	}
 
-
 	public FreeBoardVo(int boardNo, int userNo, String boardTitle, String boardContent, String regDate, int boardHit,
 			int boardLike, String boardImg, MultipartFile boardImgFile, String nickname,
-			List<MultipartFile> multiImgFile, List<FreeBoardImgVo> multiList) {
+			List<MultipartFile> multiImgFile, List<FreeBoardImgVo> multiList, int commentNo, String commentContent,
+			String commentDate) {
 		super();
 		this.boardNo = boardNo;
 		this.userNo = userNo;
@@ -44,138 +49,140 @@ public class FreeBoardVo {
 		this.nickname = nickname;
 		this.multiImgFile = multiImgFile;
 		MultiList = multiList;
+		this.commentNo = commentNo;
+		this.commentContent = commentContent;
+		this.commentDate = commentDate;
 	}
-
 
 	public int getBoardNo() {
 		return boardNo;
 	}
 
-
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-
 
 	public int getUserNo() {
 		return userNo;
 	}
 
-
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
-
 
 	public String getBoardTitle() {
 		return boardTitle;
 	}
 
-
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
-
 
 	public String getBoardContent() {
 		return boardContent;
 	}
 
-
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
-
 
 	public String getRegDate() {
 		return regDate;
 	}
 
-
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-
 
 	public int getBoardHit() {
 		return boardHit;
 	}
 
-
 	public void setBoardHit(int boardHit) {
 		this.boardHit = boardHit;
 	}
-
 
 	public int getBoardLike() {
 		return boardLike;
 	}
 
-
 	public void setBoardLike(int boardLike) {
 		this.boardLike = boardLike;
 	}
-
 
 	public String getBoardImg() {
 		return boardImg;
 	}
 
-
 	public void setBoardImg(String boardImg) {
 		this.boardImg = boardImg;
 	}
-
 
 	public MultipartFile getBoardImgFile() {
 		return boardImgFile;
 	}
 
-
 	public void setBoardImgFile(MultipartFile boardImgFile) {
 		this.boardImgFile = boardImgFile;
 	}
-
 
 	public String getNickname() {
 		return nickname;
 	}
 
-
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-
 
 	public List<MultipartFile> getMultiImgFile() {
 		return multiImgFile;
 	}
 
-
 	public void setMultiImgFile(List<MultipartFile> multiImgFile) {
 		this.multiImgFile = multiImgFile;
 	}
-
 
 	public List<FreeBoardImgVo> getMultiList() {
 		return MultiList;
 	}
 
-
 	public void setMultiList(List<FreeBoardImgVo> multiList) {
 		MultiList = multiList;
 	}
 
+	public int getCommentNo() {
+		return commentNo;
+	}
+
+	public void setCommentNo(int commentNo) {
+		this.commentNo = commentNo;
+	}
+
+	public String getCommentContent() {
+		return commentContent;
+	}
+
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
+	}
+
+	public String getCommentDate() {
+		return commentDate;
+	}
+
+	public void setCommentDate(String commentDate) {
+		this.commentDate = commentDate;
+	}
 
 	@Override
 	public String toString() {
 		return "FreeBoardVo [boardNo=" + boardNo + ", userNo=" + userNo + ", boardTitle=" + boardTitle
 				+ ", boardContent=" + boardContent + ", regDate=" + regDate + ", boardHit=" + boardHit + ", boardLike="
 				+ boardLike + ", boardImg=" + boardImg + ", boardImgFile=" + boardImgFile + ", nickname=" + nickname
-				+ ", multiImgFile=" + multiImgFile + ", MultiList=" + MultiList + "]";
+				+ ", multiImgFile=" + multiImgFile + ", MultiList=" + MultiList + ", commentNo=" + commentNo
+				+ ", commentContent=" + commentContent + ", commentDate=" + commentDate + "]";
 	}
 
 
-	
 	
 }

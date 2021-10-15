@@ -88,7 +88,6 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 
 					<!-- 글 읽기폼 -->
 					<div id="read_area" class="clearfix">
-						<form action="" method="get" class="form_area">
 
 							<div>
 								<h3>${freeBoardVo.boardTitle}</h3>
@@ -97,6 +96,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 							<div class="user_information">
 								<span>작성자 : ${freeBoardVo.nickname}</span>								
 								<span>조회 : ${freeBoardVo.boardHit}</span>
+								<span>추천수 : ${freeBoardVo.boardLike}</span>
 								<span>작성일 : ${freeBoardVo.regDate}</span>
 							</div>
 							
@@ -156,27 +156,28 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										<!-- //이전/다음 글 -->
 
 										<!-- 댓글쓰기 -->
-										
-										<div id="comment">
-											<strong>댓글 쓰기</strong>
-											<div>
-												<input type="text" placeholder="로그인 후 이용해 주세요">
-												<a href="">등 록</a>
+										<form method="get" class="form_area" onsubmit="return false;" >
+											<div id="comment">
+												<strong>댓글 쓰기</strong>
+												<div>
+													<input type="text" id="commentContent" name="commentContent" onkeyup="e();">
+													<input type="hidden" id="boardNo" name="boardNo" value = "${freeBoardVo.boardNo }">
+													<a id="boardComment" type="submit">등 록</a>
+												</div>
 											</div>
-										</div>
-										
+										</form>
 										<!-- //댓글쓰기 -->
 
 										<!-- 댓글 리스트 -->
-										<div id="comment_box">
-											<ul id="comment_list">
+ 										<div id="comment_box">
+<%-- 											<ul id="comment_list">
 												<li id="">
 													<div id="nick_box">슬퍼하지마 노노노</div>
 													<div id="comment_content">댓글 내용 후루룩짭짭 아이고 힘들다 죽겄다 에혀</div>
 													<div id="write_date">2021.09.12</div>
 													<div id="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>	<!-- ajax사용 해야하나 -->
 												</li>																																																								
-											</ul>
+											</ul> --%>
 										</div>
 										<!-- //댓글 리스트 -->
 
@@ -192,7 +193,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 
 							</div>
 							<!-- //콘텐츠-->
-						</form>
+						
 					</div>
 					<!-- //글 읽기폼 -->
 
@@ -322,6 +323,189 @@ $("#hate").on("click",function(){
 });
 
 
+
+
+/********************댓글**********************/
+
+//화면이 로딩되기 직전 -> DOM생성
+$(document).ready(function(){
+	console.log("화면 로딩 직전");
+	
+	//ajax로 요청하기
+	fetchList();
+}); 
+
+
+//리스트 가져오기
+function fetchList(){
+
+	$.ajax({
+		
+		/******여긴 요청 보내는거********/
+		url : "${pageContext.request.contextPath }/board/freeCommentList",		
+		type : "get",
+		//contentType : "application/json",
+		data : {boardNo: $("[name='boardNo']").val()},
+
+		//dataType : "json",
+		success : function(freeCommentList){
+			/*성공시 처리해야될 코드 작성*/
+			console.log(freeCommentList);
+			
+			//화면에 그리기
+	         for(var i = 0; i < freeCommentList.length; i++) {
+	             render(freeCommentList[i], "down");
+	          }
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+};
+
+//그리는 문법임
+//방명록 1개씩 랜더링
+function render(freeBoardVo, type){
+	console.log(${authUser.userNo})
+	//console.log(freeBoardVo)
+	
+  var str = "";
+  str += '	<ul>';
+  str += '   	<li id="">';
+  str += '      	<div class="nick_box">' + freeBoardVo.nickname + '</div>';
+  str += '      	<div class="comment_content">' + freeBoardVo.commentContent + '</div>';
+  str += '      	<div class="write_date">'+ freeBoardVo.commentDate + '</div>';
+  str += '     		<div class="delete_comment"><a href=""><img src="${pageContext.request.contextPath }/assets/image/board_image/delete.png"></a></div>';
+  str += '  	</li>';
+  str += '	</ul>';
+
+  if(type === 'down'){
+  	$("#comment_box").append(str);            	
+  } else if(type === 'up'){
+  	$("#comment_box").prepend(str);
+  } else {
+  	console.log("방향을 지정해 주세요");
+  }
+  
+  
+};
+
+
+
+//댓글 쓰기 (버튼을 눌러서 id값이 넘어와 실행되는 자바스크립트 구문)
+$(document).on("click","#boardComment", function(){
+var commentContent=$("#commentContent").val(); //댓글 내용
+var boardNo="${freeBoardVo.boardNo}"; //게시물 번호
+var userNo="${authUser.userNo}";
+//var param={ "replytext": replytext, "bno": bno};
+console.log("등록버튼 클릭")
+console.log(commentContent)
+console.log(boardNo)
+console.log(userNo)
+
+var freeBoardVo = {
+	commentContent : commentContent,
+	boardNo : boardNo,
+	userNo : userNo
+}
+
+console.log(freeBoardVo)
+
+if(commentContent.length < 1){
+	  alert("내용을 입력해 주세요")
+	  return false;
+}
+
+if(userNo < 1){
+	  alert("로그인을 해주세요")
+	  return false;
+}
+
+
+	//데이터 ajax방식으로 서버에 전송
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/board/commentAdd",
+		type : "get",
+		//contentType : "application/json",	//json방식으로 보내겠다!
+		data : freeBoardVo,
+		
+		dataType : "json",
+		success : function(freeBoardVo){
+			/*성공시 처리해야될 코드 작성*/
+			console.log(freeBoardVo);
+			render(freeBoardVo, "up");
+				
+			//입력폼 초기화
+			$("#commentContent").val("");	//()안에 ""있으면 값 비워줌
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+
+	  return true;
+});
+
+
+//댓글 쓰기 (버튼을 눌러서 id값이 넘어와 실행되는 자바스크립트 구문)
+$("#commentContent").keyup(function e(e){
+	 if (e.keyCode === 13) {
+		  var commentContent=$("#commentContent").val(); //댓글 내용
+		  var boardNo="${freeBoardVo.boardNo}"; //게시물 번호
+		  var userNo="${authUser.userNo}";
+		  //var param={ "replytext": replytext, "bno": bno};
+		  console.log("등록버튼 클릭")
+		  console.log(commentContent)
+		  console.log(boardNo)
+		  console.log(userNo)
+		  
+		  var freeBoardVo = {
+		  	commentContent : commentContent,
+		  	boardNo : boardNo,
+		  	userNo : userNo
+		  }
+		  
+		  console.log(freeBoardVo)
+		  
+		  if(commentContent.length < 1){
+			  alert("내용을 입력해 주세요")
+			  return false;
+		  }
+		  
+		  if(userNo < 1){
+			  alert("로그인을 해주세요")
+			  return false;
+		  }
+
+		  
+			//데이터 ajax방식으로 서버에 전송
+			$.ajax({
+				
+				url : "${pageContext.request.contextPath }/board/commentAdd",
+				type : "get",
+				//contentType : "application/json",	//json방식으로 보내겠다!
+				data : freeBoardVo,
+				
+				dataType : "json",
+				success : function(freeBoardVo){
+					/*성공시 처리해야될 코드 작성*/
+					console.log(freeBoardVo);
+					render(freeBoardVo, "up");
+						
+					//입력폼 초기화
+					$("#commentContent").val("");	//()안에 ""있으면 값 비워줌
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+
+			  return true;
+		  }  
+	
+	return true;
+});
 
 
 
