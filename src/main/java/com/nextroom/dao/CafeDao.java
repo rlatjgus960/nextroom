@@ -186,11 +186,19 @@ public class CafeDao {
 	}
 
 	//////////////////////////// 테마 상세페이지////////////////////////////
-	// 테마 한개 정보 가져오기
+	// 테마 출력용 한개 정보 가져오기(리뷰포함)
 	public CafeVo getOneTheme(int themeNo) {
 		System.out.println("[CafeDao.getOneTheme()]");
+		System.out.println("카페한개정보 가져오기 themeNo : " + themeNo);
 		return sqlSession.selectOne("cafe.getOneTheme", themeNo);
 	}
+
+//	// 테마 수정용 한개 정보 가져오기(리뷰 미포함)
+//		public CafeVo getModiTheme(int themeNo) {
+//			System.out.println("[CafeDao.getModiTheme()]");
+//			System.out.println("카페한개정보 가져오기 themeNo : "+themeNo);
+//			return sqlSession.selectOne("cafe.getModiTheme", themeNo);
+//		}
 
 	// 테마 한개 시간표 가져오기
 	public List<TimeVo> getOneTime(int themeNo) {
@@ -223,9 +231,21 @@ public class CafeDao {
 	}
 
 	// 전체 테마 리스트 가져오기
-	public List<CafeVo> getThemeList() {
+	public List<CafeVo> getThemeList(Map<String, Object> getThemeMap) {
 		System.out.println("[CafeDao.getThemeList()]");
-		return sqlSession.selectList("cafe.getThemeList");
+		return sqlSession.selectList("cafe.getThemeList", getThemeMap);
+	}
+	
+	// 테마 검색하기
+	public List<CafeVo> themeSearchList(Map<String, Object> getThemeMap) {
+		System.out.println("[CafeDao.themeSearchList()]");
+		return sqlSession.selectList("cafe.themeSearchList", getThemeMap);
+	}
+
+	// 탑 10 테마 리스트 가져오기
+	public List<CafeVo> get10Theme() {
+		System.out.println("[CafeDao.get10Theme()]");
+		return sqlSession.selectList("cafe.get10Theme");
 	}
 
 	// ajax 카페 목록 가져오기
@@ -236,6 +256,15 @@ public class CafeDao {
 		List<CafeVo> cafeList = sqlSession.selectList("cafe.getApiCafeList", map);
 
 		return cafeList;
+	}
+
+	// ajax 테마 목록 가져오기
+	public List<CafeVo> getApiThemeList(Map<String, Object> map) {
+		System.out.println("[CafeDao.getApiThemeList()]");
+		System.out.println(map);
+		List<CafeVo> themeList = sqlSession.selectList("cafe.getApiThemeList", map);
+
+		return themeList;
 	}
 
 	// 카페 수정 - 파일이 있을때

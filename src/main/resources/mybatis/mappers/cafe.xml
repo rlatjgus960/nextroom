@@ -93,12 +93,61 @@
 			<otherwise>
 				<choose>
 					<when test="_parameter == '서울'">
-						where sido = #{sidoDetail}
+						where sido = #{region}
 					</when>
+					<when test="_parameter == '세종'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '충청'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '제주'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '경상'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '경상'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '전라'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '충청'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '강원'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '경기'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '전라'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '울산'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '부산'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '대구'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '대전'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '인천'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="_parameter == '광주'">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+
 					<otherwise>
 						<choose>
 							<when test="_parameter != '' and _parameter != null">
-								where sidoDetail = #{sidoDetail}
+								where sidoDetail = #{region}
 							</when>
 						</choose>
 					</otherwise>
@@ -153,7 +202,7 @@
 
 	</select>
 
-
+	<!-- ajax 페이징 리스트 가져오기 -->
 	<select id="getApiCafeList" parameterType="map" resultType="com.nextroom.vo.CafeVo">
 		<![CDATA[
 			select  rt.rn,
@@ -165,6 +214,7 @@
 			        rt.cafeIntro,
 			        rt.cafeImg,
 			        rt.printAddress,
+			        rt.sido,
 			        rt.sidoDetail
 			from ( select  rownum rn,
 			               ot.cafeNo,
@@ -175,13 +225,11 @@
 			               ot.cafeIntro,
 			               ot.cafeImg,
 			               ot.printAddress,
+			               ot.sido,
 			               ot.sidoDetail
 			       from( select  cafeNo, cafeName, cafeHp, openTime, closeTime, 
-							   cafeIntro, cafeImg, printAddress, sidoDetail
+							   cafeIntro, cafeImg, printAddress, sido, sidoDetail
 			             from cafe 
-		
-		
-		
 		
 		]]>
 		<choose>
@@ -192,11 +240,61 @@
 					<when test="region.equals('서울')">
 						where sido = #{region}
 					</when>
+
+					<when test="region.equals('세종')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('충청')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('제주')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('경상')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('경상')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('전라')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('충청')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('강원')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('경기')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('전라')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('울산')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('부산')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('대구')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('대전')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('인천')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
+					<when test="region.equals('광주')">
+						WHERE sido LIKE '%' || #{region} || '%'
+					</when>
 					<otherwise>
 						<choose>
 							<when test="region != '' and region != null">
 								where sidoDetail = #{region}
 							</when>
+
 						</choose>
 					</otherwise>
 				</choose>
@@ -209,6 +307,84 @@
 			where rn >= #{startNum}
 			and rn <= #{cnt}
 
+		]]>
+
+	</select>
+
+
+	<select id="getApiThemeList" parameterType="map" resultType="com.nextroom.vo.CafeVo">
+		<![CDATA[
+			select 	rn.rn,
+			        rn.cafeName,
+			        rn.cafeNo,
+			        rn.THEMENO, 
+			        rn.THEMENAME,
+			        rn.THEMEIMG,
+			        rn.JENRE,
+			        rn.LEVELS,
+			        rn.THEMETYPE,
+			        rn.PLAYTIME,
+			        rn.ACTIVITY,
+			        rn.THEMEINTRO,
+			        rn.PRECOMMENDMIN,
+			        rn.PRECOMMENDMAX,
+			        rn.pMin,
+			        rn.pMax,
+			        rn.reviewCount,
+			        rn.aRating, 
+			        rn.aFeelLevel
+			from (select 	rownum rn,
+			                ot.cafeName,
+			                ot.cafeNo,
+			                ot.THEMENO, 
+			                ot.THEMENAME,
+			                ot.THEMEIMG,
+			                ot.JENRE,
+			                ot.LEVELS,
+			                ot.THEMETYPE,
+			                ot.PLAYTIME,
+			                ot.ACTIVITY,
+			                ot.THEMEINTRO,
+			                ot.PRECOMMENDMIN,
+			                ot.PRECOMMENDMAX,
+			                ot.pMin,
+			                ot.pMax,
+			                ot.reviewCount,
+			                ot.aRating, 
+			                ot.aFeelLevel
+			        from (select 	c.cafeName,
+			                        c.cafeNo,
+			                        th.THEMENO, 
+			                        th.THEMENAME,
+			                        th.THEMEIMG,
+			                        th.JENRE,
+			                        th.LEVELS,
+			                        th.THEMETYPE,
+			                        th.PLAYTIME,
+			                        th.ACTIVITY,
+			                        th.THEMEINTRO,
+			                        th.PRECOMMENDMIN,
+			                        th.PRECOMMENDMAX,
+			                        th.pMin,
+			                        th.pMax,
+			                        a.reviewCount,
+			                        a.aRating, 
+			                        a.aFeelLevel
+			                from cafe c, theme th, (select  themeNo, count(REVIEWNO) reviewCount, round(avg(rating),1) aRating, round(avg(feelLevel),1) aFeelLevel
+			                                        from review
+			                                        GROUP BY themeNo) a
+			                where c.cafeNo = th.cafeNo
+			                and a.themeNo(+) = th.themeNo
+			                and th.state = 'available'
+		]]>
+		<if test="keyword != null and keyword !='' ">
+			and th.themeName like '%'|| #{keyword} ||'%'
+		</if> 
+        <![CDATA[
+			                order by a.aRating desc, a.reviewCount desc, a.aFeelLevel desc)ot )rn
+			where rn >= #{startNum}
+			and rn <= #{cnt}
+			order by rn.aRating desc, rn.reviewCount desc, rn.aFeelLevel desc
 		]]>
 
 	</select>
@@ -288,49 +464,195 @@
 	<select id="getCafeTheme" parameterType="int" resultType="com.nextroom.vo.CafeVo">
 	
 		<![CDATA[
-			select  c.cafeName,
-					th.THEMENO, 
-					th.THEMENAME,
-					th.THEMEIMG,
-					th.JENRE,
-					th.LEVELS,
-					th.THEMETYPE,
-					th.PLAYTIME,
-					th.ACTIVITY,
-					th.THEMEINTRO,
-					th.PRECOMMENDMIN,
-					th.PRECOMMENDMAX,
-					th.pMin,
-					th.pMax
-			from cafe c, theme th
-			where c.cafeNo = th.cafeNo
-			and c.cafeNo = #{cafeNo}
-			and th.state = 'available'
+			select 	c.cafeName,
+	                c.cafeNo,
+	                th.THEMENO, 
+	                th.THEMENAME,
+	                th.THEMEIMG,
+	                th.JENRE,
+	                th.LEVELS,
+	                th.THEMETYPE,
+	                th.PLAYTIME,
+	                th.ACTIVITY,
+	                th.THEMEINTRO,
+	                th.PRECOMMENDMIN,
+	                th.PRECOMMENDMAX,
+	                th.pMin,
+	                th.pMax,
+	                a.reviewCount,
+	                a.aRating, 
+	                a.aFeelLevel
+	        from cafe c, theme th, (select  themeNo, count(REVIEWNO) reviewCount, round(avg(rating),1) aRating, round(avg(feelLevel),1) aFeelLevel
+	                                from review
+	                                GROUP BY themeNo) a
+	        where c.cafeNo = th.cafeNo
+	        and a.themeNo(+) = th.themeNo
+	        and th.state = 'available'
+	        and c.cafeNo = #{cafeNo}
+        	order by a.aRating desc, a.reviewCount desc, a.aFeelLevel desc
 		]]>
 
 	</select>
 
 	<!-- 전체 테마 리스트 가져오기 -->
-	<select id="getThemeList" resultType="com.nextroom.vo.CafeVo">
+	<select id="getThemeList" parameterType="Map" resultType="com.nextroom.vo.CafeVo">
 	
 		<![CDATA[
-			select  c.cafeName,
-					th.THEMENO, 
-					th.THEMENAME,
-					th.THEMEIMG,
-					th.JENRE,
-					th.LEVELS,
-					th.THEMETYPE,
-					th.PLAYTIME,
-					th.ACTIVITY,
-					th.THEMEINTRO,
-					th.PRECOMMENDMIN,
-					th.PRECOMMENDMAX,
-					th.pMin,
-					th.pMax
-			from cafe c, theme th
-			where c.cafeNo = th.cafeNo
-			and th.state = 'available'
+			select 	c.cafeName,
+	                c.cafeNo,
+	                th.THEMENO, 
+	                th.THEMENAME,
+	                th.THEMEIMG,
+	                th.JENRE,
+	                th.LEVELS,
+	                th.THEMETYPE,
+	                th.PLAYTIME,
+	                th.ACTIVITY,
+	                th.THEMEINTRO,
+	                th.PRECOMMENDMIN,
+	                th.PRECOMMENDMAX,
+	                th.pMin,
+	                th.pMax,
+	                a.reviewCount,
+	                a.aRating, 
+	                a.aFeelLevel
+	        from cafe c, theme th, (select  themeNo, count(REVIEWNO) reviewCount, round(avg(rating),1) aRating, round(avg(feelLevel),1) aFeelLevel
+	                                from review
+	                                GROUP BY themeNo) a
+	        where c.cafeNo = th.cafeNo
+	        and a.themeNo(+) = th.themeNo
+	        and th.state = 'available'
+		]]>
+		<if test="keyword != null and keyword !='' ">
+			and th.themeName like '%'|| #{keyword} ||'%'
+		</if> 
+ 		<![CDATA[
+        	order by a.aRating desc, a.reviewCount desc, a.aFeelLevel desc
+		]]>
+	</select>
+
+
+
+	<!-- 테마 검색하기 -->
+	<select id="themeSearchList" parameterType="Map" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select 	c.cafeName,
+	                c.cafeNo,
+	                c.sidoDetail,
+	                th.THEMENO, 
+	                th.THEMENAME,
+	                th.THEMEIMG,
+	                th.JENRE,
+	                th.LEVELS,
+	                th.THEMETYPE,
+	                th.PLAYTIME,
+	                th.ACTIVITY,
+	                th.THEMEINTRO,
+	                th.PRECOMMENDMIN,
+	                th.PRECOMMENDMAX,
+	                th.pMin,
+	                th.pMax,
+	                a.reviewCount,
+	                a.aRating, 
+	                a.aFeelLevel
+	        from cafe c, theme th, (select  themeNo, count(REVIEWNO) reviewCount, round(avg(rating),1) aRating, round(avg(feelLevel),1) aFeelLevel
+	                                from review
+	                                GROUP BY themeNo) a
+	        where c.cafeNo = th.cafeNo
+	        and a.themeNo(+) = th.themeNo
+	        and th.state = 'available'
+		]]>
+
+		<if test="sidoDetail != null and sidoDetail !=''">
+			and c.sidoDetail in
+			<foreach item="sidoDetail" collection="sidoDetail" open="(" close=")" separator=",">
+				#{sidoDetail}
+			</foreach>
+		</if>
+		<if test="jenre != null and jenre !=''">
+			and th.jenre in
+			<foreach item="jenre" collection="jenre" open="(" close=")" separator=",">
+				#{jenre}
+			</foreach>
+		</if>
+		<if test="themeType != null and themeType !=''">
+			and th.themeType in
+			<foreach item="themeType" collection="themeType" open="(" close=")" separator=",">
+				#{themeType}
+			</foreach>
+		</if>
+		<!-- <if test="headCount != null"> and th.pMin in <foreach item="headCount" collection="headCount" open="(" close=")" separator=","> #{headCount} </foreach> 
+			</if> -->
+		<if test="levels != null and levels !=''">
+			and th.levels in
+			<foreach item="levels" collection="levels" open="(" close=")" separator=",">
+				#{levels}
+			</foreach>
+		</if>
+		<if test="activity != null and activity !=''">
+			and th.activity in
+			<foreach item="activity" collection="activity" open="(" close=")" separator=",">
+				#{activity}
+			</foreach>
+		</if>
+
+		<if test="keyword != null and keyword !='' ">
+			and th.themeName like '%'|| #{keyword} ||'%'
+		</if> 
+ 		<![CDATA[
+        	order by a.aRating desc, a.reviewCount desc, a.aFeelLevel desc
+		]]>
+	</select>
+
+
+	<!-- 탑 10 테마 리스트 가져오기 -->
+	<select id="get10Theme" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select  r.cafeName,
+			        r.THEMENO, 
+			        r.THEMENAME,
+			        r.THEMEIMG,
+			        r.JENRE,
+			        r.LEVELS,
+			        r.THEMETYPE,
+			        r.PLAYTIME,
+			        r.ACTIVITY,
+			        r.THEMEINTRO,
+			        r.PRECOMMENDMIN,
+			        r.PRECOMMENDMAX,
+			        r.pMin,
+			        r.pMax,
+			        r.reviewCount,
+			        r.arating,
+			        r.afeellevel
+			from (select    c.cafeName,
+			                th.THEMENO, 
+			                th.THEMENAME,
+			                th.THEMEIMG,
+			                th.JENRE,
+			                th.LEVELS,
+			                th.THEMETYPE,
+			                th.PLAYTIME,
+			                th.ACTIVITY,
+			                th.THEMEINTRO,
+			                th.PRECOMMENDMIN,
+			                th.PRECOMMENDMAX,
+			                th.pMin,
+			                th.pMax,
+			                a.reviewCount,
+			                a.arating,
+			                a.afeellevel
+			        from cafe c,theme th, (select  themeNo, count(rating)reviewCount, round(avg(rating),1) aRating, round(avg(feelLevel),1) aFeelLevel
+			                                from review
+			                                GROUP BY themeNo) a
+			        where a.themeNo = th.themeNo
+			        and c.cafeNo = th.cafeNo
+			        and th.state = 'available'
+			        order by a.arating desc, a.reviewCount desc, a.afeellevel desc)r
+			where rownum<=10
+			order by arating desc
 		]]>
 
 	</select>
@@ -416,7 +738,7 @@
 
 	</select>
 
-	<!-- 테마 한개 정보 가져오기 -->
+	<!-- 테마 상세 출력용 리뷰 포함 한개 정보 가져오기 -->
 	<select id="getOneTheme" parameterType="int" resultType="com.nextroom.vo.CafeVo">
 	
 		<![CDATA[
@@ -442,6 +764,35 @@
                                     from review
                                     where themeNo = #{themeNo}
                                     GROUP BY themeNo) a
+			where c.cafeNo = th.cafeNo
+			and th.themeNo = #{themeNo}
+			and a.themeNo(+) = th.themeNo
+			and th.state = 'available'
+			
+		]]>
+
+	</select>
+
+	<!-- 테마 한개 정보 가져오기(수정용) -->
+	<select id="getModiTheme" parameterType="int" resultType="com.nextroom.vo.CafeVo">
+	
+		<![CDATA[
+			select 	c.cafeName,
+					c.cafeNo,
+					th.THEMENO, 
+					th.THEMENAME,
+					th.THEMEIMG,
+					th.JENRE,
+					th.LEVELS,
+					th.THEMETYPE,
+					th.PLAYTIME,
+					th.ACTIVITY,
+					th.THEMEINTRO,
+					th.PRECOMMENDMIN,
+					th.PRECOMMENDMAX,
+					th.pMin,
+					th.pMax
+			from cafe c, theme th
 			where c.cafeNo = th.cafeNo
 			and th.themeNo = #{themeNo}
 			and th.state = 'available'
@@ -514,67 +865,67 @@
 		]]>
 
 	</select>
-	
-	
+
+
 	<!-- 테마 한개 리뷰 가져오기(테마 평균 체감난이도, 별점 포함) -->
-<!-- 	<select id="getReviewListAvg" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo"> -->
-	
-<!-- 		<![CDATA[ -->
-<!-- 			select  r.REVIEWNO, -->
-<!-- 					r.THEMENO, -->
-<!-- 					r.USERNO, -->
-<!-- 					r.FEELLEVEL, -->
-<!-- 					r.RATING, -->
-<!-- 					r.RECTIME, -->
-<!-- 					r.REVIEWHINTS, -->
-<!-- 					r.REVIEWCLEAR, -->
-<!-- 					r.MEMBERNUM, -->
-<!-- 					to_char(r.PLAYDATE, 'yyyy-mm-dd') playDate, -->
-<!-- 					r.REVIEWREGDATE, -->
-<!-- 					r.REVIEWLIKE, -->
-<!-- 					r.REVIEWTITLE, -->
-<!-- 					r.REVIEWCONTENT, -->
-<!-- 					r.REVIEWHIT, -->
-<!-- 					u.NICKNAME, -->
-<!--                     avg.aRating, -->
-<!--                     avg.aFeelLevel -->
-<!-- 			from review r, users u, (select themeNo, avg(rating) aRating, avg(feelLevel) aFeelLevel -->
-<!--                                      from review -->
-<!--                                      where themeNo = #{themeNo} -->
-<!--                                      GROUP BY themeNo)avg -->
-<!-- 			where r.userNo = u.userNo -->
-<!-- 			and r.themeNo = #{themeNo} -->
-<!-- 			order by r.REVIEWNO desc -->
-<!-- 		]]> -->
+	<!-- <select id="getReviewListAvg" parameterType="int" resultType="com.nextroom.vo.ReviewBoardVo"> -->
 
-<!-- 	</select> -->
+	<!-- <![CDATA[ -->
+	<!-- select r.REVIEWNO, -->
+	<!-- r.THEMENO, -->
+	<!-- r.USERNO, -->
+	<!-- r.FEELLEVEL, -->
+	<!-- r.RATING, -->
+	<!-- r.RECTIME, -->
+	<!-- r.REVIEWHINTS, -->
+	<!-- r.REVIEWCLEAR, -->
+	<!-- r.MEMBERNUM, -->
+	<!-- to_char(r.PLAYDATE, 'yyyy-mm-dd') playDate, -->
+	<!-- r.REVIEWREGDATE, -->
+	<!-- r.REVIEWLIKE, -->
+	<!-- r.REVIEWTITLE, -->
+	<!-- r.REVIEWCONTENT, -->
+	<!-- r.REVIEWHIT, -->
+	<!-- u.NICKNAME, -->
+	<!-- avg.aRating, -->
+	<!-- avg.aFeelLevel -->
+	<!-- from review r, users u, (select themeNo, avg(rating) aRating, avg(feelLevel) aFeelLevel -->
+	<!-- from review -->
+	<!-- where themeNo = #{themeNo} -->
+	<!-- GROUP BY themeNo)avg -->
+	<!-- where r.userNo = u.userNo -->
+	<!-- and r.themeNo = #{themeNo} -->
+	<!-- order by r.REVIEWNO desc -->
+	<!-- ]]> -->
 
-<!-- 	테마 한개 리뷰 개수 가져오기 -->
-<!-- 	<select id="getReviewCount" parameterType="int" resultType="int"> -->
-	
-<!-- 		<![CDATA[ -->
-			
-<!-- 		select  count(r.REVIEWNO ), avg(rating) aRating, avg(feelLevel) aFeelLevel -->
-<!-- 		from review r, users u -->
-<!-- 		where r.userNo = u.userNo -->
-<!-- 		and r.themeNo = #{themeNo} -->
-		
-<!-- 		]]> -->
+	<!-- </select> -->
 
-<!-- 	</select> -->
+	<!-- 테마 한개 리뷰 개수 가져오기 -->
+	<!-- <select id="getReviewCount" parameterType="int" resultType="int"> -->
 
-<!-- 	전체 테마 체감난이도, 평점 가져오기 -->
-<!-- 	<select id="getReviewCountAvg" parameterType="int" resultType="com.nextroom.vo.ThemeVo"> -->
-	
-<!-- 		<![CDATA[ -->
-			
-<!-- 		select themeNo, avg(rating) aRating, avg(feelLevel) aFeelLevel -->
-<!-- 		from review -->
-<!-- 		GROUP BY themeNo; -->
-		
-<!-- 		]]> -->
+	<!-- <![CDATA[ -->
 
-<!-- 	</select> -->
+	<!-- select count(r.REVIEWNO ), avg(rating) aRating, avg(feelLevel) aFeelLevel -->
+	<!-- from review r, users u -->
+	<!-- where r.userNo = u.userNo -->
+	<!-- and r.themeNo = #{themeNo} -->
+
+	<!-- ]]> -->
+
+	<!-- </select> -->
+
+	<!-- 전체 테마 체감난이도, 평점 가져오기 -->
+	<!-- <select id="getReviewCountAvg" parameterType="int" resultType="com.nextroom.vo.ThemeVo"> -->
+
+	<!-- <![CDATA[ -->
+
+	<!-- select themeNo, avg(rating) aRating, avg(feelLevel) aFeelLevel -->
+	<!-- from review -->
+	<!-- GROUP BY themeNo; -->
+
+	<!-- ]]> -->
+
+	<!-- </select> -->
 
 
 	<!-- 장르 리스트 가져오기 -->

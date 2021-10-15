@@ -45,8 +45,98 @@
 						<div id="theme_detail_info" class="">
 
 							<span>장르 : </span><span>${themeVo.jenre}</span> | <span>추천인원 : </span><span>${themeVo.pRecommendMin}~${themeVo.pRecommendMax}인</span><br>
-							<span>난이도 : </span><span>${themeVo.levels}</span> | <span>플레이타임 : </span><span>${themeVo.playTime}분</span><br>
-							<span>체감난이도 : </span><span>★★★</span> | <span>평점 : </span><span>★★★(3.1)</span><br> <span>유형
+							<span>난이도 : </span>
+							<span>
+								<c:if test="${themeVo.levels == 5 }">
+									★★★★★
+								</c:if>
+		
+								<c:if test="${themeVo.levels == 4}">
+									★★★★
+								</c:if>
+		
+								<c:if test="${themeVo.levels == 3}">
+									★★★
+								</c:if>
+		
+								<c:if test="${themeVo.levels == 2}">
+									★★
+								</c:if>
+		
+								<c:if test="${themeVo.levels == 1}">
+									★
+								</c:if>
+							
+							
+							</span> 
+							
+							
+							
+							
+							| <span>플레이타임 : </span><span>${themeVo.playTime}분</span><br>
+							
+							<span>체감난이도 : </span>
+							<span>
+								<c:if test="${themeVo.aFeelLevel >= 4.5 }">
+									★★★★★
+								</c:if>
+		
+								<c:if test="${themeVo.aFeelLevel >= 3.5 && themeVo.aFeelLevel < 4.5}">
+									★★★★
+								</c:if>
+		
+								<c:if test="${themeVo.aFeelLevel >= 2.5 && themeVo.aFeelLevel < 3.5}">
+									★★★
+								</c:if>
+		
+								<c:if test="${themeVo.aFeelLevel >= 1.5 && themeVo.aFeelLevel < 2.5}">
+									★★
+								</c:if>
+		
+								<c:if test="${themeVo.aFeelLevel >= 0.5 && themeVo.aFeelLevel < 1.5}">
+									★
+								</c:if>
+								<c:if test="${themeVo.aFeelLevel == 0}">
+									-
+								</c:if>	
+								
+								(${themeVo.aFeelLevel})
+							</span> | 
+							
+							
+							
+							<span>평점 : </span>
+							<span>
+								<c:if test="${themeVo.aRating >= 4.5 }">
+									★★★★★
+								</c:if>
+		
+								<c:if test="${themeVo.aRating >= 3.5 && themeVo.aRating < 4.5}">
+									★★★★
+								</c:if>
+		
+								<c:if test="${themeVo.aRating >= 2.5 && themeVo.aRating < 3.5}">
+									★★★
+								</c:if>
+		
+								<c:if test="${themeVo.aRating >= 1.5 && themeVo.aRating < 2.5}">
+									★★
+								</c:if>
+		
+								<c:if test="${themeVo.aRating >= 0.5 && themeVo.aRating < 1.5}">
+									★
+								</c:if>	
+								<c:if test="${themeVo.aRating == 0}">
+									-
+								</c:if>	
+								
+								(${themeVo.aRating})
+							</span>
+							
+							
+							
+							
+							<br> <span>유형
 								: </span><span>${themeVo.themeType}</span> | <span>활동성 : </span><span>${themeVo.activity}</span>
 
 						</div>
@@ -129,11 +219,10 @@
 
 				<p>| 후기</p>
 
+
 				<div>
 					<p>${themeVo.reviewCount }개의
-						후기, 
-						
-						평균 체감난이도
+						후기, 평균 체감난이도
 						<c:if test="${themeVo.aFeelLevel >= 4.5 }">
 							★★★★★
 						</c:if>
@@ -153,9 +242,7 @@
 						<c:if test="${themeVo.aFeelLevel >= 0.5 && themeVo.aFeelLevel < 1.5}">
 							★
 						</c:if>
-						(${themeVo.aFeelLevel}),
-						
-						평점 
+						(${themeVo.aFeelLevel}), 평점
 						<c:if test="${themeVo.aRating >= 4.5 }">
 							★★★★★
 						</c:if>
@@ -211,6 +298,7 @@
 					<!-- //후기 반복영역 -->
 
 				</div>
+
 
 
 

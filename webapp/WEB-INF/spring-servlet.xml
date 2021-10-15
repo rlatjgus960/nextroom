@@ -62,7 +62,7 @@
 
    <!-- url매핑 -->
    <mvc:resources mapping="/upload/**"
-      location="file:C:/javaStudy/upload/" />
+      location="file:C:/javaStudy/workspace_web/nextroom/upload/" />
    
    <!-- 제발좀 되주십쇼(스마트에디터) -->   
    <mvc:resources mapping="/smarteditor2/**" location="/smarteditor2/" />

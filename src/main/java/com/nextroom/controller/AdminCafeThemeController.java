@@ -95,6 +95,9 @@ public class AdminCafeThemeController {
 		model.addAttribute("genreList", cafeService.getGenreList());
 		model.addAttribute("priceList", cafeService.getOnePrice(themeNo));
 		model.addAttribute("timeList", cafeService.getOneTime(themeNo));
+		
+		System.out.println("테마수정 테마Vo : "+cafeService.getOneTheme(themeNo));
+		
 		return "admin/themeModifyForm";
 	}
 

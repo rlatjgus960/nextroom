@@ -104,6 +104,7 @@
 					<form id="themeModifyForm" action="${pageContext.request.contextPath }/admin/theme/modify"
 						method="post" enctype="multipart/form-data">
 						<input type="hidden" name="themeNo" value="${themeVo.themeNo }">
+						<input type="hidden" name="cafeNo" value="${themeVo.cafeNo }">
 						<div id="addThwme_formDiv" class="clearfix">
 							<div id="previewArea">
 								<!-- 테마 리스트에 출력되는 내용 영역 -->
@@ -358,6 +359,7 @@
 
 							<button id="deleteBtn" type="submit" class="mbutton">삭제</button>
 							<button id="updateBtn" type="submit" class="mbutton">수정</button>
+							<button id="cancelBtn" type="submit" class="mbutton">취소</button>
 
 						</div>
 					</form>
@@ -529,6 +531,55 @@
 				}
 
 			});
+	
+	
+	
+
+	$("#deleteBtn").on("click", function(){
+		
+		var themeNo = $("[name=themeNo]").val();
+		var cafeNo = $("[name=cafeNo]").val();
+		
+		if(!confirm("테마를 정말 삭제하시겠습니까?")) {
+			//아니오
+		} else {
+			//예
+			console.log("테마 삭제");
+			
+			console.log(themeNo);
+			console.log(cafeNo);
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/admin/theme/delete",
+				type : "get",
+				data : {themeNo : themeNo},
+				
+				dataType : "json",
+				success : function(count) {
+					console.log(count);
+					if(count === 1) {
+						
+						location.replace("${pageContext.request.contextPath}/admin/"+cafeNo+"/themeList")
+						alert("테마가 삭제되었습니다.");
+					}
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+		}
+	});
+	
+	
+	
+$("#cancelBtn").on("click", function(){
+		
+		var cafeNo = $("[name=cafeNo]").val();
+		location.replace("${pageContext.request.contextPath}/admin/"+cafeNo+"/themeList")
+						
+	});
+
 </script>
 
 

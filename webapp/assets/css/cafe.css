@@ -1,16 +1,14 @@
 @charset "UTF-8";
 
-
 /* 카페 메인 */
-
 #cafe_region_list {
-    border-bottom: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
 }
 
 #cafe_region {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 15px;
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 15px;
 }
 
 .Rselected {
@@ -18,245 +16,243 @@
 	color: rgb(253, 213, 59);
 }
 
-.dg-map-area{
-    margin: 20px 0px;
+.dg-map-area {
+	margin: 20px 0px;
 }
 
 .cafe_img {
-    float: left;
-    margin-right: 15px;
-    height: 200px;
-    width: 300px;
+	float: left;
+	margin-right: 15px;
+	height: 200px;
+	width: 300px;
 }
 
 .dg-map polyline:hover {
 	cursor: pointer;
 }
 
-
-#cafe_list{
-    margin-left: auto;
-    margin-right: auto;
-    width: 1300px;
-    
+#cafe_list {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1300px;
 }
 
-.cafe_list_item{
-    padding: 30px 20px;
-    border-top: 1px dotted #e0e0e0;
+.cafe_list_item {
+	padding: 30px 20px;
+	border-top: 1px dotted #e0e0e0;
 }
 
 #cafe_range {
-    margin: 20px 0px;
+	margin: 20px 0px;
 }
 
-#cafe_search, #cafe_array {
-    float: right;
-    
+#cafe_search, #cafe_array, .form-group {
+	float: right;
 }
 
-
-#cafe_search input {
-   
-    padding: 4px 0px 4px 0px;
-    margin: 0px 0px 4px 0px;
-    font-size:15px;
+.form-group input {
+	padding: 4px 0px 4px 0px;
+	margin: 0px 0px 4px 0px;
+	font-size: 15px;
 }
 
 #cafe_array {
-    width: 100px;
-    height: 29px;
-    vertical-align: bottom;
-    margin-left: 10px;
+	width: 100px;
+	height: 29px;
+	vertical-align: bottom;
+	margin-left: 10px;
 }
 
-.cafe_info{
-    width: 945px;
-    text-align: left;
-    float: left;
-    
+.cafe_info {
+	width: 945px;
+	text-align: left;
+	float: left;
 }
 
 .cafe_intro {
-    height: 120px;
-    margin-top: 5px;
+	height: 120px;
+	margin-top: 5px;
 }
 
 .cafe_name {
-    font-size: 24px;
+	font-size: 24px;
 }
 
 .cafe_contact {
-    margin-bottom: 7px;
+	margin-bottom: 7px;
 }
 
 .cafe_contact img {
-    height: 15px;
-    vertical-align: bottom;
+	height: 15px;
+	vertical-align: bottom;
 }
 
 .cafe_contact p {
-    line-height: 15px;
-    vertical-align: bottom;
-    font-size: 15px;
-    display: inline-block;
+	line-height: 15px;
+	vertical-align: bottom;
+	font-size: 15px;
+	display: inline-block;
 }
 
 .cafe_contact div {
-    height: 15px;
-    padding-bottom: 10px;
+	height: 15px;
+	padding-bottom: 10px;
 }
 
-#btn_more, #theme_moreBtn{
-    margin: 30px 0px;
+#btn_more, #theme_moreBtn {
+	margin: 30px 0px;
 }
-
 
 /* 카페 상세페이지 */
-
 #cafe_detail_back, #theme_detail_back {
-    margin-top: 100px;
-    background-color: #f5f5f5;
-    height: 470px;
-    width: 1300px;
+	margin-top: 100px;
+	background-color: #f5f5f5;
+	height: 470px;
+	width: 1300px;
 }
 
-#cafe_detail_mainImg{
-    height: 350px;
-    width: 525px;
-    float: left;
+#cafe_detail_mainImg {
+	height: 350px;
+	width: 525px;
+	float: left;
 }
 
 #theme_detail_mainImg {
-    height: 400px;
-    width: 320px;
-    float: left;
+	height: 400px;
+	width: 320px;
+	float: left;
 }
 
 #cafe_detail_text, #theme_detail_text {
-    float: left;
-    margin-left: 60px;
-    text-align: left;
-    
+	float: left;
+	margin-left: 60px;
+	text-align: left;
 }
 
 #cafe_detail_wrap {
-    margin: 60px 120px;
-    height: 350px;
-    width: 1060px;
-    float: left;
+	margin: 60px 120px;
+	height: 350px;
+	width: 1060px;
+	float: left;
 }
 
 #theme_detail_wrap {
-    margin: 35px 250px;
-    height: 400px;
-    width: 800px;
-    float: left;
+	margin: 35px 250px;
+	height: 400px;
+	width: 800px;
+	float: left;
 }
 
 #cafe_detail_title {
-    height: 210px;
+	height: 210px;
 }
 
 #theme_detail_title {
-    height: 185px;
+	height: 185px;
 }
 
 #cafe_detail_name, #theme_detail_themeTitle {
-    font-size: 32px;
-    font-weight: bolder;
+	font-size: 32px;
+	font-weight: bolder;
 }
 
 #theme_detail_cafeName {
-    margin: 10px 0px;
+	margin: 10px 0px;
 }
 
 #cafe_detail_text, #theme_detail_text {
-    font-size: 15px;
+	font-size: 15px;
 }
 
 #cafe_btn_viewmap {
-    border:none;
-    font-size: 14px;
-    background-color: #e0e0e0;
-    vertical-align: bottom;
-    cursor: pointer;
-    border-radius: 3px;
+	border: none;
+	font-size: 14px;
+	background-color: #e0e0e0;
+	vertical-align: bottom;
+	cursor: pointer;
+	border-radius: 3px;
 }
 
 #cafe_detail_contact, #theme_detail_contact {
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .cbutton {
-    font-size: 15px;
-    padding: 10px 0px;
-    border-radius: 5px;
-    width: 120px;
-    color: #000;
-    border: none;
-    background-color: rgb(224,224,224);
-    cursor: pointer;
-    margin-right: 15px;
+	font-size: 15px;
+	padding: 10px 0px;
+	border-radius: 5px;
+	width: 120px;
+	color: #000;
+	border: none;
+	background-color: rgb(224, 224, 224);
+	cursor: pointer;
+	margin-right: 15px;
 }
 
 #theme_party {
-    width: 400px;
-    margin-bottom: 15px;
+	width: 400px;
+	margin-bottom: 15px;
 }
 
-.cbutton:hover, #cafe_btn_viewmap:hover{
-    background-color: rgb(253, 213, 59);
-    color: #fff;
+.cbutton:hover, #cafe_btn_viewmap:hover {
+	background-color: rgb(253, 213, 59);
+	color: #fff;
 }
 
 .scroll-image img {
-    display: inline-block;
-    margin-right: 10px;
-    height: 200px;
+	display: inline-block;
+	margin-right: 10px;
+	height: 200px;
 }
 
-.scroll-image{
-    text-align: left;
-    margin: 30px 0px;
-    white-space:nowrap; 
-    overflow-x: auto;  
-    width:1300px; 
-    height:230px;
+.scroll-image {
+	text-align: left;
+	margin: 30px 0px;
+	white-space: nowrap;
+	overflow-x: auto;
+	width: 1300px;
+	height: 230px;
 }
 
-#cafe_detail_price, #cafe_detail_theme, #theme_list_area, #theme_detail_price, #theme_detail_review, #theme_detail_timeTable {
-    border-top: solid 1px #e0e0e0;
-    padding-top: 30px;
+#cafe_detail_price, #cafe_detail_theme,
+	#theme_detail_price, #theme_detail_review, #theme_detail_timeTable {
+	border-top: solid 1px #e0e0e0;
+	padding-top: 30px;
 }
 
-#cafe_detail_price p, #cafe_detail_theme>p, #theme_detail_price p, #theme_detail_review>p, #theme_detail_timeTable > p {
-    text-align: left;
-    font-size: 24px;
-    font-weight:  bolder;
+#theme_list_area {
+	border-top: solid 1px #e0e0e0;
+	padding-top: 20px;
+}
+
+#cafe_detail_price p, #cafe_detail_theme>p, #theme_detail_price p,
+	#theme_detail_review>p, #theme_detail_timeTable>p {
+	text-align: left;
+	font-size: 24px;
+	font-weight: bolder;
 }
 
 #cafe_priceTable {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
-    border: 2px solid #e0e0e0;
-    table-layout: fixed;
-    margin-bottom: 50px;
+	margin-top: 20px;
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border: 2px solid #e0e0e0;
+	table-layout: fixed;
+	margin-bottom: 50px;
 }
 
-#cafe_priceTable th, #theme_priceTable th{
-    background: #f5f5f5;
-    border: 1px solid #e0e0e0;
-    height: 35px;
+#cafe_priceTable th, #theme_priceTable th {
+	background: #f5f5f5;
+	border: 1px solid #e0e0e0;
+	height: 35px;
 }
 
-#cafe_priceTable td, #theme_priceTable td{
-    border: 1px solid #e0e0e0;
-    height: 35px;
+#cafe_priceTable td, #theme_priceTable td {
+	border: 1px solid #e0e0e0;
+	height: 35px;
 }
 
 .priceForeach {
@@ -267,256 +263,267 @@
 
 
 #cafe_theme_list {
-    width: 1300px;
+	width: 1300px;
 }
 
 .cafe_theme {
-    float: left;
-    border: 2px solid #e0e0e0;
-    width: 350px;
-    height: 650px;
-    margin: 20px 38px 40px 38px;
-    border-radius: 5px;
+	float: left;
+	border: 2px solid #e0e0e0;
+	width: 360px;
+	height: 650px;
+	margin: 20px 33px 46px 33px;
+	border-radius: 5px;
+}
+
+#noResult {
+	border: none;
+	font-weight: bold;
+	font-size: 25px;
+	width : 1300px;
+	height: 30px;
+	text-align: center;
+	float: none;
 }
 
 .cafe_theme img {
-    margin: 12.5px;
-    width: 325px;
-    height: 406.25px;
+	margin: 12.5px;
+	width: 325px;
+	height: 406.25px;
 }
 
-.cafe_theme_info p{
-    margin-bottom: 15px;
+.cafe_theme_info p {
+	margin-bottom: 15px;
 }
 
-.cafe_theme_info span{
-    line-height: 25px;
+.cafe_theme_info span {
+	line-height: 25px;
 }
 
 .cafe_theme_info_title {
-    font-weight: bold;
-    font-size: 21px;
+	font-weight: bold;
+	font-size: 21px;
 }
-
 
 /* 테마 메인 */
 #theme_recommend_back {
-    margin-top: 100px;
-    
+	margin-top: 100px;
 }
+
 
 #theme_select {
-    margin-top: 100px;
+	margin-bottom: 20px;
 }
 
+
 #theme_select_title div {
-    display: inline-block;
-    border: none;
-    font-weight: bolder;
-    font-size: 24px;
-    margin: 0px 70px;
-    width: 72px;
-    height: 32px;
-    margin-bottom: 5px;
+	display: inline-block;
+	border: none;
+	font-weight: bolder;
+	font-size: 24px;
+	margin: 0px 70px;
+	width: 72px;
+	height: 32px;
+	margin-bottom: 5px;
 }
 
 #theme_region_wrap {
-    border: solid 2px #e0e0e0;
-    width: 1294;
-    height: 300px;
+	border: solid 2px #e0e0e0;
+	width: 1294;
+	height: 300px;
 }
-
 
 .theme_select_condition {
-    float: left;
-    border: 1px solid #e0e0e0;
-    text-align: left;
-    font-size: 18px;
-    width: 199px;
-    height: 272px;
-    padding: 15px 0px 15px 15px;
-    
+	float: left;
+	border: 1px solid #e0e0e0;
+	text-align: left;
+	font-size: 18px;
+	width: 199px;
+	height: 272px;
+	padding: 15px 0px 15px 15px;
 }
 
-.theme_select_condition label{
-    display: block;
+.theme_select_condition label {
+	display: block;
 }
 
-.theme_select_condition input{
-    margin-right: 5px;
+.theme_select_condition input {
+	margin-right: 5px;
 }
 
-#theme_region, #theme_genre{
-    width: 199px;
-    overflow-y:scroll;
+#theme_region, #theme_genre {
+	width: 199px;
+	overflow-y: scroll;
 }
-
-
 
 #theme_searchBtn {
-    margin: 10px 0px 30px 0px;
+	margin-top: 20px;
 }
-
 
 /* 테마 상세페이지 */
 #theme_priceTable {
-    margin-top: 20px;
-    width: 60%;
-    height: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
-    border: 2px solid #e0e0e0;
-    table-layout: fixed;
-    margin-bottom: 50px;
+	margin-top: 20px;
+	width: 60%;
+	height: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border: 2px solid #e0e0e0;
+	table-layout: fixed;
+	margin-bottom: 50px;
 }
 
 #theme_timeTable {
-    margin-top: 20px;
-    width: 40%;
-    height: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
-    border: 2px solid #e0e0e0;
-    table-layout: fixed;
-    margin-bottom: 50px;
+	margin-top: 20px;
+	width: 40%;
+	height: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border: 2px solid #e0e0e0;
+	table-layout: fixed;
+	margin-bottom: 50px;
 }
 
-
-#theme_timeTable th{
-    background: #f5f5f5;
-    border: 1px solid #e0e0e0;
-    height: 35px;
+#theme_timeTable th {
+	background: #f5f5f5;
+	border: 1px solid #e0e0e0;
+	height: 35px;
 }
 
-#theme_timeTable td{
-    border: 1px solid #e0e0e0;
-    height: 35px;
+#theme_timeTable td {
+	border: 1px solid #e0e0e0;
+	height: 35px;
 }
 
 #theme_detail_content {
-
-    font-size: 18px;
-
+	font-size: 18px;
 }
 
 #theme_detail_info {
-    font-size: 15px;
-    margin: 20px 20px 20px 0px ;
+	font-size: 15px;
+	margin: 20px 20px 20px 0px;
 }
 
-#theme_detail_info p{
-    margin-bottom: 15px;
+#theme_detail_info p {
+	margin-bottom: 15px;
 }
 
-#theme_detail_info span{
-    line-height: 15px;
+#theme_detail_info span {
+	line-height: 15px;
 }
 
 .theme_review {
-    margin-top: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    width: 1300px;
-    min-height: 200px;
-    height: fit-content;
-    box-sizing: border-box;
-    padding: 10px 20px;
+	margin-top: 20px;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px;
+	width: 1300px;
+	min-height: 200px;
+	height: fit-content;
+	box-sizing: border-box;
+	padding: 10px 20px;
 }
 
 #theme_detail_review>div>p {
-    margin-top: 5px;
-    text-align: left;
-    font-size: 18px;
-    font-weight: bold;
+	margin-top: 5px;
+	text-align: left;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .theme_review p {
-    text-align: left;
-    margin: 10px 0px;
+	text-align: left;
+	margin: 10px 0px;
 }
 
-.theme_review_wrap, .theme_review_edit{
-    float: left;
+.theme_review_wrap, .theme_review_edit {
+	float: left;
 }
 
 .theme_review_wrap {
-    width: 1280px;
+	width: 1280px;
 }
 
 .theme_review_item {
-    font-weight: bold;
-    font-size: 16px;
-    float: left;
-    width: 1074.72px;
+	font-weight: bold;
+	font-size: 16px;
+	float: left;
+	width: 1074.72px;
 }
 
 .theme_review_edit {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 /*******스와이퍼 높이********/
-.swiper, .mySwiper{
-    min-height: 550px;
+.swiper, .mySwiper {
+	min-height: 550px;
 }
-
 
 /*******스와이퍼 슬라이드 정렬********/
 .swiper-slide {
-	display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
-	align-items:center; /* 위아래 기준 중앙정렬 */
-	justify-content:center; /* 좌우 기준 중앙정렬 */
+	display: flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
+	align-items: center; /* 위아래 기준 중앙정렬 */
+	justify-content: center; /* 좌우 기준 중앙정렬 */
 }
 
 /*******스와이퍼 꾸미기********/
-.swiper{
-    border-radius: 30px;
-    background-color: rgb(237, 242, 243	);
-    margin-bottom: 50px;
-    color: #000000;
+.swiper {
+	border-radius: 30px;
+	background-color: rgb(237, 242, 243);
+	margin-bottom: 30px;
+	color: #000000;
 }
-
 
 /*******슬라이드 크기,상단 여백********/
-
-.theme_swiper_list{
-    padding-top: 20px;
-    width: 281px;
+.theme_swiper_list {
+	margin-top: 15px;
+	width: 281px;
+	padding: 10px 0px;
 }
 
-.theme_img{
-    height: 300px;
-    width: 280px;
-    box-shadow:0 0 5px #555;
+.theme_img {
+	height: 320px;
+	width: 256px;
+	box-shadow: 0 0 5px #555;
+	margin-bottom: 10px;
 }
-
-
-
 
 .themeSearchBtn {
-	background-color: rgb(224,224,224);
-    cursor: pointer;
-    color: #000;
-    border: none;
-    font-size: 15px;
-    padding: 10px 100px;
-    border-radius: 5px;
-	
+	background-color: rgb(224, 224, 224);
+	cursor: pointer;
+	color: #000;
+	border: none;
+	font-size: 15px;
+	padding: 10px 100px;
+	border-radius: 5px;
 }
-
-
 
 .themeSearchBtn:hover {
-    background-color: rgb(253, 213, 59);
-    color: #fff;
+	background-color: rgb(253, 213, 59);
+	color: #fff;
 }
 
+.theme_name {
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 5px;
+}
 
+.theme_info {
+	height: 130px;
+}
 
-
-
+.theme_intro {
+	height: 60px;
+}
 
 /* 스와이퍼 */
 #swiper-button-prev, #swiper-button-next {
-	color : rgb(253, 213, 59);
+	color: rgb(253, 213, 59);
 }
 
+#theme_recommend_title {
+	text-align: left;
+	font-size: 24px;
+	font-weight: bolder;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}

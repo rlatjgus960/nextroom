@@ -19,7 +19,7 @@ import com.nextroom.vo.CafeVo;
 import com.nextroom.vo.InteriorVo;
 import com.nextroom.vo.PriceVo;
 import com.nextroom.vo.ReviewBoardVo;
-import com.nextroom.vo.ThemeVo;
+import com.nextroom.vo.ThemeSearchVo;
 import com.nextroom.vo.TimeVo;
 
 @Service
@@ -29,7 +29,6 @@ public class CafeService {
 	private CafeDao cafeDao;
 
 	// 카페 추가(mypage)
-	/* public int addCafe(CafeVo cafeVo, List<MultipartFile> inteList) */
 	public int addCafe(CafeVo cafeVo) {
 		System.out.println("[CafeService.addCafe()]");
 
@@ -117,7 +116,7 @@ public class CafeService {
 
 		if (fileSize > 0) {
 
-			String saveDir = "C:\\javaStudy\\upload\\";
+			String saveDir = "C:\\javaStudy\\workspace_web\\nextroom\\upload\\";
 
 			System.out.println(file.getOriginalFilename());
 			System.out.println(file.getSize());
@@ -175,7 +174,7 @@ public class CafeService {
 			// 이미지가 첨부되었을때
 			if (intefileSize > 0) {
 
-				String inteSaveDir = "C:\\javaStudy\\upload\\";
+				String inteSaveDir = "C:\\javaStudy\\workspace_web\\nextroom\\upload\\";
 
 				System.out.println(interiorImg.get(i).getOriginalFilename());
 				System.out.println(interiorImg.get(i).getSize());
@@ -385,7 +384,7 @@ public class CafeService {
 
 		if (fileSize > 0) {
 
-			String saveDir = "C:\\javaStudy\\upload\\";
+			String saveDir = "C:\\javaStudy\\workspace_web\\nextroom\\upload\\";
 
 			System.out.println(file.getOriginalFilename());
 			System.out.println(file.getSize());
@@ -464,19 +463,6 @@ public class CafeService {
 		return count;
 	}
 
-	// 테마 한개 정보 가져오기
-//	public Map<Object, Object> getTheme(int themeNo) {
-//		System.out.println("[CafeService.getTheme()]");
-//		
-//		Map<Object, Object> themeMap = new HashMap<Object, Object>();
-//		themeMap.put("themeVo", cafeDao.getOneTheme(themeNo));
-//		themeMap.put("timeList", cafeDao.getOneTime(themeNo));
-//		themeMap.put("priceList", cafeDao.getOnePrice(themeNo));
-//		themeMap.put("revireList", cafeDao.getReviewList(themeNo));
-//		
-//		return themeMap;
-//	}
-
 	// 카페 테마 정보 가져오기
 	public List<CafeVo> getCafeTheme(int cafeNo) {
 		System.out.println("[CafeService.getCafeTheme()]");
@@ -489,7 +475,7 @@ public class CafeService {
 	public CafeVo getOneTheme(int themeNo) {
 		System.out.println("[CafeService.getOneTheme()]");
 		CafeVo cafeVo = cafeDao.getOneTheme(themeNo);
-		
+
 		return cafeVo;
 	}
 
@@ -518,16 +504,73 @@ public class CafeService {
 	}
 
 	// 전체 테마 리스트 가져오기
-	public List<CafeVo> getThemeList() {
+	public List<CafeVo> getThemeList(Map<String, Object> getThemeMap) {
 		System.out.println("[CafeService.getThemeList()]");
-		return cafeDao.getThemeList();
+		return cafeDao.getThemeList(getThemeMap);
 	}
 
+	// 탑 10 테마 리스트 가져오기
+	public List<CafeVo> get10Theme() {
+		System.out.println("[CafeService.get10Theme()]");
+		return cafeDao.get10Theme();
+	}
+	
+	// 테마 검색하기
+	public List<CafeVo> themeSearchList(ThemeSearchVo themeSearchVo) {
+		
+		System.out.println("[CafeService.themeSearchList()]");
+		
+		String keyword = themeSearchVo.getKeyword();
+		List<String> sidoDetail = themeSearchVo.getSidoDetail();
+		List<String> jenre = themeSearchVo.getJenre();
+		List<String> themeType = themeSearchVo.getThemeType();
+		List<Integer> headCount = themeSearchVo.getHeadCount();
+		List<String> levels = themeSearchVo.getLevels();
+		List<String> activity = themeSearchVo.getActivity();
+		
+		System.out.println("-------------themeSearchList-------------");
+		System.out.println("sidoDetail 0번 : "+sidoDetail);
+		System.out.println("jenre : "+jenre);
+		System.out.println("themeType : "+themeType);
+		System.out.println("headCount : "+headCount);
+		System.out.println("levels : "+levels);
+		System.out.println("activity : "+activity);
+		System.out.println("keyword : "+keyword);
+		System.out.println("-----------------------------------------");
+		
+		Map<String, Object> getThemeMap = new HashMap<String, Object>();
+		getThemeMap.put("keyword", keyword);
+		getThemeMap.put("sidoDetail", sidoDetail);
+		getThemeMap.put("jenre", jenre);
+		getThemeMap.put("themeType", themeType);
+		getThemeMap.put("headCount", headCount);
+		getThemeMap.put("levels", levels);
+		getThemeMap.put("activity", activity);
+		
+		return cafeDao.themeSearchList(getThemeMap);
+	}
+	
+	// ajax 테마 목록 가져오기
+		public List<CafeVo> getApiThemeList(String keyword, int startNum) {
+			System.out.println("[CafeService.getApiThemeList()]");
+			int i = 9;
+			startNum = startNum+1;
+			int cnt = startNum + i;
+			Map<String, Object> map = new HashMap<>();
+			map.put("startNum", startNum);
+			map.put("cnt", cnt);
+			map.put("keyword", keyword);
+
+			List<CafeVo> themeList = cafeDao.getApiThemeList(map);
+
+			return themeList;
+		}
+		
 	// ajax 카페 목록 가져오기
 	public List<CafeVo> cafeList(String region, int startNum) {
 		System.out.println("[CafeService.cafeList()]");
-		int i = 10;
-		startNum = startNum + 1;
+		int i = 9;
+		startNum = startNum+1;
 		int cnt = startNum + i;
 		Map<String, Object> map = new HashMap<>();
 		map.put("startNum", startNum);
@@ -538,6 +581,7 @@ public class CafeService {
 
 		return cafeList;
 	}
+	
 
 	// 카페 수정
 	public int cafeModify(CafeVo cafeVo) {
@@ -557,7 +601,7 @@ public class CafeService {
 
 				// 이미지가 첨부되었을때
 				if (intefileSize > 0) {
-					String inteSaveDir = "C:\\javaStudy\\upload\\";
+					String inteSaveDir = "C:\\javaStudy\\workspace_web\\nextroom\\upload\\";
 
 					// 원파일이름
 					String inteOrgName = interiorImg.get(i).getOriginalFilename();
@@ -604,7 +648,7 @@ public class CafeService {
 
 		if (fileSize > 0) {
 
-			String saveDir = "C:\\javaStudy\\upload\\";
+			String saveDir = "C:\\javaStudy\\workspace_web\\nextroom\\upload\\";
 
 			// 원파일이름
 			String orgName = file.getOriginalFilename();
@@ -681,7 +725,7 @@ public class CafeService {
 
 		if (fileSize > 0) {
 
-			String saveDir = "C:\\javaStudy\\upload\\";
+			String saveDir = "C:\\javaStudy\\workspace_web\\nextroom\\upload\\";
 
 			// 원파일이름
 			String orgName = file.getOriginalFilename();

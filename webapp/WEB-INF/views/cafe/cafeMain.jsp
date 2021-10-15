@@ -241,7 +241,7 @@
 							<div id="" class="cafe_info">
 								<div class="cafe_intro">
 									<p class="cafe_name">
-										<a href="${pageContext.request.contextPath}/cafe/cafeDetail">${cafeList.cafeName}</a>
+										<a href="${pageContext.request.contextPath}/cafe/${cafeList.cafeNo}">${cafeList.cafeName}</a>
 									</p>
 									<p class="cafe_content">${cafeList.cafeIntro}</p>
 								</div>
@@ -269,7 +269,7 @@
 						</div>
 
 					</c:forEach>
-					
+
 
 
 					<!-- //리스트 반복영역 -->
@@ -325,7 +325,7 @@
 	/*가맹점 지도 색칠*/
 	$(document).ready(
 			function() {
-				
+
 				console.log(mapCondition);
 				if (mapCondition == '세종') {
 					$('#sejong').css("fill", "rgb(253, 213, 59)");
@@ -371,87 +371,125 @@
 					$('#gangwon').css("fill", "rgb(253, 213, 59)");
 				}
 			});
-	
-	
-	
-	
+
 	$("#btn_more").on("click", function() {
 		console.log("더보기 버튼 클릭");
 		moreList(); //함수 호출
 	});
-	
-	 
+
 	function moreList() {
-		 
-	    var startNum = $("#cafe_list .cafe_list_item").length;  //마지막 리스트 번호를 알아내기 위해서 tr태그의 length를 구함.
-	    var addListHtml = "";  
-	    console.log("startNum", startNum); //콘솔로그로 startNum에 값이 들어오는지 확인
-	    console.log("startNum", mapCondition);
-	    
-	    $.ajax({
-	    
-	        url : "${pageContext.request.contextPath }/cafe/getCafeList?region="+mapCondition,
-	        type : "post",
-	        dataType : "json",
-	        data : {"startNum":startNum},
-	        
-	        success : function(cafeList) {
-	        	
-	        	console.log(cafeList);
 
+		var startNum = $("#cafe_list .cafe_list_item").length; //마지막 리스트 번호를 알아내기 위해서 tr태그의 length를 구함.
+		var addListHtml = "";
+		console.log("startNum", startNum); //콘솔로그로 startNum에 값이 들어오는지 확인
+		console.log("startNum", mapCondition);
 
-		        if(cafeList.length < 10){
-		                $("#btn_more").remove();   // 더보기 버튼을 div 클래스로 줘야 할 수도 있음
-		            }else{
-		            var addListHtml ="";
-			            if(cafeList.length > 0){
-			            	
-			            	for(var i=0; i<cafeList.length;i++) {  
-			            		console.log(cafeList[i]);
+		$
+				.ajax({
 
-			                    addListHtml += '<div class="cafe_list_item clearfix">';
-			                    addListHtml += '	<a href="${pageContext.request.contextPath}/cafe/'+cafeList[i].cafeNo+'"> <img id="" class="cafe_img" src="${pageContext.request.contextPath }/upload/'+cafeList[i].cafeImg+'"></a>';
-			                    addListHtml += '	<div id="" class="cafe_info">';
-			                    addListHtml += '		<div class="cafe_intro">';
-			                    addListHtml += '			<p class="cafe_name">';
-			                    addListHtml += '				<a href="${pageContext.request.contextPath}/cafe/cafeDetail">'+cafeList[i].cafeName+'</a>';
-			                    addListHtml += '			</p>';
-			                    addListHtml += '			<p class="cafe_content">'+cafeList[i].cafeIntro+'</p>';
-			                    addListHtml += '		</div>';
-			                    addListHtml += '		<div class="cafe_contact">';
-			                    addListHtml += '			<div>';
-			                    addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">';
-			                    addListHtml += '				<p>'+cafeList[i].cafeHp+'</p>';
-			                    addListHtml += '			</div>';
-			                    addListHtml += '			<div>';
-			                    addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">';
-			                    addListHtml += '				<p>'+cafeList[i].printAddress+'</p>';
-			                    addListHtml += '			</div>';
-			                    addListHtml += '			<div>';
-			                    addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">';
-			                    addListHtml += '				<p>'+cafeList[i].openTime+'~'+cafeList[i].closeTime+'</p>';
-			                    addListHtml += '			</div>';
-			                    addListHtml += '		</div>';
-			                    addListHtml += '	</div>';
-			                    addListHtml += '</div>';
-			                }
-			                $("#cafe_list").append(addListHtml);
-			                
-			           }
-		            }
-	            
-	        }
-	
+					url : "${pageContext.request.contextPath }/cafe/getCafeList?region="
+							+ mapCondition,
+					type : "post",
+					dataType : "json",
+					data : {
+						startNum : startNum
+					},
 
-	        
-	        
-	    }); 
-	 
+					success : function(cafeList) {
+
+						console.log(cafeList);
+
+						if (cafeList.length == 0) {
+
+							$("#btn_more").remove();
+
+						} else if (cafeList.length < 10) {
+							var addListHtml = "";
+							for (var i = 0; i < cafeList.length; i++) {
+
+								$("#btn_more").remove(); // 더보기 버튼을 div 클래스로 줘야 할 수도 있음
+
+								addListHtml += '<div class="cafe_list_item clearfix">';
+								addListHtml += '	<a href="${pageContext.request.contextPath}/cafe/'+cafeList[i].cafeNo+'"> <img id="" class="cafe_img" src="${pageContext.request.contextPath }/upload/'+cafeList[i].cafeImg+'"></a>';
+								addListHtml += '	<div id="" class="cafe_info">';
+								addListHtml += '		<div class="cafe_intro">';
+								addListHtml += '			<p class="cafe_name">';
+								addListHtml += '				<a href="${pageContext.request.contextPath}/cafe/'+cafeList[i].cafeNo+'">'
+										+ cafeList[i].cafeName + '</a>';
+								addListHtml += '			</p>';
+								addListHtml += '			<p class="cafe_content">'
+										+ cafeList[i].cafeIntro + '</p>';
+								addListHtml += '		</div>';
+								addListHtml += '		<div class="cafe_contact">';
+								addListHtml += '			<div>';
+								addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">';
+								addListHtml += '				<p>' + cafeList[i].cafeHp
+										+ '</p>';
+								addListHtml += '			</div>';
+								addListHtml += '			<div>';
+								addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">';
+								addListHtml += '				<p>'
+										+ cafeList[i].printAddress + '</p>';
+								addListHtml += '			</div>';
+								addListHtml += '			<div>';
+								addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">';
+								addListHtml += '				<p>' + cafeList[i].openTime
+										+ '~' + cafeList[i].closeTime + '</p>';
+								addListHtml += '			</div>';
+								addListHtml += '		</div>';
+								addListHtml += '	</div>';
+								addListHtml += '</div>';
+							}
+							$("#cafe_list").append(addListHtml);
+						} else {
+							var addListHtml = "";
+							if (cafeList.length > 0) {
+
+								for (var i = 0; i < cafeList.length; i++) {
+									console.log(cafeList[i]);
+
+									addListHtml += '<div class="cafe_list_item clearfix">';
+									addListHtml += '	<a href="${pageContext.request.contextPath}/cafe/'+cafeList[i].cafeNo+'"> <img id="" class="cafe_img" src="${pageContext.request.contextPath }/upload/'+cafeList[i].cafeImg+'"></a>';
+									addListHtml += '	<div id="" class="cafe_info">';
+									addListHtml += '		<div class="cafe_intro">';
+									addListHtml += '			<p class="cafe_name">';
+									addListHtml += '				<a href="${pageContext.request.contextPath}/cafe/'+cafeList[i].cafeNo+'">'
+											+ cafeList[i].cafeName + '</a>';
+									addListHtml += '			</p>';
+									addListHtml += '			<p class="cafe_content">'
+											+ cafeList[i].cafeIntro + '</p>';
+									addListHtml += '		</div>';
+									addListHtml += '		<div class="cafe_contact">';
+									addListHtml += '			<div>';
+									addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/tel.png">';
+									addListHtml += '				<p>'
+											+ cafeList[i].cafeHp + '</p>';
+									addListHtml += '			</div>';
+									addListHtml += '			<div>';
+									addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/loc.png">';
+									addListHtml += '				<p>'
+											+ cafeList[i].printAddress + '</p>';
+									addListHtml += '			</div>';
+									addListHtml += '			<div>';
+									addListHtml += '				<img src="${pageContext.request.contextPath }/assets/image/cafe/time.png">';
+									addListHtml += '				<p>'
+											+ cafeList[i].openTime + '~'
+											+ cafeList[i].closeTime + '</p>';
+									addListHtml += '			</div>';
+									addListHtml += '		</div>';
+									addListHtml += '	</div>';
+									addListHtml += '</div>';
+								}
+								$("#cafe_list").append(addListHtml);
+
+							}
+						}
+
+					}
+
+				});
+
 	}
-	
-
-	
-	
 </script>
 
 </html>
