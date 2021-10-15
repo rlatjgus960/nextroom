@@ -11,6 +11,7 @@ DROP SEQUENCE recordNo;
 DROP SEQUENCE gameNo;
 DROP SEQUENCE themeTimeNo;
 DROP SEQUENCE boardNo;
+DROP SEQUENCE commentNo;
 
 ALTER TABLE users
    DROP
