@@ -239,7 +239,9 @@ public class ReserveService {
 		System.out.println("[ReserveService.getCafeThemeName()]");
 		
 		ReserveVo ctVo = reserveDao.selectName(rVo);
-		//System.out.println("테테테스트" + ctVo);
+		
+		
+		System.out.println("테테테스트" + ctVo);
 		
 		return ctVo;
 	}
