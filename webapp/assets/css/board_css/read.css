@@ -173,6 +173,10 @@
 }
 
 
+#comment_box span{
+	border-bottom:1px solid #b9b9b9;
+}
+
 #nick_box{
     line-height: 30px;
     width: 170px;
@@ -211,10 +215,12 @@
     border-bottom: 1px solid #b9b9b9;
 }
 
-#delete_comment>a>img{
+#delete_comment img{
     width: 15px;
     height: 15px;
 }
+
+
 /******************************************/
 .nick_box{
     line-height: 30px;

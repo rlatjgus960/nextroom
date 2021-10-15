@@ -824,4 +824,30 @@ public class ReviewBoardService {
 		
 		return freeBoardVo;
 	}
+	
+	
+	//2021.10.15 by 원호
+	//댓글 리스트
+	public List<FreeBoardVo> freeCommentList(int boardNo){
+		System.out.println("Service.freeCommentList");
+		System.out.println(boardNo);
+		List<FreeBoardVo> freeCommentList = reviewBoardDao.freeCommentList(boardNo);
+		
+		return freeCommentList;
+	}
+	
+	
+	//2021.10.15 by 원호
+	//댓글 등록
+	public FreeBoardVo commentAdd(FreeBoardVo freeBoardVo) {
+		System.out.println("[Service.commentAdd]");
+		
+		int count = reviewBoardDao.commentAdd(freeBoardVo);
+		
+		int commentNo = freeBoardVo.getCommentNo();
+		
+		FreeBoardVo resultVo = reviewBoardDao.selectBoardComment(commentNo);
+		
+		return resultVo;
+	}
 }

@@ -97,6 +97,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 							<div class="user_information">
 								<span>작성자 : ${reviewBoardVo.nickname}</span>								
 								<span>조회 : ${reviewBoardVo.reviewHit}</span>
+								<span>추천수 : ${reviewBoardVo.reviewLike }</span>
 								<span>작성일 : ${reviewBoardVo.reviewRegDate}</span>
 							</div>
 
@@ -188,7 +189,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										<div id="comment">
 											<strong>댓글 쓰기</strong>
 											<div>
-												<input type="text" id="commentContent" name="commentContent">
+												<input type="text" id="commentContent" name="commentContent" onkeyup="e();">
 												<input type="hidden" id="reviewNo" name="reviewNo" value = "${reviewBoardVo.reviewNo }">
 												<a id="commentAdd" type="submit">등 록</a>
 											</div>
@@ -476,7 +477,7 @@ $(document).on("click","#commentAdd", function(){
 
 
 //댓글 쓰기 (버튼을 눌러서 id값이 넘어와 실행되는 자바스크립트 구문)
-$(document).on("keypress","#commentAdd", function enter(){
+$("#commentContent").keyup(function e(e){
 	 if (e.keyCode === 13) {
 		  var commentContent=$("#commentContent").val(); //댓글 내용
 		  var reviewNo="${reviewBoardVo.reviewNo}"; //게시물 번호
@@ -531,7 +532,7 @@ $(document).on("keypress","#commentAdd", function enter(){
 			  return true;
 		  }  
 	
-
+	return true;
 });
 
 </script>

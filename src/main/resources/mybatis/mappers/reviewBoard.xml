@@ -265,7 +265,8 @@
 			        r.memberNum,
 			        r.reviewImg,
 	                t.themeName,
-	                r.rating
+	                r.rating,
+	                r.reviewLike
 			from review r, users u, theme t
 			where r.userNo = u.userNo
 			and r.themeNo = t.themeNo
@@ -372,21 +373,21 @@
 		]]>
 	</select>
 	
+	<!-- 2021.10.14 by 원호 -->
 	<!-- 댓글 리스트 -->
 	<select id="commentList" parameterType="int" resultType="ReviewBoardVo">
-	<![CDATA[
-		select  rc.commentno,
-				u.nickname,
-		        rc.commentContent,
-		        to_char(rc.commentDate, 'yy-mm-dd') commentDate,
-		        rc.reviewNo
-		from review r, users u, reviewcomment rc
-		where rc.userNo = u.userNo
-		and r.reviewNo = rc.reviewNo
-		and rc.reviewno = #{reviewNo}
-		order by rc.commentNo desc
-	]]>
-
+		<![CDATA[
+			select  rc.commentno,
+					u.nickname,
+			        rc.commentContent,
+			        to_char(rc.commentDate, 'yy-mm-dd') commentDate,
+			        rc.reviewNo
+			from review r, users u, reviewcomment rc
+			where rc.userNo = u.userNo
+			and r.reviewNo = rc.reviewNo
+			and rc.reviewno = #{reviewNo}
+			order by rc.commentNo desc
+		]]>
 	</select>
 	
 <!-- 자유게시판 -->
@@ -595,7 +596,8 @@
 			        b.boardhit,
 			        to_char(b.regdate, 'yy-mm-dd') regdate,	
 			        b.boardcontent,
-			        b.boardImg
+			        b.boardImg,
+			        b.boardLike
 			from freeboard b, users u
 			where b.userNo = u.userNo
 			and b.boardno = #{boardno}
@@ -672,6 +674,59 @@
 		]]>
 	</select>
 	
+	<!-- 2021.10.15 by 원호 -->
+	<!-- 댓글 리스트 -->
+	<select id="freeCommentList" parameterType="int" resultType="FreeBoardVo">
+		<![CDATA[
+			select  bc.commentno,
+					u.nickname,
+			        bc.commentContent,
+			        to_char(bc.commentDate, 'yy-mm-dd') commentDate,
+			        bc.boardNo,
+			        bc.userNo
+			from freeboard f, users u, boardcomment bc
+			where bc.userNo = u.userNo
+			and f.boardNo = bc.boardNo
+			and bc.boardno = #{boardNo}
+			order by bc.commentNo desc
+		]]>
+	</select>
 	
+	
+	<!-- 2021.10.15 by 원호 -->
+	<!-- 댓글 저장 -->
+	<insert id = "commentAdd" parameterType = "FreeBoardVo">
+		<selectKey keyProperty="commentNo" resultType="int" order="BEFORE">
+		<![CDATA[
+			select commentNo.nextval from dual
+		]]>
+		</selectKey>
+		<![CDATA[
+			insert into boardcomment
+			values ( #{commentNo} 
+					,#{boardNo}
+					,#{userNo}
+					,#{commentContent}
+					,sysdate
+				   )
+		]]>
+	</insert>
+	
+	
+	<!-- 2021.10.15 by 원호 -->	
+	<!-- 댓글 한개 가져오기 -->
+	<select id = "selectBoardComment" parameterType = "int" resultType = "FreeBoardVo">
+		<![CDATA[
+   			select  bc.commentno,
+			        u.nickname,
+			        bc.commentContent,
+			        to_char(bc.commentDate, 'yy-mm-dd') commentDate,
+			        bc.userNo
+			from freeboard f, users u, boardcomment bc
+			where bc.userNo = u.userNo
+            and bc.boardNo = f.boardNo
+            and bc.commentNo = #{commentNo}
+		]]>
+	</select>
 	
 </mapper>

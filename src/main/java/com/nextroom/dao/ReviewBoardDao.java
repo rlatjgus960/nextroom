@@ -369,4 +369,31 @@ public class ReviewBoardDao {
 		return sqlSession.selectOne("reviewBoard.selectFreeBoard", boardNo);
 	}
 	
+	//2021.10.15 by 원호
+	//댓글 리스트
+	public List<FreeBoardVo> freeCommentList(int boardNo){
+		System.out.println("[Dao.freeCommentList]");
+		System.out.println(boardNo);
+		List<FreeBoardVo> freeCommentList = sqlSession.selectList("reviewBoard.freeCommentList", boardNo);
+		
+		return freeCommentList;
+	}
+	
+	//2021.10.15 by 원호
+	//댓글 저장
+	public int commentAdd(FreeBoardVo freeBoardVo) {
+		System.out.println("[Dao.commentAdd]");
+		
+		return sqlSession.insert("reviewBoard.commentAdd", freeBoardVo);
+	}
+	
+	//2021.10.13 by 원호
+	//댓글 가져오기
+	public FreeBoardVo selectBoardComment(int commentNo) {
+		System.out.println("[Dao.selectBoardComment]");
+		System.out.println(commentNo);
+		
+		return sqlSession.selectOne("reviewBoard.selectBoardComment", commentNo);
+	}
+	
 }
