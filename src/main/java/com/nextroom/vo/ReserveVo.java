@@ -31,6 +31,10 @@ public class ReserveVo {
 	private String id;
 	private String userName;
 	private String state;
+	private int partyNo;
+	private int gameNo;
+	private int userCount;
+	
 	
 	public ReserveVo() {
 		super();
@@ -83,12 +87,46 @@ public class ReserveVo {
 		this.state = state;
 	}
 
-
-
-
-
-
-
+	public ReserveVo(int userNo, int cafeNo, int themeNo, String themeName, int themeTimeNo, String themeTime,
+			int reserveDateNo, String reserveDate, int reserveTimeNo, String reserveTime, int reserveState,
+			int paymentState, int reservePerson, String reserveName, int reserveNo, String themeImg, String cafeName,
+			String reserveHp, String payment, int totalPerson, String regDate, String gameState, String sidoDetail,
+			String sido, int headCount, String price, String id, String userName, String state, int partyNo, int gameNo,
+			int userCount) {
+		super();
+		this.userNo = userNo;
+		this.cafeNo = cafeNo;
+		this.themeNo = themeNo;
+		this.themeName = themeName;
+		this.themeTimeNo = themeTimeNo;
+		this.themeTime = themeTime;
+		this.reserveDateNo = reserveDateNo;
+		this.reserveDate = reserveDate;
+		this.reserveTimeNo = reserveTimeNo;
+		this.reserveTime = reserveTime;
+		this.reserveState = reserveState;
+		this.paymentState = paymentState;
+		this.reservePerson = reservePerson;
+		this.reserveName = reserveName;
+		this.reserveNo = reserveNo;
+		this.themeImg = themeImg;
+		this.cafeName = cafeName;
+		this.reserveHp = reserveHp;
+		this.payment = payment;
+		this.totalPerson = totalPerson;
+		this.regDate = regDate;
+		this.gameState = gameState;
+		this.sidoDetail = sidoDetail;
+		this.sido = sido;
+		this.headCount = headCount;
+		this.price = price;
+		this.id = id;
+		this.userName = userName;
+		this.state = state;
+		this.partyNo = partyNo;
+		this.gameNo = gameNo;
+		this.userCount = userCount;
+	}
 
 
 
@@ -357,9 +395,6 @@ public class ReserveVo {
 		this.userName = userName;
 	}
 
-	
-
-
 
 
 	public String getState() {
@@ -370,6 +405,40 @@ public class ReserveVo {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+
+	public int getPartyNo() {
+		return partyNo;
+	}
+
+
+
+	public void setPartyNo(int partyNo) {
+		this.partyNo = partyNo;
+	}
+
+
+
+	public int getGameNo() {
+		return gameNo;
+	}
+
+
+
+	public void setGameNo(int gameNo) {
+		this.gameNo = gameNo;
+	}
+
+	
+	public int getUserCount() {
+		return userCount;
+	}
+
+
+
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
 	}
 
 
@@ -384,9 +453,13 @@ public class ReserveVo {
 				+ ", cafeName=" + cafeName + ", reserveHp=" + reserveHp + ", payment=" + payment + ", totalPerson="
 				+ totalPerson + ", regDate=" + regDate + ", gameState=" + gameState + ", sidoDetail=" + sidoDetail
 				+ ", sido=" + sido + ", headCount=" + headCount + ", price=" + price + ", id=" + id + ", userName="
-				+ userName + ", state=" + state + "]";
+				+ userName + ", state=" + state + ", partyNo=" + partyNo + ", gameNo=" + gameNo + ", userCount="
+				+ userCount + "]";
 	}
 
+
+	
+	
 
 
 	
