@@ -143,8 +143,8 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 											<div class="prv">
 											  <table width="100%">
 												<tr>
-													<td width="60" height="20" class="writing"><a href="">▲ 다음 글</a></td>
-													<td width="360" class="next"><a href="">다음 글이 없습니다. </a></td>
+													<td width="60" height="20" class="writing"><a href="" name="nextNum">▲ 다음 글</a></td>
+													<td width="360" class="next"><a href="" name="prevNum">다음 글이 없습니다. </a></td>
 												</tr>
 												<tr>
 													<td width="60" height="20" class="writing"><a href="">▼ 이전 글</a></td>
