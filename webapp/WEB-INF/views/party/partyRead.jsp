@@ -48,7 +48,7 @@
                         <!-- 카페테마 메인정보 -->
                         <div id=main_informa>
                            <div class="theme_image">
-                               <a href=""><img src="${pageContext.request.contextPath }/assets/image/party/이순신.jpg" width="280px" height="360px"></a>
+                               <a href=""><img src="${pageContext.request.contextPath }/upload/${pReadMap.partyReadList.themeImg }" width="280px" height="360px"></a>
 
                            </div>
                            

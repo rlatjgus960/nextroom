@@ -103,7 +103,7 @@
 								<c:forEach items="${partyAllListMap.partyList }" var="partyVo" varStatus="status">
 	                                <tr onclick="location.href='${pageContext.request.contextPath }/party/partyRead?partyNo=${partyVo.partyNo}'">
 		                                    <td>${partyVo.partyNo} </td>
-		                                    <td><img src="" ${partyVo.themeImg } width="80px" height="90px"></td>
+		                                    <td><img src="${pageContext.request.contextPath }/upload/${partyVo.themeImg }" width="80px" height="90px"></td>
 		                                    <td>${partyVo.sidoDetail }</td>
 		                                    <td>${partyVo.cafeName } / ${partyVo.themeName }</td>
 		                                    <td>${partyVo.reserveDate } / ${partyVo.themeTime }</td>
