@@ -92,33 +92,33 @@
 	                            <input type="text" id="datepicker2" name="reserveDate">
 	                        </div>
 	                        <div id="reservation_main_content_region">
-	                            <p class="region" data-region-no=1>전국</p>
-	                            <p class="region" data-region-no=2>서울</p>
-	                            <p class="region" data-region-no=3>홍대&신촌</p>
-	                            <p class="region" data-region-no=4>강남</p>
-	                            <p class="region" data-region-no=5>건대</p>
-	                            <p class="region" data-region-no=6>대학로</p>
-	                            <p class="region" data-region-no=7>강북</p>
-	                            <p class="region" data-region-no=8>신림</p>
-	                            <p class="region" data-region-no=9>서울(기타)</p>
-	                            <p class="region" data-region-no=10>부천</p>
-	                            <p class="region" data-region-no=11>일산</p>
-	                            <p class="region" data-region-no=12>수원</p>
-	                            <p class="region" data-region-no=13>안양</p>
-	                            <p class="region" data-region-no=14>경기(기타)</p>
-	                            <p class="region" data-region-no=15>인천</p>
-	                            <p class="region" data-region-no=16>강원</p>
-	                            <p class="region" data-region-no=17>대전</p>
-	                            <p class="region" data-region-no=18>천안</p>
-	                            <p class="region" data-region-no=19>청주</p>
-	                            <p class="region" data-region-no=20>충청(기타)</p>
-	                            <p class="region" data-region-no=21>대구</p>
-	                            <p class="region" data-region-no=22>부산</p>
-	                            <p class="region" data-region-no=23>경상(기타)</p>
-	                            <p class="region" data-region-no=24>전주</p>
-	                            <p class="region" data-region-no=25>광주</p>
-	                            <p class="region" data-region-no=26>전라(기타)</p>
-	                            <p class="region" data-region-no=27>제주</p>
+	                            <p id="all" class="region" data-region-no=1>전국</p>
+	                            <p id="seoul" class="region" data-region-no=2>서울</p>
+	                            <p id="hongShin" class="region" data-region-no=3>홍대&신촌</p>
+	                            <p id="gangnam" class="region" data-region-no=4>강남</p>
+	                            <p id="gundae" class="region" data-region-no=5>건대</p>
+	                            <p id="daehakro" class="region" data-region-no=6>대학로</p>
+	                            <p id="gangbuk" class="region" data-region-no=7>강북</p>
+	                            <p id="sillim" class="region" data-region-no=8>신림</p>
+	                            <p id="seoulEtc" class="region" data-region-no=9>서울(기타)</p>
+	                            <p id="bucheon" class="region" data-region-no=10>부천</p>
+	                            <p id="ilsan" class="region" data-region-no=11>일산</p>
+	                            <p id="suwon" class="region" data-region-no=12>수원</p>
+	                            <p id="anyang" class="region" data-region-no=13>안양</p>
+	                            <p id="kyeonggi" class="region" data-region-no=14>경기(기타)</p>
+	                            <p id="incheon" class="region" data-region-no=15>인천</p>
+	                            <p id="gangwon" class="region" data-region-no=16>강원</p>
+	                            <p id="daejeon" class="region" data-region-no=17>대전</p>
+	                            <p id="cheonan" class="region" data-region-no=18>천안</p>
+	                            <p id="cheongju" class="region" data-region-no=19>청주</p>
+	                            <p id="chungcheong" class="region" data-region-no=20>충청(기타)</p>
+	                            <p id="daegu" class="region" data-region-no=21>대구</p>
+	                            <p id="busan" class="region" data-region-no=22>부산</p>
+	                            <p id="gyeongsang" class="region" data-region-no=23>경상(기타)</p>
+	                            <p id="jeonju" class="region" data-region-no=24>전주</p>
+	                            <p id="gwangju" class="region" data-region-no=25>광주</p>
+	                            <p id="jeolla" class="region" data-region-no=26>전라(기타)</p>
+	                            <p id="jeju" class="region" data-region-no=27>제주</p>
 	                        </div>
 	                        <div id="reservation_main_content_cafe">
 	                        </div>
@@ -157,6 +157,201 @@
 </body>
 
 <script>
+
+
+	//-----------------------카페&테마에서 예약 넘겼을 시-----------------------//
+	
+	function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+	
+// 	function addClass(pClass, sidoDetail){
+		
+// 		var length = $('".'+pClass+'"').length;
+		
+// 		var text = new Array(length);
+// 		for(var i=0; i<length; i++){                          
+// 			text[i] = $('".'+pClass+'"').eq(i).text();
+// 		}
+	
+// 		var dataNo = 0;
+		
+// 		for(var i=0; i<length; i++){                          
+			
+// 			if(name[i] == sidoDetail) {
+// 				dataNo = i+1;
+// 			}
+// 			console.log(dataNo);
+// 		}
+		
+		
+// 	};
+
+	
+	function addClassByRegion(sidoDetail){
+		
+		if(sidoDetail == '전국'){
+			$("#all").addClass("reservation_yellow");
+		}else if(sidoDetail == '홍대&신촌'){
+			$("#hongShin").addClass("reservation_yellow");
+		}else if(sidoDetail == '강남'){
+			$("#gangnam").addClass("reservation_yellow");
+		}else if(sidoDetail == '건대'){
+			$("#gundae").addClass("reservation_yellow");
+		}else if(sidoDetail == '대학로'){
+			$("#daehakro").addClass("reservation_yellow");
+		}else if(sidoDetail == '강북'){
+			$("#gangbuk").addClass("reservation_yellow");
+		}else if(sidoDetail == '신림'){
+			$("#sillim").addClass("reservation_yellow");
+		}else if(sidoDetail == '서울(기타)'){
+			$("#seoulEtc").addClass("reservation_yellow");
+		}else if(sidoDetail == '부천'){
+			$("#bucheon").addClass("reservation_yellow");
+		}else if(sidoDetail == '일산'){
+			$("#ilsan").addClass("reservation_yellow");
+		}else if(sidoDetail == '수원'){
+			$("#suwon").addClass("reservation_yellow");
+		}else if(sidoDetail == '안양'){
+			$("#anyang").addClass("reservation_yellow");
+		}else if(sidoDetail == '경기(기타)'){
+			$("#kyeonggi").addClass("reservation_yellow");
+		}else if(sidoDetail == '인천'){
+			$("#incheon").addClass("reservation_yellow");
+		}else if(sidoDetail == '강원'){
+			$("#gangwon").addClass("reservation_yellow");
+		}else if(sidoDetail == '대전'){
+			$("#daejeon").addClass("reservation_yellow");
+		}else if(sidoDetail == '천안'){
+			$("#cheonan").addClass("reservation_yellow");
+		}else if(sidoDetail == '청주'){
+			$("#cheongju").addClass("reservation_yellow");
+		}else if(sidoDetail == '충청(기타)'){
+			$("#chungcheong").addClass("reservation_yellow");
+		}else if(sidoDetail == '대구'){
+			$("#daegu").addClass("reservation_yellow");
+		}else if(sidoDetail == '부산'){
+			$("#busan").addClass("reservation_yellow");
+		}else if(sidoDetail == '경상(기타)'){
+			$("#gyeongsang").addClass("reservation_yellow");
+		}else if(sidoDetail == '전주'){
+			$("#jeonju").addClass("reservation_yellow");
+		}else if(sidoDetail == '광주'){
+			$("#gwangju").addClass("reservation_yellow");
+		}else if(sidoDetail == '전라(기타)'){
+			$("#jeolla").addClass("reservation_yellow");
+		}else if(sidoDetail == '제주'){
+			$("#jeju").addClass("reservation_yellow");
+		};
+		
+		
+	};
+	
+	//지역
+	$(document).ready(function(){
+		
+		var sidoDetail = getParameterByName('sidoDetail');
+		
+		$(".region").removeClass("reservation_yellow");
+		
+		addClassByRegion(sidoDetail);
+		
+		$("#reservation_main_content_cafe").text("");
+		$("#reservation_main_content_thema").text("");
+		$("#reservation_main_content_time").text("");
+		$("[name='themeTime']").val("");
+		$("[name='themeTimeNo']").val("");
+		$("[name='themeNo']").val("");
+		$("[name='cafeNo']").val("");
+		
+		fetchList(sidoDetail);
+		
+		
+	});	
+
+	//카페
+	$(window).load(function(){ 
+		
+		var cafeNo = getParameterByName('cafeNo');
+		var themeNo = getParameterByName('themeNo');
+		
+		$("p[data-cafeno='"+cafeNo+"']").addClass("reservation_yellow");
+		
+		$("#reservation_main_content_thema").text("");
+		$("#reservation_main_content_time").text("");
+		$("[name='themeTime']").val("");
+		$("[name='themeTimeNo']").val("");
+		$("[name='themeNo']").val("");
+		
+		fetchThemeList(cafeNo);
+		
+		$("[name='cafeNo']").val(cafeNo);
+		
+		//테마
+		var themeNo = getParameterByName('themeNo');
+
+		console.log(themeNo);
+		$("p[data-cafeno='"+themeNo+"']").addClass("reservation_yellow");
+		
+		$("#reservation_main_content_time").text("");
+		$("[name='themeTime']").val("");
+		$("[name='themeTimeNo']").val("");
+
+		fetchTimeList(themeNo);
+		
+		$("[name='themeNo']").val(themeNo);
+		
+	});
+	
+	
+	//테마
+// 	$(document).ready(function(){  
+		
+// 		var themeNo = getParameterByName('themeNo');
+
+// 		console.log(themeNo);
+// 		$("p[data-cafeno='"+themeNo+"']").addClass("reservation_yellow");
+		
+// 		$("#reservation_main_content_time").text("");
+// 		$("[name='themeTime']").val("");
+// 		$("[name='themeTimeNo']").val("");
+
+// 		fetchTimeList(themeNo);
+		
+// 		$("[name='themeNo']").val(themeNo);
+
+// 	});
+
+	
+	function themeSeleced(themeNo){  
+
+		console.log(themeNo);
+		$("p[data-cafeno='"+themeNo+"']").addClass("reservation_yellow");
+		
+		$("#reservation_main_content_time").text("");
+		$("[name='themeTime']").val("");
+		$("[name='themeTimeNo']").val("");
+
+		fetchTimeList(themeNo);
+		
+		$("[name='themeNo']").val(themeNo);
+
+	};
+	
+	
+
+	
+	
+	//---------------------//카페&테마에서 예약 넘겼을 시-----------------------//
+	
+	
+	
+	
+	
+
 	$("#resBtn").on("click", function() {
 		
 		if($("[name='reserveDate']").val() == '' || $("[name='reserveDate']").val() == null){
@@ -186,6 +381,7 @@
 	});
 	
 	//지역 클릭
+	
 	$(".region").on("click", function() {
 		$(".region").removeClass("reservation_yellow");
 		$(this).addClass("reservation_yellow");
@@ -204,8 +400,6 @@
 		$("[name='cafeNo']").val("");
 
 		fetchList(sidoDetail);
-		
-		
 	});
 	
 	//리스트 가져오기
@@ -425,6 +619,9 @@
 		
 
 	});
+	
+	
+	
 	
 	
 	

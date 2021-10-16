@@ -744,6 +744,7 @@
 		<![CDATA[
 			select 	c.cafeName,
 					c.cafeNo,
+					c.sidoDetail,
 					th.THEMENO, 
 					th.THEMENAME,
 					th.THEMEIMG,

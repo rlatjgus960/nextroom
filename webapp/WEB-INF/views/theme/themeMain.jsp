@@ -416,7 +416,7 @@
 		
 		/* 활동성 */
 		var activityLength = $("input[name=activity]:checked").length;
-		if(levelsLength > 0) {
+		if(activityLength > 0) {
 			var activity = new Array(activityLength);
 			for(var i=0; i<activityLength; i++){                          
 				activity[i] = $("input[name=activity]:checked").eq(i).val();
@@ -534,6 +534,7 @@
 				themeType[i] = $("input[name=themeType]:checked").eq(i).val();
 			}
 		}
+		
 		/* 인원 */
 		var headCountLength = $("input[name=headCount]:checked").length;
 		if(headCountLength > 0) {
@@ -542,6 +543,7 @@
 				headCount[i] = $("input[name=headCount]:checked").eq(i).val();
 			}
 		}
+		
 		/* 난이도 */
 		var levelsLength = $("input[name=levels]:checked").length;
 		if(levelsLength > 0) {
@@ -585,7 +587,6 @@
 		
 		console.log(themeSearchVo);
 		
-		var addListHtml = "";
 		
 		$.ajax({
 

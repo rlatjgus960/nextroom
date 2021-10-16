@@ -217,10 +217,10 @@
 						<option value="party_ing">관심많은순</option>
 					</select>
 
-					<form id="cafe_search" class="" action="" method="get">
+					<form id="cafe_search" class="" action="" method="post">
 						<div class="form-group text-right">
 							<input type="text" name="keyword">
-							<button type="submit" id=btn_search class="search_button">검색</button>
+							<button type="button" id="btn_search" class="search_button">검색</button>
 						</div>
 					</form>
 				</div>
@@ -488,8 +488,44 @@
 					}
 
 				});
+		
+		
 
 	}
+	$("#btn_search").on("click", function(){
+		
+		event.preventDefault();
+		console.log("검색버튼 클릭");
+		
+		
+		$.ajax({
+
+			url : "${pageContext.request.contextPath }/cafe/getCafeList?region=",
+			type : "post",
+			dataType : "json",
+			//data : ,
+
+			success : function(cafeList) {
+				console.log(cafeList);
+			}
+		});
+	});
+	
+
+	
+//엔터키 쳤을때 함수 실행하기
+$(function(){
+	
+	$('#messageInput').keypress(function(e){
+		if(e.keyCode == 13){
+			//실행할 함수();
+			//테스트할 alert
+			alert("엔터 잘 실행되니?");
+		}
+	});
+});
+	
+	
 </script>
 
 </html>
