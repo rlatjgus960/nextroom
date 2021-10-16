@@ -8,6 +8,13 @@
 <link href="${pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/aside.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/rankUser.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 
 <title>랭킹-유저</title>
 </head>
@@ -25,9 +32,9 @@
 
          <div id="subheader" class="clearfix">
             <div id="subheader-title">
-               <h2>랭킹</h2>
+               <h2><a href="${pageContext.request.contextPath}/rank/user">유저랭킹</a></h2>
             </div>
-            <div id="subheader-mintitle">랭킹 > 유저랭킹</div>
+            <div id="subheader-mintitle"><a href="${pageContext.request.contextPath }/rank/user">랭킹</a> > <a href="${pageContext.request.contextPath }/rank/user">유저랭킹</a></div>
 
 
 
@@ -63,7 +70,7 @@
                		<form id="searchbar" class="" action="${pageContext.request.contextPath}/rank/detail/" method="get">
 						<div class="form-group text-right">
 							<span>검색 :&nbsp;</span>
-							<input placeholder="닉네임을 입력하세요." type="text" name="nickName">
+							<input id="searchBox" placeholder="닉네임을 입력하세요." type="text" name="nickName">
 							<button type="submit" id=btn_search class="search_button">검색</button>
 						</div>
 					</form>
@@ -232,4 +239,80 @@
 	</div>
 
 </body>
+<script>
+
+
+
+
+/* $.ajax({
+    type : '',
+    url: '${pageContext.request.contextPath }/rank/getNicknameList',
+    dataType : 'json',
+    success : function(data) {
+        // 서버에서 json 데이터 response 후 목록 추가
+        	console.log(data);
+            nameList = data;
+            console.log("들어간"+nameList);
+            return nameList;
+    }
+}); */
+
+//console.log("다음 "+nameList)
+
+$(function() {
+    
+    
+    $("#searchBox").autocomplete({
+
+        source: getNameList(),
+        select: function(event, ui) {
+            console.log(ui.item);
+        },
+        focus: function(event, ui) {
+            return false;
+            //event.preventDefault();
+        }
+
+    });
+
+});
+
+
+
+
+
+
+
+function getNameList(){
+	
+	var nameList;
+	console.log("메소드 시작");
+	$.ajax({
+		
+		//request
+		url : "${pageContext.request.contextPath }/rank/getNicknameList",
+		type : "post",
+		//contentType : "application/json",
+		
+		//response
+		async:false,
+		dataType : "json",
+		success : function(data) {
+			console.log(data);
+			nameList = data;
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
+	return nameList;
+}
+
+</script>
+
+
+
+
 </html>

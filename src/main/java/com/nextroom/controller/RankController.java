@@ -3,6 +3,7 @@ package com.nextroom.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.nextroom.service.RankService;
 import com.nextroom.vo.RatingVo;
 import com.nextroom.vo.ThemeRankVo;
@@ -80,5 +83,29 @@ public class RankController {
 
 		return "redirect:/rank/detail?nickName=" + encodedId;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/theme/getThemeList")
+	public List<ThemeRankVo> themeRankList(@RequestParam(value = "List", required = false, defaultValue = "rating") String listType) {
+		
+		System.out.println("아약스 리스트 가져오기"+listType);
 
+		List<ThemeRankVo> themeRankList = rankService.getThemeRankList(listType);
+		
+
+		return themeRankList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getNicknameList")
+	public List<String> getNicknameList(Locale locale,Model model){
+		
+		List<String> nicknameList = rankService.getNicknameList();
+		System.out.println("닉네임 아약스");
+		System.out.println(nicknameList);
+		//Gson gson = new Gson();
+		
+		return nicknameList;
+	}
+	
 }

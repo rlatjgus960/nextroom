@@ -207,4 +207,12 @@
 		</choose>
 	</select>
 	
+	<select id="selectNicknameList" resultType="String">
+		<![CDATA[
+		select nickname
+		from users
+		
+		]]>
+	</select>
+	
 </mapper>

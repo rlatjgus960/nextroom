@@ -51,13 +51,14 @@
 
 	</update>
 	
-	<select id="selectGameList" resultType="com.nextroom.vo.PreRecordVo">
+	<select id="selectGameList" parameterType="int" resultType="com.nextroom.vo.PreRecordVo">
 		<![CDATA[
 			select pr.gameNo,rn.themeName,pr.gameState,to_char(pr.regdate,'yy-mm-dd') regdate,pr.themeNo,pr.totalPerson,rn.reserveName,rn.reserveTime
 			from prerecord pr ,  	(select p.gameno,t.themename,r.reservename,r.reserveno,rt.reservetime
 				                    from prerecord p , theme t , reservedate rd , reservetime rt , reserve r
 				                    where   p.themeno = t.themeno
 				                    and     t.themeno = rd.themeno
+				                    and     t.cafeno = #{cafeNo}
 				                    and     rd.reservedateno = rt.reservedateno
 				                    and     rt.reservetimeno = r.reservetimeno) rn
 			where pr.reserveno = rn.reserveno
@@ -76,13 +77,14 @@
 		]]>
 	</select>
 	
-	<select id="selectCompleteList" resultType="com.nextroom.vo.PreRecordVo">
+	<select id="selectCompleteList" parameterType="int" resultType="com.nextroom.vo.PreRecordVo">
 		<![CDATA[
 			select pr.gameNo,rn.themeName,pr.gameState,to_char(pr.regdate,'yy-mm-dd') regdate,pr.themeNo,pr.totalPerson,rn.reserveName,rn.reserveTime
 			from prerecord pr ,  	(select p.gameno,t.themename,r.reservename,r.reserveno,rt.reservetime
 				                    from prerecord p , theme t , reservedate rd , reservetime rt , reserve r
 				                    where   p.themeno = t.themeno
 				                    and     t.themeno = rd.themeno
+				                    and     t.cafeNo = #{cafeNo}
 				                    and     rd.reservedateno = rt.reservedateno
 				                    and     rt.reservetimeno = r.reservetimeno) rn
 			where pr.reserveno = rn.reserveno

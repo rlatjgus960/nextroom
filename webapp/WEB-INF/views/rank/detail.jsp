@@ -25,7 +25,7 @@
 	
 			<div id="subheader" class="clearfix">
 			<div id="subheader-title">
-			<h2>랭킹</h2>
+			 <h2><a href="${pageContext.request.contextPath}/rank/user">유저랭킹</a></h2>
 			</div>
 			<div id="subheader-mintitle">랭킹 > 개인상세</div>
 

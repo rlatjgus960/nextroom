@@ -32,7 +32,7 @@
 	
 			<div id="subheader" class="clearfix">
 			<div id="subheader-title">
-			<h2>랭킹</h2>
+			 <h2><a href="${pageContext.request.contextPath}/rank/theme">테마랭킹</a></h2>
 			</div>
 			<div id="subheader-mintitle">랭킹 > 테마랭킹</div>
 
@@ -328,40 +328,41 @@
 				
 				<!-- 평점순,리뷰순 -->
 				<div id="selectList">
-					<span class="selected"><a href="${pageContext.request.contextPath }/rank/theme?List=rating"><img src="${pageContext.request.contextPath }/assets/image/selectedIcon.jpg">평점순</a></span>
-					<span><a href="${pageContext.request.contextPath }/rank/theme?List=review"><img src="${pageContext.request.contextPath }/assets/image/unSelectedIcon.jpg">리뷰순</a></span>
+					<span id="listRate" class="selected"><img id="rateIcon" src="${pageContext.request.contextPath }/assets/image/selectedIcon.jpg">평점순</span>
+					<span id="listReview"><img id="reviewIcon" src="${pageContext.request.contextPath }/assets/image/unSelectedIcon.jpg">리뷰순</span>
 				</div>
 				
 				
 				<div id="rank_list">
-							<div class="rank_head clearfix">
-                               <ul>
-                                   <li>순위</li>
-                                   <li class="body_img">포스터</li>
-                                   <li>테마(카페)명</li>
-                                   <li>평점</li>
-                                   <li>체감난이도</li>
-                                   <li>리뷰</li>
-                                   <li></li>
-                               </ul>
-                          	</div>
-                          	
-                          	<c:forEach var="themeRankVo" items="${rankList }">
-                          	
-	                          	<div class="rank_body clearfix">
-	                               <ul>
-	                                   <li class="body_data">${themeRankVo.rank }</li>
-	                                   <li class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg"></a></li>
-	                                   <li class="body_data">${themeRankVo.themeName }(${themeRankVo.cafeName })</li>
-	                                   <li class="body_data">${themeRankVo.avgRating }점</li>
-	                                   <li class="body_data">${themeRankVo.avgDifficulty }점</li>
-	                                   <li class="body_data">${themeRankVo.review }</li>
-	                                   <li class="body_data"><a class="mbutton">자세히보기</a></li>
-	                               </ul>
-	                             </div>
-                             
-                             </c:forEach>
-                             					
+					<table id="rank_table">
+							<thead>
+                               <tr>
+                                   <th>순위</th>
+                                   <th class="body_img">포스터</th>
+                                   <th>테마(카페)명</th>
+                                   <th>평점</th>
+                                   <th>체감난이도</th>
+                                   <th>리뷰</th>
+                                   <th></th>
+                               </tr>
+							</thead>
+							                          	
+                          	<tbody id="rank_body">
+	                          	<c:forEach var="themeRankVo" items="${rankList }">
+		                               <tr>
+	                          	
+		                                   <td class="body_data">${themeRankVo.rank }</td>
+		                                   <td class="body_img"><img class="theme_list_img" src="${pageContext.request.contextPath }/upload/${themeRankVo.themeImgPath}"></td>
+		                                   <td class="body_data">${themeRankVo.themeName }<br>(${themeRankVo.cafeName })</td>
+		                                   <td class="body_data">${themeRankVo.avgRating }점</td>
+		                                   <td class="body_data">${themeRankVo.avgDifficulty }점</td>
+		                                   <td class="body_data">${themeRankVo.review }</td>
+		                                   <td class="body_data"><a class="mbutton">자세히보기</a></td>
+	                             
+		                               </tr>
+	                             </c:forEach>
+                             </tbody>
+                	</table>             					
 				</div>
 				
 				
@@ -403,6 +404,109 @@
           prevEl: ".swiper-button-prev",
         },
       });
+      
+      
+      $("#listReview").on("click",function(){
+    	  
+    	  $("#rank_body").empty()
+    	  
+    	  $("#listReview").addClass("selected");
+    	  $("#listRate").removeClass("selected");
+    	  
+    	  $("#rateIcon").attr("src","${pageContext.request.contextPath }/assets/image/unSelectedIcon.jpg");
+    	  $("#reviewIcon").attr("src","${pageContext.request.contextPath }/assets/image/selectedIcon.jpg");
+    	  
+    	  var List = "review";
+    	  
+    	  $.ajax({
+  			
+  			//request
+  			url : "${pageContext.request.contextPath }/rank/theme/getThemeList",
+  			type : "GET",
+  			//contentType : "application/json",
+  			data : {
+  				List : List
+  			},
+  			
+  			
+  			//response
+  			//dataType : "json",
+  			success : function(themeRankList) {
+  				
+  				console.log(themeRankList);
+  				
+  				for(var i =0 ; i< themeRankList.length; i++){
+  					themeRankRender(themeRankList[i]);
+  				}
+  				
+  			},
+  			error : function(XHR, status, error) {
+  				console.error(status + " : " + error);
+  			}
+  		});
+    	  
+    	  console.log ("operated");
+      });
+      
+	  $("#listRate").on("click",function(){
+    	  
+    	  $("#rank_body").empty()
+    	  
+    	  $("#listRate").addClass("selected");
+    	  $("#listReview").removeClass("selected");
+    	  
+    	  $("#reviewIcon").attr("src","${pageContext.request.contextPath }/assets/image/unSelectedIcon.jpg");
+    	  $("#rateIcon").attr("src","${pageContext.request.contextPath }/assets/image/selectedIcon.jpg");
+    	  
+    	  var List = "rating";
+    	  
+    	  $.ajax({
+  			
+  			//request
+  			url : "${pageContext.request.contextPath }/rank/theme/getThemeList",
+  			type : "GET",
+  			//contentType : "application/json",
+  			data : {
+  				List : List
+  			},
+  			
+  			
+  			//response
+  			//dataType : "json",
+  			success : function(themeRankList) {
+  				
+  				console.log(themeRankList);
+  				
+  				for(var i =0 ; i< themeRankList.length; i++){
+  					themeRankRender(themeRankList[i]);
+  				}
+  				
+  			},
+  			error : function(XHR, status, error) {
+  				console.error(status + " : " + error);
+  			}
+  		  });
+    	  
+    	  console.log ("operated");
+      });
+      
+      function themeRankRender(themeRankVo) {
+  		var str = '';
+  		str += '<tr>';
+  		str += '<td class="body_data">'+themeRankVo.rank+'</td>';
+  		str += '<td class="body_img"><a><img class="theme_list_img" src="${pageContext.request.contextPath }/upload/'+themeRankVo.themeImgPath+'"></a></td>';
+  		str += '<td class="body_data">'+themeRankVo.themeName+'<br>('+themeRankVo.cafeName+')</td>';
+  		str += '<td class="body_data">'+themeRankVo.avgRating+'점</td>';
+  		str += '<td class="body_data">'+themeRankVo.avgDifficulty+'점</td>';
+  		str += '<td class="body_data">'+themeRankVo.review+'</td>';
+  		str += '<td class="body_data"><a class="mbutton">자세히보기</a></td>';
+  		str += '</tr>';
+  		
+  		$("#rank_body").append(str);
+  		
+  		str = '';
+  	};
+      
 </script>
     
     

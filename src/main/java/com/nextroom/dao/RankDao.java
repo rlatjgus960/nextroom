@@ -91,4 +91,9 @@ public class RankDao {
 		System.out.println(listType);
 		return sqlSession.selectList("rank.selectThemeRankList",listType);
 	}
+	
+	public List<String> selectNicknameList() {
+		
+		return sqlSession.selectList("rank.selectNicknameList");
+	}
 }

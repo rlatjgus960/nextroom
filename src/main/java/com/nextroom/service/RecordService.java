@@ -1,6 +1,5 @@
 package com.nextroom.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,9 @@ public class RecordService {
 	RankDao rankDao;
 
 	// 게임 리스트 가져오기
-	public List<PreRecordVo> getGameList() {
+	public List<PreRecordVo> getGameList(int cafeNo) {
 
-		return recordDao.getGameList();
+		return recordDao.getGameList(cafeNo);
 	}
 
 	// gameNo로 멤버 아이디 가져오기
@@ -37,9 +36,9 @@ public class RecordService {
 	}
 
 	// '완료'된 게임리스트 가져오기
-	public List<PreRecordVo> getCompleteList() {
+	public List<PreRecordVo> getCompleteList(int cafeNo) {
 
-		List<PreRecordVo> preList = recordDao.getCompleteList();
+		List<PreRecordVo> preList = recordDao.getCompleteList(cafeNo);
 
 		for (int i = 0; i < preList.size(); i++) {
 
@@ -141,7 +140,7 @@ public class RecordService {
 			ratingVo.setRankRating(rankRating);
 
 			System.out.println("레이팅 추가 " + ratingVo);
-			
+
 			rankDao.updateRating(ratingVo);
 
 			count++;
@@ -220,10 +219,8 @@ public class RecordService {
 			ratingVo.setRankRating(rankRating);
 
 			System.out.println("레이팅 추가 " + ratingVo);
-			
+
 			rankDao.updateRating(ratingVo);
-			
-			
 
 			count++;
 		}

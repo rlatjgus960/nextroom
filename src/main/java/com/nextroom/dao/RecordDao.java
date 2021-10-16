@@ -15,9 +15,9 @@ public class RecordDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<PreRecordVo> getGameList() {
+	public List<PreRecordVo> getGameList(int cafeNo) {
 
-		return sqlSession.selectList("record.selectGameList");
+		return sqlSession.selectList("record.selectGameList",cafeNo);
 
 	}
 
@@ -26,9 +26,9 @@ public class RecordDao {
 		return sqlSession.selectList("record.selectIdList", gameNo);
 	}
 
-	public List<PreRecordVo> getCompleteList() {
+	public List<PreRecordVo> getCompleteList(int cafeNo) {
 
-		return sqlSession.selectList("record.selectCompleteList");
+		return sqlSession.selectList("record.selectCompleteList",cafeNo);
 
 	}
 
