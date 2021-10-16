@@ -88,5 +88,97 @@
 				
 	</select>
 	
+	<!-- 예약테이블 정보 가져오기 -->
+	<select id="selectReserveList" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  to_char(rd.reserveDate, 'yyyy-mm-dd') reserveDate,
+			        u.userNo,
+			        r.reserveNo,
+			        c.cafeName,
+			        t.themeName,
+			        r.reservePerson,
+			       	rt.reserveTime,
+			        to_char(r.payment, '999,999') payment,
+			        nvl(p.gameNo, 0) gameNo,
+			        t.themeNo
+			from users u, cafe c, theme t, reserveDate rd, reserveTime rt, reserve r, preRecord p
+			where c.cafeNo = t.cafeNo
+			and t.themeNo = rd.themeNo
+			and rd.reserveDateNo = rt.reserveDateNo
+			and rt.reserveTimeNo = r.reserveTimeNo
+			and r.userNo = u.userNo
+			and r.reserveNo = p.reserveNo(+)
+			and u.userNo = #{userNo}
+			order by reserveDate desc
+		]]>
+				
+	</select>
+	
+	<!-- 결제내역 상세 모달창 정보 불러오기 -->
+	<select id="selectReserveInfo" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  c.cafeName,
+			        t.themeImg,
+			        t.themeName,
+			        to_char(rd.reserveDate, 'yyyymmdd') reserveDate,
+			        t.themeNo,
+			        r.reserveNo,
+			        r.reservePerson,
+			        r.reserveName,
+			        r.reserveHp,
+			        to_char(r.payment,'999,999') payment,
+			        rt.reserveTime,
+			        nvl(p.gameNo, 0) gameNo
+			from cafe c, theme t, reserveDate rd, reserveTime rt, reserve r, preRecord p
+			where c.cafeNo = t.cafeno
+			and t.themeNo = rd.themeno
+			and rd.reservedateno = rt.reservedateno
+			and rt.reservetimeno = r.reservetimeno
+			and r.reserveNo = p.reserveNo(+)
+			and r.reserveNo = #{reserveNo}
+		]]>
+				
+	</select>
+	
+	<!-- 결제내역 상세 모달창 정보 불러오기 -->
+	<select id="selectRecordList" parameterType="int" resultType="com.nextroom.vo.RecordVo">
+		<![CDATA[
+			select  u.userName,
+			        r.recordTime,
+			        r.recordHints,
+			        r.recordClear
+			from prerecord p, record r, users u
+			where p.gameno = r.gameno
+			and r.userno = u.userno
+			and p.gameNo = #{gameNo}
+		]]>
+				
+	</select>
+	
+	<!-- 결제내역 상세 모달창 정보 불러오기 -->
+	<select id="selectPlayerList" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  r.reservePerson,
+			        u.id
+			from reserve r, users u, reservePeople rp
+			where r.reserveNo = rp.reserveNo
+			and rp.userNo = u.userNo
+			and r.reserveNo = #{reserveNo}
+		]]>
+				
+	</select>
+	
+	<!-- 결제내역 상세 모달창 정보 불러오기 -->
+	<select id="idCheck" parameterType="String" resultType="com.nextroom.vo.ReserveVo">
+		<![CDATA[
+			select  userNo
+			from users
+		]]>
+		<if test="_parameter != null and _parameter != ''">
+			where id = #{id}
+		</if>
+				
+	</select>
+	
 
 </mapper>

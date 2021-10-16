@@ -8,6 +8,7 @@ public class RecordVo {
 	private int recordTime;
 	private int recordHints;
 	private String recordClear;
+	private String userName;
 	
 	
 	
@@ -16,7 +17,7 @@ public class RecordVo {
 	}
 	
 	
-	public RecordVo(int recordNo, int gameNo, int userNo, int recordTime, int recordHints, String recordClear) {
+	public RecordVo(int recordNo, int gameNo, int userNo, int recordTime, int recordHints, String recordClear, String userName) {
 		super();
 		this.recordNo = recordNo;
 		this.gameNo = gameNo;
@@ -24,6 +25,7 @@ public class RecordVo {
 		this.recordTime = recordTime;
 		this.recordHints = recordHints;
 		this.recordClear = recordClear;
+		this.userName = userName;
 	}
 	
 	
@@ -64,14 +66,21 @@ public class RecordVo {
 	public void setRecordClear(String recordClear) {
 		this.recordClear = recordClear;
 	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 
 	@Override
 	public String toString() {
 		return "RecordVo [recordNo=" + recordNo + ", gameNo=" + gameNo + ", userNo=" + userNo + ", recordTime="
-				+ recordTime + ", recordHints=" + recordHints + ", recordClear=" + recordClear + "]";
+				+ recordTime + ", recordHints=" + recordHints + ", recordClear=" + recordClear + ", userName="
+				+ userName + "]";
 	}
-	
+
 	
 
 }

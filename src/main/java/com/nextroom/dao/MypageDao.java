@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.nextroom.vo.PartyVo;
+import com.nextroom.vo.RecordVo;
+import com.nextroom.vo.ReserveVo;
 
 @Repository
 public class MypageDao {
@@ -43,6 +45,47 @@ public class MypageDao {
 		
 		return sqlSession.selectOne("mypage.partyJoinTotalCount", totalCountMap);
 	}
+	
+	/**************************************************************************************/
+	//결제내역 페이지 - reserve 테이블 정보 list 가져오기
+	public List<ReserveVo> getReserveList(int userNo) {
+		System.out.println("[MypageDao.getReserveList]");
+		
+		List<ReserveVo> reserveVo = sqlSession.selectList("mypage.selectReserveList", userNo);
+		
+		return reserveVo;
+	}
+	
+	public ReserveVo getReserveInfo(int reserveNo) {
+		System.out.println("[MypageDao.getReserveInfo]");
+		
+		ReserveVo reserveVo = sqlSession.selectOne("mypage.selectReserveInfo",reserveNo);
+		
+		return reserveVo;
+	}
+	
+	public List<RecordVo> getMyRecordList(int gameNo) {
+		System.out.println("[MypageDao.getMyRecordList]");
+		
+		List<RecordVo> recordList = sqlSession.selectList("mypage.selectRecordList", gameNo);
+		
+		return recordList;
+	}
+	
+	public List<ReserveVo> getTeamPlayer(int reserveNo) {
+		System.out.println("[MypageDao.getMyRecordList]");
+		
+		List<ReserveVo> teamPlayerList = sqlSession.selectList("mypage.selectPlayerList", reserveNo);
+		
+		return teamPlayerList;
+	}
+	
+	public ReserveVo idCheck(String id) {
+		System.out.println("[MypageDao.idCheck]");
+		
+		return sqlSession.selectOne("mypage.idCheck", id);
+	}
+	/**************************************************************************************/
 	
 	
 	

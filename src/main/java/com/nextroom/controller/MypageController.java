@@ -1,6 +1,7 @@
 package com.nextroom.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,17 +13,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.CafeService;
 import com.nextroom.service.MypageService;
 import com.nextroom.service.RankService;
 import com.nextroom.vo.CafeVo;
 import com.nextroom.vo.RatingVo;
+import com.nextroom.vo.RecordVo;
+import com.nextroom.vo.ReserveVo;
 import com.nextroom.vo.UserVo;
 
 @Controller
 @RequestMapping("/mypage")
-public class Mypage {
+public class MypageController {
 
 	@Autowired
 	private CafeService cafeService;
@@ -88,9 +92,71 @@ public class Mypage {
 
 	// 마이페이지 결제내역
 	@RequestMapping("/payMent")
-	public String payMent() {
+	public String payMent(HttpSession session, Model model) {
 		System.out.println("mypage/payMent");
+		
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int userNo = authUser.getUserNo();
+		
+		List<ReserveVo> reseveList = mypageService.getReserveList(userNo);
+		System.out.println("reseveList"+reseveList);
+		
+		model.addAttribute("reseveList", reseveList);
+		
+		
 		return "mypage/payMent";
+	}
+	
+	// 마이페이지 결제내역 - 모달
+	@ResponseBody
+	@RequestMapping("/payMentModal")
+	public ReserveVo payMentModal(@RequestParam("reserveNo") int reserveNo) {
+		System.out.println("mypage/payMent");
+		
+		
+		ReserveVo reserveVo = mypageService.getReserveInfo(reserveNo);
+		
+		
+		return reserveVo;
+	}
+	
+	// 마이페이지 결제내역 - 모달
+	@ResponseBody
+	@RequestMapping("/getRecord")
+	public List<RecordVo> getRecord(@RequestParam("gameNo") int gameNo) {
+		System.out.println("mypage/getRecord");
+		
+		
+		List<RecordVo> recordList = mypageService.getMyRecordList(gameNo);
+		System.out.println(recordList);
+		
+		
+		return recordList;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/getTeamPlayer")
+	public List<ReserveVo> getTeamPlayer(@RequestParam("reserveNo") int reserveNo) {
+		System.out.println("mypage/getTeamPlayer");
+		
+		
+		List<ReserveVo> teamPlayerList = mypageService.getTeamPlayer(reserveNo);
+		System.out.println(teamPlayerList);
+		
+		
+		return teamPlayerList;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/idCheck")
+	public int idCheck(@RequestParam("id") String id) {
+		System.out.println("mypage/idCheck");
+		System.out.println(id);
+		
+		int count = mypageService.idCheck(id);
+		
+		
+		return count;
 	}
 
 	// 마이페이지 보낸메시지

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.nextroom.dao.MypageDao;
 import com.nextroom.dao.PartyDao;
 import com.nextroom.vo.PartyVo;
+import com.nextroom.vo.RecordVo;
+import com.nextroom.vo.ReserveVo;
 
 @Service
 public class MypageService {
@@ -149,6 +151,60 @@ public class MypageService {
 		
 	}
 	
+	
+	/******************************************************* 결제내역 페이지 - 차예진 ***********************************************************/
+	public List<ReserveVo> getReserveList(int userNo) {
+		System.out.println("[MypageService.getReserveList]");
+		
+		List<ReserveVo> reserveVo = mypageDao.getReserveList(userNo);
+		
+		return reserveVo;
+	}
+	
+	public ReserveVo getReserveInfo(int reserveNo) {
+		System.out.println("[MypageService.getReserveInfo]");
+		
+		ReserveVo reserveVo = mypageDao.getReserveInfo(reserveNo);
+		
+		return reserveVo;
+	}
+	
+	public List<RecordVo> getMyRecordList(int gameNo) {
+		System.out.println("[MypageService.getMyRecordList]");
+		
+		List<RecordVo> recordList = mypageDao.getMyRecordList(gameNo);
+		
+		return recordList;
+	}
+	
+	public List<ReserveVo> getTeamPlayer(int reserveNo) {
+		System.out.println("[MypageService.getTeamPlayer]");
+		
+		
+		List<ReserveVo> teamPlayerList = mypageDao.getTeamPlayer(reserveNo);
+		System.out.println(teamPlayerList);
+		
+		
+		return teamPlayerList;
+	}
+	
+	public int idCheck(String id) {
+		System.out.println("[MypageService.idCheck]");
+		
+		
+		ReserveVo reserveVo =mypageDao.idCheck(id);
+		
+		System.out.println(reserveVo);
+		if(reserveVo != null) {
+			return 1;
+		} else {
+			return 0;
+		}
+		
+	}
+	
+	
+	/******************************************************************************************************************/
 	
 	
 }
