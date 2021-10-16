@@ -78,26 +78,37 @@
 
 				<!-- main -->
 				<div id="mypageMain" class="clearfix">
+					<div class="mypageTable_text">나의 탈출정보</div>
 					<div id="myRank">
 
-						<div class="myRank_area clearfix">
-
-							<span><img class="f-left myRank_profile img-circle"
-								src="${pageContext.request.contextPath }/assets/image/mypageEtc/chacha.JPG"></span>
-
-							<p class="myRank_font m-left f-left">${mMap.ratingVo.nickName}</p>
-
-							<ul class="rank_detail">
-								<li>성공률 : ${mMap.ratingVo.winRate}%</li>
-	                            <li>노힌트 성공률 : ${mMap.ratingVo.noHintWinRate}%</li>
-	                            <li>평균 기록 : ${mMap.ratingVo.showAvgClearTime}</li>
-	                            <li>전적 : ${mMap.ratingVo.gameHistory}</li>
-							</ul>
-
-						</div>
+						
+						<c:choose>
+						<c:when test="${empty mMap.ratingVo}">
+							<div class="myRank_blank clearfix">
+							<p>기록 된 전적이 없습니다.</p>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="myRank_area clearfix">
+	
+								<span><img class="f-left myRank_profile img-circle"
+									src="${pageContext.request.contextPath }/assets/image/mypageEtc/chacha.JPG"></span>
+	
+								<p class="myRank_font m-left f-left">${mMap.ratingVo.nickName}</p>
+	
+								<ul class="rank_detail">
+									<li>성공률 : ${mMap.ratingVo.winRate}%</li>
+		                            <li>노힌트 성공률 : ${mMap.ratingVo.noHintWinRate}%</li>
+		                            <li>평균 기록 : ${mMap.ratingVo.showAvgClearTime}</li>
+		                            <li>전적 : ${mMap.ratingVo.gameHistory}</li>
+								</ul>
+	
+							</div>
+						</c:otherwise>
+						</c:choose>
 					</div>
 
-					<div id="mypageTable_text">나의 최근 예약내역</div>
+					<div class="mypageTable_text">나의 최근 예약내역</div>
 
 					<div id="mypageTable">
 						<table id="reservation_check_table">
