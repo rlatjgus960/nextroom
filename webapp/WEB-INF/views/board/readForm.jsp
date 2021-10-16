@@ -142,7 +142,7 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 									
 										<!-- 이미지가 있을 경우 -->
 										<c:if test="${reviewBoardVo.reviewImg != null}">
-											<img src="${pageContext.request.contextPath }/upload/${reviewBoardVo.reviewImg}">	<!-- 이미지 넣을때마다 반복 어케 하냐고 -->
+											<img src="${pageContext.request.contextPath }/upload/${reviewBoardVo.reviewImg}">
 											<div id="text_area">
 												<span>${reviewBoardVo.reviewContent}</span>
 											</div>
