@@ -9,6 +9,7 @@ public class UserVo {
 	private String userHp;
 	private String email;
 	private String nickname;
+	private String profile;
 	private String userType;
 	private int cafeNo;
 	
@@ -35,7 +36,23 @@ public class UserVo {
 	}
 
 	
-	
+	public UserVo(int userNo, String id, String password, String userName, String userHp, String email, String nickname,
+			String profile, String userType, int cafeNo) {
+		super();
+		this.userNo = userNo;
+		this.id = id;
+		this.password = password;
+		this.userName = userName;
+		this.userHp = userHp;
+		this.email = email;
+		this.nickname = nickname;
+		this.profile = profile;
+		this.userType = userType;
+		this.cafeNo = cafeNo;
+	}
+
+
+
 	public int getUserNo() {
 		return userNo;
 	}
@@ -111,13 +128,27 @@ public class UserVo {
 	}
 
 
+	public String getProfile() {
+		return profile;
+	}
+
+
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "UserVo [userNo=" + userNo + ", id=" + id + ", password=" + password + ", userName=" + userName
-				+ ", userHp=" + userHp + ", email=" + email + ", nickname=" + nickname + ", userType=" + userType
-				+ ", cafeNo=" + cafeNo + "]";
+				+ ", userHp=" + userHp + ", email=" + email + ", nickname=" + nickname + ", profile=" + profile
+				+ ", userType=" + userType + ", cafeNo=" + cafeNo + "]";
 	}
+
+
+
 
 
 	
