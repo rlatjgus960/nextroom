@@ -1,5 +1,6 @@
 package com.nextroom.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -11,11 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nextroom.service.CafeService;
 import com.nextroom.service.MypageService;
+import com.nextroom.service.RankService;
 import com.nextroom.vo.CafeVo;
+import com.nextroom.vo.RatingVo;
 import com.nextroom.vo.UserVo;
 
 @Controller
@@ -27,11 +29,26 @@ public class Mypage {
 	
 	@Autowired
 	private MypageService mypageService;
-
+	@Autowired
+	private RankService rankService;
+	
 	// 마이페이지 메인
 	@RequestMapping("/main")
-	public String main() {
+	public String main(HttpSession session,Model model) {
 		System.out.println("mypage/main");
+		
+		UserVo userVo = (UserVo)session.getAttribute("authUser");
+		
+		int userNo = userVo.getUserNo();
+		
+		RatingVo ratingVo = rankService.getMypageStat(userNo);
+		
+		Map<String,Object> mMap = new HashMap<String,Object>();
+		
+		mMap.put("ratingVo", ratingVo);
+		
+		model.addAttribute("mMap",mMap);
+		
 		return "mypage/main";
 	}
 

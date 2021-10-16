@@ -85,12 +85,13 @@
 							<span><img class="f-left myRank_profile img-circle"
 								src="${pageContext.request.contextPath }/assets/image/mypageEtc/chacha.JPG"></span>
 
-							<p class="myRank_font m-left f-left">차오월킹</p>
+							<p class="myRank_font m-left f-left">${mMap.ratingVo.nickName}</p>
 
 							<ul class="rank_detail">
-								<li>성공률 : 33.33%</li>
-								<li>노힌트 성공률 : 0%</li>
-								<li>전적 300전 100승 200패</li>
+								<li>성공률 : ${mMap.ratingVo.winRate}%</li>
+	                            <li>노힌트 성공률 : ${mMap.ratingVo.noHintWinRate}%</li>
+	                            <li>평균 기록 : ${mMap.ratingVo.showAvgClearTime}</li>
+	                            <li>전적 : ${mMap.ratingVo.gameHistory}</li>
 							</ul>
 
 						</div>

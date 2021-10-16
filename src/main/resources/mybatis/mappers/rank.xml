@@ -209,8 +209,10 @@
 	
 	<select id="selectNicknameList" resultType="String">
 		<![CDATA[
-		select nickname
-		from users
+		select u.nickname
+		from users u,rankrating r
+		where u.userno = r.userno
+		and r.userrating != 0
 		
 		]]>
 	</select>

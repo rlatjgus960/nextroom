@@ -273,7 +273,12 @@ $(function() {
             //event.preventDefault();
         }
 
-    });
+    }).autocomplete( "instance" )._renderItem = function( ul, item ) {    //요 부분이 UI를 마음대로 변경하는 부분
+        return $( "<li>" )    //기본 tag가 li로 되어 있음 
+        .append( "<div class='searchNameList'>" + item.value+ "</div>" )    //여기에다가 원하는 모양의 HTML을 만들면 UI가 원하는 모양으로 변함.
+        .appendTo( ul );
+ 	
+    };
 
 });
 

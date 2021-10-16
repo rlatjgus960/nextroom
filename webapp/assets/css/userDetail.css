@@ -89,3 +89,10 @@
 	font-size : 20px;
 	color : red;
 }
+
+.searchNameList{
+	text-align:left;
+	font-size: 15px;
+	font-weight: bold;
+	
+}

@@ -26,9 +26,8 @@ public class AdminRecordController {
 	RecordService recordService;
 
 	@RequestMapping("/{cafeNo}")
-	public String record(Model model, HttpSession session,@PathVariable(value="cafeNo") int cafeNo) {
-		
-		
+	public String record(Model model, HttpSession session, @PathVariable(value = "cafeNo") int cafeNo) {
+
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
 		if (userVo != null) {
@@ -47,7 +46,7 @@ public class AdminRecordController {
 	@ResponseBody
 	@RequestMapping("getMemberList")
 	public List<String> getMemberList(@RequestParam(value = "gameno") int gameNo, Model model) {
-		
+
 		List<String> memberList = recordService.getMemberList(gameNo);
 
 		return memberList;
@@ -55,11 +54,15 @@ public class AdminRecordController {
 
 	// 관리자페이지 기록
 	@RequestMapping("/addRecord")
-	public String addRecord(@ModelAttribute RecordVo recordVo,
+	public String addRecord(@ModelAttribute RecordVo recordVo, HttpSession session,
 			@RequestParam(value = "recordClear", required = false, defaultValue = "success") String clearState,
 			@RequestParam(value = "recordMin", required = false, defaultValue = "0") int minutes,
 			@RequestParam(value = "recordSec", required = false, defaultValue = "0") int secconds,
 			@RequestParam(value = "member") List<String> members) {
+
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+		int cafeNo = userVo.getCafeNo();
 
 		recordVo.setRecordTime((minutes * 60) + secconds);
 		recordVo.setRecordClear(clearState);
@@ -68,12 +71,12 @@ public class AdminRecordController {
 
 		recordService.RecordAdd(recordVo, members);
 
-		return "redirect:/admin/record";
+		return "redirect:/admin/record/" + cafeNo;
 	}
 
 	// 관리자페이지 기록수정
 	@RequestMapping("/modify/{cafeNo}")
-	public String recordModify(Model model,@PathVariable("cafeNo") int cafeNo) {
+	public String recordModify(Model model, @PathVariable("cafeNo") int cafeNo) {
 		System.out.println("recordModify");
 
 		List<PreRecordVo> completeList = recordService.getCompleteList(cafeNo);
@@ -84,11 +87,15 @@ public class AdminRecordController {
 	}
 
 	@RequestMapping("/modifyRecord")
-	public String modifyRecord(@ModelAttribute RecordVo recordVo,
+	public String modifyRecord(@ModelAttribute RecordVo recordVo, HttpSession session,
 			@RequestParam(value = "recordClear", required = false, defaultValue = "success") String clearState,
 			@RequestParam(value = "recordMin", required = false, defaultValue = "0") int minutes,
 			@RequestParam(value = "recordSec", required = false, defaultValue = "0") int secconds,
 			@RequestParam(value = "member") List<String> members) {
+
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+		int cafeNo = userVo.getCafeNo();
 
 		recordVo.setRecordTime((minutes * 60) + secconds);
 		recordVo.setRecordClear(clearState);
@@ -97,7 +104,7 @@ public class AdminRecordController {
 
 		recordService.modifyRecord(recordVo, members);
 
-		return "redirect:/admin/record/modify";
+		return "redirect:/admin/record/modify/"+cafeNo;
 	}
 
 }

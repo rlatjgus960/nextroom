@@ -176,4 +176,45 @@ public class RankService {
 		// System.out.println(nickList.length);
 		return nicknameList;
 	}
+	
+	public RatingVo getMypageStat(int userNo) {
+		RatingVo ratingVo = rankDao.selectUserStat(userNo);
+		
+		if (ratingVo == null) {
+			return null;
+		} else {
+			System.out.println(ratingVo);
+
+			int avgCleartime = ratingVo.getAvgClearTime();
+
+			int avgMin = (int) avgCleartime / 60;
+			int avgSec = avgCleartime % 60;
+			System.out.println(avgMin + "" + avgSec);
+			String avgClearTime = avgMin + "분" + " " + avgSec + "초";
+
+			ratingVo.setShowAvgClearTime(avgClearTime);
+
+			double winRate = (double) ratingVo.getWonGame() / ratingVo.getTotalGame();
+
+			winRate = Math.round(winRate * 100) / 100.00;
+
+			ratingVo.setWinRate(winRate * 100);
+
+			double noHintWinRate = (double) ratingVo.getNoHintGame() / ratingVo.getTotalGame();
+
+			noHintWinRate = Math.round(noHintWinRate * 100) / 100.00;
+
+			ratingVo.setNoHintWinRate(noHintWinRate * 100);
+
+			System.out.println(noHintWinRate);
+
+			String gameHistory = "";
+			gameHistory += ratingVo.getTotalGame() + "전 ";
+			gameHistory += ratingVo.getWonGame() + "승 ";
+			gameHistory += (ratingVo.getTotalGame() - ratingVo.getWonGame()) + "패";
+
+			ratingVo.setGameHistory(gameHistory);
+		}
+		return ratingVo;
+	}
 }
