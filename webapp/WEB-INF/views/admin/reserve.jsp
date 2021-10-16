@@ -89,10 +89,10 @@
 							<li>기록
 								<ul class="aside_mini_cate">
 									<li><a
-										href="${pageContext.request.contextPath }/admin/record">&nbsp;-기록
+										href="${pageContext.request.contextPath }/admin/record/${sessionScope.authUser.cafeNo}">&nbsp;-기록
 											입력</a></li>
 									<li><a
-										href="${pageContext.request.contextPath }/admin/recordModify">&nbsp;-기록
+										href="${pageContext.request.contextPath }/admin/recordModify/${sessionScope.authUser.cafeNo}">&nbsp;-기록
 											관리</a></li>
 								</ul>
 							</li>
