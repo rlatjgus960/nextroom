@@ -139,20 +139,22 @@ src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></sc
 										
 										
 										<!-- 이전/다음 글 -->
-										<div id="wrap_preview">
+										
+<!-- 										<div id="wrap_preview">
 											<div class="prv">
 											  <table width="100%">
 												<tr>
-													<td width="60" height="20" class="writing"><a href="" name="nextNum">▲ 다음 글</a></td>
-													<td width="360" class="next"><a href="" name="prevNum">다음 글이 없습니다. </a></td>
+													<td id="nextNum" width="60" height="20" class="writing"><a href="" >▲ 다음 글</a></td>
+													<td width="360" class="next"><a href="">다음 글이 없습니다. </a></td>
 												</tr>
 												<tr>
-													<td width="60" height="20" class="writing"><a href="">▼ 이전 글</a></td>
+													<td width="60" height="20" class="writing"><a href=""><span id="prevNum">▼ 이전 글</span></a></td>
 													<td width="360" class="next"><a href="">이전 글이 없습니다.</a></td>												
 												</tr>
 											  </table>
 											</div>
-										</div>
+										</div> -->
+										
 										<!-- //이전/다음 글 -->
 
 										<!-- 댓글쓰기 -->
@@ -506,6 +508,37 @@ $("#commentContent").keyup(function e(e){
 	
 	return true;
 });
+
+//2021.10.16 by 원호
+//이전글
+// $("#prevNum").on("click", function(){
+// 	console.log("이전글 클릭")
+	
+// 	var boardNo = "${freeBoardVo.boardNo}"
+// 	console.log(boardNo)
+// 	//데이터 ajax방식으로 서버에 전송
+// 	$.ajax({
+		
+// 		url : "${pageContext.request.contextPath }/board/prev",
+// 		type : "get",
+// 		//contentType : "application/json",	//json방식으로 보내겠다!
+// 		data : freeBoardVo,
+		
+// 		dataType : "json",
+// 		success : function(freeBoardVo){
+// 			/*성공시 처리해야될 코드 작성*/
+// 			console.log(freeBoardVo);
+// 			render(freeBoardVo, "up");
+				
+// 			//입력폼 초기화
+// 			$("#commentContent").val("");	//()안에 ""있으면 값 비워줌
+// 		},
+// 		error : function(XHR, status, error) {
+// 			console.error(status + " : " + error);
+// 		}
+// 	});
+	
+// })
 
 
 

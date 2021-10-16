@@ -786,6 +786,8 @@ public class ReviewBoardService {
 		return freeBoardVo;
 	}
 	
+
+	
 	//2021.10.08 by 원호
 	//자유게시판 게시글 삭제
 	public int freeDelete(int boardNo) {

@@ -80,7 +80,7 @@ public class Board {
 	
 	//2021.10.07 by 원호
 	//자유게시판 글 읽기
-/*	@RequestMapping(value = "/freeRead", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/freeRead", method = {RequestMethod.GET, RequestMethod.POST})
 	public String freeRead(Model model, @RequestParam("boardNo") int boardNo) {
 		System.out.println("[reviewController.freeRead]");
 		System.out.println(boardNo);
@@ -91,24 +91,8 @@ public class Board {
 		model.addAttribute("freeBoardVo",freeBoardVo);
 		
 		return "board/freeRead";
-	}*/
-	
-	//2021.10.07 by 원호
-	//자유게시판 글 읽기
-	@RequestMapping(value = "/freeRead", method = {RequestMethod.GET, RequestMethod.POST})
-	public String freeRead(Model model, @RequestParam("boardNo") int boardNo,
-						   @RequestParam("nextNum") int nextNum,
-						   @RequestParam("prevNum")int prevNum) {
-		System.out.println("[reviewController.freeRead]");
-		System.out.println(boardNo);
-		
-		FreeBoardVo freeBoardVo = reviewBoardService.freeRead(boardNo,nextNum, prevNum);
-		System.out.println(freeBoardVo);
-		
-		model.addAttribute("freeBoardVo",freeBoardVo);
-		
-		return "board/freeRead";
 	}
+	
 	
 	//2021.10.08 by 원호
 	//글삭제
@@ -261,6 +245,14 @@ public class Board {
 	}
 	
 
+	//2021.10.16 by 원호
+	//이전글
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value="/prev", method = {RequestMethod.GET,
+	 * RequestMethod.POST}) public
+	 */
 //////////////////////////////////////////////////////////////////
 /*후기 게시판*/
 	//2021.10.02 by 원호
