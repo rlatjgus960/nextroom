@@ -380,7 +380,7 @@
 		<![CDATA[
 			select  t.themeNo,
 			        tp.headcount,
-			        tp.price
+			        to_char(tp.price, '999,999') price
 			from theme t, themePrice tp
 			where t.themeNo = tp.themeNo
 			and t.themeNo = #{themeNo}

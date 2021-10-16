@@ -83,17 +83,41 @@
 	                        <th>인원</th>
 	                        <td>
 	                            <select id="headCountSelect" name="headcount">
-	                            	<option value="default" selected>인원을 선택해 주세요</option>
-	                            	<c:forEach items="${pList}" var="priceVo" varStatus="status">
-	                            		<option value="${priceVo.headCount }">${priceVo.headCount }명</option>
-	                            	</c:forEach>
+	                            	<c:choose>
+	                            		<c:when test="${rInfoVo.userCount eq 0}">
+	                            			<option value="default">인원을 선택해 주세요</option>
+			                            	<c:forEach items="${pList}" var="priceVo" varStatus="status">
+			                            		<option value="${priceVo.headCount }">${priceVo.headCount }명</option>
+			                            	</c:forEach>
+	                            		</c:when>
+	                            		
+	                            		<c:otherwise>
+	                            			<option value="default">인원을 선택해 주세요</option>
+	                            			<c:forEach items="${pList}" var="priceVo" varStatus="status">
+			                            		<option value="${priceVo.headCount }" <c:if test="${rInfoVo.userCount eq priceVo.headCount}">selected</c:if>>${priceVo.headCount }명</option>
+			                            	</c:forEach>
+	                            		</c:otherwise>
+	                            	</c:choose>
 	                            </select>
 	                        </td>
 	                    </tr>
 	
 	                    <tr>
 	                        <th>가격</th>
-	                        <td class="price">-</td>
+	                        	<c:choose>
+	                            		<c:when test="${rInfoVo.userCount eq 0}">
+	                            			<td class="price">-</td>
+	                            		</c:when>
+	                            		
+	                            		<c:otherwise>
+	                            			<c:forEach items="${pList}" var="priceVo" varStatus="status">
+			                            		<c:if test="${rInfoVo.userCount eq priceVo.headCount}">
+			                            			<td class="price">${priceVo.price}원</td>
+			                            			<input type="hidden" value="${priceVo.price}" name="paypaypay">
+			                            		</c:if>
+			                            	</c:forEach>
+	                            		</c:otherwise>
+	                            	</c:choose>
 	                    </tr>
 	
 	                    <tr>
@@ -134,6 +158,13 @@
 		            <input type="hidden" name="themeNo" value="${param.themeNo}">
 		            <input type="hidden" name="reserveDate" value="${rInfoVo.reserveDate}">
 		            <input type="hidden" name="themeTime" value="${rInfoVo.themeTime}">
+		            <c:forEach items="${pDetailUserList}" var="partyP" varStatus="status">
+                    	<input type="hidden" name="party${status.index}" value="${partyP.id }">
+                    	<input type="hidden" name="partyNo${status.index}" value="${partyP.userNo }">
+                    	<input type="hidden" name="partyName${status.index}" value="${partyP.userName }">
+                    </c:forEach>
+		            
+		            
 		            
 	            </form>
                 
@@ -168,6 +199,94 @@
 	
 	$("#reserveDate").text(yy + "년 " + mm + "월 " + dd + "일");
 	$("#themeTime").text(time[0]+"시 "+time[1]+"분");
+	
+	
+	
+	var tetetetet = $("#headCountSelect").val();
+	if(tetetetet != "인원수를 입력해 주세요") {
+		
+		var pay = $("[name='paypaypay']").val();
+		console.log("pay"+pay);
+		
+		var pp = pay.replace(/(\s*)/g, "");
+		var payment = pp.replace(',','');	
+		
+		
+		console.log(payment+"payment");
+		
+		$("[name='payment']").val(payment);
+		
+		console.log("파티에서 옴");
+		var themeNo = $("#themeName").data("themeno");
+		console.log(tetetetet);
+		
+		for(var i=0; i<tetetetet; i++) {
+			var person = $("[name='party"+i+"']").val();
+			var personNo = $("[name='partyNo"+i+"']").val();
+			var personName = $("[name='partyName"+i+"']").val();
+			console.log(i+"제발되라"+person+"dfsaffafs"+personNo+"이름"+personName);
+			
+			renderParty("down", i, tetetetet, person, personNo, personName);
+			
+		}
+		
+	}
+	
+	//테마 한개씩 렌더링
+	function renderParty(type, i, tetetetet, person, personNo, personName) {
+		
+		var str = "";
+		if (i == tetetetet-1) {
+			str += '<div class="clearfix member">';
+		} else {
+			str += '<div class="clearfix member nolast">';
+		}
+		
+		str += '	<div class="reservation_partyMember_info clearfix">';
+		str += '		<div class="info_item">';
+		str += '			<select id="memberSelect" name="partyMember" class="pp'+i+'">';
+		str += '				<option value="default">팀원 정보를 선택해 주세요</option>';
+		str += '				<option value="member" selected>회원</option>';
+		str += '				<option value="nonmember">비회원</option>';
+		str += '			</select>';
+		
+		str += '			<div class="reservation_partyMember_info_item">';
+		str += '				팀원 '+(i+1)+' (회원아이디)';
+		str += '			</div>';
+		
+		str += '			<div class="reservation_partyMember_info_item">';
+		str += '    			<input name="playerId'+i+'" type="text" value="'+person+'">';
+		str += '				<input type="hidden" name="userNo'+i+'" value="'+personNo+'">'
+		str += '    			<button id="btnIdCheck" class="mbutton">아이디 확인</button>';		
+		str += '			</div>';	 
+		
+		str += '			<div class="reservation_partyMember_info_item reservation_party_text pText'+i+'">';
+		str += '				'+personName+'님 당신의 무사탈출을 기원합니다.';
+		str += '			</div>';
+		str += '		</div>';
+		str += '		<div class="reservation_partyMember_img reservation_partyMember_info_item">';
+		str += '			<img src="${pageContext.request.contextPath }/assets/image/mypageEtc/chacha.JPG">';
+		str += '		</div>';
+		str += '	</div>';
+		str += '</div>';
+		
+		
+		if (type === 'down') {
+			$("#reserveTeam").append(str);
+		} else if (type === 'up') {
+			$("#reserveTeam").prepend(str);
+		} else {
+			console.log("방향을 지정해 주세요");
+		}
+		
+		
+
+	};
+	
+	
+	
+	
+	
 	
 	$("#headCountSelect").on('change', function() {
 		
@@ -246,7 +365,7 @@
 		str += '			</div>';	 
 		
 		str += '			<div class="reservation_partyMember_info_item reservation_party_text pText'+i+'">';
-		str += '';
+		str += '				'+playerVo.userName+'님 당신의 무사탈출을 기원합니다.';
 		str += '			</div>';
 		str += '		</div>';
 		str += '		<div class="reservation_partyMember_img reservation_partyMember_info_item">';
