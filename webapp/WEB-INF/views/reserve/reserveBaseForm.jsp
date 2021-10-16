@@ -275,8 +275,15 @@
 	//카페
 	$(window).load(function(){ 
 		
+		cafeSelected(themeSeleced);
+	});
+	
+	
+	function cafeSelected(callback){ 
+		
 		var cafeNo = getParameterByName('cafeNo');
-		var themeNo = getParameterByName('themeNo');
+		
+		console.log("cafeNo : "+cafeNo);
 		
 		$("p[data-cafeno='"+cafeNo+"']").addClass("reservation_yellow");
 		
@@ -292,19 +299,9 @@
 		
 		//테마
 		var themeNo = getParameterByName('themeNo');
-
-		console.log(themeNo);
-		$("p[data-cafeno='"+themeNo+"']").addClass("reservation_yellow");
 		
-		$("#reservation_main_content_time").text("");
-		$("[name='themeTime']").val("");
-		$("[name='themeTimeNo']").val("");
-
-		fetchTimeList(themeNo);
-		
-		$("[name='themeNo']").val(themeNo);
-		
-	});
+		callback(themeNo);
+	};
 	
 	
 	//테마
@@ -327,9 +324,9 @@
 
 	
 	function themeSeleced(themeNo){  
-
-		console.log(themeNo);
-		$("p[data-cafeno='"+themeNo+"']").addClass("reservation_yellow");
+		
+		console.log("themeSeleced : "+themeNo);
+		$("p[data-theme='"+themeNo+"']").addClass("reservation_yellow");
 		
 		$("#reservation_main_content_time").text("");
 		$("[name='themeTime']").val("");

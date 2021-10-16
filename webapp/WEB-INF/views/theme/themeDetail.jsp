@@ -89,8 +89,7 @@
 
 						</div>
 
-
-						<button class="lbutton" id="theme_party">이 테마의 모집중인 파티보기</button>
+						<button onclick="window.open('${pageContext.request.contextPath }/party/partyList?partyView=모집중&keyword=${themeVo.themeName}')" class="lbutton" id="theme_party">이 테마의 모집중인 파티보기</button>
 
 						<div id="theme_detail_btn">
 							<button type="button" class="cbutton" id="theme_wish">관심테마등록</button>
