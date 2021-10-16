@@ -430,9 +430,12 @@
 	<!-- 파티에서 예약하기 눌렀을때 reserve에서 넘어온 파티no로 userno찾기 -->
 	<select id="pDetailUserList" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
-			select userNo
-			from partydetail
-			where partyNo = #{partyNo}
+			select p.userNo,
+			       u.id,
+			       u.userName
+			from partydetail p, users u
+			where p.userNo = u.userNo
+			and p.partyNo = #{partyNo}
 		]]>
 	</select>
 	
