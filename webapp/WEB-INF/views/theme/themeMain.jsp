@@ -252,7 +252,7 @@
 						<div class="cafe_theme_info">
 							<p>${themeList.cafeName }</p>
 
-							<a href="${pageContext.request.contextPath }/cafe/themeDetail">
+							<a href="${pageContext.request.contextPath}/cafe/theme/${themeList.themeNo}">
 								<p class="cafe_theme_info_title">${themeList.themeName}</p>
 							</a> <span>장르 : </span><span>${themeList.jenre}</span> | <span>추천인원 : </span><span>${themeList.pRecommendMin}~${themeList.pRecommendMax}인</span><br>
 							<span>난이도 : </span> <span> <c:if test="${themeList.levels == 5 }">

@@ -94,7 +94,7 @@
 						<div id="theme_detail_btn">
 							<button type="button" class="cbutton" id="theme_wish">관심테마등록</button>
 							<button
-								onclick="window.open('${pageContext.request.contextPath }/reserve/reserveBaseForm?sidoDetail=${themeVo.sidoDetail}&cafeNo=${themeVo.cafeNo }&cafeName=${themeVo.cafeName }&themeNo=${themeVo.themeNo }')"
+								onclick="window.open('${pageContext.request.contextPath }/reserve/reserveBaseForm?sidoDetail=${themeVo.sidoDetail}&cafeNo=${themeVo.cafeNo }&cafeName=${themeVo.cafeName }&themeNo=${themeVo.themeNo }&rKey=themeReserve')"
 								type="button" class="cbutton" id="theme_reserv">예약하기</button>
 							<button
 								onclick="location.href = '${pageContext.request.contextPath }/cafe/${themeVo.cafeNo }'"

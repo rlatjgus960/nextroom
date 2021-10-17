@@ -30,11 +30,12 @@ public class UserController {
 	
 	//로그인
 	@RequestMapping(value="/login")
-	public String login(@ModelAttribute UserVo userVo, HttpSession session) {
+	public String login(@ModelAttribute UserVo userVo, @RequestParam(value="rKey", required = false, defaultValue = "") String rKey, HttpSession session) {
 		System.out.println("[UserController.login()]");
 		
 		UserVo authUser = userService.getUser(userVo);
 		System.out.println(authUser);
+		System.out.println(rKey);
 		
 		if(authUser != null) { //로그인 성공하면
 			System.out.println("[로그인성공]");
@@ -46,12 +47,19 @@ public class UserController {
 			}
 			
 			session.setAttribute("authUser", authUser);
-			return "redirect:/mypage/main"; 
+			
+			if(("themeReserve").equals(rKey)) {
+				return "redirect:/cafe/theme";
+			}else{
+				return "redirect:/mypage/main"; 
+			}
 		} else { //로그인 실패하면
 			System.out.println("[로그인실패]");
 			return "redirect:/user/loginForm";
 		}
 	}
+	
+
 	
 	//로그아웃
 	@RequestMapping(value="logout")

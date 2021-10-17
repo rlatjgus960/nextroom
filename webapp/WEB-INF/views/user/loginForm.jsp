@@ -29,6 +29,7 @@
 
 			<div id="loginForm">
 				<form method="get" action="${pageContext.request.contextPath}/user/login">
+				<input type="hidden" name="rKey" value=${param.rKey }>
 		      		<table>
 				      	<colgroup>
 							<col style="width: 100px;">
