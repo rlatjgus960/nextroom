@@ -28,7 +28,7 @@
 
 			<div>	
 				
-				<form id="joinForm" method="get" action="${pageContext.request.contextPath}/user/join">
+				<form id="joinForm" method="post" action="${pageContext.request.contextPath}/user/join" enctype="multipart/form-data">
 					<table>
 				      	<colgroup>
 							<col style="width: 100px;">
@@ -74,6 +74,16 @@
 			      			<td><input class="txtNickName" type="text" name="nickname"  value=""></td>   
 			      			<td></td>  			
 			      		</tr> 		
+			      		<tr>
+			      			<td><label for="textLogo">프로필사진</label></td>
+			      			<td><img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="" width="200px" height="140px"></td>
+			      			<td></td>
+			      		</tr>
+			      		<tr>
+			      			<td></td>
+			      			<td><input id="textLogo" type="file" name="profileImg"></td>
+			      			<td></td>
+			      		</tr>
 			      		
 			      	</table>
 		      		<div id="btnArea">

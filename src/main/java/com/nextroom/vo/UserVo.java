@@ -1,5 +1,7 @@
 package com.nextroom.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserVo {
 	
 	private int userNo;
@@ -10,6 +12,7 @@ public class UserVo {
 	private String email;
 	private String nickname;
 	private String profile;
+	private MultipartFile profileImg;
 	private String userType;
 	private int cafeNo;
 	
@@ -35,9 +38,9 @@ public class UserVo {
 		this.cafeNo = cafeNo;
 	}
 
-	
+
 	public UserVo(int userNo, String id, String password, String userName, String userHp, String email, String nickname,
-			String profile, String userType, int cafeNo) {
+			String profile, MultipartFile profileImg, String userType, int cafeNo) {
 		super();
 		this.userNo = userNo;
 		this.id = id;
@@ -47,6 +50,7 @@ public class UserVo {
 		this.email = email;
 		this.nickname = nickname;
 		this.profile = profile;
+		this.profileImg = profileImg;
 		this.userType = userType;
 		this.cafeNo = cafeNo;
 	}
@@ -140,12 +144,33 @@ public class UserVo {
 
 
 
+	public MultipartFile getProfileImg() {
+		return profileImg;
+	}
+
+
+
+	public void setProfileImg(MultipartFile profileImg) {
+		this.profileImg = profileImg;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "UserVo [userNo=" + userNo + ", id=" + id + ", password=" + password + ", userName=" + userName
 				+ ", userHp=" + userHp + ", email=" + email + ", nickname=" + nickname + ", profile=" + profile
-				+ ", userType=" + userType + ", cafeNo=" + cafeNo + "]";
+				+ ", profileImg=" + profileImg + ", userType=" + userType + ", cafeNo=" + cafeNo + "]";
 	}
+
+
+
+
+
+
+
+
+
 
 
 
