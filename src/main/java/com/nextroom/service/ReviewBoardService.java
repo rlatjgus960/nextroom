@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.nextroom.dao.ReviewBoardDao;
+import com.nextroom.vo.FreeBoardImgVo;
 import com.nextroom.vo.FreeBoardVo;
 import com.nextroom.vo.ReviewBoardVo;
 
@@ -517,6 +519,79 @@ public class ReviewBoardService {
 		return boardCount;
 		
 	}
+	
+	
+	//2021.10.07 by 원호
+	//자유게시판 글 등록
+//	public int boardWrite(FreeBoardVo freeBoardVo) {
+//		System.out.println("Service.reviewWrite");
+//		System.out.println("[Service Vo정보]" + freeBoardVo);
+//		
+//		// ******************** 자유게시판 이미지 처리 ********************/
+//		List<FreeBoardImgVo> freeImgList = new ArrayList();
+//		
+//		List<MultipartFile> freeboardImg = freeBoardVo.getMultiImgFile();
+//		
+//		int boardCount = 0;
+//		
+//		for(int i = 0; i < freeboardImg.size(); i++) {
+//			long fileSize = freeboardImg.get(i).getSize();
+//			System.out.println("fileSize " + fileSize);
+//			
+//			if (fileSize > 0) {
+//
+//				String saveDir = "C:\\javaStudy\\workspace_web\\nextroom\\upload\\";
+//
+//				System.out.println(freeboardImg.get(i).getOriginalFilename());
+//				System.out.println(freeboardImg.get(i).getSize());
+//
+//				// 원파일이름
+//				String orgName = freeboardImg.get(i).getOriginalFilename();
+//				System.out.println(orgName);
+//
+//				// 확장자
+//				String exName = freeboardImg.get(i).getOriginalFilename()
+//						.substring(freeboardImg.get(i).getOriginalFilename().lastIndexOf("."));
+//				System.out.println(exName);
+//
+//				// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+//				String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+//				System.out.println(saveName);
+//
+//				// 파일패스
+//				String filePath = saveDir + "\\" + saveName;
+//				System.out.println(filePath);
+//
+//				// 파일 서버하드디스크에 저장
+//				try {
+//					byte[] fileData = freeboardImg.get(i).getBytes();
+//					OutputStream out = new FileOutputStream(filePath);
+//					BufferedOutputStream bout = new BufferedOutputStream(out);
+//
+//					bout.write(fileData);
+//					bout.close();
+//
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//
+//				FreeBoardImgVo freeBoardImgVo = new FreeBoardImgVo();
+//				freeBoardImgVo.setImg(saveName);
+//				freeBoardImgVo.setBoardNo(freeBoardVo.getBoardNo());
+//
+//				boardCount += reviewBoardDao.addMultiImg(freeBoardImgVo);
+//				
+//			} else if(fileSize == 0){
+//				//이미지 업로드 하지 않고 글만 쓰는 경우
+//				boardCount = reviewBoardDao.boardInsert2(freeBoardVo);
+//				
+//			}
+//		}
+//		
+//		return boardCount;
+//		
+//	}
 	
 	//2021.10.07 by 원호
 	//자유게시판 리스트,페이징,검색

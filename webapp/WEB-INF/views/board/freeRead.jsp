@@ -16,6 +16,8 @@
 <script type="text/javascript"
 src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <title></title>
+
+
 </head>
 <body>
 
@@ -396,32 +398,32 @@ function render(freeBoardVo, type){
 
 //댓글 쓰기 (버튼을 눌러서 id값이 넘어와 실행되는 자바스크립트 구문)
 $(document).on("click","#boardComment", function(){
-var commentContent=$("#commentContent").val(); //댓글 내용
-var boardNo="${freeBoardVo.boardNo}"; //게시물 번호
-var userNo="${authUser.userNo}";
-//var param={ "replytext": replytext, "bno": bno};
-console.log("등록버튼 클릭")
-console.log(commentContent)
-console.log(boardNo)
-console.log(userNo)
+	var commentContent=$("#commentContent").val(); //댓글 내용
+	var boardNo="${freeBoardVo.boardNo}"; //게시물 번호
+	var userNo="${authUser.userNo}";
+	//var param={ "replytext": replytext, "bno": bno};
+	console.log("등록버튼 클릭")
+	console.log(commentContent)
+	console.log(boardNo)
+	console.log(userNo)
+	
+	var freeBoardVo = {
+		commentContent : commentContent,
+		boardNo : boardNo,
+		userNo : userNo
+	}
+	
+	console.log(freeBoardVo)
 
-var freeBoardVo = {
-	commentContent : commentContent,
-	boardNo : boardNo,
-	userNo : userNo
-}
-
-console.log(freeBoardVo)
-
-if(commentContent.length < 1){
-	  alert("내용을 입력해 주세요")
-	  return false;
-}
-
-if(userNo < 1){
-	  alert("로그인을 해주세요")
-	  return false;
-}
+	if(commentContent.length < 1){
+		  alert("내용을 입력해 주세요")
+		  return false;
+	}
+	
+	if(userNo < 1){
+		  alert("로그인을 해주세요")
+		  return false;
+	}
 
 
 	//데이터 ajax방식으로 서버에 전송
@@ -511,36 +513,36 @@ $("#commentContent").keyup(function e(e){
 
 //2021.10.16 by 원호
 //이전글
-// $("#prevNum").on("click", function(){
-// 	console.log("이전글 클릭")
+$("#prevNum").on("click", function(){
+	console.log("이전글 클릭")
 	
-// 	var boardNo = "${freeBoardVo.boardNo}"
-// 	console.log(boardNo)
-// 	//데이터 ajax방식으로 서버에 전송
-// 	$.ajax({
+	var boardNo = "${freeBoardVo.boardNo}"
+	console.log(boardNo)
+	//데이터 ajax방식으로 서버에 전송
+	$.ajax({
 		
-// 		url : "${pageContext.request.contextPath }/board/prev",
-// 		type : "get",
-// 		//contentType : "application/json",	//json방식으로 보내겠다!
-// 		data : freeBoardVo,
+		url : "${pageContext.request.contextPath }/board/prev",
+		type : "post",
+		//contentType : "application/json",	//json방식으로 보내겠다!
+		data : boardNo,
 		
-// 		dataType : "json",
-// 		success : function(freeBoardVo){
-// 			/*성공시 처리해야될 코드 작성*/
-// 			console.log(freeBoardVo);
-// 			render(freeBoardVo, "up");
-				
-// 			//입력폼 초기화
-// 			$("#commentContent").val("");	//()안에 ""있으면 값 비워줌
-// 		},
-// 		error : function(XHR, status, error) {
-// 			console.error(status + " : " + error);
-// 		}
-// 	});
+		dataType : "json",
+		success : function(boardNo){
+			/*성공시 처리해야될 코드 작성*/
+			console.log(boardNo);
+			
+			return "board/freeRead";
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
 	
-// })
+})
 
 
+//사이트 파라미터 숨기는거
+history.replaceState({}, null, location.pathname);
 
 
 </script>

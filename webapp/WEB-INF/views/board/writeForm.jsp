@@ -174,8 +174,13 @@ $(function(){
         $("#boardForm").submit();
     })
 }) 
+	
+	
+function StatusText() {
+	window.status = "나타낼 문구";
+	setTimeout("StatusText()", 0);
+}	
+	StatusText();
 
 </script>
-
-
 </html>

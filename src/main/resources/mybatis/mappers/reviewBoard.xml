@@ -630,9 +630,11 @@
 		<![CDATA[ 
 				insert into FreeBoardImg
 				values (
+						freeboardimgNo.nextval,
 						#{boardNo},
 						#{img}
-				) ]]>
+				) 
+		]]>
 	</insert>
 	
 	<!-- 2021.10.07 by 원호 -->
