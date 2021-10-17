@@ -280,6 +280,30 @@
 
 <script type="text/javascript">
 
+//2021.10.17 by 서현 -- 테마 상세페이지에서 리뷰 작성하기 눌렀을때
+	function getParameterByName(name) {
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex
+				.exec(location.search);
+		return results === null ? "" : decodeURIComponent(results[1].replace(
+				/\+/g, " "));
+	}
+	
+	
+	$(document).ready(function() {
+
+		var sidoDetail = getParameterByName('sidoDetail');
+		var cafeName = getParameterByName('cafeName');
+		var themeName = getParameterByName('themeName');
+		
+
+		$(".region").val('"'+sidoDetail+'"').prop("selected", true);
+		$("#cafeName").val('"'+cafeName+'"').prop("selected", true);
+		$("#themeName").val('"'+themeName+'"').prop("selected", true);
+		
+	});
+
+
 //2021.09.29 by 원호
 //후기게시판 지역 선택
 $(".region").on("change", function() {

@@ -524,7 +524,7 @@ public class CafeService {
 		List<String> sidoDetail = themeSearchVo.getSidoDetail();
 		List<String> jenre = themeSearchVo.getJenre();
 		List<String> themeType = themeSearchVo.getThemeType();
-		List<Integer> headCount = themeSearchVo.getHeadCount();
+		int headCount = themeSearchVo.getHeadCount();
 		List<String> levels = themeSearchVo.getLevels();
 		List<String> activity = themeSearchVo.getActivity();
 		

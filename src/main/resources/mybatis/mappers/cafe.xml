@@ -58,7 +58,7 @@
 	<!-- 카페 한개 정보 가져오기 -->
 	<select id="getCafe" parameterType="int" resultType="com.nextroom.vo.CafeVo">
 		<![CDATA[
-			select cafeName, cafeHp, openTime, closeTime, 
+			select cafeNo, cafeName, cafeHp, openTime, closeTime, 
 				   cafeIntro, url, cafeImg, postCode, address, addressDetail, printAddress, sido, sigungu, sidoDetail, latitude, longitude
 			from cafe
 			where cafeNo = #{cafeNo}
@@ -582,8 +582,10 @@
 				#{themeType}
 			</foreach>
 		</if>
-		<!-- <if test="headCount != null"> and th.pMin in <foreach item="headCount" collection="headCount" open="(" close=")" separator=","> #{headCount} </foreach> 
-			</if> -->
+		<if test="headCount > 0"> 
+			<![CDATA[and th.pMin  <=  #{headCount}]]>
+			<![CDATA[and th.pMax  >=  #{headCount}]]>
+		</if>
 		<if test="levels != null and levels !=''">
 			and th.levels in
 			<foreach item="levels" collection="levels" open="(" close=")" separator=",">
@@ -652,6 +654,7 @@
 			        and th.state = 'available'
 			        order by a.arating desc, a.reviewCount desc, a.afeellevel desc)r
 			where rownum<=10
+			and r.reviewCount >= 50
 			order by arating desc
 		]]>
 

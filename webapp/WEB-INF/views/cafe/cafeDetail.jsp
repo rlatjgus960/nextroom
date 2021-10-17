@@ -65,8 +65,7 @@
 						</div>
 
 						<div id="cafe_detail_btn">
-							<button class="cbutton" id="cafe_wish">관심카페등록</button>
-							<button class="cbutton" id="cafe_reserv">예약하기</button>
+							<button onclick="location.href = '${pageContext.request.contextPath }/reserve/reserveBaseForm?sidoDetail=${detailMap.cafeVo.sidoDetail}&cafeNo=${detailMap.cafeVo.cafeNo }&cafeName=${detailMap.cafeVo.cafeName }&rKey=cafeReserve'" class="cbutton" id="cafe_reserv">예약하기</button>
 							<button onclick="window.open('${detailMap.cafeVo.url}')" class="cbutton" id="cafe_site">공식사이트</button>
 						</div>
 					</div>
@@ -78,10 +77,17 @@
 				<!-- 이미지 반복영역 -->
 				<div class="scroll-image">
 
-					<c:forEach items="${detailMap.inteList}" var="inteList" varStatus="status">
-						<img alt="" src="${pageContext.request.contextPath }/upload/${inteList.img}" />
-					</c:forEach>
-
+					<c:if test="${not empty detailMap.inteList}">
+						<c:forEach items="${detailMap.inteList}" var="inteList" varStatus="status">
+							<img alt="" src="${pageContext.request.contextPath }/upload/${inteList.img}" />
+						</c:forEach>
+					</c:if>
+					<c:if test="${empty detailMap.inteList}">
+						<img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/noImg1.png" />
+						<img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/noImg1.png" />
+						<img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/noImg1.png" />
+						<img alt="" src="${pageContext.request.contextPath }/assets/image/cafe/noImg1.png" />
+					</c:if>
 				</div>
 				<!-- //이미지 반복영역 -->
 
@@ -89,68 +95,68 @@
 
 
 
-<!-- 			<div id="cafe_detail_price"> -->
+			<!-- 			<div id="cafe_detail_price"> -->
 
-<!-- 				<p>| 가격</p> -->
-<%-- 				<c:if test="${not empty detailMap.themeList}"> --%>
-				
-				
-
-
-
-<!-- 					<table id="cafe_priceTable" style="display: table; table-layout: fixed"> -->
-
-
-<!-- 						<thead> -->
-<!-- 							<th style="display: table-cell;">인원수</th> -->
-
-<%-- 							<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status"> --%>
-
-<%-- 								<th style="display: table-cell;">${themeList.themeName }(${themeList.playTime }분)</th> --%>
-
-<%-- 							</c:forEach> --%>
-<!-- 						</thead> -->
-
-<!-- 						<tbody style="display: table-cell;"> -->
-<%-- 							<c:forEach items="${detailMap.headCountList}" var="headCountList" varStatus="status"> --%>
-<!-- 								<tr> -->
-<%-- 									<td style="display: table-cell; width: 100%;">${headCountList.headCount}인</td> --%>
-<!-- 								</tr> -->
-<%-- 							</c:forEach> --%>
-<!-- 						</tbody> -->
-
-
-<%-- 						<c:forEach items="${detailMap.allPriceList}" var="allPriceList" varStatus="status"> --%>
-
-<!-- 							<tbody style="display: table-cell; width: 100%;"> -->
-<%-- 								<c:forEach items="${allPriceList}" var="priceList" varStatus="status"> --%>
-
-<!-- 									<tr> -->
-<%-- 										<c:choose> --%>
-<%-- 											<c:when test="${priceList.price == 0}"> --%>
-<!-- 												<td style="display: table-cell; width: 100%;">-</td> -->
-<%-- 											</c:when> --%>
-<%-- 											<c:otherwise> --%>
-<%-- 												<td style="display: table-cell; width: 100%;">${priceList.price}원</td> --%>
-<%-- 											</c:otherwise> --%>
-<%-- 										</c:choose> --%>
-<!-- 									</tr> -->
-<%-- 								</c:forEach> --%>
-<!-- 							</tbody> -->
-
-<%-- 						</c:forEach> --%>
+			<!-- 				<p>| 가격</p> -->
+			<%-- 				<c:if test="${not empty detailMap.themeList}"> --%>
 
 
 
 
-<!-- 					</table> -->
-<%-- 				</c:if> --%>
-<%-- 				<c:if test="${empty detailMap.themeList}"> --%>
-<!-- 					<p>등록된 테마가 없습니다.</p> -->
-<%-- 				</c:if> --%>
+
+			<!-- 					<table id="cafe_priceTable" style="display: table; table-layout: fixed"> -->
 
 
-<!-- 			</div> -->
+			<!-- 						<thead> -->
+			<!-- 							<th style="display: table-cell;">인원수</th> -->
+
+			<%-- 							<c:forEach items="${detailMap.themeList}" var="themeList" varStatus="status"> --%>
+
+			<%-- 								<th style="display: table-cell;">${themeList.themeName }(${themeList.playTime }분)</th> --%>
+
+			<%-- 							</c:forEach> --%>
+			<!-- 						</thead> -->
+
+			<!-- 						<tbody style="display: table-cell;"> -->
+			<%-- 							<c:forEach items="${detailMap.headCountList}" var="headCountList" varStatus="status"> --%>
+			<!-- 								<tr> -->
+			<%-- 									<td style="display: table-cell; width: 100%;">${headCountList.headCount}인</td> --%>
+			<!-- 								</tr> -->
+			<%-- 							</c:forEach> --%>
+			<!-- 						</tbody> -->
+
+
+			<%-- 						<c:forEach items="${detailMap.allPriceList}" var="allPriceList" varStatus="status"> --%>
+
+			<!-- 							<tbody style="display: table-cell; width: 100%;"> -->
+			<%-- 								<c:forEach items="${allPriceList}" var="priceList" varStatus="status"> --%>
+
+			<!-- 									<tr> -->
+			<%-- 										<c:choose> --%>
+			<%-- 											<c:when test="${priceList.price == 0}"> --%>
+			<!-- 												<td style="display: table-cell; width: 100%;">-</td> -->
+			<%-- 											</c:when> --%>
+			<%-- 											<c:otherwise> --%>
+			<%-- 												<td style="display: table-cell; width: 100%;">${priceList.price}원</td> --%>
+			<%-- 											</c:otherwise> --%>
+			<%-- 										</c:choose> --%>
+			<!-- 									</tr> -->
+			<%-- 								</c:forEach> --%>
+			<!-- 							</tbody> -->
+
+			<%-- 						</c:forEach> --%>
+
+
+
+
+			<!-- 					</table> -->
+			<%-- 				</c:if> --%>
+			<%-- 				<c:if test="${empty detailMap.themeList}"> --%>
+			<!-- 					<p>등록된 테마가 없습니다.</p> -->
+			<%-- 				</c:if> --%>
+
+
+			<!-- 			</div> -->
 
 
 			<div id="cafe_detail_theme">
@@ -177,84 +183,47 @@
 									<a href="${pageContext.request.contextPath}/cafe/theme/${themeList.themeNo}">
 										<p class="cafe_theme_info_title">${themeList.themeName}</p>
 									</a> <span>장르 : </span><span>${themeList.jenre}</span> | <span>추천인원 : </span><span>${themeList.pRecommendMin}~${themeList.pRecommendMax}인</span><br>
-									<span>난이도 : </span>
-							<span>
-								<c:if test="${themeList.levels == 5 }">
+									<span>난이도 : </span> <span> <c:if test="${themeList.levels == 5 }">
 									★★★★★
-								</c:if>
-		
-								<c:if test="${themeList.levels == 4}">
+								</c:if> <c:if test="${themeList.levels == 4}">
 									★★★★
-								</c:if>
-		
-								<c:if test="${themeList.levels == 3}">
+								</c:if> <c:if test="${themeList.levels == 3}">
 									★★★
-								</c:if>
-		
-								<c:if test="${themeList.levels == 2}">
+								</c:if> <c:if test="${themeList.levels == 2}">
 									★★
-								</c:if>
-		
-								<c:if test="${themeList.levels == 1}">
+								</c:if> <c:if test="${themeList.levels == 1}">
 									★
 								</c:if>
-							
-							
-							</span>  | <span>플레이타임 : </span><span>${themeList.playTime}분</span><br>
-									<span>체감난이도 : </span>
-							<span>
-								<c:if test="${themeList.aFeelLevel >= 4.5 }">
+
+
+									</span> | <span>플레이타임 : </span><span>${themeList.playTime}분</span><br> <span>체감난이도 :
+									</span> <span> <c:if test="${themeList.aFeelLevel >= 4.5 }">
 									★★★★★
-								</c:if>
-		
-								<c:if test="${themeList.aFeelLevel >= 3.5 && themeList.aFeelLevel < 4.5}">
+								</c:if> <c:if test="${themeList.aFeelLevel >= 3.5 && themeList.aFeelLevel < 4.5}">
 									★★★★
-								</c:if>
-		
-								<c:if test="${themeList.aFeelLevel >= 2.5 && themeList.aFeelLevel < 3.5}">
+								</c:if> <c:if test="${themeList.aFeelLevel >= 2.5 && themeList.aFeelLevel < 3.5}">
 									★★★
-								</c:if>
-		
-								<c:if test="${themeList.aFeelLevel >= 1.5 && themeList.aFeelLevel < 2.5}">
+								</c:if> <c:if test="${themeList.aFeelLevel >= 1.5 && themeList.aFeelLevel < 2.5}">
 									★★
-								</c:if>
-		
-								<c:if test="${themeList.aFeelLevel >= 0.5 && themeList.aFeelLevel < 1.5}">
+								</c:if> <c:if test="${themeList.aFeelLevel >= 0.5 && themeList.aFeelLevel < 1.5}">
 									★
-								</c:if>
-								<c:if test="${themeList.aFeelLevel == 0}">
+								</c:if> <c:if test="${themeList.aFeelLevel == 0}">
 									-
-								</c:if>	
-								
-								(${themeList.aFeelLevel})
-							</span> | <span>평점 : </span>
-							<span>
-								<c:if test="${themeList.aRating >= 4.5 }">
+								</c:if> (${themeList.aFeelLevel})
+									</span> | <span>평점 : </span> <span> <c:if test="${themeList.aRating >= 4.5 }">
 									★★★★★
-								</c:if>
-		
-								<c:if test="${themeList.aRating >= 3.5 && themeList.aRating < 4.5}">
+								</c:if> <c:if test="${themeList.aRating >= 3.5 && themeList.aRating < 4.5}">
 									★★★★
-								</c:if>
-		
-								<c:if test="${themeList.aRating >= 2.5 && themeList.aRating < 3.5}">
+								</c:if> <c:if test="${themeList.aRating >= 2.5 && themeList.aRating < 3.5}">
 									★★★
-								</c:if>
-		
-								<c:if test="${themeList.aRating >= 1.5 && themeList.aRating < 2.5}">
+								</c:if> <c:if test="${themeList.aRating >= 1.5 && themeList.aRating < 2.5}">
 									★★
-								</c:if>
-		
-								<c:if test="${themeList.aRating >= 0.5 && themeList.aRating < 1.5}">
+								</c:if> <c:if test="${themeList.aRating >= 0.5 && themeList.aRating < 1.5}">
 									★
-								</c:if>	
-								<c:if test="${themeList.aRating == 0}">
+								</c:if> <c:if test="${themeList.aRating == 0}">
 									-
-								</c:if>	
-								
-								(${themeList.aRating})
-							</span><br> <span>유형
-										: </span><span>${themeList.themeType}</span> | <span>활동성 : </span><span>${themeList.activity}</span>
+								</c:if> (${themeList.aRating})
+									</span><br> <span>유형 : </span><span>${themeList.themeType}</span> | <span>활동성 : </span><span>${themeList.activity}</span>
 
 								</div>
 							</div>

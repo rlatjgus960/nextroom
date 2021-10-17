@@ -188,11 +188,11 @@
 						</div>
 
 						<div id="theme_people" class="theme_select_condition">
-							<label><input type="checkbox" name="headCount" value="1">혼방</label> <label><input
-								type="checkbox" name="headCount" value="2">2인</label> <label><input type="checkbox"
-								name="headCount" value="3">3인</label> <label><input type="checkbox" name="headCount"
-								value="4">4인</label> <label><input type="checkbox" name="headCount" value="5">5인</label>
-							<label><input type="checkbox" name="headCount" value="6">6인 이상</label>
+							<label><input type="radio" name="headCount" value="1">혼방</label> <label><input
+								type="radio" name="headCount" value="2">2인</label> <label><input type="radio"
+								name="headCount" value="3">3인</label> <label><input type="radio" name="headCount"
+								value="4">4인</label> <label><input type="radio" name="headCount" value="5">5인</label>
+							<label><input type="radio" name="headCount" value="6">6인 이상</label>
 						</div>
 
 						<div id="theme_level" class="theme_select_condition">
@@ -398,13 +398,10 @@
 			}
 		}
 		/* 인원 */
-		var headCountLength = $("input[name=headCount]:checked").length;
-		if(headCountLength > 0) {
-			var headCount = new Array(headCountLength);
-			for(var i=0; i<headCountLength; i++){                          
-				headCount[i] = $("input[name=headCount]:checked").eq(i).val();
-			}
-		}
+		
+		var headCount = $("input[name=headCount]:checked").val();
+		
+		
 		/* 난이도 */
 		var levelsLength = $("input[name=levels]:checked").length;
 		if(levelsLength > 0) {

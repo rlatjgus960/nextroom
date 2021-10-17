@@ -7,7 +7,7 @@ public class ThemeSearchVo {
 	private List<String> sidoDetail;
 	private List<String> jenre;
 	private List<String> themeType;
-	private List<Integer> headCount;
+	private int headCount;
 	private List<String> levels;
 	private List<String> activity;
 	private String keyword;
@@ -16,7 +16,7 @@ public class ThemeSearchVo {
 		super();
 	}
 
-	public ThemeSearchVo(List<String> sidoDetail, List<String> jenre, List<String> themeType, List<Integer> headCount,
+	public ThemeSearchVo(List<String> sidoDetail, List<String> jenre, List<String> themeType, int headCount,
 			List<String> levels, List<String> activity, String keyword) {
 		super();
 		this.sidoDetail = sidoDetail;
@@ -52,11 +52,11 @@ public class ThemeSearchVo {
 		this.themeType = themeType;
 	}
 
-	public List<Integer> getHeadCount() {
+	public int getHeadCount() {
 		return headCount;
 	}
 
-	public void setHeadCount(List<Integer> headCount) {
+	public void setHeadCount(int headCount) {
 		this.headCount = headCount;
 	}
 

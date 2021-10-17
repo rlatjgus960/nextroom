@@ -322,9 +322,9 @@
 			fetchTimeList(themeNo);
 
 			$("[name='themeNo']").val(themeNo);
-		}, 30);
+		}, 100);
 
-	}, 30);
+	}, 100);
 
 	
 	function themeSeleced(themeNo) {
