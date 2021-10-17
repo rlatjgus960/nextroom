@@ -49,7 +49,7 @@ public class UserService {
 		if(fileSize > 0) {	
 			
 		// 파일 업로드 처리
-		String saveDir = "C:\\javaStudy\\workspace_web\\nextroom\\webapp\\assets\\image\\profile";
+		String saveDir = "C:\\Javastudy\\workspace_web\\nextroom\\webapp\\assets\\image\\profile\\";
 
 		// 원래 파일 이름
 		String orgName = file.getOriginalFilename();
