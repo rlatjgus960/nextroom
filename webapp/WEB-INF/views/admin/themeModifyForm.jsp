@@ -69,8 +69,7 @@
 						</li>
 
 						<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>
-						<li class="selected"><a
-							href="${pageContext.request.contextPath }/admin/${authUser.cafeNo }/themeList">카페 테마 관리</a></li>
+						<li class="selected"><a href="${pageContext.request.contextPath }/admin/${authUser.cafeNo }/themeList">카페 테마 관리</a></li>
 					</ul>
 
 				</div>
