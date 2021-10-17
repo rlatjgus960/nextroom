@@ -245,3 +245,28 @@ a.active {
 	margin-top: 1px;
 	border-bottom: 1px solid #b9b9b9;
 }
+
+/*에러페이지*/
+.content {
+	min-height: 30px; 
+	width: 1300px; 
+	background-color: #FFFFFF; 
+	font-size:15px;
+}
+
+.subheader{
+    text-align: left;
+    border-bottom: 1px solid #b9b9b9;
+    line-height: 40px;
+    margin-bottom: 20px;
+    margin-top: 110px;
+}
+
+.subheader>#subheader-title{
+	text-align: center;
+	display: block;
+    margin-left: 18px;
+    margin-bottom: 10px;
+}
+
+

@@ -4,7 +4,7 @@ public class FreeBoardImgVo {
 
 	private int boardNo;
 	private String img;
-	
+	private int freeboardImgNo;
 	
 	
 	public FreeBoardImgVo() {
@@ -12,13 +12,12 @@ public class FreeBoardImgVo {
 	}
 
 
-
-	public FreeBoardImgVo(int boardNo, String img) {
+	public FreeBoardImgVo(int boardNo, String img, int freeboardImgNo) {
 		super();
 		this.boardNo = boardNo;
 		this.img = img;
+		this.freeboardImgNo = freeboardImgNo;
 	}
-
 
 
 	public int getBoardNo() {
@@ -26,11 +25,9 @@ public class FreeBoardImgVo {
 	}
 
 
-
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-
 
 
 	public String getImg() {
@@ -38,17 +35,28 @@ public class FreeBoardImgVo {
 	}
 
 
-
 	public void setImg(String img) {
 		this.img = img;
 	}
 
 
+	public int getFreeboardImgNo() {
+		return freeboardImgNo;
+	}
+
+
+	public void setFreeboardImgNo(int freeboardImgNo) {
+		this.freeboardImgNo = freeboardImgNo;
+	}
+
 
 	@Override
 	public String toString() {
-		return "FreeBoardImgVo [boardNo=" + boardNo + ", img=" + img + "]";
+		return "FreeBoardImgVo [boardNo=" + boardNo + ", img=" + img + ", freeboardImgNo=" + freeboardImgNo + "]";
 	}
+
+
+
 	
 	
 }

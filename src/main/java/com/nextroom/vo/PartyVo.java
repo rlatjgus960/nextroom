@@ -534,6 +534,8 @@ public class PartyVo {
 	}
 
 	
+	
+	
 	//메소드(일반)
 	@Override
 	public String toString() {

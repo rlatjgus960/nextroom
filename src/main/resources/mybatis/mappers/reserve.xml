@@ -406,7 +406,8 @@
 		<![CDATA[
 			select  id,
 					userNo,
-					userName
+					userName,
+					profile
 			from users
 		]]>
 		

@@ -134,6 +134,7 @@ public class MypageController {
 		return recordList;
 	}
 	
+	// 마이페이지 결제내역 - 모달(reservePeople)
 	@ResponseBody
 	@RequestMapping("/getTeamPlayer")
 	public List<ReserveVo> getTeamPlayer(@RequestParam("reserveNo") int reserveNo) {
@@ -147,17 +148,58 @@ public class MypageController {
 		return teamPlayerList;
 	}
 	
+	// 마이페이지 결제내역 - 모달(아이디체크 버튼 클릭)
 	@ResponseBody
 	@RequestMapping("/idCheck")
-	public int idCheck(@RequestParam("id") String id) {
+	public ReserveVo idCheck(@RequestParam("id") String id) {
 		System.out.println("mypage/idCheck");
 		System.out.println(id);
 		
-		int count = mypageService.idCheck(id);
+		ReserveVo reserveVo = mypageService.idCheck(id);
+		
+		
+		return reserveVo;
+	}
+	
+	// 마이페이지 결제내역 - 모달(수정완료 버튼 클릭)
+	@ResponseBody
+	@RequestMapping("/idUpdateDelete")
+	public int idUpdateDelete(@RequestParam("id") String id,
+						@RequestParam("reserveNo") int reserveNo, @RequestParam("userNo") int userNo) {
+		System.out.println("mypage/idUpdate");
+		
+		Map<String,Object> idMap = new HashMap<String,Object>();
+		
+		idMap.put("id", id);
+		idMap.put("reserveNo", reserveNo);
+		idMap.put("userNo", userNo);
+		
+		
+		int count = mypageService.idUpdateDelete(idMap);
 		
 		
 		return count;
 	}
+	
+	// 마이페이지 결제내역 - 모달(수정완료 버튼 클릭)
+		@ResponseBody
+		@RequestMapping("/idUpdate")
+		public int idUpdate(@RequestParam("id") String id,
+							@RequestParam("reserveNo") int reserveNo, @RequestParam("userNo") int userNo) {
+			System.out.println("mypage/idUpdate");
+			
+			Map<String,Object> idMap = new HashMap<String,Object>();
+			
+			idMap.put("id", id);
+			idMap.put("reserveNo", reserveNo);
+			idMap.put("userNo", userNo);
+			
+			
+			int count = mypageService.idUpdate(idMap);
+			
+			
+			return count;
+		}
 
 	// 마이페이지 보낸메시지
 	@RequestMapping("/sendMassage")

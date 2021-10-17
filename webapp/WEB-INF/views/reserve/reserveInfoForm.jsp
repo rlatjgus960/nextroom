@@ -162,6 +162,7 @@
                     	<input type="hidden" name="party${status.index}" value="${partyP.id }">
                     	<input type="hidden" name="partyNo${status.index}" value="${partyP.userNo }">
                     	<input type="hidden" name="partyName${status.index}" value="${partyP.userName }">
+                    	<input type="hidden" name="partyProfile${status.index}" value="${partyP.profile }">
                     </c:forEach>
 		            
 		            
@@ -203,7 +204,7 @@
 	
 	
 	var tetetetet = $("#headCountSelect").val();
-	if(tetetetet != "인원수를 입력해 주세요") {
+	if(tetetetet != "default") {
 		
 		var pay = $("[name='paypaypay']").val();
 		console.log("pay"+pay);
@@ -224,16 +225,17 @@
 			var person = $("[name='party"+i+"']").val();
 			var personNo = $("[name='partyNo"+i+"']").val();
 			var personName = $("[name='partyName"+i+"']").val();
+			var personPro = $("[name='partyProfile"+i+"']").val();
 			console.log(i+"제발되라"+person+"dfsaffafs"+personNo+"이름"+personName);
 			
-			renderParty("down", i, tetetetet, person, personNo, personName);
+			renderParty("down", i, tetetetet, person, personNo, personName, personPro);
 			
 		}
 		
 	}
 	
 	//테마 한개씩 렌더링
-	function renderParty(type, i, tetetetet, person, personNo, personName) {
+	function renderParty(type, i, tetetetet, person, personNo, personName, personPro) {
 		
 		var str = "";
 		if (i == tetetetet-1) {
@@ -265,7 +267,7 @@
 		str += '			</div>';
 		str += '		</div>';
 		str += '		<div class="reservation_partyMember_img reservation_partyMember_info_item">';
-		str += '			<img src="${pageContext.request.contextPath }/assets/image/mypageEtc/chacha.JPG">';
+		str += '			<img src="${pageContext.request.contextPath }/assets/image/profile/'+personPro+'">';
 		str += '		</div>';
 		str += '	</div>';
 		str += '</div>';
@@ -365,11 +367,11 @@
 		str += '			</div>';	 
 		
 		str += '			<div class="reservation_partyMember_info_item reservation_party_text pText'+i+'">';
-		str += '				'+playerVo.userName+'님 당신의 무사탈출을 기원합니다.';
+		str += '';
 		str += '			</div>';
 		str += '		</div>';
 		str += '		<div class="reservation_partyMember_img reservation_partyMember_info_item">';
-		str += '			<img src="${pageContext.request.contextPath }/assets/image/mypageEtc/chacha.JPG">';
+		str += '			<img src="${pageContext.request.contextPath }/assets/image/profile/defaultprofile.png">';
 		str += '		</div>';
 		str += '	</div>';
 		str += '</div>';
@@ -435,10 +437,10 @@
 			console.log(playerVo);
 			
 			console.log(playerVo.userName);
-			
 			if(playerVo.userName !== null && playerVo.userName !== undefined) {
 				$(this).parent().nextAll(".reservation_party_text").text(playerVo.userName+"님 당신의 무사탈출을 기원합니다.");
 				$(this).prev().val(playerVo.userNo);
+				$(this).parent().parent().siblings(".reservation_partyMember_img").children().attr("src","${pageContext.request.contextPath }/assets/image/profile/"+playerVo.profile+"")
 			} else {
 				$(this).parent().nextAll(".reservation_party_text").text("일치하는 사용자가 없습니다");
 			}

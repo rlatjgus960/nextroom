@@ -179,7 +179,7 @@
 	                            	<c:forEach items="${pReadMap.partyDetailList }" var="partyDetailList" varStatus="status">
 	                                <tr>
 	                                    <td>${status.count }</td>
-	                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+	                                    <td><img id="imgValue" src="${pageContext.request.contextPath }/assets/image/profile/${partyDetailList.profile }" width="80px" height="80px"></td>
 	                                    <td><c:if test="${partyDetailList.userState == '1' }"><img src="${pageContext.request.contextPath }/assets/image/party/crown1.jpg"> </c:if>${partyDetailList.nickname }</td>
 	                                    <td>${partyDetailList.rank } 위</td>
 	                                    <td>${partyDetailList.winRate } %</td>
@@ -227,7 +227,7 @@
 	                            	<c:forEach items="${pReadMap.partyDetailList }" var="partyDetailList" varStatus="status">
 	                                <tr>
 	                                    <td>${status.count }</td>
-	                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+	                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/${partyDetailList.profile }" width="80px" height="80px"></td>
 	                                    <td><c:if test="${partyDetailList.userState == '1' }"><img src="${pageContext.request.contextPath }/assets/image/party/crown1.jpg"> </c:if>${partyDetailList.nickname }</td>
 	                                    <td>${partyDetailList.rank } 위</td>
 	                                    <td>${partyDetailList.winRate } %</td>
@@ -276,7 +276,7 @@
 		                            <c:forEach items="${pReadMap.partyApplicantList }" var="partyApplicantList" varStatus="status">
 		                                <tr>
 		                                    <td>${status.count }</td>
-		                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+		                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/${partyApplicantList.profile }" width="80px" height="80px"></td>
 		                                    <td>${partyApplicantList.nickname }</td>
 		                                    <td>${partyApplicantList.rank } 위</td>
 		                                    <td>${partyApplicantList.winRate } %</td>
@@ -340,7 +340,7 @@
 				                            <c:forEach items="${pReadMap.partyApplicantList }" var="partyApplicantList" varStatus="status">
 				                                <tr>
 				                                    <td>${status.count }</td>
-				                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg" width="60px" height="60px"></td>
+				                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/${partyApplicantList.profile }" width="80px" height="80px"></td>
 				                                    <td>${partyApplicantList.nickname }</td>
 				                                    <td>${partyApplicantList.rank } 위</td>
 				                                    <td>${partyApplicantList.winRate } %</td>
@@ -960,9 +960,9 @@
    	
    	/*////방장이 예약하기 버튼을 눌렀을 경우*/
    	
+   	var imgValue = $("#imgValue").val();
    	
-   	
-   	
+   	console.log(imgValue);
    	
    	
    	

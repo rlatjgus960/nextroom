@@ -46,16 +46,20 @@ public class Board {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		System.out.println("authUser:" + authUser);
 		
-		//vo에 세션에서 가져온 no담기
-		int no = authUser.getUserNo();
-		freeBoardVo.setUserNo(no);
-		
-		
-		System.out.println(freeBoardVo);
-		reviewBoardService.boardWrite(freeBoardVo);
-		System.out.println("controller -> xml까지 갔다온거 뭐있냐" + freeBoardVo);
-		
-		return "redirect:/board/freeCommunity";
+		if(authUser != null) {
+			//vo에 세션에서 가져온 no담기
+			int no = authUser.getUserNo();
+			freeBoardVo.setUserNo(no);
+			
+			
+			System.out.println(freeBoardVo);
+			reviewBoardService.boardWrite(freeBoardVo);
+			System.out.println("controller -> xml까지 갔다온거 뭐있냐" + freeBoardVo);
+			
+			return "redirect:/board/freeCommunity";
+		}else {
+			return "error/404";
+		}
 	}
 	
 	
@@ -356,18 +360,23 @@ public class Board {
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		System.out.println("authUser:" + authUser);
 		
-		//vo에 세션에서 가져온 no담기
-		int no = authUser.getUserNo();
-		reviewBoardVo.setUserNo(no);
-		
+		if(authUser != null) {
+			//vo에 세션에서 가져온 no담기
+			int no = authUser.getUserNo();
+			reviewBoardVo.setUserNo(no);
+			
 
-		
-		System.out.println("등록할 때 갔다온거 찍어보셈" + reviewBoardVo);
-		reviewBoardService.reviewWrite(reviewBoardVo);
-		System.out.println("등록할 때 갔다온거 찍어보셈" + reviewBoardVo);
-		
-		
-		return "redirect:/board/reviewBoard";
+			
+			System.out.println("등록할 때 갔다온거 찍어보셈" + reviewBoardVo);
+			reviewBoardService.reviewWrite(reviewBoardVo);
+			System.out.println("등록할 때 갔다온거 찍어보셈" + reviewBoardVo);
+			
+			
+			return "redirect:/board/reviewBoard";
+		}else {
+			return "error/404";
+		}
+
 	}
 	
 	//2021.09.29 by 원호

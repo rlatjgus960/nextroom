@@ -350,6 +350,8 @@ public class PartyService {
 				//유저 현재순위, 닉네임, 프로필가져오기
 				PartyVo partySelectRankList = rankDao.partySelectRankList(userNo);
 				
+				String profile = userNickName.getProfile();
+				partyDetailList.get(i).setProfile(profile);
 				String nickname = userNickName.getNickname();
 				int rank = partySelectRankList.getRank();
 				
@@ -372,6 +374,9 @@ public class PartyService {
 				partyDetailList.get(i).setRank(rank);
 				partyDetailList.get(i).setNickname(nickname);
 				
+				String profile = userNickName.getProfile();
+				partyDetailList.get(i).setProfile(profile);
+
 			}
 			
 		}
@@ -424,6 +429,10 @@ public class PartyService {
 				partyApplicantList.get(i).setRank(rank);
 				partyApplicantList.get(i).setNickname(nickname);
 				
+				String profile = userNickName.getProfile();
+				partyApplicantList.get(i).setProfile(profile);
+
+				
 			} else {
 				
 				
@@ -440,6 +449,10 @@ public class PartyService {
 				int rank = 0;
 				partyApplicantList.get(i).setRank(rank);
 				partyApplicantList.get(i).setNickname(nickname);
+				
+				String profile = userNickName.getProfile();
+				partyApplicantList.get(i).setProfile(profile);
+
 				
 			}
 			

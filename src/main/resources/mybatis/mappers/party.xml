@@ -432,7 +432,8 @@
 		<![CDATA[
 			select p.userNo,
 			       u.id,
-			       u.userName
+			       u.userName,
+			       u.profile
 			from partydetail p, users u
 			where p.userNo = u.userNo
 			and p.partyNo = #{partyNo}

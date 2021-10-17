@@ -535,6 +535,10 @@ $("#commentContent").keyup(function e(e){
 	return true;
 });
 
+
+//사이트 파라미터 숨기는거
+history.replaceState({}, null, location.pathname);
+
 </script>
 
 
