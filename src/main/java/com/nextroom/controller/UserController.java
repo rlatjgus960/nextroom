@@ -50,6 +50,8 @@ public class UserController {
 			
 			if(("themeReserve").equals(rKey)) {
 				return "redirect:/cafe/theme";
+			}else if(("cafeReserve").equals(rKey)){
+				return "redirect:/cafe/"+authUser.getCafeNo(); 
 			}else{
 				return "redirect:/mypage/main"; 
 			}
