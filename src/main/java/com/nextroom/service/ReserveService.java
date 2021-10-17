@@ -127,7 +127,7 @@ public class ReserveService {
 	public Map<String, Object> getResevInfo(Map<String, Object> rMap, int crtPage) {
 		System.out.println("[ReserveService.getResevInfo()]");
 		
-		int listCnt = 3; 
+		int listCnt = 5; 
 		
 		
 		//crtPage 계산(- 값일 때 --> 1page 처리)
