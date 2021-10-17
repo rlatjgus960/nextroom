@@ -115,7 +115,7 @@
 
                              <div id="fileUp"> 
                              	<p>이미지 업로드</p> 
-                             	<input type="file" name="boardImgFile" multiple="multiple"> 
+                             	<input type="file" name="boardImgFile"> 
                              </div>
 
 							<div id="text_tool">

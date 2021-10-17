@@ -287,6 +287,7 @@
 	<!-- 2021.10.06 by 원호 -->
 	<!-- 게시글 수정 -->
 	<update id="update2" parameterType = "int">
+	<![CDATA[
 		update review
 		set  reviewTitle = #{reviewTitle}
 		    ,reviewContent = #{reviewContent}
@@ -300,11 +301,13 @@
 		    ,reviewImg = #{reviewImg}
 		where reviewNo = #{reviewNo}
 		and userNo= #{userNo}
+		]]>
 	</update>
 	
 	<!-- 2021.10.06 by 원호 -->
 	<!-- 게시글 수정 -->
 	<update id="update" parameterType = "int">
+	<![CDATA[
 		update review
 		set  reviewTitle = #{reviewTitle}
 		    ,reviewContent = #{reviewContent}
@@ -317,6 +320,7 @@
 		    ,memberNum = #{memberNum}
 		where reviewNo = #{reviewNo}
 		and userNo= #{userNo}
+		]]>
 	</update>
 	
 
@@ -408,7 +412,8 @@
 				        )	
 			]]> 
 		</insert>
-		
+
+
 		<!-- 2021.10.07 by 원호 -->
 		<!-- 자유게시판 글등록(글만등록할 경우) -->
 		<insert id="boardInsert2" parameterType = "FreeBoardVo"> 
@@ -624,6 +629,28 @@
 		]]>
 	</delete>
 	
+	<!-- 2021.10.07 by 원호 -->
+	<!-- 자유게시판 글등록(이미지 포함할 경우) -->
+<!-- 	<insert id="boardInsert" parameterType = "FreeBoardVo"> 
+		<selectKey keyProperty="boardNo" resultType="int" order="BEFORE">
+			select boardNo.nextval from dual
+		</selectKey>
+		<![CDATA[ 
+			insert into freeboard
+			values ( #{boardNo}
+			        ,#{userNo}
+			        ,#{boardTitle}
+			        ,#{boardContent}
+			        ,sysdate
+			        ,#{boardHit}
+			        ,#{boardLike}
+			        ,null
+			        )	
+		]]> 
+	</insert> -->
+	
+	
+	
 	<!-- 2021.10.10 by 원호 -->
 	<!-- 멀티 이미지 추가 -->
 	<insert id="addMultiImg" parameterType="com.nextroom.vo.FreeBoardImgVo"> 
@@ -730,5 +757,31 @@
             and bc.commentNo = #{commentNo}
 		]]>
 	</select>
+	
+	
+	<!-- 2021.10.17 by 원호 -->
+	<!-- 게시글 수정 -->
+ 	<update id="freeupdate" parameterType = "int">
+	<![CDATA[
+		update freeboard
+		set  boardTitle = #{boardTitle}
+		    ,boardContent = #{boardContent}
+		    ,boardImg = #{boardImg}
+		where boardNo = #{boardNo}
+		and userNo= #{userNo}
+		]]>
+	</update>
+	
+	<!-- 2021.10.17 by 원호 -->
+	<!-- 게시글 수정 -->
+	<update id="freeupdate2" parameterType = "int">
+	<![CDATA[
+		update freeboard
+		set  boardTitle = #{boardTitle}
+		    ,boardContent = #{boardContent}
+		where boardNo = #{boardNo}
+		and userNo= #{userNo}
+		]]>
+	</update>
 	
 </mapper>

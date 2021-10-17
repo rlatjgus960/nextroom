@@ -183,6 +183,10 @@ public class FreeBoardVo {
 				+ ", commentContent=" + commentContent + ", commentDate=" + commentDate + "]";
 	}
 
+	
 
+	
+	
+	
 	
 }

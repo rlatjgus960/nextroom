@@ -164,23 +164,20 @@ public class ReviewBoardDao {
 	
 	//2021.10.07 by 원호
 	//글 수정
-//	public int modify(ReviewBoardVo reviewBoardVo) {
-//		System.out.println("Dao.modify");
-//		
-//		return sqlSession.update("reviewBoard.update",reviewBoardVo);
-//	}
-	
 	public int modify(ReviewBoardVo reviewBoardVo) {
 		System.out.println("Dao.modify");
 		
 		return sqlSession.update("reviewBoard.update",reviewBoardVo);
 	}
 	
+	//2021.10.17 by 원호
+	//글 수정
 	public int modify2(ReviewBoardVo reviewBoardVo) {
-		System.out.println("Dao.modify2");
+		System.out.println("Dao.modify");
 		
 		return sqlSession.update("reviewBoard.update2",reviewBoardVo);
 	}
+	
 	
 	//2021.10.10 by 원호
 	//게시글 추천
@@ -367,6 +364,24 @@ public class ReviewBoardDao {
 		System.out.println("Dao.freeModify");
 		
 		return sqlSession.selectOne("reviewBoard.selectFreeBoard", boardNo);
+	}
+	
+	
+	//2021.10.12 by 원호
+	//자유게시판 게시글 수정
+	public int freemodify(FreeBoardVo freeBoardVo) {
+		System.out.println("Dao.modify");
+		
+		return sqlSession.update("reviewBoard.freeupdate",freeBoardVo);
+	}
+	
+	
+	//2021.10.12 by 원호
+	//자유게시판 게시글 수정
+	public int freemodify2(FreeBoardVo freeBoardVo) {
+		System.out.println("Dao.modify");
+		
+		return sqlSession.update("reviewBoard.freeupdate2",freeBoardVo);
 	}
 	
 	//2021.10.15 by 원호

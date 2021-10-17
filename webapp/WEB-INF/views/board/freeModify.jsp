@@ -101,7 +101,7 @@
                     <!-- 글등록 공간 -->
                     <div id="writecontent_area">
 
-						<form id="boardForm" action="freeModify" method="post" enctype="multipart/form-data"> 
+						<form id="boardForm" action="freemodify" method="post" enctype="multipart/form-data"> 
 							<div id="content_title">
 								<input type="text" id="boardTitle" name="boardTitle" value="${freeBoardVo.boardTitle }">
 							</div>
@@ -123,7 +123,8 @@
 								<textarea id="boardContent" name="boardContent" rows="50" cols="96" style="width: 1015px;">${freeBoardVo.boardContent}</textarea>
 							</div>
 							<!-- 글등록 버튼 -->
-							<button id="btn_save" type="submit">글등록</button>
+							<button id="btn_save" type="submit">글수정</button>
+							<input type="hidden" name="boardNo" value="${freeBoardVo.boardNo}">
 						</form>
                     </div>
 					<!-- //글등록 공간 -->

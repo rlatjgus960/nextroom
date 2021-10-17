@@ -217,6 +217,22 @@ public class Board {
 		
 	}
 	
+	//2010.10.17 by 원호
+	//글 수정
+	@RequestMapping(value="freemodify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String freemodify(@ModelAttribute FreeBoardVo freeBoardVo,  HttpSession session) {
+		System.out.println("Controller.freemodify");
+		System.out.println(freeBoardVo);
+		
+		//로그인한 사용자만 수정
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		freeBoardVo.setUserNo(authUser.getUserNo());
+		
+		reviewBoardService.freemodify(freeBoardVo);
+		
+		return "redirect:/board/freeCommunity";
+	}
+	
 	//2021.10.15 by 원호
 	//댓글 리스트
 	@ResponseBody
@@ -247,16 +263,6 @@ public class Board {
 		System.out.println("리절트븨오"+resultVo);
 		return resultVo;
 	}
-	
-
-	//2021.10.16 by 원호
-	//이전글
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value="/prev", method = {RequestMethod.GET,
-	 * RequestMethod.POST}) public
-	 */
 //////////////////////////////////////////////////////////////////
 /*후기 게시판*/
 	//2021.10.02 by 원호

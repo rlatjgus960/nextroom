@@ -520,12 +520,14 @@ public class ReviewBoardService {
 		
 	}
 	
-	
+
 	//2021.10.07 by 원호
 	//자유게시판 글 등록
 //	public int boardWrite(FreeBoardVo freeBoardVo) {
 //		System.out.println("Service.reviewWrite");
 //		System.out.println("[Service Vo정보]" + freeBoardVo);
+//		
+//		
 //		
 //		// ******************** 자유게시판 이미지 처리 ********************/
 //		List<FreeBoardImgVo> freeImgList = new ArrayList();
@@ -533,6 +535,9 @@ public class ReviewBoardService {
 //		List<MultipartFile> freeboardImg = freeBoardVo.getMultiImgFile();
 //		
 //		int boardCount = 0;
+//		
+//		
+//		boardCount = reviewBoardDao.boardInsert(freeBoardVo);
 //		
 //		for(int i = 0; i < freeboardImg.size(); i++) {
 //			long fileSize = freeboardImg.get(i).getSize();
@@ -820,6 +825,74 @@ public class ReviewBoardService {
 		FreeBoardVo freeBoardVo = reviewBoardDao.freeModify(boardNo);
 		
 		return freeBoardVo;
+	}
+	
+	
+	//2021.10.17 by 원호
+	//게시글 수정
+	public int freemodify(FreeBoardVo freeBoardVo) {
+		System.out.println("[Service.freemodify]");
+		System.out.println(freeBoardVo);
+		
+		// ******************** 자유게시판 이미지 처리 ********************//
+		MultipartFile file = freeBoardVo.getBoardImgFile();
+		long fileSize = file.getSize();
+		System.out.println("fileSize " + fileSize);
+
+		int boardCount = 0;
+
+		if (fileSize > 0) {
+
+			String saveDir = "C:\\javaStudy\\workspace_web\\nextroom\\upload\\";
+
+			System.out.println(file.getOriginalFilename());
+			System.out.println(file.getSize());
+
+			// 원파일이름
+			String orgName = file.getOriginalFilename();
+			System.out.println(orgName);
+
+			// 확장자
+			String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+			System.out.println(exName);
+
+			// 저장파일이름(관리때문에 겹치지 않는 새 이름 부여)
+			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+			System.out.println(saveName);
+
+			// 파일패스
+			String filePath = saveDir + "\\" + saveName;
+			System.out.println(filePath);
+
+			// 파일 서버하드디스크에 저장
+			try {
+				byte[] fileData = file.getBytes();
+				OutputStream out = new FileOutputStream(filePath);
+				BufferedOutputStream bout = new BufferedOutputStream(out);
+
+				bout.write(fileData);
+				bout.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			freeBoardVo.setBoardImg(saveName);
+
+			boardCount = reviewBoardDao.freemodify2(freeBoardVo);
+
+			System.out.println("ReviewInsert 후 Vo : " + freeBoardVo);
+
+			
+		} else if(fileSize == 0){
+			//이미지 업로드 하지 않고 글만 쓰는 경우
+			boardCount = reviewBoardDao.freemodify(freeBoardVo);
+			
+		}
+		// ******************** //카페 메인 이미지 처리 ********************/
+		
+		return reviewBoardDao.freemodify(freeBoardVo);
 	}
 	
 	
