@@ -85,6 +85,21 @@ public class MypageDao {
 		
 		return sqlSession.selectOne("mypage.idCheck", id);
 	}
+	
+	public int idUpdateDelete(Map<String,Object> idMap) {
+		System.out.println("[MypageDao.idUpdateDelete]");
+		
+		sqlSession.delete("mypage.deleteReservePeople", idMap);
+		
+		return sqlSession.insert("mypage.insertReservePeople", idMap);
+	}
+	
+	public int idUpdate(Map<String,Object> idMap) {
+		System.out.println("[MypageDao.idUpdate]");
+		
+		
+		return sqlSession.insert("mypage.insertReservePeople", idMap);
+	}
 	/**************************************************************************************/
 	
 	

@@ -123,27 +123,7 @@
 							</c:forEach>
 							
 							
-							<tr class="reserveModal">
-								<td>2021.08.27</td>
-								<td>15 : 30</td>
-								<td>2021082701</td>
-								<td>비밀의화원 미드나잇</td>
-								<td>팩토리 엠</td>
-								<td>2인</td>
-								<td>50,000원</td>
-								<td>탈출예약</td>
-							</tr>
-
-							<tr class="gameComModal">
-								<td>2021.07.08</td>
-								<td>19 : 30</td>
-								<td>2021070822</td>
-								<td>싸인이스케이프 홍대점</td>
-								<td>하이팜</td>
-								<td>1인</td>
-								<td>23,000원</td>
-								<td>탈출완료</td>
-							</tr>
+							
 
 						</table>
 					</div>
@@ -420,7 +400,7 @@
 				console.log("이게 뭐냐"+hc);
 				//화면에 그리기
 				for (var i = 0; i < hc; i++) {
-					renderTeam(teamPlayerList[i], "down", i,hc);
+					renderTeam(teamPlayerList[i], "down", i,hc, reserveNo);
 				}
 				
 			},
@@ -432,7 +412,7 @@
 	}
 	
 	//테마 한개씩 렌더링
-	function renderTeam(ReserveVo, type, i, hc) {
+	function renderTeam(ReserveVo, type, i, hc, reserveNo) {
 		
 		if(ReserveVo != null) {
 			var str = "";
@@ -441,8 +421,8 @@
 			str += '			<option value="member" selected>회원</option>';
 			str += '			<option value="nonmember">비회원</option>';
 			str += '		</select> <span>팀원 '+(i+1)+' (회원아이디)</span> <input class="playerId" name="playerId'+i+'" type="text" value="'+ReserveVo.id+'">';
-			str += '';
-			str += '		<button id="btnIdCheck" class="mbutton">아이디 확인</button>';
+			str += '		<input class="playerNo" name="playerNo'+i+'" type="hidden" value="'+ReserveVo.userNo+'">';
+			str += '		<button id="btnIdCheck" class="mbutton" data-idchno="'+i+'">아이디 확인</button>';
 			str += '	</div>';
 		} else {
 			var str = "";
@@ -451,15 +431,14 @@
 			str += '			<option value="member">회원</option>';
 			str += '			<option value="nonmember" selected>비회원</option>';
 			str += '		</select> <span>팀원 '+(i+1)+' (회원아이디)</span> <input class="playerId" name="playerId'+i+'" type="text" value="">';
-			str += '';
-			str += '		<button id="btnIdCheck" class="mbutton">아이디 확인</button>';
+			str += '		<input class="playerNo" name="playerNo'+i+'" type="hidden" value="">';
+			str += '		<button id="btnIdCheck" class="mbutton" data-idchno="'+i+'">아이디 확인</button>';
 			str += '	</div>';	
 		}
 		
 		if(i == (hc-1)) {
 			str += '<div id="myPayment_Info_Btn">';
-			str += '	<button class="mbutton">수정완료</button>';
-			str += '	<button class="mbutton">수정취소</button>';
+			str += '	<button id="updateBtn" class="mbutton" data-ino="'+(i+1)+'" data-reservenum="'+reserveNo+'">수정완료</button>';
 			str += '</div>';
 		}
 		
@@ -498,7 +477,10 @@
 			alert("회원 상태로 변경해주세요");
 		} else {
 			var id = ($(this).siblings(".playerId")).val();
-			console.log(id);
+			//console.log(id);
+			
+			var help = $(this).data("idchno");
+			//console.log("heldpda"+help);
 			
 			$.ajax({
 				url : "${pageContext.request.contextPath }/mypage/idCheck",
@@ -506,13 +488,15 @@
 				data : {id: id}, 
 				
 				//dataType : "json",
-				success : function(count){
+				success : function(reserveVo){
 				/*성공시 처리해야될 코드 작성*/
 				
-				console.log(count);
+				console.log(reserveVo);
 				
-				
-				if(count == 1) {
+				if(reserveVo != null) {
+					var numnum = reserveVo.userNo;
+					console.log(numnum+"numnum");
+					$("[name='playerNo"+help+"'").val(reserveVo.userNo);
 					console.log("아이디 맞음");
 					alert("아이디가 존재합니다");
 				} else {
@@ -532,7 +516,69 @@
 	
 	
 	
-	
+	$("#myPayment_Info").on("click", "#updateBtn", function() {
+		console.log("Hello");
+		var No = $(this).data("ino");
+		console.log("No"+No);
+		var reserveNo = $(this).data("reservenum");
+		
+		for(var i=0; i<No; i++) {
+			var testT = $("[name='playerId"+i+"']").val();
+			var testUserNo = $("[name='playerNo"+i+"']").val();
+			console.log(testT+"testtste"+testUserNo+"testUserNo");
+			
+			if(i == 0) {
+				$.ajax({
+					url : "${pageContext.request.contextPath }/mypage/idUpdateDelete",
+					type : "post",
+					data : {id: testT,
+							reserveNo : reserveNo,
+							userNo : testUserNo}, 
+					
+					//dataType : "json",
+					success : function(count){
+					/*성공시 처리해야될 코드 작성*/
+					
+					console.log("count"+count);
+					
+					
+					
+					
+					},
+					error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+					}
+				});
+			} else {
+				$.ajax({
+					url : "${pageContext.request.contextPath }/mypage/idUpdate",
+					type : "post",
+					data : {id: testT,
+							reserveNo : reserveNo,
+							userNo : testUserNo}, 
+					
+					//dataType : "json",
+					success : function(count){
+					/*성공시 처리해야될 코드 작성*/
+					
+					console.log("count"+count);
+					
+					
+					
+					
+					},
+					error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+					}
+				});
+			}
+			
+			
+		}
+		
+		$("#paymentDetail_modal").attr("style", "display:none");
+		document.body.classList.remove("stop-scroll");
+	});
 	
 	
 	

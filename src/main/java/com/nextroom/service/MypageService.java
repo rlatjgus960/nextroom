@@ -188,19 +188,27 @@ public class MypageService {
 		return teamPlayerList;
 	}
 	
-	public int idCheck(String id) {
+	public ReserveVo idCheck(String id) {
 		System.out.println("[MypageService.idCheck]");
 		
 		
 		ReserveVo reserveVo =mypageDao.idCheck(id);
 		
-		System.out.println(reserveVo);
-		if(reserveVo != null) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return reserveVo;
+	}
+	
+	public int idUpdateDelete(Map<String,Object> idMap) {
+		System.out.println("[MypageService.idUpdateDelete]");
 		
+		
+		return mypageDao.idUpdateDelete(idMap);
+	}
+	
+	public int idUpdate(Map<String,Object> idMap) {
+		System.out.println("[MypageService.idUpdate]");
+		
+		
+		return mypageDao.idUpdate(idMap);
 	}
 	
 	

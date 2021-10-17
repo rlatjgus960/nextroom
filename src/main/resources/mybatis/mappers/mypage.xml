@@ -159,7 +159,9 @@
 	<select id="selectPlayerList" parameterType="int" resultType="com.nextroom.vo.ReserveVo">
 		<![CDATA[
 			select  r.reservePerson,
-			        u.id
+			        u.id,
+			        r.reserveNo,
+			        u.userNo
 			from reserve r, users u, reservePeople rp
 			where r.reserveNo = rp.reserveNo
 			and rp.userNo = u.userNo
@@ -180,5 +182,26 @@
 				
 	</select>
 	
+
+	<delete id="deleteReservePeople" parameterType="map">
+		<![CDATA[
+			delete from reservePeople
+			where reserveNo = #{reserveNo}
+		]]>
+	</delete>
+	
+	<!-- post 추가 -->
+	<insert id="insertReservePeople" parameterType="map">
+		<![CDATA[
+			insert into reservePeople
+			values (
+			    reserveMemberNo.nextval,
+			    #{reserveNo},
+			    #{userNo}
+			)
+
+		]]>
+	</insert>
+
 
 </mapper>
