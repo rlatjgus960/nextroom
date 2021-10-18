@@ -114,7 +114,7 @@
 						<div id="reservation_main_content" class="clearfix">
 							<div id="reservation_main_content_calendar">
 								<div id="datepicker"></div>
-								<input type="text" id="datepicker2" name="reserveDate">
+								<input type="hidden" id="datepicker2" name="reserveDate">
 							</div>
 							<div id="reservation_main_content_region">
 								<p id="all" class="region" data-region-no=1>전국</p>
@@ -154,8 +154,8 @@
 							<button id="resBtn" class="mbutton">예약하기</button>
 						</div>
 
-						<input type="text" name="cafeNo" value=""> <input type="text" name="themeNo" value="">
-						<input type="text" name="themeTime" value=""> <input type="text" name="themeTimeNo"
+						<input type="hidden" name="cafeNo" value=""> <input type="hidden" name="themeNo" value="">
+						<input type="hidden" name="themeTime" value=""> <input type="hidden" name="themeTimeNo"
 							value="">
 
 					</form>
