@@ -410,7 +410,7 @@
 			success : function(reserveModalVo) {
 				console.log(reserveModalVo);
 				
-				var path = "${pageContext.request.contextPath }/assets/image/" + reserveModalVo.themeImg;
+				var path = "${pageContext.request.contextPath }/upload/" + reserveModalVo.themeImg;
 				var time = reserveModalVo.reserveTime.split(":");
 				
 				var year = (reserveModalVo.reserveDate).substring(0,4);
