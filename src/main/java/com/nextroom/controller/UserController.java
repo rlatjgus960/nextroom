@@ -52,7 +52,11 @@ public class UserController {
 				return "redirect:/cafe/theme";
 			}else if(("cafeReserve").equals(rKey)){
 				return "redirect:/cafe/"+authUser.getCafeNo(); 
-			}else{
+			}
+			else if(("party").equals(rKey)) {
+				return "redirect:/party/partyList";
+			}
+			else{
 				return "redirect:/mypage/main"; 
 			}
 		} else { //로그인 실패하면

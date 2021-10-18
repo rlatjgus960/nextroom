@@ -60,7 +60,7 @@
                   
                 <div class="detail_profile clearfix">
                    
-                    <span><img class="detail_profile_img" src="../../../assets/image/profile/red.jpg"></span>
+                    <span><img class="detail_profile_img" src="${pageContext.request.contextPath}/assets/image/profile/${detailMap.statVo.profile }"></span>
                    
                     <div class="nick_box">
                     <span class="detail_profile_nickname">${detailMap.statVo.nickName}</span>

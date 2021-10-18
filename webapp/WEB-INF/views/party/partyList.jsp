@@ -341,7 +341,7 @@
 	        }).then((result) => {
 	        	
 	             if (result.isConfirmed) {
-	            	 window.location.assign('http://localhost:8088/nextroom/user/loginForm');
+	            	 window.location.assign('http://localhost:8088/nextroom/user/loginForm?rKey=party');
 	             }
 	        });
 			

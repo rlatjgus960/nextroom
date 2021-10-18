@@ -104,7 +104,7 @@ public class AdminRecordController {
 
 		recordService.modifyRecord(recordVo, members);
 
-		return "redirect:/admin/record/modify/"+cafeNo;
+		return "redirect:/admin/record/modify/" + cafeNo;
 	}
 
 }

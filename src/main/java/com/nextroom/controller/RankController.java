@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
+import com.nextroom.service.CafeService;
 import com.nextroom.service.RankService;
+import com.nextroom.vo.CafeVo;
 import com.nextroom.vo.RatingVo;
 import com.nextroom.vo.ThemeRankVo;
 
@@ -25,6 +26,8 @@ public class RankController {
 
 	@Autowired
 	RankService rankService;
+	@Autowired
+	CafeService cafeService;
 
 	@RequestMapping("/user")
 	public String userRank(Model model) {
@@ -40,14 +43,19 @@ public class RankController {
 	}
 
 	@RequestMapping("/theme")
-	public String themeRank(Model model, 
+	public String themeRank(Model model,
 			@RequestParam(value = "List", required = false, defaultValue = "rating") String listType) {
 		System.out.println("[테마랭크 컨트롤러]");
 
+		List<CafeVo> tList = cafeService.get10Theme();
 		List<ThemeRankVo> rankList = rankService.getThemeRankList(listType);
+
+
+		System.out.println("티리스트"+tList);
 		
 		model.addAttribute("rankList", rankList);
-
+		model.addAttribute("tList", tList);
+		
 		return "rank/theme";
 	}
 
@@ -83,29 +91,29 @@ public class RankController {
 
 		return "redirect:/rank/detail?nickName=" + encodedId;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/theme/getThemeList")
-	public List<ThemeRankVo> themeRankList(@RequestParam(value = "List", required = false, defaultValue = "rating") String listType) {
-		
-		System.out.println("아약스 리스트 가져오기"+listType);
+	public List<ThemeRankVo> themeRankList(
+			@RequestParam(value = "List", required = false, defaultValue = "rating") String listType) {
+
+		System.out.println("아약스 리스트 가져오기" + listType);
 
 		List<ThemeRankVo> themeRankList = rankService.getThemeRankList(listType);
-		
 
 		return themeRankList;
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/getNicknameList")
-	public List<String> getNicknameList(Locale locale,Model model){
-		
+	@RequestMapping(value = "/getNicknameList")
+	public List<String> getNicknameList(Locale locale, Model model) {
+
 		List<String> nicknameList = rankService.getNicknameList();
 		System.out.println("닉네임 아약스");
 		System.out.println(nicknameList);
-		//Gson gson = new Gson();
-		
+		// Gson gson = new Gson();
+
 		return nicknameList;
 	}
-	
+
 }

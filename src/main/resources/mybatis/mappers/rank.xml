@@ -44,7 +44,8 @@
 	<select id="selectRankList" resultType="com.nextroom.vo.RatingVo">
 		
 		<![CDATA[
-			select 	u.nickname
+			select 	 u.nickname
+					,u.profile
 					,ROW_NUMBER() OVER (ORDER BY r.userrating DESC) rank
 					,r.userno
 					,r.winrate
@@ -103,7 +104,7 @@
 	
 	<select id="selectUserStat" parameterType="int" resultType="com.nextroom.vo.RatingVo">
 		<![CDATA[
-		select us.userno,us.nickname,rk.avghints,rk.avgcleartime,rk.totalgame,rk.nohintgame,rk.wongame,rnk.rank
+		select us.userno,us.nickname,us.profile,rk.avghints,rk.avgcleartime,rk.totalgame,rk.nohintgame,rk.wongame,rnk.rank
 		from users us,(select  r.userno
 		            
 		                    ,avg(r.recordhints)avgHints
@@ -194,16 +195,19 @@
 		and t.cafeno=c.cafeno
 		]]>
 		<choose>
+		
 			<when test=" _parameter == 'review' ">
 			<![CDATA[
 			order by r.review desc
 			]]>
 			</when>
+			
 			<otherwise>
 			<![CDATA[
 			order by r.avgrating desc
 			]]>
 			</otherwise>
+			
 		</choose>
 	</select>
 	

@@ -69,255 +69,49 @@
 				<!-- 스와이퍼 -->
 				<div class="swiper mySwiper">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/porori.jpg">
-								<div id="" class="theme_info">
-									<div class="theme_intro">
-										<p class="theme_name">방탈출 카페 이름</p>
-										<p class="theme_content">방탈출 카페 한줄 소개</p>
-									</div>
-									<br>
-									<div class="theme_detail">
-										<ul>
-											<li>
-												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>체감난이도 :&nbsp;</span>
-													9.4점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
-												</div>
-											</li>
+						<c:forEach items="${tList}" var="cafeVo" >
+							<div class="swiper-slide">
+								<div class="theme_swiper_list">
+									<img id="" class="theme_img" src="${pageContext.request.contextPath }/upload/${cafeVo.themeImg }">
+									<div id="" class="theme_info">
+										<div class="theme_intro">
+											<p class="theme_name">${cafeVo.themeName }</p>
+											<p class="theme_content">${cafeVo.themeIntro }</p>
+										</div>
+										<br>
+										<div class="theme_detail">
+											<ul>
+												<li>
+													<div>
+														<span>평점 :&nbsp;</span>
+														${cafeVo.aRating }점
+													</div>
+												</li>
+												<li>
+													<div>
+														<span>체감난이도 :&nbsp;</span>
+														${cafeVo.aFeelLevel }점
+													</div>
+												</li>
+												<li>
+													<div>
+														<span>리뷰 :&nbsp;</span>
+														${cafeVo.reviewCount}개
+													</div>
+												</li>
+											
+											
+											</ul>
+			
+										</div>
+										<a href="${pageContext.request.contextPath }/cafe/theme/${cafeVo.themeNo}" class="themeSearchBtn">자세히보기</a>
 										
-										
-										</ul>
-		
 									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
 								</div>
 							</div>
-						</div>
+						</c:forEach>
 						
-						<div class="swiper-slide">
-							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/red.jpg">
-								<div id="" class="theme_info">
-									<div class="theme_intro">
-										<p class="theme_name">방탈출 카페 이름</p>
-										<p class="theme_content">방탈출 카페 한줄 소개</p>
-									</div>
-									<br>
-		
-									<div class="theme_detail">
-										<ul>
-										<li>
-												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
-												</div>
-											</li>
-										
-										
-										</ul>
-		
-									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/blue.jpg">
-								<div id="" class="theme_info">
-									<div class="theme_intro">
-										<p class="theme_name">방탈출 카페 이름</p>
-										<p class="theme_content">방탈출 카페 한줄 소개</p>
-									</div>
-									<br>
-		
-									<div class="theme_detail">
-										<ul>
-										<li>
-												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
-												</div>
-											</li>
-										
-										
-										</ul>
-		
-									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
-								</div>
-							</div>
-						</div>
 						
-						<div class="swiper-slide">
-							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/green.jpg">
-								<div id="" class="theme_info">
-									<div class="theme_intro">
-										<p class="theme_name">방탈출 카페 이름</p>
-										<p class="theme_content">방탈출 카페 한줄 소개</p>
-									</div>
-									<br>
-		
-									<div class="theme_detail">
-										<ul>
-											<li>
-												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
-												</div>
-											</li>
-										
-										
-										</ul>
-		
-									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
-								</div>
-							</div>
-						</div>
-						
-						<div class="swiper-slide">
-							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/yellow.jpg">
-								<div id="" class="theme_info">
-									<div class="theme_intro">
-										<p class="theme_name">방탈출 카페 이름</p>
-										<p class="theme_content">방탈출 카페 한줄 소개</p>
-									</div>
-									<br>
-		
-									<div class="theme_detail">
-										<ul>
-											<li>
-												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
-												</div>
-											</li>
-										
-										
-										</ul>
-		
-									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
-								</div>
-							</div>
-						</div>
-						
-						<div class="swiper-slide">
-							<div class="theme_swiper_list">
-								<img id="" class="theme_img" src="${pageContext.request.contextPath }/assets/image/profile/pink.jpg">
-								<div id="" class="theme_info">
-									<div class="theme_intro">
-										<p class="theme_name">방탈출 카페 이름</p>
-										<p class="theme_content">방탈출 카페 한줄 소개</p>
-									</div>
-									<br>
-		
-									<div class="theme_detail">
-										<ul>
-											<li>
-												<div>
-													<span>평점 :&nbsp;</span>
-													3.3점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>난이도 :&nbsp;</span>
-													9.4점
-												</div>
-											</li>
-											<li>
-												<div>
-													<span>리뷰 :&nbsp;</span>
-													1004개
-												</div>
-											</li>
-										
-										
-										</ul>
-		
-									</div>
-									<br>
-									<a class="mbutton">자세히보기</a>
-									
-								</div>
-							</div>
-						</div>
 						
 					</div>
 					<div class="swiper-button-next"></div>

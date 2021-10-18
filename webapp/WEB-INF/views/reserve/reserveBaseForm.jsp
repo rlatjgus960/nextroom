@@ -272,7 +272,9 @@
 	$(document).ready(function() {
 
 		var sidoDetail = getParameterByName('sidoDetail');
-
+		var cafeNo = getParameterByName('cafeNo');
+		var themeNo = getParameterByName('themeNo');
+		
 		$(".region").removeClass("reservation_yellow");
 
 		addClassByRegion(sidoDetail);
@@ -286,15 +288,8 @@
 		$("[name='cafeNo']").val("");
 
 		fetchList(sidoDetail);
-
-	});
-
-	//카페
-	setTimeout(function() {
-
-		var cafeNo = getParameterByName('cafeNo');
-		var themeNo = getParameterByName('themeNo');
-
+		
+		
 		$("p[data-cafeno='" + cafeNo + "']").addClass("reservation_yellow");
 
 		$("#reservation_main_content_thema").text("");
@@ -304,43 +299,26 @@
 		$("[name='themeNo']").val("");
 
 		fetchThemeList(cafeNo);
-
 		$("[name='cafeNo']").val(cafeNo);
-
-		//테마
-		var themeNo = getParameterByName('themeNo');
-
-		setTimeout(function() {
-
-			$("p[data-themeno='" + themeNo + "']").addClass(
-					"reservation_yellow");
-
-			$("#reservation_main_content_time").text("");
-			$("[name='themeTime']").val("");
-			$("[name='themeTimeNo']").val("");
-
-			fetchTimeList(themeNo);
-
-			$("[name='themeNo']").val(themeNo);
-		}, 100);
-
-	}, 100);
-
-	
-	function themeSeleced(themeNo) {
-
-		console.log(themeNo);
-		$("p[data-cafeno='" + themeNo + "']").addClass("reservation_yellow");
+		
+		$("p[data-themeno='" + themeNo + "']").addClass(
+		"reservation_yellow");
 
 		$("#reservation_main_content_time").text("");
 		$("[name='themeTime']").val("");
 		$("[name='themeTimeNo']").val("");
-
+		
 		fetchTimeList(themeNo);
-
+		
 		$("[name='themeNo']").val(themeNo);
+	});
 
-	};
+	
+
+	
+	
+
+	
 
 	//---------------------//카페&테마에서 예약 넘겼을 시-----------------------//
 
@@ -407,6 +385,7 @@
 		$.ajax({
 			url : "${pageContext.request.contextPath}/reserve/getCafe",
 			type : "post",
+			async : false,
 			data : {
 				sidoDetail : sidoDetail
 			},
@@ -419,7 +398,23 @@
 				for (var i = 0; i < cafeList.length; i++) {
 					render(cafeList[i], "down");
 				}
-
+				
+				
+				
+				var sidoDetail = getParameterByName('sidoDetail');
+				
+				if(sidoDetail == '인천'||sidoDetail == '강원'||sidoDetail == '대전'
+					||sidoDetail == '천안'||sidoDetail == '청주'
+					||sidoDetail == '충청(기타)'||sidoDetail == '대구'
+					||sidoDetail == '부산'||sidoDetail == '경상(기타)'
+					||sidoDetail == '전주'||sidoDetail == '광주'
+					||sidoDetail == '전라(기타)'||sidoDetail == '제주'){
+					
+					$("#reservation_main_content_region").scrollTop(450);
+				} else if(sidoDetail == '안양'){
+					$("#reservation_main_content_region").scrollTop(20);
+				}
+				
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -471,6 +466,7 @@
 		$.ajax({
 			url : "${pageContext.request.contextPath}/reserve/getTheme",
 			type : "post",
+			async : false,
 			data : {
 				cafeNum : cafeNum
 			},
@@ -546,6 +542,7 @@
 		$.ajax({
 			url : "${pageContext.request.contextPath}/reserve/getTime",
 			type : "post",
+			async : false,
 			data : {
 				themeNo : themeNo,
 				reserveDate : $("[name='reserveDate']").val()

@@ -3,6 +3,7 @@ package com.nextroom.vo;
 public class RatingVo {
 
 	private String nickName;
+	private String profile;
 	private int rank;
 	private int userNo;
 	private int avgClearTime;
@@ -20,11 +21,12 @@ public class RatingVo {
 		super();
 	}
 
-	public RatingVo(String nickName, int rank, int userNo, int avgClearTime, String showAvgClearTime, int avgHints,
-			int totalGame, int noHintGame, int wonGame, int rankRating, double winRate, double noHintWinRate,
-			String gameHistory) {
+	public RatingVo(String nickName, String profile, int rank, int userNo, int avgClearTime, String showAvgClearTime,
+			int avgHints, int totalGame, int noHintGame, int wonGame, int rankRating, double winRate,
+			double noHintWinRate, String gameHistory) {
 		super();
 		this.nickName = nickName;
+		this.profile = profile;
 		this.rank = rank;
 		this.userNo = userNo;
 		this.avgClearTime = avgClearTime;
@@ -45,6 +47,14 @@ public class RatingVo {
 
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 
 	public int getRank() {
@@ -145,10 +155,11 @@ public class RatingVo {
 
 	@Override
 	public String toString() {
-		return "RatingVo [nickName=" + nickName + ", rank=" + rank + ", userNo=" + userNo + ", avgClearTime="
-				+ avgClearTime + ", showAvgClearTime=" + showAvgClearTime + ", avgHints=" + avgHints + ", totalGame="
-				+ totalGame + ", noHintGame=" + noHintGame + ", wonGame=" + wonGame + ", rankRating=" + rankRating
-				+ ", winRate=" + winRate + ", noHintWinRate=" + noHintWinRate + ", gameHistory=" + gameHistory + "]";
+		return "RatingVo [nickName=" + nickName + ", profile=" + profile + ", rank=" + rank + ", userNo=" + userNo
+				+ ", avgClearTime=" + avgClearTime + ", showAvgClearTime=" + showAvgClearTime + ", avgHints=" + avgHints
+				+ ", totalGame=" + totalGame + ", noHintGame=" + noHintGame + ", wonGame=" + wonGame + ", rankRating="
+				+ rankRating + ", winRate=" + winRate + ", noHintWinRate=" + noHintWinRate + ", gameHistory="
+				+ gameHistory + "]";
 	}
 
 }

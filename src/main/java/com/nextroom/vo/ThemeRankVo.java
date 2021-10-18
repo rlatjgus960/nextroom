@@ -3,6 +3,7 @@ package com.nextroom.vo;
 public class ThemeRankVo {
 
 	private String themeName;
+	private int themeNo;
 	private String themeImgPath;
 	private String themeIntro;
 	private double avgRating;
@@ -20,10 +21,11 @@ public class ThemeRankVo {
 		this.rank = rank;
 	}
 
-	public ThemeRankVo(String themeName, String themeImgPath, String themeIntro, double avgRating, double avgDifficulty,
-			int review, String cafeName, int rank) {
+	public ThemeRankVo(String themeName, int themeNo, String themeImgPath, String themeIntro, double avgRating,
+			double avgDifficulty, int review, String cafeName, int rank) {
 		super();
 		this.themeName = themeName;
+		this.themeNo = themeNo;
 		this.themeImgPath = themeImgPath;
 		this.themeIntro = themeIntro;
 		this.avgRating = avgRating;
@@ -39,6 +41,14 @@ public class ThemeRankVo {
 
 	public void setThemeName(String themeName) {
 		this.themeName = themeName;
+	}
+
+	public int getThemeNo() {
+		return themeNo;
+	}
+
+	public void setThemeNo(int themeNo) {
+		this.themeNo = themeNo;
 	}
 
 	public String getThemeImgPath() {
@@ -99,9 +109,9 @@ public class ThemeRankVo {
 
 	@Override
 	public String toString() {
-		return "ThemeRankVo [themeName=" + themeName + ", themeImgPath=" + themeImgPath + ", themeIntro=" + themeIntro
-				+ ", avgRating=" + avgRating + ", avgDifficulty=" + avgDifficulty + ", review=" + review + ", cafeName="
-				+ cafeName + ", rank=" + rank + "]";
+		return "ThemeRankVo [themeName=" + themeName + ", themeNo=" + themeNo + ", themeImgPath=" + themeImgPath
+				+ ", themeIntro=" + themeIntro + ", avgRating=" + avgRating + ", avgDifficulty=" + avgDifficulty
+				+ ", review=" + review + ", cafeName=" + cafeName + ", rank=" + rank + "]";
 	}
 
 }

@@ -654,7 +654,6 @@
 			        and th.state = 'available'
 			        order by a.arating desc, a.reviewCount desc, a.afeellevel desc)r
 			where rownum<=10
-			and r.reviewCount >= 50
 			order by arating desc
 		]]>
 

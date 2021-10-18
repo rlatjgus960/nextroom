@@ -26,18 +26,16 @@
 
 
 #joinForm {width: 400px; margin: 0px auto; padding: 20px; border: 1px solid #B7B7B7; }
-#joinForm #txtId {width: 170px; height: 20px; }
+#joinForm #txtId {width: 190px; height: 20px; }
 #joinForm #tdMsg {padding-top: 0px; }
-#joinForm #txtPassword {width: 170px; height: 20px; }
-#joinForm #txtUserName {width: 170px; height: 20px; }
+#joinForm #txtPassword {width: 190px; height: 20px; }
+#joinForm #txtUserName {width: 190px; height: 20px; }
 #joinForm #chkAgree {width: 15px; height: 15px; }
-#joinForm .txtEmail {width: 70px; height: 20px;}
-#joinForm .txtNickName {width: 170px; height: 20px; }
-#joinForm .txtPhoneNumber{ width: 170px; height: 20px;}
-#joinForm select {
-	width: 80px;
-	font-size: 15px;
-	padding: 0px;
+#joinForm .txtEmail {width: 80px; height: 20px;}
+#joinForm .txtNickName {width: 190px; height: 20px; }
+#joinForm .txtPhoneNumber{ width: 190px; height: 20px;}
+.joinSelect {
+	height:25px;
 }
 
 #joinForm  { 

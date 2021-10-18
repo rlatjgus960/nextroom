@@ -38,7 +38,7 @@
 			      		<tr>
 			      			<td><label for="txtId">아이디</label></td>
 			      			<td><input id="txtId" type="text" name="id"></td>
-			      			<td><button id="" class="mbutton checkbutton" type="button">아이디체크</button></td>
+			      			<td></td>
 			      		</tr>
 			      		<tr>
 			      			<td><label for="txtPassword">패스워드</label> </td>
@@ -60,11 +60,11 @@
 			      		<tr>
 			      			<td><label for="txtEmail">이메일</label> </td>
 			      			<td>
-				      			<input class="txtEmail" type="text" name="email"  value="">@
-				      			<select class="txtEmail" name="emailDetail">
-				      				<option value="naver.com">naver.com</option>
-				      				<option value="gmail.com">gmail.com</option>
-				      				<option value="daum.net">daum.net</option>
+				      			<input class="txtEmail" type="text" name="email"  value="">&nbsp;@
+				      			<select class="joinSelect" name="emailDetail">
+				      				<option value="naver.com">naver.com&nbsp;</option>
+				      				<option value="gmail.com">gmail.com&nbsp;</option>
+				      				<option value="daum.net">daum.net&nbsp;</option>
 				      			</select>
 			      			</td>   
 			      			<td></td>  			
