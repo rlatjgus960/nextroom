@@ -86,7 +86,7 @@
                      <div class="rank1_area clearfix">
                         	
                            	
-                           	<span><img class="f-left rank_profile img-circle" src="${pageContext.request.contextPath }/assets/image/profile/${rankList[0].profile}"></span>
+                           	<span><img class="f-left" src="${pageContext.request.contextPath }/assets/image/party/crown222.png"><p>&nbsp;</p><img class="f-left rank_profile img-circle" src="${pageContext.request.contextPath }/assets/image/profile/${rankList[0].profile}"></span>
                         
                         
                            	<p class="first_font m-left f-left"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${rankList[0].nickName}">${rankList[0].nickName}</a></p>
