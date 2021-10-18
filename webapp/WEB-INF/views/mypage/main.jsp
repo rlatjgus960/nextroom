@@ -92,7 +92,7 @@
 							<div class="myRank_area clearfix">
 	
 								<span><img class="f-left myRank_profile img-circle"
-									src="${pageContext.request.contextPath }/assets/image/mypageEtc/chacha.JPG"></span>
+									src="${pageContext.request.contextPath }/assets/image/profile/${mMap.ratingVo.profile }"></span>
 	
 								<p class="myRank_font m-left f-left">${mMap.ratingVo.nickName}</p>
 	

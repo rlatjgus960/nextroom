@@ -199,6 +199,12 @@
 				and c.cafename || t.themename like '%' || #{keyword} || '%'
 				and p.partyState = '모집중'	
 			</when>
+			<when test="partyView.equals('모집완료') or keyword == null and keyword.equals('') ">
+				and p.partyState = '모집완료'
+			</when>
+			<when test="partyView.equals('모집중') or keyword == null and keyword.equals('') ">
+				and p.partyState = '모집중'
+			</when>
 			<otherwise>
 				and c.cafename || t.themename like '%' || #{keyword} || '%'				
 			</otherwise>

@@ -201,7 +201,7 @@
 	                           <span><img class="f-left ranklist_profile m-right" src="${pageContext.request.contextPath }/assets/image/profile/${ratingVo.profile}"></span>
 	                        
 	                        
-	                           <p class="f-left"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${ratingVo.nickName} }">${ratingVo.nickName}</a></p>
+	                           <p class="f-left"><a href="${pageContext.request.contextPath }/rank/detail?nickName=${ratingVo.nickName}">${ratingVo.nickName}</a></p>
 	                        
 	                        
 	                           <ul class="ranklist_detail f-right">
