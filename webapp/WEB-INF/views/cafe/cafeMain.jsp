@@ -131,18 +131,15 @@
 						<input id="region_css" type="hidden" value="${param.region }"> <a
 							href="${pageContext.request.contextPath }/cafe?region=전국" class=""><span
 							<c:if test="${param.region eq '전국'}">class="Rselected"</c:if>>전국</span></a> | <a
-							href="${pageContext.request.contextPath }/cafe?region=홍대" class=""><span
-							<c:if test="${param.region eq '홍대'}">class="Rselected"</c:if>
-							<c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>홍대</span></a> | <a
+							href="${pageContext.request.contextPath }/cafe?region=홍대&#38;신촌" class=""><span
+							<c:if test="${param.region eq '홍대&#38;신촌'}">class="Rselected"</c:if>
+							<c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>홍대&#38;신촌</span></a> | <a
 							href="${pageContext.request.contextPath }/cafe?region=강남" class=""><span
 							<c:if test="${param.region eq '강남'}">class="Rselected"</c:if>
 							<c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>강남</span></a> | <a
 							href="${pageContext.request.contextPath }/cafe?region=건대" class=""><span
 							<c:if test="${param.region eq '건대'}">class="Rselected"</c:if>
 							<c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>건대</span></a> | <a
-							href="${pageContext.request.contextPath }/cafe?region=신촌" class=""><span
-							<c:if test="${param.region eq '신촌'}">class="Rselected"</c:if>
-							<c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>신촌</span></a> | <a
 							href="${pageContext.request.contextPath }/cafe?region=대학로" class=""><span
 							<c:if test="${param.region eq '대학로'}">class="Rselected"</c:if>
 							<c:if test="${param.region eq '서울'}">class="Rselected"</c:if>>대학로</span></a> | <a
@@ -359,9 +356,8 @@
 					$('#daejeon').css("fill", "rgb(253, 213, 59)");
 				} else if (mapCondition == '인천') {
 					$('#incheon').css("fill", "rgb(253, 213, 59)");
-				} else if (mapCondition == '서울' || mapCondition == '홍대'
-						|| mapCondition == '강남' || mapCondition == '건대'
-						|| mapCondition == '신촌' || mapCondition == '대학로'
+				} else if (mapCondition == '서울' || mapCondition == '홍대&#38;신촌'
+						|| mapCondition == '강남' || mapCondition == '건대' || mapCondition == '대학로'
 						|| mapCondition == '강북' || mapCondition == '신림'
 						|| mapCondition == '서울(기타)') {
 					$('#seoul').css("fill", "rgb(253, 213, 59)");
