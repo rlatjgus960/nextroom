@@ -213,8 +213,9 @@
 						(${themeVo.aRating})
 					</p>
 					
-					<button style="float:right; margin-right: 20px;" onclick="location.href = '${pageContext.request.contextPath }/board//reviewWriteForm'" type="button" class="mbutton">후기 쓰러 가기</button>
+					<button style="float:right; margin-right: 20px;" onclick="location.href = '${pageContext.request.contextPath }/board/reviewWriteForm?sidoDetail=${themeVo.sidoDetail}&cafeName=${themeVo.cafeName }&themeName=${themeVo.themeName }'" type="button" class="mbutton">후기 쓰러 가기</button>
 					
+		
 				</div>
 
 				<div id="theme_review_list" class="clearfix">

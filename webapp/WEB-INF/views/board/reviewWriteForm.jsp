@@ -125,7 +125,7 @@
                             <!-- 지역/카페/테마/체감난이도 선택 -->
                             <div class="select_area">
                                 <select class="region" name="">
-										<option value="" selected="">지역 선택</option>
+ 										<option value="" selected="">지역 선택</option>
                                         <option value="전국">전국</option>
                                         <option value="서울">서울</option>
                                         <option value="홍대&신촌">홍대&신촌</option>
@@ -281,27 +281,31 @@
 <script type="text/javascript">
 
 //2021.10.17 by 서현 -- 테마 상세페이지에서 리뷰 작성하기 눌렀을때
-	function getParameterByName(name) {
-		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex
-				.exec(location.search);
-		return results === null ? "" : decodeURIComponent(results[1].replace(
-				/\+/g, " "));
-	}
+// 	function getParameterByName(name) {
+// 		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+// 		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), results = regex
+// 				.exec(location.search);
+// 		return results === null ? "" : decodeURIComponent(results[1].replace(
+// 				/\+/g, " "));
+// 	}
 	
 	
-	$(document).ready(function() {
+// 	$(document).ready(function() {
 
-		var sidoDetail = getParameterByName('sidoDetail');
-		var cafeName = getParameterByName('cafeName');
-		var themeName = getParameterByName('themeName');
+// 		var sidoDetail = getParameterByName('sidoDetail');
+// 		var cafeName = getParameterByName('cafeName');
+// 		var themeName = getParameterByName('themeName');
 		
-
-		$(".region").val('"'+sidoDetail+'"').prop("selected", true);
-		$("#cafeName").val('"'+cafeName+'"').prop("selected", true);
-		$("#themeName").val('"'+themeName+'"').prop("selected", true);
+// 		console.log(sidoDetail);
+// 		console.log(cafeName);
+// 		console.log(themeName);
 		
-	});
+// 		$(".region").val('"'+sidoDetail+'"').prop("selected", true);
+// 		$(".cafeName").val('"'+cafeName+'"').prop("selected", true);
+// 		$("#themeName").val('"'+themeName+'"').prop("selected", true);
+// 		$(".region").prepend('<option value="" selected="">지역 선택</option>');
+		
+// 	});
 
 
 //2021.09.29 by 원호
@@ -321,7 +325,7 @@ $(".region").on("change", function() {
 		type : "post",
 	  //contentType : "application/json",
 		data : {sido: sido},
-
+		async : false,
 	  //dataType : "json",
 		success : function(cafeList){
 			/*성공시 처리해야될 코드 작성*/
@@ -347,7 +351,7 @@ $(".region").on("change", function() {
 //카페이름 1개씩 렌더링
 function cafeRender(cafeList, type) {
 	var str = "";
-	str += '<option id="cafeName" value="' + cafeList.cafeName + '" data-cafeno="' + cafeList.cafeNo +'">' + cafeList.cafeName + '</option>';
+	str += '<option value="' + cafeList.cafeName + '" data-cafeno="' + cafeList.cafeNo +'">' + cafeList.cafeName + '</option>';
 
 	if(type === 'down') {
 		$(".select_cafe").append(str);
@@ -377,7 +381,7 @@ $(".select_cafe").on("change", function() {
 		type : "post",
 	  //contentType : "application/json",
 		data : {cafeNo: cafeNo},
-
+		async : false,
 	  //dataType : "json",
 		success : function(themeList){
 			/*성공시 처리해야될 코드 작성*/
@@ -403,7 +407,7 @@ $(".select_cafe").on("change", function() {
 //테마이름 1개씩 렌더링
 function themeRender(themeList, type) {
 	var str = "";
-	str += '<option id="themeName" value="' + themeList.themeName + '" data-themeno="' + themeList.themeNo +'">' + themeList.themeName + '</option>';
+	str += '<option value="' + themeList.themeName + '" data-themeno="' + themeList.themeNo +'">' + themeList.themeName + '</option>';
 	
 	if(type === 'down') {
 		$(".select_thema").append(str);
