@@ -149,9 +149,7 @@
 							<c:forEach items="${mypagePartyManage.partyManageList }" var="partyManageList" varStatus="status">
 								<tr onclick="location.href='${pageContext.request.contextPath }/party/partyRead?partyNo=${partyManageList.partyNo}'">
 									<td><a href="${pageContext.request.contextPath }/party/partyRead?partyNo=${partyManageList.partyNo}">${partyManageList.partyNo} </a></td>
-									<td><a href="${pageContext.request.contextPath }/party/partyRead"><img
-											src="${pageContext.request.contextPath }/assets/image/party/테러리스트.jpg" width="80px"
-											height="90px"></a></td>
+									<td><img src="${pageContext.request.contextPath }/upload/${partyManageList.themeImg }" width="80px" height="90px"></td>
 									<td>${partyManageList.sidoDetail }</td>
 									<td>${partyManageList.cafeName } / ${partyManageList.themeName }</td>
 									<td>${partyManageList.reserveDate } / ${partyManageList.themeTime }</td>
