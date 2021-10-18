@@ -180,7 +180,7 @@
 	                                <tr>
 	                                    <td>${status.count }</td>
 	                                    <td><img id="imgValue" src="${pageContext.request.contextPath }/assets/image/profile/${partyDetailList.profile }" width="80px" height="80px"></td>
-	                                    <td><c:if test="${partyDetailList.userState == '1' }"><img src="${pageContext.request.contextPath }/assets/image/party/crown1.jpg"> </c:if>${partyDetailList.nickname }</td>
+	                                    <td><c:if test="${partyDetailList.userState == '1' }"><img src="${pageContext.request.contextPath }/assets/image/party/crown1111.png"> </c:if>${partyDetailList.nickname }</td>
 	                                    <td>${partyDetailList.rank } 위</td>
 	                                    <td>${partyDetailList.winRate } %</td>
 	                                    <td>${partyDetailList.noHintWinRate } %</td>
@@ -228,7 +228,7 @@
 	                                <tr>
 	                                    <td>${status.count }</td>
 	                                    <td><img src="${pageContext.request.contextPath }/assets/image/profile/${partyDetailList.profile }" width="80px" height="80px"></td>
-	                                    <td><c:if test="${partyDetailList.userState == '1' }"><img src="${pageContext.request.contextPath }/assets/image/party/crown1.jpg"> </c:if>${partyDetailList.nickname }</td>
+	                                    <td><c:if test="${partyDetailList.userState == '1' }"><img src="${pageContext.request.contextPath }/assets/image/party/crown1111.png"> </c:if>${partyDetailList.nickname }</td>
 	                                    <td>${partyDetailList.rank } 위</td>
 	                                    <td>${partyDetailList.winRate } %</td>
 	                                    <td>${partyDetailList.noHintWinRate } %</td>
