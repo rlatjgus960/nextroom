@@ -532,20 +532,14 @@
 			}
 		});
 		
-		$("#modal_close_btn").on("click", function() {
-			$(".theme_reserve_modal").empty();$
-			$("#admin_reserveitem_modal").attr("style", "display:none");
-			document.body.classList.remove("stop-scroll");
-
-		});
 		
 	});
 
-	/* $("#modal_close_btn").on("click", function() {
+	$("#modal_close_btn").on("click", function() {
 		$("#admin_reserveitem_modal").attr("style", "display:none");
 		document.body.classList.remove("stop-scroll");
 
-	}); */
+	});
 </script>
 
 
