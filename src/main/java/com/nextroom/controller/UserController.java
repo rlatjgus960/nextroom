@@ -60,7 +60,7 @@ public class UserController {
 				return "redirect:/party/partyList";
 			}
 			else{
-				return "redirect:/mypage/main"; 
+				return "redirect:/cafe/theme"; 
 			}
 		} else { //로그인 실패하면
 			System.out.println("[로그인실패]");
