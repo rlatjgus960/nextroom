@@ -5,7 +5,7 @@
 	<!-- 헤더영역 -->
 	<div id="header">
 		<div id="header-item">
-			<a><img id="logo" src="${pageContext.request.contextPath }\assets\image\logo.jpg"></a>
+			<a><img id="logo" src="${pageContext.request.contextPath }\assets\image\logoImg.png"></a>
 
 			<div id="nav">
 
