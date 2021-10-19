@@ -76,7 +76,7 @@
 			      		</tr> 		
 			      		<tr>
 			      			<td><label for="textLogo">프로필사진</label></td>
-			      			<td><img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="" width="200px" height="140px"></td>
+			      			<td><img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition1.png" alt="" width="200px" height="140px"></td>
 			      			<td></td>
 			      		</tr>
 			      		<tr>

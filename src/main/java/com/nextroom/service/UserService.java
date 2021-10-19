@@ -88,7 +88,7 @@ public class UserService {
 			
 		} else{
 			
-			String saveName = "nextedition.png";
+			String saveName = "defaultprofile.png";
 			
 			userVo.setProfile(saveName);
 			
