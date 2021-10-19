@@ -200,7 +200,7 @@
 
 						<div id="admin_reservation_date">
 							<div id="datepicker"></div>
-							<input type="text" id="datepicker2" name="reserveDate">
+							<input type="hidden" id="datepicker2" name="reserveDate">
 						</div>
 						</div>
 

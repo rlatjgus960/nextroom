@@ -151,7 +151,7 @@
 		                                   <td class="body_data">${themeRankVo.avgRating }점</td>
 		                                   <td class="body_data">${themeRankVo.avgDifficulty }점</td>
 		                                   <td class="body_data">${themeRankVo.review }</td>
-		                                   <td class="body_data"><a class="mbutton">자세히보기</a></td>
+		                                   <td class="body_data"><a href="${pageContext.request.contextPath }/cafe/theme/${themeRankVo.themeNo}" class="mbutton">자세히보기</a></td>
 	                             
 		                               </tr>
 	                             </c:forEach>
