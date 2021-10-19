@@ -123,7 +123,7 @@
 										</c:if>
 										
 										<c:if test="${freeBoardList.boardImg == null}">
-											<td><img class="img" src="${pageContext.request.contextPath }/assets/image/board_image/none.png"></td>
+											<td><img class="img" src="${pageContext.request.contextPath }/assets/image/cafe/noImg.png"></td>
 										</c:if>
 										<td><a href="${pageContext.request.contextPath }/board/freeRead?boardNo=${freeBoardList.boardNo}">${freeBoardList.boardTitle}</a></td>
 										<td class="btnNick">

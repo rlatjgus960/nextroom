@@ -489,6 +489,11 @@
 
 	}
 	$("#btn_search").on("click", function(){
+		search();
+	});
+	
+	
+function search(){
 		
 		event.preventDefault();
 		console.log("검색버튼 클릭");
@@ -514,9 +519,7 @@ $(function(){
 	
 	$('#messageInput').keypress(function(e){
 		if(e.keyCode == 13){
-			//실행할 함수();
-			//테스트할 alert
-			alert("엔터 잘 실행되니?");
+			search
 		}
 	});
 });

@@ -112,7 +112,7 @@
 			</div>
 
 <%-- 			<form action="${pageContext.request.contextPath }/cafe/theme" method="get" id="searchForm"> --%>
-			<form method="get" id="searchForm">
+			<form method="get" id="searchForm" onsubmit="return false;" onkeyup="e();">
 
 				<div id="theme_select" class="clearfix">
 
@@ -130,10 +130,9 @@
 
 						<div id="theme_region" class="theme_select_condition">
 							<label><input type="checkbox" name="" value="전국" onclick='selectAllRegion(this)'>전국</label> <label><input
-								type="checkbox" name="sidoDetail" value="홍대">홍대</label> <label><input
+								type="checkbox" name="sidoDetail" value="홍대&#38;신촌">홍대&신촌</label> <label><input
 								type="checkbox" name="sidoDetail" value="강남">강남</label> <label><input
-								type="checkbox" name="sidoDetail" value="건대">건대</label> <label><input
-								type="checkbox" name="sidoDetail" value="신촌">신촌</label> <label><input
+								type="checkbox" name="sidoDetail" value="건대">건대</label> <label><label><input
 								type="checkbox" name="sidoDetail" value="대학로">대학로</label> <label><input
 								type="checkbox" name="sidoDetail" value="강북">강북</label> <label><input
 								type="checkbox" name="sidoDetail" value="신림">신림</label> <label><input
@@ -183,7 +182,7 @@
 						<div id="theme_kind" class="theme_select_condition">
 							<label><input type="checkbox" name="themeType" value="자물쇠 위주">자물쇠 위주</label> <label><input
 								type="checkbox" name="themeType" value="장치 위주">장치 위주</label> <label><input
-								type="checkbox" name="themeType" value="자물쇠, 장치 반반">자물쇠, 장치 반반</label>
+								type="checkbox" name="themeType" value="자물쇠/장치 반반">자물쇠/장치 반반</label>
 
 						</div>
 
@@ -225,10 +224,10 @@
 					<!-- 검색정렬 -->
 					<div id="theme_range" class="clearfix">
 
-						<select id="cafe_array" class="cafe_theme_array">
-							<option value="" selected="selected">별점높은순</option>
-							<option value="">리뷰많은순</option>
-						</select>
+<!-- 						<select id="cafe_array" class="cafe_theme_array"> -->
+<!-- 							<option value="" selected="selected">별점높은순</option> -->
+<!-- 							<option value="">리뷰많은순</option> -->
+<!-- 						</select> -->
 
 						<div class="form-group text-right">
 							<input type="text" name="keyword">
@@ -494,6 +493,13 @@
 	
 	
 	$("#keywordBtn").on("click", function(){
+		search();
+	});
+	
+	
+	
+	
+function search(){
 		
 		event.preventDefault();
 		
@@ -627,11 +633,8 @@
 			}
 
 		});
-		
-		
-	});
 	
-	
+};
 	
 	
 	
@@ -753,6 +756,22 @@
 		$("#theme_search_list").append(addListHtml);
 		
 	};
+	
+	
+	
+	
+	//엔터키 쳤을때 함수 실행하기
+	$("#searchForm").keyup(function e(e){
+		console.log("enter");
+		
+		 if (e.keyCode === 13) {
+			 search();
+		}  
+		
+		return true;
+	});
+	
+	
 	
 </script>
 
