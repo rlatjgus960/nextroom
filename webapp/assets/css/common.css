@@ -25,7 +25,7 @@ a:hover {text-decoration: none; color: #000000; }
 
 /* 레이아웃 */
 #wrap {margin: 0px auto; width: 1300px; background-color: #FFFFFF;  overflow: hidden;}
-#header {width: 100%; height:50px;margin: 0px 0px 30px 0px; padding: 5px 0px 10px 0px; background-color: #FFFFFF; border-bottom:1px solid #b9b9b9; }
+#header {width: 100%; height:80px;margin: 0px 0px 30px 0px; padding: 5px 0px 10px 0px; background-color: #FFFFFF; border-bottom:1px solid #b9b9b9; }
 #nav {margin:0px 0px 0px 450px;  background-color: #FFFFFF; text-align:center;}
 #content {min-height: 600px; width: 1300px; background-color: #FFFFFF; border-bottom: 1px solid #b9b9b9; padding-bottom: 20px; font-size:15px;}
 #footer {width: 1300px;  background-color: #fff; color: #999; margin: 10px 0px;}
@@ -58,7 +58,7 @@ a:hover {text-decoration: none; color: #000000; }
 
 
 /* 해더네비 nav*/
-#bar {float:left;}
+#bar {float:left; margin-top: 12px;}
 
 #nav ul>li {left:200px;float: left; margin: 15px 0px 15px 0px; font-size: 18px; font-weight: bold; background-color: #FFFFFF;}
 
@@ -71,6 +71,7 @@ a:hover {text-decoration: none; color: #000000; }
 /* 헤더로그인 관련*/
 #login_area {
     float:right;
+    margin-top: 10px;
  }
 
  .mypageIcon{
