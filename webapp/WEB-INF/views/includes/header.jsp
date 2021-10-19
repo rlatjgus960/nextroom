@@ -10,11 +10,12 @@
 			<div id="nav">
 
 				<ul id="bar">
-					<li><a href="${pageContext.request.contextPath}/cafe">카페</a>/<a href="${pageContext.request.contextPath}/cafe/theme">테마</a></li>
-					<li><a href="${pageContext.request.contextPath}/reserve/reserveBaseForm">예약</a></li>
+					<li id="list_cacafe"><a href="${pageContext.request.contextPath}/cafe">카페</a></li>
+					<li id="list_thetheme"><a href="${pageContext.request.contextPath}/cafe/theme">테마</a></li>
+					<li id="list_rereserve"><a href="${pageContext.request.contextPath}/reserve/reserveBaseForm">예약</a></li>
 					<li><a href="${pageContext.request.contextPath}/party/partyList">파티구하기</a></li>
 					<li><a href="${pageContext.request.contextPath}/rank/user">랭킹</a></li>
-					<li><a href="${pageContext.request.contextPath}/board/freeCommunity">커뮤니티</a></li>
+					<li><a href="${pageContext.request.contextPath}/board/reviewBoard">커뮤니티</a></li>
 				</ul>
 
 

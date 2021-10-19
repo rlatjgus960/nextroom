@@ -267,4 +267,14 @@ h2 {font-size: 30px;}
     clear:left;
 }
 
+#bar>#list_cacafe {
+	width: 80px;
+}
 
+#bar>#list_thetheme {
+	width: 75px;
+}
+
+#bar>#list_rereserve {
+	width: 90px;
+}
