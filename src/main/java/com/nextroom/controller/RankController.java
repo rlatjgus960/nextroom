@@ -83,14 +83,14 @@ public class RankController {
 		}
 	}
 
-	@RequestMapping("/{id}")
-	public String userDetailforID(@PathVariable String id) throws UnsupportedEncodingException {
-		System.out.println("주소창바로입력" + id);
-
-		String encodedId = URLEncoder.encode(id, "UTF-8");
-
-		return "redirect:/rank/detail?nickName=" + encodedId;
-	}
+	/*
+	 * @RequestMapping("/{id}") public String userDetailforID(@PathVariable String
+	 * id) throws UnsupportedEncodingException { System.out.println("주소창바로입력" + id);
+	 * 
+	 * String encodedId = URLEncoder.encode(id, "UTF-8");
+	 * 
+	 * return "redirect:/rank/detail?nickName=" + encodedId; }
+	 */
 
 	@ResponseBody
 	@RequestMapping("/theme/getThemeList")
@@ -115,5 +115,6 @@ public class RankController {
 
 		return nicknameList;
 	}
+	
 
 }

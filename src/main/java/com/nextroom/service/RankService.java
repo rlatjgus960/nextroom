@@ -217,4 +217,14 @@ public class RankService {
 		}
 		return ratingVo;
 	}
+	
+	public int create() {
+
+		for(int i=28;i<356;i++) {
+			System.out.println("insert into rankrating values ("+i+",0,0,0,'','');");
+		}
+		
+		return 0;
+	}
+	
 }

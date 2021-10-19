@@ -37,8 +37,20 @@
 					gamehistory = #{gameHistory}
 			where userNo = #{userNo}
 		]]>
+		
+	</update>
 	
+	<update id="updateModifyRating" parameterType="com.nextroom.vo.RatingVo">
 	
+		<![CDATA[
+			update 	rankrating set
+					USERRATING = #{rankRating},
+					winrate = #{winRate},
+					nohintwinrate = #{noHintWinRate},
+					showAvgClearTime = #{showAvgClearTime}
+			where userNo = #{userNo}
+		]]>
+		
 	</update>
 	
 	<select id="selectRankList" resultType="com.nextroom.vo.RatingVo">
@@ -220,5 +232,17 @@
 		
 		]]>
 	</select>
+	
+	<insert id="insertRankRating" parameterType="int">
+	<![CDATA[
+	insert into rankrating 
+	values 	(#{userNo}
+			,0
+			,0
+			,0
+			,null
+			,null)
+	]]>
+	</insert>
 	
 </mapper>

@@ -1874,6 +1874,7 @@ INSERT INTO theme VALUES(themeNo.nextval,263,'해리포터와 마법사의 돌',
 INSERT INTO theme VALUES(themeNo.nextval,198,'시간여행자','theme0350.jpg','판타지 ',4,'자물쇠 위주',70,'보통','테마 소개글입니다.','2','5',1,6,'available');
 INSERT INTO theme VALUES(themeNo.nextval,34,'US','theme0351.jpg','판타지 ',3.5,'장치 위주',65,'적음','테마 소개글입니다.','2','5',1,6,'available');
 INSERT INTO theme VALUES(themeNo.nextval,172,'호그와트 마법시험','theme0352.jpg','판타지 ',2,'자물쇠 위주',60,'보통','테마 소개글입니다.','2','5',1,6,'available');
+
 Insert into NEXTROOM.GENRE (GENRE) values ('스릴러');
 Insert into NEXTROOM.GENRE (GENRE) values ('감성');
 Insert into NEXTROOM.GENRE (GENRE) values ('로맨스');

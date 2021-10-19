@@ -59,8 +59,8 @@
 						</li>
 						<li>기록
 							<ul class="aside_mini_cate">
-								<li><p class="selected"><a href="${pageContext.request.contextPath }/admin/record/${sessionScope.authUser.cafeNo}">&nbsp;-기록 입력</a></p></li>
-								<li><a href="${pageContext.request.contextPath }/admin/record/modify/${sessionScope.authUser.cafeNo}">&nbsp;-기록 관리</a></li>
+								<li class=""><a href="${pageContext.request.contextPath }/admin/record/${sessionScope.authUser.cafeNo}">&nbsp;-기록 입력</a></li>
+								<li class="selected"><a href="${pageContext.request.contextPath }/admin/record/modify/${sessionScope.authUser.cafeNo}">&nbsp;-기록 관리</a></li>
 							</ul>
 						</li>
 						<li><a href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페 소개 관리</a></li>

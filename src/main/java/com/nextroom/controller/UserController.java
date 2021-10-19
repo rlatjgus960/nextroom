@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.nextroom.service.RecordService;
 import com.nextroom.service.UserService;
 import com.nextroom.vo.UserVo;
 
@@ -18,6 +19,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private RecordService recordService;
 	
 	
 	//로그인폼
@@ -94,7 +97,11 @@ public class UserController {
 		System.out.println("유컨-조인 " + userVo);
 		
 		userService.addUser(userVo);
-
+		
+		String userId = userVo.getId();
+		
+		recordService.addRankRating(userId);
+		
 		return "user/joinSuccess";
 	}
 	

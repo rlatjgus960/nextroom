@@ -96,4 +96,14 @@ public class RankDao {
 		
 		return sqlSession.selectList("rank.selectNicknameList");
 	}
+	
+	public int updateModifyRating(RatingVo ratingVo) {
+
+		return sqlSession.update("rank.updateModifyRating", ratingVo);
+	}
+	
+	public int insertRankRating(int userNo) {
+		
+		return sqlSession.insert("rank.insertRankRating", userNo);
+	}
 }

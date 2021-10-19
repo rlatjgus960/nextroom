@@ -220,7 +220,7 @@ public class RecordService {
 
 			System.out.println("레이팅 추가 " + ratingVo);
 
-			rankDao.updateRating(ratingVo);
+			rankDao.updateModifyRating(ratingVo);
 
 			count++;
 		}
@@ -228,6 +228,13 @@ public class RecordService {
 		System.out.println(count + "건 수정");
 
 		return count;
+	}
+	
+	public int addRankRating (String userId) {
+		
+		int userNo = recordDao.selectUserNo(userId);
+		
+		return rankDao.insertRankRating(userNo);
 	}
 
 }
