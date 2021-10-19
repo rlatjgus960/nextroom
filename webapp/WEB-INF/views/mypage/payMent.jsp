@@ -259,7 +259,7 @@
 			//dataType: "json",
 			success : function(reserveVo) {
 				console.log(reserveVo);
-				var path = "${pageContext.request.contextPath }/assets/image/" + reserveVo.themeImg;
+				var path = "${pageContext.request.contextPath }/upload/" + reserveVo.themeImg;
 				
 				console.log(reserveVo.reserveTime);
 				

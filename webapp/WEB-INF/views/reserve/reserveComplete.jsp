@@ -90,8 +90,8 @@
 			</div>
 
             <div id="reservation_btn">
-                <button class="mbutton">메인으로 가기</button>
-                <button class="mbutton">결제정보 확인하기</button>
+                <a class="mbutton" href="${pageContext.request.contextPath}/cafe/theme">메인으로 가기</a>
+                <a class="mbutton" href="${pageContext.request.contextPath}/mypage/payMent">결제정보 확인하기</a>
             </div>
 
 
