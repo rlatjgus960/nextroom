@@ -198,7 +198,8 @@
 			        rt.reserveperson,
 			        rt.reservename,
 			        rt.paymentstate,
-			        rt.themeNo
+			        rt.themeNo,
+			        rt.cafeNo
 			from (  select  rownum rn,
 			                ot.themename,
 			                ot.reserveno,
@@ -207,7 +208,8 @@
 			                ot.reserveperson,
 			                ot.reservename,
 			                ot.paymentstate,
-			                ot.themeNo
+			                ot.themeNo,
+			                ot.cafeNo
 			        from (  select  t.themename, 
 							        r.reserveno,
 							        to_char(rd.reservedate, 'yyyy-mm-dd') reserveDate,
@@ -215,11 +217,13 @@
 							        r.reserveperson,
 							        r.reservename,
 							        r.paymentstate,
-							        t.themeNo
+							        t.themeNo,
+							        t.cafeNo
 							from theme t, reserveDate rd, reserveTime rt, reserve r
 							where t.themeNo = rd.themeNo
 							and rd.reserveDateNo = rt.reservedateno
 							and rt.reservetimeNo = r.reservetimeno
+							and t.cafeNo = #{cafeNo}
 		]]>
 		
 						<if test="themeNo != -1 and themeNo != ''">

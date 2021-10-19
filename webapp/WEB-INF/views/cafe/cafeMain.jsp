@@ -510,7 +510,7 @@ function search(){
 				console.log(cafeList);
 			}
 		});
-	});
+	};
 	
 
 	

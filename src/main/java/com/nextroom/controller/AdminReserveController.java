@@ -101,6 +101,7 @@ public class AdminReserveController {
 		Map<String, Object> rMap = new HashMap<String, Object>();
 		rMap.put("reserveDate", reserveDate);
 		rMap.put("themeNo", themeNo);
+		rMap.put("cafeNo", cafeNo);
 		
 		System.out.println(reserveDate);
 		//테마 정보
