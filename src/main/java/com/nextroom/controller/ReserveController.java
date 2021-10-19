@@ -280,13 +280,6 @@ public class ReserveController {
 		
 	}
 	
-	//예약 완료
-	@RequestMapping("/reserveComplete")
-	public String reserveComplete() {
-		System.out.println("reserveComplete");
-		return "reserve/reserveComplete";
-	}
-	
 	
 
 }
