@@ -100,7 +100,7 @@
 								href="${pageContext.request.contextPath }/admin/cafeModifyForm">카페
 									소개 관리</a></li>
 							<li><a
-								href="${pageContext.request.contextPath }/admin/themeList">카페
+								href="${pageContext.request.contextPath }/admin/${authUser.cafeNo }/themeList">카페
 									테마 관리</a></li>
 						</ul>
 
