@@ -273,22 +273,22 @@
 									</c:if>
 									
 									<c:if test="${status.last}">
-										<c:if test="${5-(tiList.themeTimeNo%5) eq 1}">
+										<c:if test="${5-(status.count%5) eq 1}">
 											<td></td>
 										</c:if>
 
-										<c:if test="${5-(tiList.themeTimeNo%5) eq 2}">
-											<td></td>
-											<td></td>
-										</c:if>
-
-										<c:if test="${5-(tiList.themeTimeNo%5) eq 3}">
-											<td></td>
+										<c:if test="${5-(status.count%5) eq 2}">
 											<td></td>
 											<td></td>
 										</c:if>
 
-										<c:if test="${5-(tiList.themeTimeNo%5) eq 4}">
+										<c:if test="${5-(status.count%5) eq 3}">
+											<td></td>
+											<td></td>
+											<td></td>
+										</c:if>
+
+										<c:if test="${5-(status.count%5) eq 4}">
 											<td></td>
 											<td></td>
 											<td></td>
