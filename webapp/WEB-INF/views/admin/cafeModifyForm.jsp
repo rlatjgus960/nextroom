@@ -22,11 +22,11 @@
 
 
 <body>
+
 	<!-- 헤더영역 -->
-	s
+	
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	<!-- //헤더영역 -->
-
 
 	<div id="wrap">
 		<!-- content -->
