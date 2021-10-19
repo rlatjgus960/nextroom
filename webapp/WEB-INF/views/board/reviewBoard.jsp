@@ -47,8 +47,8 @@
 						
 						<div id="aside_cate">
 							<ul>
-								<li><a class="" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
 								<li><a class="active" href="${pageContext.request.contextPath }/board/reviewBoard">후기게시판</a></li>
+								<li><a class="" href="${pageContext.request.contextPath }/board/freeCommunity">자유게시판</a></li>
 								<li>양도/교환</li>
 								<li>공지사항</li>
 							</ul>
