@@ -96,7 +96,7 @@
 								<div id="cafe_mainImg_wrap" class="clearfix">
 									<p class="cafModi_subTitle">카페 메인이미지</p>
 									<img id="cafe_mainImg"
-										src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
+										src="${pageContext.request.contextPath }/assets/image/cafe/noImg.png" alt="">
 
 									<div class="cafe_up_wrap">
 										<input type="file" name="cafeImgFile">
@@ -109,7 +109,7 @@
 
 									<div id="add_cafeInterior" class="scroll-image">
 										<!-- 카페내부사진 반복영역 -->
-										<img src="${pageContext.request.contextPath }/assets/image/cafe/nextedition.png" alt="">
+										<img src="${pageContext.request.contextPath }/assets/image/cafe/noImg.png" alt="">
 
 										<!-- //카페내부사진 반복영역 -->
 									</div>
