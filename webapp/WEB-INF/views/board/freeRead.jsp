@@ -472,15 +472,17 @@ $("#commentContent").keyup(function e(e){
 		  
 		  console.log(freeBoardVo)
 		  
+		  if(userNo < 1){
+			  alert("로그인을 해주세요")
+			  return false;
+		  }
+		  
 		  if(commentContent.length < 1){
 			  alert("내용을 입력해 주세요")
 			  return false;
 		  }
 		  
-		  if(userNo < 1){
-			  alert("로그인을 해주세요")
-			  return false;
-		  }
+
 
 		  
 			//데이터 ajax방식으로 서버에 전송
@@ -542,7 +544,7 @@ $("#prevNum").on("click", function(){
 
 
 //사이트 파라미터 숨기는거
-history.replaceState({}, null, location.pathname);
+// history.replaceState({}, null, location.pathname);
 
 
 </script>
