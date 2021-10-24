@@ -207,12 +207,13 @@ public class RecordService {
 			ratingVo.setGameHistory(gameHistory);
 
 			System.out.println(ratingVo); /////////// 여기까지 Vo완성 --> 이제 테이블에 데이터 쳐너쳐너
-
+			
+			double Hints = recordVo.getRecordHints() * 1.01;
 			double totalGamePoint = ratingVo.getTotalGame() * 1.01;
-			double wonGamePoint = ratingVo.getWonGame() * 1.20;
+			double wonGamePoint = ratingVo.getWonGame() * 1.10;
 			double noHintGamePoint = ratingVo.getNoHintGame() * 1.50;
 			double failPoint = (ratingVo.getTotalGame() - ratingVo.getWonGame()) * 0.90;
-			double totalRating = (totalGamePoint + wonGamePoint + noHintGamePoint - failPoint) * 100;
+			double totalRating = (totalGamePoint + wonGamePoint + noHintGamePoint + Hints - failPoint) * 100;
 
 			int rankRating = (int) totalRating;
 
