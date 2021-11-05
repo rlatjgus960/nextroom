@@ -30,7 +30,7 @@ public class MypageService {
 		//리스트 가져오기
 		////////////////////////////////////////////
 		
-		int listCnt = 1;
+		int listCnt = 5;
 		
 		//crtPage 계산(- 값일때 1page 처리)
 		crtPage = (crtPage > 0) ? crtPage : (crtPage = 1); //삼항연산자; 아래랑 같은 논리
